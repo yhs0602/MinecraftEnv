@@ -6,7 +6,9 @@
   "mixins": [],
   "client": [
     "RenderTickCounterAccessor",
-    "TickSpeedMixin"
+    "TickSpeedMixin",
+    "ClientDoItemUseInvoker",
+    "ClientDoAttackInvoker"
   ],
   "server": [],
   "injectors": {
