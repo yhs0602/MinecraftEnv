@@ -23,5 +23,8 @@
     "fabricloader": ">=${loader_version}",
     "fabric": "*",
     "minecraft": "${minecraft_version}"
-  }
+  },
+  "mixins": [
+    "com.kyhsgeekcode.minecraft_env.mixin.json"
+  ]
 }

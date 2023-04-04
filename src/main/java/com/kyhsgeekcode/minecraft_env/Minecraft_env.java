@@ -89,6 +89,9 @@ public class Minecraft_env implements ModInitializer {
 //        ItemGroups.BUILDING_BLOCKS
         ClientTickEvents.START_WORLD_TICK.register(world -> {
             MinecraftClient client = MinecraftClient.getInstance();
+            if (world.getTime() % 4 != 0)
+                return;
+
             if (client.isPaused())
                 return;
             var tracker = client.getWorldGenerationProgressTracker();
@@ -155,8 +158,9 @@ public class Minecraft_env implements ModInitializer {
 
         ClientTickEvents.END_WORLD_TICK.register(world -> {
             System.out.println("End tick");
-
             var client = MinecraftClient.getInstance();
+            if (world.getTime() % 4 != 0)
+                return;
             var player = client.player;
             if (player == null) {
                 return;
