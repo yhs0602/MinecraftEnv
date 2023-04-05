@@ -101,6 +101,22 @@ class EnvironmentInitializer(private val initialEnvironment: InitialEnvironment)
         }
     }
 
+    fun onWorldTick(player: ClientPlayerEntity, commandExecutor: Minecraft_env) {
+        // TODO: should be called only once when initial environment is set
+        val client = MinecraftClient.getInstance()
+        val player = client.player
+        if (player != null) {
+            setupInitialPosition(player, commandExecutor)
+            setupInitialWeather(player, commandExecutor)
+            setupInitialInventory(player, commandExecutor)
+            summonInitialMobs(player, commandExecutor)
+            if (initialEnvironment.alwaysDay)
+                setupAlwaysDay(player, commandExecutor)
+            if (initialEnvironment.alwaysNight)
+                setupAlwaysNight(player, commandExecutor)
+        }
+    }
+
     private fun setupAllowCheats(
         cheatButton: CyclingButtonWidget<*>,
         cheatRequested: Boolean
@@ -168,5 +184,4 @@ class EnvironmentInitializer(private val initialEnvironment: InitialEnvironment)
             "/time set night"
         )
     }
-
 }
