@@ -6,6 +6,7 @@ import com.kyhsgeekcode.minecraft_env.mixin.ClientDoItemUseInvoker;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
+import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.TitleScreen;
 import net.minecraft.client.gui.screen.world.CreateWorldScreen;
@@ -16,6 +17,8 @@ import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.texture.NativeImage;
 import net.minecraft.client.util.ScreenshotRecorder;
 import net.minecraft.item.Item;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 
@@ -52,8 +55,8 @@ public class Minecraft_env implements ModInitializer {
         }
 
         System.out.println("Hello Fabric world!");
-//        Registry.register(Registries.ITEM, "minecraft_env:custom_item", CUSTOM_ITEM);
-//        FuelRegistry.INSTANCE.add(CUSTOM_ITEM, 300);
+        Registry.register(Registries.ITEM, "minecraft_env:custom_item", CUSTOM_ITEM);
+        FuelRegistry.INSTANCE.add(CUSTOM_ITEM, 300);
 
         // read client environment settings
         try {
@@ -68,103 +71,9 @@ public class Minecraft_env implements ModInitializer {
             e.printStackTrace();
         }
 
+        EnvironmentInitializer initializer = new EnvironmentInitializer(initialEnvironment);
 
-        ClientTickEvents.START_CLIENT_TICK.register(client -> {
-                    var screen = client.currentScreen;
-                    if (screen instanceof TitleScreen) {
-                        for (var child : screen.children()) {
-                            System.out.println(child);
-                            if (child instanceof ButtonWidget button) {
-                                if (button.getMessage().getString().equals("Singleplayer")) {
-                                    button.onPress();
-                                    return;
-                                }
-                            }
-                        }
-                    } else if (screen instanceof SelectWorldScreen) {
-                        System.out.println("Select world screen1");
-                        WorldListWidget widget = null;
-                        ButtonWidget deleteButton = null;
-                        ButtonWidget createButton = null;
-                        for (var child : screen.children()) {
-                            System.out.println(child);
-                            if (child instanceof WorldListWidget w) {
-                                widget = w;
-                            } else if (child instanceof ButtonWidget button) {
-                                if (button.getMessage().getString().equals("Delete Selected World")) {
-                                    deleteButton = button;
-                                } else if (button.getMessage().getString().equals("Create New World")) {
-                                    createButton = button;
-                                }
-                            }
-                        }
-                        if (widget != null && deleteButton != null) {
-                            widget.setSelected(widget.children().get(0));
-                            deleteButton.onPress();
-                            return;
-                        }
-                        if (createButton != null) {
-                            createButton.onPress();
-                        }
-                    } else if (screen instanceof CreateWorldScreen) {
-                        System.out.println("Create world screen");
-                        ButtonWidget createButton = null;
-                        boolean realCheatAllowed = false;
-                        boolean cheatRequested = true;
-                        int indexOfWorldSettingTab = -1;
-                        CyclingButtonWidget cheatButton = null;
-                        TabNavigationWidget settingTabWidget = null;
-                        for (var child : screen.children()) {
-                            // search for tab navigation widget, to find index of world settings tab
-                            if (indexOfWorldSettingTab == -1 && child instanceof TabNavigationWidget tabNavigationWidget) {
-                                settingTabWidget = tabNavigationWidget;
-                                for (int i = 0; i < tabNavigationWidget.children().size(); i++) {
-                                    var tabChild = tabNavigationWidget.children().get(i);
-                                    if (tabChild instanceof TabButtonWidget tabButtonWidget) {
-                                        if (tabButtonWidget.getMessage().getString().equals("World")) {
-                                            indexOfWorldSettingTab = i;
-                                        }
-                                    }
-                                }
-                            }
-                            // search for create button
-                            if (createButton == null && child instanceof ButtonWidget button) {
-                                if (button.getMessage().getString().equals("Create New World")) {
-                                    createButton = button;
-                                }
-                            }
-                            // search for cheat button
-                            if (cheatButton == null && child instanceof CyclingButtonWidget cyclingButtonWidget) {
-                                if (cyclingButtonWidget.getMessage().getString().startsWith("Allow Cheats")) {
-                                    cheatButton = cyclingButtonWidget;
-                                }
-                            }
-                        }
-                        // Set allow cheats to requested
-                        if (cheatButton != null) {
-                            System.out.println("Cheat button not found");
-                            var testString = cheatRequested ? "ON" : "OFF";
-                            while (!cheatButton.getMessage().getString().endsWith(testString)) {
-                                cheatButton.onPress();
-                            }
-                        }
-//                        realCheatAllowed = cheatRequested;
-                        // Select world settings tab
-                        settingTabWidget.selectTab(indexOfWorldSettingTab, false);
-                        // Search for seed input
-                        for (var child : screen.children()) {
-                            System.out.println(child);
-                            if (child instanceof TextFieldWidget textFieldWidget) {
-                                System.out.println("Found text field");
-                                textFieldWidget.setText("123456789");
-                            }
-                        }
-                        if (createButton != null) {
-                            createButton.onPress();
-                        }
-                    }
-                }
-        );
+        ClientTickEvents.START_CLIENT_TICK.register(initializer::onClientTick);
 
         ClientTickEvents.START_WORLD_TICK.register(world -> {
             MinecraftClient client = MinecraftClient.getInstance();
