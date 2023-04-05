@@ -8,11 +8,6 @@ import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.gui.screen.TitleScreen;
-import net.minecraft.client.gui.screen.world.CreateWorldScreen;
-import net.minecraft.client.gui.screen.world.SelectWorldScreen;
-import net.minecraft.client.gui.screen.world.WorldListWidget;
-import net.minecraft.client.gui.widget.*;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.texture.NativeImage;
 import net.minecraft.client.util.ScreenshotRecorder;
@@ -59,16 +54,21 @@ public class Minecraft_env implements ModInitializer {
         FuelRegistry.INSTANCE.add(CUSTOM_ITEM, 300);
 
         // read client environment settings
-        try {
-            String b64 = bufferedReader.readLine();
-            String json = new String(Base64.getDecoder().decode(b64), StandardCharsets.UTF_8);
-            // decode json to object
-            Gson gson = new Gson();
-            initialEnvironment = gson.fromJson(json, InitialEnvironment.class);
-        } catch (SocketTimeoutException e) {
-            System.out.println("Socket timeout");
-        } catch (IOException e) {
-            e.printStackTrace();
+        while (true) {
+            try {
+                String b64 = bufferedReader.readLine();
+                String json = new String(Base64.getDecoder().decode(b64), StandardCharsets.UTF_8);
+                // decode json to object
+                Gson gson = new Gson();
+                initialEnvironment = gson.fromJson(json, InitialEnvironment.class);
+                break;
+            } catch (SocketTimeoutException e) {
+                System.out.println("Socket timeout");
+                // wait and try again
+            } catch (IOException e) {
+                e.printStackTrace();
+                throw new RuntimeException(e);
+            }
         }
 
         EnvironmentInitializer initializer = new EnvironmentInitializer(initialEnvironment);
@@ -255,7 +255,7 @@ public class Minecraft_env implements ModInitializer {
         return out.toString(StandardCharsets.UTF_8);
     }
 
-    private void runCommand(ClientPlayerEntity player, String command) {
+    public void runCommand(ClientPlayerEntity player, String command) {
         System.out.println("Running command: " + command);
         player.networkHandler.sendChatCommand(command);
         System.out.println("End send command: " + command);

@@ -7,11 +7,12 @@ import net.minecraft.client.gui.screen.world.CreateWorldScreen
 import net.minecraft.client.gui.screen.world.SelectWorldScreen
 import net.minecraft.client.gui.screen.world.WorldListWidget
 import net.minecraft.client.gui.widget.*
+import net.minecraft.client.network.ClientPlayerEntity
+import net.minecraft.world.GameMode
 
-class EnvironmentInitializer(val initialEnvironment: InitialEnvironment) {
+class EnvironmentInitializer(private val initialEnvironment: InitialEnvironment) {
     fun onClientTick(client: MinecraftClient) {
-        val screen = client.currentScreen
-        when (screen) {
+        when (val screen = client.currentScreen) {
             is TitleScreen -> {
                 screen.children().find {
                     it is ButtonWidget && it.message.string == "Singleplayer"
@@ -50,7 +51,6 @@ class EnvironmentInitializer(val initialEnvironment: InitialEnvironment) {
             is CreateWorldScreen -> {
                 println("Create world screen")
                 var createButton: ButtonWidget? = null
-                val realCheatAllowed = false
                 val cheatRequested = true
                 var indexOfWorldSettingTab = -1
                 var cheatButton: CyclingButtonWidget<*>? = null
@@ -82,14 +82,10 @@ class EnvironmentInitializer(val initialEnvironment: InitialEnvironment) {
                     }
                 }
                 // Set allow cheats to requested
-                if (cheatButton != null) {
+                if (cheatButton != null)
+                    setupAllowCheats(cheatButton, cheatRequested)
+                else
                     println("Cheat button not found")
-                    val testString = if (cheatRequested) "ON" else "OFF"
-                    while (!cheatButton.message.string.endsWith(testString)) {
-                        cheatButton.onPress()
-                    }
-                }
-                //                        realCheatAllowed = cheatRequested;
                 // Select world settings tab
                 settingTabWidget!!.selectTab(indexOfWorldSettingTab, false)
                 // Search for seed input
@@ -97,11 +93,80 @@ class EnvironmentInitializer(val initialEnvironment: InitialEnvironment) {
                     println(child)
                     if (child is TextFieldWidget) {
                         println("Found text field")
-                        child.text = "123456789"
+                        child.text = initialEnvironment.seed.toString()
                     }
                 }
                 createButton?.onPress()
             }
         }
     }
+
+    private fun setupAllowCheats(
+        cheatButton: CyclingButtonWidget<*>,
+        cheatRequested: Boolean
+    ) {
+        val testString = if (cheatRequested) "ON" else "OFF"
+        while (!cheatButton.message.string.endsWith(testString)) {
+            cheatButton.onPress()
+        }
+    }
+
+    private fun setupGameMode(
+        gameModeButton: CyclingButtonWidget<*>,
+        gameModeRequested: GameMode
+    ) {
+        val testString = gameModeRequested.name
+        while (!gameModeButton.message.string.endsWith(testString)) {
+            gameModeButton.onPress()
+        }
+    }
+
+    private fun summonInitialMobs(player: ClientPlayerEntity, commandExecutor: Minecraft_env) {
+        for (command in initialEnvironment.initialMobsCommands) {
+            commandExecutor.runCommand(player, "/summon $command")
+        }
+    }
+
+    private fun setupInitialInventory(player: ClientPlayerEntity, commandExecutor: Minecraft_env) {
+        for (command in initialEnvironment.initialInventoryCommands) {
+            commandExecutor.runCommand(player, "/give @p $command")
+        }
+    }
+
+    private fun setupInitialPosition(player: ClientPlayerEntity, commandExecutor: Minecraft_env) {
+        commandExecutor.runCommand(
+            player,
+            "/tp @p ${initialEnvironment.initialPosition[0]} ${initialEnvironment.initialPosition[1]} ${initialEnvironment.initialPosition[2]}"
+        )
+    }
+
+    private fun setupInitialWeather(player: ClientPlayerEntity, commandExecutor: Minecraft_env) {
+        commandExecutor.runCommand(
+            player,
+            "/weather ${initialEnvironment.initialWeather}"
+        )
+    }
+
+    private fun setupAlwaysDay(player: ClientPlayerEntity, commandExecutor: Minecraft_env) {
+        commandExecutor.runCommand(
+            player,
+            "/gamerule doDaylightCycle false"
+        )
+        commandExecutor.runCommand(
+            player,
+            "/time set day"
+        )
+    }
+
+    private fun setupAlwaysNight(player: ClientPlayerEntity, commandExecutor: Minecraft_env) {
+        commandExecutor.runCommand(
+            player,
+            "/gamerule doDaylightCycle false"
+        )
+        commandExecutor.runCommand(
+            player,
+            "/time set night"
+        )
+    }
+
 }
