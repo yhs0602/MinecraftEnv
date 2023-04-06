@@ -11,6 +11,7 @@ import net.minecraft.client.network.ClientPlayerEntity
 import net.minecraft.world.GameMode
 
 class EnvironmentInitializer(private val initialEnvironment: InitialEnvironment) {
+    private var hasRunInitWorld: Boolean = false
     fun onClientTick(client: MinecraftClient) {
         when (val screen = client.currentScreen) {
             is TitleScreen -> {
@@ -89,11 +90,13 @@ class EnvironmentInitializer(private val initialEnvironment: InitialEnvironment)
                 // Select world settings tab
                 settingTabWidget!!.selectTab(indexOfWorldSettingTab, false)
                 // Search for seed input
-                for (child in screen.children()) {
-                    println(child)
-                    if (child is TextFieldWidget) {
-                        println("Found text field")
-                        child.text = initialEnvironment.seed.toString()
+                if (initialEnvironment.seed != null) {
+                    for (child in screen.children()) {
+                        println(child)
+                        if (child is TextFieldWidget) {
+                            println("Found text field")
+                            child.text = initialEnvironment.seed.toString()
+                        }
                     }
                 }
                 createButton?.onPress()
@@ -102,19 +105,18 @@ class EnvironmentInitializer(private val initialEnvironment: InitialEnvironment)
     }
 
     fun onWorldTick(player: ClientPlayerEntity, commandExecutor: Minecraft_env) {
-        // TODO: should be called only once when initial environment is set
-        val client = MinecraftClient.getInstance()
-        val player = client.player
-        if (player != null) {
-            setupInitialPosition(player, commandExecutor)
-            setupInitialWeather(player, commandExecutor)
-            setupInitialInventory(player, commandExecutor)
-            summonInitialMobs(player, commandExecutor)
-            if (initialEnvironment.alwaysDay)
-                setupAlwaysDay(player, commandExecutor)
-            if (initialEnvironment.alwaysNight)
-                setupAlwaysNight(player, commandExecutor)
-        }
+        if (hasRunInitWorld)
+            return
+        // NOTE: should be called only once when initial environment is set
+        setupInitialPosition(player, commandExecutor)
+        setupInitialWeather(player, commandExecutor)
+        setupInitialInventory(player, commandExecutor)
+        summonInitialMobs(player, commandExecutor)
+        if (initialEnvironment.alwaysDay)
+            setupAlwaysDay(player, commandExecutor)
+        if (initialEnvironment.alwaysNight)
+            setupAlwaysNight(player, commandExecutor)
+        hasRunInitWorld = true
     }
 
     private fun setupAllowCheats(
@@ -150,6 +152,8 @@ class EnvironmentInitializer(private val initialEnvironment: InitialEnvironment)
     }
 
     private fun setupInitialPosition(player: ClientPlayerEntity, commandExecutor: Minecraft_env) {
+        if (initialEnvironment.initialPosition == null)
+            return
         commandExecutor.runCommand(
             player,
             "/tp @p ${initialEnvironment.initialPosition[0]} ${initialEnvironment.initialPosition[1]} ${initialEnvironment.initialPosition[2]}"

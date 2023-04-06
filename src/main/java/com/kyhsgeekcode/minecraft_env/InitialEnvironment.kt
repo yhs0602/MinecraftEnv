@@ -1,16 +1,16 @@
 package com.kyhsgeekcode.minecraft_env
 
 data class InitialEnvironment(
-    val initialInventoryCommands: Array<String>,
-    val initialPosition: IntArray,
-    val initialMobsCommands: Array<String>,
-    val imageSizeX: Int,
-    val imageSizeY: Int,
-    val seed: Long,
-    val allowMobSpawn: Boolean,
-    val alwaysNight: Boolean,
-    val alwaysDay: Boolean,
-    val initialWeather: String
+    val initialInventoryCommands: Array<String> = emptyArray(),
+    val initialPosition: IntArray? = null,
+    val initialMobsCommands: Array<String> = emptyArray(),
+    val imageSizeX: Int = 890,
+    val imageSizeY: Int = 500,
+    val seed: Long? = null,
+    val allowMobSpawn: Boolean = true,
+    val alwaysNight: Boolean = false,
+    val alwaysDay: Boolean = false,
+    val initialWeather: String = "clear"
 ) {
     override fun equals(other: Any?): Boolean {
         if (this === other) return true

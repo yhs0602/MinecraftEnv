@@ -53,28 +53,10 @@ public class Minecraft_env implements ModInitializer {
         Registry.register(Registries.ITEM, "minecraft_env:custom_item", CUSTOM_ITEM);
         FuelRegistry.INSTANCE.add(CUSTOM_ITEM, 300);
 
-        // read client environment settings
-        while (true) {
-            try {
-                String b64 = bufferedReader.readLine();
-                String json = new String(Base64.getDecoder().decode(b64), StandardCharsets.UTF_8);
-                // decode json to object
-                Gson gson = new Gson();
-                initialEnvironment = gson.fromJson(json, InitialEnvironment.class);
-                break;
-            } catch (SocketTimeoutException e) {
-                System.out.println("Socket timeout");
-                // wait and try again
-            } catch (IOException e) {
-                e.printStackTrace();
-                throw new RuntimeException(e);
-            }
-        }
-
+        readInitialEnvironment(bufferedReader, writer);
         EnvironmentInitializer initializer = new EnvironmentInitializer(initialEnvironment);
 
         ClientTickEvents.START_CLIENT_TICK.register(initializer::onClientTick);
-
         ClientTickEvents.START_WORLD_TICK.register(world -> {
             MinecraftClient client = MinecraftClient.getInstance();
             if (client.isPaused())
@@ -87,6 +69,7 @@ public class Minecraft_env implements ModInitializer {
             var player = client.player;
             if (player == null)
                 return;
+            initializer.onWorldTick(player, this);
             // Disable pause on lost focus
             var options = client.options;
             if (options != null) {
@@ -102,7 +85,6 @@ public class Minecraft_env implements ModInitializer {
                 String b64 = bufferedReader.readLine();
                 String json = new String(Base64.getDecoder().decode(b64), StandardCharsets.UTF_8);
                 // decode json to object
-                Gson gson = new Gson();
                 var action = gson.fromJson(json, ActionSpace.class);
 
                 var command = action.getCommand();
@@ -209,41 +191,66 @@ public class Minecraft_env implements ModInitializer {
         });
 
         ClientTickEvents.END_WORLD_TICK.register(world -> {
-            var client = MinecraftClient.getInstance();
-            var player = client.player;
-            if (player == null) {
-                return;
-            }
-            var buffer = client.getFramebuffer();
-            try (var screenshot = ScreenshotRecorder.takeScreenshot(buffer)) {
-                var encoded = encodeImageToBase64Png(screenshot);
-                var pos = player.getPos();
-                var observationSpace = new ObservationSpace(
-                        encoded, pos.x, pos.y, pos.z
-                );
-                Gson gson = new Gson();
-                String json = gson.toJson(observationSpace);
-                System.out.println("Sending observation");
-                writer.write(json);
-                writer.flush();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+            sendObservation(writer);
         });
     }
 
-    public static String encodeImageToBase64Png(NativeImage image) throws IOException {
+    private void sendObservation(OutputStreamWriter writer) {
+        var client = MinecraftClient.getInstance();
+        var player = client.player;
+        if (player == null) {
+            return;
+        }
+        var buffer = client.getFramebuffer();
+        try (var screenshot = ScreenshotRecorder.takeScreenshot(buffer)) {
+            var encoded = encodeImageToBase64Png(screenshot, initialEnvironment.getImageSizeX(), initialEnvironment.getImageSizeY());
+            var pos = player.getPos();
+            var observationSpace = new ObservationSpace(
+                    encoded, pos.x, pos.y, pos.z
+            );
+            String json = gson.toJson(observationSpace);
+            System.out.println("Sending observation");
+            writer.write(json);
+            writer.flush();
+            System.out.println("Sent observation");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private void readInitialEnvironment(BufferedReader bufferedReader, OutputStreamWriter writer) {
+        // read client environment settings
+        while (true) {
+            try {
+                String b64 = bufferedReader.readLine();
+                String json = new String(Base64.getDecoder().decode(b64), StandardCharsets.UTF_8);
+                // decode json to object
+                initialEnvironment = gson.fromJson(json, InitialEnvironment.class);
+                String response = gson.toJson(new ObservationSpace("test", 0, 0, 0));
+                System.out.println("Sending dummy observation");
+                writer.write(response);
+                writer.flush();
+                break;
+            } catch (SocketTimeoutException e) {
+                System.out.println("Socket timeout");
+                // wait and try again
+            } catch (IOException e) {
+                e.printStackTrace();
+                throw new RuntimeException(e);
+            }
+        }
+    }
+
+    public static String encodeImageToBase64Png(NativeImage image, int targetSizeX, int targetSizeY) throws IOException {
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         OutputStream base64Out = Base64.getEncoder().wrap(out);
         byte[] data = image.getBytes();
         BufferedImage originalImage = ImageIO.read(new ByteArrayInputStream(data));
-        int newWidth = 890;
-        int newHeight = 500;
 
-        BufferedImage resizedImage = new BufferedImage(newWidth, newHeight, originalImage.getType());
+        BufferedImage resizedImage = new BufferedImage(targetSizeX, targetSizeY, originalImage.getType());
         Graphics2D graphics = resizedImage.createGraphics();
         graphics.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-        graphics.drawImage(originalImage, 0, 0, newWidth, newHeight, null);
+        graphics.drawImage(originalImage, 0, 0, targetSizeX, targetSizeY, null);
         graphics.dispose();
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         ImageIO.write(resizedImage, "png", baos);
@@ -257,6 +264,9 @@ public class Minecraft_env implements ModInitializer {
 
     public void runCommand(ClientPlayerEntity player, String command) {
         System.out.println("Running command: " + command);
+        if (command.startsWith("/")) {
+            command = command.substring(1);
+        }
         player.networkHandler.sendChatCommand(command);
         System.out.println("End send command: " + command);
     }
