@@ -79,6 +79,9 @@ public class Minecraft_env implements ModInitializer {
                     client.options.write();
                 }
             }
+            if (player.isDead()) // If player is dead, ignore all actions except respawn
+                // TODO: handle respawn on death
+                return;
 
             try {
                 System.out.println("Waiting for command");
@@ -143,8 +146,8 @@ public class Minecraft_env implements ModInitializer {
                     }
 
                 }
-                var deltaPitchInDeg = (deltaPitch - 12) / 12 * 180;
-                var deltaYawInDeg = (deltaYaw - 12) / 12 * 180;
+                var deltaPitchInDeg = (deltaPitch - 12f) / 12f * 180f;
+                var deltaYawInDeg = (deltaYaw - 12f) / 12f * 180f;
 //                System.out.println("Will set pitch to " + player.getPitch() + " + " + deltaPitchInDeg + " = " + (player.getPitch() + deltaPitchInDeg));
 //                System.out.println("Will set yaw to " + player.getYaw() + " + " + deltaYawInDeg + " = " + (player.getYaw() + deltaYawInDeg));
                 player.setPitch(player.getPitch() + deltaPitchInDeg);
@@ -206,7 +209,7 @@ public class Minecraft_env implements ModInitializer {
             var encoded = encodeImageToBase64Png(screenshot, initialEnvironment.getImageSizeX(), initialEnvironment.getImageSizeY());
             var pos = player.getPos();
             var observationSpace = new ObservationSpace(
-                    encoded, pos.x, pos.y, pos.z
+                    encoded, pos.x, pos.y, pos.z, player.isDead()
             );
             String json = gson.toJson(observationSpace);
             System.out.println("Sending observation");
@@ -226,7 +229,7 @@ public class Minecraft_env implements ModInitializer {
                 String json = new String(Base64.getDecoder().decode(b64), StandardCharsets.UTF_8);
                 // decode json to object
                 initialEnvironment = gson.fromJson(json, InitialEnvironment.class);
-                String response = gson.toJson(new ObservationSpace("test", 0, 0, 0));
+                String response = gson.toJson(new ObservationSpace("test", 0, 0, 0, false));
                 System.out.println("Sending dummy observation");
                 writer.write(response);
                 writer.flush();

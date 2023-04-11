@@ -6,11 +6,14 @@ public class ObservationSpace {
     private double y;
     private double z;
 
-    public ObservationSpace(String image, double x, double y, double z) {
+    private boolean isDead;
+
+    public ObservationSpace(String image, double x, double y, double z, boolean isDead) {
         this.image = image;
         this.x = x;
         this.y = y;
         this.z = z;
+        this.isDead = isDead;
     }
 
     public String getImage() {
@@ -27,5 +30,9 @@ public class ObservationSpace {
 
     public double getZ() {
         return z;
+    }
+
+    public boolean isDead() {
+        return isDead;
     }
 }
