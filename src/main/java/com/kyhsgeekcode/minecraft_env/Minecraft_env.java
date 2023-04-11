@@ -11,9 +11,14 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.texture.NativeImage;
 import net.minecraft.client.util.ScreenshotRecorder;
+import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
+import net.minecraft.recipe.RecipeManager;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.screen.CraftingScreenHandler;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 
@@ -170,6 +175,10 @@ public class Minecraft_env implements ModInitializer {
                     case 4 -> {
                         // craft
                         // unimplemented
+                        // currently gives 5 andesite blocks
+                        ItemStack itemStack = new ItemStack(Items.ANDESITE, 5);
+                        PlayerInventory inventory = player.getInventory();
+                        inventory.insertStack(itemStack);
                     }
                     case 5 -> {
                         // equip
