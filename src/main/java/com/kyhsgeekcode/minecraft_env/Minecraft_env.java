@@ -95,6 +95,10 @@ public class Minecraft_env implements ModInitializer {
             try {
                 System.out.println("Waiting for command");
                 String b64 = bufferedReader.readLine();
+                if (b64 == null) { // end of stream
+                    System.out.println("End of stream");
+                    System.exit(0);
+                }
                 String json = new String(Base64.getDecoder().decode(b64), StandardCharsets.UTF_8);
                 // decode json to object
                 var action = gson.fromJson(json, ActionSpace.class);
