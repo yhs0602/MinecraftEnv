@@ -3,6 +3,8 @@ package com.kyhsgeekcode.minecraft_env;
 import com.google.gson.Gson;
 import com.kyhsgeekcode.minecraft_env.mixin.ClientDoAttackInvoker;
 import com.kyhsgeekcode.minecraft_env.mixin.ClientDoItemUseInvoker;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
@@ -11,6 +13,7 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.texture.NativeImage;
 import net.minecraft.client.util.ScreenshotRecorder;
+import net.minecraft.client.util.Window;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -19,6 +22,7 @@ import net.minecraft.recipe.RecipeManager;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.screen.CraftingScreenHandler;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 
@@ -175,8 +179,11 @@ public class Minecraft_env implements ModInitializer {
                     case 4 -> {
                         // craft
                         // unimplemented
-                        // currently gives 5 andesite blocks
-                        ItemStack itemStack = new ItemStack(Items.ANDESITE, 5);
+                        // currently gives items with argCraft as raw id
+                        // or use string
+                        // to get the integer from string, use api
+                        Item targetItem = Item.byRawId(argCraft);
+                        ItemStack itemStack = new ItemStack(targetItem, 5);
                         PlayerInventory inventory = player.getInventory();
                         inventory.insertStack(itemStack);
                     }

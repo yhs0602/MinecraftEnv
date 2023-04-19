@@ -107,6 +107,8 @@ class EnvironmentInitializer(private val initialEnvironment: InitialEnvironment)
     fun onWorldTick(player: ClientPlayerEntity, commandExecutor: Minecraft_env) {
         if (hasRunInitWorld)
             return
+        val window = MinecraftClient.getInstance().window
+        window.setWindowedSize(initialEnvironment.imageSizeX, initialEnvironment.imageSizeY)
         // NOTE: should be called only once when initial environment is set
         setupInitialPosition(player, commandExecutor)
         setupInitialWeather(player, commandExecutor)
