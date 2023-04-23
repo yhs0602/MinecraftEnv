@@ -3,26 +3,21 @@ package com.kyhsgeekcode.minecraft_env;
 import com.google.gson.Gson;
 import com.kyhsgeekcode.minecraft_env.mixin.ClientDoAttackInvoker;
 import com.kyhsgeekcode.minecraft_env.mixin.ClientDoItemUseInvoker;
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.gui.screen.DeathScreen;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.texture.NativeImage;
 import net.minecraft.client.util.ScreenshotRecorder;
-import net.minecraft.client.util.Window;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
-import net.minecraft.recipe.RecipeManager;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
-import net.minecraft.screen.CraftingScreenHandler;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 
@@ -33,6 +28,8 @@ import java.io.*;
 import java.net.ServerSocket;
 import java.net.SocketTimeoutException;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Base64;
 
 
@@ -88,9 +85,6 @@ public class Minecraft_env implements ModInitializer {
                     client.options.write();
                 }
             }
-            if (player.isDead()) // If player is dead, ignore all actions except respawn
-                // TODO: handle respawn on death
-                return;
 
             try {
                 System.out.println("Waiting for command");
@@ -105,10 +99,20 @@ public class Minecraft_env implements ModInitializer {
 
                 var command = action.getCommand();
                 if (command != null && !command.isEmpty()) {
-                    runCommand(player, command);
-                    System.out.println("Executed command: " + command);
+                    if (command.equals("respawn")) {
+                        if (client.currentScreen instanceof DeathScreen && player.isDead()) {
+                            player.requestRespawn();
+                            client.setScreen(null);
+                        }
+                    } else {
+                        runCommand(player, command);
+                        System.out.println("Executed command: " + command);
+                    }
                     return;
                 }
+                if (player.isDead())
+                    return;
+
                 var actionArray = action.getAction();
 
                 if (actionArray == null) {
@@ -228,8 +232,30 @@ public class Minecraft_env implements ModInitializer {
         try (var screenshot = ScreenshotRecorder.takeScreenshot(buffer)) {
             var encoded = encodeImageToBase64Png(screenshot, initialEnvironment.getImageSizeX(), initialEnvironment.getImageSizeY());
             var pos = player.getPos();
+            var inventory = player.getInventory();
+            var mainInventory = inventory.main;
+            var armorInventory = inventory.armor;
+            var offhandInventory = inventory.offHand;
+            var inventoryArray = new com.kyhsgeekcode.minecraft_env.ItemStack[mainInventory.size() + armorInventory.size() + offhandInventory.size()];
+            for (int i = 0; i < mainInventory.size(); i++) {
+                ItemStack itemStack = mainInventory.get(i);
+                inventoryArray[i] = new com.kyhsgeekcode.minecraft_env.ItemStack(itemStack);
+            }
+            for (int i = 0; i < armorInventory.size(); i++) {
+                inventoryArray[i + mainInventory.size()] = new com.kyhsgeekcode.minecraft_env.ItemStack(armorInventory.get(i));
+            }
+            for (int i = 0; i < offhandInventory.size(); i++) {
+                inventoryArray[i + mainInventory.size() + armorInventory.size()] = new com.kyhsgeekcode.minecraft_env.ItemStack(offhandInventory.get(i));
+            }
+            var hungerManager = player.getHungerManager();
             var observationSpace = new ObservationSpace(
-                    encoded, pos.x, pos.y, pos.z, player.isDead()
+                    encoded, pos.x, pos.y, pos.z,
+                    player.getPitch(), player.getYaw(),
+                    player.getHealth(),
+                    hungerManager.getFoodLevel(),
+                    hungerManager.getSaturationLevel(),
+                    player.isDead(),
+                    Arrays.stream(inventoryArray).toList()
             );
             String json = gson.toJson(observationSpace);
             System.out.println("Sending observation");
@@ -249,7 +275,7 @@ public class Minecraft_env implements ModInitializer {
                 String json = new String(Base64.getDecoder().decode(b64), StandardCharsets.UTF_8);
                 // decode json to object
                 initialEnvironment = gson.fromJson(json, InitialEnvironment.class);
-                String response = gson.toJson(new ObservationSpace("test", 0, 0, 0, false));
+                String response = gson.toJson(new ObservationSpace());
                 System.out.println("Sending dummy observation");
                 writer.write(response);
                 writer.flush();
