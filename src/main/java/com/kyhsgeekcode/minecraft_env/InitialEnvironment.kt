@@ -10,7 +10,8 @@ data class InitialEnvironment(
     val allowMobSpawn: Boolean = true,
     val alwaysNight: Boolean = false,
     val alwaysDay: Boolean = false,
-    val initialWeather: String = "clear"
+    val initialWeather: String = "clear",
+    val isWorldFlat: Boolean = false
 ) {
     override fun equals(other: Any?): Boolean {
         if (this === other) return true

@@ -56,6 +56,7 @@ class EnvironmentInitializer(private val initialEnvironment: InitialEnvironment)
                 var indexOfWorldSettingTab = -1
                 var cheatButton: CyclingButtonWidget<*>? = null
                 var settingTabWidget: TabNavigationWidget? = null
+                var worldTypeButton: CyclingButtonWidget<*>? = null
                 for (child in screen.children()) {
                     // search for tab navigation widget, to find index of world settings tab
                     if (indexOfWorldSettingTab == -1 && child is TabNavigationWidget) {
@@ -96,6 +97,21 @@ class EnvironmentInitializer(private val initialEnvironment: InitialEnvironment)
                         if (child is TextFieldWidget) {
                             println("Found text field")
                             child.text = initialEnvironment.seed.toString()
+                        }
+                    }
+                }
+                if (initialEnvironment.isWorldFlat) {
+                    for (child in screen.children()) {
+                        println(child)
+                        if (worldTypeButton == null && child is CyclingButtonWidget<*>) {
+                            if (child.message.string.startsWith("World Type")) {
+                                worldTypeButton = child
+                            }
+                        }
+                    }
+                    if (worldTypeButton != null) {
+                        while (!worldTypeButton.message.string.endsWith("flat")) {
+                            worldTypeButton.onPress()
                         }
                     }
                 }
