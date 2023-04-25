@@ -12,14 +12,18 @@ import net.minecraft.client.gui.screen.DeathScreen;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.texture.NativeImage;
 import net.minecraft.client.util.ScreenshotRecorder;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.util.hit.BlockHitResult;
+import net.minecraft.util.hit.EntityHitResult;
+import net.minecraft.util.hit.HitResult;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.world.World;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -28,7 +32,6 @@ import java.io.*;
 import java.net.ServerSocket;
 import java.net.SocketTimeoutException;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Base64;
 
@@ -37,6 +40,8 @@ public class Minecraft_env implements ModInitializer {
     public static final Item CUSTOM_ITEM = new Item(new FabricItemSettings().fireproof());
     Gson gson = new Gson();
     InitialEnvironment initialEnvironment;
+
+    MinecraftSoundListener soundListener;
 
     @Override
     public void onInitialize() {
@@ -62,9 +67,14 @@ public class Minecraft_env implements ModInitializer {
         readInitialEnvironment(bufferedReader, writer);
         EnvironmentInitializer initializer = new EnvironmentInitializer(initialEnvironment);
 
-        ClientTickEvents.START_CLIENT_TICK.register(initializer::onClientTick);
+        ClientTickEvents.START_CLIENT_TICK.register(client -> {
+            initializer.onClientTick(client);
+            if (soundListener == null)
+                soundListener = new MinecraftSoundListener(client.getSoundManager());
+        });
         ClientTickEvents.START_WORLD_TICK.register(world -> {
             MinecraftClient client = MinecraftClient.getInstance();
+            soundListener.onTick();
             if (client.isPaused())
                 return;
             var tracker = client.getWorldGenerationProgressTracker();
@@ -218,11 +228,11 @@ public class Minecraft_env implements ModInitializer {
         });
 
         ClientTickEvents.END_WORLD_TICK.register(world -> {
-            sendObservation(writer);
+            sendObservation(writer, world);
         });
     }
 
-    private void sendObservation(OutputStreamWriter writer) {
+    private void sendObservation(OutputStreamWriter writer, World world) {
         var client = MinecraftClient.getInstance();
         var player = client.player;
         if (player == null) {
@@ -248,6 +258,42 @@ public class Minecraft_env implements ModInitializer {
                 inventoryArray[i + mainInventory.size() + armorInventory.size()] = new com.kyhsgeekcode.minecraft_env.ItemStack(offhandInventory.get(i));
             }
             var hungerManager = player.getHungerManager();
+            var target = player.raycast(100, 1.0f, false);
+            com.kyhsgeekcode.minecraft_env.HitResult hitResult = new com.kyhsgeekcode.minecraft_env.HitResult(net.minecraft.util.hit.HitResult.Type.MISS, null, null);
+            if (target.getType() == HitResult.Type.BLOCK) {
+                var blockPos = ((BlockHitResult) target).getBlockPos();
+                var block = world.getBlockState(blockPos).getBlock();
+                BlockInfo blockInfo = new BlockInfo(
+                        blockPos.getX(), blockPos.getY(), blockPos.getZ(), block.getTranslationKey()
+                );
+                hitResult = new com.kyhsgeekcode.minecraft_env.HitResult(
+                        HitResult.Type.BLOCK,
+                        blockInfo,
+                        null
+                );
+            } else if (target.getType() == HitResult.Type.ENTITY) {
+                var entity = ((EntityHitResult) target).getEntity();
+                double health = 0;
+                if (entity instanceof LivingEntity) {
+                    health = ((LivingEntity) entity).getHealth();
+                }
+                EntityInfo entityInfo = new EntityInfo(
+                        entity.getEntityName(),
+                        entity.getType().getTranslationKey(),
+                        entity.getX(),
+                        entity.getY(),
+                        entity.getZ(),
+                        entity.getYaw(),
+                        entity.getPitch(),
+                        health
+                );
+                hitResult = new com.kyhsgeekcode.minecraft_env.HitResult(
+                        HitResult.Type.ENTITY,
+                        null,
+                        entityInfo
+                );
+            }
+
             var observationSpace = new ObservationSpace(
                     encoded, pos.x, pos.y, pos.z,
                     player.getPitch(), player.getYaw(),
@@ -255,13 +301,14 @@ public class Minecraft_env implements ModInitializer {
                     hungerManager.getFoodLevel(),
                     hungerManager.getSaturationLevel(),
                     player.isDead(),
-                    Arrays.stream(inventoryArray).toList()
+                    Arrays.stream(inventoryArray).toList(),
+                    hitResult,
+                    soundListener.getEntries()
             );
             String json = gson.toJson(observationSpace);
-            System.out.println("Sending observation");
+//            System.out.println("Sending observation");
             writer.write(json);
             writer.flush();
-            System.out.println("Sent observation");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

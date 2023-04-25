@@ -18,6 +18,30 @@ data class ItemStack(
     )
 }
 
+data class BlockInfo(
+    val x: Int,
+    val y: Int,
+    val z: Int,
+    val translationKey: String,
+)
+
+data class EntityInfo(
+    val uniqueName: String,
+    val translationKey: String,
+    val x: Double,
+    val y: Double,
+    val z: Double,
+    val yaw: Double,
+    val pitch: Double,
+    val health: Double,
+)
+
+data class HitResult(
+    val type: net.minecraft.util.hit.HitResult.Type,
+    val targetBlock: BlockInfo? = null,
+    val targetEntity: EntityInfo? = null,
+)
+
 data class ObservationSpace(
     val image: String = "",
     val x: Double = 0.0, val y: Double = 0.0, val z: Double = 0.0,
@@ -27,4 +51,6 @@ data class ObservationSpace(
     val saturationLevel: Double = 0.0,
     val isDead: Boolean = false,
     val inventory: List<ItemStack> = listOf(),
+    val raycastResult: HitResult = HitResult(net.minecraft.util.hit.HitResult.Type.MISS),
+    val soundSubtitles: List<SoundEntry> = listOf(),
 )
