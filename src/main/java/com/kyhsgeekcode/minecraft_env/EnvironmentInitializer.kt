@@ -2,6 +2,7 @@ package com.kyhsgeekcode.minecraft_env
 
 import net.minecraft.client.MinecraftClient
 import net.minecraft.client.gui.Element
+import net.minecraft.client.gui.hud.ChatHud
 import net.minecraft.client.gui.screen.TitleScreen
 import net.minecraft.client.gui.screen.world.CreateWorldScreen
 import net.minecraft.client.gui.screen.world.SelectWorldScreen
@@ -120,7 +121,8 @@ class EnvironmentInitializer(private val initialEnvironment: InitialEnvironment)
         }
     }
 
-    fun onWorldTick(player: ClientPlayerEntity, commandExecutor: Minecraft_env) {
+    fun onWorldTick(chatHud: ChatHud, player: ClientPlayerEntity, commandExecutor: Minecraft_env) {
+        chatHud.clear(true)
         if (hasRunInitWorld)
             return
         val window = MinecraftClient.getInstance().window

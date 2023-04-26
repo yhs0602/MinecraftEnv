@@ -92,7 +92,7 @@ public class Minecraft_env implements ModInitializer {
             var player = client.player;
             if (player == null)
                 return;
-            initializer.onWorldTick(player, this);
+            initializer.onWorldTick(client.inGameHud.getChatHud(), player, this);
             // Disable pause on lost focus
             var options = client.options;
             if (options != null) {
