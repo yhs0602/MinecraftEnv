@@ -124,7 +124,7 @@ class EnvironmentInitializer(private val initialEnvironment: InitialEnvironment)
         if (hasRunInitWorld)
             return
         val window = MinecraftClient.getInstance().window
-        window.setWindowedSize(initialEnvironment.imageSizeX, initialEnvironment.imageSizeY)
+        window.setWindowedSize(initialEnvironment.visibleSizeX, initialEnvironment.visibleSizeY)
         // NOTE: should be called only once when initial environment is set
         setupInitialPosition(player, commandExecutor)
         setupInitialWeather(player, commandExecutor)

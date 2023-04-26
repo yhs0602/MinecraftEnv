@@ -11,7 +11,9 @@ data class InitialEnvironment(
     val alwaysNight: Boolean = false,
     val alwaysDay: Boolean = false,
     val initialWeather: String = "clear",
-    val isWorldFlat: Boolean = false
+    val isWorldFlat: Boolean = false,
+    val visibleSizeX: Int = 890,
+    val visibleSizeY: Int = 500,
 ) {
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
