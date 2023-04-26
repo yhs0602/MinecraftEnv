@@ -32,6 +32,7 @@ import java.io.*;
 import java.net.ServerSocket;
 import java.net.SocketTimeoutException;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Base64;
 
@@ -203,6 +204,7 @@ public class Minecraft_env implements ModInitializer {
                         Item targetItem = Item.byRawId(argCraft);
                         ItemStack itemStack = new ItemStack(targetItem, 5);
                         PlayerInventory inventory = player.getInventory();
+
                         inventory.insertStack(itemStack);
                     }
                     case 5 -> {
@@ -294,6 +296,18 @@ public class Minecraft_env implements ModInitializer {
                 );
             }
 
+            var statusEffects = player.getStatusEffects();
+            var statusEffectsConverted = new ArrayList<StatusEffect>();
+            for (var statusEffect : statusEffects) {
+                statusEffectsConverted.add(
+                        new StatusEffect(
+                                statusEffect.getTranslationKey(),
+                                statusEffect.getDuration(),
+                                statusEffect.getAmplifier()
+                        )
+                );
+            }
+
             var observationSpace = new ObservationSpace(
                     encoded, pos.x, pos.y, pos.z,
                     player.getPitch(), player.getYaw(),
@@ -303,7 +317,8 @@ public class Minecraft_env implements ModInitializer {
                     player.isDead(),
                     Arrays.stream(inventoryArray).toList(),
                     hitResult,
-                    soundListener.getEntries()
+                    soundListener.getEntries(),
+                    statusEffectsConverted
             );
             String json = gson.toJson(observationSpace);
 //            System.out.println("Sending observation");

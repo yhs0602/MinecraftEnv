@@ -42,6 +42,12 @@ data class HitResult(
     val targetEntity: EntityInfo? = null,
 )
 
+data class StatusEffect(
+    val translationKey: String,
+    val duration: Int,
+    val amplifier: Int,
+)
+
 data class ObservationSpace(
     val image: String = "",
     val x: Double = 0.0, val y: Double = 0.0, val z: Double = 0.0,
@@ -53,4 +59,5 @@ data class ObservationSpace(
     val inventory: List<ItemStack> = listOf(),
     val raycastResult: HitResult = HitResult(net.minecraft.util.hit.HitResult.Type.MISS),
     val soundSubtitles: List<SoundEntry> = listOf(),
+    val statusEffects: List<StatusEffect> = listOf()
 )
