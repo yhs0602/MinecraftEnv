@@ -13,11 +13,17 @@ import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.texture.NativeImage;
 import net.minecraft.client.util.ScreenshotRecorder;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.inventory.CraftingInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.recipe.RecipeManager;
+import net.minecraft.recipe.RecipeMatcher;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.screen.ScreenHandler;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.hit.HitResult;
@@ -202,9 +208,21 @@ public class Minecraft_env implements ModInitializer {
                         // or use string
                         // to get the integer from string, use api
                         Item targetItem = Item.byRawId(argCraft);
-                        ItemStack itemStack = new ItemStack(targetItem, 5);
+                        Identifier id = Registries.ITEM.getId(targetItem);
+                        ItemStack itemStack = new ItemStack(targetItem, 1);
                         PlayerInventory inventory = player.getInventory();
-
+                        RecipeMatcher recipeMatcher = new RecipeMatcher();
+                        inventory.populateRecipeFinder(recipeMatcher);
+                        RecipeManager manager = world.getRecipeManager();
+                        player.playerScreenHandler.populateRecipeFinder(recipeMatcher);
+                        CraftingInventory input = new CraftingInventory(player.playerScreenHandler, 2, 2);
+//                        manager.get(id).ifPresent(recipe -> {
+//                            player.playerScreenHandler.matches()
+//                            if (recipeMatcher.match(recipe, null)) {
+//                                recipe.getIngredients();
+//                            }
+//
+//                        });
                         inventory.insertStack(itemStack);
                     }
                     case 5 -> {
