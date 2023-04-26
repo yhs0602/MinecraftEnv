@@ -128,6 +128,7 @@ class EnvironmentInitializer(private val initialEnvironment: InitialEnvironment)
         // NOTE: should be called only once when initial environment is set
         setupInitialPosition(player, commandExecutor)
         setupInitialWeather(player, commandExecutor)
+        setupAllowMobSpawn(player, commandExecutor)
         setupInitialInventory(player, commandExecutor)
         summonInitialMobs(player, commandExecutor)
         if (initialEnvironment.alwaysDay)
@@ -182,6 +183,15 @@ class EnvironmentInitializer(private val initialEnvironment: InitialEnvironment)
         commandExecutor.runCommand(
             player,
             "/weather ${initialEnvironment.initialWeather}"
+        )
+    }
+
+    private fun setupAllowMobSpawn(player: ClientPlayerEntity, commandExecutor: Minecraft_env) {
+        if (initialEnvironment.allowMobSpawn)
+            return
+        commandExecutor.runCommand(
+            player,
+            "/gamerule doMobSpawning false"
         )
     }
 
