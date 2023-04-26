@@ -121,6 +121,11 @@ class EnvironmentInitializer(private val initialEnvironment: InitialEnvironment)
         }
     }
 
+    fun reset(chatHud: ChatHud, player: ClientPlayerEntity, commandExecutor: Minecraft_env) {
+        hasRunInitWorld = false
+        onWorldTick(chatHud, player, commandExecutor)
+    }
+
     fun onWorldTick(chatHud: ChatHud, player: ClientPlayerEntity, commandExecutor: Minecraft_env) {
         chatHud.clear(true)
         if (hasRunInitWorld)

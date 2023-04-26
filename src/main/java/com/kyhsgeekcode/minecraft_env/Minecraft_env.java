@@ -13,7 +13,6 @@ import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.texture.NativeImage;
 import net.minecraft.client.util.ScreenshotRecorder;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.CraftingInventory;
 import net.minecraft.item.Item;
@@ -22,7 +21,6 @@ import net.minecraft.recipe.RecipeManager;
 import net.minecraft.recipe.RecipeMatcher;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
-import net.minecraft.screen.ScreenHandler;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.hit.EntityHitResult;
@@ -49,6 +47,7 @@ public class Minecraft_env implements ModInitializer {
     InitialEnvironment initialEnvironment;
 
     MinecraftSoundListener soundListener;
+    boolean isResetting = false;
 
     @Override
     public void onInitialize() {
@@ -80,6 +79,7 @@ public class Minecraft_env implements ModInitializer {
                 soundListener = new MinecraftSoundListener(client.getSoundManager());
         });
         ClientTickEvents.START_WORLD_TICK.register(world -> {
+            isResetting = false;
             MinecraftClient client = MinecraftClient.getInstance();
             soundListener.onTick();
             if (client.isPaused())
@@ -121,6 +121,16 @@ public class Minecraft_env implements ModInitializer {
                             player.requestRespawn();
                             client.setScreen(null);
                         }
+                    } else if (command.equals("fastreset")) {
+                        runCommand(player, "/kill @p"); // kill the player
+                        runCommand(player, "/tp @e[type=!player] ~ -500 ~"); // send to void
+                        player.requestRespawn();
+                        client.setScreen(null);
+                        isResetting = true;
+//                        if (client.currentScreen instanceof DeathScreen && player.isDead()) {
+//
+//                        }
+                        initializer.reset(client.inGameHud.getChatHud(), player, this);
                     } else {
                         runCommand(player, command);
                         System.out.println("Executed command: " + command);
@@ -326,13 +336,19 @@ public class Minecraft_env implements ModInitializer {
                 );
             }
 
+            boolean isDead;
+            if (isResetting)
+                isDead = false;
+            else
+                isDead = player.isDead();
+
             var observationSpace = new ObservationSpace(
                     encoded, pos.x, pos.y, pos.z,
                     player.getPitch(), player.getYaw(),
                     player.getHealth(),
                     hungerManager.getFoodLevel(),
                     hungerManager.getSaturationLevel(),
-                    player.isDead(),
+                    isDead,
                     Arrays.stream(inventoryArray).toList(),
                     hitResult,
                     soundListener.getEntries(),
