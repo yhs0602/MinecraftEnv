@@ -1,6 +1,8 @@
 package com.kyhsgeekcode.minecraft_env
 
+import com.kyhsgeekcode.minecraft_env.mixin.ChatVisibleMessageAccessor
 import net.minecraft.client.MinecraftClient
+import net.minecraft.client.font.FontStorage
 import net.minecraft.client.gui.Element
 import net.minecraft.client.gui.hud.ChatHud
 import net.minecraft.client.gui.screen.TitleScreen
@@ -11,8 +13,16 @@ import net.minecraft.client.gui.widget.*
 import net.minecraft.client.network.ClientPlayerEntity
 import net.minecraft.world.GameMode
 
+
+interface CommandExecutor {
+    fun runCommand(clientPlayerEntity: ClientPlayerEntity, command: String)
+}
+
 class EnvironmentInitializer(private val initialEnvironment: InitialEnvironment) {
     private var hasRunInitWorld: Boolean = false
+    var initWorldFinished: Boolean = false
+        private set
+
     fun onClientTick(client: MinecraftClient) {
         when (val screen = client.currentScreen) {
             is TitleScreen -> {
@@ -121,27 +131,53 @@ class EnvironmentInitializer(private val initialEnvironment: InitialEnvironment)
         }
     }
 
-    fun reset(chatHud: ChatHud, player: ClientPlayerEntity, commandExecutor: Minecraft_env) {
+    fun reset(chatHud: ChatHud, player: ClientPlayerEntity, commandExecutor: CommandExecutor) {
+        println("Resetting...")
         hasRunInitWorld = false
+        initWorldFinished = false
+        chatHud.clear(true)
         onWorldTick(chatHud, player, commandExecutor)
     }
 
-    fun onWorldTick(chatHud: ChatHud, player: ClientPlayerEntity, commandExecutor: Minecraft_env) {
+    fun onWorldTick(
+        chatHud: ChatHud,
+        player: ClientPlayerEntity,
+        commandExecutor: CommandExecutor
+    ) {
+        val messages = (chatHud as ChatVisibleMessageAccessor).visibleMessages
+        val hasInitFinishMessage = messages.find {
+            val text = it.content
+            val builder = StringBuilder()
+            text.accept { index, style, codePoint ->
+                val ch = codePoint.toChar()
+                builder.append(ch)
+                true
+            }
+            val content = builder.toString()
+            content.contains("Initialization Done")
+        } != null
+        initWorldFinished = initWorldFinished || hasInitFinishMessage
+//        println("has init finish message: $hasInitFinishMessage, has run init world: $hasRunInitWorld, init world finished: $initWorldFinished")
         chatHud.clear(true)
         if (hasRunInitWorld)
             return
         val window = MinecraftClient.getInstance().window
         window.setWindowedSize(initialEnvironment.visibleSizeX, initialEnvironment.visibleSizeY)
         // NOTE: should be called only once when initial environment is set
-        setupInitialPosition(player, commandExecutor)
-        setupInitialWeather(player, commandExecutor)
-        setupAllowMobSpawn(player, commandExecutor)
-        setupInitialInventory(player, commandExecutor)
-        summonInitialMobs(player, commandExecutor)
+        val myCommandExecutor = { p: ClientPlayerEntity, c: String ->
+            commandExecutor.runCommand(p, c)
+        }
+        setupInitialPosition(player, myCommandExecutor)
+        setupInitialWeather(player, myCommandExecutor)
+        setupAllowMobSpawn(player, myCommandExecutor)
+        setupInitialInventory(player, myCommandExecutor)
+        summonInitialMobs(player, myCommandExecutor)
         if (initialEnvironment.alwaysDay)
-            setupAlwaysDay(player, commandExecutor)
+            setupAlwaysDay(player, myCommandExecutor)
         if (initialEnvironment.alwaysNight)
-            setupAlwaysNight(player, commandExecutor)
+            setupAlwaysNight(player, myCommandExecutor)
+        commandExecutor.runCommand(player, "/say Initialization Done")
+        initWorldFinished = false
         hasRunInitWorld = true
     }
 
@@ -165,60 +201,66 @@ class EnvironmentInitializer(private val initialEnvironment: InitialEnvironment)
         }
     }
 
-    private fun summonInitialMobs(player: ClientPlayerEntity, commandExecutor: Minecraft_env) {
+    private fun summonInitialMobs(player: ClientPlayerEntity, commandExecutor: (ClientPlayerEntity, String) -> Unit) {
         for (command in initialEnvironment.initialMobsCommands) {
-            commandExecutor.runCommand(player, "/summon $command")
+            commandExecutor(player, "/summon $command")
         }
     }
 
-    private fun setupInitialInventory(player: ClientPlayerEntity, commandExecutor: Minecraft_env) {
+    private fun setupInitialInventory(
+        player: ClientPlayerEntity,
+        commandExecutor: (ClientPlayerEntity, String) -> Unit
+    ) {
         for (command in initialEnvironment.initialInventoryCommands) {
-            commandExecutor.runCommand(player, "/give @p $command")
+            commandExecutor(player, "/give @p $command")
         }
     }
 
-    private fun setupInitialPosition(player: ClientPlayerEntity, commandExecutor: Minecraft_env) {
+    private fun setupInitialPosition(
+        player: ClientPlayerEntity,
+        commandExecutor: (ClientPlayerEntity, String) -> Unit
+    ) {
         if (initialEnvironment.initialPosition == null)
             return
-        commandExecutor.runCommand(
+        commandExecutor(
             player,
             "/tp @p ${initialEnvironment.initialPosition[0]} ${initialEnvironment.initialPosition[1]} ${initialEnvironment.initialPosition[2]}"
         )
     }
 
-    private fun setupInitialWeather(player: ClientPlayerEntity, commandExecutor: Minecraft_env) {
-        commandExecutor.runCommand(
+    private fun setupInitialWeather(player: ClientPlayerEntity, commandExecutor: (ClientPlayerEntity, String) -> Unit) {
+        commandExecutor(
             player,
             "/weather ${initialEnvironment.initialWeather}"
         )
     }
 
-    private fun setupAllowMobSpawn(player: ClientPlayerEntity, commandExecutor: Minecraft_env) {
+    private fun setupAllowMobSpawn(player: ClientPlayerEntity, commandExecutor: (ClientPlayerEntity, String) -> Unit) {
         if (initialEnvironment.allowMobSpawn)
             return
-        commandExecutor.runCommand(
+        commandExecutor(
             player,
             "/gamerule doMobSpawning false"
         )
     }
 
-    private fun setupAlwaysDay(player: ClientPlayerEntity, commandExecutor: Minecraft_env) {
-        commandExecutor.runCommand(
+    private fun setupAlwaysDay(player: ClientPlayerEntity, commandExecutor: (ClientPlayerEntity, String) -> Unit) {
+        commandExecutor(
             player,
             "/gamerule doDaylightCycle false"
         )
-        commandExecutor.runCommand(
+        commandExecutor(
             player,
             "/time set day"
         )
     }
 
-    private fun setupAlwaysNight(player: ClientPlayerEntity, commandExecutor: Minecraft_env) {
-        commandExecutor.runCommand(
+    private fun setupAlwaysNight(player: ClientPlayerEntity, commandExecutor: (ClientPlayerEntity, String) -> Unit) {
+        commandExecutor(
             player,
             "/gamerule doDaylightCycle false"
         )
-        commandExecutor.runCommand(
+        commandExecutor(
             player,
             "/time set night"
         )

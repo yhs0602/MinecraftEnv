@@ -5,10 +5,11 @@
   "compatibilityLevel": "JAVA_17",
   "mixins": [],
   "client": [
-    "RenderTickCounterAccessor",
-    "TickSpeedMixin",
+    "ChatVisibleMessageAccessor",
+    "ClientDoAttackInvoker",
     "ClientDoItemUseInvoker",
-    "ClientDoAttackInvoker"
+    "RenderTickCounterAccessor",
+    "TickSpeedMixin"
   ],
   "server": [],
   "injectors": {

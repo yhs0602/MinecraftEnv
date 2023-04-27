@@ -41,7 +41,7 @@ import java.util.Arrays;
 import java.util.Base64;
 
 
-public class Minecraft_env implements ModInitializer {
+public class Minecraft_env implements ModInitializer, CommandExecutor {
     public static final Item CUSTOM_ITEM = new Item(new FabricItemSettings().fireproof());
     Gson gson = new Gson();
     InitialEnvironment initialEnvironment;
@@ -57,7 +57,7 @@ public class Minecraft_env implements ModInitializer {
         try {
             ServerSocket serverSocket = new ServerSocket(8000);
             var socket = serverSocket.accept();
-            socket.setSoTimeout(10000);
+            socket.setSoTimeout(30000);
             InputStream input = socket.getInputStream();
             reader = new InputStreamReader(input);
             bufferedReader = new BufferedReader(reader);
@@ -79,7 +79,6 @@ public class Minecraft_env implements ModInitializer {
                 soundListener = new MinecraftSoundListener(client.getSoundManager());
         });
         ClientTickEvents.START_WORLD_TICK.register(world -> {
-            isResetting = false;
             MinecraftClient client = MinecraftClient.getInstance();
             soundListener.onTick();
             if (client.isPaused())
@@ -93,6 +92,11 @@ public class Minecraft_env implements ModInitializer {
             if (player == null)
                 return;
             initializer.onWorldTick(client.inGameHud.getChatHud(), player, this);
+            if (!initializer.getInitWorldFinished() || isResetting) {
+                System.out.println("Waiting for world init ticks: " + isResetting);
+                isResetting = true;
+                return;
+            }
             // Disable pause on lost focus
             var options = client.options;
             if (options != null) {
@@ -104,7 +108,7 @@ public class Minecraft_env implements ModInitializer {
             }
 
             try {
-                System.out.println("Waiting for command");
+//                System.out.println("Waiting for command");
                 String b64 = bufferedReader.readLine();
                 if (b64 == null) { // end of stream
                     System.out.println("End of stream");
@@ -122,15 +126,15 @@ public class Minecraft_env implements ModInitializer {
                             client.setScreen(null);
                         }
                     } else if (command.equals("fastreset")) {
-                        runCommand(player, "/kill @p"); // kill the player
+                        player.kill(); // kill the player, will show death screen after some ticks
                         runCommand(player, "/tp @e[type=!player] ~ -500 ~"); // send to void
-                        player.requestRespawn();
-                        client.setScreen(null);
-                        isResetting = true;
-//                        if (client.currentScreen instanceof DeathScreen && player.isDead()) {
-//
-//                        }
+                        System.out.println("Player is dead, respawn");
+                        player.requestRespawn();// automatically called in setScreen (null)
+                        if (!player.isDead()) {
+                            client.setScreen(null); // clear death screen
+                        }
                         initializer.reset(client.inGameHud.getChatHud(), player, this);
+                        isResetting = true; // prevent sending the observation
                     } else {
                         runCommand(player, command);
                         System.out.println("Executed command: " + command);
@@ -139,6 +143,8 @@ public class Minecraft_env implements ModInitializer {
                 }
                 if (player.isDead())
                     return;
+                else
+                    client.setScreen(null);
 
                 var actionArray = action.getAction();
 
@@ -258,15 +264,26 @@ public class Minecraft_env implements ModInitializer {
         });
 
         ClientTickEvents.END_WORLD_TICK.register(world -> {
-            sendObservation(writer, world);
+            sendObservation(writer, world, initializer);
         });
     }
 
-    private void sendObservation(OutputStreamWriter writer, World world) {
+    private void sendObservation(OutputStreamWriter writer, World world, EnvironmentInitializer initializer) {
         var client = MinecraftClient.getInstance();
         var player = client.player;
         if (player == null) {
+            System.out.println("Player is null");
             return;
+        }
+        if (isResetting && initializer.getInitWorldFinished()) { // reset finished
+            isResetting = false;
+            System.out.println("Finished resetting");
+        }
+        if (isResetting) {
+            System.out.println("Waiting for world reset");
+            return;
+        } else {
+//            System.out.println("Is resetting: false, is world init finished:" + initializer.getInitWorldFinished());
         }
         var buffer = client.getFramebuffer();
         try (var screenshot = ScreenshotRecorder.takeScreenshot(buffer)) {
@@ -336,11 +353,7 @@ public class Minecraft_env implements ModInitializer {
                 );
             }
 
-            boolean isDead;
-            if (isResetting)
-                isDead = false;
-            else
-                isDead = player.isDead();
+            boolean isDead = player.isDead();
 
             var observationSpace = new ObservationSpace(
                     encoded, pos.x, pos.y, pos.z,
