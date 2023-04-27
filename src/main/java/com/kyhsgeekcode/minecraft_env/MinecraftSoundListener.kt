@@ -39,7 +39,7 @@ class MinecraftSoundListener(soundManager: SoundManager) : SoundInstanceListener
                 return
             }
         }
-        print("new subtitle: $translateKey")
+//        print("new subtitle: $translateKey")
         this._entries.add(SoundEntry(translateKey, 0, sound.x, sound.y, sound.z))
     }
 
