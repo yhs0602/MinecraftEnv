@@ -41,6 +41,8 @@ class Minecraft_env : ModInitializer, CommandExecutor {
     private var isResetting = false // if true, then pass through i/o and just let ticks go
     private var isRespawning = false // wait until player respawn and then run initialization
     private var beforeReset = false // if true, then reset before next tick
+    private var wasResetting = false // last tick was resetting
+    private var onceDied = false
 
     override fun onInitialize() {
         val reader: InputStreamReader
@@ -83,6 +85,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
         bufferedReader: BufferedReader,
         world: ClientWorld
     ) {
+        println("start time: " + world.time)
         val client = MinecraftClient.getInstance()
         soundListener!!.onTick()
         if (client.isPaused) return
@@ -98,6 +101,16 @@ class Minecraft_env : ModInitializer, CommandExecutor {
 
         if (isResetting) {
             println("State: resetting...")
+            if (!onceDied) {
+                if (!player.isDead) {
+                    // wait for death
+                    println("Waiting for death...")
+                    return
+                } else {
+                    println("Player is dead.")
+                    onceDied = true
+                }
+            }
             if (player.isDead) {
                 if (!isRespawning) {
                     println("State: player is dead, trying to respawn...")
@@ -122,13 +135,15 @@ class Minecraft_env : ModInitializer, CommandExecutor {
             } else { // had reset command, and the player is alive
                 if (initializer.initWorldFinished) {
                     println("State: reset finished")
-                    isResetting = false
+//                    isResetting = false
+                    wasResetting = true
                 } else {
                     println("State: waiting for reset...")
                 }
             }
             return
         }
+        println("real start time: " + world.time)
         // Disable pause on lost focus
         val options = client.options
         if (options != null) {
@@ -160,6 +175,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                     runCommand(player, "/tp @e[type=!player] ~ -500 ~") // send to void
                     isResetting = true // prevent sending the observation
                     isRespawning = false // wait until player respawn and then run initialization
+                    onceDied = false
                 } else {
                     runCommand(player, command)
                     println("Executed command: $command")
@@ -292,13 +308,14 @@ class Minecraft_env : ModInitializer, CommandExecutor {
     }
 
     private fun sendObservation(writer: OutputStreamWriter, world: World, initializer: EnvironmentInitializer) {
+        println("send time: " + world.time)
         val client = MinecraftClient.getInstance()
         val player = client.player
         if (player == null) {
             println("Player is null")
             return
         }
-        if (isResetting && initializer.initWorldFinished && !player.isDead) { // reset finished
+        if (isResetting && initializer.initWorldFinished && !player.isDead && wasResetting) { // reset finished
             isResetting = false
             println("Finished resetting")
         }
@@ -308,6 +325,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
         } else {
 //            System.out.println("Is resetting: false, is world init finished:" + initializer.getInitWorldFinished());
         }
+        println("real send time: " + world.time)
         val buffer = client.framebuffer
         try {
             ScreenshotRecorder.takeScreenshot(buffer).use { screenshot ->
@@ -372,7 +390,12 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                         )
                     )
                 }
-                val isDead = if (isResetting) false else player.isDead
+                val isDead = if (wasResetting) {
+                    wasResetting = false
+                    false
+                } else {
+                    player.isDead
+                }
                 val observationSpace = ObservationSpace(
                     encoded, pos.x, pos.y, pos.z,
                     player.pitch.toDouble(), player.yaw.toDouble(),
