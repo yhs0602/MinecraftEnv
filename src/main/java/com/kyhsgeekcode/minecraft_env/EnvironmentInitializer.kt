@@ -156,7 +156,7 @@ class EnvironmentInitializer(private val initialEnvironment: InitialEnvironment)
             val content = builder.toString()
             content.contains("Initialization Done")
         } != null
-        initWorldFinished = initWorldFinished || hasInitFinishMessage
+        initWorldFinished = (initWorldFinished || hasInitFinishMessage)
 //        println("has init finish message: $hasInitFinishMessage, has run init world: $hasRunInitWorld, init world finished: $initWorldFinished")
         chatHud.clear(true)
         if (hasRunInitWorld)
