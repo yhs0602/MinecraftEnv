@@ -1,5 +1,6 @@
 package com.kyhsgeekcode.minecraft_env
 
+import com.google.common.io.LittleEndianDataOutputStream
 import com.google.gson.Gson
 import com.kyhsgeekcode.minecraft_env.mixin.ClientDoAttackInvoker
 import com.kyhsgeekcode.minecraft_env.mixin.ClientDoItemUseInvoker
@@ -313,8 +314,16 @@ class Minecraft_env : ModInitializer, CommandExecutor {
 //    }
 
     private fun readAction(inputStream: InputStream): ActionSpaceMessage {
+        println("Reading action space")
         // read action from inputStream using protobuf
-        return ActionSpaceMessage.newBuilder().mergeFrom(inputStream).build()
+        val buffer = ByteBuffer.allocate(Integer.BYTES) // 4 bytes
+        inputStream.read(buffer.array())
+        val len = buffer.order(java.nio.ByteOrder.LITTLE_ENDIAN).int
+        val bytes = inputStream.readNBytes(len)
+        println("Read action space bytes $len")
+        val actionSpace = ActionSpaceMessage.parseFrom(bytes)
+        println("Read action space")
+        return actionSpace
     }
 
     private fun sendObservation(outputStream: OutputStream, world: World, initializer: EnvironmentInitializer) {
@@ -471,7 +480,14 @@ class Minecraft_env : ModInitializer, CommandExecutor {
         observationSpace: com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ObservationSpaceMessage,
         outputStream: OutputStream
     ) {
+        println("Writing observation with size ${observationSpace.serializedSize}")
+        val dataOutputStream = LittleEndianDataOutputStream(outputStream)
+        dataOutputStream.writeInt(observationSpace.serializedSize)
+        println("Wrote observation size ${observationSpace.serializedSize}")
         observationSpace.writeTo(outputStream)
+        println("Wrote observation ${observationSpace.serializedSize}")
+        outputStream.flush()
+        println("Flushed")
     }
 
     private fun readInitialEnvironment(inputStream: InputStream, outputStream: OutputStream) {
