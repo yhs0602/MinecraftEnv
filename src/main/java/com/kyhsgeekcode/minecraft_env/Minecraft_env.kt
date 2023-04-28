@@ -3,6 +3,9 @@ package com.kyhsgeekcode.minecraft_env
 import com.google.gson.Gson
 import com.kyhsgeekcode.minecraft_env.mixin.ClientDoAttackInvoker
 import com.kyhsgeekcode.minecraft_env.mixin.ClientDoItemUseInvoker
+import com.kyhsgeekcode.minecraft_env.proto.*
+import com.kyhsgeekcode.minecraft_env.proto.ActionSpace.ActionSpaceMessage
+import com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment
 import net.fabricmc.api.ModInitializer
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings
@@ -29,14 +32,14 @@ import java.awt.image.BufferedImage
 import java.io.*
 import java.net.ServerSocket
 import java.net.SocketTimeoutException
+import java.nio.ByteBuffer
 import java.nio.charset.StandardCharsets
 import java.util.*
 import javax.imageio.ImageIO
-import kotlin.system.exitProcess
 
 class Minecraft_env : ModInitializer, CommandExecutor {
     private var gson = Gson()
-    private var initialEnvironment: InitialEnvironment? = null
+    private var initialEnvironment: InitialEnvironment.InitialEnvironmentMessage? = null
     private var soundListener: MinecraftSoundListener? = null
     private var isResetting = false // if true, then pass through i/o and just let ticks go
     private var isRespawning = false // wait until player respawn and then run initialization
@@ -45,35 +48,32 @@ class Minecraft_env : ModInitializer, CommandExecutor {
     private var onceDied = false
 
     override fun onInitialize() {
-        val reader: InputStreamReader
-        val bufferedReader: BufferedReader
-        val writer: OutputStreamWriter
+        val inputStream: InputStream
+        val outputStream: OutputStream
         try {
             val serverSocket = ServerSocket(8000)
             val socket = serverSocket.accept()
             socket.soTimeout = 30000
-            val input = socket.getInputStream()
-            reader = InputStreamReader(input)
-            bufferedReader = BufferedReader(reader)
-            writer = OutputStreamWriter(socket.getOutputStream())
+            inputStream = socket.getInputStream()
+            outputStream = socket.getOutputStream()
         } catch (e: IOException) {
             throw RuntimeException(e)
         }
         println("Hello Fabric world!")
         Registry.register(Registries.ITEM, "minecraft_env:custom_item", CUSTOM_ITEM)
         FuelRegistry.INSTANCE.add(CUSTOM_ITEM, 300)
-        readInitialEnvironment(bufferedReader, writer)
+        readInitialEnvironment(inputStream, outputStream)
         val initializer = EnvironmentInitializer(initialEnvironment!!)
         ClientTickEvents.START_CLIENT_TICK.register(ClientTickEvents.StartTick { client: MinecraftClient ->
             initializer.onClientTick(client)
             if (soundListener == null) soundListener = MinecraftSoundListener(client.soundManager)
         })
         ClientTickEvents.START_WORLD_TICK.register(ClientTickEvents.StartWorldTick { world: ClientWorld ->
-            onStartWorldTick(initializer, bufferedReader, world)
+            onStartWorldTick(initializer, inputStream, world)
         })
         ClientTickEvents.END_WORLD_TICK.register(ClientTickEvents.EndWorldTick { world: ClientWorld ->
             sendObservation(
-                writer,
+                outputStream,
                 world,
                 initializer
             )
@@ -82,7 +82,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
 
     private fun onStartWorldTick(
         initializer: EnvironmentInitializer,
-        bufferedReader: BufferedReader,
+        inputStream: InputStream,
         world: ClientWorld
     ) {
         println("start time: " + world.time)
@@ -154,15 +154,8 @@ class Minecraft_env : ModInitializer, CommandExecutor {
             }
         }
         try {
-            //                System.out.println("Waiting for command");
-            val b64 = bufferedReader.readLine()
-            if (b64 == null) { // end of stream
-                println("End of stream")
-                exitProcess(0)
-            }
-            val json = String(Base64.getDecoder().decode(b64), StandardCharsets.UTF_8)
-            // decode json to object
-            val action = gson.fromJson(json, ActionSpace::class.java)
+            val action = readAction(inputStream)
+
             val command = action.command
             if (command.isNotEmpty()) {
                 if (command == "respawn") {
@@ -183,9 +176,9 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                 return
             }
             if (player.isDead) return else client.setScreen(null)
-            val actionArray = action.action
-            if (actionArray == null) {
-                println("actionArray is null")
+            val actionArray = action.actionList
+            if (actionArray.isEmpty()) {
+                println("actionArray is empty")
                 return
             }
             val movementFB = actionArray[0]
@@ -307,7 +300,24 @@ class Minecraft_env : ModInitializer, CommandExecutor {
         }
     }
 
-    private fun sendObservation(writer: OutputStreamWriter, world: World, initializer: EnvironmentInitializer) {
+//    private fun readAction(bufferedReader: BufferedReader): ActionSpace {
+//        //                System.out.println("Waiting for command");
+//        val b64 = bufferedReader.readLine()
+//        if (b64 == null) { // end of stream
+//            println("End of stream")
+//            exitProcess(0)
+//        }
+//        val json = String(Base64.getDecoder().decode(b64), StandardCharsets.UTF_8)
+//        // decode json to object
+//        return gson.fromJson(json, ActionSpace::class.java)
+//    }
+
+    private fun readAction(inputStream: InputStream): ActionSpaceMessage {
+        // read action from inputStream using protobuf
+        return ActionSpaceMessage.newBuilder().mergeFrom(inputStream).build()
+    }
+
+    private fun sendObservation(outputStream: OutputStream, world: World, initializer: EnvironmentInitializer) {
         println("send time: " + world.time)
         val client = MinecraftClient.getInstance()
         val player = client.player
@@ -332,104 +342,156 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                 val encoded =
                     encodeImageToBase64Png(screenshot, initialEnvironment!!.imageSizeX, initialEnvironment!!.imageSizeY)
                 val pos = player.pos
-                val inventory = player.inventory
-                val mainInventory = inventory.main.map {
+                val playerInventory = player.inventory
+                val mainInventory = playerInventory.main.map {
                     ItemStack(it)
                 }
-                val armorInventory = inventory.armor.map {
+                val armorInventory = playerInventory.armor.map {
                     ItemStack(it)
                 }
-                val offhandInventory = inventory.offHand.map {
+                val offhandInventory = playerInventory.offHand.map {
                     ItemStack(it)
                 }
                 val inventoryArray = mainInventory + armorInventory + offhandInventory
                 val hungerManager = player.hungerManager
                 val target = player.raycast(100.0, 1.0f, false)
-                var hitResult = HitResult(net.minecraft.util.hit.HitResult.Type.MISS, null, null)
+                var hitResultMessage = hitResult {
+                    type = com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult.Type.MISS
+                }
                 if (target.type == net.minecraft.util.hit.HitResult.Type.BLOCK) {
                     val blockPos = (target as BlockHitResult).blockPos
                     val block = world.getBlockState(blockPos).block
-                    val blockInfo = BlockInfo(
-                        blockPos.x, blockPos.y, blockPos.z, block.translationKey
-                    )
-                    hitResult = HitResult(
-                        net.minecraft.util.hit.HitResult.Type.BLOCK,
-                        blockInfo,
-                        null
-                    )
+                    hitResultMessage = hitResult {
+                        type = com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult.Type.BLOCK
+                        targetBlock = blockInfo {
+                            x = blockPos.x
+                            y = blockPos.y
+                            z = blockPos.z
+                            translationKey = block.translationKey
+                        }
+                    }
                 } else if (target.type == net.minecraft.util.hit.HitResult.Type.ENTITY) {
                     val entity = (target as EntityHitResult).entity
-                    var health = 0.0
+                    var entityHealth = 0.0
                     if (entity is LivingEntity) {
-                        health = entity.health.toDouble()
+                        entityHealth = entity.health.toDouble()
                     }
-                    val entityInfo = EntityInfo(
-                        entity.entityName,
-                        entity.type.translationKey,
-                        entity.x,
-                        entity.y,
-                        entity.z,
-                        entity.yaw.toDouble(),
-                        entity.pitch.toDouble(),
-                        health
-                    )
-                    hitResult = HitResult(
-                        net.minecraft.util.hit.HitResult.Type.ENTITY,
-                        null,
-                        entityInfo
-                    )
+                    hitResultMessage = hitResult {
+                        type = com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult.Type.ENTITY
+                        targetEntity = entityInfo {
+                            uniqueName = entity.entityName
+                            translationKey = entity.type.translationKey
+                            x = entity.x
+                            y = entity.y
+                            z = entity.z
+                            yaw = entity.yaw.toDouble()
+                            pitch = entity.pitch.toDouble()
+                            health = entityHealth
+                        }
+                    }
                 }
-                val statusEffects = player.statusEffects
-                val statusEffectsConverted = ArrayList<StatusEffect>()
-                for (statusEffect in statusEffects) {
-                    statusEffectsConverted.add(
-                        StatusEffect(
-                            statusEffect.translationKey,
-                            statusEffect.duration,
-                            statusEffect.amplifier
-                        )
-                    )
+                val playerStatusEffects = player.statusEffects
+                val statusEffectsMessage = playerStatusEffects.map {
+                    statusEffect {
+                        translationKey = it.translationKey
+                        duration = it.duration
+                        amplifier = it.amplifier
+                    }
                 }
-                val isDead = if (wasResetting) {
+                val isDeadb = if (wasResetting) {
                     wasResetting = false
                     false
                 } else {
                     player.isDead
                 }
-                val observationSpace = ObservationSpace(
-                    encoded, pos.x, pos.y, pos.z,
-                    player.pitch.toDouble(), player.yaw.toDouble(),
-                    player.health.toDouble(),
-                    hungerManager.foodLevel.toDouble(),
-                    hungerManager.saturationLevel.toDouble(),
-                    isDead,
-                    inventoryArray,
-                    hitResult,
-                    soundListener!!.entries,
-                    statusEffectsConverted
-                )
-                val json = gson.toJson(observationSpace)
-                //            System.out.println("Sending observation");
-                writer.write(json)
-                writer.flush()
+//                val observationSpace = ObservationSpace(
+//                    encoded, pos.x, pos.y, pos.z,
+//                    player.pitch.toDouble(), player.yaw.toDouble(),
+//                    player.health.toDouble(),
+//                    hungerManager.foodLevel.toDouble(),
+//                    hungerManager.saturationLevel.toDouble(),
+//                    isDeadb,
+//                    inventoryArray,
+//                    hitResult,
+//                    soundListener!!.entries,
+//                    statusEffectsConverted
+//                )
+                val observationSpaceMessage = observationSpaceMessage {
+                    image = encoded
+                    x = pos.x
+                    y = pos.y
+                    z = pos.z
+                    pitch = player.pitch.toDouble()
+                    yaw = player.yaw.toDouble()
+                    health = player.health.toDouble()
+                    foodLevel = hungerManager.foodLevel.toDouble()
+                    saturationLevel = hungerManager.saturationLevel.toDouble()
+                    isDead = isDeadb
+                    inventory.addAll(inventoryArray.map {
+                        itemStack {
+                            rawId = it.rawId
+                            translationKey = it.translationKey
+                            count = it.count
+                            durability = it.durability
+                            maxDurability = it.maxDurability
+                        }
+                    })
+                    raycastResult = hitResultMessage
+                    soundSubtitles.addAll(
+                        soundListener!!.entries.map {
+                            soundEntry {
+                                translateKey = it.translateKey
+                                age = it.age
+                                x = it.x
+                                y = it.y
+                                z = it.z
+                            }
+                        }
+                    )
+                    statusEffects.addAll(statusEffectsMessage)
+                }
+                writeObservation(observationSpaceMessage, outputStream)
             }
         } catch (e: IOException) {
             throw RuntimeException(e)
         }
     }
 
-    private fun readInitialEnvironment(bufferedReader: BufferedReader, writer: OutputStreamWriter) {
+    private fun writeObservation(
+        observationSpace: ObservationSpace,
+        writer: OutputStreamWriter
+    ) {
+        val json = gson.toJson(observationSpace)
+        //            System.out.println("Sending observation");
+        writer.write(json)
+        writer.flush()
+    }
+
+    private fun writeObservation(
+        observationSpace: com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ObservationSpaceMessage,
+        outputStream: OutputStream
+    ) {
+        observationSpace.writeTo(outputStream)
+    }
+
+    private fun readInitialEnvironment(inputStream: InputStream, outputStream: OutputStream) {
         // read client environment settings
         while (true) {
             try {
-                val b64 = bufferedReader.readLine()
-                val json = String(Base64.getDecoder().decode(b64), StandardCharsets.UTF_8)
-                // decode json to object
-                initialEnvironment = gson.fromJson(json, InitialEnvironment::class.java)
-                val response = gson.toJson(ObservationSpace())
-                println("Sending dummy observation")
-                writer.write(response)
-                writer.flush()
+                println("Reading initial environment")
+                // read a single int from input stream
+                val buffer = ByteBuffer.allocate(Integer.BYTES) // 4 bytes
+                inputStream.read(buffer.array())
+                val len = buffer.order(java.nio.ByteOrder.LITTLE_ENDIAN).int
+                println("$len")
+                val bytes = inputStream.readNBytes(len.toInt())
+                initialEnvironment = InitialEnvironment.InitialEnvironmentMessage.parseFrom(bytes)
+                println("Read initial environment")
+                writeObservation(
+                    observationSpaceMessage { },
+                    outputStream
+                )
+                println("Read initial environment ${initialEnvironment!!.imageSizeX} ${initialEnvironment!!.imageSizeY}")
                 break
             } catch (e: SocketTimeoutException) {
                 println("Socket timeout")
@@ -453,8 +515,6 @@ class Minecraft_env : ModInitializer, CommandExecutor {
 
     companion object {
         val CUSTOM_ITEM = Item(FabricItemSettings().fireproof())
-
-
     }
 }
 

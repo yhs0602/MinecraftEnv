@@ -1,8 +1,8 @@
 package com.kyhsgeekcode.minecraft_env
 
 import com.kyhsgeekcode.minecraft_env.mixin.ChatVisibleMessageAccessor
+import com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage
 import net.minecraft.client.MinecraftClient
-import net.minecraft.client.font.FontStorage
 import net.minecraft.client.gui.Element
 import net.minecraft.client.gui.hud.ChatHud
 import net.minecraft.client.gui.screen.TitleScreen
@@ -18,7 +18,7 @@ interface CommandExecutor {
     fun runCommand(clientPlayerEntity: ClientPlayerEntity, command: String)
 }
 
-class EnvironmentInitializer(private val initialEnvironment: InitialEnvironment) {
+class EnvironmentInitializer(private val initialEnvironment: InitialEnvironmentMessage) {
     private var hasRunInitWorld: Boolean = false
     var initWorldFinished: Boolean = false
         private set
@@ -202,7 +202,7 @@ class EnvironmentInitializer(private val initialEnvironment: InitialEnvironment)
     }
 
     private fun summonInitialMobs(player: ClientPlayerEntity, commandExecutor: (ClientPlayerEntity, String) -> Unit) {
-        for (command in initialEnvironment.initialMobsCommands) {
+        for (command in initialEnvironment.initialMobsCommandsList) {
             commandExecutor(player, "/summon $command")
         }
     }
@@ -211,7 +211,7 @@ class EnvironmentInitializer(private val initialEnvironment: InitialEnvironment)
         player: ClientPlayerEntity,
         commandExecutor: (ClientPlayerEntity, String) -> Unit
     ) {
-        for (command in initialEnvironment.initialInventoryCommands) {
+        for (command in initialEnvironment.initialInventoryCommandsList) {
             commandExecutor(player, "/give @p $command")
         }
     }
@@ -220,11 +220,11 @@ class EnvironmentInitializer(private val initialEnvironment: InitialEnvironment)
         player: ClientPlayerEntity,
         commandExecutor: (ClientPlayerEntity, String) -> Unit
     ) {
-        if (initialEnvironment.initialPosition == null)
+        if (initialEnvironment.initialPositionList.isEmpty())
             return
         commandExecutor(
             player,
-            "/tp @p ${initialEnvironment.initialPosition[0]} ${initialEnvironment.initialPosition[1]} ${initialEnvironment.initialPosition[2]}"
+            "/tp @p ${initialEnvironment.initialPositionList[0]} ${initialEnvironment.initialPositionList[1]} ${initialEnvironment.initialPositionList[2]}"
         )
     }
 

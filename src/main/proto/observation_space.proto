@@ -1,4 +1,5 @@
 syntax = "proto3";
+option java_package = "com.kyhsgeekcode.minecraft_env.proto";
 
 message ItemStack {
   int32 raw_id = 1;
@@ -52,7 +53,7 @@ message SoundEntry {
   double z = 5;
 }
 
-message ObservationSpace {
+message ObservationSpaceMessage {
   string image = 1;
   double x = 2;
   double y = 3;

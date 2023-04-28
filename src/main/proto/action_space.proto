@@ -1,0 +1,7 @@
+syntax = "proto3";
+option java_package = "com.kyhsgeekcode.minecraft_env.proto";
+
+message ActionSpaceMessage {
+  repeated int32 action = 1;
+  string command = 2;
+}
