@@ -23,9 +23,9 @@ public object ObservationSpaceMessageKt {
     internal fun _build(): com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ObservationSpaceMessage = _builder.build()
 
     /**
-     * <code>string image = 1;</code>
+     * <code>bytes image = 1;</code>
      */
-    public var image: kotlin.String
+    public var image: com.google.protobuf.ByteString
       @JvmName("getImage")
       get() = _builder.getImage()
       @JvmName("setImage")
@@ -33,7 +33,7 @@ public object ObservationSpaceMessageKt {
         _builder.setImage(value)
       }
     /**
-     * <code>string image = 1;</code>
+     * <code>bytes image = 1;</code>
      */
     public fun clearImage() {
       _builder.clearImage()

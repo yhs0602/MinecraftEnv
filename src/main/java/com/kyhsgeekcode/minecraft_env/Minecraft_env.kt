@@ -2,6 +2,7 @@ package com.kyhsgeekcode.minecraft_env
 
 import com.google.common.io.LittleEndianDataOutputStream
 import com.google.gson.Gson
+import com.google.protobuf.ByteString
 import com.kyhsgeekcode.minecraft_env.mixin.ClientDoAttackInvoker
 import com.kyhsgeekcode.minecraft_env.mixin.ClientDoItemUseInvoker
 import com.kyhsgeekcode.minecraft_env.proto.*
@@ -348,8 +349,8 @@ class Minecraft_env : ModInitializer, CommandExecutor {
         val buffer = client.framebuffer
         try {
             ScreenshotRecorder.takeScreenshot(buffer).use { screenshot ->
-                val encoded =
-                    encodeImageToBase64Png(screenshot, initialEnvironment!!.imageSizeX, initialEnvironment!!.imageSizeY)
+                val byteArray =
+                    encodeImageToBytes(screenshot, initialEnvironment!!.imageSizeX, initialEnvironment!!.imageSizeY)
                 val pos = player.pos
                 val playerInventory = player.inventory
                 val mainInventory = playerInventory.main.map {
@@ -426,7 +427,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
 //                    statusEffectsConverted
 //                )
                 val observationSpaceMessage = observationSpaceMessage {
-                    image = encoded
+                    image = ByteString.copyFrom(byteArray)
                     x = pos.x
                     y = pos.y
                     z = pos.z
@@ -553,4 +554,18 @@ fun encodeImageToBase64Png(image: NativeImage, targetSizeX: Int, targetSizeY: In
     // String size = String.format("%dx%d", image.getWidth(), image.getHeight());
     // size + "|" +
     return out.toString(StandardCharsets.UTF_8)
+}
+
+@Throws(IOException::class)
+fun encodeImageToBytes(image: NativeImage, targetSizeX: Int, targetSizeY: Int): ByteArray {
+    val data = image.bytes
+    val originalImage = ImageIO.read(ByteArrayInputStream(data))
+    val resizedImage = BufferedImage(targetSizeX, targetSizeY, originalImage.type)
+    val graphics = resizedImage.createGraphics()
+    graphics.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR)
+    graphics.drawImage(originalImage, 0, 0, targetSizeX, targetSizeY, null)
+    graphics.dispose()
+    val baos = ByteArrayOutputStream()
+    ImageIO.write(resizedImage, "png", baos)
+    return baos.toByteArray()
 }

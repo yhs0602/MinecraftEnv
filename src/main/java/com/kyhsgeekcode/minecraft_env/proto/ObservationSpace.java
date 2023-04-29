@@ -5350,16 +5350,10 @@ public final class ObservationSpace {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>string image = 1;</code>
+     * <code>bytes image = 1;</code>
      * @return The image.
      */
-    java.lang.String getImage();
-    /**
-     * <code>string image = 1;</code>
-     * @return The bytes for image.
-     */
-    com.google.protobuf.ByteString
-        getImageBytes();
+    com.google.protobuf.ByteString getImage();
 
     /**
      * <code>double x = 2;</code>
@@ -5515,7 +5509,7 @@ public final class ObservationSpace {
       super(builder);
     }
     private ObservationSpaceMessage() {
-      image_ = "";
+      image_ = com.google.protobuf.ByteString.EMPTY;
       inventory_ = java.util.Collections.emptyList();
       soundSubtitles_ = java.util.Collections.emptyList();
       statusEffects_ = java.util.Collections.emptyList();
@@ -5547,42 +5541,14 @@ public final class ObservationSpace {
     }
 
     public static final int IMAGE_FIELD_NUMBER = 1;
-    @SuppressWarnings("serial")
-    private volatile java.lang.Object image_ = "";
+    private com.google.protobuf.ByteString image_ = com.google.protobuf.ByteString.EMPTY;
     /**
-     * <code>string image = 1;</code>
+     * <code>bytes image = 1;</code>
      * @return The image.
      */
     @java.lang.Override
-    public java.lang.String getImage() {
-      java.lang.Object ref = image_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        image_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string image = 1;</code>
-     * @return The bytes for image.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString
-        getImageBytes() {
-      java.lang.Object ref = image_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        image_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
+    public com.google.protobuf.ByteString getImage() {
+      return image_;
     }
 
     public static final int X_FIELD_NUMBER = 2;
@@ -5847,8 +5813,8 @@ public final class ObservationSpace {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(image_)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, image_);
+      if (!image_.isEmpty()) {
+        output.writeBytes(1, image_);
       }
       if (java.lang.Double.doubleToRawLongBits(x_) != 0) {
         output.writeDouble(2, x_);
@@ -5898,8 +5864,9 @@ public final class ObservationSpace {
       if (size != -1) return size;
 
       size = 0;
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(image_)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, image_);
+      if (!image_.isEmpty()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(1, image_);
       }
       if (java.lang.Double.doubleToRawLongBits(x_) != 0) {
         size += com.google.protobuf.CodedOutputStream
@@ -6192,7 +6159,7 @@ public final class ObservationSpace {
       public Builder clear() {
         super.clear();
         bitField0_ = 0;
-        image_ = "";
+        image_ = com.google.protobuf.ByteString.EMPTY;
         x_ = 0D;
         y_ = 0D;
         z_ = 0D;
@@ -6373,10 +6340,8 @@ public final class ObservationSpace {
 
       public Builder mergeFrom(com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ObservationSpaceMessage other) {
         if (other == com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ObservationSpaceMessage.getDefaultInstance()) return this;
-        if (!other.getImage().isEmpty()) {
-          image_ = other.image_;
-          bitField0_ |= 0x00000001;
-          onChanged();
+        if (other.getImage() != com.google.protobuf.ByteString.EMPTY) {
+          setImage(other.getImage());
         }
         if (other.getX() != 0D) {
           setX(other.getX());
@@ -6513,7 +6478,7 @@ public final class ObservationSpace {
                 done = true;
                 break;
               case 10: {
-                image_ = input.readStringRequireUtf8();
+                image_ = input.readBytes();
                 bitField0_ |= 0x00000001;
                 break;
               } // case 10
@@ -6625,47 +6590,21 @@ public final class ObservationSpace {
       }
       private int bitField0_;
 
-      private java.lang.Object image_ = "";
+      private com.google.protobuf.ByteString image_ = com.google.protobuf.ByteString.EMPTY;
       /**
-       * <code>string image = 1;</code>
+       * <code>bytes image = 1;</code>
        * @return The image.
        */
-      public java.lang.String getImage() {
-        java.lang.Object ref = image_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          image_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
+      @java.lang.Override
+      public com.google.protobuf.ByteString getImage() {
+        return image_;
       }
       /**
-       * <code>string image = 1;</code>
-       * @return The bytes for image.
-       */
-      public com.google.protobuf.ByteString
-          getImageBytes() {
-        java.lang.Object ref = image_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          image_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string image = 1;</code>
+       * <code>bytes image = 1;</code>
        * @param value The image to set.
        * @return This builder for chaining.
        */
-      public Builder setImage(
-          java.lang.String value) {
+      public Builder setImage(com.google.protobuf.ByteString value) {
         if (value == null) { throw new NullPointerException(); }
         image_ = value;
         bitField0_ |= 0x00000001;
@@ -6673,26 +6612,12 @@ public final class ObservationSpace {
         return this;
       }
       /**
-       * <code>string image = 1;</code>
+       * <code>bytes image = 1;</code>
        * @return This builder for chaining.
        */
       public Builder clearImage() {
-        image_ = getDefaultInstance().getImage();
         bitField0_ = (bitField0_ & ~0x00000001);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string image = 1;</code>
-       * @param value The bytes for image to set.
-       * @return This builder for chaining.
-       */
-      public Builder setImageBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) { throw new NullPointerException(); }
-        checkByteStringIsUtf8(value);
-        image_ = value;
-        bitField0_ |= 0x00000001;
+        image_ = getDefaultInstance().getImage();
         onChanged();
         return this;
       }
@@ -7948,7 +7873,7 @@ public final class ObservationSpace {
       "(\005\022\021\n\tamplifier\030\003 \001(\005\"Q\n\nSoundEntry\022\025\n\rt" +
       "ranslate_key\030\001 \001(\t\022\013\n\003age\030\002 \001(\003\022\t\n\001x\030\003 \001" +
       "(\001\022\t\n\001y\030\004 \001(\001\022\t\n\001z\030\005 \001(\001\"\304\002\n\027Observation" +
-      "SpaceMessage\022\r\n\005image\030\001 \001(\t\022\t\n\001x\030\002 \001(\001\022\t" +
+      "SpaceMessage\022\r\n\005image\030\001 \001(\014\022\t\n\001x\030\002 \001(\001\022\t" +
       "\n\001y\030\003 \001(\001\022\t\n\001z\030\004 \001(\001\022\013\n\003yaw\030\005 \001(\001\022\r\n\005pit" +
       "ch\030\006 \001(\001\022\016\n\006health\030\007 \001(\001\022\022\n\nfood_level\030\010" +
       " \001(\001\022\030\n\020saturation_level\030\t \001(\001\022\017\n\007is_dea" +
