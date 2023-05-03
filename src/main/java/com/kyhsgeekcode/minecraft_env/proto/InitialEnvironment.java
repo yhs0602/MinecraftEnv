@@ -150,6 +150,31 @@ public final class InitialEnvironment {
      * @return The visibleSizeY.
      */
     int getVisibleSizeY();
+
+    /**
+     * <code>repeated string initialExtraCommands = 14;</code>
+     * @return A list containing the initialExtraCommands.
+     */
+    java.util.List<java.lang.String>
+        getInitialExtraCommandsList();
+    /**
+     * <code>repeated string initialExtraCommands = 14;</code>
+     * @return The count of initialExtraCommands.
+     */
+    int getInitialExtraCommandsCount();
+    /**
+     * <code>repeated string initialExtraCommands = 14;</code>
+     * @param index The index of the element to return.
+     * @return The initialExtraCommands at the given index.
+     */
+    java.lang.String getInitialExtraCommands(int index);
+    /**
+     * <code>repeated string initialExtraCommands = 14;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the initialExtraCommands at the given index.
+     */
+    com.google.protobuf.ByteString
+        getInitialExtraCommandsBytes(int index);
   }
   /**
    * Protobuf type {@code InitialEnvironmentMessage}
@@ -168,6 +193,7 @@ public final class InitialEnvironment {
       initialPosition_ = emptyIntList();
       initialMobsCommands_ = com.google.protobuf.LazyStringArrayList.EMPTY;
       initialWeather_ = "";
+      initialExtraCommands_ = com.google.protobuf.LazyStringArrayList.EMPTY;
     }
 
     @java.lang.Override
@@ -434,6 +460,42 @@ public final class InitialEnvironment {
       return visibleSizeY_;
     }
 
+    public static final int INITIALEXTRACOMMANDS_FIELD_NUMBER = 14;
+    @SuppressWarnings("serial")
+    private com.google.protobuf.LazyStringList initialExtraCommands_;
+    /**
+     * <code>repeated string initialExtraCommands = 14;</code>
+     * @return A list containing the initialExtraCommands.
+     */
+    public com.google.protobuf.ProtocolStringList
+        getInitialExtraCommandsList() {
+      return initialExtraCommands_;
+    }
+    /**
+     * <code>repeated string initialExtraCommands = 14;</code>
+     * @return The count of initialExtraCommands.
+     */
+    public int getInitialExtraCommandsCount() {
+      return initialExtraCommands_.size();
+    }
+    /**
+     * <code>repeated string initialExtraCommands = 14;</code>
+     * @param index The index of the element to return.
+     * @return The initialExtraCommands at the given index.
+     */
+    public java.lang.String getInitialExtraCommands(int index) {
+      return initialExtraCommands_.get(index);
+    }
+    /**
+     * <code>repeated string initialExtraCommands = 14;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the initialExtraCommands at the given index.
+     */
+    public com.google.protobuf.ByteString
+        getInitialExtraCommandsBytes(int index) {
+      return initialExtraCommands_.getByteString(index);
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -491,6 +553,9 @@ public final class InitialEnvironment {
       }
       if (visibleSizeY_ != 0) {
         output.writeInt32(13, visibleSizeY_);
+      }
+      for (int i = 0; i < initialExtraCommands_.size(); i++) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 14, initialExtraCommands_.getRaw(i));
       }
       getUnknownFields().writeTo(output);
     }
@@ -570,6 +635,14 @@ public final class InitialEnvironment {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(13, visibleSizeY_);
       }
+      {
+        int dataSize = 0;
+        for (int i = 0; i < initialExtraCommands_.size(); i++) {
+          dataSize += computeStringSizeNoTag(initialExtraCommands_.getRaw(i));
+        }
+        size += dataSize;
+        size += 1 * getInitialExtraCommandsList().size();
+      }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
@@ -611,6 +684,8 @@ public final class InitialEnvironment {
           != other.getVisibleSizeX()) return false;
       if (getVisibleSizeY()
           != other.getVisibleSizeY()) return false;
+      if (!getInitialExtraCommandsList()
+          .equals(other.getInitialExtraCommandsList())) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -659,6 +734,10 @@ public final class InitialEnvironment {
       hash = (53 * hash) + getVisibleSizeX();
       hash = (37 * hash) + VISIBLESIZEY_FIELD_NUMBER;
       hash = (53 * hash) + getVisibleSizeY();
+      if (getInitialExtraCommandsCount() > 0) {
+        hash = (37 * hash) + INITIALEXTRACOMMANDS_FIELD_NUMBER;
+        hash = (53 * hash) + getInitialExtraCommandsList().hashCode();
+      }
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -803,6 +882,8 @@ public final class InitialEnvironment {
         isWorldFlat_ = false;
         visibleSizeX_ = 0;
         visibleSizeY_ = 0;
+        initialExtraCommands_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00002000);
         return this;
       }
 
@@ -851,6 +932,11 @@ public final class InitialEnvironment {
           bitField0_ = (bitField0_ & ~0x00000004);
         }
         result.initialMobsCommands_ = initialMobsCommands_;
+        if (((bitField0_ & 0x00002000) != 0)) {
+          initialExtraCommands_ = initialExtraCommands_.getUnmodifiableView();
+          bitField0_ = (bitField0_ & ~0x00002000);
+        }
+        result.initialExtraCommands_ = initialExtraCommands_;
       }
 
       private void buildPartial0(com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage result) {
@@ -993,6 +1079,16 @@ public final class InitialEnvironment {
         if (other.getVisibleSizeY() != 0) {
           setVisibleSizeY(other.getVisibleSizeY());
         }
+        if (!other.initialExtraCommands_.isEmpty()) {
+          if (initialExtraCommands_.isEmpty()) {
+            initialExtraCommands_ = other.initialExtraCommands_;
+            bitField0_ = (bitField0_ & ~0x00002000);
+          } else {
+            ensureInitialExtraCommandsIsMutable();
+            initialExtraCommands_.addAll(other.initialExtraCommands_);
+          }
+          onChanged();
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
@@ -1097,6 +1193,12 @@ public final class InitialEnvironment {
                 bitField0_ |= 0x00001000;
                 break;
               } // case 104
+              case 114: {
+                java.lang.String s = input.readStringRequireUtf8();
+                ensureInitialExtraCommandsIsMutable();
+                initialExtraCommands_.add(s);
+                break;
+              } // case 114
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -1762,6 +1864,110 @@ public final class InitialEnvironment {
         onChanged();
         return this;
       }
+
+      private com.google.protobuf.LazyStringList initialExtraCommands_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      private void ensureInitialExtraCommandsIsMutable() {
+        if (!((bitField0_ & 0x00002000) != 0)) {
+          initialExtraCommands_ = new com.google.protobuf.LazyStringArrayList(initialExtraCommands_);
+          bitField0_ |= 0x00002000;
+         }
+      }
+      /**
+       * <code>repeated string initialExtraCommands = 14;</code>
+       * @return A list containing the initialExtraCommands.
+       */
+      public com.google.protobuf.ProtocolStringList
+          getInitialExtraCommandsList() {
+        return initialExtraCommands_.getUnmodifiableView();
+      }
+      /**
+       * <code>repeated string initialExtraCommands = 14;</code>
+       * @return The count of initialExtraCommands.
+       */
+      public int getInitialExtraCommandsCount() {
+        return initialExtraCommands_.size();
+      }
+      /**
+       * <code>repeated string initialExtraCommands = 14;</code>
+       * @param index The index of the element to return.
+       * @return The initialExtraCommands at the given index.
+       */
+      public java.lang.String getInitialExtraCommands(int index) {
+        return initialExtraCommands_.get(index);
+      }
+      /**
+       * <code>repeated string initialExtraCommands = 14;</code>
+       * @param index The index of the value to return.
+       * @return The bytes of the initialExtraCommands at the given index.
+       */
+      public com.google.protobuf.ByteString
+          getInitialExtraCommandsBytes(int index) {
+        return initialExtraCommands_.getByteString(index);
+      }
+      /**
+       * <code>repeated string initialExtraCommands = 14;</code>
+       * @param index The index to set the value at.
+       * @param value The initialExtraCommands to set.
+       * @return This builder for chaining.
+       */
+      public Builder setInitialExtraCommands(
+          int index, java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        ensureInitialExtraCommandsIsMutable();
+        initialExtraCommands_.set(index, value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string initialExtraCommands = 14;</code>
+       * @param value The initialExtraCommands to add.
+       * @return This builder for chaining.
+       */
+      public Builder addInitialExtraCommands(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        ensureInitialExtraCommandsIsMutable();
+        initialExtraCommands_.add(value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string initialExtraCommands = 14;</code>
+       * @param values The initialExtraCommands to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllInitialExtraCommands(
+          java.lang.Iterable<java.lang.String> values) {
+        ensureInitialExtraCommandsIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, initialExtraCommands_);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string initialExtraCommands = 14;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearInitialExtraCommands() {
+        initialExtraCommands_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00002000);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string initialExtraCommands = 14;</code>
+       * @param value The bytes of the initialExtraCommands to add.
+       * @return This builder for chaining.
+       */
+      public Builder addInitialExtraCommandsBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        ensureInitialExtraCommandsIsMutable();
+        initialExtraCommands_.add(value);
+        onChanged();
+        return this;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -1840,7 +2046,7 @@ public final class InitialEnvironment {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\031initial_environment.proto\"\301\002\n\031InitialE" +
+      "\n\031initial_environment.proto\"\337\002\n\031InitialE" +
       "nvironmentMessage\022 \n\030initialInventoryCom" +
       "mands\030\001 \003(\t\022\027\n\017initialPosition\030\002 \003(\005\022\033\n\023" +
       "initialMobsCommands\030\003 \003(\t\022\022\n\nimageSizeX\030" +
@@ -1848,8 +2054,9 @@ public final class InitialEnvironment {
       "\025\n\rallowMobSpawn\030\007 \001(\010\022\023\n\013alwaysNight\030\010 " +
       "\001(\010\022\021\n\talwaysDay\030\t \001(\010\022\026\n\016initialWeather" +
       "\030\n \001(\t\022\023\n\013isWorldFlat\030\013 \001(\010\022\024\n\014visibleSi" +
-      "zeX\030\014 \001(\005\022\024\n\014visibleSizeY\030\r \001(\005B&\n$com.k" +
-      "yhsgeekcode.minecraft_env.protob\006proto3"
+      "zeX\030\014 \001(\005\022\024\n\014visibleSizeY\030\r \001(\005\022\034\n\024initi" +
+      "alExtraCommands\030\016 \003(\tB&\n$com.kyhsgeekcod" +
+      "e.minecraft_env.protob\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -1860,7 +2067,7 @@ public final class InitialEnvironment {
     internal_static_InitialEnvironmentMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_InitialEnvironmentMessage_descriptor,
-        new java.lang.String[] { "InitialInventoryCommands", "InitialPosition", "InitialMobsCommands", "ImageSizeX", "ImageSizeY", "Seed", "AllowMobSpawn", "AlwaysNight", "AlwaysDay", "InitialWeather", "IsWorldFlat", "VisibleSizeX", "VisibleSizeY", });
+        new java.lang.String[] { "InitialInventoryCommands", "InitialPosition", "InitialMobsCommands", "ImageSizeX", "ImageSizeY", "Seed", "AllowMobSpawn", "AlwaysNight", "AlwaysDay", "InitialWeather", "IsWorldFlat", "VisibleSizeX", "VisibleSizeY", "InitialExtraCommands", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

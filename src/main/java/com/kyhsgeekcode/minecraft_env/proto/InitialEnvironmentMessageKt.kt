@@ -396,7 +396,77 @@ public object InitialEnvironmentMessageKt {
     public fun clearVisibleSizeY() {
       _builder.clearVisibleSizeY()
     }
-  }
+
+    /**
+     * An uninstantiable, behaviorless type to represent the field in
+     * generics.
+     */
+    @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
+    public class InitialExtraCommandsProxy private constructor() : com.google.protobuf.kotlin.DslProxy()
+    /**
+     * <code>repeated string initialExtraCommands = 14;</code>
+     * @return A list containing the initialExtraCommands.
+     */
+    public val initialExtraCommands: com.google.protobuf.kotlin.DslList<kotlin.String, InitialExtraCommandsProxy>
+      @kotlin.jvm.JvmSynthetic
+      get() = com.google.protobuf.kotlin.DslList(
+        _builder.getInitialExtraCommandsList()
+      )
+    /**
+     * <code>repeated string initialExtraCommands = 14;</code>
+     * @param value The initialExtraCommands to add.
+     */
+    @kotlin.jvm.JvmSynthetic
+    @kotlin.jvm.JvmName("addInitialExtraCommands")
+    public fun com.google.protobuf.kotlin.DslList<kotlin.String, InitialExtraCommandsProxy>.add(value: kotlin.String) {
+      _builder.addInitialExtraCommands(value)
+    }
+    /**
+     * <code>repeated string initialExtraCommands = 14;</code>
+     * @param value The initialExtraCommands to add.
+     */
+    @kotlin.jvm.JvmSynthetic
+    @kotlin.jvm.JvmName("plusAssignInitialExtraCommands")
+    @Suppress("NOTHING_TO_INLINE")
+    public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, InitialExtraCommandsProxy>.plusAssign(value: kotlin.String) {
+      add(value)
+    }
+    /**
+     * <code>repeated string initialExtraCommands = 14;</code>
+     * @param values The initialExtraCommands to add.
+     */
+    @kotlin.jvm.JvmSynthetic
+    @kotlin.jvm.JvmName("addAllInitialExtraCommands")
+    public fun com.google.protobuf.kotlin.DslList<kotlin.String, InitialExtraCommandsProxy>.addAll(values: kotlin.collections.Iterable<kotlin.String>) {
+      _builder.addAllInitialExtraCommands(values)
+    }
+    /**
+     * <code>repeated string initialExtraCommands = 14;</code>
+     * @param values The initialExtraCommands to add.
+     */
+    @kotlin.jvm.JvmSynthetic
+    @kotlin.jvm.JvmName("plusAssignAllInitialExtraCommands")
+    @Suppress("NOTHING_TO_INLINE")
+    public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, InitialExtraCommandsProxy>.plusAssign(values: kotlin.collections.Iterable<kotlin.String>) {
+      addAll(values)
+    }
+    /**
+     * <code>repeated string initialExtraCommands = 14;</code>
+     * @param index The index to set the value at.
+     * @param value The initialExtraCommands to set.
+     */
+    @kotlin.jvm.JvmSynthetic
+    @kotlin.jvm.JvmName("setInitialExtraCommands")
+    public operator fun com.google.protobuf.kotlin.DslList<kotlin.String, InitialExtraCommandsProxy>.set(index: kotlin.Int, value: kotlin.String) {
+      _builder.setInitialExtraCommands(index, value)
+    }/**
+     * <code>repeated string initialExtraCommands = 14;</code>
+     */
+    @kotlin.jvm.JvmSynthetic
+    @kotlin.jvm.JvmName("clearInitialExtraCommands")
+    public fun com.google.protobuf.kotlin.DslList<kotlin.String, InitialExtraCommandsProxy>.clear() {
+      _builder.clearInitialExtraCommands()
+    }}
 }
 @kotlin.jvm.JvmSynthetic
 public inline fun com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage.copy(block: com.kyhsgeekcode.minecraft_env.proto.InitialEnvironmentMessageKt.Dsl.() -> kotlin.Unit): com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage =

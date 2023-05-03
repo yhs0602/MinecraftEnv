@@ -176,6 +176,8 @@ class EnvironmentInitializer(private val initialEnvironment: InitialEnvironmentM
             setupAlwaysDay(player, myCommandExecutor)
         if (initialEnvironment.alwaysNight)
             setupAlwaysNight(player, myCommandExecutor)
+        for (command in initialEnvironment.initialExtraCommandsList)
+            commandExecutor.runCommand(player, "/$command")
         commandExecutor.runCommand(player, "/say Initialization Done")
         initWorldFinished = false
         hasRunInitWorld = true

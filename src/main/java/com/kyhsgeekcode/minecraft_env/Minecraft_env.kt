@@ -12,18 +12,22 @@ import net.fabricmc.api.ModInitializer
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings
 import net.fabricmc.fabric.api.registry.FuelRegistry
+import net.minecraft.advancement.AdvancementManager
+import net.minecraft.advancement.PlayerAdvancementTracker
 import net.minecraft.client.MinecraftClient
 import net.minecraft.client.gui.screen.DeathScreen
 import net.minecraft.client.network.ClientPlayerEntity
 import net.minecraft.client.texture.NativeImage
 import net.minecraft.client.util.ScreenshotRecorder
 import net.minecraft.client.world.ClientWorld
+import net.minecraft.entity.EntityType
 import net.minecraft.entity.LivingEntity
 import net.minecraft.inventory.CraftingInventory
 import net.minecraft.item.Item
 import net.minecraft.recipe.RecipeMatcher
 import net.minecraft.registry.Registries
 import net.minecraft.registry.Registry
+import net.minecraft.stat.Stats
 import net.minecraft.util.hit.BlockHitResult
 import net.minecraft.util.hit.EntityHitResult
 import net.minecraft.util.math.MathHelper
@@ -414,18 +418,10 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                 } else {
                     player.isDead
                 }
-//                val observationSpace = ObservationSpace(
-//                    encoded, pos.x, pos.y, pos.z,
-//                    player.pitch.toDouble(), player.yaw.toDouble(),
-//                    player.health.toDouble(),
-//                    hungerManager.foodLevel.toDouble(),
-//                    hungerManager.saturationLevel.toDouble(),
-//                    isDeadb,
-//                    inventoryArray,
-//                    hitResult,
-//                    soundListener!!.entries,
-//                    statusEffectsConverted
-//                )
+                // for entitytype in requested entity type stats
+                // get stat and add to result (map)
+                val zombieKillStat = player.statHandler.getStat(Stats.KILLED.getOrCreateStat(EntityType.ZOMBIE))
+
                 val observationSpaceMessage = observationSpaceMessage {
                     image = ByteString.copyFrom(byteArray)
                     x = pos.x
