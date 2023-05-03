@@ -466,6 +466,216 @@ public object InitialEnvironmentMessageKt {
     @kotlin.jvm.JvmName("clearInitialExtraCommands")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, InitialExtraCommandsProxy>.clear() {
       _builder.clearInitialExtraCommands()
+    }
+    /**
+     * An uninstantiable, behaviorless type to represent the field in
+     * generics.
+     */
+    @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
+    public class KilledStatKeysProxy private constructor() : com.google.protobuf.kotlin.DslProxy()
+    /**
+     * <code>repeated string killedStatKeys = 15;</code>
+     * @return A list containing the killedStatKeys.
+     */
+    public val killedStatKeys: com.google.protobuf.kotlin.DslList<kotlin.String, KilledStatKeysProxy>
+      @kotlin.jvm.JvmSynthetic
+      get() = com.google.protobuf.kotlin.DslList(
+        _builder.getKilledStatKeysList()
+      )
+    /**
+     * <code>repeated string killedStatKeys = 15;</code>
+     * @param value The killedStatKeys to add.
+     */
+    @kotlin.jvm.JvmSynthetic
+    @kotlin.jvm.JvmName("addKilledStatKeys")
+    public fun com.google.protobuf.kotlin.DslList<kotlin.String, KilledStatKeysProxy>.add(value: kotlin.String) {
+      _builder.addKilledStatKeys(value)
+    }
+    /**
+     * <code>repeated string killedStatKeys = 15;</code>
+     * @param value The killedStatKeys to add.
+     */
+    @kotlin.jvm.JvmSynthetic
+    @kotlin.jvm.JvmName("plusAssignKilledStatKeys")
+    @Suppress("NOTHING_TO_INLINE")
+    public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, KilledStatKeysProxy>.plusAssign(value: kotlin.String) {
+      add(value)
+    }
+    /**
+     * <code>repeated string killedStatKeys = 15;</code>
+     * @param values The killedStatKeys to add.
+     */
+    @kotlin.jvm.JvmSynthetic
+    @kotlin.jvm.JvmName("addAllKilledStatKeys")
+    public fun com.google.protobuf.kotlin.DslList<kotlin.String, KilledStatKeysProxy>.addAll(values: kotlin.collections.Iterable<kotlin.String>) {
+      _builder.addAllKilledStatKeys(values)
+    }
+    /**
+     * <code>repeated string killedStatKeys = 15;</code>
+     * @param values The killedStatKeys to add.
+     */
+    @kotlin.jvm.JvmSynthetic
+    @kotlin.jvm.JvmName("plusAssignAllKilledStatKeys")
+    @Suppress("NOTHING_TO_INLINE")
+    public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, KilledStatKeysProxy>.plusAssign(values: kotlin.collections.Iterable<kotlin.String>) {
+      addAll(values)
+    }
+    /**
+     * <code>repeated string killedStatKeys = 15;</code>
+     * @param index The index to set the value at.
+     * @param value The killedStatKeys to set.
+     */
+    @kotlin.jvm.JvmSynthetic
+    @kotlin.jvm.JvmName("setKilledStatKeys")
+    public operator fun com.google.protobuf.kotlin.DslList<kotlin.String, KilledStatKeysProxy>.set(index: kotlin.Int, value: kotlin.String) {
+      _builder.setKilledStatKeys(index, value)
+    }/**
+     * <code>repeated string killedStatKeys = 15;</code>
+     */
+    @kotlin.jvm.JvmSynthetic
+    @kotlin.jvm.JvmName("clearKilledStatKeys")
+    public fun com.google.protobuf.kotlin.DslList<kotlin.String, KilledStatKeysProxy>.clear() {
+      _builder.clearKilledStatKeys()
+    }
+    /**
+     * An uninstantiable, behaviorless type to represent the field in
+     * generics.
+     */
+    @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
+    public class MinedStatKeysProxy private constructor() : com.google.protobuf.kotlin.DslProxy()
+    /**
+     * <code>repeated string minedStatKeys = 16;</code>
+     * @return A list containing the minedStatKeys.
+     */
+    public val minedStatKeys: com.google.protobuf.kotlin.DslList<kotlin.String, MinedStatKeysProxy>
+      @kotlin.jvm.JvmSynthetic
+      get() = com.google.protobuf.kotlin.DslList(
+        _builder.getMinedStatKeysList()
+      )
+    /**
+     * <code>repeated string minedStatKeys = 16;</code>
+     * @param value The minedStatKeys to add.
+     */
+    @kotlin.jvm.JvmSynthetic
+    @kotlin.jvm.JvmName("addMinedStatKeys")
+    public fun com.google.protobuf.kotlin.DslList<kotlin.String, MinedStatKeysProxy>.add(value: kotlin.String) {
+      _builder.addMinedStatKeys(value)
+    }
+    /**
+     * <code>repeated string minedStatKeys = 16;</code>
+     * @param value The minedStatKeys to add.
+     */
+    @kotlin.jvm.JvmSynthetic
+    @kotlin.jvm.JvmName("plusAssignMinedStatKeys")
+    @Suppress("NOTHING_TO_INLINE")
+    public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, MinedStatKeysProxy>.plusAssign(value: kotlin.String) {
+      add(value)
+    }
+    /**
+     * <code>repeated string minedStatKeys = 16;</code>
+     * @param values The minedStatKeys to add.
+     */
+    @kotlin.jvm.JvmSynthetic
+    @kotlin.jvm.JvmName("addAllMinedStatKeys")
+    public fun com.google.protobuf.kotlin.DslList<kotlin.String, MinedStatKeysProxy>.addAll(values: kotlin.collections.Iterable<kotlin.String>) {
+      _builder.addAllMinedStatKeys(values)
+    }
+    /**
+     * <code>repeated string minedStatKeys = 16;</code>
+     * @param values The minedStatKeys to add.
+     */
+    @kotlin.jvm.JvmSynthetic
+    @kotlin.jvm.JvmName("plusAssignAllMinedStatKeys")
+    @Suppress("NOTHING_TO_INLINE")
+    public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, MinedStatKeysProxy>.plusAssign(values: kotlin.collections.Iterable<kotlin.String>) {
+      addAll(values)
+    }
+    /**
+     * <code>repeated string minedStatKeys = 16;</code>
+     * @param index The index to set the value at.
+     * @param value The minedStatKeys to set.
+     */
+    @kotlin.jvm.JvmSynthetic
+    @kotlin.jvm.JvmName("setMinedStatKeys")
+    public operator fun com.google.protobuf.kotlin.DslList<kotlin.String, MinedStatKeysProxy>.set(index: kotlin.Int, value: kotlin.String) {
+      _builder.setMinedStatKeys(index, value)
+    }/**
+     * <code>repeated string minedStatKeys = 16;</code>
+     */
+    @kotlin.jvm.JvmSynthetic
+    @kotlin.jvm.JvmName("clearMinedStatKeys")
+    public fun com.google.protobuf.kotlin.DslList<kotlin.String, MinedStatKeysProxy>.clear() {
+      _builder.clearMinedStatKeys()
+    }
+    /**
+     * An uninstantiable, behaviorless type to represent the field in
+     * generics.
+     */
+    @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
+    public class MiscStatKeysProxy private constructor() : com.google.protobuf.kotlin.DslProxy()
+    /**
+     * <code>repeated string miscStatKeys = 17;</code>
+     * @return A list containing the miscStatKeys.
+     */
+    public val miscStatKeys: com.google.protobuf.kotlin.DslList<kotlin.String, MiscStatKeysProxy>
+      @kotlin.jvm.JvmSynthetic
+      get() = com.google.protobuf.kotlin.DslList(
+        _builder.getMiscStatKeysList()
+      )
+    /**
+     * <code>repeated string miscStatKeys = 17;</code>
+     * @param value The miscStatKeys to add.
+     */
+    @kotlin.jvm.JvmSynthetic
+    @kotlin.jvm.JvmName("addMiscStatKeys")
+    public fun com.google.protobuf.kotlin.DslList<kotlin.String, MiscStatKeysProxy>.add(value: kotlin.String) {
+      _builder.addMiscStatKeys(value)
+    }
+    /**
+     * <code>repeated string miscStatKeys = 17;</code>
+     * @param value The miscStatKeys to add.
+     */
+    @kotlin.jvm.JvmSynthetic
+    @kotlin.jvm.JvmName("plusAssignMiscStatKeys")
+    @Suppress("NOTHING_TO_INLINE")
+    public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, MiscStatKeysProxy>.plusAssign(value: kotlin.String) {
+      add(value)
+    }
+    /**
+     * <code>repeated string miscStatKeys = 17;</code>
+     * @param values The miscStatKeys to add.
+     */
+    @kotlin.jvm.JvmSynthetic
+    @kotlin.jvm.JvmName("addAllMiscStatKeys")
+    public fun com.google.protobuf.kotlin.DslList<kotlin.String, MiscStatKeysProxy>.addAll(values: kotlin.collections.Iterable<kotlin.String>) {
+      _builder.addAllMiscStatKeys(values)
+    }
+    /**
+     * <code>repeated string miscStatKeys = 17;</code>
+     * @param values The miscStatKeys to add.
+     */
+    @kotlin.jvm.JvmSynthetic
+    @kotlin.jvm.JvmName("plusAssignAllMiscStatKeys")
+    @Suppress("NOTHING_TO_INLINE")
+    public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, MiscStatKeysProxy>.plusAssign(values: kotlin.collections.Iterable<kotlin.String>) {
+      addAll(values)
+    }
+    /**
+     * <code>repeated string miscStatKeys = 17;</code>
+     * @param index The index to set the value at.
+     * @param value The miscStatKeys to set.
+     */
+    @kotlin.jvm.JvmSynthetic
+    @kotlin.jvm.JvmName("setMiscStatKeys")
+    public operator fun com.google.protobuf.kotlin.DslList<kotlin.String, MiscStatKeysProxy>.set(index: kotlin.Int, value: kotlin.String) {
+      _builder.setMiscStatKeys(index, value)
+    }/**
+     * <code>repeated string miscStatKeys = 17;</code>
+     */
+    @kotlin.jvm.JvmSynthetic
+    @kotlin.jvm.JvmName("clearMiscStatKeys")
+    public fun com.google.protobuf.kotlin.DslList<kotlin.String, MiscStatKeysProxy>.clear() {
+      _builder.clearMiscStatKeys()
     }}
 }
 @kotlin.jvm.JvmSynthetic

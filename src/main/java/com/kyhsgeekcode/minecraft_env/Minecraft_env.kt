@@ -12,8 +12,6 @@ import net.fabricmc.api.ModInitializer
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings
 import net.fabricmc.fabric.api.registry.FuelRegistry
-import net.minecraft.advancement.AdvancementManager
-import net.minecraft.advancement.PlayerAdvancementTracker
 import net.minecraft.client.MinecraftClient
 import net.minecraft.client.gui.screen.DeathScreen
 import net.minecraft.client.network.ClientPlayerEntity
@@ -28,6 +26,7 @@ import net.minecraft.recipe.RecipeMatcher
 import net.minecraft.registry.Registries
 import net.minecraft.registry.Registry
 import net.minecraft.stat.Stats
+import net.minecraft.util.Identifier
 import net.minecraft.util.hit.BlockHitResult
 import net.minecraft.util.hit.EntityHitResult
 import net.minecraft.util.math.MathHelper
@@ -45,7 +44,7 @@ import javax.imageio.ImageIO
 
 class Minecraft_env : ModInitializer, CommandExecutor {
     private var gson = Gson()
-    private var initialEnvironment: InitialEnvironment.InitialEnvironmentMessage? = null
+    private lateinit var initialEnvironment: InitialEnvironment.InitialEnvironmentMessage
     private var soundListener: MinecraftSoundListener? = null
     private var isResetting = false // if true, then pass through i/o and just let ticks go
     private var isRespawning = false // wait until player respawn and then run initialization
@@ -69,7 +68,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
         Registry.register(Registries.ITEM, "minecraft_env:custom_item", CUSTOM_ITEM)
         FuelRegistry.INSTANCE.add(CUSTOM_ITEM, 300)
         readInitialEnvironment(inputStream, outputStream)
-        val initializer = EnvironmentInitializer(initialEnvironment!!)
+        val initializer = EnvironmentInitializer(initialEnvironment)
         ClientTickEvents.START_CLIENT_TICK.register(ClientTickEvents.StartTick { client: MinecraftClient ->
             initializer.onClientTick(client)
             if (soundListener == null) soundListener = MinecraftSoundListener(client.soundManager)
@@ -354,7 +353,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
         try {
             ScreenshotRecorder.takeScreenshot(buffer).use { screenshot ->
                 val byteArray =
-                    encodeImageToBytes(screenshot, initialEnvironment!!.imageSizeX, initialEnvironment!!.imageSizeY)
+                    encodeImageToBytes(screenshot, initialEnvironment.imageSizeX, initialEnvironment.imageSizeY)
                 val pos = player.pos
                 val playerInventory = player.inventory
                 val mainInventory = playerInventory.main.map {
@@ -420,7 +419,8 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                 }
                 // for entitytype in requested entity type stats
                 // get stat and add to result (map)
-                val zombieKillStat = player.statHandler.getStat(Stats.KILLED.getOrCreateStat(EntityType.ZOMBIE))
+
+
 
                 val observationSpaceMessage = observationSpaceMessage {
                     image = ByteString.copyFrom(byteArray)
@@ -455,6 +455,20 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                         }
                     )
                     statusEffects.addAll(statusEffectsMessage)
+                    for (killStatKey in initialEnvironment.killedStatKeysList) {
+                        val key = EntityType.get(killStatKey).get()
+                        val stat = player.statHandler.getStat(Stats.KILLED.getOrCreateStat(key))
+                        killedStatistics[killStatKey] = stat
+                    }
+                    for (mineStatKey in initialEnvironment.minedStatKeysList) {
+                        val key = Registries.BLOCK.get(Identifier.of("minecraft", mineStatKey))
+                        val stat = player.statHandler.getStat(Stats.MINED.getOrCreateStat(key))
+                        minedStatistics[mineStatKey] = stat
+                    }
+                    for (miscStatKey in initialEnvironment.miscStatKeysList) {
+                        val key = Registries.CUSTOM_STAT.get(Identifier.of("minecraft", miscStatKey))
+                        minedStatistics[miscStatKey] = player.statHandler.getStat(Stats.CUSTOM.getOrCreateStat(key))
+                    }
                 }
                 writeObservation(observationSpaceMessage, outputStream)
             }

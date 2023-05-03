@@ -5495,6 +5495,102 @@ public final class ObservationSpace {
      */
     com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffectOrBuilder getStatusEffectsOrBuilder(
         int index);
+
+    /**
+     * <code>map&lt;string, int32&gt; killed_statistics = 15;</code>
+     */
+    int getKilledStatisticsCount();
+    /**
+     * <code>map&lt;string, int32&gt; killed_statistics = 15;</code>
+     */
+    boolean containsKilledStatistics(
+        java.lang.String key);
+    /**
+     * Use {@link #getKilledStatisticsMap()} instead.
+     */
+    @java.lang.Deprecated
+    java.util.Map<java.lang.String, java.lang.Integer>
+    getKilledStatistics();
+    /**
+     * <code>map&lt;string, int32&gt; killed_statistics = 15;</code>
+     */
+    java.util.Map<java.lang.String, java.lang.Integer>
+    getKilledStatisticsMap();
+    /**
+     * <code>map&lt;string, int32&gt; killed_statistics = 15;</code>
+     */
+    int getKilledStatisticsOrDefault(
+        java.lang.String key,
+        int defaultValue);
+    /**
+     * <code>map&lt;string, int32&gt; killed_statistics = 15;</code>
+     */
+    int getKilledStatisticsOrThrow(
+        java.lang.String key);
+
+    /**
+     * <code>map&lt;string, int32&gt; mined_statistics = 16;</code>
+     */
+    int getMinedStatisticsCount();
+    /**
+     * <code>map&lt;string, int32&gt; mined_statistics = 16;</code>
+     */
+    boolean containsMinedStatistics(
+        java.lang.String key);
+    /**
+     * Use {@link #getMinedStatisticsMap()} instead.
+     */
+    @java.lang.Deprecated
+    java.util.Map<java.lang.String, java.lang.Integer>
+    getMinedStatistics();
+    /**
+     * <code>map&lt;string, int32&gt; mined_statistics = 16;</code>
+     */
+    java.util.Map<java.lang.String, java.lang.Integer>
+    getMinedStatisticsMap();
+    /**
+     * <code>map&lt;string, int32&gt; mined_statistics = 16;</code>
+     */
+    int getMinedStatisticsOrDefault(
+        java.lang.String key,
+        int defaultValue);
+    /**
+     * <code>map&lt;string, int32&gt; mined_statistics = 16;</code>
+     */
+    int getMinedStatisticsOrThrow(
+        java.lang.String key);
+
+    /**
+     * <code>map&lt;string, int32&gt; misc_statistics = 17;</code>
+     */
+    int getMiscStatisticsCount();
+    /**
+     * <code>map&lt;string, int32&gt; misc_statistics = 17;</code>
+     */
+    boolean containsMiscStatistics(
+        java.lang.String key);
+    /**
+     * Use {@link #getMiscStatisticsMap()} instead.
+     */
+    @java.lang.Deprecated
+    java.util.Map<java.lang.String, java.lang.Integer>
+    getMiscStatistics();
+    /**
+     * <code>map&lt;string, int32&gt; misc_statistics = 17;</code>
+     */
+    java.util.Map<java.lang.String, java.lang.Integer>
+    getMiscStatisticsMap();
+    /**
+     * <code>map&lt;string, int32&gt; misc_statistics = 17;</code>
+     */
+    int getMiscStatisticsOrDefault(
+        java.lang.String key,
+        int defaultValue);
+    /**
+     * <code>map&lt;string, int32&gt; misc_statistics = 17;</code>
+     */
+    int getMiscStatisticsOrThrow(
+        java.lang.String key);
   }
   /**
    * Protobuf type {@code ObservationSpaceMessage}
@@ -5532,6 +5628,22 @@ public final class ObservationSpace {
       return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_ObservationSpaceMessage_descriptor;
     }
 
+    @SuppressWarnings({"rawtypes"})
+    @java.lang.Override
+    protected com.google.protobuf.MapField internalGetMapField(
+        int number) {
+      switch (number) {
+        case 15:
+          return internalGetKilledStatistics();
+        case 16:
+          return internalGetMinedStatistics();
+        case 17:
+          return internalGetMiscStatistics();
+        default:
+          throw new RuntimeException(
+              "Invalid map field number: " + number);
+      }
+    }
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
@@ -5799,6 +5911,237 @@ public final class ObservationSpace {
       return statusEffects_.get(index);
     }
 
+    public static final int KILLED_STATISTICS_FIELD_NUMBER = 15;
+    private static final class KilledStatisticsDefaultEntryHolder {
+      static final com.google.protobuf.MapEntry<
+          java.lang.String, java.lang.Integer> defaultEntry =
+              com.google.protobuf.MapEntry
+              .<java.lang.String, java.lang.Integer>newDefaultInstance(
+                  com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_ObservationSpaceMessage_KilledStatisticsEntry_descriptor, 
+                  com.google.protobuf.WireFormat.FieldType.STRING,
+                  "",
+                  com.google.protobuf.WireFormat.FieldType.INT32,
+                  0);
+    }
+    @SuppressWarnings("serial")
+    private com.google.protobuf.MapField<
+        java.lang.String, java.lang.Integer> killedStatistics_;
+    private com.google.protobuf.MapField<java.lang.String, java.lang.Integer>
+    internalGetKilledStatistics() {
+      if (killedStatistics_ == null) {
+        return com.google.protobuf.MapField.emptyMapField(
+            KilledStatisticsDefaultEntryHolder.defaultEntry);
+      }
+      return killedStatistics_;
+    }
+    public int getKilledStatisticsCount() {
+      return internalGetKilledStatistics().getMap().size();
+    }
+    /**
+     * <code>map&lt;string, int32&gt; killed_statistics = 15;</code>
+     */
+    @java.lang.Override
+    public boolean containsKilledStatistics(
+        java.lang.String key) {
+      if (key == null) { throw new NullPointerException("map key"); }
+      return internalGetKilledStatistics().getMap().containsKey(key);
+    }
+    /**
+     * Use {@link #getKilledStatisticsMap()} instead.
+     */
+    @java.lang.Override
+    @java.lang.Deprecated
+    public java.util.Map<java.lang.String, java.lang.Integer> getKilledStatistics() {
+      return getKilledStatisticsMap();
+    }
+    /**
+     * <code>map&lt;string, int32&gt; killed_statistics = 15;</code>
+     */
+    @java.lang.Override
+    public java.util.Map<java.lang.String, java.lang.Integer> getKilledStatisticsMap() {
+      return internalGetKilledStatistics().getMap();
+    }
+    /**
+     * <code>map&lt;string, int32&gt; killed_statistics = 15;</code>
+     */
+    @java.lang.Override
+    public int getKilledStatisticsOrDefault(
+        java.lang.String key,
+        int defaultValue) {
+      if (key == null) { throw new NullPointerException("map key"); }
+      java.util.Map<java.lang.String, java.lang.Integer> map =
+          internalGetKilledStatistics().getMap();
+      return map.containsKey(key) ? map.get(key) : defaultValue;
+    }
+    /**
+     * <code>map&lt;string, int32&gt; killed_statistics = 15;</code>
+     */
+    @java.lang.Override
+    public int getKilledStatisticsOrThrow(
+        java.lang.String key) {
+      if (key == null) { throw new NullPointerException("map key"); }
+      java.util.Map<java.lang.String, java.lang.Integer> map =
+          internalGetKilledStatistics().getMap();
+      if (!map.containsKey(key)) {
+        throw new java.lang.IllegalArgumentException();
+      }
+      return map.get(key);
+    }
+
+    public static final int MINED_STATISTICS_FIELD_NUMBER = 16;
+    private static final class MinedStatisticsDefaultEntryHolder {
+      static final com.google.protobuf.MapEntry<
+          java.lang.String, java.lang.Integer> defaultEntry =
+              com.google.protobuf.MapEntry
+              .<java.lang.String, java.lang.Integer>newDefaultInstance(
+                  com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_ObservationSpaceMessage_MinedStatisticsEntry_descriptor, 
+                  com.google.protobuf.WireFormat.FieldType.STRING,
+                  "",
+                  com.google.protobuf.WireFormat.FieldType.INT32,
+                  0);
+    }
+    @SuppressWarnings("serial")
+    private com.google.protobuf.MapField<
+        java.lang.String, java.lang.Integer> minedStatistics_;
+    private com.google.protobuf.MapField<java.lang.String, java.lang.Integer>
+    internalGetMinedStatistics() {
+      if (minedStatistics_ == null) {
+        return com.google.protobuf.MapField.emptyMapField(
+            MinedStatisticsDefaultEntryHolder.defaultEntry);
+      }
+      return minedStatistics_;
+    }
+    public int getMinedStatisticsCount() {
+      return internalGetMinedStatistics().getMap().size();
+    }
+    /**
+     * <code>map&lt;string, int32&gt; mined_statistics = 16;</code>
+     */
+    @java.lang.Override
+    public boolean containsMinedStatistics(
+        java.lang.String key) {
+      if (key == null) { throw new NullPointerException("map key"); }
+      return internalGetMinedStatistics().getMap().containsKey(key);
+    }
+    /**
+     * Use {@link #getMinedStatisticsMap()} instead.
+     */
+    @java.lang.Override
+    @java.lang.Deprecated
+    public java.util.Map<java.lang.String, java.lang.Integer> getMinedStatistics() {
+      return getMinedStatisticsMap();
+    }
+    /**
+     * <code>map&lt;string, int32&gt; mined_statistics = 16;</code>
+     */
+    @java.lang.Override
+    public java.util.Map<java.lang.String, java.lang.Integer> getMinedStatisticsMap() {
+      return internalGetMinedStatistics().getMap();
+    }
+    /**
+     * <code>map&lt;string, int32&gt; mined_statistics = 16;</code>
+     */
+    @java.lang.Override
+    public int getMinedStatisticsOrDefault(
+        java.lang.String key,
+        int defaultValue) {
+      if (key == null) { throw new NullPointerException("map key"); }
+      java.util.Map<java.lang.String, java.lang.Integer> map =
+          internalGetMinedStatistics().getMap();
+      return map.containsKey(key) ? map.get(key) : defaultValue;
+    }
+    /**
+     * <code>map&lt;string, int32&gt; mined_statistics = 16;</code>
+     */
+    @java.lang.Override
+    public int getMinedStatisticsOrThrow(
+        java.lang.String key) {
+      if (key == null) { throw new NullPointerException("map key"); }
+      java.util.Map<java.lang.String, java.lang.Integer> map =
+          internalGetMinedStatistics().getMap();
+      if (!map.containsKey(key)) {
+        throw new java.lang.IllegalArgumentException();
+      }
+      return map.get(key);
+    }
+
+    public static final int MISC_STATISTICS_FIELD_NUMBER = 17;
+    private static final class MiscStatisticsDefaultEntryHolder {
+      static final com.google.protobuf.MapEntry<
+          java.lang.String, java.lang.Integer> defaultEntry =
+              com.google.protobuf.MapEntry
+              .<java.lang.String, java.lang.Integer>newDefaultInstance(
+                  com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_ObservationSpaceMessage_MiscStatisticsEntry_descriptor, 
+                  com.google.protobuf.WireFormat.FieldType.STRING,
+                  "",
+                  com.google.protobuf.WireFormat.FieldType.INT32,
+                  0);
+    }
+    @SuppressWarnings("serial")
+    private com.google.protobuf.MapField<
+        java.lang.String, java.lang.Integer> miscStatistics_;
+    private com.google.protobuf.MapField<java.lang.String, java.lang.Integer>
+    internalGetMiscStatistics() {
+      if (miscStatistics_ == null) {
+        return com.google.protobuf.MapField.emptyMapField(
+            MiscStatisticsDefaultEntryHolder.defaultEntry);
+      }
+      return miscStatistics_;
+    }
+    public int getMiscStatisticsCount() {
+      return internalGetMiscStatistics().getMap().size();
+    }
+    /**
+     * <code>map&lt;string, int32&gt; misc_statistics = 17;</code>
+     */
+    @java.lang.Override
+    public boolean containsMiscStatistics(
+        java.lang.String key) {
+      if (key == null) { throw new NullPointerException("map key"); }
+      return internalGetMiscStatistics().getMap().containsKey(key);
+    }
+    /**
+     * Use {@link #getMiscStatisticsMap()} instead.
+     */
+    @java.lang.Override
+    @java.lang.Deprecated
+    public java.util.Map<java.lang.String, java.lang.Integer> getMiscStatistics() {
+      return getMiscStatisticsMap();
+    }
+    /**
+     * <code>map&lt;string, int32&gt; misc_statistics = 17;</code>
+     */
+    @java.lang.Override
+    public java.util.Map<java.lang.String, java.lang.Integer> getMiscStatisticsMap() {
+      return internalGetMiscStatistics().getMap();
+    }
+    /**
+     * <code>map&lt;string, int32&gt; misc_statistics = 17;</code>
+     */
+    @java.lang.Override
+    public int getMiscStatisticsOrDefault(
+        java.lang.String key,
+        int defaultValue) {
+      if (key == null) { throw new NullPointerException("map key"); }
+      java.util.Map<java.lang.String, java.lang.Integer> map =
+          internalGetMiscStatistics().getMap();
+      return map.containsKey(key) ? map.get(key) : defaultValue;
+    }
+    /**
+     * <code>map&lt;string, int32&gt; misc_statistics = 17;</code>
+     */
+    @java.lang.Override
+    public int getMiscStatisticsOrThrow(
+        java.lang.String key) {
+      if (key == null) { throw new NullPointerException("map key"); }
+      java.util.Map<java.lang.String, java.lang.Integer> map =
+          internalGetMiscStatistics().getMap();
+      if (!map.containsKey(key)) {
+        throw new java.lang.IllegalArgumentException();
+      }
+      return map.get(key);
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -5855,6 +6198,24 @@ public final class ObservationSpace {
       for (int i = 0; i < statusEffects_.size(); i++) {
         output.writeMessage(14, statusEffects_.get(i));
       }
+      com.google.protobuf.GeneratedMessageV3
+        .serializeStringMapTo(
+          output,
+          internalGetKilledStatistics(),
+          KilledStatisticsDefaultEntryHolder.defaultEntry,
+          15);
+      com.google.protobuf.GeneratedMessageV3
+        .serializeStringMapTo(
+          output,
+          internalGetMinedStatistics(),
+          MinedStatisticsDefaultEntryHolder.defaultEntry,
+          16);
+      com.google.protobuf.GeneratedMessageV3
+        .serializeStringMapTo(
+          output,
+          internalGetMiscStatistics(),
+          MiscStatisticsDefaultEntryHolder.defaultEntry,
+          17);
       getUnknownFields().writeTo(output);
     }
 
@@ -5920,6 +6281,36 @@ public final class ObservationSpace {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(14, statusEffects_.get(i));
       }
+      for (java.util.Map.Entry<java.lang.String, java.lang.Integer> entry
+           : internalGetKilledStatistics().getMap().entrySet()) {
+        com.google.protobuf.MapEntry<java.lang.String, java.lang.Integer>
+        killedStatistics__ = KilledStatisticsDefaultEntryHolder.defaultEntry.newBuilderForType()
+            .setKey(entry.getKey())
+            .setValue(entry.getValue())
+            .build();
+        size += com.google.protobuf.CodedOutputStream
+            .computeMessageSize(15, killedStatistics__);
+      }
+      for (java.util.Map.Entry<java.lang.String, java.lang.Integer> entry
+           : internalGetMinedStatistics().getMap().entrySet()) {
+        com.google.protobuf.MapEntry<java.lang.String, java.lang.Integer>
+        minedStatistics__ = MinedStatisticsDefaultEntryHolder.defaultEntry.newBuilderForType()
+            .setKey(entry.getKey())
+            .setValue(entry.getValue())
+            .build();
+        size += com.google.protobuf.CodedOutputStream
+            .computeMessageSize(16, minedStatistics__);
+      }
+      for (java.util.Map.Entry<java.lang.String, java.lang.Integer> entry
+           : internalGetMiscStatistics().getMap().entrySet()) {
+        com.google.protobuf.MapEntry<java.lang.String, java.lang.Integer>
+        miscStatistics__ = MiscStatisticsDefaultEntryHolder.defaultEntry.newBuilderForType()
+            .setKey(entry.getKey())
+            .setValue(entry.getValue())
+            .build();
+        size += com.google.protobuf.CodedOutputStream
+            .computeMessageSize(17, miscStatistics__);
+      }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
@@ -5974,6 +6365,12 @@ public final class ObservationSpace {
           .equals(other.getSoundSubtitlesList())) return false;
       if (!getStatusEffectsList()
           .equals(other.getStatusEffectsList())) return false;
+      if (!internalGetKilledStatistics().equals(
+          other.internalGetKilledStatistics())) return false;
+      if (!internalGetMinedStatistics().equals(
+          other.internalGetMinedStatistics())) return false;
+      if (!internalGetMiscStatistics().equals(
+          other.internalGetMiscStatistics())) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -6029,6 +6426,18 @@ public final class ObservationSpace {
       if (getStatusEffectsCount() > 0) {
         hash = (37 * hash) + STATUS_EFFECTS_FIELD_NUMBER;
         hash = (53 * hash) + getStatusEffectsList().hashCode();
+      }
+      if (!internalGetKilledStatistics().getMap().isEmpty()) {
+        hash = (37 * hash) + KILLED_STATISTICS_FIELD_NUMBER;
+        hash = (53 * hash) + internalGetKilledStatistics().hashCode();
+      }
+      if (!internalGetMinedStatistics().getMap().isEmpty()) {
+        hash = (37 * hash) + MINED_STATISTICS_FIELD_NUMBER;
+        hash = (53 * hash) + internalGetMinedStatistics().hashCode();
+      }
+      if (!internalGetMiscStatistics().getMap().isEmpty()) {
+        hash = (37 * hash) + MISC_STATISTICS_FIELD_NUMBER;
+        hash = (53 * hash) + internalGetMiscStatistics().hashCode();
       }
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
@@ -6137,6 +6546,36 @@ public final class ObservationSpace {
         return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_ObservationSpaceMessage_descriptor;
       }
 
+      @SuppressWarnings({"rawtypes"})
+      protected com.google.protobuf.MapField internalGetMapField(
+          int number) {
+        switch (number) {
+          case 15:
+            return internalGetKilledStatistics();
+          case 16:
+            return internalGetMinedStatistics();
+          case 17:
+            return internalGetMiscStatistics();
+          default:
+            throw new RuntimeException(
+                "Invalid map field number: " + number);
+        }
+      }
+      @SuppressWarnings({"rawtypes"})
+      protected com.google.protobuf.MapField internalGetMutableMapField(
+          int number) {
+        switch (number) {
+          case 15:
+            return internalGetMutableKilledStatistics();
+          case 16:
+            return internalGetMutableMinedStatistics();
+          case 17:
+            return internalGetMutableMiscStatistics();
+          default:
+            throw new RuntimeException(
+                "Invalid map field number: " + number);
+        }
+      }
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
@@ -6195,6 +6634,9 @@ public final class ObservationSpace {
           statusEffectsBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00002000);
+        internalGetMutableKilledStatistics().clear();
+        internalGetMutableMinedStatistics().clear();
+        internalGetMutableMiscStatistics().clear();
         return this;
       }
 
@@ -6293,6 +6735,18 @@ public final class ObservationSpace {
           result.raycastResult_ = raycastResultBuilder_ == null
               ? raycastResult_
               : raycastResultBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00004000) != 0)) {
+          result.killedStatistics_ = internalGetKilledStatistics();
+          result.killedStatistics_.makeImmutable();
+        }
+        if (((from_bitField0_ & 0x00008000) != 0)) {
+          result.minedStatistics_ = internalGetMinedStatistics();
+          result.minedStatistics_.makeImmutable();
+        }
+        if (((from_bitField0_ & 0x00010000) != 0)) {
+          result.miscStatistics_ = internalGetMiscStatistics();
+          result.miscStatistics_.makeImmutable();
         }
       }
 
@@ -6451,6 +6905,15 @@ public final class ObservationSpace {
             }
           }
         }
+        internalGetMutableKilledStatistics().mergeFrom(
+            other.internalGetKilledStatistics());
+        bitField0_ |= 0x00004000;
+        internalGetMutableMinedStatistics().mergeFrom(
+            other.internalGetMinedStatistics());
+        bitField0_ |= 0x00008000;
+        internalGetMutableMiscStatistics().mergeFrom(
+            other.internalGetMiscStatistics());
+        bitField0_ |= 0x00010000;
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
@@ -6573,6 +7036,33 @@ public final class ObservationSpace {
                 }
                 break;
               } // case 114
+              case 122: {
+                com.google.protobuf.MapEntry<java.lang.String, java.lang.Integer>
+                killedStatistics__ = input.readMessage(
+                    KilledStatisticsDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
+                internalGetMutableKilledStatistics().getMutableMap().put(
+                    killedStatistics__.getKey(), killedStatistics__.getValue());
+                bitField0_ |= 0x00004000;
+                break;
+              } // case 122
+              case 130: {
+                com.google.protobuf.MapEntry<java.lang.String, java.lang.Integer>
+                minedStatistics__ = input.readMessage(
+                    MinedStatisticsDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
+                internalGetMutableMinedStatistics().getMutableMap().put(
+                    minedStatistics__.getKey(), minedStatistics__.getValue());
+                bitField0_ |= 0x00008000;
+                break;
+              } // case 130
+              case 138: {
+                com.google.protobuf.MapEntry<java.lang.String, java.lang.Integer>
+                miscStatistics__ = input.readMessage(
+                    MiscStatisticsDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
+                internalGetMutableMiscStatistics().getMutableMap().put(
+                    miscStatistics__.getKey(), miscStatistics__.getValue());
+                bitField0_ |= 0x00010000;
+                break;
+              } // case 138
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -7748,6 +8238,381 @@ public final class ObservationSpace {
         }
         return statusEffectsBuilder_;
       }
+
+      private com.google.protobuf.MapField<
+          java.lang.String, java.lang.Integer> killedStatistics_;
+      private com.google.protobuf.MapField<java.lang.String, java.lang.Integer>
+          internalGetKilledStatistics() {
+        if (killedStatistics_ == null) {
+          return com.google.protobuf.MapField.emptyMapField(
+              KilledStatisticsDefaultEntryHolder.defaultEntry);
+        }
+        return killedStatistics_;
+      }
+      private com.google.protobuf.MapField<java.lang.String, java.lang.Integer>
+          internalGetMutableKilledStatistics() {
+        if (killedStatistics_ == null) {
+          killedStatistics_ = com.google.protobuf.MapField.newMapField(
+              KilledStatisticsDefaultEntryHolder.defaultEntry);
+        }
+        if (!killedStatistics_.isMutable()) {
+          killedStatistics_ = killedStatistics_.copy();
+        }
+        bitField0_ |= 0x00004000;
+        onChanged();
+        return killedStatistics_;
+      }
+      public int getKilledStatisticsCount() {
+        return internalGetKilledStatistics().getMap().size();
+      }
+      /**
+       * <code>map&lt;string, int32&gt; killed_statistics = 15;</code>
+       */
+      @java.lang.Override
+      public boolean containsKilledStatistics(
+          java.lang.String key) {
+        if (key == null) { throw new NullPointerException("map key"); }
+        return internalGetKilledStatistics().getMap().containsKey(key);
+      }
+      /**
+       * Use {@link #getKilledStatisticsMap()} instead.
+       */
+      @java.lang.Override
+      @java.lang.Deprecated
+      public java.util.Map<java.lang.String, java.lang.Integer> getKilledStatistics() {
+        return getKilledStatisticsMap();
+      }
+      /**
+       * <code>map&lt;string, int32&gt; killed_statistics = 15;</code>
+       */
+      @java.lang.Override
+      public java.util.Map<java.lang.String, java.lang.Integer> getKilledStatisticsMap() {
+        return internalGetKilledStatistics().getMap();
+      }
+      /**
+       * <code>map&lt;string, int32&gt; killed_statistics = 15;</code>
+       */
+      @java.lang.Override
+      public int getKilledStatisticsOrDefault(
+          java.lang.String key,
+          int defaultValue) {
+        if (key == null) { throw new NullPointerException("map key"); }
+        java.util.Map<java.lang.String, java.lang.Integer> map =
+            internalGetKilledStatistics().getMap();
+        return map.containsKey(key) ? map.get(key) : defaultValue;
+      }
+      /**
+       * <code>map&lt;string, int32&gt; killed_statistics = 15;</code>
+       */
+      @java.lang.Override
+      public int getKilledStatisticsOrThrow(
+          java.lang.String key) {
+        if (key == null) { throw new NullPointerException("map key"); }
+        java.util.Map<java.lang.String, java.lang.Integer> map =
+            internalGetKilledStatistics().getMap();
+        if (!map.containsKey(key)) {
+          throw new java.lang.IllegalArgumentException();
+        }
+        return map.get(key);
+      }
+      public Builder clearKilledStatistics() {
+        bitField0_ = (bitField0_ & ~0x00004000);
+        internalGetMutableKilledStatistics().getMutableMap()
+            .clear();
+        return this;
+      }
+      /**
+       * <code>map&lt;string, int32&gt; killed_statistics = 15;</code>
+       */
+      public Builder removeKilledStatistics(
+          java.lang.String key) {
+        if (key == null) { throw new NullPointerException("map key"); }
+        internalGetMutableKilledStatistics().getMutableMap()
+            .remove(key);
+        return this;
+      }
+      /**
+       * Use alternate mutation accessors instead.
+       */
+      @java.lang.Deprecated
+      public java.util.Map<java.lang.String, java.lang.Integer>
+          getMutableKilledStatistics() {
+        bitField0_ |= 0x00004000;
+        return internalGetMutableKilledStatistics().getMutableMap();
+      }
+      /**
+       * <code>map&lt;string, int32&gt; killed_statistics = 15;</code>
+       */
+      public Builder putKilledStatistics(
+          java.lang.String key,
+          int value) {
+        if (key == null) { throw new NullPointerException("map key"); }
+        
+        internalGetMutableKilledStatistics().getMutableMap()
+            .put(key, value);
+        bitField0_ |= 0x00004000;
+        return this;
+      }
+      /**
+       * <code>map&lt;string, int32&gt; killed_statistics = 15;</code>
+       */
+      public Builder putAllKilledStatistics(
+          java.util.Map<java.lang.String, java.lang.Integer> values) {
+        internalGetMutableKilledStatistics().getMutableMap()
+            .putAll(values);
+        bitField0_ |= 0x00004000;
+        return this;
+      }
+
+      private com.google.protobuf.MapField<
+          java.lang.String, java.lang.Integer> minedStatistics_;
+      private com.google.protobuf.MapField<java.lang.String, java.lang.Integer>
+          internalGetMinedStatistics() {
+        if (minedStatistics_ == null) {
+          return com.google.protobuf.MapField.emptyMapField(
+              MinedStatisticsDefaultEntryHolder.defaultEntry);
+        }
+        return minedStatistics_;
+      }
+      private com.google.protobuf.MapField<java.lang.String, java.lang.Integer>
+          internalGetMutableMinedStatistics() {
+        if (minedStatistics_ == null) {
+          minedStatistics_ = com.google.protobuf.MapField.newMapField(
+              MinedStatisticsDefaultEntryHolder.defaultEntry);
+        }
+        if (!minedStatistics_.isMutable()) {
+          minedStatistics_ = minedStatistics_.copy();
+        }
+        bitField0_ |= 0x00008000;
+        onChanged();
+        return minedStatistics_;
+      }
+      public int getMinedStatisticsCount() {
+        return internalGetMinedStatistics().getMap().size();
+      }
+      /**
+       * <code>map&lt;string, int32&gt; mined_statistics = 16;</code>
+       */
+      @java.lang.Override
+      public boolean containsMinedStatistics(
+          java.lang.String key) {
+        if (key == null) { throw new NullPointerException("map key"); }
+        return internalGetMinedStatistics().getMap().containsKey(key);
+      }
+      /**
+       * Use {@link #getMinedStatisticsMap()} instead.
+       */
+      @java.lang.Override
+      @java.lang.Deprecated
+      public java.util.Map<java.lang.String, java.lang.Integer> getMinedStatistics() {
+        return getMinedStatisticsMap();
+      }
+      /**
+       * <code>map&lt;string, int32&gt; mined_statistics = 16;</code>
+       */
+      @java.lang.Override
+      public java.util.Map<java.lang.String, java.lang.Integer> getMinedStatisticsMap() {
+        return internalGetMinedStatistics().getMap();
+      }
+      /**
+       * <code>map&lt;string, int32&gt; mined_statistics = 16;</code>
+       */
+      @java.lang.Override
+      public int getMinedStatisticsOrDefault(
+          java.lang.String key,
+          int defaultValue) {
+        if (key == null) { throw new NullPointerException("map key"); }
+        java.util.Map<java.lang.String, java.lang.Integer> map =
+            internalGetMinedStatistics().getMap();
+        return map.containsKey(key) ? map.get(key) : defaultValue;
+      }
+      /**
+       * <code>map&lt;string, int32&gt; mined_statistics = 16;</code>
+       */
+      @java.lang.Override
+      public int getMinedStatisticsOrThrow(
+          java.lang.String key) {
+        if (key == null) { throw new NullPointerException("map key"); }
+        java.util.Map<java.lang.String, java.lang.Integer> map =
+            internalGetMinedStatistics().getMap();
+        if (!map.containsKey(key)) {
+          throw new java.lang.IllegalArgumentException();
+        }
+        return map.get(key);
+      }
+      public Builder clearMinedStatistics() {
+        bitField0_ = (bitField0_ & ~0x00008000);
+        internalGetMutableMinedStatistics().getMutableMap()
+            .clear();
+        return this;
+      }
+      /**
+       * <code>map&lt;string, int32&gt; mined_statistics = 16;</code>
+       */
+      public Builder removeMinedStatistics(
+          java.lang.String key) {
+        if (key == null) { throw new NullPointerException("map key"); }
+        internalGetMutableMinedStatistics().getMutableMap()
+            .remove(key);
+        return this;
+      }
+      /**
+       * Use alternate mutation accessors instead.
+       */
+      @java.lang.Deprecated
+      public java.util.Map<java.lang.String, java.lang.Integer>
+          getMutableMinedStatistics() {
+        bitField0_ |= 0x00008000;
+        return internalGetMutableMinedStatistics().getMutableMap();
+      }
+      /**
+       * <code>map&lt;string, int32&gt; mined_statistics = 16;</code>
+       */
+      public Builder putMinedStatistics(
+          java.lang.String key,
+          int value) {
+        if (key == null) { throw new NullPointerException("map key"); }
+        
+        internalGetMutableMinedStatistics().getMutableMap()
+            .put(key, value);
+        bitField0_ |= 0x00008000;
+        return this;
+      }
+      /**
+       * <code>map&lt;string, int32&gt; mined_statistics = 16;</code>
+       */
+      public Builder putAllMinedStatistics(
+          java.util.Map<java.lang.String, java.lang.Integer> values) {
+        internalGetMutableMinedStatistics().getMutableMap()
+            .putAll(values);
+        bitField0_ |= 0x00008000;
+        return this;
+      }
+
+      private com.google.protobuf.MapField<
+          java.lang.String, java.lang.Integer> miscStatistics_;
+      private com.google.protobuf.MapField<java.lang.String, java.lang.Integer>
+          internalGetMiscStatistics() {
+        if (miscStatistics_ == null) {
+          return com.google.protobuf.MapField.emptyMapField(
+              MiscStatisticsDefaultEntryHolder.defaultEntry);
+        }
+        return miscStatistics_;
+      }
+      private com.google.protobuf.MapField<java.lang.String, java.lang.Integer>
+          internalGetMutableMiscStatistics() {
+        if (miscStatistics_ == null) {
+          miscStatistics_ = com.google.protobuf.MapField.newMapField(
+              MiscStatisticsDefaultEntryHolder.defaultEntry);
+        }
+        if (!miscStatistics_.isMutable()) {
+          miscStatistics_ = miscStatistics_.copy();
+        }
+        bitField0_ |= 0x00010000;
+        onChanged();
+        return miscStatistics_;
+      }
+      public int getMiscStatisticsCount() {
+        return internalGetMiscStatistics().getMap().size();
+      }
+      /**
+       * <code>map&lt;string, int32&gt; misc_statistics = 17;</code>
+       */
+      @java.lang.Override
+      public boolean containsMiscStatistics(
+          java.lang.String key) {
+        if (key == null) { throw new NullPointerException("map key"); }
+        return internalGetMiscStatistics().getMap().containsKey(key);
+      }
+      /**
+       * Use {@link #getMiscStatisticsMap()} instead.
+       */
+      @java.lang.Override
+      @java.lang.Deprecated
+      public java.util.Map<java.lang.String, java.lang.Integer> getMiscStatistics() {
+        return getMiscStatisticsMap();
+      }
+      /**
+       * <code>map&lt;string, int32&gt; misc_statistics = 17;</code>
+       */
+      @java.lang.Override
+      public java.util.Map<java.lang.String, java.lang.Integer> getMiscStatisticsMap() {
+        return internalGetMiscStatistics().getMap();
+      }
+      /**
+       * <code>map&lt;string, int32&gt; misc_statistics = 17;</code>
+       */
+      @java.lang.Override
+      public int getMiscStatisticsOrDefault(
+          java.lang.String key,
+          int defaultValue) {
+        if (key == null) { throw new NullPointerException("map key"); }
+        java.util.Map<java.lang.String, java.lang.Integer> map =
+            internalGetMiscStatistics().getMap();
+        return map.containsKey(key) ? map.get(key) : defaultValue;
+      }
+      /**
+       * <code>map&lt;string, int32&gt; misc_statistics = 17;</code>
+       */
+      @java.lang.Override
+      public int getMiscStatisticsOrThrow(
+          java.lang.String key) {
+        if (key == null) { throw new NullPointerException("map key"); }
+        java.util.Map<java.lang.String, java.lang.Integer> map =
+            internalGetMiscStatistics().getMap();
+        if (!map.containsKey(key)) {
+          throw new java.lang.IllegalArgumentException();
+        }
+        return map.get(key);
+      }
+      public Builder clearMiscStatistics() {
+        bitField0_ = (bitField0_ & ~0x00010000);
+        internalGetMutableMiscStatistics().getMutableMap()
+            .clear();
+        return this;
+      }
+      /**
+       * <code>map&lt;string, int32&gt; misc_statistics = 17;</code>
+       */
+      public Builder removeMiscStatistics(
+          java.lang.String key) {
+        if (key == null) { throw new NullPointerException("map key"); }
+        internalGetMutableMiscStatistics().getMutableMap()
+            .remove(key);
+        return this;
+      }
+      /**
+       * Use alternate mutation accessors instead.
+       */
+      @java.lang.Deprecated
+      public java.util.Map<java.lang.String, java.lang.Integer>
+          getMutableMiscStatistics() {
+        bitField0_ |= 0x00010000;
+        return internalGetMutableMiscStatistics().getMutableMap();
+      }
+      /**
+       * <code>map&lt;string, int32&gt; misc_statistics = 17;</code>
+       */
+      public Builder putMiscStatistics(
+          java.lang.String key,
+          int value) {
+        if (key == null) { throw new NullPointerException("map key"); }
+        
+        internalGetMutableMiscStatistics().getMutableMap()
+            .put(key, value);
+        bitField0_ |= 0x00010000;
+        return this;
+      }
+      /**
+       * <code>map&lt;string, int32&gt; misc_statistics = 17;</code>
+       */
+      public Builder putAllMiscStatistics(
+          java.util.Map<java.lang.String, java.lang.Integer> values) {
+        internalGetMutableMiscStatistics().getMutableMap()
+            .putAll(values);
+        bitField0_ |= 0x00010000;
+        return this;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -7847,6 +8712,21 @@ public final class ObservationSpace {
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_ObservationSpaceMessage_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_ObservationSpaceMessage_KilledStatisticsEntry_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_ObservationSpaceMessage_KilledStatisticsEntry_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_ObservationSpaceMessage_MinedStatisticsEntry_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_ObservationSpaceMessage_MinedStatisticsEntry_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_ObservationSpaceMessage_MiscStatisticsEntry_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_ObservationSpaceMessage_MiscStatisticsEntry_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -7872,7 +8752,7 @@ public final class ObservationSpace {
       "\027\n\017translation_key\030\001 \001(\t\022\020\n\010duration\030\002 \001" +
       "(\005\022\021\n\tamplifier\030\003 \001(\005\"Q\n\nSoundEntry\022\025\n\rt" +
       "ranslate_key\030\001 \001(\t\022\013\n\003age\030\002 \001(\003\022\t\n\001x\030\003 \001" +
-      "(\001\022\t\n\001y\030\004 \001(\001\022\t\n\001z\030\005 \001(\001\"\304\002\n\027Observation" +
+      "(\001\022\t\n\001y\030\004 \001(\001\022\t\n\001z\030\005 \001(\001\"\307\005\n\027Observation" +
       "SpaceMessage\022\r\n\005image\030\001 \001(\014\022\t\n\001x\030\002 \001(\001\022\t" +
       "\n\001y\030\003 \001(\001\022\t\n\001z\030\004 \001(\001\022\013\n\003yaw\030\005 \001(\001\022\r\n\005pit" +
       "ch\030\006 \001(\001\022\016\n\006health\030\007 \001(\001\022\022\n\nfood_level\030\010" +
@@ -7880,8 +8760,18 @@ public final class ObservationSpace {
       "d\030\n \001(\010\022\035\n\tinventory\030\013 \003(\0132\n.ItemStack\022\"" +
       "\n\016raycast_result\030\014 \001(\0132\n.HitResult\022$\n\017so" +
       "und_subtitles\030\r \003(\0132\013.SoundEntry\022%\n\016stat" +
-      "us_effects\030\016 \003(\0132\r.StatusEffectB&\n$com.k" +
-      "yhsgeekcode.minecraft_env.protob\006proto3"
+      "us_effects\030\016 \003(\0132\r.StatusEffect\022I\n\021kille" +
+      "d_statistics\030\017 \003(\0132..ObservationSpaceMes" +
+      "sage.KilledStatisticsEntry\022G\n\020mined_stat" +
+      "istics\030\020 \003(\0132-.ObservationSpaceMessage.M" +
+      "inedStatisticsEntry\022E\n\017misc_statistics\030\021" +
+      " \003(\0132,.ObservationSpaceMessage.MiscStati" +
+      "sticsEntry\0327\n\025KilledStatisticsEntry\022\013\n\003k" +
+      "ey\030\001 \001(\t\022\r\n\005value\030\002 \001(\005:\0028\001\0326\n\024MinedStat" +
+      "isticsEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\005:" +
+      "\0028\001\0325\n\023MiscStatisticsEntry\022\013\n\003key\030\001 \001(\t\022" +
+      "\r\n\005value\030\002 \001(\005:\0028\001B&\n$com.kyhsgeekcode.m" +
+      "inecraft_env.protob\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -7928,7 +8818,25 @@ public final class ObservationSpace {
     internal_static_ObservationSpaceMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ObservationSpaceMessage_descriptor,
-        new java.lang.String[] { "Image", "X", "Y", "Z", "Yaw", "Pitch", "Health", "FoodLevel", "SaturationLevel", "IsDead", "Inventory", "RaycastResult", "SoundSubtitles", "StatusEffects", });
+        new java.lang.String[] { "Image", "X", "Y", "Z", "Yaw", "Pitch", "Health", "FoodLevel", "SaturationLevel", "IsDead", "Inventory", "RaycastResult", "SoundSubtitles", "StatusEffects", "KilledStatistics", "MinedStatistics", "MiscStatistics", });
+    internal_static_ObservationSpaceMessage_KilledStatisticsEntry_descriptor =
+      internal_static_ObservationSpaceMessage_descriptor.getNestedTypes().get(0);
+    internal_static_ObservationSpaceMessage_KilledStatisticsEntry_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_ObservationSpaceMessage_KilledStatisticsEntry_descriptor,
+        new java.lang.String[] { "Key", "Value", });
+    internal_static_ObservationSpaceMessage_MinedStatisticsEntry_descriptor =
+      internal_static_ObservationSpaceMessage_descriptor.getNestedTypes().get(1);
+    internal_static_ObservationSpaceMessage_MinedStatisticsEntry_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_ObservationSpaceMessage_MinedStatisticsEntry_descriptor,
+        new java.lang.String[] { "Key", "Value", });
+    internal_static_ObservationSpaceMessage_MiscStatisticsEntry_descriptor =
+      internal_static_ObservationSpaceMessage_descriptor.getNestedTypes().get(2);
+    internal_static_ObservationSpaceMessage_MiscStatisticsEntry_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_ObservationSpaceMessage_MiscStatisticsEntry_descriptor,
+        new java.lang.String[] { "Key", "Value", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

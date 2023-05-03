@@ -175,6 +175,81 @@ public final class InitialEnvironment {
      */
     com.google.protobuf.ByteString
         getInitialExtraCommandsBytes(int index);
+
+    /**
+     * <code>repeated string killedStatKeys = 15;</code>
+     * @return A list containing the killedStatKeys.
+     */
+    java.util.List<java.lang.String>
+        getKilledStatKeysList();
+    /**
+     * <code>repeated string killedStatKeys = 15;</code>
+     * @return The count of killedStatKeys.
+     */
+    int getKilledStatKeysCount();
+    /**
+     * <code>repeated string killedStatKeys = 15;</code>
+     * @param index The index of the element to return.
+     * @return The killedStatKeys at the given index.
+     */
+    java.lang.String getKilledStatKeys(int index);
+    /**
+     * <code>repeated string killedStatKeys = 15;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the killedStatKeys at the given index.
+     */
+    com.google.protobuf.ByteString
+        getKilledStatKeysBytes(int index);
+
+    /**
+     * <code>repeated string minedStatKeys = 16;</code>
+     * @return A list containing the minedStatKeys.
+     */
+    java.util.List<java.lang.String>
+        getMinedStatKeysList();
+    /**
+     * <code>repeated string minedStatKeys = 16;</code>
+     * @return The count of minedStatKeys.
+     */
+    int getMinedStatKeysCount();
+    /**
+     * <code>repeated string minedStatKeys = 16;</code>
+     * @param index The index of the element to return.
+     * @return The minedStatKeys at the given index.
+     */
+    java.lang.String getMinedStatKeys(int index);
+    /**
+     * <code>repeated string minedStatKeys = 16;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the minedStatKeys at the given index.
+     */
+    com.google.protobuf.ByteString
+        getMinedStatKeysBytes(int index);
+
+    /**
+     * <code>repeated string miscStatKeys = 17;</code>
+     * @return A list containing the miscStatKeys.
+     */
+    java.util.List<java.lang.String>
+        getMiscStatKeysList();
+    /**
+     * <code>repeated string miscStatKeys = 17;</code>
+     * @return The count of miscStatKeys.
+     */
+    int getMiscStatKeysCount();
+    /**
+     * <code>repeated string miscStatKeys = 17;</code>
+     * @param index The index of the element to return.
+     * @return The miscStatKeys at the given index.
+     */
+    java.lang.String getMiscStatKeys(int index);
+    /**
+     * <code>repeated string miscStatKeys = 17;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the miscStatKeys at the given index.
+     */
+    com.google.protobuf.ByteString
+        getMiscStatKeysBytes(int index);
   }
   /**
    * Protobuf type {@code InitialEnvironmentMessage}
@@ -194,6 +269,9 @@ public final class InitialEnvironment {
       initialMobsCommands_ = com.google.protobuf.LazyStringArrayList.EMPTY;
       initialWeather_ = "";
       initialExtraCommands_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      killedStatKeys_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      minedStatKeys_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      miscStatKeys_ = com.google.protobuf.LazyStringArrayList.EMPTY;
     }
 
     @java.lang.Override
@@ -496,6 +574,114 @@ public final class InitialEnvironment {
       return initialExtraCommands_.getByteString(index);
     }
 
+    public static final int KILLEDSTATKEYS_FIELD_NUMBER = 15;
+    @SuppressWarnings("serial")
+    private com.google.protobuf.LazyStringList killedStatKeys_;
+    /**
+     * <code>repeated string killedStatKeys = 15;</code>
+     * @return A list containing the killedStatKeys.
+     */
+    public com.google.protobuf.ProtocolStringList
+        getKilledStatKeysList() {
+      return killedStatKeys_;
+    }
+    /**
+     * <code>repeated string killedStatKeys = 15;</code>
+     * @return The count of killedStatKeys.
+     */
+    public int getKilledStatKeysCount() {
+      return killedStatKeys_.size();
+    }
+    /**
+     * <code>repeated string killedStatKeys = 15;</code>
+     * @param index The index of the element to return.
+     * @return The killedStatKeys at the given index.
+     */
+    public java.lang.String getKilledStatKeys(int index) {
+      return killedStatKeys_.get(index);
+    }
+    /**
+     * <code>repeated string killedStatKeys = 15;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the killedStatKeys at the given index.
+     */
+    public com.google.protobuf.ByteString
+        getKilledStatKeysBytes(int index) {
+      return killedStatKeys_.getByteString(index);
+    }
+
+    public static final int MINEDSTATKEYS_FIELD_NUMBER = 16;
+    @SuppressWarnings("serial")
+    private com.google.protobuf.LazyStringList minedStatKeys_;
+    /**
+     * <code>repeated string minedStatKeys = 16;</code>
+     * @return A list containing the minedStatKeys.
+     */
+    public com.google.protobuf.ProtocolStringList
+        getMinedStatKeysList() {
+      return minedStatKeys_;
+    }
+    /**
+     * <code>repeated string minedStatKeys = 16;</code>
+     * @return The count of minedStatKeys.
+     */
+    public int getMinedStatKeysCount() {
+      return minedStatKeys_.size();
+    }
+    /**
+     * <code>repeated string minedStatKeys = 16;</code>
+     * @param index The index of the element to return.
+     * @return The minedStatKeys at the given index.
+     */
+    public java.lang.String getMinedStatKeys(int index) {
+      return minedStatKeys_.get(index);
+    }
+    /**
+     * <code>repeated string minedStatKeys = 16;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the minedStatKeys at the given index.
+     */
+    public com.google.protobuf.ByteString
+        getMinedStatKeysBytes(int index) {
+      return minedStatKeys_.getByteString(index);
+    }
+
+    public static final int MISCSTATKEYS_FIELD_NUMBER = 17;
+    @SuppressWarnings("serial")
+    private com.google.protobuf.LazyStringList miscStatKeys_;
+    /**
+     * <code>repeated string miscStatKeys = 17;</code>
+     * @return A list containing the miscStatKeys.
+     */
+    public com.google.protobuf.ProtocolStringList
+        getMiscStatKeysList() {
+      return miscStatKeys_;
+    }
+    /**
+     * <code>repeated string miscStatKeys = 17;</code>
+     * @return The count of miscStatKeys.
+     */
+    public int getMiscStatKeysCount() {
+      return miscStatKeys_.size();
+    }
+    /**
+     * <code>repeated string miscStatKeys = 17;</code>
+     * @param index The index of the element to return.
+     * @return The miscStatKeys at the given index.
+     */
+    public java.lang.String getMiscStatKeys(int index) {
+      return miscStatKeys_.get(index);
+    }
+    /**
+     * <code>repeated string miscStatKeys = 17;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the miscStatKeys at the given index.
+     */
+    public com.google.protobuf.ByteString
+        getMiscStatKeysBytes(int index) {
+      return miscStatKeys_.getByteString(index);
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -556,6 +742,15 @@ public final class InitialEnvironment {
       }
       for (int i = 0; i < initialExtraCommands_.size(); i++) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 14, initialExtraCommands_.getRaw(i));
+      }
+      for (int i = 0; i < killedStatKeys_.size(); i++) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 15, killedStatKeys_.getRaw(i));
+      }
+      for (int i = 0; i < minedStatKeys_.size(); i++) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 16, minedStatKeys_.getRaw(i));
+      }
+      for (int i = 0; i < miscStatKeys_.size(); i++) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 17, miscStatKeys_.getRaw(i));
       }
       getUnknownFields().writeTo(output);
     }
@@ -643,6 +838,30 @@ public final class InitialEnvironment {
         size += dataSize;
         size += 1 * getInitialExtraCommandsList().size();
       }
+      {
+        int dataSize = 0;
+        for (int i = 0; i < killedStatKeys_.size(); i++) {
+          dataSize += computeStringSizeNoTag(killedStatKeys_.getRaw(i));
+        }
+        size += dataSize;
+        size += 1 * getKilledStatKeysList().size();
+      }
+      {
+        int dataSize = 0;
+        for (int i = 0; i < minedStatKeys_.size(); i++) {
+          dataSize += computeStringSizeNoTag(minedStatKeys_.getRaw(i));
+        }
+        size += dataSize;
+        size += 2 * getMinedStatKeysList().size();
+      }
+      {
+        int dataSize = 0;
+        for (int i = 0; i < miscStatKeys_.size(); i++) {
+          dataSize += computeStringSizeNoTag(miscStatKeys_.getRaw(i));
+        }
+        size += dataSize;
+        size += 2 * getMiscStatKeysList().size();
+      }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
@@ -686,6 +905,12 @@ public final class InitialEnvironment {
           != other.getVisibleSizeY()) return false;
       if (!getInitialExtraCommandsList()
           .equals(other.getInitialExtraCommandsList())) return false;
+      if (!getKilledStatKeysList()
+          .equals(other.getKilledStatKeysList())) return false;
+      if (!getMinedStatKeysList()
+          .equals(other.getMinedStatKeysList())) return false;
+      if (!getMiscStatKeysList()
+          .equals(other.getMiscStatKeysList())) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -737,6 +962,18 @@ public final class InitialEnvironment {
       if (getInitialExtraCommandsCount() > 0) {
         hash = (37 * hash) + INITIALEXTRACOMMANDS_FIELD_NUMBER;
         hash = (53 * hash) + getInitialExtraCommandsList().hashCode();
+      }
+      if (getKilledStatKeysCount() > 0) {
+        hash = (37 * hash) + KILLEDSTATKEYS_FIELD_NUMBER;
+        hash = (53 * hash) + getKilledStatKeysList().hashCode();
+      }
+      if (getMinedStatKeysCount() > 0) {
+        hash = (37 * hash) + MINEDSTATKEYS_FIELD_NUMBER;
+        hash = (53 * hash) + getMinedStatKeysList().hashCode();
+      }
+      if (getMiscStatKeysCount() > 0) {
+        hash = (37 * hash) + MISCSTATKEYS_FIELD_NUMBER;
+        hash = (53 * hash) + getMiscStatKeysList().hashCode();
       }
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
@@ -884,6 +1121,12 @@ public final class InitialEnvironment {
         visibleSizeY_ = 0;
         initialExtraCommands_ = com.google.protobuf.LazyStringArrayList.EMPTY;
         bitField0_ = (bitField0_ & ~0x00002000);
+        killedStatKeys_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00004000);
+        minedStatKeys_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00008000);
+        miscStatKeys_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00010000);
         return this;
       }
 
@@ -937,6 +1180,21 @@ public final class InitialEnvironment {
           bitField0_ = (bitField0_ & ~0x00002000);
         }
         result.initialExtraCommands_ = initialExtraCommands_;
+        if (((bitField0_ & 0x00004000) != 0)) {
+          killedStatKeys_ = killedStatKeys_.getUnmodifiableView();
+          bitField0_ = (bitField0_ & ~0x00004000);
+        }
+        result.killedStatKeys_ = killedStatKeys_;
+        if (((bitField0_ & 0x00008000) != 0)) {
+          minedStatKeys_ = minedStatKeys_.getUnmodifiableView();
+          bitField0_ = (bitField0_ & ~0x00008000);
+        }
+        result.minedStatKeys_ = minedStatKeys_;
+        if (((bitField0_ & 0x00010000) != 0)) {
+          miscStatKeys_ = miscStatKeys_.getUnmodifiableView();
+          bitField0_ = (bitField0_ & ~0x00010000);
+        }
+        result.miscStatKeys_ = miscStatKeys_;
       }
 
       private void buildPartial0(com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage result) {
@@ -1089,6 +1347,36 @@ public final class InitialEnvironment {
           }
           onChanged();
         }
+        if (!other.killedStatKeys_.isEmpty()) {
+          if (killedStatKeys_.isEmpty()) {
+            killedStatKeys_ = other.killedStatKeys_;
+            bitField0_ = (bitField0_ & ~0x00004000);
+          } else {
+            ensureKilledStatKeysIsMutable();
+            killedStatKeys_.addAll(other.killedStatKeys_);
+          }
+          onChanged();
+        }
+        if (!other.minedStatKeys_.isEmpty()) {
+          if (minedStatKeys_.isEmpty()) {
+            minedStatKeys_ = other.minedStatKeys_;
+            bitField0_ = (bitField0_ & ~0x00008000);
+          } else {
+            ensureMinedStatKeysIsMutable();
+            minedStatKeys_.addAll(other.minedStatKeys_);
+          }
+          onChanged();
+        }
+        if (!other.miscStatKeys_.isEmpty()) {
+          if (miscStatKeys_.isEmpty()) {
+            miscStatKeys_ = other.miscStatKeys_;
+            bitField0_ = (bitField0_ & ~0x00010000);
+          } else {
+            ensureMiscStatKeysIsMutable();
+            miscStatKeys_.addAll(other.miscStatKeys_);
+          }
+          onChanged();
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
@@ -1199,6 +1487,24 @@ public final class InitialEnvironment {
                 initialExtraCommands_.add(s);
                 break;
               } // case 114
+              case 122: {
+                java.lang.String s = input.readStringRequireUtf8();
+                ensureKilledStatKeysIsMutable();
+                killedStatKeys_.add(s);
+                break;
+              } // case 122
+              case 130: {
+                java.lang.String s = input.readStringRequireUtf8();
+                ensureMinedStatKeysIsMutable();
+                minedStatKeys_.add(s);
+                break;
+              } // case 130
+              case 138: {
+                java.lang.String s = input.readStringRequireUtf8();
+                ensureMiscStatKeysIsMutable();
+                miscStatKeys_.add(s);
+                break;
+              } // case 138
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -1968,6 +2274,318 @@ public final class InitialEnvironment {
         onChanged();
         return this;
       }
+
+      private com.google.protobuf.LazyStringList killedStatKeys_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      private void ensureKilledStatKeysIsMutable() {
+        if (!((bitField0_ & 0x00004000) != 0)) {
+          killedStatKeys_ = new com.google.protobuf.LazyStringArrayList(killedStatKeys_);
+          bitField0_ |= 0x00004000;
+         }
+      }
+      /**
+       * <code>repeated string killedStatKeys = 15;</code>
+       * @return A list containing the killedStatKeys.
+       */
+      public com.google.protobuf.ProtocolStringList
+          getKilledStatKeysList() {
+        return killedStatKeys_.getUnmodifiableView();
+      }
+      /**
+       * <code>repeated string killedStatKeys = 15;</code>
+       * @return The count of killedStatKeys.
+       */
+      public int getKilledStatKeysCount() {
+        return killedStatKeys_.size();
+      }
+      /**
+       * <code>repeated string killedStatKeys = 15;</code>
+       * @param index The index of the element to return.
+       * @return The killedStatKeys at the given index.
+       */
+      public java.lang.String getKilledStatKeys(int index) {
+        return killedStatKeys_.get(index);
+      }
+      /**
+       * <code>repeated string killedStatKeys = 15;</code>
+       * @param index The index of the value to return.
+       * @return The bytes of the killedStatKeys at the given index.
+       */
+      public com.google.protobuf.ByteString
+          getKilledStatKeysBytes(int index) {
+        return killedStatKeys_.getByteString(index);
+      }
+      /**
+       * <code>repeated string killedStatKeys = 15;</code>
+       * @param index The index to set the value at.
+       * @param value The killedStatKeys to set.
+       * @return This builder for chaining.
+       */
+      public Builder setKilledStatKeys(
+          int index, java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        ensureKilledStatKeysIsMutable();
+        killedStatKeys_.set(index, value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string killedStatKeys = 15;</code>
+       * @param value The killedStatKeys to add.
+       * @return This builder for chaining.
+       */
+      public Builder addKilledStatKeys(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        ensureKilledStatKeysIsMutable();
+        killedStatKeys_.add(value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string killedStatKeys = 15;</code>
+       * @param values The killedStatKeys to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllKilledStatKeys(
+          java.lang.Iterable<java.lang.String> values) {
+        ensureKilledStatKeysIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, killedStatKeys_);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string killedStatKeys = 15;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearKilledStatKeys() {
+        killedStatKeys_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00004000);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string killedStatKeys = 15;</code>
+       * @param value The bytes of the killedStatKeys to add.
+       * @return This builder for chaining.
+       */
+      public Builder addKilledStatKeysBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        ensureKilledStatKeysIsMutable();
+        killedStatKeys_.add(value);
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.LazyStringList minedStatKeys_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      private void ensureMinedStatKeysIsMutable() {
+        if (!((bitField0_ & 0x00008000) != 0)) {
+          minedStatKeys_ = new com.google.protobuf.LazyStringArrayList(minedStatKeys_);
+          bitField0_ |= 0x00008000;
+         }
+      }
+      /**
+       * <code>repeated string minedStatKeys = 16;</code>
+       * @return A list containing the minedStatKeys.
+       */
+      public com.google.protobuf.ProtocolStringList
+          getMinedStatKeysList() {
+        return minedStatKeys_.getUnmodifiableView();
+      }
+      /**
+       * <code>repeated string minedStatKeys = 16;</code>
+       * @return The count of minedStatKeys.
+       */
+      public int getMinedStatKeysCount() {
+        return minedStatKeys_.size();
+      }
+      /**
+       * <code>repeated string minedStatKeys = 16;</code>
+       * @param index The index of the element to return.
+       * @return The minedStatKeys at the given index.
+       */
+      public java.lang.String getMinedStatKeys(int index) {
+        return minedStatKeys_.get(index);
+      }
+      /**
+       * <code>repeated string minedStatKeys = 16;</code>
+       * @param index The index of the value to return.
+       * @return The bytes of the minedStatKeys at the given index.
+       */
+      public com.google.protobuf.ByteString
+          getMinedStatKeysBytes(int index) {
+        return minedStatKeys_.getByteString(index);
+      }
+      /**
+       * <code>repeated string minedStatKeys = 16;</code>
+       * @param index The index to set the value at.
+       * @param value The minedStatKeys to set.
+       * @return This builder for chaining.
+       */
+      public Builder setMinedStatKeys(
+          int index, java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        ensureMinedStatKeysIsMutable();
+        minedStatKeys_.set(index, value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string minedStatKeys = 16;</code>
+       * @param value The minedStatKeys to add.
+       * @return This builder for chaining.
+       */
+      public Builder addMinedStatKeys(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        ensureMinedStatKeysIsMutable();
+        minedStatKeys_.add(value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string minedStatKeys = 16;</code>
+       * @param values The minedStatKeys to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllMinedStatKeys(
+          java.lang.Iterable<java.lang.String> values) {
+        ensureMinedStatKeysIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, minedStatKeys_);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string minedStatKeys = 16;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearMinedStatKeys() {
+        minedStatKeys_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00008000);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string minedStatKeys = 16;</code>
+       * @param value The bytes of the minedStatKeys to add.
+       * @return This builder for chaining.
+       */
+      public Builder addMinedStatKeysBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        ensureMinedStatKeysIsMutable();
+        minedStatKeys_.add(value);
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.LazyStringList miscStatKeys_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      private void ensureMiscStatKeysIsMutable() {
+        if (!((bitField0_ & 0x00010000) != 0)) {
+          miscStatKeys_ = new com.google.protobuf.LazyStringArrayList(miscStatKeys_);
+          bitField0_ |= 0x00010000;
+         }
+      }
+      /**
+       * <code>repeated string miscStatKeys = 17;</code>
+       * @return A list containing the miscStatKeys.
+       */
+      public com.google.protobuf.ProtocolStringList
+          getMiscStatKeysList() {
+        return miscStatKeys_.getUnmodifiableView();
+      }
+      /**
+       * <code>repeated string miscStatKeys = 17;</code>
+       * @return The count of miscStatKeys.
+       */
+      public int getMiscStatKeysCount() {
+        return miscStatKeys_.size();
+      }
+      /**
+       * <code>repeated string miscStatKeys = 17;</code>
+       * @param index The index of the element to return.
+       * @return The miscStatKeys at the given index.
+       */
+      public java.lang.String getMiscStatKeys(int index) {
+        return miscStatKeys_.get(index);
+      }
+      /**
+       * <code>repeated string miscStatKeys = 17;</code>
+       * @param index The index of the value to return.
+       * @return The bytes of the miscStatKeys at the given index.
+       */
+      public com.google.protobuf.ByteString
+          getMiscStatKeysBytes(int index) {
+        return miscStatKeys_.getByteString(index);
+      }
+      /**
+       * <code>repeated string miscStatKeys = 17;</code>
+       * @param index The index to set the value at.
+       * @param value The miscStatKeys to set.
+       * @return This builder for chaining.
+       */
+      public Builder setMiscStatKeys(
+          int index, java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        ensureMiscStatKeysIsMutable();
+        miscStatKeys_.set(index, value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string miscStatKeys = 17;</code>
+       * @param value The miscStatKeys to add.
+       * @return This builder for chaining.
+       */
+      public Builder addMiscStatKeys(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        ensureMiscStatKeysIsMutable();
+        miscStatKeys_.add(value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string miscStatKeys = 17;</code>
+       * @param values The miscStatKeys to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllMiscStatKeys(
+          java.lang.Iterable<java.lang.String> values) {
+        ensureMiscStatKeysIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, miscStatKeys_);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string miscStatKeys = 17;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearMiscStatKeys() {
+        miscStatKeys_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00010000);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string miscStatKeys = 17;</code>
+       * @param value The bytes of the miscStatKeys to add.
+       * @return This builder for chaining.
+       */
+      public Builder addMiscStatKeysBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        ensureMiscStatKeysIsMutable();
+        miscStatKeys_.add(value);
+        onChanged();
+        return this;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -2046,7 +2664,7 @@ public final class InitialEnvironment {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\031initial_environment.proto\"\337\002\n\031InitialE" +
+      "\n\031initial_environment.proto\"\244\003\n\031InitialE" +
       "nvironmentMessage\022 \n\030initialInventoryCom" +
       "mands\030\001 \003(\t\022\027\n\017initialPosition\030\002 \003(\005\022\033\n\023" +
       "initialMobsCommands\030\003 \003(\t\022\022\n\nimageSizeX\030" +
@@ -2055,8 +2673,10 @@ public final class InitialEnvironment {
       "\001(\010\022\021\n\talwaysDay\030\t \001(\010\022\026\n\016initialWeather" +
       "\030\n \001(\t\022\023\n\013isWorldFlat\030\013 \001(\010\022\024\n\014visibleSi" +
       "zeX\030\014 \001(\005\022\024\n\014visibleSizeY\030\r \001(\005\022\034\n\024initi" +
-      "alExtraCommands\030\016 \003(\tB&\n$com.kyhsgeekcod" +
-      "e.minecraft_env.protob\006proto3"
+      "alExtraCommands\030\016 \003(\t\022\026\n\016killedStatKeys\030" +
+      "\017 \003(\t\022\025\n\rminedStatKeys\030\020 \003(\t\022\024\n\014miscStat" +
+      "Keys\030\021 \003(\tB&\n$com.kyhsgeekcode.minecraft" +
+      "_env.protob\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -2067,7 +2687,7 @@ public final class InitialEnvironment {
     internal_static_InitialEnvironmentMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_InitialEnvironmentMessage_descriptor,
-        new java.lang.String[] { "InitialInventoryCommands", "InitialPosition", "InitialMobsCommands", "ImageSizeX", "ImageSizeY", "Seed", "AllowMobSpawn", "AlwaysNight", "AlwaysDay", "InitialWeather", "IsWorldFlat", "VisibleSizeX", "VisibleSizeY", "InitialExtraCommands", });
+        new java.lang.String[] { "InitialInventoryCommands", "InitialPosition", "InitialMobsCommands", "ImageSizeX", "ImageSizeY", "Seed", "AllowMobSpawn", "AlwaysNight", "AlwaysDay", "InitialWeather", "IsWorldFlat", "VisibleSizeX", "VisibleSizeY", "InitialExtraCommands", "KilledStatKeys", "MinedStatKeys", "MiscStatKeys", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

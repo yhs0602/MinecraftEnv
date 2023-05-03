@@ -431,6 +431,189 @@ public object ObservationSpaceMessageKt {
       _builder.clearStatusEffects()
     }
 
+
+    /**
+     * An uninstantiable, behaviorless type to represent the field in
+     * generics.
+     */
+    @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
+    public class KilledStatisticsProxy private constructor() : com.google.protobuf.kotlin.DslProxy()
+    /**
+     * <code>map&lt;string, int32&gt; killed_statistics = 15;</code>
+     */
+     public val killedStatistics: com.google.protobuf.kotlin.DslMap<kotlin.String, kotlin.Int, KilledStatisticsProxy>
+      @kotlin.jvm.JvmSynthetic
+      @JvmName("getKilledStatisticsMap")
+      get() = com.google.protobuf.kotlin.DslMap(
+        _builder.getKilledStatisticsMap()
+      )
+    /**
+     * <code>map&lt;string, int32&gt; killed_statistics = 15;</code>
+     */
+    @JvmName("putKilledStatistics")
+    public fun com.google.protobuf.kotlin.DslMap<kotlin.String, kotlin.Int, KilledStatisticsProxy>
+      .put(key: kotlin.String, value: kotlin.Int) {
+         _builder.putKilledStatistics(key, value)
+       }
+    /**
+     * <code>map&lt;string, int32&gt; killed_statistics = 15;</code>
+     */
+    @kotlin.jvm.JvmSynthetic
+    @JvmName("setKilledStatistics")
+    @Suppress("NOTHING_TO_INLINE")
+    public inline operator fun com.google.protobuf.kotlin.DslMap<kotlin.String, kotlin.Int, KilledStatisticsProxy>
+      .set(key: kotlin.String, value: kotlin.Int) {
+         put(key, value)
+       }
+    /**
+     * <code>map&lt;string, int32&gt; killed_statistics = 15;</code>
+     */
+    @kotlin.jvm.JvmSynthetic
+    @JvmName("removeKilledStatistics")
+    public fun com.google.protobuf.kotlin.DslMap<kotlin.String, kotlin.Int, KilledStatisticsProxy>
+      .remove(key: kotlin.String) {
+         _builder.removeKilledStatistics(key)
+       }
+    /**
+     * <code>map&lt;string, int32&gt; killed_statistics = 15;</code>
+     */
+    @kotlin.jvm.JvmSynthetic
+    @JvmName("putAllKilledStatistics")
+    public fun com.google.protobuf.kotlin.DslMap<kotlin.String, kotlin.Int, KilledStatisticsProxy>
+      .putAll(map: kotlin.collections.Map<kotlin.String, kotlin.Int>) {
+         _builder.putAllKilledStatistics(map)
+       }
+    /**
+     * <code>map&lt;string, int32&gt; killed_statistics = 15;</code>
+     */
+    @kotlin.jvm.JvmSynthetic
+    @JvmName("clearKilledStatistics")
+    public fun com.google.protobuf.kotlin.DslMap<kotlin.String, kotlin.Int, KilledStatisticsProxy>
+      .clear() {
+         _builder.clearKilledStatistics()
+       }
+
+    /**
+     * An uninstantiable, behaviorless type to represent the field in
+     * generics.
+     */
+    @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
+    public class MinedStatisticsProxy private constructor() : com.google.protobuf.kotlin.DslProxy()
+    /**
+     * <code>map&lt;string, int32&gt; mined_statistics = 16;</code>
+     */
+     public val minedStatistics: com.google.protobuf.kotlin.DslMap<kotlin.String, kotlin.Int, MinedStatisticsProxy>
+      @kotlin.jvm.JvmSynthetic
+      @JvmName("getMinedStatisticsMap")
+      get() = com.google.protobuf.kotlin.DslMap(
+        _builder.getMinedStatisticsMap()
+      )
+    /**
+     * <code>map&lt;string, int32&gt; mined_statistics = 16;</code>
+     */
+    @JvmName("putMinedStatistics")
+    public fun com.google.protobuf.kotlin.DslMap<kotlin.String, kotlin.Int, MinedStatisticsProxy>
+      .put(key: kotlin.String, value: kotlin.Int) {
+         _builder.putMinedStatistics(key, value)
+       }
+    /**
+     * <code>map&lt;string, int32&gt; mined_statistics = 16;</code>
+     */
+    @kotlin.jvm.JvmSynthetic
+    @JvmName("setMinedStatistics")
+    @Suppress("NOTHING_TO_INLINE")
+    public inline operator fun com.google.protobuf.kotlin.DslMap<kotlin.String, kotlin.Int, MinedStatisticsProxy>
+      .set(key: kotlin.String, value: kotlin.Int) {
+         put(key, value)
+       }
+    /**
+     * <code>map&lt;string, int32&gt; mined_statistics = 16;</code>
+     */
+    @kotlin.jvm.JvmSynthetic
+    @JvmName("removeMinedStatistics")
+    public fun com.google.protobuf.kotlin.DslMap<kotlin.String, kotlin.Int, MinedStatisticsProxy>
+      .remove(key: kotlin.String) {
+         _builder.removeMinedStatistics(key)
+       }
+    /**
+     * <code>map&lt;string, int32&gt; mined_statistics = 16;</code>
+     */
+    @kotlin.jvm.JvmSynthetic
+    @JvmName("putAllMinedStatistics")
+    public fun com.google.protobuf.kotlin.DslMap<kotlin.String, kotlin.Int, MinedStatisticsProxy>
+      .putAll(map: kotlin.collections.Map<kotlin.String, kotlin.Int>) {
+         _builder.putAllMinedStatistics(map)
+       }
+    /**
+     * <code>map&lt;string, int32&gt; mined_statistics = 16;</code>
+     */
+    @kotlin.jvm.JvmSynthetic
+    @JvmName("clearMinedStatistics")
+    public fun com.google.protobuf.kotlin.DslMap<kotlin.String, kotlin.Int, MinedStatisticsProxy>
+      .clear() {
+         _builder.clearMinedStatistics()
+       }
+
+    /**
+     * An uninstantiable, behaviorless type to represent the field in
+     * generics.
+     */
+    @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
+    public class MiscStatisticsProxy private constructor() : com.google.protobuf.kotlin.DslProxy()
+    /**
+     * <code>map&lt;string, int32&gt; misc_statistics = 17;</code>
+     */
+     public val miscStatistics: com.google.protobuf.kotlin.DslMap<kotlin.String, kotlin.Int, MiscStatisticsProxy>
+      @kotlin.jvm.JvmSynthetic
+      @JvmName("getMiscStatisticsMap")
+      get() = com.google.protobuf.kotlin.DslMap(
+        _builder.getMiscStatisticsMap()
+      )
+    /**
+     * <code>map&lt;string, int32&gt; misc_statistics = 17;</code>
+     */
+    @JvmName("putMiscStatistics")
+    public fun com.google.protobuf.kotlin.DslMap<kotlin.String, kotlin.Int, MiscStatisticsProxy>
+      .put(key: kotlin.String, value: kotlin.Int) {
+         _builder.putMiscStatistics(key, value)
+       }
+    /**
+     * <code>map&lt;string, int32&gt; misc_statistics = 17;</code>
+     */
+    @kotlin.jvm.JvmSynthetic
+    @JvmName("setMiscStatistics")
+    @Suppress("NOTHING_TO_INLINE")
+    public inline operator fun com.google.protobuf.kotlin.DslMap<kotlin.String, kotlin.Int, MiscStatisticsProxy>
+      .set(key: kotlin.String, value: kotlin.Int) {
+         put(key, value)
+       }
+    /**
+     * <code>map&lt;string, int32&gt; misc_statistics = 17;</code>
+     */
+    @kotlin.jvm.JvmSynthetic
+    @JvmName("removeMiscStatistics")
+    public fun com.google.protobuf.kotlin.DslMap<kotlin.String, kotlin.Int, MiscStatisticsProxy>
+      .remove(key: kotlin.String) {
+         _builder.removeMiscStatistics(key)
+       }
+    /**
+     * <code>map&lt;string, int32&gt; misc_statistics = 17;</code>
+     */
+    @kotlin.jvm.JvmSynthetic
+    @JvmName("putAllMiscStatistics")
+    public fun com.google.protobuf.kotlin.DslMap<kotlin.String, kotlin.Int, MiscStatisticsProxy>
+      .putAll(map: kotlin.collections.Map<kotlin.String, kotlin.Int>) {
+         _builder.putAllMiscStatistics(map)
+       }
+    /**
+     * <code>map&lt;string, int32&gt; misc_statistics = 17;</code>
+     */
+    @kotlin.jvm.JvmSynthetic
+    @JvmName("clearMiscStatistics")
+    public fun com.google.protobuf.kotlin.DslMap<kotlin.String, kotlin.Int, MiscStatisticsProxy>
+      .clear() {
+         _builder.clearMiscStatistics()
+       }
   }
 }
 @kotlin.jvm.JvmSynthetic
