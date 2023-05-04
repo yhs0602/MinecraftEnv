@@ -353,7 +353,13 @@ class Minecraft_env : ModInitializer, CommandExecutor {
         try {
             ScreenshotRecorder.takeScreenshot(buffer).use { screenshot ->
                 val byteArray =
-                    encodeImageToBytes(screenshot, initialEnvironment.imageSizeX, initialEnvironment.imageSizeY)
+                    encodeImageToBytes(
+                        screenshot,
+                        initialEnvironment.visibleSizeX,
+                        initialEnvironment.visibleSizeY,
+                        initialEnvironment.imageSizeX,
+                        initialEnvironment.imageSizeY
+                    )
                 val pos = player.pos
                 val playerInventory = player.inventory
                 val mainInventory = playerInventory.main.map {
@@ -419,7 +425,6 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                 }
                 // for entitytype in requested entity type stats
                 // get stat and add to result (map)
-
 
 
                 val observationSpaceMessage = observationSpaceMessage {
@@ -567,7 +572,15 @@ fun encodeImageToBase64Png(image: NativeImage, targetSizeX: Int, targetSizeY: In
 }
 
 @Throws(IOException::class)
-fun encodeImageToBytes(image: NativeImage, targetSizeX: Int, targetSizeY: Int): ByteArray {
+fun encodeImageToBytes(
+    image: NativeImage,
+    originalSizeX: Int,
+    originalSizeY: Int,
+    targetSizeX: Int,
+    targetSizeY: Int
+): ByteArray {
+    if (originalSizeX == targetSizeX && originalSizeY == targetSizeY)
+        return image.bytes
     val data = image.bytes
     val originalImage = ImageIO.read(ByteArrayInputStream(data))
     val resizedImage = BufferedImage(targetSizeX, targetSizeY, originalImage.type)
