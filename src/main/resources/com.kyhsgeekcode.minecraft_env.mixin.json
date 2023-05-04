@@ -10,6 +10,7 @@
     "ClientDoItemUseInvoker",
     "ClientEntityRenderDispatcherAccessor",
     "ClientWorldMixin",
+    "KeyboardInputMixin",
     "RenderTickCounterAccessor",
     "TickSpeedMixin",
     "WorldRendererCallEntityRenderMixin"

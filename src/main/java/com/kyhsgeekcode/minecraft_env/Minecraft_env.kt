@@ -87,7 +87,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
         inputStream: InputStream,
         world: ClientWorld
     ) {
-        println("start time: " + world.time)
+//        println("start time: " + world.time)
         val client = MinecraftClient.getInstance()
         soundListener!!.onTick()
         if (client.isPaused) return
@@ -145,7 +145,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
             }
             return
         }
-        println("real start time: " + world.time)
+//        println("real start time: " + world.time)
         // Disable pause on lost focus
         val options = client.options
         if (options != null) {
@@ -178,6 +178,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                 return
             }
             if (player.isDead) return else client.setScreen(null)
+//            println("IS sneaking: ${player.isSneaking}")
             val actionArray = action.actionList
             if (actionArray.isEmpty()) {
                 println("actionArray is empty")
@@ -193,40 +194,63 @@ class Minecraft_env : ModInitializer, CommandExecutor {
             val argCraft = actionArray[6]
             val argInventory = actionArray[7]
             when (movementFB) {
+                0 -> {
+                    player.input.pressingForward = false
+                    player.input.pressingBack = false
+                }
+
                 1 -> {
-                    player.travel(Vec3d(0.0, 0.0, 1.0)) // sideway, upward, forward
+                    player.input.pressingForward = true
+                    player.input.pressingBack = false
+//                    player.travel(Vec3d(0.0, 0.0, 1.0)) // sideway, upward, forward
                 }
 
                 2 -> {
-                    player.travel(Vec3d(0.0, 0.0, -1.0))
+                    player.input.pressingForward = false
+                    player.input.pressingBack = true
                 }
             }
             when (movementLR) {
+                0 -> {
+                    player.input.pressingRight = false
+                    player.input.pressingLeft = false
+                }
+
                 1 -> {
-                    player.travel(Vec3d(1.0, 0.0, 0.0))
+                    player.input.pressingRight = true
+                    player.input.pressingLeft = false
                 }
 
                 2 -> {
-                    player.travel(Vec3d(-1.0, 0.0, 0.0))
+                    player.input.pressingRight = false
+                    player.input.pressingLeft = true
+//                    player.travel(Vec3d(-1.0, 0.0, 0.0))
                 }
             }
             when (jumpSneakSprint) {
                 0 -> {
-                    player.isSneaking = false
-                    player.isSprinting = false
+//                    println("Sneaking reset")
+                    player.input.jumping = false
+                    player.input.sneaking = false
+//                    player.isSprinting = false
                 }
 
                 1 -> {
-                    if (player.isOnGround) {
-                        player.jump()
-                    }
+                    player.input.jumping = true
+                    player.input.sneaking = false
+//                    if (player.isOnGround) {
+//                        player.jump()
+//                    }
                 }
 
                 2 -> {
-                    player.isSneaking = true
+                    player.input.jumping = false
+                    player.input.sneaking = true
                 }
 
                 3 -> {
+                    player.input.jumping = false
+                    player.input.sneaking = false
                     player.isSprinting = true
                 }
             }
@@ -315,20 +339,20 @@ class Minecraft_env : ModInitializer, CommandExecutor {
 //    }
 
     private fun readAction(inputStream: InputStream): ActionSpaceMessage {
-        println("Reading action space")
+//        println("Reading action space")
         // read action from inputStream using protobuf
         val buffer = ByteBuffer.allocate(Integer.BYTES) // 4 bytes
         inputStream.read(buffer.array())
         val len = buffer.order(java.nio.ByteOrder.LITTLE_ENDIAN).int
         val bytes = inputStream.readNBytes(len)
-        println("Read action space bytes $len")
+//        println("Read action space bytes $len")
         val actionSpace = ActionSpaceMessage.parseFrom(bytes)
-        println("Read action space")
+//        println("Read action space")
         return actionSpace
     }
 
     private fun sendObservation(outputStream: OutputStream, world: World, initializer: EnvironmentInitializer) {
-        println("send time: " + world.time)
+//        println("send time: " + world.time)
         val client = MinecraftClient.getInstance()
         val player = client.player
         if (player == null) {
@@ -345,7 +369,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
         } else {
 //            System.out.println("Is resetting: false, is world init finished:" + initializer.getInitWorldFinished());
         }
-        println("real send time: " + world.time)
+//        println("real send time: " + world.time)
         val buffer = client.framebuffer
         try {
             ScreenshotRecorder.takeScreenshot(buffer).use { screenshot ->
@@ -420,14 +444,14 @@ class Minecraft_env : ModInitializer, CommandExecutor {
         observationSpace: com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ObservationSpaceMessage,
         outputStream: OutputStream
     ) {
-        println("Writing observation with size ${observationSpace.serializedSize}")
+//        println("Writing observation with size ${observationSpace.serializedSize}")
         val dataOutputStream = LittleEndianDataOutputStream(outputStream)
         dataOutputStream.writeInt(observationSpace.serializedSize)
-        println("Wrote observation size ${observationSpace.serializedSize}")
+//        println("Wrote observation size ${observationSpace.serializedSize}")
         observationSpace.writeTo(outputStream)
-        println("Wrote observation ${observationSpace.serializedSize}")
+//        println("Wrote observation ${observationSpace.serializedSize}")
         outputStream.flush()
-        println("Flushed")
+//        println("Flushed")
     }
 
     private fun readInitialEnvironment(inputStream: InputStream, outputStream: OutputStream) {
