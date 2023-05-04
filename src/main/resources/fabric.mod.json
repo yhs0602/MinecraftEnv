@@ -26,5 +26,12 @@
   },
   "mixins": [
     "com.kyhsgeekcode.minecraft_env.mixin.json"
-  ]
+  ],
+  "custom": {
+    "loom:injected_interfaces": {
+      "net/minecraft/class_761": [
+          "com/kyhsgeekcode/minecraft_env/AddListenerInterface"
+      ]
+    }
+  }
 }

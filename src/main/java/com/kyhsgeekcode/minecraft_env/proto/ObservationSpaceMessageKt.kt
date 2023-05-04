@@ -614,6 +614,78 @@ public object ObservationSpaceMessageKt {
       .clear() {
          _builder.clearMiscStatistics()
        }
+
+    /**
+     * An uninstantiable, behaviorless type to represent the field in
+     * generics.
+     */
+    @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
+    public class VisibleEntitiesProxy private constructor() : com.google.protobuf.kotlin.DslProxy()
+    /**
+     * <code>repeated .EntityInfo visible_entities = 18;</code>
+     */
+     public val visibleEntities: com.google.protobuf.kotlin.DslList<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo, VisibleEntitiesProxy>
+      @kotlin.jvm.JvmSynthetic
+      get() = com.google.protobuf.kotlin.DslList(
+        _builder.getVisibleEntitiesList()
+      )
+    /**
+     * <code>repeated .EntityInfo visible_entities = 18;</code>
+     * @param value The visibleEntities to add.
+     */
+    @kotlin.jvm.JvmSynthetic
+    @kotlin.jvm.JvmName("addVisibleEntities")
+    public fun com.google.protobuf.kotlin.DslList<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo, VisibleEntitiesProxy>.add(value: com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo) {
+      _builder.addVisibleEntities(value)
+    }
+    /**
+     * <code>repeated .EntityInfo visible_entities = 18;</code>
+     * @param value The visibleEntities to add.
+     */
+    @kotlin.jvm.JvmSynthetic
+    @kotlin.jvm.JvmName("plusAssignVisibleEntities")
+    @Suppress("NOTHING_TO_INLINE")
+    public inline operator fun com.google.protobuf.kotlin.DslList<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo, VisibleEntitiesProxy>.plusAssign(value: com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo) {
+      add(value)
+    }
+    /**
+     * <code>repeated .EntityInfo visible_entities = 18;</code>
+     * @param values The visibleEntities to add.
+     */
+    @kotlin.jvm.JvmSynthetic
+    @kotlin.jvm.JvmName("addAllVisibleEntities")
+    public fun com.google.protobuf.kotlin.DslList<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo, VisibleEntitiesProxy>.addAll(values: kotlin.collections.Iterable<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo>) {
+      _builder.addAllVisibleEntities(values)
+    }
+    /**
+     * <code>repeated .EntityInfo visible_entities = 18;</code>
+     * @param values The visibleEntities to add.
+     */
+    @kotlin.jvm.JvmSynthetic
+    @kotlin.jvm.JvmName("plusAssignAllVisibleEntities")
+    @Suppress("NOTHING_TO_INLINE")
+    public inline operator fun com.google.protobuf.kotlin.DslList<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo, VisibleEntitiesProxy>.plusAssign(values: kotlin.collections.Iterable<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo>) {
+      addAll(values)
+    }
+    /**
+     * <code>repeated .EntityInfo visible_entities = 18;</code>
+     * @param index The index to set the value at.
+     * @param value The visibleEntities to set.
+     */
+    @kotlin.jvm.JvmSynthetic
+    @kotlin.jvm.JvmName("setVisibleEntities")
+    public operator fun com.google.protobuf.kotlin.DslList<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo, VisibleEntitiesProxy>.set(index: kotlin.Int, value: com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo) {
+      _builder.setVisibleEntities(index, value)
+    }
+    /**
+     * <code>repeated .EntityInfo visible_entities = 18;</code>
+     */
+    @kotlin.jvm.JvmSynthetic
+    @kotlin.jvm.JvmName("clearVisibleEntities")
+    public fun com.google.protobuf.kotlin.DslList<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo, VisibleEntitiesProxy>.clear() {
+      _builder.clearVisibleEntities()
+    }
+
   }
 }
 @kotlin.jvm.JvmSynthetic

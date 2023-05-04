@@ -8,8 +8,11 @@
     "ChatVisibleMessageAccessor",
     "ClientDoAttackInvoker",
     "ClientDoItemUseInvoker",
+    "ClientEntityRenderDispatcherAccessor",
+    "ClientWorldMixin",
     "RenderTickCounterAccessor",
-    "TickSpeedMixin"
+    "TickSpeedMixin",
+    "WorldRendererCallEntityRenderMixin"
   ],
   "server": [],
   "injectors": {

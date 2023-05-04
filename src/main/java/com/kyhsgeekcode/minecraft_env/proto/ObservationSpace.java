@@ -5591,6 +5591,30 @@ public final class ObservationSpace {
      */
     int getMiscStatisticsOrThrow(
         java.lang.String key);
+
+    /**
+     * <code>repeated .EntityInfo visible_entities = 18;</code>
+     */
+    java.util.List<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo> 
+        getVisibleEntitiesList();
+    /**
+     * <code>repeated .EntityInfo visible_entities = 18;</code>
+     */
+    com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo getVisibleEntities(int index);
+    /**
+     * <code>repeated .EntityInfo visible_entities = 18;</code>
+     */
+    int getVisibleEntitiesCount();
+    /**
+     * <code>repeated .EntityInfo visible_entities = 18;</code>
+     */
+    java.util.List<? extends com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfoOrBuilder> 
+        getVisibleEntitiesOrBuilderList();
+    /**
+     * <code>repeated .EntityInfo visible_entities = 18;</code>
+     */
+    com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfoOrBuilder getVisibleEntitiesOrBuilder(
+        int index);
   }
   /**
    * Protobuf type {@code ObservationSpaceMessage}
@@ -5609,6 +5633,7 @@ public final class ObservationSpace {
       inventory_ = java.util.Collections.emptyList();
       soundSubtitles_ = java.util.Collections.emptyList();
       statusEffects_ = java.util.Collections.emptyList();
+      visibleEntities_ = java.util.Collections.emptyList();
     }
 
     @java.lang.Override
@@ -6142,6 +6167,47 @@ public final class ObservationSpace {
       return map.get(key);
     }
 
+    public static final int VISIBLE_ENTITIES_FIELD_NUMBER = 18;
+    @SuppressWarnings("serial")
+    private java.util.List<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo> visibleEntities_;
+    /**
+     * <code>repeated .EntityInfo visible_entities = 18;</code>
+     */
+    @java.lang.Override
+    public java.util.List<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo> getVisibleEntitiesList() {
+      return visibleEntities_;
+    }
+    /**
+     * <code>repeated .EntityInfo visible_entities = 18;</code>
+     */
+    @java.lang.Override
+    public java.util.List<? extends com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfoOrBuilder> 
+        getVisibleEntitiesOrBuilderList() {
+      return visibleEntities_;
+    }
+    /**
+     * <code>repeated .EntityInfo visible_entities = 18;</code>
+     */
+    @java.lang.Override
+    public int getVisibleEntitiesCount() {
+      return visibleEntities_.size();
+    }
+    /**
+     * <code>repeated .EntityInfo visible_entities = 18;</code>
+     */
+    @java.lang.Override
+    public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo getVisibleEntities(int index) {
+      return visibleEntities_.get(index);
+    }
+    /**
+     * <code>repeated .EntityInfo visible_entities = 18;</code>
+     */
+    @java.lang.Override
+    public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfoOrBuilder getVisibleEntitiesOrBuilder(
+        int index) {
+      return visibleEntities_.get(index);
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -6216,6 +6282,9 @@ public final class ObservationSpace {
           internalGetMiscStatistics(),
           MiscStatisticsDefaultEntryHolder.defaultEntry,
           17);
+      for (int i = 0; i < visibleEntities_.size(); i++) {
+        output.writeMessage(18, visibleEntities_.get(i));
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -6311,6 +6380,10 @@ public final class ObservationSpace {
         size += com.google.protobuf.CodedOutputStream
             .computeMessageSize(17, miscStatistics__);
       }
+      for (int i = 0; i < visibleEntities_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(18, visibleEntities_.get(i));
+      }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
@@ -6371,6 +6444,8 @@ public final class ObservationSpace {
           other.internalGetMinedStatistics())) return false;
       if (!internalGetMiscStatistics().equals(
           other.internalGetMiscStatistics())) return false;
+      if (!getVisibleEntitiesList()
+          .equals(other.getVisibleEntitiesList())) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -6438,6 +6513,10 @@ public final class ObservationSpace {
       if (!internalGetMiscStatistics().getMap().isEmpty()) {
         hash = (37 * hash) + MISC_STATISTICS_FIELD_NUMBER;
         hash = (53 * hash) + internalGetMiscStatistics().hashCode();
+      }
+      if (getVisibleEntitiesCount() > 0) {
+        hash = (37 * hash) + VISIBLE_ENTITIES_FIELD_NUMBER;
+        hash = (53 * hash) + getVisibleEntitiesList().hashCode();
       }
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
@@ -6637,6 +6716,13 @@ public final class ObservationSpace {
         internalGetMutableKilledStatistics().clear();
         internalGetMutableMinedStatistics().clear();
         internalGetMutableMiscStatistics().clear();
+        if (visibleEntitiesBuilder_ == null) {
+          visibleEntities_ = java.util.Collections.emptyList();
+        } else {
+          visibleEntities_ = null;
+          visibleEntitiesBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00020000);
         return this;
       }
 
@@ -6696,6 +6782,15 @@ public final class ObservationSpace {
           result.statusEffects_ = statusEffects_;
         } else {
           result.statusEffects_ = statusEffectsBuilder_.build();
+        }
+        if (visibleEntitiesBuilder_ == null) {
+          if (((bitField0_ & 0x00020000) != 0)) {
+            visibleEntities_ = java.util.Collections.unmodifiableList(visibleEntities_);
+            bitField0_ = (bitField0_ & ~0x00020000);
+          }
+          result.visibleEntities_ = visibleEntities_;
+        } else {
+          result.visibleEntities_ = visibleEntitiesBuilder_.build();
         }
       }
 
@@ -6914,6 +7009,32 @@ public final class ObservationSpace {
         internalGetMutableMiscStatistics().mergeFrom(
             other.internalGetMiscStatistics());
         bitField0_ |= 0x00010000;
+        if (visibleEntitiesBuilder_ == null) {
+          if (!other.visibleEntities_.isEmpty()) {
+            if (visibleEntities_.isEmpty()) {
+              visibleEntities_ = other.visibleEntities_;
+              bitField0_ = (bitField0_ & ~0x00020000);
+            } else {
+              ensureVisibleEntitiesIsMutable();
+              visibleEntities_.addAll(other.visibleEntities_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.visibleEntities_.isEmpty()) {
+            if (visibleEntitiesBuilder_.isEmpty()) {
+              visibleEntitiesBuilder_.dispose();
+              visibleEntitiesBuilder_ = null;
+              visibleEntities_ = other.visibleEntities_;
+              bitField0_ = (bitField0_ & ~0x00020000);
+              visibleEntitiesBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getVisibleEntitiesFieldBuilder() : null;
+            } else {
+              visibleEntitiesBuilder_.addAllMessages(other.visibleEntities_);
+            }
+          }
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
@@ -7063,6 +7184,19 @@ public final class ObservationSpace {
                 bitField0_ |= 0x00010000;
                 break;
               } // case 138
+              case 146: {
+                com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo m =
+                    input.readMessage(
+                        com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo.parser(),
+                        extensionRegistry);
+                if (visibleEntitiesBuilder_ == null) {
+                  ensureVisibleEntitiesIsMutable();
+                  visibleEntities_.add(m);
+                } else {
+                  visibleEntitiesBuilder_.addMessage(m);
+                }
+                break;
+              } // case 146
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -8613,6 +8747,246 @@ public final class ObservationSpace {
         bitField0_ |= 0x00010000;
         return this;
       }
+
+      private java.util.List<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo> visibleEntities_ =
+        java.util.Collections.emptyList();
+      private void ensureVisibleEntitiesIsMutable() {
+        if (!((bitField0_ & 0x00020000) != 0)) {
+          visibleEntities_ = new java.util.ArrayList<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo>(visibleEntities_);
+          bitField0_ |= 0x00020000;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo.Builder, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfoOrBuilder> visibleEntitiesBuilder_;
+
+      /**
+       * <code>repeated .EntityInfo visible_entities = 18;</code>
+       */
+      public java.util.List<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo> getVisibleEntitiesList() {
+        if (visibleEntitiesBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(visibleEntities_);
+        } else {
+          return visibleEntitiesBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .EntityInfo visible_entities = 18;</code>
+       */
+      public int getVisibleEntitiesCount() {
+        if (visibleEntitiesBuilder_ == null) {
+          return visibleEntities_.size();
+        } else {
+          return visibleEntitiesBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .EntityInfo visible_entities = 18;</code>
+       */
+      public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo getVisibleEntities(int index) {
+        if (visibleEntitiesBuilder_ == null) {
+          return visibleEntities_.get(index);
+        } else {
+          return visibleEntitiesBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .EntityInfo visible_entities = 18;</code>
+       */
+      public Builder setVisibleEntities(
+          int index, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo value) {
+        if (visibleEntitiesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureVisibleEntitiesIsMutable();
+          visibleEntities_.set(index, value);
+          onChanged();
+        } else {
+          visibleEntitiesBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .EntityInfo visible_entities = 18;</code>
+       */
+      public Builder setVisibleEntities(
+          int index, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo.Builder builderForValue) {
+        if (visibleEntitiesBuilder_ == null) {
+          ensureVisibleEntitiesIsMutable();
+          visibleEntities_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          visibleEntitiesBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .EntityInfo visible_entities = 18;</code>
+       */
+      public Builder addVisibleEntities(com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo value) {
+        if (visibleEntitiesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureVisibleEntitiesIsMutable();
+          visibleEntities_.add(value);
+          onChanged();
+        } else {
+          visibleEntitiesBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .EntityInfo visible_entities = 18;</code>
+       */
+      public Builder addVisibleEntities(
+          int index, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo value) {
+        if (visibleEntitiesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureVisibleEntitiesIsMutable();
+          visibleEntities_.add(index, value);
+          onChanged();
+        } else {
+          visibleEntitiesBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .EntityInfo visible_entities = 18;</code>
+       */
+      public Builder addVisibleEntities(
+          com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo.Builder builderForValue) {
+        if (visibleEntitiesBuilder_ == null) {
+          ensureVisibleEntitiesIsMutable();
+          visibleEntities_.add(builderForValue.build());
+          onChanged();
+        } else {
+          visibleEntitiesBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .EntityInfo visible_entities = 18;</code>
+       */
+      public Builder addVisibleEntities(
+          int index, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo.Builder builderForValue) {
+        if (visibleEntitiesBuilder_ == null) {
+          ensureVisibleEntitiesIsMutable();
+          visibleEntities_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          visibleEntitiesBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .EntityInfo visible_entities = 18;</code>
+       */
+      public Builder addAllVisibleEntities(
+          java.lang.Iterable<? extends com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo> values) {
+        if (visibleEntitiesBuilder_ == null) {
+          ensureVisibleEntitiesIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, visibleEntities_);
+          onChanged();
+        } else {
+          visibleEntitiesBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .EntityInfo visible_entities = 18;</code>
+       */
+      public Builder clearVisibleEntities() {
+        if (visibleEntitiesBuilder_ == null) {
+          visibleEntities_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00020000);
+          onChanged();
+        } else {
+          visibleEntitiesBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .EntityInfo visible_entities = 18;</code>
+       */
+      public Builder removeVisibleEntities(int index) {
+        if (visibleEntitiesBuilder_ == null) {
+          ensureVisibleEntitiesIsMutable();
+          visibleEntities_.remove(index);
+          onChanged();
+        } else {
+          visibleEntitiesBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .EntityInfo visible_entities = 18;</code>
+       */
+      public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo.Builder getVisibleEntitiesBuilder(
+          int index) {
+        return getVisibleEntitiesFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .EntityInfo visible_entities = 18;</code>
+       */
+      public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfoOrBuilder getVisibleEntitiesOrBuilder(
+          int index) {
+        if (visibleEntitiesBuilder_ == null) {
+          return visibleEntities_.get(index);  } else {
+          return visibleEntitiesBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .EntityInfo visible_entities = 18;</code>
+       */
+      public java.util.List<? extends com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfoOrBuilder> 
+           getVisibleEntitiesOrBuilderList() {
+        if (visibleEntitiesBuilder_ != null) {
+          return visibleEntitiesBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(visibleEntities_);
+        }
+      }
+      /**
+       * <code>repeated .EntityInfo visible_entities = 18;</code>
+       */
+      public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo.Builder addVisibleEntitiesBuilder() {
+        return getVisibleEntitiesFieldBuilder().addBuilder(
+            com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .EntityInfo visible_entities = 18;</code>
+       */
+      public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo.Builder addVisibleEntitiesBuilder(
+          int index) {
+        return getVisibleEntitiesFieldBuilder().addBuilder(
+            index, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .EntityInfo visible_entities = 18;</code>
+       */
+      public java.util.List<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo.Builder> 
+           getVisibleEntitiesBuilderList() {
+        return getVisibleEntitiesFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo.Builder, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfoOrBuilder> 
+          getVisibleEntitiesFieldBuilder() {
+        if (visibleEntitiesBuilder_ == null) {
+          visibleEntitiesBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo.Builder, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfoOrBuilder>(
+                  visibleEntities_,
+                  ((bitField0_ & 0x00020000) != 0),
+                  getParentForChildren(),
+                  isClean());
+          visibleEntities_ = null;
+        }
+        return visibleEntitiesBuilder_;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -8752,7 +9126,7 @@ public final class ObservationSpace {
       "\027\n\017translation_key\030\001 \001(\t\022\020\n\010duration\030\002 \001" +
       "(\005\022\021\n\tamplifier\030\003 \001(\005\"Q\n\nSoundEntry\022\025\n\rt" +
       "ranslate_key\030\001 \001(\t\022\013\n\003age\030\002 \001(\003\022\t\n\001x\030\003 \001" +
-      "(\001\022\t\n\001y\030\004 \001(\001\022\t\n\001z\030\005 \001(\001\"\307\005\n\027Observation" +
+      "(\001\022\t\n\001y\030\004 \001(\001\022\t\n\001z\030\005 \001(\001\"\356\005\n\027Observation" +
       "SpaceMessage\022\r\n\005image\030\001 \001(\014\022\t\n\001x\030\002 \001(\001\022\t" +
       "\n\001y\030\003 \001(\001\022\t\n\001z\030\004 \001(\001\022\013\n\003yaw\030\005 \001(\001\022\r\n\005pit" +
       "ch\030\006 \001(\001\022\016\n\006health\030\007 \001(\001\022\022\n\nfood_level\030\010" +
@@ -8766,12 +9140,13 @@ public final class ObservationSpace {
       "istics\030\020 \003(\0132-.ObservationSpaceMessage.M" +
       "inedStatisticsEntry\022E\n\017misc_statistics\030\021" +
       " \003(\0132,.ObservationSpaceMessage.MiscStati" +
-      "sticsEntry\0327\n\025KilledStatisticsEntry\022\013\n\003k" +
-      "ey\030\001 \001(\t\022\r\n\005value\030\002 \001(\005:\0028\001\0326\n\024MinedStat" +
-      "isticsEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\005:" +
-      "\0028\001\0325\n\023MiscStatisticsEntry\022\013\n\003key\030\001 \001(\t\022" +
-      "\r\n\005value\030\002 \001(\005:\0028\001B&\n$com.kyhsgeekcode.m" +
-      "inecraft_env.protob\006proto3"
+      "sticsEntry\022%\n\020visible_entities\030\022 \003(\0132\013.E" +
+      "ntityInfo\0327\n\025KilledStatisticsEntry\022\013\n\003ke" +
+      "y\030\001 \001(\t\022\r\n\005value\030\002 \001(\005:\0028\001\0326\n\024MinedStati" +
+      "sticsEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\005:\002" +
+      "8\001\0325\n\023MiscStatisticsEntry\022\013\n\003key\030\001 \001(\t\022\r" +
+      "\n\005value\030\002 \001(\005:\0028\001B&\n$com.kyhsgeekcode.mi" +
+      "necraft_env.protob\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -8818,7 +9193,7 @@ public final class ObservationSpace {
     internal_static_ObservationSpaceMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ObservationSpaceMessage_descriptor,
-        new java.lang.String[] { "Image", "X", "Y", "Z", "Yaw", "Pitch", "Health", "FoodLevel", "SaturationLevel", "IsDead", "Inventory", "RaycastResult", "SoundSubtitles", "StatusEffects", "KilledStatistics", "MinedStatistics", "MiscStatistics", });
+        new java.lang.String[] { "Image", "X", "Y", "Z", "Yaw", "Pitch", "Health", "FoodLevel", "SaturationLevel", "IsDead", "Inventory", "RaycastResult", "SoundSubtitles", "StatusEffects", "KilledStatistics", "MinedStatistics", "MiscStatistics", "VisibleEntities", });
     internal_static_ObservationSpaceMessage_KilledStatisticsEntry_descriptor =
       internal_static_ObservationSpaceMessage_descriptor.getNestedTypes().get(0);
     internal_static_ObservationSpaceMessage_KilledStatisticsEntry_fieldAccessorTable = new

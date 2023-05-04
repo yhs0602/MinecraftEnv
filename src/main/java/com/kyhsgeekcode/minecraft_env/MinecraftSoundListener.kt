@@ -1,5 +1,6 @@
 package com.kyhsgeekcode.minecraft_env
 
+import com.kyhsgeekcode.minecraft_env.proto.soundEntry
 import net.minecraft.client.sound.SoundInstance
 import net.minecraft.client.sound.SoundInstanceListener
 import net.minecraft.client.sound.SoundManager
@@ -12,6 +13,14 @@ data class SoundEntry(val translateKey: String, var age: Long, var x: Double, va
         this.y = y
         this.z = z
         age = 0
+    }
+
+    fun toMessage() = soundEntry {
+        translateKey = this@SoundEntry.translateKey
+        age = this@SoundEntry.age
+        x = this@SoundEntry.x
+        y = this@SoundEntry.y
+        z = this@SoundEntry.z
     }
 }
 

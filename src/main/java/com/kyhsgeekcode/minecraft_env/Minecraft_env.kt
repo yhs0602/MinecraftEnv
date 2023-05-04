@@ -1,7 +1,6 @@
 package com.kyhsgeekcode.minecraft_env
 
 import com.google.common.io.LittleEndianDataOutputStream
-import com.google.gson.Gson
 import com.google.protobuf.ByteString
 import com.kyhsgeekcode.minecraft_env.mixin.ClientDoAttackInvoker
 import com.kyhsgeekcode.minecraft_env.mixin.ClientDoItemUseInvoker
@@ -19,7 +18,6 @@ import net.minecraft.client.texture.NativeImage
 import net.minecraft.client.util.ScreenshotRecorder
 import net.minecraft.client.world.ClientWorld
 import net.minecraft.entity.EntityType
-import net.minecraft.entity.LivingEntity
 import net.minecraft.inventory.CraftingInventory
 import net.minecraft.item.Item
 import net.minecraft.recipe.RecipeMatcher
@@ -27,8 +25,6 @@ import net.minecraft.registry.Registries
 import net.minecraft.registry.Registry
 import net.minecraft.stat.Stats
 import net.minecraft.util.Identifier
-import net.minecraft.util.hit.BlockHitResult
-import net.minecraft.util.hit.EntityHitResult
 import net.minecraft.util.math.MathHelper
 import net.minecraft.util.math.Vec3d
 import net.minecraft.world.World
@@ -38,14 +34,13 @@ import java.io.*
 import java.net.ServerSocket
 import java.net.SocketTimeoutException
 import java.nio.ByteBuffer
-import java.nio.charset.StandardCharsets
 import java.util.*
 import javax.imageio.ImageIO
 
 class Minecraft_env : ModInitializer, CommandExecutor {
-    private var gson = Gson()
     private lateinit var initialEnvironment: InitialEnvironment.InitialEnvironmentMessage
     private var soundListener: MinecraftSoundListener? = null
+    private var entityListener: EntityRenderListenerImpl? = null // tracks the entities rendered in the last tick
     private var isResetting = false // if true, then pass through i/o and just let ticks go
     private var isRespawning = false // wait until player respawn and then run initialization
     private var beforeReset = false // if true, then reset before next tick
@@ -72,6 +67,8 @@ class Minecraft_env : ModInitializer, CommandExecutor {
         ClientTickEvents.START_CLIENT_TICK.register(ClientTickEvents.StartTick { client: MinecraftClient ->
             initializer.onClientTick(client)
             if (soundListener == null) soundListener = MinecraftSoundListener(client.soundManager)
+            if (entityListener == null) entityListener =
+                EntityRenderListenerImpl(client.worldRenderer as AddListenerInterface)
         })
         ClientTickEvents.START_WORLD_TICK.register(ClientTickEvents.StartWorldTick { world: ClientWorld ->
             onStartWorldTick(initializer, inputStream, world)
@@ -361,71 +358,12 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                         initialEnvironment.imageSizeY
                     )
                 val pos = player.pos
-                val playerInventory = player.inventory
-                val mainInventory = playerInventory.main.map {
-                    ItemStack(it)
-                }
-                val armorInventory = playerInventory.armor.map {
-                    ItemStack(it)
-                }
-                val offhandInventory = playerInventory.offHand.map {
-                    ItemStack(it)
-                }
-                val inventoryArray = mainInventory + armorInventory + offhandInventory
-                val hungerManager = player.hungerManager
-                val target = player.raycast(100.0, 1.0f, false)
-                var hitResultMessage = hitResult {
-                    type = com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult.Type.MISS
-                }
-                if (target.type == net.minecraft.util.hit.HitResult.Type.BLOCK) {
-                    val blockPos = (target as BlockHitResult).blockPos
-                    val block = world.getBlockState(blockPos).block
-                    hitResultMessage = hitResult {
-                        type = com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult.Type.BLOCK
-                        targetBlock = blockInfo {
-                            x = blockPos.x
-                            y = blockPos.y
-                            z = blockPos.z
-                            translationKey = block.translationKey
-                        }
-                    }
-                } else if (target.type == net.minecraft.util.hit.HitResult.Type.ENTITY) {
-                    val entity = (target as EntityHitResult).entity
-                    var entityHealth = 0.0
-                    if (entity is LivingEntity) {
-                        entityHealth = entity.health.toDouble()
-                    }
-                    hitResultMessage = hitResult {
-                        type = com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult.Type.ENTITY
-                        targetEntity = entityInfo {
-                            uniqueName = entity.entityName
-                            translationKey = entity.type.translationKey
-                            x = entity.x
-                            y = entity.y
-                            z = entity.z
-                            yaw = entity.yaw.toDouble()
-                            pitch = entity.pitch.toDouble()
-                            health = entityHealth
-                        }
-                    }
-                }
-                val playerStatusEffects = player.statusEffects
-                val statusEffectsMessage = playerStatusEffects.map {
-                    statusEffect {
-                        translationKey = it.translationKey
-                        duration = it.duration
-                        amplifier = it.amplifier
-                    }
-                }
                 val isDeadb = if (wasResetting) {
                     wasResetting = false
                     false
                 } else {
                     player.isDead
                 }
-                // for entitytype in requested entity type stats
-                // get stat and add to result (map)
-
 
                 val observationSpaceMessage = observationSpaceMessage {
                     image = ByteString.copyFrom(byteArray)
@@ -435,31 +373,21 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                     pitch = player.pitch.toDouble()
                     yaw = player.yaw.toDouble()
                     health = player.health.toDouble()
-                    foodLevel = hungerManager.foodLevel.toDouble()
-                    saturationLevel = hungerManager.saturationLevel.toDouble()
+                    foodLevel = player.hungerManager.foodLevel.toDouble()
+                    saturationLevel = player.hungerManager.saturationLevel.toDouble()
                     isDead = isDeadb
-                    inventory.addAll(inventoryArray.map {
-                        itemStack {
-                            rawId = it.rawId
-                            translationKey = it.translationKey
-                            count = it.count
-                            durability = it.durability
-                            maxDurability = it.maxDurability
-                        }
+                    inventory.addAll((player.inventory.main + player.inventory.armor + player.inventory.offHand).map {
+                        it.toMessage()
                     })
-                    raycastResult = hitResultMessage
+                    raycastResult = player.raycast(100.0, 1.0f, false).toMessage(world)
                     soundSubtitles.addAll(
                         soundListener!!.entries.map {
-                            soundEntry {
-                                translateKey = it.translateKey
-                                age = it.age
-                                x = it.x
-                                y = it.y
-                                z = it.z
-                            }
+                            it.toMessage()
                         }
                     )
-                    statusEffects.addAll(statusEffectsMessage)
+                    statusEffects.addAll(player.statusEffects.map {
+                        it.toMessage()
+                    })
                     for (killStatKey in initialEnvironment.killedStatKeysList) {
                         val key = EntityType.get(killStatKey).get()
                         val stat = player.statHandler.getStat(Stats.KILLED.getOrCreateStat(key))
@@ -474,22 +402,18 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                         val key = Registries.CUSTOM_STAT.get(Identifier.of("minecraft", miscStatKey))
                         minedStatistics[miscStatKey] = player.statHandler.getStat(Stats.CUSTOM.getOrCreateStat(key))
                     }
+                    entityListener?.run {
+                        for (entity in entities) {
+                            // notify where entity is, what it is (supervised)
+                            visibleEntities.add(entity.toMessage())
+                        }
+                    }
                 }
                 writeObservation(observationSpaceMessage, outputStream)
             }
         } catch (e: IOException) {
             throw RuntimeException(e)
         }
-    }
-
-    private fun writeObservation(
-        observationSpace: ObservationSpace,
-        writer: OutputStreamWriter
-    ) {
-        val json = gson.toJson(observationSpace)
-        //            System.out.println("Sending observation");
-        writer.write(json)
-        writer.flush()
     }
 
     private fun writeObservation(
@@ -551,27 +475,6 @@ class Minecraft_env : ModInitializer, CommandExecutor {
 }
 
 @Throws(IOException::class)
-fun encodeImageToBase64Png(image: NativeImage, targetSizeX: Int, targetSizeY: Int): String {
-    val out = ByteArrayOutputStream()
-    val base64Out = Base64.getEncoder().wrap(out)
-    val data = image.bytes
-    val originalImage = ImageIO.read(ByteArrayInputStream(data))
-    val resizedImage = BufferedImage(targetSizeX, targetSizeY, originalImage.type)
-    val graphics = resizedImage.createGraphics()
-    graphics.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR)
-    graphics.drawImage(originalImage, 0, 0, targetSizeX, targetSizeY, null)
-    graphics.dispose()
-    val baos = ByteArrayOutputStream()
-    ImageIO.write(resizedImage, "png", baos)
-    base64Out.write(baos.toByteArray())
-    base64Out.flush()
-    base64Out.close()
-    // String size = String.format("%dx%d", image.getWidth(), image.getHeight());
-    // size + "|" +
-    return out.toString(StandardCharsets.UTF_8)
-}
-
-@Throws(IOException::class)
 fun encodeImageToBytes(
     image: NativeImage,
     originalSizeX: Int,
@@ -579,8 +482,8 @@ fun encodeImageToBytes(
     targetSizeX: Int,
     targetSizeY: Int
 ): ByteArray {
-    if (originalSizeX == targetSizeX && originalSizeY == targetSizeY)
-        return image.bytes
+//    if (originalSizeX == targetSizeX && originalSizeY == targetSizeY)
+//        return image.bytes
     val data = image.bytes
     val originalImage = ImageIO.read(ByteArrayInputStream(data))
     val resizedImage = BufferedImage(targetSizeX, targetSizeY, originalImage.type)
@@ -592,3 +495,4 @@ fun encodeImageToBytes(
     ImageIO.write(resizedImage, "png", baos)
     return baos.toByteArray()
 }
+
