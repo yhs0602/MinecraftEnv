@@ -13,6 +13,7 @@
     "KeyboardInputMixin",
     "RenderTickCounterAccessor",
     "TickSpeedMixin",
+    "WindowOffScreenMixin",
     "WorldRendererCallEntityRenderMixin"
   ],
   "server": [],
