@@ -19,7 +19,8 @@ interface CommandExecutor {
 }
 
 class EnvironmentInitializer(private val initialEnvironment: InitialEnvironmentMessage) {
-    private var hasRunInitWorld: Boolean = false
+    var hasRunInitWorld: Boolean = false
+        private set
     var initWorldFinished: Boolean = false
         private set
 
@@ -129,6 +130,8 @@ class EnvironmentInitializer(private val initialEnvironment: InitialEnvironmentM
                 createButton?.onPress()
             }
         }
+        val window = MinecraftClient.getInstance().window
+        window.setWindowedSize(initialEnvironment.visibleSizeX, initialEnvironment.visibleSizeY)
     }
 
     fun reset(chatHud: ChatHud, player: ClientPlayerEntity, commandExecutor: CommandExecutor) {
@@ -161,8 +164,6 @@ class EnvironmentInitializer(private val initialEnvironment: InitialEnvironmentM
         chatHud.clear(true)
         if (hasRunInitWorld)
             return
-        val window = MinecraftClient.getInstance().window
-        window.setWindowedSize(initialEnvironment.visibleSizeX, initialEnvironment.visibleSizeY)
         // NOTE: should be called only once when initial environment is set
         val myCommandExecutor = { p: ClientPlayerEntity, c: String ->
             commandExecutor.runCommand(p, c)

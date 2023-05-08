@@ -9,8 +9,12 @@ import com.kyhsgeekcode.minecraft_env.proto.ActionSpace.ActionSpaceMessage
 import com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment
 import net.fabricmc.api.ModInitializer
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents
+import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings
+import net.fabricmc.fabric.api.networking.v1.PacketByteBufs
+import net.fabricmc.fabric.api.networking.v1.PlayerLookup
+import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking
 import net.fabricmc.fabric.api.registry.FuelRegistry
 import net.minecraft.client.MinecraftClient
 import net.minecraft.client.gui.screen.DeathScreen
@@ -18,9 +22,7 @@ import net.minecraft.client.network.ClientPlayerEntity
 import net.minecraft.client.texture.NativeImage
 import net.minecraft.client.util.ScreenshotRecorder
 import net.minecraft.entity.EntityType
-import net.minecraft.inventory.CraftingInventory
 import net.minecraft.item.Item
-import net.minecraft.recipe.RecipeMatcher
 import net.minecraft.registry.Registries
 import net.minecraft.registry.Registry
 import net.minecraft.server.world.ServerWorld
@@ -37,6 +39,7 @@ import java.nio.ByteBuffer
 import java.util.*
 import javax.imageio.ImageIO
 
+
 class Minecraft_env : ModInitializer, CommandExecutor {
     private lateinit var initialEnvironment: InitialEnvironment.InitialEnvironmentMessage
     private var soundListener: MinecraftSoundListener? = null
@@ -46,6 +49,8 @@ class Minecraft_env : ModInitializer, CommandExecutor {
     private var beforeReset = false // if true, then reset before next tick
     private var wasResetting = false // last tick was resetting
     private var onceDied = false
+    private val ID_END_SERVER_TICK = Identifier("minecraft_env", "end_server_tick")
+    private val ID_SET_SCREEN_NULL = Identifier("minecraft_env", "set_screen_null")
 
     override fun onInitialize() {
         val inputStream: InputStream
@@ -64,6 +69,22 @@ class Minecraft_env : ModInitializer, CommandExecutor {
         FuelRegistry.INSTANCE.add(CUSTOM_ITEM, 300)
         readInitialEnvironment(inputStream, outputStream)
         val initializer = EnvironmentInitializer(initialEnvironment)
+
+        ClientPlayNetworking.registerGlobalReceiver(ID_END_SERVER_TICK) { client, handler, buf, responseSender ->
+            client.execute {
+                val clientWorld = client.world
+                if (clientWorld == null) {
+                    println("Client world is null")
+                    return@execute
+                }
+                sendObservation(outputStream, clientWorld, initializer)
+            }
+        }
+        ClientPlayNetworking.registerGlobalReceiver(ID_SET_SCREEN_NULL) { client, handler, buf, responseSender ->
+            client.execute {
+                client.setScreen(null)
+            }
+        }
         ClientTickEvents.START_CLIENT_TICK.register(ClientTickEvents.StartTick { client: MinecraftClient ->
             initializer.onClientTick(client)
             if (soundListener == null) soundListener = MinecraftSoundListener(client.soundManager)
@@ -71,19 +92,28 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                 EntityRenderListenerImpl(client.worldRenderer as AddListenerInterface)
         })
         ServerTickEvents.START_WORLD_TICK.register(ServerTickEvents.StartWorldTick { world: ServerWorld ->
-            onStartWorldTick(initializer, inputStream)
+            onStartWorldTick(initializer, world, inputStream)
         })
         ServerTickEvents.END_WORLD_TICK.register(ServerTickEvents.EndWorldTick { world: ServerWorld ->
-            sendObservation(
-                outputStream,
-                world,
-                initializer
-            )
+//            sendObservation(
+//                outputStream,
+//                world,
+//                initializer
+//            )
+            // Iterate over all players tracking a position in the world and send the packet to each player
+            for (player in PlayerLookup.all(world.server)) {
+                ServerPlayNetworking.send(
+                    player,
+                    ID_END_SERVER_TICK,
+                    PacketByteBufs.empty()
+                ) // notify client to send observation, as the server tick is ended
+            }
         })
     }
 
     private fun onStartWorldTick(
         initializer: EnvironmentInitializer,
+        world: ServerWorld,
         inputStream: InputStream,
     ) {
 //        println("start time: " + world.time)
@@ -96,8 +126,9 @@ class Minecraft_env : ModInitializer, CommandExecutor {
             return
         }
         val player = client.player ?: return
-        if (!player.isDead)
-            client.setScreen(null)
+        if (!player.isDead) {
+            sendSetScreenNull(world)
+        }
         initializer.onWorldTick(client.inGameHud.chatHud, player, this)
 
         if (isResetting) {
@@ -116,7 +147,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                 if (!isRespawning) {
                     println("State: player is dead, trying to respawn...")
                     player.requestRespawn() // automatically called in setScreen (null)
-                    client.setScreen(null) // clear death screen
+                    sendSetScreenNull(world) // clear death screen
                     isRespawning = true
                 } else {
                     // wait until respawn
@@ -146,6 +177,36 @@ class Minecraft_env : ModInitializer, CommandExecutor {
         }
 //        println("real start time: " + world.time)
         // Disable pause on lost focus
+        disablePauseOnLostFocus(client)
+        try {
+            val action = readAction(inputStream)
+            val command = action.command
+
+            if (command.isNotEmpty()) {
+                handleCommand(command, client, world, player)
+                return
+            }
+            if (player.isDead) return else sendSetScreenNull(world)
+            val actionArray = action.actionList
+            if (applyAction(actionArray, player, client)) return
+        } catch (e: SocketTimeoutException) {
+            println("Timeout")
+        } catch (e: IOException) {
+            throw RuntimeException(e)
+        }
+    }
+
+    private fun sendSetScreenNull(world: ServerWorld) {
+        for (p in PlayerLookup.all(world.server)) {
+            ServerPlayNetworking.send(
+                p,
+                ID_SET_SCREEN_NULL,
+                PacketByteBufs.empty()
+            ) // notify client to send observation, as the server tick is ended
+        }
+    }
+
+    private fun disablePauseOnLostFocus(client: MinecraftClient) {
         val options = client.options
         if (options != null) {
             if (options.pauseOnLostFocus) {
@@ -154,187 +215,177 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                 client.options.write()
             }
         }
-        try {
-            val action = readAction(inputStream)
-
-            val command = action.command
-            if (command.isNotEmpty()) {
-                if (command == "respawn") {
-                    if (client.currentScreen is DeathScreen && player.isDead) {
-                        player.requestRespawn()
-                        client.setScreen(null)
-                    }
-                } else if (command == "fastreset") {
-                    runCommand(player, "/kill @p") // kill player
-                    runCommand(player, "/tp @e[type=!player] ~ -500 ~") // send to void
-                    isResetting = true // prevent sending the observation
-                    isRespawning = false // wait until player respawn and then run initialization
-                    onceDied = false
-                } else {
-                    runCommand(player, command)
-                    println("Executed command: $command")
-                }
-                return
-            }
-            if (player.isDead) return else client.setScreen(null)
-//            println("IS sneaking: ${player.isSneaking}")
-            val actionArray = action.actionList
-            if (actionArray.isEmpty()) {
-                println("actionArray is empty")
-                return
-            }
-            val movementFB = actionArray[0]
-            val movementLR = actionArray[1]
-            val jumpSneakSprint = actionArray[2]
-            val deltaPitch = actionArray[3]
-            val deltaYaw = actionArray[4]
-            val functionalActions =
-                actionArray[5] // 0: noop, 1: use, 2: drop, 3: attack, 4: craft, 5: equip, 6: place, 7: destroy
-            val argCraft = actionArray[6]
-            val argInventory = actionArray[7]
-            when (movementFB) {
-                0 -> {
-                    player.input.pressingForward = false
-                    player.input.pressingBack = false
-                }
-
-                1 -> {
-                    player.input.pressingForward = true
-                    player.input.pressingBack = false
-//                    player.travel(Vec3d(0.0, 0.0, 1.0)) // sideway, upward, forward
-                }
-
-                2 -> {
-                    player.input.pressingForward = false
-                    player.input.pressingBack = true
-                }
-            }
-            when (movementLR) {
-                0 -> {
-                    player.input.pressingRight = false
-                    player.input.pressingLeft = false
-                }
-
-                1 -> {
-                    player.input.pressingRight = true
-                    player.input.pressingLeft = false
-                }
-
-                2 -> {
-                    player.input.pressingRight = false
-                    player.input.pressingLeft = true
-//                    player.travel(Vec3d(-1.0, 0.0, 0.0))
-                }
-            }
-            when (jumpSneakSprint) {
-                0 -> {
-//                    println("Sneaking reset")
-                    player.input.jumping = false
-                    player.input.sneaking = false
-//                    player.isSprinting = false
-                }
-
-                1 -> {
-                    player.input.jumping = true
-                    player.input.sneaking = false
-//                    if (player.isOnGround) {
-//                        player.jump()
-//                    }
-                }
-
-                2 -> {
-                    player.input.jumping = false
-                    player.input.sneaking = true
-                }
-
-                3 -> {
-                    player.input.jumping = false
-                    player.input.sneaking = false
-                    player.isSprinting = true
-                }
-            }
-            val deltaPitchInDeg = (deltaPitch - 12f) / 12f * 180f
-            val deltaYawInDeg = (deltaYaw - 12f) / 12f * 180f
-            //                System.out.println("Will set pitch to " + player.getPitch() + " + " + deltaPitchInDeg + " = " + (player.getPitch() + deltaPitchInDeg));
-            //                System.out.println("Will set yaw to " + player.getYaw() + " + " + deltaYawInDeg + " = " + (player.getYaw() + deltaYawInDeg));
-            player.pitch = player.pitch + deltaPitchInDeg
-            player.yaw = player.yaw + deltaYawInDeg
-            player.pitch = MathHelper.clamp(player.pitch, -90.0f, 90.0f)
-            when (functionalActions) {
-                1 -> {
-                    (client as ClientDoItemUseInvoker).invokeDoItemUse()
-                }
-
-                2 -> {
-                    // slot = argInventory;
-                    player.inventory.selectedSlot = argInventory
-                    player.dropSelectedItem(false)
-                }
-
-                3 -> {
-                    // attack
-                    (client as ClientDoAttackInvoker).invokeDoAttack()
-                }
-
-                4 -> {
-                    // craft
-                    // unimplemented
-                    // currently gives items with argCraft as raw id
-                    // or use string
-                    // to get the integer from string, use api
-                    val targetItem = Item.byRawId(argCraft)
-                    val id = Registries.ITEM.getId(targetItem)
-                    val itemStack = net.minecraft.item.ItemStack(targetItem, 1)
-                    val inventory = player.inventory
-                    val recipeMatcher = RecipeMatcher()
-                    inventory.populateRecipeFinder(recipeMatcher)
-                    player.playerScreenHandler.populateRecipeFinder(recipeMatcher)
-                    val input = CraftingInventory(player.playerScreenHandler, 2, 2)
-                    //                        manager.get(id).ifPresent(recipe -> {
-                    //                            player.playerScreenHandler.matches()
-                    //                            if (recipeMatcher.match(recipe, null)) {
-                    //                                recipe.getIngredients();
-                    //                            }
-                    //
-                    //                        });
-                    inventory.insertStack(itemStack)
-                }
-
-                5 -> {
-                    // equip
-                    player.inventory.selectedSlot = argInventory
-                    (client as ClientDoItemUseInvoker).invokeDoItemUse()
-                }
-
-                6 -> {
-                    // place
-                    (client as ClientDoItemUseInvoker).invokeDoItemUse()
-                }
-
-                7 -> {
-                    // destroy
-                    (client as ClientDoAttackInvoker).invokeDoAttack()
-                }
-            }
-            // TODO: overwrite handleInputEvents?
-        } catch (e: SocketTimeoutException) {
-            println("Timeout")
-        } catch (e: IOException) {
-            throw RuntimeException(e)
-        }
     }
 
-//    private fun readAction(bufferedReader: BufferedReader): ActionSpace {
-//        //                System.out.println("Waiting for command");
-//        val b64 = bufferedReader.readLine()
-//        if (b64 == null) { // end of stream
-//            println("End of stream")
-//            exitProcess(0)
-//        }
-//        val json = String(Base64.getDecoder().decode(b64), StandardCharsets.UTF_8)
-//        // decode json to object
-//        return gson.fromJson(json, ActionSpace::class.java)
-//    }
+    private fun handleCommand(
+        command: String,
+        client: MinecraftClient,
+        world: ServerWorld,
+        player: ClientPlayerEntity
+    ): Boolean {
+        if (command == "respawn") {
+            if (client.currentScreen is DeathScreen && player.isDead) {
+                player.requestRespawn()
+                sendSetScreenNull(world)
+            }
+        } else if (command == "fastreset") {
+            runCommand(player, "/kill @p") // kill player
+            runCommand(player, "/tp @e[type=!player] ~ -500 ~") // send to void
+            isResetting = true // prevent sending the observation
+            isRespawning = false // wait until player respawn and then run initialization
+            onceDied = false
+        } else {
+            runCommand(player, command)
+            println("Executed command: $command")
+        }
+        return true
+    }
+
+    private fun applyAction(
+        actionArray: MutableList<Int>,
+        player: ClientPlayerEntity,
+        client: MinecraftClient?
+    ): Boolean {
+        if (actionArray.isEmpty()) {
+            println("actionArray is empty")
+            return true
+        }
+        val movementFB = actionArray[0]
+        val movementLR = actionArray[1]
+        val jumpSneakSprint = actionArray[2]
+        val deltaPitch = actionArray[3]
+        val deltaYaw = actionArray[4]
+        val functionalActions =
+            actionArray[5] // 0: noop, 1: use, 2: drop, 3: attack, 4: craft, 5: equip, 6: place, 7: destroy
+        val argCraft = actionArray[6]
+        val argInventory = actionArray[7]
+        when (movementFB) {
+            0 -> {
+                player.input.pressingForward = false
+                player.input.pressingBack = false
+            }
+
+            1 -> {
+                player.input.pressingForward = true
+                player.input.pressingBack = false
+                //                    player.travel(Vec3d(0.0, 0.0, 1.0)) // sideway, upward, forward
+            }
+
+            2 -> {
+                player.input.pressingForward = false
+                player.input.pressingBack = true
+            }
+        }
+        when (movementLR) {
+            0 -> {
+                player.input.pressingRight = false
+                player.input.pressingLeft = false
+            }
+
+            1 -> {
+                player.input.pressingRight = true
+                player.input.pressingLeft = false
+            }
+
+            2 -> {
+                player.input.pressingRight = false
+                player.input.pressingLeft = true
+                //                    player.travel(Vec3d(-1.0, 0.0, 0.0))
+            }
+        }
+        when (jumpSneakSprint) {
+            0 -> {
+                //                    println("Sneaking reset")
+                player.input.jumping = false
+                player.input.sneaking = false
+                //                    player.isSprinting = false
+            }
+
+            1 -> {
+                player.input.jumping = true
+                player.input.sneaking = false
+                //                    if (player.isOnGround) {
+                //                        player.jump()
+                //                    }
+            }
+
+            2 -> {
+                player.input.jumping = false
+                player.input.sneaking = true
+            }
+
+            3 -> {
+                player.input.jumping = false
+                player.input.sneaking = false
+                player.isSprinting = true
+            }
+        }
+        val deltaPitchInDeg = (deltaPitch - 12f) / 12f * 180f
+        val deltaYawInDeg = (deltaYaw - 12f) / 12f * 180f
+        //                System.out.println("Will set pitch to " + player.getPitch() + " + " + deltaPitchInDeg + " = " + (player.getPitch() + deltaPitchInDeg));
+        //                System.out.println("Will set yaw to " + player.getYaw() + " + " + deltaYawInDeg + " = " + (player.getYaw() + deltaYawInDeg));
+        player.pitch = player.pitch + deltaPitchInDeg
+        player.yaw = player.yaw + deltaYawInDeg
+        player.pitch = MathHelper.clamp(player.pitch, -90.0f, 90.0f)
+        when (functionalActions) {
+            1 -> {
+                (client as ClientDoItemUseInvoker).invokeDoItemUse()
+            }
+
+            2 -> {
+                // slot = argInventory;
+                player.inventory.selectedSlot = argInventory
+                player.dropSelectedItem(false)
+            }
+
+            3 -> {
+                // attack
+                (client as ClientDoAttackInvoker).invokeDoAttack()
+            }
+
+            4 -> {
+                // craft
+                // unimplemented
+                // currently gives items with argCraft as raw id
+                // or use string
+                // to get the integer from string, use api
+                //                    val targetItem = Item.byRawId(argCraft)
+                //                    val id = Registries.ITEM.getId(targetItem)
+                //                    val itemStack = net.minecraft.item.ItemStack(targetItem, 1)
+                //                    val inventory = player.inventory
+                //                    val recipeMatcher = RecipeMatcher()
+                //                    inventory.populateRecipeFinder(recipeMatcher)
+                //                    player.playerScreenHandler.populateRecipeFinder(recipeMatcher)
+                //                    val input = CraftingInventory(player.playerScreenHandler, 2, 2)
+                //                    //                        manager.get(id).ifPresent(recipe -> {
+                //                    //                            player.playerScreenHandler.matches()
+                //                    //                            if (recipeMatcher.match(recipe, null)) {
+                //                    //                                recipe.getIngredients();
+                //                    //                            }
+                //                    //
+                //                    //                        });
+                //                    inventory.insertStack(itemStack)
+            }
+
+            5 -> {
+                // equip
+                player.inventory.selectedSlot = argInventory
+                (client as ClientDoItemUseInvoker).invokeDoItemUse()
+            }
+
+            6 -> {
+                // place
+                (client as ClientDoItemUseInvoker).invokeDoItemUse()
+            }
+
+            7 -> {
+                // destroy
+                (client as ClientDoAttackInvoker).invokeDoAttack()
+            }
+        }
+        return false
+    }
+
 
     private fun readAction(inputStream: InputStream): ActionSpaceMessage {
 //        println("Reading action space")
