@@ -9,6 +9,7 @@ import com.kyhsgeekcode.minecraft_env.proto.ActionSpace.ActionSpaceMessage
 import com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment
 import net.fabricmc.api.ModInitializer
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents
+import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings
 import net.fabricmc.fabric.api.registry.FuelRegistry
 import net.minecraft.client.MinecraftClient
@@ -16,17 +17,16 @@ import net.minecraft.client.gui.screen.DeathScreen
 import net.minecraft.client.network.ClientPlayerEntity
 import net.minecraft.client.texture.NativeImage
 import net.minecraft.client.util.ScreenshotRecorder
-import net.minecraft.client.world.ClientWorld
 import net.minecraft.entity.EntityType
 import net.minecraft.inventory.CraftingInventory
 import net.minecraft.item.Item
 import net.minecraft.recipe.RecipeMatcher
 import net.minecraft.registry.Registries
 import net.minecraft.registry.Registry
+import net.minecraft.server.world.ServerWorld
 import net.minecraft.stat.Stats
 import net.minecraft.util.Identifier
 import net.minecraft.util.math.MathHelper
-import net.minecraft.util.math.Vec3d
 import net.minecraft.world.World
 import java.awt.RenderingHints
 import java.awt.image.BufferedImage
@@ -70,10 +70,10 @@ class Minecraft_env : ModInitializer, CommandExecutor {
             if (entityListener == null) entityListener =
                 EntityRenderListenerImpl(client.worldRenderer as AddListenerInterface)
         })
-        ClientTickEvents.START_WORLD_TICK.register(ClientTickEvents.StartWorldTick { world: ClientWorld ->
-            onStartWorldTick(initializer, inputStream, world)
+        ServerTickEvents.START_WORLD_TICK.register(ServerTickEvents.StartWorldTick { world: ServerWorld ->
+            onStartWorldTick(initializer, inputStream)
         })
-        ClientTickEvents.END_WORLD_TICK.register(ClientTickEvents.EndWorldTick { world: ClientWorld ->
+        ServerTickEvents.END_WORLD_TICK.register(ServerTickEvents.EndWorldTick { world: ServerWorld ->
             sendObservation(
                 outputStream,
                 world,
@@ -85,7 +85,6 @@ class Minecraft_env : ModInitializer, CommandExecutor {
     private fun onStartWorldTick(
         initializer: EnvironmentInitializer,
         inputStream: InputStream,
-        world: ClientWorld
     ) {
 //        println("start time: " + world.time)
         val client = MinecraftClient.getInstance()
@@ -289,7 +288,6 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                     val inventory = player.inventory
                     val recipeMatcher = RecipeMatcher()
                     inventory.populateRecipeFinder(recipeMatcher)
-                    val manager = world.recipeManager
                     player.playerScreenHandler.populateRecipeFinder(recipeMatcher)
                     val input = CraftingInventory(player.playerScreenHandler, 2, 2)
                     //                        manager.get(id).ifPresent(recipe -> {
