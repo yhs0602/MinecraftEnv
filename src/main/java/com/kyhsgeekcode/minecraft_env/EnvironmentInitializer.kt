@@ -10,19 +10,23 @@ import net.minecraft.client.gui.screen.world.CreateWorldScreen
 import net.minecraft.client.gui.screen.world.SelectWorldScreen
 import net.minecraft.client.gui.screen.world.WorldListWidget
 import net.minecraft.client.gui.widget.*
-import net.minecraft.client.network.ClientPlayerEntity
+import net.minecraft.server.MinecraftServer
 import net.minecraft.world.GameMode
 
 
 interface CommandExecutor {
-    fun runCommand(clientPlayerEntity: ClientPlayerEntity, command: String)
+    fun runCommand(server: MinecraftServer, command: String)
 }
 
-class EnvironmentInitializer(private val initialEnvironment: InitialEnvironmentMessage) {
+class EnvironmentInitializer(
+    private val initialEnvironment: InitialEnvironmentMessage,
+) {
     var hasRunInitWorld: Boolean = false
         private set
     var initWorldFinished: Boolean = false
         private set
+
+    private lateinit var minecraftServer: MinecraftServer
 
     fun onClientTick(client: MinecraftClient) {
         when (val screen = client.currentScreen) {
@@ -37,12 +41,12 @@ class EnvironmentInitializer(private val initialEnvironment: InitialEnvironmentM
             }
 
             is SelectWorldScreen -> {
-                println("Select world screen1")
+//                println("Select world screen1")
                 var widget: WorldListWidget? = null
                 var deleteButton: ButtonWidget? = null
                 var createButton: ButtonWidget? = null
                 for (child in screen.children()) {
-                    println(child)
+//                    println(child)
                     if (child is WorldListWidget) {
                         widget = child
                     } else if (child is ButtonWidget) {
@@ -62,7 +66,7 @@ class EnvironmentInitializer(private val initialEnvironment: InitialEnvironmentM
             }
 
             is CreateWorldScreen -> {
-                println("Create world screen")
+//                println("Create world screen")
                 var createButton: ButtonWidget? = null
                 val cheatRequested = true
                 var indexOfWorldSettingTab = -1
@@ -105,16 +109,16 @@ class EnvironmentInitializer(private val initialEnvironment: InitialEnvironmentM
                 // Search for seed input
                 if (initialEnvironment.seed != null) {
                     for (child in screen.children()) {
-                        println(child)
+//                        println(child)
                         if (child is TextFieldWidget) {
-                            println("Found text field")
+//                            println("Found text field")
                             child.text = initialEnvironment.seed.toString()
                         }
                     }
                 }
                 if (initialEnvironment.isWorldFlat) {
                     for (child in screen.children()) {
-                        println(child)
+//                        println(child)
                         if (worldTypeButton == null && child is CyclingButtonWidget<*>) {
                             if (child.message.string.startsWith("World Type")) {
                                 worldTypeButton = child
@@ -132,21 +136,24 @@ class EnvironmentInitializer(private val initialEnvironment: InitialEnvironmentM
         }
         val window = MinecraftClient.getInstance().window
         window.setWindowedSize(initialEnvironment.visibleSizeX, initialEnvironment.visibleSizeY)
+        disablePauseOnLostFocus(client)
     }
 
-    fun reset(chatHud: ChatHud, player: ClientPlayerEntity, commandExecutor: CommandExecutor) {
+    fun reset(chatHud: ChatHud, commandExecutor: CommandExecutor) {
         println("Resetting...")
         hasRunInitWorld = false
         initWorldFinished = false
         chatHud.clear(true)
-        onWorldTick(chatHud, player, commandExecutor)
+        onWorldTick(null, chatHud, commandExecutor)
     }
 
     fun onWorldTick(
+        minecraftServer: MinecraftServer?,
         chatHud: ChatHud,
-        player: ClientPlayerEntity,
         commandExecutor: CommandExecutor
     ) {
+        if (minecraftServer != null)
+            this.minecraftServer = minecraftServer
         val messages = (chatHud as ChatVisibleMessageAccessor).visibleMessages
         val hasInitFinishMessage = messages.find {
             val text = it.content
@@ -165,21 +172,21 @@ class EnvironmentInitializer(private val initialEnvironment: InitialEnvironmentM
         if (hasRunInitWorld)
             return
         // NOTE: should be called only once when initial environment is set
-        val myCommandExecutor = { p: ClientPlayerEntity, c: String ->
-            commandExecutor.runCommand(p, c)
+        val myCommandExecutor = { server: MinecraftServer, c: String ->
+            commandExecutor.runCommand(server, c)
         }
-        setupInitialPosition(player, myCommandExecutor)
-        setupInitialWeather(player, myCommandExecutor)
-        setupAllowMobSpawn(player, myCommandExecutor)
-        setupInitialInventory(player, myCommandExecutor)
-        summonInitialMobs(player, myCommandExecutor)
+        setupInitialPosition(myCommandExecutor)
+        setupInitialWeather(myCommandExecutor)
+        setupAllowMobSpawn(myCommandExecutor)
+        setupInitialInventory(myCommandExecutor)
+        summonInitialMobs(myCommandExecutor)
         if (initialEnvironment.alwaysDay)
-            setupAlwaysDay(player, myCommandExecutor)
+            setupAlwaysDay(myCommandExecutor)
         if (initialEnvironment.alwaysNight)
-            setupAlwaysNight(player, myCommandExecutor)
+            setupAlwaysNight(myCommandExecutor)
         for (command in initialEnvironment.initialExtraCommandsList)
-            commandExecutor.runCommand(player, "/$command")
-        commandExecutor.runCommand(player, "/say Initialization Done")
+            commandExecutor.runCommand(this.minecraftServer, "/$command")
+        commandExecutor.runCommand(this.minecraftServer, "/say Initialization Done")
         initWorldFinished = false
         hasRunInitWorld = true
     }
@@ -204,68 +211,79 @@ class EnvironmentInitializer(private val initialEnvironment: InitialEnvironmentM
         }
     }
 
-    private fun summonInitialMobs(player: ClientPlayerEntity, commandExecutor: (ClientPlayerEntity, String) -> Unit) {
+    private fun summonInitialMobs(commandExecutor: (MinecraftServer, String) -> Unit) {
         for (command in initialEnvironment.initialMobsCommandsList) {
-            commandExecutor(player, "/summon $command")
+            commandExecutor(minecraftServer, "/summon $command")
         }
     }
 
     private fun setupInitialInventory(
-        player: ClientPlayerEntity,
-        commandExecutor: (ClientPlayerEntity, String) -> Unit
+
+        commandExecutor: (MinecraftServer, String) -> Unit
     ) {
         for (command in initialEnvironment.initialInventoryCommandsList) {
-            commandExecutor(player, "/give @p $command")
+            commandExecutor(minecraftServer, "/give @p $command")
         }
     }
 
     private fun setupInitialPosition(
-        player: ClientPlayerEntity,
-        commandExecutor: (ClientPlayerEntity, String) -> Unit
+
+        commandExecutor: (MinecraftServer, String) -> Unit
     ) {
         if (initialEnvironment.initialPositionList.isEmpty())
             return
         commandExecutor(
-            player,
+            minecraftServer,
             "/tp @p ${initialEnvironment.initialPositionList[0]} ${initialEnvironment.initialPositionList[1]} ${initialEnvironment.initialPositionList[2]}"
         )
     }
 
-    private fun setupInitialWeather(player: ClientPlayerEntity, commandExecutor: (ClientPlayerEntity, String) -> Unit) {
+    private fun setupInitialWeather(commandExecutor: (MinecraftServer, String) -> Unit) {
         commandExecutor(
-            player,
+            minecraftServer,
             "/weather ${initialEnvironment.initialWeather}"
         )
     }
 
-    private fun setupAllowMobSpawn(player: ClientPlayerEntity, commandExecutor: (ClientPlayerEntity, String) -> Unit) {
+    private fun setupAllowMobSpawn(commandExecutor: (MinecraftServer, String) -> Unit) {
         if (initialEnvironment.allowMobSpawn)
             return
         commandExecutor(
-            player,
+            minecraftServer,
             "/gamerule doMobSpawning false"
         )
     }
 
-    private fun setupAlwaysDay(player: ClientPlayerEntity, commandExecutor: (ClientPlayerEntity, String) -> Unit) {
+    private fun setupAlwaysDay(commandExecutor: (MinecraftServer, String) -> Unit) {
         commandExecutor(
-            player,
+            minecraftServer,
             "/gamerule doDaylightCycle false"
         )
         commandExecutor(
-            player,
+            minecraftServer,
             "/time set day"
         )
     }
 
-    private fun setupAlwaysNight(player: ClientPlayerEntity, commandExecutor: (ClientPlayerEntity, String) -> Unit) {
+    private fun setupAlwaysNight(commandExecutor: (MinecraftServer, String) -> Unit) {
         commandExecutor(
-            player,
+            minecraftServer,
             "/gamerule doDaylightCycle false"
         )
         commandExecutor(
-            player,
+            minecraftServer,
             "/time set night"
         )
+    }
+
+    private fun disablePauseOnLostFocus(client: MinecraftClient) {
+        val options = client.options
+        if (options != null) {
+            if (options.pauseOnLostFocus) {
+                println("Disabled pause on lost focus")
+                options.pauseOnLostFocus = false
+                client.options.write()
+            }
+        }
     }
 }
