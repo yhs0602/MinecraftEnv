@@ -68,7 +68,15 @@ class Minecraft_env : ModInitializer, CommandExecutor {
         val inputStream: InputStream
         val outputStream: OutputStream
         try {
-            val serverSocket = ServerSocket(8000)
+            var port: Int
+            val portStr = System.getenv("PORT")
+            if (portStr != null) {
+                port = portStr.toInt()
+            } else {
+                port = 8000
+            }
+            printWithTime("Connecting to $port")
+            val serverSocket = ServerSocket(port)
             val socket = serverSocket.accept()
             socket.soTimeout = 30000
             inputStream = socket.getInputStream()

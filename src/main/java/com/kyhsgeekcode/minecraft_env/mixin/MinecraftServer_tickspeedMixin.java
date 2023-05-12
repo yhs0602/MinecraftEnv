@@ -152,7 +152,6 @@ public abstract class MinecraftServer_tickspeedMixin extends ReentrantThreadExec
                     }
                 }
             }
-
             return false;
         }
     }
