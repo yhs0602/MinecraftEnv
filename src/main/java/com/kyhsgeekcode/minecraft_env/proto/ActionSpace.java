@@ -4,793 +4,873 @@
 package com.kyhsgeekcode.minecraft_env.proto;
 
 public final class ActionSpace {
-  private ActionSpace() {}
-  public static void registerAllExtensions(
-      com.google.protobuf.ExtensionRegistryLite registry) {
-  }
+    private static final com.google.protobuf.Descriptors.Descriptor
+            internal_static_ActionSpaceMessage_descriptor;
+    private static final
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+            internal_static_ActionSpaceMessage_fieldAccessorTable;
+    private static com.google.protobuf.Descriptors.FileDescriptor
+            descriptor;
 
-  public static void registerAllExtensions(
-      com.google.protobuf.ExtensionRegistry registry) {
-    registerAllExtensions(
-        (com.google.protobuf.ExtensionRegistryLite) registry);
-  }
-  public interface ActionSpaceMessageOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:ActionSpaceMessage)
-      com.google.protobuf.MessageOrBuilder {
+    static {
+        java.lang.String[] descriptorData = {
+                "\n\022action_space.proto\"5\n\022ActionSpaceMessa" +
+                        "ge\022\016\n\006action\030\001 \003(\005\022\017\n\007command\030\002 \001(\tB&\n$c" +
+                        "om.kyhsgeekcode.minecraft_env.protob\006pro" +
+                        "to3"
+        };
+        descriptor = com.google.protobuf.Descriptors.FileDescriptor
+                .internalBuildGeneratedFileFrom(descriptorData,
+                        new com.google.protobuf.Descriptors.FileDescriptor[]{
+                        });
+        internal_static_ActionSpaceMessage_descriptor =
+                getDescriptor().getMessageTypes().get(0);
+        internal_static_ActionSpaceMessage_fieldAccessorTable = new
+                com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+                internal_static_ActionSpaceMessage_descriptor,
+                new java.lang.String[]{"Action", "Command",});
+    }
 
-    /**
-     * <code>repeated int32 action = 1;</code>
-     * @return A list containing the action.
-     */
-    java.util.List<java.lang.Integer> getActionList();
-    /**
-     * <code>repeated int32 action = 1;</code>
-     * @return The count of action.
-     */
-    int getActionCount();
-    /**
-     * <code>repeated int32 action = 1;</code>
-     * @param index The index of the element to return.
-     * @return The action at the given index.
-     */
-    int getAction(int index);
+    private ActionSpace() {
+    }
 
-    /**
-     * <code>string command = 2;</code>
-     * @return The command.
-     */
-    java.lang.String getCommand();
-    /**
-     * <code>string command = 2;</code>
-     * @return The bytes for command.
-     */
-    com.google.protobuf.ByteString
+    public static void registerAllExtensions(
+            com.google.protobuf.ExtensionRegistryLite registry) {
+    }
+
+    public static void registerAllExtensions(
+            com.google.protobuf.ExtensionRegistry registry) {
+        registerAllExtensions(
+                (com.google.protobuf.ExtensionRegistryLite) registry);
+    }
+
+    public static com.google.protobuf.Descriptors.FileDescriptor
+    getDescriptor() {
+        return descriptor;
+    }
+
+    public interface ActionSpaceMessageOrBuilder extends
+            // @@protoc_insertion_point(interface_extends:ActionSpaceMessage)
+            com.google.protobuf.MessageOrBuilder {
+
+        /**
+         * <code>repeated int32 action = 1;</code>
+         *
+         * @return A list containing the action.
+         */
+        java.util.List<java.lang.Integer> getActionList();
+
+        /**
+         * <code>repeated int32 action = 1;</code>
+         *
+         * @return The count of action.
+         */
+        int getActionCount();
+
+        /**
+         * <code>repeated int32 action = 1;</code>
+         *
+         * @param index The index of the element to return.
+         * @return The action at the given index.
+         */
+        int getAction(int index);
+
+        /**
+         * <code>string command = 2;</code>
+         *
+         * @return The command.
+         */
+        java.lang.String getCommand();
+
+        /**
+         * <code>string command = 2;</code>
+         *
+         * @return The bytes for command.
+         */
+        com.google.protobuf.ByteString
         getCommandBytes();
-  }
-  /**
-   * Protobuf type {@code ActionSpaceMessage}
-   */
-  public static final class ActionSpaceMessage extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:ActionSpaceMessage)
-      ActionSpaceMessageOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use ActionSpaceMessage.newBuilder() to construct.
-    private ActionSpaceMessage(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private ActionSpaceMessage() {
-      action_ = emptyIntList();
-      command_ = "";
     }
 
-    @java.lang.Override
-    @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
-      return new ActionSpaceMessage();
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return com.kyhsgeekcode.minecraft_env.proto.ActionSpace.internal_static_ActionSpaceMessage_descriptor;
-    }
-
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return com.kyhsgeekcode.minecraft_env.proto.ActionSpace.internal_static_ActionSpaceMessage_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              com.kyhsgeekcode.minecraft_env.proto.ActionSpace.ActionSpaceMessage.class, com.kyhsgeekcode.minecraft_env.proto.ActionSpace.ActionSpaceMessage.Builder.class);
-    }
-
-    public static final int ACTION_FIELD_NUMBER = 1;
-    @SuppressWarnings("serial")
-    private com.google.protobuf.Internal.IntList action_;
-    /**
-     * <code>repeated int32 action = 1;</code>
-     * @return A list containing the action.
-     */
-    @java.lang.Override
-    public java.util.List<java.lang.Integer>
-        getActionList() {
-      return action_;
-    }
-    /**
-     * <code>repeated int32 action = 1;</code>
-     * @return The count of action.
-     */
-    public int getActionCount() {
-      return action_.size();
-    }
-    /**
-     * <code>repeated int32 action = 1;</code>
-     * @param index The index of the element to return.
-     * @return The action at the given index.
-     */
-    public int getAction(int index) {
-      return action_.getInt(index);
-    }
-    private int actionMemoizedSerializedSize = -1;
-
-    public static final int COMMAND_FIELD_NUMBER = 2;
-    @SuppressWarnings("serial")
-    private volatile java.lang.Object command_ = "";
-    /**
-     * <code>string command = 2;</code>
-     * @return The command.
-     */
-    @java.lang.Override
-    public java.lang.String getCommand() {
-      java.lang.Object ref = command_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        command_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string command = 2;</code>
-     * @return The bytes for command.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString
-        getCommandBytes() {
-      java.lang.Object ref = command_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        command_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      getSerializedSize();
-      if (getActionList().size() > 0) {
-        output.writeUInt32NoTag(10);
-        output.writeUInt32NoTag(actionMemoizedSerializedSize);
-      }
-      for (int i = 0; i < action_.size(); i++) {
-        output.writeInt32NoTag(action_.getInt(i));
-      }
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(command_)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, command_);
-      }
-      getUnknownFields().writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      {
-        int dataSize = 0;
-        for (int i = 0; i < action_.size(); i++) {
-          dataSize += com.google.protobuf.CodedOutputStream
-            .computeInt32SizeNoTag(action_.getInt(i));
-        }
-        size += dataSize;
-        if (!getActionList().isEmpty()) {
-          size += 1;
-          size += com.google.protobuf.CodedOutputStream
-              .computeInt32SizeNoTag(dataSize);
-        }
-        actionMemoizedSerializedSize = dataSize;
-      }
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(command_)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, command_);
-      }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof com.kyhsgeekcode.minecraft_env.proto.ActionSpace.ActionSpaceMessage)) {
-        return super.equals(obj);
-      }
-      com.kyhsgeekcode.minecraft_env.proto.ActionSpace.ActionSpaceMessage other = (com.kyhsgeekcode.minecraft_env.proto.ActionSpace.ActionSpaceMessage) obj;
-
-      if (!getActionList()
-          .equals(other.getActionList())) return false;
-      if (!getCommand()
-          .equals(other.getCommand())) return false;
-      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
-      return true;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      if (getActionCount() > 0) {
-        hash = (37 * hash) + ACTION_FIELD_NUMBER;
-        hash = (53 * hash) + getActionList().hashCode();
-      }
-      hash = (37 * hash) + COMMAND_FIELD_NUMBER;
-      hash = (53 * hash) + getCommand().hashCode();
-      hash = (29 * hash) + getUnknownFields().hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static com.kyhsgeekcode.minecraft_env.proto.ActionSpace.ActionSpaceMessage parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.ActionSpace.ActionSpaceMessage parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.ActionSpace.ActionSpaceMessage parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.ActionSpace.ActionSpaceMessage parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.ActionSpace.ActionSpaceMessage parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.ActionSpace.ActionSpaceMessage parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.ActionSpace.ActionSpaceMessage parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.ActionSpace.ActionSpaceMessage parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.ActionSpace.ActionSpaceMessage parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.ActionSpace.ActionSpaceMessage parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.ActionSpace.ActionSpaceMessage parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.ActionSpace.ActionSpaceMessage parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(com.kyhsgeekcode.minecraft_env.proto.ActionSpace.ActionSpaceMessage prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
     /**
      * Protobuf type {@code ActionSpaceMessage}
      */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:ActionSpaceMessage)
-        com.kyhsgeekcode.minecraft_env.proto.ActionSpace.ActionSpaceMessageOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return com.kyhsgeekcode.minecraft_env.proto.ActionSpace.internal_static_ActionSpaceMessage_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return com.kyhsgeekcode.minecraft_env.proto.ActionSpace.internal_static_ActionSpaceMessage_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                com.kyhsgeekcode.minecraft_env.proto.ActionSpace.ActionSpaceMessage.class, com.kyhsgeekcode.minecraft_env.proto.ActionSpace.ActionSpaceMessage.Builder.class);
-      }
-
-      // Construct using com.kyhsgeekcode.minecraft_env.proto.ActionSpace.ActionSpaceMessage.newBuilder()
-      private Builder() {
-
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        bitField0_ = 0;
-        action_ = emptyIntList();
-        command_ = "";
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return com.kyhsgeekcode.minecraft_env.proto.ActionSpace.internal_static_ActionSpaceMessage_descriptor;
-      }
-
-      @java.lang.Override
-      public com.kyhsgeekcode.minecraft_env.proto.ActionSpace.ActionSpaceMessage getDefaultInstanceForType() {
-        return com.kyhsgeekcode.minecraft_env.proto.ActionSpace.ActionSpaceMessage.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public com.kyhsgeekcode.minecraft_env.proto.ActionSpace.ActionSpaceMessage build() {
-        com.kyhsgeekcode.minecraft_env.proto.ActionSpace.ActionSpaceMessage result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public com.kyhsgeekcode.minecraft_env.proto.ActionSpace.ActionSpaceMessage buildPartial() {
-        com.kyhsgeekcode.minecraft_env.proto.ActionSpace.ActionSpaceMessage result = new com.kyhsgeekcode.minecraft_env.proto.ActionSpace.ActionSpaceMessage(this);
-        buildPartialRepeatedFields(result);
-        if (bitField0_ != 0) { buildPartial0(result); }
-        onBuilt();
-        return result;
-      }
-
-      private void buildPartialRepeatedFields(com.kyhsgeekcode.minecraft_env.proto.ActionSpace.ActionSpaceMessage result) {
-        if (((bitField0_ & 0x00000001) != 0)) {
-          action_.makeImmutable();
-          bitField0_ = (bitField0_ & ~0x00000001);
-        }
-        result.action_ = action_;
-      }
-
-      private void buildPartial0(com.kyhsgeekcode.minecraft_env.proto.ActionSpace.ActionSpaceMessage result) {
-        int from_bitField0_ = bitField0_;
-        if (((from_bitField0_ & 0x00000002) != 0)) {
-          result.command_ = command_;
-        }
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.kyhsgeekcode.minecraft_env.proto.ActionSpace.ActionSpaceMessage) {
-          return mergeFrom((com.kyhsgeekcode.minecraft_env.proto.ActionSpace.ActionSpaceMessage)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(com.kyhsgeekcode.minecraft_env.proto.ActionSpace.ActionSpaceMessage other) {
-        if (other == com.kyhsgeekcode.minecraft_env.proto.ActionSpace.ActionSpaceMessage.getDefaultInstance()) return this;
-        if (!other.action_.isEmpty()) {
-          if (action_.isEmpty()) {
-            action_ = other.action_;
-            bitField0_ = (bitField0_ & ~0x00000001);
-          } else {
-            ensureActionIsMutable();
-            action_.addAll(other.action_);
-          }
-          onChanged();
-        }
-        if (!other.getCommand().isEmpty()) {
-          command_ = other.command_;
-          bitField0_ |= 0x00000002;
-          onChanged();
-        }
-        this.mergeUnknownFields(other.getUnknownFields());
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        if (extensionRegistry == null) {
-          throw new java.lang.NullPointerException();
-        }
-        try {
-          boolean done = false;
-          while (!done) {
-            int tag = input.readTag();
-            switch (tag) {
-              case 0:
-                done = true;
-                break;
-              case 8: {
-                int v = input.readInt32();
-                ensureActionIsMutable();
-                action_.addInt(v);
-                break;
-              } // case 8
-              case 10: {
-                int length = input.readRawVarint32();
-                int limit = input.pushLimit(length);
-                ensureActionIsMutable();
-                while (input.getBytesUntilLimit() > 0) {
-                  action_.addInt(input.readInt32());
+    public static final class ActionSpaceMessage extends
+            com.google.protobuf.GeneratedMessageV3 implements
+            // @@protoc_insertion_point(message_implements:ActionSpaceMessage)
+            ActionSpaceMessageOrBuilder {
+        public static final int ACTION_FIELD_NUMBER = 1;
+        public static final int COMMAND_FIELD_NUMBER = 2;
+        private static final long serialVersionUID = 0L;
+        // @@protoc_insertion_point(class_scope:ActionSpaceMessage)
+        private static final com.kyhsgeekcode.minecraft_env.proto.ActionSpace.ActionSpaceMessage DEFAULT_INSTANCE;
+        private static final com.google.protobuf.Parser<ActionSpaceMessage>
+                PARSER = new com.google.protobuf.AbstractParser<ActionSpaceMessage>() {
+            @java.lang.Override
+            public ActionSpaceMessage parsePartialFrom(
+                    com.google.protobuf.CodedInputStream input,
+                    com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                    throws com.google.protobuf.InvalidProtocolBufferException {
+                Builder builder = newBuilder();
+                try {
+                    builder.mergeFrom(input, extensionRegistry);
+                } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                    throw e.setUnfinishedMessage(builder.buildPartial());
+                } catch (com.google.protobuf.UninitializedMessageException e) {
+                    throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+                } catch (java.io.IOException e) {
+                    throw new com.google.protobuf.InvalidProtocolBufferException(e)
+                            .setUnfinishedMessage(builder.buildPartial());
                 }
-                input.popLimit(limit);
-                break;
-              } // case 10
-              case 18: {
-                command_ = input.readStringRequireUtf8();
+                return builder.buildPartial();
+            }
+        };
+
+        static {
+            DEFAULT_INSTANCE = new com.kyhsgeekcode.minecraft_env.proto.ActionSpace.ActionSpaceMessage();
+        }
+
+        @SuppressWarnings("serial")
+        private com.google.protobuf.Internal.IntList action_;
+        private int actionMemoizedSerializedSize = -1;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object command_ = "";
+        private byte memoizedIsInitialized = -1;
+
+        // Use ActionSpaceMessage.newBuilder() to construct.
+        private ActionSpaceMessage(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+            super(builder);
+        }
+
+        private ActionSpaceMessage() {
+            action_ = emptyIntList();
+            command_ = "";
+        }
+
+        public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+            return com.kyhsgeekcode.minecraft_env.proto.ActionSpace.internal_static_ActionSpaceMessage_descriptor;
+        }
+
+        public static com.kyhsgeekcode.minecraft_env.proto.ActionSpace.ActionSpaceMessage parseFrom(
+                java.nio.ByteBuffer data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
+
+        public static com.kyhsgeekcode.minecraft_env.proto.ActionSpace.ActionSpaceMessage parseFrom(
+                java.nio.ByteBuffer data,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
+        }
+
+        public static com.kyhsgeekcode.minecraft_env.proto.ActionSpace.ActionSpaceMessage parseFrom(
+                com.google.protobuf.ByteString data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
+
+        public static com.kyhsgeekcode.minecraft_env.proto.ActionSpace.ActionSpaceMessage parseFrom(
+                com.google.protobuf.ByteString data,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
+        }
+
+        public static com.kyhsgeekcode.minecraft_env.proto.ActionSpace.ActionSpaceMessage parseFrom(byte[] data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
+
+        public static com.kyhsgeekcode.minecraft_env.proto.ActionSpace.ActionSpaceMessage parseFrom(
+                byte[] data,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
+        }
+
+        public static com.kyhsgeekcode.minecraft_env.proto.ActionSpace.ActionSpaceMessage parseFrom(java.io.InputStream input)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3
+                    .parseWithIOException(PARSER, input);
+        }
+
+        public static com.kyhsgeekcode.minecraft_env.proto.ActionSpace.ActionSpaceMessage parseFrom(
+                java.io.InputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3
+                    .parseWithIOException(PARSER, input, extensionRegistry);
+        }
+
+        public static com.kyhsgeekcode.minecraft_env.proto.ActionSpace.ActionSpaceMessage parseDelimitedFrom(java.io.InputStream input)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3
+                    .parseDelimitedWithIOException(PARSER, input);
+        }
+
+        public static com.kyhsgeekcode.minecraft_env.proto.ActionSpace.ActionSpaceMessage parseDelimitedFrom(
+                java.io.InputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3
+                    .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+        }
+
+        public static com.kyhsgeekcode.minecraft_env.proto.ActionSpace.ActionSpaceMessage parseFrom(
+                com.google.protobuf.CodedInputStream input)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3
+                    .parseWithIOException(PARSER, input);
+        }
+
+        public static com.kyhsgeekcode.minecraft_env.proto.ActionSpace.ActionSpaceMessage parseFrom(
+                com.google.protobuf.CodedInputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3
+                    .parseWithIOException(PARSER, input, extensionRegistry);
+        }
+
+        public static Builder newBuilder() {
+            return DEFAULT_INSTANCE.toBuilder();
+        }
+
+        public static Builder newBuilder(com.kyhsgeekcode.minecraft_env.proto.ActionSpace.ActionSpaceMessage prototype) {
+            return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+        }
+
+        public static com.kyhsgeekcode.minecraft_env.proto.ActionSpace.ActionSpaceMessage getDefaultInstance() {
+            return DEFAULT_INSTANCE;
+        }
+
+        public static com.google.protobuf.Parser<ActionSpaceMessage> parser() {
+            return PARSER;
+        }
+
+        @java.lang.Override
+        @SuppressWarnings({"unused"})
+        protected java.lang.Object newInstance(
+                UnusedPrivateParameter unused) {
+            return new ActionSpaceMessage();
+        }
+
+        @java.lang.Override
+        public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+            return this.unknownFields;
+        }
+
+        @java.lang.Override
+        protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+            return com.kyhsgeekcode.minecraft_env.proto.ActionSpace.internal_static_ActionSpaceMessage_fieldAccessorTable
+                    .ensureFieldAccessorsInitialized(
+                            com.kyhsgeekcode.minecraft_env.proto.ActionSpace.ActionSpaceMessage.class, com.kyhsgeekcode.minecraft_env.proto.ActionSpace.ActionSpaceMessage.Builder.class);
+        }
+
+        /**
+         * <code>repeated int32 action = 1;</code>
+         *
+         * @return A list containing the action.
+         */
+        @java.lang.Override
+        public java.util.List<java.lang.Integer>
+        getActionList() {
+            return action_;
+        }
+
+        /**
+         * <code>repeated int32 action = 1;</code>
+         *
+         * @return The count of action.
+         */
+        public int getActionCount() {
+            return action_.size();
+        }
+
+        /**
+         * <code>repeated int32 action = 1;</code>
+         *
+         * @param index The index of the element to return.
+         * @return The action at the given index.
+         */
+        public int getAction(int index) {
+            return action_.getInt(index);
+        }
+
+        /**
+         * <code>string command = 2;</code>
+         *
+         * @return The command.
+         */
+        @java.lang.Override
+        public java.lang.String getCommand() {
+            java.lang.Object ref = command_;
+            if (ref instanceof java.lang.String) {
+                return (java.lang.String) ref;
+            } else {
+                com.google.protobuf.ByteString bs =
+                        (com.google.protobuf.ByteString) ref;
+                java.lang.String s = bs.toStringUtf8();
+                command_ = s;
+                return s;
+            }
+        }
+
+        /**
+         * <code>string command = 2;</code>
+         *
+         * @return The bytes for command.
+         */
+        @java.lang.Override
+        public com.google.protobuf.ByteString
+        getCommandBytes() {
+            java.lang.Object ref = command_;
+            if (ref instanceof java.lang.String) {
+                com.google.protobuf.ByteString b =
+                        com.google.protobuf.ByteString.copyFromUtf8(
+                                (java.lang.String) ref);
+                command_ = b;
+                return b;
+            } else {
+                return (com.google.protobuf.ByteString) ref;
+            }
+        }
+
+        @java.lang.Override
+        public final boolean isInitialized() {
+            byte isInitialized = memoizedIsInitialized;
+            if (isInitialized == 1) return true;
+            if (isInitialized == 0) return false;
+
+            memoizedIsInitialized = 1;
+            return true;
+        }
+
+        @java.lang.Override
+        public void writeTo(com.google.protobuf.CodedOutputStream output)
+                throws java.io.IOException {
+            getSerializedSize();
+            if (getActionList().size() > 0) {
+                output.writeUInt32NoTag(10);
+                output.writeUInt32NoTag(actionMemoizedSerializedSize);
+            }
+            for (int i = 0; i < action_.size(); i++) {
+                output.writeInt32NoTag(action_.getInt(i));
+            }
+            if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(command_)) {
+                com.google.protobuf.GeneratedMessageV3.writeString(output, 2, command_);
+            }
+            getUnknownFields().writeTo(output);
+        }
+
+        @java.lang.Override
+        public int getSerializedSize() {
+            int size = memoizedSize;
+            if (size != -1) return size;
+
+            size = 0;
+            {
+                int dataSize = 0;
+                for (int i = 0; i < action_.size(); i++) {
+                    dataSize += com.google.protobuf.CodedOutputStream
+                            .computeInt32SizeNoTag(action_.getInt(i));
+                }
+                size += dataSize;
+                if (!getActionList().isEmpty()) {
+                    size += 1;
+                    size += com.google.protobuf.CodedOutputStream
+                            .computeInt32SizeNoTag(dataSize);
+                }
+                actionMemoizedSerializedSize = dataSize;
+            }
+            if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(command_)) {
+                size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, command_);
+            }
+            size += getUnknownFields().getSerializedSize();
+            memoizedSize = size;
+            return size;
+        }
+
+        @java.lang.Override
+        public boolean equals(final java.lang.Object obj) {
+            if (obj == this) {
+                return true;
+            }
+            if (!(obj instanceof com.kyhsgeekcode.minecraft_env.proto.ActionSpace.ActionSpaceMessage)) {
+                return super.equals(obj);
+            }
+            com.kyhsgeekcode.minecraft_env.proto.ActionSpace.ActionSpaceMessage other = (com.kyhsgeekcode.minecraft_env.proto.ActionSpace.ActionSpaceMessage) obj;
+
+            if (!getActionList()
+                    .equals(other.getActionList())) return false;
+            if (!getCommand()
+                    .equals(other.getCommand())) return false;
+            if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+            return true;
+        }
+
+        @java.lang.Override
+        public int hashCode() {
+            if (memoizedHashCode != 0) {
+                return memoizedHashCode;
+            }
+            int hash = 41;
+            hash = (19 * hash) + getDescriptor().hashCode();
+            if (getActionCount() > 0) {
+                hash = (37 * hash) + ACTION_FIELD_NUMBER;
+                hash = (53 * hash) + getActionList().hashCode();
+            }
+            hash = (37 * hash) + COMMAND_FIELD_NUMBER;
+            hash = (53 * hash) + getCommand().hashCode();
+            hash = (29 * hash) + getUnknownFields().hashCode();
+            memoizedHashCode = hash;
+            return hash;
+        }
+
+        @java.lang.Override
+        public Builder newBuilderForType() {
+            return newBuilder();
+        }
+
+        @java.lang.Override
+        public Builder toBuilder() {
+            return this == DEFAULT_INSTANCE
+                    ? new Builder() : new Builder().mergeFrom(this);
+        }
+
+        @java.lang.Override
+        protected Builder newBuilderForType(
+                com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+            Builder builder = new Builder(parent);
+            return builder;
+        }
+
+        @java.lang.Override
+        public com.google.protobuf.Parser<ActionSpaceMessage> getParserForType() {
+            return PARSER;
+        }
+
+        @java.lang.Override
+        public com.kyhsgeekcode.minecraft_env.proto.ActionSpace.ActionSpaceMessage getDefaultInstanceForType() {
+            return DEFAULT_INSTANCE;
+        }
+
+        /**
+         * Protobuf type {@code ActionSpaceMessage}
+         */
+        public static final class Builder extends
+                com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+                // @@protoc_insertion_point(builder_implements:ActionSpaceMessage)
+                com.kyhsgeekcode.minecraft_env.proto.ActionSpace.ActionSpaceMessageOrBuilder {
+            private int bitField0_;
+            private com.google.protobuf.Internal.IntList action_ = emptyIntList();
+            private java.lang.Object command_ = "";
+
+            // Construct using com.kyhsgeekcode.minecraft_env.proto.ActionSpace.ActionSpaceMessage.newBuilder()
+            private Builder() {
+
+            }
+
+            private Builder(
+                    com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+                super(parent);
+
+            }
+
+            public static final com.google.protobuf.Descriptors.Descriptor
+            getDescriptor() {
+                return com.kyhsgeekcode.minecraft_env.proto.ActionSpace.internal_static_ActionSpaceMessage_descriptor;
+            }
+
+            @java.lang.Override
+            protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+            internalGetFieldAccessorTable() {
+                return com.kyhsgeekcode.minecraft_env.proto.ActionSpace.internal_static_ActionSpaceMessage_fieldAccessorTable
+                        .ensureFieldAccessorsInitialized(
+                                com.kyhsgeekcode.minecraft_env.proto.ActionSpace.ActionSpaceMessage.class, com.kyhsgeekcode.minecraft_env.proto.ActionSpace.ActionSpaceMessage.Builder.class);
+            }
+
+            @java.lang.Override
+            public Builder clear() {
+                super.clear();
+                bitField0_ = 0;
+                action_ = emptyIntList();
+                command_ = "";
+                return this;
+            }
+
+            @java.lang.Override
+            public com.google.protobuf.Descriptors.Descriptor
+            getDescriptorForType() {
+                return com.kyhsgeekcode.minecraft_env.proto.ActionSpace.internal_static_ActionSpaceMessage_descriptor;
+            }
+
+            @java.lang.Override
+            public com.kyhsgeekcode.minecraft_env.proto.ActionSpace.ActionSpaceMessage getDefaultInstanceForType() {
+                return com.kyhsgeekcode.minecraft_env.proto.ActionSpace.ActionSpaceMessage.getDefaultInstance();
+            }
+
+            @java.lang.Override
+            public com.kyhsgeekcode.minecraft_env.proto.ActionSpace.ActionSpaceMessage build() {
+                com.kyhsgeekcode.minecraft_env.proto.ActionSpace.ActionSpaceMessage result = buildPartial();
+                if (!result.isInitialized()) {
+                    throw newUninitializedMessageException(result);
+                }
+                return result;
+            }
+
+            @java.lang.Override
+            public com.kyhsgeekcode.minecraft_env.proto.ActionSpace.ActionSpaceMessage buildPartial() {
+                com.kyhsgeekcode.minecraft_env.proto.ActionSpace.ActionSpaceMessage result = new com.kyhsgeekcode.minecraft_env.proto.ActionSpace.ActionSpaceMessage(this);
+                buildPartialRepeatedFields(result);
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
+                }
+                onBuilt();
+                return result;
+            }
+
+            private void buildPartialRepeatedFields(com.kyhsgeekcode.minecraft_env.proto.ActionSpace.ActionSpaceMessage result) {
+                if (((bitField0_ & 0x00000001) != 0)) {
+                    action_.makeImmutable();
+                    bitField0_ = (bitField0_ & ~0x00000001);
+                }
+                result.action_ = action_;
+            }
+
+            private void buildPartial0(com.kyhsgeekcode.minecraft_env.proto.ActionSpace.ActionSpaceMessage result) {
+                int from_bitField0_ = bitField0_;
+                if (((from_bitField0_ & 0x00000002) != 0)) {
+                    result.command_ = command_;
+                }
+            }
+
+            @java.lang.Override
+            public Builder clone() {
+                return super.clone();
+            }
+
+            @java.lang.Override
+            public Builder setField(
+                    com.google.protobuf.Descriptors.FieldDescriptor field,
+                    java.lang.Object value) {
+                return super.setField(field, value);
+            }
+
+            @java.lang.Override
+            public Builder clearField(
+                    com.google.protobuf.Descriptors.FieldDescriptor field) {
+                return super.clearField(field);
+            }
+
+            @java.lang.Override
+            public Builder clearOneof(
+                    com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+                return super.clearOneof(oneof);
+            }
+
+            @java.lang.Override
+            public Builder setRepeatedField(
+                    com.google.protobuf.Descriptors.FieldDescriptor field,
+                    int index, java.lang.Object value) {
+                return super.setRepeatedField(field, index, value);
+            }
+
+            @java.lang.Override
+            public Builder addRepeatedField(
+                    com.google.protobuf.Descriptors.FieldDescriptor field,
+                    java.lang.Object value) {
+                return super.addRepeatedField(field, value);
+            }
+
+            @java.lang.Override
+            public Builder mergeFrom(com.google.protobuf.Message other) {
+                if (other instanceof com.kyhsgeekcode.minecraft_env.proto.ActionSpace.ActionSpaceMessage) {
+                    return mergeFrom((com.kyhsgeekcode.minecraft_env.proto.ActionSpace.ActionSpaceMessage) other);
+                } else {
+                    super.mergeFrom(other);
+                    return this;
+                }
+            }
+
+            public Builder mergeFrom(com.kyhsgeekcode.minecraft_env.proto.ActionSpace.ActionSpaceMessage other) {
+                if (other == com.kyhsgeekcode.minecraft_env.proto.ActionSpace.ActionSpaceMessage.getDefaultInstance())
+                    return this;
+                if (!other.action_.isEmpty()) {
+                    if (action_.isEmpty()) {
+                        action_ = other.action_;
+                        bitField0_ = (bitField0_ & ~0x00000001);
+                    } else {
+                        ensureActionIsMutable();
+                        action_.addAll(other.action_);
+                    }
+                    onChanged();
+                }
+                if (!other.getCommand().isEmpty()) {
+                    command_ = other.command_;
+                    bitField0_ |= 0x00000002;
+                    onChanged();
+                }
+                this.mergeUnknownFields(other.getUnknownFields());
+                onChanged();
+                return this;
+            }
+
+            @java.lang.Override
+            public final boolean isInitialized() {
+                return true;
+            }
+
+            @java.lang.Override
+            public Builder mergeFrom(
+                    com.google.protobuf.CodedInputStream input,
+                    com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                    throws java.io.IOException {
+                if (extensionRegistry == null) {
+                    throw new java.lang.NullPointerException();
+                }
+                try {
+                    boolean done = false;
+                    while (!done) {
+                        int tag = input.readTag();
+                        switch (tag) {
+                            case 0:
+                                done = true;
+                                break;
+                            case 8: {
+                                int v = input.readInt32();
+                                ensureActionIsMutable();
+                                action_.addInt(v);
+                                break;
+                            } // case 8
+                            case 10: {
+                                int length = input.readRawVarint32();
+                                int limit = input.pushLimit(length);
+                                ensureActionIsMutable();
+                                while (input.getBytesUntilLimit() > 0) {
+                                    action_.addInt(input.readInt32());
+                                }
+                                input.popLimit(limit);
+                                break;
+                            } // case 10
+                            case 18: {
+                                command_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000002;
+                                break;
+                            } // case 18
+                            default: {
+                                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                                    done = true; // was an endgroup tag
+                                }
+                                break;
+                            } // default:
+                        } // switch (tag)
+                    } // while (!done)
+                } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                    throw e.unwrapIOException();
+                } finally {
+                    onChanged();
+                } // finally
+                return this;
+            }
+
+            private void ensureActionIsMutable() {
+                if (!((bitField0_ & 0x00000001) != 0)) {
+                    action_ = mutableCopy(action_);
+                    bitField0_ |= 0x00000001;
+                }
+            }
+
+            /**
+             * <code>repeated int32 action = 1;</code>
+             *
+             * @return A list containing the action.
+             */
+            public java.util.List<java.lang.Integer>
+            getActionList() {
+                return ((bitField0_ & 0x00000001) != 0) ?
+                        java.util.Collections.unmodifiableList(action_) : action_;
+            }
+
+            /**
+             * <code>repeated int32 action = 1;</code>
+             *
+             * @return The count of action.
+             */
+            public int getActionCount() {
+                return action_.size();
+            }
+
+            /**
+             * <code>repeated int32 action = 1;</code>
+             *
+             * @param index The index of the element to return.
+             * @return The action at the given index.
+             */
+            public int getAction(int index) {
+                return action_.getInt(index);
+            }
+
+            /**
+             * <code>repeated int32 action = 1;</code>
+             *
+             * @param index The index to set the value at.
+             * @param value The action to set.
+             * @return This builder for chaining.
+             */
+            public Builder setAction(
+                    int index, int value) {
+
+                ensureActionIsMutable();
+                action_.setInt(index, value);
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>repeated int32 action = 1;</code>
+             *
+             * @param value The action to add.
+             * @return This builder for chaining.
+             */
+            public Builder addAction(int value) {
+
+                ensureActionIsMutable();
+                action_.addInt(value);
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>repeated int32 action = 1;</code>
+             *
+             * @param values The action to add.
+             * @return This builder for chaining.
+             */
+            public Builder addAllAction(
+                    java.lang.Iterable<? extends java.lang.Integer> values) {
+                ensureActionIsMutable();
+                com.google.protobuf.AbstractMessageLite.Builder.addAll(
+                        values, action_);
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>repeated int32 action = 1;</code>
+             *
+             * @return This builder for chaining.
+             */
+            public Builder clearAction() {
+                action_ = emptyIntList();
+                bitField0_ = (bitField0_ & ~0x00000001);
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>string command = 2;</code>
+             *
+             * @return The command.
+             */
+            public java.lang.String getCommand() {
+                java.lang.Object ref = command_;
+                if (!(ref instanceof java.lang.String)) {
+                    com.google.protobuf.ByteString bs =
+                            (com.google.protobuf.ByteString) ref;
+                    java.lang.String s = bs.toStringUtf8();
+                    command_ = s;
+                    return s;
+                } else {
+                    return (java.lang.String) ref;
+                }
+            }
+
+            /**
+             * <code>string command = 2;</code>
+             *
+             * @param value The command to set.
+             * @return This builder for chaining.
+             */
+            public Builder setCommand(
+                    java.lang.String value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                command_ = value;
                 bitField0_ |= 0x00000002;
-                break;
-              } // case 18
-              default: {
-                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                  done = true; // was an endgroup tag
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>string command = 2;</code>
+             *
+             * @return The bytes for command.
+             */
+            public com.google.protobuf.ByteString
+            getCommandBytes() {
+                java.lang.Object ref = command_;
+                if (ref instanceof String) {
+                    com.google.protobuf.ByteString b =
+                            com.google.protobuf.ByteString.copyFromUtf8(
+                                    (java.lang.String) ref);
+                    command_ = b;
+                    return b;
+                } else {
+                    return (com.google.protobuf.ByteString) ref;
                 }
-                break;
-              } // default:
-            } // switch (tag)
-          } // while (!done)
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          throw e.unwrapIOException();
-        } finally {
-          onChanged();
-        } // finally
-        return this;
-      }
-      private int bitField0_;
+            }
 
-      private com.google.protobuf.Internal.IntList action_ = emptyIntList();
-      private void ensureActionIsMutable() {
-        if (!((bitField0_ & 0x00000001) != 0)) {
-          action_ = mutableCopy(action_);
-          bitField0_ |= 0x00000001;
+            /**
+             * <code>string command = 2;</code>
+             *
+             * @param value The bytes for command to set.
+             * @return This builder for chaining.
+             */
+            public Builder setCommandBytes(
+                    com.google.protobuf.ByteString value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                checkByteStringIsUtf8(value);
+                command_ = value;
+                bitField0_ |= 0x00000002;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>string command = 2;</code>
+             *
+             * @return This builder for chaining.
+             */
+            public Builder clearCommand() {
+                command_ = getDefaultInstance().getCommand();
+                bitField0_ = (bitField0_ & ~0x00000002);
+                onChanged();
+                return this;
+            }
+
+            @java.lang.Override
+            public final Builder setUnknownFields(
+                    final com.google.protobuf.UnknownFieldSet unknownFields) {
+                return super.setUnknownFields(unknownFields);
+            }
+
+            @java.lang.Override
+            public final Builder mergeUnknownFields(
+                    final com.google.protobuf.UnknownFieldSet unknownFields) {
+                return super.mergeUnknownFields(unknownFields);
+            }
+
+
+            // @@protoc_insertion_point(builder_scope:ActionSpaceMessage)
         }
-      }
-      /**
-       * <code>repeated int32 action = 1;</code>
-       * @return A list containing the action.
-       */
-      public java.util.List<java.lang.Integer>
-          getActionList() {
-        return ((bitField0_ & 0x00000001) != 0) ?
-                 java.util.Collections.unmodifiableList(action_) : action_;
-      }
-      /**
-       * <code>repeated int32 action = 1;</code>
-       * @return The count of action.
-       */
-      public int getActionCount() {
-        return action_.size();
-      }
-      /**
-       * <code>repeated int32 action = 1;</code>
-       * @param index The index of the element to return.
-       * @return The action at the given index.
-       */
-      public int getAction(int index) {
-        return action_.getInt(index);
-      }
-      /**
-       * <code>repeated int32 action = 1;</code>
-       * @param index The index to set the value at.
-       * @param value The action to set.
-       * @return This builder for chaining.
-       */
-      public Builder setAction(
-          int index, int value) {
-        
-        ensureActionIsMutable();
-        action_.setInt(index, value);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated int32 action = 1;</code>
-       * @param value The action to add.
-       * @return This builder for chaining.
-       */
-      public Builder addAction(int value) {
-        
-        ensureActionIsMutable();
-        action_.addInt(value);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated int32 action = 1;</code>
-       * @param values The action to add.
-       * @return This builder for chaining.
-       */
-      public Builder addAllAction(
-          java.lang.Iterable<? extends java.lang.Integer> values) {
-        ensureActionIsMutable();
-        com.google.protobuf.AbstractMessageLite.Builder.addAll(
-            values, action_);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated int32 action = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearAction() {
-        action_ = emptyIntList();
-        bitField0_ = (bitField0_ & ~0x00000001);
-        onChanged();
-        return this;
-      }
 
-      private java.lang.Object command_ = "";
-      /**
-       * <code>string command = 2;</code>
-       * @return The command.
-       */
-      public java.lang.String getCommand() {
-        java.lang.Object ref = command_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          command_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string command = 2;</code>
-       * @return The bytes for command.
-       */
-      public com.google.protobuf.ByteString
-          getCommandBytes() {
-        java.lang.Object ref = command_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          command_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string command = 2;</code>
-       * @param value The command to set.
-       * @return This builder for chaining.
-       */
-      public Builder setCommand(
-          java.lang.String value) {
-        if (value == null) { throw new NullPointerException(); }
-        command_ = value;
-        bitField0_ |= 0x00000002;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string command = 2;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearCommand() {
-        command_ = getDefaultInstance().getCommand();
-        bitField0_ = (bitField0_ & ~0x00000002);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string command = 2;</code>
-       * @param value The bytes for command to set.
-       * @return This builder for chaining.
-       */
-      public Builder setCommandBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) { throw new NullPointerException(); }
-        checkByteStringIsUtf8(value);
-        command_ = value;
-        bitField0_ |= 0x00000002;
-        onChanged();
-        return this;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:ActionSpaceMessage)
     }
 
-    // @@protoc_insertion_point(class_scope:ActionSpaceMessage)
-    private static final com.kyhsgeekcode.minecraft_env.proto.ActionSpace.ActionSpaceMessage DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new com.kyhsgeekcode.minecraft_env.proto.ActionSpace.ActionSpaceMessage();
-    }
-
-    public static com.kyhsgeekcode.minecraft_env.proto.ActionSpace.ActionSpaceMessage getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<ActionSpaceMessage>
-        PARSER = new com.google.protobuf.AbstractParser<ActionSpaceMessage>() {
-      @java.lang.Override
-      public ActionSpaceMessage parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        Builder builder = newBuilder();
-        try {
-          builder.mergeFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          throw e.setUnfinishedMessage(builder.buildPartial());
-        } catch (com.google.protobuf.UninitializedMessageException e) {
-          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
-        } catch (java.io.IOException e) {
-          throw new com.google.protobuf.InvalidProtocolBufferException(e)
-              .setUnfinishedMessage(builder.buildPartial());
-        }
-        return builder.buildPartial();
-      }
-    };
-
-    public static com.google.protobuf.Parser<ActionSpaceMessage> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<ActionSpaceMessage> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.kyhsgeekcode.minecraft_env.proto.ActionSpace.ActionSpaceMessage getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_ActionSpaceMessage_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_ActionSpaceMessage_fieldAccessorTable;
-
-  public static com.google.protobuf.Descriptors.FileDescriptor
-      getDescriptor() {
-    return descriptor;
-  }
-  private static  com.google.protobuf.Descriptors.FileDescriptor
-      descriptor;
-  static {
-    java.lang.String[] descriptorData = {
-      "\n\022action_space.proto\"5\n\022ActionSpaceMessa" +
-      "ge\022\016\n\006action\030\001 \003(\005\022\017\n\007command\030\002 \001(\tB&\n$c" +
-      "om.kyhsgeekcode.minecraft_env.protob\006pro" +
-      "to3"
-    };
-    descriptor = com.google.protobuf.Descriptors.FileDescriptor
-      .internalBuildGeneratedFileFrom(descriptorData,
-        new com.google.protobuf.Descriptors.FileDescriptor[] {
-        });
-    internal_static_ActionSpaceMessage_descriptor =
-      getDescriptor().getMessageTypes().get(0);
-    internal_static_ActionSpaceMessage_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_ActionSpaceMessage_descriptor,
-        new java.lang.String[] { "Action", "Command", });
-  }
-
-  // @@protoc_insertion_point(outer_class_scope)
+    // @@protoc_insertion_point(outer_class_scope)
 }

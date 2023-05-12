@@ -39,7 +39,6 @@ enum class ResetPhase {
     WAIT_PLAYER_RESPAWN,
     WAIT_INIT_ENDS,
     END_RESET,
-    IDLE,
 }
 
 enum class RunPhase {
@@ -68,13 +67,8 @@ class Minecraft_env : ModInitializer, CommandExecutor {
         val inputStream: InputStream
         val outputStream: OutputStream
         try {
-            var port: Int
             val portStr = System.getenv("PORT")
-            if (portStr != null) {
-                port = portStr.toInt()
-            } else {
-                port = 8000
-            }
+            val port = portStr?.toInt() ?: 8000
             printWithTime("Connecting to $port")
             val serverSocket = ServerSocket(port)
             val socket = serverSocket.accept()
@@ -151,10 +145,6 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                 ResetPhase.END_RESET -> {
                     sendObservation(outputStream, world)
                 }
-
-                ResetPhase.IDLE -> {
-                    sendObservation(outputStream, world)
-                }
             }
             printWithTime("End client world tick2")
             synchronized(runPhaseLock) {
@@ -229,8 +219,6 @@ class Minecraft_env : ModInitializer, CommandExecutor {
             ResetPhase.END_RESET -> {
                 printWithTime("Reset end")
             }
-
-            ResetPhase.IDLE -> TODO()
         }
         try {
             val action = readAction(inputStream)

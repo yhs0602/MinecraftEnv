@@ -23,17 +23,29 @@ import java.util.function.BooleanSupplier;
 @Mixin(value = MinecraftServer.class, priority = Integer.MAX_VALUE - 10)
 public abstract class MinecraftServer_tickspeedMixin extends ReentrantThreadExecutor<ServerTask> {
     @Shadow
-    private volatile boolean running;
-
-    @Shadow
-    private long timeReference;
-
-    @Shadow
     @Final
     private static Logger LOGGER;
-
+    // just because profilerTimings class is public
+    Pair<Long, Integer> profilerTimings = null;
+    @Shadow
+    private volatile boolean running;
+    @Shadow
+    private long timeReference;
     @Shadow
     private Profiler profiler;
+    @Shadow
+    private long nextTickTimestamp;
+    @Shadow
+    private volatile boolean loading;
+    @Shadow
+    private long lastTimeReference;
+    @Shadow
+    private boolean waitingForNextTick;
+    @Shadow
+    private int ticks;
+    @Shadow
+    private boolean needsDebugSetup;
+    private float carpetMsptAccum = 0.0f;
 
     public MinecraftServer_tickspeedMixin(String name) {
         super(name);
@@ -46,22 +58,7 @@ public abstract class MinecraftServer_tickspeedMixin extends ReentrantThreadExec
     protected abstract boolean shouldKeepTicking();
 
     @Shadow
-    private long nextTickTimestamp;
-
-    @Shadow
-    private volatile boolean loading;
-
-    @Shadow
-    private long lastTimeReference;
-
-    @Shadow
-    private boolean waitingForNextTick;
-
-    @Shadow
     public abstract Iterable<ServerWorld> getWorlds();
-
-    @Shadow
-    private int ticks;
 
     @Shadow
     protected abstract void runTasksTillTickEnd();
@@ -71,12 +68,6 @@ public abstract class MinecraftServer_tickspeedMixin extends ReentrantThreadExec
 
     @Shadow
     protected abstract void endTickMetrics();
-
-    @Shadow
-    private boolean needsDebugSetup;
-
-
-    private float carpetMsptAccum = 0.0f;
 
     /**
      * To ensure compatibility with other mods we should allow milliseconds
@@ -110,7 +101,7 @@ public abstract class MinecraftServer_tickspeedMixin extends ReentrantThreadExec
             if (long_1 > /*2000L*/1000L + 20 * TickSpeed.INSTANCE.getMspt() && this.timeReference - this.lastTimeReference >= /*15000L*/10000L + 100 * TickSpeed.INSTANCE.getMspt()) {
                 long long_2 = long_1 / TickSpeed.INSTANCE.getMspt();//50L;
                 LOGGER.warn("Can't keep up! Is the server overloaded? Running {}ms or {} ticks behind", long_1, long_2);
-                this.timeReference += (long) (long_2 * TickSpeed.INSTANCE.getMspt());//50L;
+                this.timeReference += long_2 * TickSpeed.INSTANCE.getMspt();//50L;
                 this.lastTimeReference = this.timeReference;
             }
 
@@ -126,7 +117,9 @@ public abstract class MinecraftServer_tickspeedMixin extends ReentrantThreadExec
             this.profiler.push("tick");
             this.tick(this::shouldKeepTicking);
             this.profiler.swap("nextTickWait");
-            while(this.runEveryTask()) {Thread.yield();} // ?
+            while (this.runEveryTask()) {
+                Thread.yield();
+            } // ?
             this.waitingForNextTick = true;
             this.nextTickTimestamp = Math.max(Util.getMeasuringTimeMs() + /*50L*/ msThisTick, this.timeReference);
             // run all tasks (this will not do a lot when warping), but that's fine since we already run them
@@ -137,9 +130,6 @@ public abstract class MinecraftServer_tickspeedMixin extends ReentrantThreadExec
             this.loading = true;
         }
     }
-
-    // just because profilerTimings class is public
-    Pair<Long, Integer> profilerTimings = null;
 
     private boolean runEveryTask() {
         if (super.runTask()) {

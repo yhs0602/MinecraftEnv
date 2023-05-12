@@ -9,5 +9,5 @@ import java.util.List;
 @Mixin(net.minecraft.client.gui.hud.ChatHud.class)
 public interface ChatVisibleMessageAccessor {
     @Accessor("visibleMessages")
-    public List<ChatHudLine.Visible> getVisibleMessages();
+    List<ChatHudLine.Visible> getVisibleMessages();
 }

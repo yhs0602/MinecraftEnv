@@ -4,2691 +4,3061 @@
 package com.kyhsgeekcode.minecraft_env.proto;
 
 public final class InitialEnvironment {
-  private InitialEnvironment() {}
-  public static void registerAllExtensions(
-      com.google.protobuf.ExtensionRegistryLite registry) {
-  }
+    private static final com.google.protobuf.Descriptors.Descriptor
+            internal_static_InitialEnvironmentMessage_descriptor;
+    private static final
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+            internal_static_InitialEnvironmentMessage_fieldAccessorTable;
+    private static com.google.protobuf.Descriptors.FileDescriptor
+            descriptor;
 
-  public static void registerAllExtensions(
-      com.google.protobuf.ExtensionRegistry registry) {
-    registerAllExtensions(
-        (com.google.protobuf.ExtensionRegistryLite) registry);
-  }
-  public interface InitialEnvironmentMessageOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:InitialEnvironmentMessage)
-      com.google.protobuf.MessageOrBuilder {
+    static {
+        java.lang.String[] descriptorData = {
+                "\n\031initial_environment.proto\"\244\003\n\031InitialE" +
+                        "nvironmentMessage\022 \n\030initialInventoryCom" +
+                        "mands\030\001 \003(\t\022\027\n\017initialPosition\030\002 \003(\005\022\033\n\023" +
+                        "initialMobsCommands\030\003 \003(\t\022\022\n\nimageSizeX\030" +
+                        "\004 \001(\005\022\022\n\nimageSizeY\030\005 \001(\005\022\014\n\004seed\030\006 \001(\003\022" +
+                        "\025\n\rallowMobSpawn\030\007 \001(\010\022\023\n\013alwaysNight\030\010 " +
+                        "\001(\010\022\021\n\talwaysDay\030\t \001(\010\022\026\n\016initialWeather" +
+                        "\030\n \001(\t\022\023\n\013isWorldFlat\030\013 \001(\010\022\024\n\014visibleSi" +
+                        "zeX\030\014 \001(\005\022\024\n\014visibleSizeY\030\r \001(\005\022\034\n\024initi" +
+                        "alExtraCommands\030\016 \003(\t\022\026\n\016killedStatKeys\030" +
+                        "\017 \003(\t\022\025\n\rminedStatKeys\030\020 \003(\t\022\024\n\014miscStat" +
+                        "Keys\030\021 \003(\tB&\n$com.kyhsgeekcode.minecraft" +
+                        "_env.protob\006proto3"
+        };
+        descriptor = com.google.protobuf.Descriptors.FileDescriptor
+                .internalBuildGeneratedFileFrom(descriptorData,
+                        new com.google.protobuf.Descriptors.FileDescriptor[]{
+                        });
+        internal_static_InitialEnvironmentMessage_descriptor =
+                getDescriptor().getMessageTypes().get(0);
+        internal_static_InitialEnvironmentMessage_fieldAccessorTable = new
+                com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+                internal_static_InitialEnvironmentMessage_descriptor,
+                new java.lang.String[]{"InitialInventoryCommands", "InitialPosition", "InitialMobsCommands", "ImageSizeX", "ImageSizeY", "Seed", "AllowMobSpawn", "AlwaysNight", "AlwaysDay", "InitialWeather", "IsWorldFlat", "VisibleSizeX", "VisibleSizeY", "InitialExtraCommands", "KilledStatKeys", "MinedStatKeys", "MiscStatKeys",});
+    }
 
-    /**
-     * <code>repeated string initialInventoryCommands = 1;</code>
-     * @return A list containing the initialInventoryCommands.
-     */
-    java.util.List<java.lang.String>
+    private InitialEnvironment() {
+    }
+
+    public static void registerAllExtensions(
+            com.google.protobuf.ExtensionRegistryLite registry) {
+    }
+
+    public static void registerAllExtensions(
+            com.google.protobuf.ExtensionRegistry registry) {
+        registerAllExtensions(
+                (com.google.protobuf.ExtensionRegistryLite) registry);
+    }
+
+    public static com.google.protobuf.Descriptors.FileDescriptor
+    getDescriptor() {
+        return descriptor;
+    }
+
+    public interface InitialEnvironmentMessageOrBuilder extends
+            // @@protoc_insertion_point(interface_extends:InitialEnvironmentMessage)
+            com.google.protobuf.MessageOrBuilder {
+
+        /**
+         * <code>repeated string initialInventoryCommands = 1;</code>
+         *
+         * @return A list containing the initialInventoryCommands.
+         */
+        java.util.List<java.lang.String>
         getInitialInventoryCommandsList();
-    /**
-     * <code>repeated string initialInventoryCommands = 1;</code>
-     * @return The count of initialInventoryCommands.
-     */
-    int getInitialInventoryCommandsCount();
-    /**
-     * <code>repeated string initialInventoryCommands = 1;</code>
-     * @param index The index of the element to return.
-     * @return The initialInventoryCommands at the given index.
-     */
-    java.lang.String getInitialInventoryCommands(int index);
-    /**
-     * <code>repeated string initialInventoryCommands = 1;</code>
-     * @param index The index of the value to return.
-     * @return The bytes of the initialInventoryCommands at the given index.
-     */
-    com.google.protobuf.ByteString
+
+        /**
+         * <code>repeated string initialInventoryCommands = 1;</code>
+         *
+         * @return The count of initialInventoryCommands.
+         */
+        int getInitialInventoryCommandsCount();
+
+        /**
+         * <code>repeated string initialInventoryCommands = 1;</code>
+         *
+         * @param index The index of the element to return.
+         * @return The initialInventoryCommands at the given index.
+         */
+        java.lang.String getInitialInventoryCommands(int index);
+
+        /**
+         * <code>repeated string initialInventoryCommands = 1;</code>
+         *
+         * @param index The index of the value to return.
+         * @return The bytes of the initialInventoryCommands at the given index.
+         */
+        com.google.protobuf.ByteString
         getInitialInventoryCommandsBytes(int index);
 
-    /**
-     * <code>repeated int32 initialPosition = 2;</code>
-     * @return A list containing the initialPosition.
-     */
-    java.util.List<java.lang.Integer> getInitialPositionList();
-    /**
-     * <code>repeated int32 initialPosition = 2;</code>
-     * @return The count of initialPosition.
-     */
-    int getInitialPositionCount();
-    /**
-     * <code>repeated int32 initialPosition = 2;</code>
-     * @param index The index of the element to return.
-     * @return The initialPosition at the given index.
-     */
-    int getInitialPosition(int index);
+        /**
+         * <code>repeated int32 initialPosition = 2;</code>
+         *
+         * @return A list containing the initialPosition.
+         */
+        java.util.List<java.lang.Integer> getInitialPositionList();
 
-    /**
-     * <code>repeated string initialMobsCommands = 3;</code>
-     * @return A list containing the initialMobsCommands.
-     */
-    java.util.List<java.lang.String>
+        /**
+         * <code>repeated int32 initialPosition = 2;</code>
+         *
+         * @return The count of initialPosition.
+         */
+        int getInitialPositionCount();
+
+        /**
+         * <code>repeated int32 initialPosition = 2;</code>
+         *
+         * @param index The index of the element to return.
+         * @return The initialPosition at the given index.
+         */
+        int getInitialPosition(int index);
+
+        /**
+         * <code>repeated string initialMobsCommands = 3;</code>
+         *
+         * @return A list containing the initialMobsCommands.
+         */
+        java.util.List<java.lang.String>
         getInitialMobsCommandsList();
-    /**
-     * <code>repeated string initialMobsCommands = 3;</code>
-     * @return The count of initialMobsCommands.
-     */
-    int getInitialMobsCommandsCount();
-    /**
-     * <code>repeated string initialMobsCommands = 3;</code>
-     * @param index The index of the element to return.
-     * @return The initialMobsCommands at the given index.
-     */
-    java.lang.String getInitialMobsCommands(int index);
-    /**
-     * <code>repeated string initialMobsCommands = 3;</code>
-     * @param index The index of the value to return.
-     * @return The bytes of the initialMobsCommands at the given index.
-     */
-    com.google.protobuf.ByteString
+
+        /**
+         * <code>repeated string initialMobsCommands = 3;</code>
+         *
+         * @return The count of initialMobsCommands.
+         */
+        int getInitialMobsCommandsCount();
+
+        /**
+         * <code>repeated string initialMobsCommands = 3;</code>
+         *
+         * @param index The index of the element to return.
+         * @return The initialMobsCommands at the given index.
+         */
+        java.lang.String getInitialMobsCommands(int index);
+
+        /**
+         * <code>repeated string initialMobsCommands = 3;</code>
+         *
+         * @param index The index of the value to return.
+         * @return The bytes of the initialMobsCommands at the given index.
+         */
+        com.google.protobuf.ByteString
         getInitialMobsCommandsBytes(int index);
 
-    /**
-     * <code>int32 imageSizeX = 4;</code>
-     * @return The imageSizeX.
-     */
-    int getImageSizeX();
+        /**
+         * <code>int32 imageSizeX = 4;</code>
+         *
+         * @return The imageSizeX.
+         */
+        int getImageSizeX();
 
-    /**
-     * <code>int32 imageSizeY = 5;</code>
-     * @return The imageSizeY.
-     */
-    int getImageSizeY();
+        /**
+         * <code>int32 imageSizeY = 5;</code>
+         *
+         * @return The imageSizeY.
+         */
+        int getImageSizeY();
 
-    /**
-     * <code>int64 seed = 6;</code>
-     * @return The seed.
-     */
-    long getSeed();
+        /**
+         * <code>int64 seed = 6;</code>
+         *
+         * @return The seed.
+         */
+        long getSeed();
 
-    /**
-     * <code>bool allowMobSpawn = 7;</code>
-     * @return The allowMobSpawn.
-     */
-    boolean getAllowMobSpawn();
+        /**
+         * <code>bool allowMobSpawn = 7;</code>
+         *
+         * @return The allowMobSpawn.
+         */
+        boolean getAllowMobSpawn();
 
-    /**
-     * <code>bool alwaysNight = 8;</code>
-     * @return The alwaysNight.
-     */
-    boolean getAlwaysNight();
+        /**
+         * <code>bool alwaysNight = 8;</code>
+         *
+         * @return The alwaysNight.
+         */
+        boolean getAlwaysNight();
 
-    /**
-     * <code>bool alwaysDay = 9;</code>
-     * @return The alwaysDay.
-     */
-    boolean getAlwaysDay();
+        /**
+         * <code>bool alwaysDay = 9;</code>
+         *
+         * @return The alwaysDay.
+         */
+        boolean getAlwaysDay();
 
-    /**
-     * <code>string initialWeather = 10;</code>
-     * @return The initialWeather.
-     */
-    java.lang.String getInitialWeather();
-    /**
-     * <code>string initialWeather = 10;</code>
-     * @return The bytes for initialWeather.
-     */
-    com.google.protobuf.ByteString
+        /**
+         * <code>string initialWeather = 10;</code>
+         *
+         * @return The initialWeather.
+         */
+        java.lang.String getInitialWeather();
+
+        /**
+         * <code>string initialWeather = 10;</code>
+         *
+         * @return The bytes for initialWeather.
+         */
+        com.google.protobuf.ByteString
         getInitialWeatherBytes();
 
-    /**
-     * <code>bool isWorldFlat = 11;</code>
-     * @return The isWorldFlat.
-     */
-    boolean getIsWorldFlat();
+        /**
+         * <code>bool isWorldFlat = 11;</code>
+         *
+         * @return The isWorldFlat.
+         */
+        boolean getIsWorldFlat();
 
-    /**
-     * <code>int32 visibleSizeX = 12;</code>
-     * @return The visibleSizeX.
-     */
-    int getVisibleSizeX();
+        /**
+         * <code>int32 visibleSizeX = 12;</code>
+         *
+         * @return The visibleSizeX.
+         */
+        int getVisibleSizeX();
 
-    /**
-     * <code>int32 visibleSizeY = 13;</code>
-     * @return The visibleSizeY.
-     */
-    int getVisibleSizeY();
+        /**
+         * <code>int32 visibleSizeY = 13;</code>
+         *
+         * @return The visibleSizeY.
+         */
+        int getVisibleSizeY();
 
-    /**
-     * <code>repeated string initialExtraCommands = 14;</code>
-     * @return A list containing the initialExtraCommands.
-     */
-    java.util.List<java.lang.String>
+        /**
+         * <code>repeated string initialExtraCommands = 14;</code>
+         *
+         * @return A list containing the initialExtraCommands.
+         */
+        java.util.List<java.lang.String>
         getInitialExtraCommandsList();
-    /**
-     * <code>repeated string initialExtraCommands = 14;</code>
-     * @return The count of initialExtraCommands.
-     */
-    int getInitialExtraCommandsCount();
-    /**
-     * <code>repeated string initialExtraCommands = 14;</code>
-     * @param index The index of the element to return.
-     * @return The initialExtraCommands at the given index.
-     */
-    java.lang.String getInitialExtraCommands(int index);
-    /**
-     * <code>repeated string initialExtraCommands = 14;</code>
-     * @param index The index of the value to return.
-     * @return The bytes of the initialExtraCommands at the given index.
-     */
-    com.google.protobuf.ByteString
+
+        /**
+         * <code>repeated string initialExtraCommands = 14;</code>
+         *
+         * @return The count of initialExtraCommands.
+         */
+        int getInitialExtraCommandsCount();
+
+        /**
+         * <code>repeated string initialExtraCommands = 14;</code>
+         *
+         * @param index The index of the element to return.
+         * @return The initialExtraCommands at the given index.
+         */
+        java.lang.String getInitialExtraCommands(int index);
+
+        /**
+         * <code>repeated string initialExtraCommands = 14;</code>
+         *
+         * @param index The index of the value to return.
+         * @return The bytes of the initialExtraCommands at the given index.
+         */
+        com.google.protobuf.ByteString
         getInitialExtraCommandsBytes(int index);
 
-    /**
-     * <code>repeated string killedStatKeys = 15;</code>
-     * @return A list containing the killedStatKeys.
-     */
-    java.util.List<java.lang.String>
+        /**
+         * <code>repeated string killedStatKeys = 15;</code>
+         *
+         * @return A list containing the killedStatKeys.
+         */
+        java.util.List<java.lang.String>
         getKilledStatKeysList();
-    /**
-     * <code>repeated string killedStatKeys = 15;</code>
-     * @return The count of killedStatKeys.
-     */
-    int getKilledStatKeysCount();
-    /**
-     * <code>repeated string killedStatKeys = 15;</code>
-     * @param index The index of the element to return.
-     * @return The killedStatKeys at the given index.
-     */
-    java.lang.String getKilledStatKeys(int index);
-    /**
-     * <code>repeated string killedStatKeys = 15;</code>
-     * @param index The index of the value to return.
-     * @return The bytes of the killedStatKeys at the given index.
-     */
-    com.google.protobuf.ByteString
+
+        /**
+         * <code>repeated string killedStatKeys = 15;</code>
+         *
+         * @return The count of killedStatKeys.
+         */
+        int getKilledStatKeysCount();
+
+        /**
+         * <code>repeated string killedStatKeys = 15;</code>
+         *
+         * @param index The index of the element to return.
+         * @return The killedStatKeys at the given index.
+         */
+        java.lang.String getKilledStatKeys(int index);
+
+        /**
+         * <code>repeated string killedStatKeys = 15;</code>
+         *
+         * @param index The index of the value to return.
+         * @return The bytes of the killedStatKeys at the given index.
+         */
+        com.google.protobuf.ByteString
         getKilledStatKeysBytes(int index);
 
-    /**
-     * <code>repeated string minedStatKeys = 16;</code>
-     * @return A list containing the minedStatKeys.
-     */
-    java.util.List<java.lang.String>
+        /**
+         * <code>repeated string minedStatKeys = 16;</code>
+         *
+         * @return A list containing the minedStatKeys.
+         */
+        java.util.List<java.lang.String>
         getMinedStatKeysList();
-    /**
-     * <code>repeated string minedStatKeys = 16;</code>
-     * @return The count of minedStatKeys.
-     */
-    int getMinedStatKeysCount();
-    /**
-     * <code>repeated string minedStatKeys = 16;</code>
-     * @param index The index of the element to return.
-     * @return The minedStatKeys at the given index.
-     */
-    java.lang.String getMinedStatKeys(int index);
-    /**
-     * <code>repeated string minedStatKeys = 16;</code>
-     * @param index The index of the value to return.
-     * @return The bytes of the minedStatKeys at the given index.
-     */
-    com.google.protobuf.ByteString
+
+        /**
+         * <code>repeated string minedStatKeys = 16;</code>
+         *
+         * @return The count of minedStatKeys.
+         */
+        int getMinedStatKeysCount();
+
+        /**
+         * <code>repeated string minedStatKeys = 16;</code>
+         *
+         * @param index The index of the element to return.
+         * @return The minedStatKeys at the given index.
+         */
+        java.lang.String getMinedStatKeys(int index);
+
+        /**
+         * <code>repeated string minedStatKeys = 16;</code>
+         *
+         * @param index The index of the value to return.
+         * @return The bytes of the minedStatKeys at the given index.
+         */
+        com.google.protobuf.ByteString
         getMinedStatKeysBytes(int index);
 
-    /**
-     * <code>repeated string miscStatKeys = 17;</code>
-     * @return A list containing the miscStatKeys.
-     */
-    java.util.List<java.lang.String>
+        /**
+         * <code>repeated string miscStatKeys = 17;</code>
+         *
+         * @return A list containing the miscStatKeys.
+         */
+        java.util.List<java.lang.String>
         getMiscStatKeysList();
-    /**
-     * <code>repeated string miscStatKeys = 17;</code>
-     * @return The count of miscStatKeys.
-     */
-    int getMiscStatKeysCount();
-    /**
-     * <code>repeated string miscStatKeys = 17;</code>
-     * @param index The index of the element to return.
-     * @return The miscStatKeys at the given index.
-     */
-    java.lang.String getMiscStatKeys(int index);
-    /**
-     * <code>repeated string miscStatKeys = 17;</code>
-     * @param index The index of the value to return.
-     * @return The bytes of the miscStatKeys at the given index.
-     */
-    com.google.protobuf.ByteString
+
+        /**
+         * <code>repeated string miscStatKeys = 17;</code>
+         *
+         * @return The count of miscStatKeys.
+         */
+        int getMiscStatKeysCount();
+
+        /**
+         * <code>repeated string miscStatKeys = 17;</code>
+         *
+         * @param index The index of the element to return.
+         * @return The miscStatKeys at the given index.
+         */
+        java.lang.String getMiscStatKeys(int index);
+
+        /**
+         * <code>repeated string miscStatKeys = 17;</code>
+         *
+         * @param index The index of the value to return.
+         * @return The bytes of the miscStatKeys at the given index.
+         */
+        com.google.protobuf.ByteString
         getMiscStatKeysBytes(int index);
-  }
-  /**
-   * Protobuf type {@code InitialEnvironmentMessage}
-   */
-  public static final class InitialEnvironmentMessage extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:InitialEnvironmentMessage)
-      InitialEnvironmentMessageOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use InitialEnvironmentMessage.newBuilder() to construct.
-    private InitialEnvironmentMessage(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private InitialEnvironmentMessage() {
-      initialInventoryCommands_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-      initialPosition_ = emptyIntList();
-      initialMobsCommands_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-      initialWeather_ = "";
-      initialExtraCommands_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-      killedStatKeys_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-      minedStatKeys_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-      miscStatKeys_ = com.google.protobuf.LazyStringArrayList.EMPTY;
     }
 
-    @java.lang.Override
-    @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
-      return new InitialEnvironmentMessage();
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.internal_static_InitialEnvironmentMessage_descriptor;
-    }
-
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.internal_static_InitialEnvironmentMessage_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage.class, com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage.Builder.class);
-    }
-
-    public static final int INITIALINVENTORYCOMMANDS_FIELD_NUMBER = 1;
-    @SuppressWarnings("serial")
-    private com.google.protobuf.LazyStringList initialInventoryCommands_;
-    /**
-     * <code>repeated string initialInventoryCommands = 1;</code>
-     * @return A list containing the initialInventoryCommands.
-     */
-    public com.google.protobuf.ProtocolStringList
-        getInitialInventoryCommandsList() {
-      return initialInventoryCommands_;
-    }
-    /**
-     * <code>repeated string initialInventoryCommands = 1;</code>
-     * @return The count of initialInventoryCommands.
-     */
-    public int getInitialInventoryCommandsCount() {
-      return initialInventoryCommands_.size();
-    }
-    /**
-     * <code>repeated string initialInventoryCommands = 1;</code>
-     * @param index The index of the element to return.
-     * @return The initialInventoryCommands at the given index.
-     */
-    public java.lang.String getInitialInventoryCommands(int index) {
-      return initialInventoryCommands_.get(index);
-    }
-    /**
-     * <code>repeated string initialInventoryCommands = 1;</code>
-     * @param index The index of the value to return.
-     * @return The bytes of the initialInventoryCommands at the given index.
-     */
-    public com.google.protobuf.ByteString
-        getInitialInventoryCommandsBytes(int index) {
-      return initialInventoryCommands_.getByteString(index);
-    }
-
-    public static final int INITIALPOSITION_FIELD_NUMBER = 2;
-    @SuppressWarnings("serial")
-    private com.google.protobuf.Internal.IntList initialPosition_;
-    /**
-     * <code>repeated int32 initialPosition = 2;</code>
-     * @return A list containing the initialPosition.
-     */
-    @java.lang.Override
-    public java.util.List<java.lang.Integer>
-        getInitialPositionList() {
-      return initialPosition_;
-    }
-    /**
-     * <code>repeated int32 initialPosition = 2;</code>
-     * @return The count of initialPosition.
-     */
-    public int getInitialPositionCount() {
-      return initialPosition_.size();
-    }
-    /**
-     * <code>repeated int32 initialPosition = 2;</code>
-     * @param index The index of the element to return.
-     * @return The initialPosition at the given index.
-     */
-    public int getInitialPosition(int index) {
-      return initialPosition_.getInt(index);
-    }
-    private int initialPositionMemoizedSerializedSize = -1;
-
-    public static final int INITIALMOBSCOMMANDS_FIELD_NUMBER = 3;
-    @SuppressWarnings("serial")
-    private com.google.protobuf.LazyStringList initialMobsCommands_;
-    /**
-     * <code>repeated string initialMobsCommands = 3;</code>
-     * @return A list containing the initialMobsCommands.
-     */
-    public com.google.protobuf.ProtocolStringList
-        getInitialMobsCommandsList() {
-      return initialMobsCommands_;
-    }
-    /**
-     * <code>repeated string initialMobsCommands = 3;</code>
-     * @return The count of initialMobsCommands.
-     */
-    public int getInitialMobsCommandsCount() {
-      return initialMobsCommands_.size();
-    }
-    /**
-     * <code>repeated string initialMobsCommands = 3;</code>
-     * @param index The index of the element to return.
-     * @return The initialMobsCommands at the given index.
-     */
-    public java.lang.String getInitialMobsCommands(int index) {
-      return initialMobsCommands_.get(index);
-    }
-    /**
-     * <code>repeated string initialMobsCommands = 3;</code>
-     * @param index The index of the value to return.
-     * @return The bytes of the initialMobsCommands at the given index.
-     */
-    public com.google.protobuf.ByteString
-        getInitialMobsCommandsBytes(int index) {
-      return initialMobsCommands_.getByteString(index);
-    }
-
-    public static final int IMAGESIZEX_FIELD_NUMBER = 4;
-    private int imageSizeX_ = 0;
-    /**
-     * <code>int32 imageSizeX = 4;</code>
-     * @return The imageSizeX.
-     */
-    @java.lang.Override
-    public int getImageSizeX() {
-      return imageSizeX_;
-    }
-
-    public static final int IMAGESIZEY_FIELD_NUMBER = 5;
-    private int imageSizeY_ = 0;
-    /**
-     * <code>int32 imageSizeY = 5;</code>
-     * @return The imageSizeY.
-     */
-    @java.lang.Override
-    public int getImageSizeY() {
-      return imageSizeY_;
-    }
-
-    public static final int SEED_FIELD_NUMBER = 6;
-    private long seed_ = 0L;
-    /**
-     * <code>int64 seed = 6;</code>
-     * @return The seed.
-     */
-    @java.lang.Override
-    public long getSeed() {
-      return seed_;
-    }
-
-    public static final int ALLOWMOBSPAWN_FIELD_NUMBER = 7;
-    private boolean allowMobSpawn_ = false;
-    /**
-     * <code>bool allowMobSpawn = 7;</code>
-     * @return The allowMobSpawn.
-     */
-    @java.lang.Override
-    public boolean getAllowMobSpawn() {
-      return allowMobSpawn_;
-    }
-
-    public static final int ALWAYSNIGHT_FIELD_NUMBER = 8;
-    private boolean alwaysNight_ = false;
-    /**
-     * <code>bool alwaysNight = 8;</code>
-     * @return The alwaysNight.
-     */
-    @java.lang.Override
-    public boolean getAlwaysNight() {
-      return alwaysNight_;
-    }
-
-    public static final int ALWAYSDAY_FIELD_NUMBER = 9;
-    private boolean alwaysDay_ = false;
-    /**
-     * <code>bool alwaysDay = 9;</code>
-     * @return The alwaysDay.
-     */
-    @java.lang.Override
-    public boolean getAlwaysDay() {
-      return alwaysDay_;
-    }
-
-    public static final int INITIALWEATHER_FIELD_NUMBER = 10;
-    @SuppressWarnings("serial")
-    private volatile java.lang.Object initialWeather_ = "";
-    /**
-     * <code>string initialWeather = 10;</code>
-     * @return The initialWeather.
-     */
-    @java.lang.Override
-    public java.lang.String getInitialWeather() {
-      java.lang.Object ref = initialWeather_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        initialWeather_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string initialWeather = 10;</code>
-     * @return The bytes for initialWeather.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString
-        getInitialWeatherBytes() {
-      java.lang.Object ref = initialWeather_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        initialWeather_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int ISWORLDFLAT_FIELD_NUMBER = 11;
-    private boolean isWorldFlat_ = false;
-    /**
-     * <code>bool isWorldFlat = 11;</code>
-     * @return The isWorldFlat.
-     */
-    @java.lang.Override
-    public boolean getIsWorldFlat() {
-      return isWorldFlat_;
-    }
-
-    public static final int VISIBLESIZEX_FIELD_NUMBER = 12;
-    private int visibleSizeX_ = 0;
-    /**
-     * <code>int32 visibleSizeX = 12;</code>
-     * @return The visibleSizeX.
-     */
-    @java.lang.Override
-    public int getVisibleSizeX() {
-      return visibleSizeX_;
-    }
-
-    public static final int VISIBLESIZEY_FIELD_NUMBER = 13;
-    private int visibleSizeY_ = 0;
-    /**
-     * <code>int32 visibleSizeY = 13;</code>
-     * @return The visibleSizeY.
-     */
-    @java.lang.Override
-    public int getVisibleSizeY() {
-      return visibleSizeY_;
-    }
-
-    public static final int INITIALEXTRACOMMANDS_FIELD_NUMBER = 14;
-    @SuppressWarnings("serial")
-    private com.google.protobuf.LazyStringList initialExtraCommands_;
-    /**
-     * <code>repeated string initialExtraCommands = 14;</code>
-     * @return A list containing the initialExtraCommands.
-     */
-    public com.google.protobuf.ProtocolStringList
-        getInitialExtraCommandsList() {
-      return initialExtraCommands_;
-    }
-    /**
-     * <code>repeated string initialExtraCommands = 14;</code>
-     * @return The count of initialExtraCommands.
-     */
-    public int getInitialExtraCommandsCount() {
-      return initialExtraCommands_.size();
-    }
-    /**
-     * <code>repeated string initialExtraCommands = 14;</code>
-     * @param index The index of the element to return.
-     * @return The initialExtraCommands at the given index.
-     */
-    public java.lang.String getInitialExtraCommands(int index) {
-      return initialExtraCommands_.get(index);
-    }
-    /**
-     * <code>repeated string initialExtraCommands = 14;</code>
-     * @param index The index of the value to return.
-     * @return The bytes of the initialExtraCommands at the given index.
-     */
-    public com.google.protobuf.ByteString
-        getInitialExtraCommandsBytes(int index) {
-      return initialExtraCommands_.getByteString(index);
-    }
-
-    public static final int KILLEDSTATKEYS_FIELD_NUMBER = 15;
-    @SuppressWarnings("serial")
-    private com.google.protobuf.LazyStringList killedStatKeys_;
-    /**
-     * <code>repeated string killedStatKeys = 15;</code>
-     * @return A list containing the killedStatKeys.
-     */
-    public com.google.protobuf.ProtocolStringList
-        getKilledStatKeysList() {
-      return killedStatKeys_;
-    }
-    /**
-     * <code>repeated string killedStatKeys = 15;</code>
-     * @return The count of killedStatKeys.
-     */
-    public int getKilledStatKeysCount() {
-      return killedStatKeys_.size();
-    }
-    /**
-     * <code>repeated string killedStatKeys = 15;</code>
-     * @param index The index of the element to return.
-     * @return The killedStatKeys at the given index.
-     */
-    public java.lang.String getKilledStatKeys(int index) {
-      return killedStatKeys_.get(index);
-    }
-    /**
-     * <code>repeated string killedStatKeys = 15;</code>
-     * @param index The index of the value to return.
-     * @return The bytes of the killedStatKeys at the given index.
-     */
-    public com.google.protobuf.ByteString
-        getKilledStatKeysBytes(int index) {
-      return killedStatKeys_.getByteString(index);
-    }
-
-    public static final int MINEDSTATKEYS_FIELD_NUMBER = 16;
-    @SuppressWarnings("serial")
-    private com.google.protobuf.LazyStringList minedStatKeys_;
-    /**
-     * <code>repeated string minedStatKeys = 16;</code>
-     * @return A list containing the minedStatKeys.
-     */
-    public com.google.protobuf.ProtocolStringList
-        getMinedStatKeysList() {
-      return minedStatKeys_;
-    }
-    /**
-     * <code>repeated string minedStatKeys = 16;</code>
-     * @return The count of minedStatKeys.
-     */
-    public int getMinedStatKeysCount() {
-      return minedStatKeys_.size();
-    }
-    /**
-     * <code>repeated string minedStatKeys = 16;</code>
-     * @param index The index of the element to return.
-     * @return The minedStatKeys at the given index.
-     */
-    public java.lang.String getMinedStatKeys(int index) {
-      return minedStatKeys_.get(index);
-    }
-    /**
-     * <code>repeated string minedStatKeys = 16;</code>
-     * @param index The index of the value to return.
-     * @return The bytes of the minedStatKeys at the given index.
-     */
-    public com.google.protobuf.ByteString
-        getMinedStatKeysBytes(int index) {
-      return minedStatKeys_.getByteString(index);
-    }
-
-    public static final int MISCSTATKEYS_FIELD_NUMBER = 17;
-    @SuppressWarnings("serial")
-    private com.google.protobuf.LazyStringList miscStatKeys_;
-    /**
-     * <code>repeated string miscStatKeys = 17;</code>
-     * @return A list containing the miscStatKeys.
-     */
-    public com.google.protobuf.ProtocolStringList
-        getMiscStatKeysList() {
-      return miscStatKeys_;
-    }
-    /**
-     * <code>repeated string miscStatKeys = 17;</code>
-     * @return The count of miscStatKeys.
-     */
-    public int getMiscStatKeysCount() {
-      return miscStatKeys_.size();
-    }
-    /**
-     * <code>repeated string miscStatKeys = 17;</code>
-     * @param index The index of the element to return.
-     * @return The miscStatKeys at the given index.
-     */
-    public java.lang.String getMiscStatKeys(int index) {
-      return miscStatKeys_.get(index);
-    }
-    /**
-     * <code>repeated string miscStatKeys = 17;</code>
-     * @param index The index of the value to return.
-     * @return The bytes of the miscStatKeys at the given index.
-     */
-    public com.google.protobuf.ByteString
-        getMiscStatKeysBytes(int index) {
-      return miscStatKeys_.getByteString(index);
-    }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      getSerializedSize();
-      for (int i = 0; i < initialInventoryCommands_.size(); i++) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, initialInventoryCommands_.getRaw(i));
-      }
-      if (getInitialPositionList().size() > 0) {
-        output.writeUInt32NoTag(18);
-        output.writeUInt32NoTag(initialPositionMemoizedSerializedSize);
-      }
-      for (int i = 0; i < initialPosition_.size(); i++) {
-        output.writeInt32NoTag(initialPosition_.getInt(i));
-      }
-      for (int i = 0; i < initialMobsCommands_.size(); i++) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, initialMobsCommands_.getRaw(i));
-      }
-      if (imageSizeX_ != 0) {
-        output.writeInt32(4, imageSizeX_);
-      }
-      if (imageSizeY_ != 0) {
-        output.writeInt32(5, imageSizeY_);
-      }
-      if (seed_ != 0L) {
-        output.writeInt64(6, seed_);
-      }
-      if (allowMobSpawn_ != false) {
-        output.writeBool(7, allowMobSpawn_);
-      }
-      if (alwaysNight_ != false) {
-        output.writeBool(8, alwaysNight_);
-      }
-      if (alwaysDay_ != false) {
-        output.writeBool(9, alwaysDay_);
-      }
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(initialWeather_)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 10, initialWeather_);
-      }
-      if (isWorldFlat_ != false) {
-        output.writeBool(11, isWorldFlat_);
-      }
-      if (visibleSizeX_ != 0) {
-        output.writeInt32(12, visibleSizeX_);
-      }
-      if (visibleSizeY_ != 0) {
-        output.writeInt32(13, visibleSizeY_);
-      }
-      for (int i = 0; i < initialExtraCommands_.size(); i++) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 14, initialExtraCommands_.getRaw(i));
-      }
-      for (int i = 0; i < killedStatKeys_.size(); i++) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 15, killedStatKeys_.getRaw(i));
-      }
-      for (int i = 0; i < minedStatKeys_.size(); i++) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 16, minedStatKeys_.getRaw(i));
-      }
-      for (int i = 0; i < miscStatKeys_.size(); i++) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 17, miscStatKeys_.getRaw(i));
-      }
-      getUnknownFields().writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      {
-        int dataSize = 0;
-        for (int i = 0; i < initialInventoryCommands_.size(); i++) {
-          dataSize += computeStringSizeNoTag(initialInventoryCommands_.getRaw(i));
-        }
-        size += dataSize;
-        size += 1 * getInitialInventoryCommandsList().size();
-      }
-      {
-        int dataSize = 0;
-        for (int i = 0; i < initialPosition_.size(); i++) {
-          dataSize += com.google.protobuf.CodedOutputStream
-            .computeInt32SizeNoTag(initialPosition_.getInt(i));
-        }
-        size += dataSize;
-        if (!getInitialPositionList().isEmpty()) {
-          size += 1;
-          size += com.google.protobuf.CodedOutputStream
-              .computeInt32SizeNoTag(dataSize);
-        }
-        initialPositionMemoizedSerializedSize = dataSize;
-      }
-      {
-        int dataSize = 0;
-        for (int i = 0; i < initialMobsCommands_.size(); i++) {
-          dataSize += computeStringSizeNoTag(initialMobsCommands_.getRaw(i));
-        }
-        size += dataSize;
-        size += 1 * getInitialMobsCommandsList().size();
-      }
-      if (imageSizeX_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(4, imageSizeX_);
-      }
-      if (imageSizeY_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(5, imageSizeY_);
-      }
-      if (seed_ != 0L) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt64Size(6, seed_);
-      }
-      if (allowMobSpawn_ != false) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(7, allowMobSpawn_);
-      }
-      if (alwaysNight_ != false) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(8, alwaysNight_);
-      }
-      if (alwaysDay_ != false) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(9, alwaysDay_);
-      }
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(initialWeather_)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(10, initialWeather_);
-      }
-      if (isWorldFlat_ != false) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(11, isWorldFlat_);
-      }
-      if (visibleSizeX_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(12, visibleSizeX_);
-      }
-      if (visibleSizeY_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(13, visibleSizeY_);
-      }
-      {
-        int dataSize = 0;
-        for (int i = 0; i < initialExtraCommands_.size(); i++) {
-          dataSize += computeStringSizeNoTag(initialExtraCommands_.getRaw(i));
-        }
-        size += dataSize;
-        size += 1 * getInitialExtraCommandsList().size();
-      }
-      {
-        int dataSize = 0;
-        for (int i = 0; i < killedStatKeys_.size(); i++) {
-          dataSize += computeStringSizeNoTag(killedStatKeys_.getRaw(i));
-        }
-        size += dataSize;
-        size += 1 * getKilledStatKeysList().size();
-      }
-      {
-        int dataSize = 0;
-        for (int i = 0; i < minedStatKeys_.size(); i++) {
-          dataSize += computeStringSizeNoTag(minedStatKeys_.getRaw(i));
-        }
-        size += dataSize;
-        size += 2 * getMinedStatKeysList().size();
-      }
-      {
-        int dataSize = 0;
-        for (int i = 0; i < miscStatKeys_.size(); i++) {
-          dataSize += computeStringSizeNoTag(miscStatKeys_.getRaw(i));
-        }
-        size += dataSize;
-        size += 2 * getMiscStatKeysList().size();
-      }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage)) {
-        return super.equals(obj);
-      }
-      com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage other = (com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage) obj;
-
-      if (!getInitialInventoryCommandsList()
-          .equals(other.getInitialInventoryCommandsList())) return false;
-      if (!getInitialPositionList()
-          .equals(other.getInitialPositionList())) return false;
-      if (!getInitialMobsCommandsList()
-          .equals(other.getInitialMobsCommandsList())) return false;
-      if (getImageSizeX()
-          != other.getImageSizeX()) return false;
-      if (getImageSizeY()
-          != other.getImageSizeY()) return false;
-      if (getSeed()
-          != other.getSeed()) return false;
-      if (getAllowMobSpawn()
-          != other.getAllowMobSpawn()) return false;
-      if (getAlwaysNight()
-          != other.getAlwaysNight()) return false;
-      if (getAlwaysDay()
-          != other.getAlwaysDay()) return false;
-      if (!getInitialWeather()
-          .equals(other.getInitialWeather())) return false;
-      if (getIsWorldFlat()
-          != other.getIsWorldFlat()) return false;
-      if (getVisibleSizeX()
-          != other.getVisibleSizeX()) return false;
-      if (getVisibleSizeY()
-          != other.getVisibleSizeY()) return false;
-      if (!getInitialExtraCommandsList()
-          .equals(other.getInitialExtraCommandsList())) return false;
-      if (!getKilledStatKeysList()
-          .equals(other.getKilledStatKeysList())) return false;
-      if (!getMinedStatKeysList()
-          .equals(other.getMinedStatKeysList())) return false;
-      if (!getMiscStatKeysList()
-          .equals(other.getMiscStatKeysList())) return false;
-      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
-      return true;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      if (getInitialInventoryCommandsCount() > 0) {
-        hash = (37 * hash) + INITIALINVENTORYCOMMANDS_FIELD_NUMBER;
-        hash = (53 * hash) + getInitialInventoryCommandsList().hashCode();
-      }
-      if (getInitialPositionCount() > 0) {
-        hash = (37 * hash) + INITIALPOSITION_FIELD_NUMBER;
-        hash = (53 * hash) + getInitialPositionList().hashCode();
-      }
-      if (getInitialMobsCommandsCount() > 0) {
-        hash = (37 * hash) + INITIALMOBSCOMMANDS_FIELD_NUMBER;
-        hash = (53 * hash) + getInitialMobsCommandsList().hashCode();
-      }
-      hash = (37 * hash) + IMAGESIZEX_FIELD_NUMBER;
-      hash = (53 * hash) + getImageSizeX();
-      hash = (37 * hash) + IMAGESIZEY_FIELD_NUMBER;
-      hash = (53 * hash) + getImageSizeY();
-      hash = (37 * hash) + SEED_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          getSeed());
-      hash = (37 * hash) + ALLOWMOBSPAWN_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
-          getAllowMobSpawn());
-      hash = (37 * hash) + ALWAYSNIGHT_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
-          getAlwaysNight());
-      hash = (37 * hash) + ALWAYSDAY_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
-          getAlwaysDay());
-      hash = (37 * hash) + INITIALWEATHER_FIELD_NUMBER;
-      hash = (53 * hash) + getInitialWeather().hashCode();
-      hash = (37 * hash) + ISWORLDFLAT_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
-          getIsWorldFlat());
-      hash = (37 * hash) + VISIBLESIZEX_FIELD_NUMBER;
-      hash = (53 * hash) + getVisibleSizeX();
-      hash = (37 * hash) + VISIBLESIZEY_FIELD_NUMBER;
-      hash = (53 * hash) + getVisibleSizeY();
-      if (getInitialExtraCommandsCount() > 0) {
-        hash = (37 * hash) + INITIALEXTRACOMMANDS_FIELD_NUMBER;
-        hash = (53 * hash) + getInitialExtraCommandsList().hashCode();
-      }
-      if (getKilledStatKeysCount() > 0) {
-        hash = (37 * hash) + KILLEDSTATKEYS_FIELD_NUMBER;
-        hash = (53 * hash) + getKilledStatKeysList().hashCode();
-      }
-      if (getMinedStatKeysCount() > 0) {
-        hash = (37 * hash) + MINEDSTATKEYS_FIELD_NUMBER;
-        hash = (53 * hash) + getMinedStatKeysList().hashCode();
-      }
-      if (getMiscStatKeysCount() > 0) {
-        hash = (37 * hash) + MISCSTATKEYS_FIELD_NUMBER;
-        hash = (53 * hash) + getMiscStatKeysList().hashCode();
-      }
-      hash = (29 * hash) + getUnknownFields().hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
     /**
      * Protobuf type {@code InitialEnvironmentMessage}
      */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:InitialEnvironmentMessage)
-        com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessageOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.internal_static_InitialEnvironmentMessage_descriptor;
-      }
+    public static final class InitialEnvironmentMessage extends
+            com.google.protobuf.GeneratedMessageV3 implements
+            // @@protoc_insertion_point(message_implements:InitialEnvironmentMessage)
+            InitialEnvironmentMessageOrBuilder {
+        public static final int INITIALINVENTORYCOMMANDS_FIELD_NUMBER = 1;
+        public static final int INITIALPOSITION_FIELD_NUMBER = 2;
+        public static final int INITIALMOBSCOMMANDS_FIELD_NUMBER = 3;
+        public static final int IMAGESIZEX_FIELD_NUMBER = 4;
+        public static final int IMAGESIZEY_FIELD_NUMBER = 5;
+        public static final int SEED_FIELD_NUMBER = 6;
+        public static final int ALLOWMOBSPAWN_FIELD_NUMBER = 7;
+        public static final int ALWAYSNIGHT_FIELD_NUMBER = 8;
+        public static final int ALWAYSDAY_FIELD_NUMBER = 9;
+        public static final int INITIALWEATHER_FIELD_NUMBER = 10;
+        public static final int ISWORLDFLAT_FIELD_NUMBER = 11;
+        public static final int VISIBLESIZEX_FIELD_NUMBER = 12;
+        public static final int VISIBLESIZEY_FIELD_NUMBER = 13;
+        public static final int INITIALEXTRACOMMANDS_FIELD_NUMBER = 14;
+        public static final int KILLEDSTATKEYS_FIELD_NUMBER = 15;
+        public static final int MINEDSTATKEYS_FIELD_NUMBER = 16;
+        public static final int MISCSTATKEYS_FIELD_NUMBER = 17;
+        private static final long serialVersionUID = 0L;
+        // @@protoc_insertion_point(class_scope:InitialEnvironmentMessage)
+        private static final com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage DEFAULT_INSTANCE;
+        private static final com.google.protobuf.Parser<InitialEnvironmentMessage>
+                PARSER = new com.google.protobuf.AbstractParser<InitialEnvironmentMessage>() {
+            @java.lang.Override
+            public InitialEnvironmentMessage parsePartialFrom(
+                    com.google.protobuf.CodedInputStream input,
+                    com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                    throws com.google.protobuf.InvalidProtocolBufferException {
+                Builder builder = newBuilder();
+                try {
+                    builder.mergeFrom(input, extensionRegistry);
+                } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                    throw e.setUnfinishedMessage(builder.buildPartial());
+                } catch (com.google.protobuf.UninitializedMessageException e) {
+                    throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+                } catch (java.io.IOException e) {
+                    throw new com.google.protobuf.InvalidProtocolBufferException(e)
+                            .setUnfinishedMessage(builder.buildPartial());
+                }
+                return builder.buildPartial();
+            }
+        };
 
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.internal_static_InitialEnvironmentMessage_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage.class, com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage.Builder.class);
-      }
+        static {
+            DEFAULT_INSTANCE = new com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage();
+        }
 
-      // Construct using com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage.newBuilder()
-      private Builder() {
+        @SuppressWarnings("serial")
+        private com.google.protobuf.LazyStringList initialInventoryCommands_;
+        @SuppressWarnings("serial")
+        private com.google.protobuf.Internal.IntList initialPosition_;
+        private int initialPositionMemoizedSerializedSize = -1;
+        @SuppressWarnings("serial")
+        private com.google.protobuf.LazyStringList initialMobsCommands_;
+        private int imageSizeX_ = 0;
+        private int imageSizeY_ = 0;
+        private long seed_ = 0L;
+        private boolean allowMobSpawn_ = false;
+        private boolean alwaysNight_ = false;
+        private boolean alwaysDay_ = false;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object initialWeather_ = "";
+        private boolean isWorldFlat_ = false;
+        private int visibleSizeX_ = 0;
+        private int visibleSizeY_ = 0;
+        @SuppressWarnings("serial")
+        private com.google.protobuf.LazyStringList initialExtraCommands_;
+        @SuppressWarnings("serial")
+        private com.google.protobuf.LazyStringList killedStatKeys_;
+        @SuppressWarnings("serial")
+        private com.google.protobuf.LazyStringList minedStatKeys_;
+        @SuppressWarnings("serial")
+        private com.google.protobuf.LazyStringList miscStatKeys_;
+        private byte memoizedIsInitialized = -1;
 
-      }
+        // Use InitialEnvironmentMessage.newBuilder() to construct.
+        private InitialEnvironmentMessage(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+            super(builder);
+        }
+        private InitialEnvironmentMessage() {
+            initialInventoryCommands_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+            initialPosition_ = emptyIntList();
+            initialMobsCommands_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+            initialWeather_ = "";
+            initialExtraCommands_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+            killedStatKeys_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+            minedStatKeys_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+            miscStatKeys_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        }
 
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
+        public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+            return com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.internal_static_InitialEnvironmentMessage_descriptor;
+        }
 
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        bitField0_ = 0;
-        initialInventoryCommands_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-        bitField0_ = (bitField0_ & ~0x00000001);
-        initialPosition_ = emptyIntList();
-        initialMobsCommands_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-        bitField0_ = (bitField0_ & ~0x00000004);
-        imageSizeX_ = 0;
-        imageSizeY_ = 0;
-        seed_ = 0L;
-        allowMobSpawn_ = false;
-        alwaysNight_ = false;
-        alwaysDay_ = false;
-        initialWeather_ = "";
-        isWorldFlat_ = false;
-        visibleSizeX_ = 0;
-        visibleSizeY_ = 0;
-        initialExtraCommands_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-        bitField0_ = (bitField0_ & ~0x00002000);
-        killedStatKeys_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-        bitField0_ = (bitField0_ & ~0x00004000);
-        minedStatKeys_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-        bitField0_ = (bitField0_ & ~0x00008000);
-        miscStatKeys_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-        bitField0_ = (bitField0_ & ~0x00010000);
-        return this;
-      }
+        public static com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage parseFrom(
+                java.nio.ByteBuffer data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
 
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.internal_static_InitialEnvironmentMessage_descriptor;
-      }
+        public static com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage parseFrom(
+                java.nio.ByteBuffer data,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
+        }
 
-      @java.lang.Override
-      public com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage getDefaultInstanceForType() {
-        return com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage.getDefaultInstance();
-      }
+        public static com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage parseFrom(
+                com.google.protobuf.ByteString data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
 
-      @java.lang.Override
-      public com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage build() {
-        com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
+        public static com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage parseFrom(
+                com.google.protobuf.ByteString data,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
         }
-        return result;
-      }
 
-      @java.lang.Override
-      public com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage buildPartial() {
-        com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage result = new com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage(this);
-        buildPartialRepeatedFields(result);
-        if (bitField0_ != 0) { buildPartial0(result); }
-        onBuilt();
-        return result;
-      }
+        public static com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage parseFrom(byte[] data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
 
-      private void buildPartialRepeatedFields(com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage result) {
-        if (((bitField0_ & 0x00000001) != 0)) {
-          initialInventoryCommands_ = initialInventoryCommands_.getUnmodifiableView();
-          bitField0_ = (bitField0_ & ~0x00000001);
+        public static com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage parseFrom(
+                byte[] data,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
         }
-        result.initialInventoryCommands_ = initialInventoryCommands_;
-        if (((bitField0_ & 0x00000002) != 0)) {
-          initialPosition_.makeImmutable();
-          bitField0_ = (bitField0_ & ~0x00000002);
-        }
-        result.initialPosition_ = initialPosition_;
-        if (((bitField0_ & 0x00000004) != 0)) {
-          initialMobsCommands_ = initialMobsCommands_.getUnmodifiableView();
-          bitField0_ = (bitField0_ & ~0x00000004);
-        }
-        result.initialMobsCommands_ = initialMobsCommands_;
-        if (((bitField0_ & 0x00002000) != 0)) {
-          initialExtraCommands_ = initialExtraCommands_.getUnmodifiableView();
-          bitField0_ = (bitField0_ & ~0x00002000);
-        }
-        result.initialExtraCommands_ = initialExtraCommands_;
-        if (((bitField0_ & 0x00004000) != 0)) {
-          killedStatKeys_ = killedStatKeys_.getUnmodifiableView();
-          bitField0_ = (bitField0_ & ~0x00004000);
-        }
-        result.killedStatKeys_ = killedStatKeys_;
-        if (((bitField0_ & 0x00008000) != 0)) {
-          minedStatKeys_ = minedStatKeys_.getUnmodifiableView();
-          bitField0_ = (bitField0_ & ~0x00008000);
-        }
-        result.minedStatKeys_ = minedStatKeys_;
-        if (((bitField0_ & 0x00010000) != 0)) {
-          miscStatKeys_ = miscStatKeys_.getUnmodifiableView();
-          bitField0_ = (bitField0_ & ~0x00010000);
-        }
-        result.miscStatKeys_ = miscStatKeys_;
-      }
 
-      private void buildPartial0(com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage result) {
-        int from_bitField0_ = bitField0_;
-        if (((from_bitField0_ & 0x00000008) != 0)) {
-          result.imageSizeX_ = imageSizeX_;
+        public static com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage parseFrom(java.io.InputStream input)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3
+                    .parseWithIOException(PARSER, input);
         }
-        if (((from_bitField0_ & 0x00000010) != 0)) {
-          result.imageSizeY_ = imageSizeY_;
-        }
-        if (((from_bitField0_ & 0x00000020) != 0)) {
-          result.seed_ = seed_;
-        }
-        if (((from_bitField0_ & 0x00000040) != 0)) {
-          result.allowMobSpawn_ = allowMobSpawn_;
-        }
-        if (((from_bitField0_ & 0x00000080) != 0)) {
-          result.alwaysNight_ = alwaysNight_;
-        }
-        if (((from_bitField0_ & 0x00000100) != 0)) {
-          result.alwaysDay_ = alwaysDay_;
-        }
-        if (((from_bitField0_ & 0x00000200) != 0)) {
-          result.initialWeather_ = initialWeather_;
-        }
-        if (((from_bitField0_ & 0x00000400) != 0)) {
-          result.isWorldFlat_ = isWorldFlat_;
-        }
-        if (((from_bitField0_ & 0x00000800) != 0)) {
-          result.visibleSizeX_ = visibleSizeX_;
-        }
-        if (((from_bitField0_ & 0x00001000) != 0)) {
-          result.visibleSizeY_ = visibleSizeY_;
-        }
-      }
 
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage) {
-          return mergeFrom((com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
+        public static com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage parseFrom(
+                java.io.InputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3
+                    .parseWithIOException(PARSER, input, extensionRegistry);
         }
-      }
 
-      public Builder mergeFrom(com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage other) {
-        if (other == com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage.getDefaultInstance()) return this;
-        if (!other.initialInventoryCommands_.isEmpty()) {
-          if (initialInventoryCommands_.isEmpty()) {
-            initialInventoryCommands_ = other.initialInventoryCommands_;
-            bitField0_ = (bitField0_ & ~0x00000001);
-          } else {
-            ensureInitialInventoryCommandsIsMutable();
-            initialInventoryCommands_.addAll(other.initialInventoryCommands_);
-          }
-          onChanged();
+        public static com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage parseDelimitedFrom(java.io.InputStream input)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3
+                    .parseDelimitedWithIOException(PARSER, input);
         }
-        if (!other.initialPosition_.isEmpty()) {
-          if (initialPosition_.isEmpty()) {
-            initialPosition_ = other.initialPosition_;
-            bitField0_ = (bitField0_ & ~0x00000002);
-          } else {
-            ensureInitialPositionIsMutable();
-            initialPosition_.addAll(other.initialPosition_);
-          }
-          onChanged();
-        }
-        if (!other.initialMobsCommands_.isEmpty()) {
-          if (initialMobsCommands_.isEmpty()) {
-            initialMobsCommands_ = other.initialMobsCommands_;
-            bitField0_ = (bitField0_ & ~0x00000004);
-          } else {
-            ensureInitialMobsCommandsIsMutable();
-            initialMobsCommands_.addAll(other.initialMobsCommands_);
-          }
-          onChanged();
-        }
-        if (other.getImageSizeX() != 0) {
-          setImageSizeX(other.getImageSizeX());
-        }
-        if (other.getImageSizeY() != 0) {
-          setImageSizeY(other.getImageSizeY());
-        }
-        if (other.getSeed() != 0L) {
-          setSeed(other.getSeed());
-        }
-        if (other.getAllowMobSpawn() != false) {
-          setAllowMobSpawn(other.getAllowMobSpawn());
-        }
-        if (other.getAlwaysNight() != false) {
-          setAlwaysNight(other.getAlwaysNight());
-        }
-        if (other.getAlwaysDay() != false) {
-          setAlwaysDay(other.getAlwaysDay());
-        }
-        if (!other.getInitialWeather().isEmpty()) {
-          initialWeather_ = other.initialWeather_;
-          bitField0_ |= 0x00000200;
-          onChanged();
-        }
-        if (other.getIsWorldFlat() != false) {
-          setIsWorldFlat(other.getIsWorldFlat());
-        }
-        if (other.getVisibleSizeX() != 0) {
-          setVisibleSizeX(other.getVisibleSizeX());
-        }
-        if (other.getVisibleSizeY() != 0) {
-          setVisibleSizeY(other.getVisibleSizeY());
-        }
-        if (!other.initialExtraCommands_.isEmpty()) {
-          if (initialExtraCommands_.isEmpty()) {
-            initialExtraCommands_ = other.initialExtraCommands_;
-            bitField0_ = (bitField0_ & ~0x00002000);
-          } else {
-            ensureInitialExtraCommandsIsMutable();
-            initialExtraCommands_.addAll(other.initialExtraCommands_);
-          }
-          onChanged();
-        }
-        if (!other.killedStatKeys_.isEmpty()) {
-          if (killedStatKeys_.isEmpty()) {
-            killedStatKeys_ = other.killedStatKeys_;
-            bitField0_ = (bitField0_ & ~0x00004000);
-          } else {
-            ensureKilledStatKeysIsMutable();
-            killedStatKeys_.addAll(other.killedStatKeys_);
-          }
-          onChanged();
-        }
-        if (!other.minedStatKeys_.isEmpty()) {
-          if (minedStatKeys_.isEmpty()) {
-            minedStatKeys_ = other.minedStatKeys_;
-            bitField0_ = (bitField0_ & ~0x00008000);
-          } else {
-            ensureMinedStatKeysIsMutable();
-            minedStatKeys_.addAll(other.minedStatKeys_);
-          }
-          onChanged();
-        }
-        if (!other.miscStatKeys_.isEmpty()) {
-          if (miscStatKeys_.isEmpty()) {
-            miscStatKeys_ = other.miscStatKeys_;
-            bitField0_ = (bitField0_ & ~0x00010000);
-          } else {
-            ensureMiscStatKeysIsMutable();
-            miscStatKeys_.addAll(other.miscStatKeys_);
-          }
-          onChanged();
-        }
-        this.mergeUnknownFields(other.getUnknownFields());
-        onChanged();
-        return this;
-      }
 
-      @java.lang.Override
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        if (extensionRegistry == null) {
-          throw new java.lang.NullPointerException();
+        public static com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage parseDelimitedFrom(
+                java.io.InputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3
+                    .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
         }
-        try {
-          boolean done = false;
-          while (!done) {
-            int tag = input.readTag();
-            switch (tag) {
-              case 0:
-                done = true;
-                break;
-              case 10: {
-                java.lang.String s = input.readStringRequireUtf8();
+
+        public static com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage parseFrom(
+                com.google.protobuf.CodedInputStream input)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3
+                    .parseWithIOException(PARSER, input);
+        }
+
+        public static com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage parseFrom(
+                com.google.protobuf.CodedInputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3
+                    .parseWithIOException(PARSER, input, extensionRegistry);
+        }
+
+        public static Builder newBuilder() {
+            return DEFAULT_INSTANCE.toBuilder();
+        }
+
+        public static Builder newBuilder(com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage prototype) {
+            return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+        }
+
+        public static com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage getDefaultInstance() {
+            return DEFAULT_INSTANCE;
+        }
+
+        public static com.google.protobuf.Parser<InitialEnvironmentMessage> parser() {
+            return PARSER;
+        }
+
+        @java.lang.Override
+        @SuppressWarnings({"unused"})
+        protected java.lang.Object newInstance(
+                UnusedPrivateParameter unused) {
+            return new InitialEnvironmentMessage();
+        }
+
+        @java.lang.Override
+        public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+            return this.unknownFields;
+        }
+
+        @java.lang.Override
+        protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+            return com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.internal_static_InitialEnvironmentMessage_fieldAccessorTable
+                    .ensureFieldAccessorsInitialized(
+                            com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage.class, com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage.Builder.class);
+        }
+
+        /**
+         * <code>repeated string initialInventoryCommands = 1;</code>
+         *
+         * @return A list containing the initialInventoryCommands.
+         */
+        public com.google.protobuf.ProtocolStringList
+        getInitialInventoryCommandsList() {
+            return initialInventoryCommands_;
+        }
+
+        /**
+         * <code>repeated string initialInventoryCommands = 1;</code>
+         *
+         * @return The count of initialInventoryCommands.
+         */
+        public int getInitialInventoryCommandsCount() {
+            return initialInventoryCommands_.size();
+        }
+
+        /**
+         * <code>repeated string initialInventoryCommands = 1;</code>
+         *
+         * @param index The index of the element to return.
+         * @return The initialInventoryCommands at the given index.
+         */
+        public java.lang.String getInitialInventoryCommands(int index) {
+            return initialInventoryCommands_.get(index);
+        }
+
+        /**
+         * <code>repeated string initialInventoryCommands = 1;</code>
+         *
+         * @param index The index of the value to return.
+         * @return The bytes of the initialInventoryCommands at the given index.
+         */
+        public com.google.protobuf.ByteString
+        getInitialInventoryCommandsBytes(int index) {
+            return initialInventoryCommands_.getByteString(index);
+        }
+
+        /**
+         * <code>repeated int32 initialPosition = 2;</code>
+         *
+         * @return A list containing the initialPosition.
+         */
+        @java.lang.Override
+        public java.util.List<java.lang.Integer>
+        getInitialPositionList() {
+            return initialPosition_;
+        }
+
+        /**
+         * <code>repeated int32 initialPosition = 2;</code>
+         *
+         * @return The count of initialPosition.
+         */
+        public int getInitialPositionCount() {
+            return initialPosition_.size();
+        }
+
+        /**
+         * <code>repeated int32 initialPosition = 2;</code>
+         *
+         * @param index The index of the element to return.
+         * @return The initialPosition at the given index.
+         */
+        public int getInitialPosition(int index) {
+            return initialPosition_.getInt(index);
+        }
+
+        /**
+         * <code>repeated string initialMobsCommands = 3;</code>
+         *
+         * @return A list containing the initialMobsCommands.
+         */
+        public com.google.protobuf.ProtocolStringList
+        getInitialMobsCommandsList() {
+            return initialMobsCommands_;
+        }
+
+        /**
+         * <code>repeated string initialMobsCommands = 3;</code>
+         *
+         * @return The count of initialMobsCommands.
+         */
+        public int getInitialMobsCommandsCount() {
+            return initialMobsCommands_.size();
+        }
+
+        /**
+         * <code>repeated string initialMobsCommands = 3;</code>
+         *
+         * @param index The index of the element to return.
+         * @return The initialMobsCommands at the given index.
+         */
+        public java.lang.String getInitialMobsCommands(int index) {
+            return initialMobsCommands_.get(index);
+        }
+
+        /**
+         * <code>repeated string initialMobsCommands = 3;</code>
+         *
+         * @param index The index of the value to return.
+         * @return The bytes of the initialMobsCommands at the given index.
+         */
+        public com.google.protobuf.ByteString
+        getInitialMobsCommandsBytes(int index) {
+            return initialMobsCommands_.getByteString(index);
+        }
+
+        /**
+         * <code>int32 imageSizeX = 4;</code>
+         *
+         * @return The imageSizeX.
+         */
+        @java.lang.Override
+        public int getImageSizeX() {
+            return imageSizeX_;
+        }
+
+        /**
+         * <code>int32 imageSizeY = 5;</code>
+         *
+         * @return The imageSizeY.
+         */
+        @java.lang.Override
+        public int getImageSizeY() {
+            return imageSizeY_;
+        }
+
+        /**
+         * <code>int64 seed = 6;</code>
+         *
+         * @return The seed.
+         */
+        @java.lang.Override
+        public long getSeed() {
+            return seed_;
+        }
+
+        /**
+         * <code>bool allowMobSpawn = 7;</code>
+         *
+         * @return The allowMobSpawn.
+         */
+        @java.lang.Override
+        public boolean getAllowMobSpawn() {
+            return allowMobSpawn_;
+        }
+
+        /**
+         * <code>bool alwaysNight = 8;</code>
+         *
+         * @return The alwaysNight.
+         */
+        @java.lang.Override
+        public boolean getAlwaysNight() {
+            return alwaysNight_;
+        }
+
+        /**
+         * <code>bool alwaysDay = 9;</code>
+         *
+         * @return The alwaysDay.
+         */
+        @java.lang.Override
+        public boolean getAlwaysDay() {
+            return alwaysDay_;
+        }
+
+        /**
+         * <code>string initialWeather = 10;</code>
+         *
+         * @return The initialWeather.
+         */
+        @java.lang.Override
+        public java.lang.String getInitialWeather() {
+            java.lang.Object ref = initialWeather_;
+            if (ref instanceof java.lang.String) {
+                return (java.lang.String) ref;
+            } else {
+                com.google.protobuf.ByteString bs =
+                        (com.google.protobuf.ByteString) ref;
+                java.lang.String s = bs.toStringUtf8();
+                initialWeather_ = s;
+                return s;
+            }
+        }
+
+        /**
+         * <code>string initialWeather = 10;</code>
+         *
+         * @return The bytes for initialWeather.
+         */
+        @java.lang.Override
+        public com.google.protobuf.ByteString
+        getInitialWeatherBytes() {
+            java.lang.Object ref = initialWeather_;
+            if (ref instanceof java.lang.String) {
+                com.google.protobuf.ByteString b =
+                        com.google.protobuf.ByteString.copyFromUtf8(
+                                (java.lang.String) ref);
+                initialWeather_ = b;
+                return b;
+            } else {
+                return (com.google.protobuf.ByteString) ref;
+            }
+        }
+
+        /**
+         * <code>bool isWorldFlat = 11;</code>
+         *
+         * @return The isWorldFlat.
+         */
+        @java.lang.Override
+        public boolean getIsWorldFlat() {
+            return isWorldFlat_;
+        }
+
+        /**
+         * <code>int32 visibleSizeX = 12;</code>
+         *
+         * @return The visibleSizeX.
+         */
+        @java.lang.Override
+        public int getVisibleSizeX() {
+            return visibleSizeX_;
+        }
+
+        /**
+         * <code>int32 visibleSizeY = 13;</code>
+         *
+         * @return The visibleSizeY.
+         */
+        @java.lang.Override
+        public int getVisibleSizeY() {
+            return visibleSizeY_;
+        }
+
+        /**
+         * <code>repeated string initialExtraCommands = 14;</code>
+         *
+         * @return A list containing the initialExtraCommands.
+         */
+        public com.google.protobuf.ProtocolStringList
+        getInitialExtraCommandsList() {
+            return initialExtraCommands_;
+        }
+
+        /**
+         * <code>repeated string initialExtraCommands = 14;</code>
+         *
+         * @return The count of initialExtraCommands.
+         */
+        public int getInitialExtraCommandsCount() {
+            return initialExtraCommands_.size();
+        }
+
+        /**
+         * <code>repeated string initialExtraCommands = 14;</code>
+         *
+         * @param index The index of the element to return.
+         * @return The initialExtraCommands at the given index.
+         */
+        public java.lang.String getInitialExtraCommands(int index) {
+            return initialExtraCommands_.get(index);
+        }
+
+        /**
+         * <code>repeated string initialExtraCommands = 14;</code>
+         *
+         * @param index The index of the value to return.
+         * @return The bytes of the initialExtraCommands at the given index.
+         */
+        public com.google.protobuf.ByteString
+        getInitialExtraCommandsBytes(int index) {
+            return initialExtraCommands_.getByteString(index);
+        }
+
+        /**
+         * <code>repeated string killedStatKeys = 15;</code>
+         *
+         * @return A list containing the killedStatKeys.
+         */
+        public com.google.protobuf.ProtocolStringList
+        getKilledStatKeysList() {
+            return killedStatKeys_;
+        }
+
+        /**
+         * <code>repeated string killedStatKeys = 15;</code>
+         *
+         * @return The count of killedStatKeys.
+         */
+        public int getKilledStatKeysCount() {
+            return killedStatKeys_.size();
+        }
+
+        /**
+         * <code>repeated string killedStatKeys = 15;</code>
+         *
+         * @param index The index of the element to return.
+         * @return The killedStatKeys at the given index.
+         */
+        public java.lang.String getKilledStatKeys(int index) {
+            return killedStatKeys_.get(index);
+        }
+
+        /**
+         * <code>repeated string killedStatKeys = 15;</code>
+         *
+         * @param index The index of the value to return.
+         * @return The bytes of the killedStatKeys at the given index.
+         */
+        public com.google.protobuf.ByteString
+        getKilledStatKeysBytes(int index) {
+            return killedStatKeys_.getByteString(index);
+        }
+
+        /**
+         * <code>repeated string minedStatKeys = 16;</code>
+         *
+         * @return A list containing the minedStatKeys.
+         */
+        public com.google.protobuf.ProtocolStringList
+        getMinedStatKeysList() {
+            return minedStatKeys_;
+        }
+
+        /**
+         * <code>repeated string minedStatKeys = 16;</code>
+         *
+         * @return The count of minedStatKeys.
+         */
+        public int getMinedStatKeysCount() {
+            return minedStatKeys_.size();
+        }
+
+        /**
+         * <code>repeated string minedStatKeys = 16;</code>
+         *
+         * @param index The index of the element to return.
+         * @return The minedStatKeys at the given index.
+         */
+        public java.lang.String getMinedStatKeys(int index) {
+            return minedStatKeys_.get(index);
+        }
+
+        /**
+         * <code>repeated string minedStatKeys = 16;</code>
+         *
+         * @param index The index of the value to return.
+         * @return The bytes of the minedStatKeys at the given index.
+         */
+        public com.google.protobuf.ByteString
+        getMinedStatKeysBytes(int index) {
+            return minedStatKeys_.getByteString(index);
+        }
+
+        /**
+         * <code>repeated string miscStatKeys = 17;</code>
+         *
+         * @return A list containing the miscStatKeys.
+         */
+        public com.google.protobuf.ProtocolStringList
+        getMiscStatKeysList() {
+            return miscStatKeys_;
+        }
+
+        /**
+         * <code>repeated string miscStatKeys = 17;</code>
+         *
+         * @return The count of miscStatKeys.
+         */
+        public int getMiscStatKeysCount() {
+            return miscStatKeys_.size();
+        }
+
+        /**
+         * <code>repeated string miscStatKeys = 17;</code>
+         *
+         * @param index The index of the element to return.
+         * @return The miscStatKeys at the given index.
+         */
+        public java.lang.String getMiscStatKeys(int index) {
+            return miscStatKeys_.get(index);
+        }
+
+        /**
+         * <code>repeated string miscStatKeys = 17;</code>
+         *
+         * @param index The index of the value to return.
+         * @return The bytes of the miscStatKeys at the given index.
+         */
+        public com.google.protobuf.ByteString
+        getMiscStatKeysBytes(int index) {
+            return miscStatKeys_.getByteString(index);
+        }
+
+        @java.lang.Override
+        public final boolean isInitialized() {
+            byte isInitialized = memoizedIsInitialized;
+            if (isInitialized == 1) return true;
+            if (isInitialized == 0) return false;
+
+            memoizedIsInitialized = 1;
+            return true;
+        }
+
+        @java.lang.Override
+        public void writeTo(com.google.protobuf.CodedOutputStream output)
+                throws java.io.IOException {
+            getSerializedSize();
+            for (int i = 0; i < initialInventoryCommands_.size(); i++) {
+                com.google.protobuf.GeneratedMessageV3.writeString(output, 1, initialInventoryCommands_.getRaw(i));
+            }
+            if (getInitialPositionList().size() > 0) {
+                output.writeUInt32NoTag(18);
+                output.writeUInt32NoTag(initialPositionMemoizedSerializedSize);
+            }
+            for (int i = 0; i < initialPosition_.size(); i++) {
+                output.writeInt32NoTag(initialPosition_.getInt(i));
+            }
+            for (int i = 0; i < initialMobsCommands_.size(); i++) {
+                com.google.protobuf.GeneratedMessageV3.writeString(output, 3, initialMobsCommands_.getRaw(i));
+            }
+            if (imageSizeX_ != 0) {
+                output.writeInt32(4, imageSizeX_);
+            }
+            if (imageSizeY_ != 0) {
+                output.writeInt32(5, imageSizeY_);
+            }
+            if (seed_ != 0L) {
+                output.writeInt64(6, seed_);
+            }
+            if (allowMobSpawn_ != false) {
+                output.writeBool(7, allowMobSpawn_);
+            }
+            if (alwaysNight_ != false) {
+                output.writeBool(8, alwaysNight_);
+            }
+            if (alwaysDay_ != false) {
+                output.writeBool(9, alwaysDay_);
+            }
+            if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(initialWeather_)) {
+                com.google.protobuf.GeneratedMessageV3.writeString(output, 10, initialWeather_);
+            }
+            if (isWorldFlat_ != false) {
+                output.writeBool(11, isWorldFlat_);
+            }
+            if (visibleSizeX_ != 0) {
+                output.writeInt32(12, visibleSizeX_);
+            }
+            if (visibleSizeY_ != 0) {
+                output.writeInt32(13, visibleSizeY_);
+            }
+            for (int i = 0; i < initialExtraCommands_.size(); i++) {
+                com.google.protobuf.GeneratedMessageV3.writeString(output, 14, initialExtraCommands_.getRaw(i));
+            }
+            for (int i = 0; i < killedStatKeys_.size(); i++) {
+                com.google.protobuf.GeneratedMessageV3.writeString(output, 15, killedStatKeys_.getRaw(i));
+            }
+            for (int i = 0; i < minedStatKeys_.size(); i++) {
+                com.google.protobuf.GeneratedMessageV3.writeString(output, 16, minedStatKeys_.getRaw(i));
+            }
+            for (int i = 0; i < miscStatKeys_.size(); i++) {
+                com.google.protobuf.GeneratedMessageV3.writeString(output, 17, miscStatKeys_.getRaw(i));
+            }
+            getUnknownFields().writeTo(output);
+        }
+
+        @java.lang.Override
+        public int getSerializedSize() {
+            int size = memoizedSize;
+            if (size != -1) return size;
+
+            size = 0;
+            {
+                int dataSize = 0;
+                for (int i = 0; i < initialInventoryCommands_.size(); i++) {
+                    dataSize += computeStringSizeNoTag(initialInventoryCommands_.getRaw(i));
+                }
+                size += dataSize;
+                size += 1 * getInitialInventoryCommandsList().size();
+            }
+            {
+                int dataSize = 0;
+                for (int i = 0; i < initialPosition_.size(); i++) {
+                    dataSize += com.google.protobuf.CodedOutputStream
+                            .computeInt32SizeNoTag(initialPosition_.getInt(i));
+                }
+                size += dataSize;
+                if (!getInitialPositionList().isEmpty()) {
+                    size += 1;
+                    size += com.google.protobuf.CodedOutputStream
+                            .computeInt32SizeNoTag(dataSize);
+                }
+                initialPositionMemoizedSerializedSize = dataSize;
+            }
+            {
+                int dataSize = 0;
+                for (int i = 0; i < initialMobsCommands_.size(); i++) {
+                    dataSize += computeStringSizeNoTag(initialMobsCommands_.getRaw(i));
+                }
+                size += dataSize;
+                size += 1 * getInitialMobsCommandsList().size();
+            }
+            if (imageSizeX_ != 0) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeInt32Size(4, imageSizeX_);
+            }
+            if (imageSizeY_ != 0) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeInt32Size(5, imageSizeY_);
+            }
+            if (seed_ != 0L) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeInt64Size(6, seed_);
+            }
+            if (allowMobSpawn_ != false) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeBoolSize(7, allowMobSpawn_);
+            }
+            if (alwaysNight_ != false) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeBoolSize(8, alwaysNight_);
+            }
+            if (alwaysDay_ != false) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeBoolSize(9, alwaysDay_);
+            }
+            if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(initialWeather_)) {
+                size += com.google.protobuf.GeneratedMessageV3.computeStringSize(10, initialWeather_);
+            }
+            if (isWorldFlat_ != false) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeBoolSize(11, isWorldFlat_);
+            }
+            if (visibleSizeX_ != 0) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeInt32Size(12, visibleSizeX_);
+            }
+            if (visibleSizeY_ != 0) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeInt32Size(13, visibleSizeY_);
+            }
+            {
+                int dataSize = 0;
+                for (int i = 0; i < initialExtraCommands_.size(); i++) {
+                    dataSize += computeStringSizeNoTag(initialExtraCommands_.getRaw(i));
+                }
+                size += dataSize;
+                size += 1 * getInitialExtraCommandsList().size();
+            }
+            {
+                int dataSize = 0;
+                for (int i = 0; i < killedStatKeys_.size(); i++) {
+                    dataSize += computeStringSizeNoTag(killedStatKeys_.getRaw(i));
+                }
+                size += dataSize;
+                size += 1 * getKilledStatKeysList().size();
+            }
+            {
+                int dataSize = 0;
+                for (int i = 0; i < minedStatKeys_.size(); i++) {
+                    dataSize += computeStringSizeNoTag(minedStatKeys_.getRaw(i));
+                }
+                size += dataSize;
+                size += 2 * getMinedStatKeysList().size();
+            }
+            {
+                int dataSize = 0;
+                for (int i = 0; i < miscStatKeys_.size(); i++) {
+                    dataSize += computeStringSizeNoTag(miscStatKeys_.getRaw(i));
+                }
+                size += dataSize;
+                size += 2 * getMiscStatKeysList().size();
+            }
+            size += getUnknownFields().getSerializedSize();
+            memoizedSize = size;
+            return size;
+        }
+
+        @java.lang.Override
+        public boolean equals(final java.lang.Object obj) {
+            if (obj == this) {
+                return true;
+            }
+            if (!(obj instanceof com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage)) {
+                return super.equals(obj);
+            }
+            com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage other = (com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage) obj;
+
+            if (!getInitialInventoryCommandsList()
+                    .equals(other.getInitialInventoryCommandsList())) return false;
+            if (!getInitialPositionList()
+                    .equals(other.getInitialPositionList())) return false;
+            if (!getInitialMobsCommandsList()
+                    .equals(other.getInitialMobsCommandsList())) return false;
+            if (getImageSizeX()
+                    != other.getImageSizeX()) return false;
+            if (getImageSizeY()
+                    != other.getImageSizeY()) return false;
+            if (getSeed()
+                    != other.getSeed()) return false;
+            if (getAllowMobSpawn()
+                    != other.getAllowMobSpawn()) return false;
+            if (getAlwaysNight()
+                    != other.getAlwaysNight()) return false;
+            if (getAlwaysDay()
+                    != other.getAlwaysDay()) return false;
+            if (!getInitialWeather()
+                    .equals(other.getInitialWeather())) return false;
+            if (getIsWorldFlat()
+                    != other.getIsWorldFlat()) return false;
+            if (getVisibleSizeX()
+                    != other.getVisibleSizeX()) return false;
+            if (getVisibleSizeY()
+                    != other.getVisibleSizeY()) return false;
+            if (!getInitialExtraCommandsList()
+                    .equals(other.getInitialExtraCommandsList())) return false;
+            if (!getKilledStatKeysList()
+                    .equals(other.getKilledStatKeysList())) return false;
+            if (!getMinedStatKeysList()
+                    .equals(other.getMinedStatKeysList())) return false;
+            if (!getMiscStatKeysList()
+                    .equals(other.getMiscStatKeysList())) return false;
+            if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+            return true;
+        }
+
+        @java.lang.Override
+        public int hashCode() {
+            if (memoizedHashCode != 0) {
+                return memoizedHashCode;
+            }
+            int hash = 41;
+            hash = (19 * hash) + getDescriptor().hashCode();
+            if (getInitialInventoryCommandsCount() > 0) {
+                hash = (37 * hash) + INITIALINVENTORYCOMMANDS_FIELD_NUMBER;
+                hash = (53 * hash) + getInitialInventoryCommandsList().hashCode();
+            }
+            if (getInitialPositionCount() > 0) {
+                hash = (37 * hash) + INITIALPOSITION_FIELD_NUMBER;
+                hash = (53 * hash) + getInitialPositionList().hashCode();
+            }
+            if (getInitialMobsCommandsCount() > 0) {
+                hash = (37 * hash) + INITIALMOBSCOMMANDS_FIELD_NUMBER;
+                hash = (53 * hash) + getInitialMobsCommandsList().hashCode();
+            }
+            hash = (37 * hash) + IMAGESIZEX_FIELD_NUMBER;
+            hash = (53 * hash) + getImageSizeX();
+            hash = (37 * hash) + IMAGESIZEY_FIELD_NUMBER;
+            hash = (53 * hash) + getImageSizeY();
+            hash = (37 * hash) + SEED_FIELD_NUMBER;
+            hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+                    getSeed());
+            hash = (37 * hash) + ALLOWMOBSPAWN_FIELD_NUMBER;
+            hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+                    getAllowMobSpawn());
+            hash = (37 * hash) + ALWAYSNIGHT_FIELD_NUMBER;
+            hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+                    getAlwaysNight());
+            hash = (37 * hash) + ALWAYSDAY_FIELD_NUMBER;
+            hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+                    getAlwaysDay());
+            hash = (37 * hash) + INITIALWEATHER_FIELD_NUMBER;
+            hash = (53 * hash) + getInitialWeather().hashCode();
+            hash = (37 * hash) + ISWORLDFLAT_FIELD_NUMBER;
+            hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+                    getIsWorldFlat());
+            hash = (37 * hash) + VISIBLESIZEX_FIELD_NUMBER;
+            hash = (53 * hash) + getVisibleSizeX();
+            hash = (37 * hash) + VISIBLESIZEY_FIELD_NUMBER;
+            hash = (53 * hash) + getVisibleSizeY();
+            if (getInitialExtraCommandsCount() > 0) {
+                hash = (37 * hash) + INITIALEXTRACOMMANDS_FIELD_NUMBER;
+                hash = (53 * hash) + getInitialExtraCommandsList().hashCode();
+            }
+            if (getKilledStatKeysCount() > 0) {
+                hash = (37 * hash) + KILLEDSTATKEYS_FIELD_NUMBER;
+                hash = (53 * hash) + getKilledStatKeysList().hashCode();
+            }
+            if (getMinedStatKeysCount() > 0) {
+                hash = (37 * hash) + MINEDSTATKEYS_FIELD_NUMBER;
+                hash = (53 * hash) + getMinedStatKeysList().hashCode();
+            }
+            if (getMiscStatKeysCount() > 0) {
+                hash = (37 * hash) + MISCSTATKEYS_FIELD_NUMBER;
+                hash = (53 * hash) + getMiscStatKeysList().hashCode();
+            }
+            hash = (29 * hash) + getUnknownFields().hashCode();
+            memoizedHashCode = hash;
+            return hash;
+        }
+
+        @java.lang.Override
+        public Builder newBuilderForType() {
+            return newBuilder();
+        }
+
+        @java.lang.Override
+        public Builder toBuilder() {
+            return this == DEFAULT_INSTANCE
+                    ? new Builder() : new Builder().mergeFrom(this);
+        }
+
+        @java.lang.Override
+        protected Builder newBuilderForType(
+                com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+            Builder builder = new Builder(parent);
+            return builder;
+        }
+
+        @java.lang.Override
+        public com.google.protobuf.Parser<InitialEnvironmentMessage> getParserForType() {
+            return PARSER;
+        }
+
+        @java.lang.Override
+        public com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage getDefaultInstanceForType() {
+            return DEFAULT_INSTANCE;
+        }
+
+        /**
+         * Protobuf type {@code InitialEnvironmentMessage}
+         */
+        public static final class Builder extends
+                com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+                // @@protoc_insertion_point(builder_implements:InitialEnvironmentMessage)
+                com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessageOrBuilder {
+            private int bitField0_;
+            private com.google.protobuf.LazyStringList initialInventoryCommands_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+            private com.google.protobuf.Internal.IntList initialPosition_ = emptyIntList();
+            private com.google.protobuf.LazyStringList initialMobsCommands_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+            private int imageSizeX_;
+            private int imageSizeY_;
+            private long seed_;
+            private boolean allowMobSpawn_;
+            private boolean alwaysNight_;
+            private boolean alwaysDay_;
+            private java.lang.Object initialWeather_ = "";
+            private boolean isWorldFlat_;
+            private int visibleSizeX_;
+            private int visibleSizeY_;
+            private com.google.protobuf.LazyStringList initialExtraCommands_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+            private com.google.protobuf.LazyStringList killedStatKeys_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+            private com.google.protobuf.LazyStringList minedStatKeys_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+            private com.google.protobuf.LazyStringList miscStatKeys_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+
+            // Construct using com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage.newBuilder()
+            private Builder() {
+
+            }
+
+            private Builder(
+                    com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+                super(parent);
+
+            }
+
+            public static final com.google.protobuf.Descriptors.Descriptor
+            getDescriptor() {
+                return com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.internal_static_InitialEnvironmentMessage_descriptor;
+            }
+
+            @java.lang.Override
+            protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+            internalGetFieldAccessorTable() {
+                return com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.internal_static_InitialEnvironmentMessage_fieldAccessorTable
+                        .ensureFieldAccessorsInitialized(
+                                com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage.class, com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage.Builder.class);
+            }
+
+            @java.lang.Override
+            public Builder clear() {
+                super.clear();
+                bitField0_ = 0;
+                initialInventoryCommands_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+                bitField0_ = (bitField0_ & ~0x00000001);
+                initialPosition_ = emptyIntList();
+                initialMobsCommands_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+                bitField0_ = (bitField0_ & ~0x00000004);
+                imageSizeX_ = 0;
+                imageSizeY_ = 0;
+                seed_ = 0L;
+                allowMobSpawn_ = false;
+                alwaysNight_ = false;
+                alwaysDay_ = false;
+                initialWeather_ = "";
+                isWorldFlat_ = false;
+                visibleSizeX_ = 0;
+                visibleSizeY_ = 0;
+                initialExtraCommands_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+                bitField0_ = (bitField0_ & ~0x00002000);
+                killedStatKeys_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+                bitField0_ = (bitField0_ & ~0x00004000);
+                minedStatKeys_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+                bitField0_ = (bitField0_ & ~0x00008000);
+                miscStatKeys_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+                bitField0_ = (bitField0_ & ~0x00010000);
+                return this;
+            }
+
+            @java.lang.Override
+            public com.google.protobuf.Descriptors.Descriptor
+            getDescriptorForType() {
+                return com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.internal_static_InitialEnvironmentMessage_descriptor;
+            }
+
+            @java.lang.Override
+            public com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage getDefaultInstanceForType() {
+                return com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage.getDefaultInstance();
+            }
+
+            @java.lang.Override
+            public com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage build() {
+                com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage result = buildPartial();
+                if (!result.isInitialized()) {
+                    throw newUninitializedMessageException(result);
+                }
+                return result;
+            }
+
+            @java.lang.Override
+            public com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage buildPartial() {
+                com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage result = new com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage(this);
+                buildPartialRepeatedFields(result);
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
+                }
+                onBuilt();
+                return result;
+            }
+
+            private void buildPartialRepeatedFields(com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage result) {
+                if (((bitField0_ & 0x00000001) != 0)) {
+                    initialInventoryCommands_ = initialInventoryCommands_.getUnmodifiableView();
+                    bitField0_ = (bitField0_ & ~0x00000001);
+                }
+                result.initialInventoryCommands_ = initialInventoryCommands_;
+                if (((bitField0_ & 0x00000002) != 0)) {
+                    initialPosition_.makeImmutable();
+                    bitField0_ = (bitField0_ & ~0x00000002);
+                }
+                result.initialPosition_ = initialPosition_;
+                if (((bitField0_ & 0x00000004) != 0)) {
+                    initialMobsCommands_ = initialMobsCommands_.getUnmodifiableView();
+                    bitField0_ = (bitField0_ & ~0x00000004);
+                }
+                result.initialMobsCommands_ = initialMobsCommands_;
+                if (((bitField0_ & 0x00002000) != 0)) {
+                    initialExtraCommands_ = initialExtraCommands_.getUnmodifiableView();
+                    bitField0_ = (bitField0_ & ~0x00002000);
+                }
+                result.initialExtraCommands_ = initialExtraCommands_;
+                if (((bitField0_ & 0x00004000) != 0)) {
+                    killedStatKeys_ = killedStatKeys_.getUnmodifiableView();
+                    bitField0_ = (bitField0_ & ~0x00004000);
+                }
+                result.killedStatKeys_ = killedStatKeys_;
+                if (((bitField0_ & 0x00008000) != 0)) {
+                    minedStatKeys_ = minedStatKeys_.getUnmodifiableView();
+                    bitField0_ = (bitField0_ & ~0x00008000);
+                }
+                result.minedStatKeys_ = minedStatKeys_;
+                if (((bitField0_ & 0x00010000) != 0)) {
+                    miscStatKeys_ = miscStatKeys_.getUnmodifiableView();
+                    bitField0_ = (bitField0_ & ~0x00010000);
+                }
+                result.miscStatKeys_ = miscStatKeys_;
+            }
+
+            private void buildPartial0(com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage result) {
+                int from_bitField0_ = bitField0_;
+                if (((from_bitField0_ & 0x00000008) != 0)) {
+                    result.imageSizeX_ = imageSizeX_;
+                }
+                if (((from_bitField0_ & 0x00000010) != 0)) {
+                    result.imageSizeY_ = imageSizeY_;
+                }
+                if (((from_bitField0_ & 0x00000020) != 0)) {
+                    result.seed_ = seed_;
+                }
+                if (((from_bitField0_ & 0x00000040) != 0)) {
+                    result.allowMobSpawn_ = allowMobSpawn_;
+                }
+                if (((from_bitField0_ & 0x00000080) != 0)) {
+                    result.alwaysNight_ = alwaysNight_;
+                }
+                if (((from_bitField0_ & 0x00000100) != 0)) {
+                    result.alwaysDay_ = alwaysDay_;
+                }
+                if (((from_bitField0_ & 0x00000200) != 0)) {
+                    result.initialWeather_ = initialWeather_;
+                }
+                if (((from_bitField0_ & 0x00000400) != 0)) {
+                    result.isWorldFlat_ = isWorldFlat_;
+                }
+                if (((from_bitField0_ & 0x00000800) != 0)) {
+                    result.visibleSizeX_ = visibleSizeX_;
+                }
+                if (((from_bitField0_ & 0x00001000) != 0)) {
+                    result.visibleSizeY_ = visibleSizeY_;
+                }
+            }
+
+            @java.lang.Override
+            public Builder clone() {
+                return super.clone();
+            }
+
+            @java.lang.Override
+            public Builder setField(
+                    com.google.protobuf.Descriptors.FieldDescriptor field,
+                    java.lang.Object value) {
+                return super.setField(field, value);
+            }
+
+            @java.lang.Override
+            public Builder clearField(
+                    com.google.protobuf.Descriptors.FieldDescriptor field) {
+                return super.clearField(field);
+            }
+
+            @java.lang.Override
+            public Builder clearOneof(
+                    com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+                return super.clearOneof(oneof);
+            }
+
+            @java.lang.Override
+            public Builder setRepeatedField(
+                    com.google.protobuf.Descriptors.FieldDescriptor field,
+                    int index, java.lang.Object value) {
+                return super.setRepeatedField(field, index, value);
+            }
+
+            @java.lang.Override
+            public Builder addRepeatedField(
+                    com.google.protobuf.Descriptors.FieldDescriptor field,
+                    java.lang.Object value) {
+                return super.addRepeatedField(field, value);
+            }
+
+            @java.lang.Override
+            public Builder mergeFrom(com.google.protobuf.Message other) {
+                if (other instanceof com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage) {
+                    return mergeFrom((com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage) other);
+                } else {
+                    super.mergeFrom(other);
+                    return this;
+                }
+            }
+
+            public Builder mergeFrom(com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage other) {
+                if (other == com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage.getDefaultInstance())
+                    return this;
+                if (!other.initialInventoryCommands_.isEmpty()) {
+                    if (initialInventoryCommands_.isEmpty()) {
+                        initialInventoryCommands_ = other.initialInventoryCommands_;
+                        bitField0_ = (bitField0_ & ~0x00000001);
+                    } else {
+                        ensureInitialInventoryCommandsIsMutable();
+                        initialInventoryCommands_.addAll(other.initialInventoryCommands_);
+                    }
+                    onChanged();
+                }
+                if (!other.initialPosition_.isEmpty()) {
+                    if (initialPosition_.isEmpty()) {
+                        initialPosition_ = other.initialPosition_;
+                        bitField0_ = (bitField0_ & ~0x00000002);
+                    } else {
+                        ensureInitialPositionIsMutable();
+                        initialPosition_.addAll(other.initialPosition_);
+                    }
+                    onChanged();
+                }
+                if (!other.initialMobsCommands_.isEmpty()) {
+                    if (initialMobsCommands_.isEmpty()) {
+                        initialMobsCommands_ = other.initialMobsCommands_;
+                        bitField0_ = (bitField0_ & ~0x00000004);
+                    } else {
+                        ensureInitialMobsCommandsIsMutable();
+                        initialMobsCommands_.addAll(other.initialMobsCommands_);
+                    }
+                    onChanged();
+                }
+                if (other.getImageSizeX() != 0) {
+                    setImageSizeX(other.getImageSizeX());
+                }
+                if (other.getImageSizeY() != 0) {
+                    setImageSizeY(other.getImageSizeY());
+                }
+                if (other.getSeed() != 0L) {
+                    setSeed(other.getSeed());
+                }
+                if (other.getAllowMobSpawn() != false) {
+                    setAllowMobSpawn(other.getAllowMobSpawn());
+                }
+                if (other.getAlwaysNight() != false) {
+                    setAlwaysNight(other.getAlwaysNight());
+                }
+                if (other.getAlwaysDay() != false) {
+                    setAlwaysDay(other.getAlwaysDay());
+                }
+                if (!other.getInitialWeather().isEmpty()) {
+                    initialWeather_ = other.initialWeather_;
+                    bitField0_ |= 0x00000200;
+                    onChanged();
+                }
+                if (other.getIsWorldFlat() != false) {
+                    setIsWorldFlat(other.getIsWorldFlat());
+                }
+                if (other.getVisibleSizeX() != 0) {
+                    setVisibleSizeX(other.getVisibleSizeX());
+                }
+                if (other.getVisibleSizeY() != 0) {
+                    setVisibleSizeY(other.getVisibleSizeY());
+                }
+                if (!other.initialExtraCommands_.isEmpty()) {
+                    if (initialExtraCommands_.isEmpty()) {
+                        initialExtraCommands_ = other.initialExtraCommands_;
+                        bitField0_ = (bitField0_ & ~0x00002000);
+                    } else {
+                        ensureInitialExtraCommandsIsMutable();
+                        initialExtraCommands_.addAll(other.initialExtraCommands_);
+                    }
+                    onChanged();
+                }
+                if (!other.killedStatKeys_.isEmpty()) {
+                    if (killedStatKeys_.isEmpty()) {
+                        killedStatKeys_ = other.killedStatKeys_;
+                        bitField0_ = (bitField0_ & ~0x00004000);
+                    } else {
+                        ensureKilledStatKeysIsMutable();
+                        killedStatKeys_.addAll(other.killedStatKeys_);
+                    }
+                    onChanged();
+                }
+                if (!other.minedStatKeys_.isEmpty()) {
+                    if (minedStatKeys_.isEmpty()) {
+                        minedStatKeys_ = other.minedStatKeys_;
+                        bitField0_ = (bitField0_ & ~0x00008000);
+                    } else {
+                        ensureMinedStatKeysIsMutable();
+                        minedStatKeys_.addAll(other.minedStatKeys_);
+                    }
+                    onChanged();
+                }
+                if (!other.miscStatKeys_.isEmpty()) {
+                    if (miscStatKeys_.isEmpty()) {
+                        miscStatKeys_ = other.miscStatKeys_;
+                        bitField0_ = (bitField0_ & ~0x00010000);
+                    } else {
+                        ensureMiscStatKeysIsMutable();
+                        miscStatKeys_.addAll(other.miscStatKeys_);
+                    }
+                    onChanged();
+                }
+                this.mergeUnknownFields(other.getUnknownFields());
+                onChanged();
+                return this;
+            }
+
+            @java.lang.Override
+            public final boolean isInitialized() {
+                return true;
+            }
+
+            @java.lang.Override
+            public Builder mergeFrom(
+                    com.google.protobuf.CodedInputStream input,
+                    com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                    throws java.io.IOException {
+                if (extensionRegistry == null) {
+                    throw new java.lang.NullPointerException();
+                }
+                try {
+                    boolean done = false;
+                    while (!done) {
+                        int tag = input.readTag();
+                        switch (tag) {
+                            case 0:
+                                done = true;
+                                break;
+                            case 10: {
+                                java.lang.String s = input.readStringRequireUtf8();
+                                ensureInitialInventoryCommandsIsMutable();
+                                initialInventoryCommands_.add(s);
+                                break;
+                            } // case 10
+                            case 16: {
+                                int v = input.readInt32();
+                                ensureInitialPositionIsMutable();
+                                initialPosition_.addInt(v);
+                                break;
+                            } // case 16
+                            case 18: {
+                                int length = input.readRawVarint32();
+                                int limit = input.pushLimit(length);
+                                ensureInitialPositionIsMutable();
+                                while (input.getBytesUntilLimit() > 0) {
+                                    initialPosition_.addInt(input.readInt32());
+                                }
+                                input.popLimit(limit);
+                                break;
+                            } // case 18
+                            case 26: {
+                                java.lang.String s = input.readStringRequireUtf8();
+                                ensureInitialMobsCommandsIsMutable();
+                                initialMobsCommands_.add(s);
+                                break;
+                            } // case 26
+                            case 32: {
+                                imageSizeX_ = input.readInt32();
+                                bitField0_ |= 0x00000008;
+                                break;
+                            } // case 32
+                            case 40: {
+                                imageSizeY_ = input.readInt32();
+                                bitField0_ |= 0x00000010;
+                                break;
+                            } // case 40
+                            case 48: {
+                                seed_ = input.readInt64();
+                                bitField0_ |= 0x00000020;
+                                break;
+                            } // case 48
+                            case 56: {
+                                allowMobSpawn_ = input.readBool();
+                                bitField0_ |= 0x00000040;
+                                break;
+                            } // case 56
+                            case 64: {
+                                alwaysNight_ = input.readBool();
+                                bitField0_ |= 0x00000080;
+                                break;
+                            } // case 64
+                            case 72: {
+                                alwaysDay_ = input.readBool();
+                                bitField0_ |= 0x00000100;
+                                break;
+                            } // case 72
+                            case 82: {
+                                initialWeather_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000200;
+                                break;
+                            } // case 82
+                            case 88: {
+                                isWorldFlat_ = input.readBool();
+                                bitField0_ |= 0x00000400;
+                                break;
+                            } // case 88
+                            case 96: {
+                                visibleSizeX_ = input.readInt32();
+                                bitField0_ |= 0x00000800;
+                                break;
+                            } // case 96
+                            case 104: {
+                                visibleSizeY_ = input.readInt32();
+                                bitField0_ |= 0x00001000;
+                                break;
+                            } // case 104
+                            case 114: {
+                                java.lang.String s = input.readStringRequireUtf8();
+                                ensureInitialExtraCommandsIsMutable();
+                                initialExtraCommands_.add(s);
+                                break;
+                            } // case 114
+                            case 122: {
+                                java.lang.String s = input.readStringRequireUtf8();
+                                ensureKilledStatKeysIsMutable();
+                                killedStatKeys_.add(s);
+                                break;
+                            } // case 122
+                            case 130: {
+                                java.lang.String s = input.readStringRequireUtf8();
+                                ensureMinedStatKeysIsMutable();
+                                minedStatKeys_.add(s);
+                                break;
+                            } // case 130
+                            case 138: {
+                                java.lang.String s = input.readStringRequireUtf8();
+                                ensureMiscStatKeysIsMutable();
+                                miscStatKeys_.add(s);
+                                break;
+                            } // case 138
+                            default: {
+                                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                                    done = true; // was an endgroup tag
+                                }
+                                break;
+                            } // default:
+                        } // switch (tag)
+                    } // while (!done)
+                } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                    throw e.unwrapIOException();
+                } finally {
+                    onChanged();
+                } // finally
+                return this;
+            }
+
+            private void ensureInitialInventoryCommandsIsMutable() {
+                if (!((bitField0_ & 0x00000001) != 0)) {
+                    initialInventoryCommands_ = new com.google.protobuf.LazyStringArrayList(initialInventoryCommands_);
+                    bitField0_ |= 0x00000001;
+                }
+            }
+
+            /**
+             * <code>repeated string initialInventoryCommands = 1;</code>
+             *
+             * @return A list containing the initialInventoryCommands.
+             */
+            public com.google.protobuf.ProtocolStringList
+            getInitialInventoryCommandsList() {
+                return initialInventoryCommands_.getUnmodifiableView();
+            }
+
+            /**
+             * <code>repeated string initialInventoryCommands = 1;</code>
+             *
+             * @return The count of initialInventoryCommands.
+             */
+            public int getInitialInventoryCommandsCount() {
+                return initialInventoryCommands_.size();
+            }
+
+            /**
+             * <code>repeated string initialInventoryCommands = 1;</code>
+             *
+             * @param index The index of the element to return.
+             * @return The initialInventoryCommands at the given index.
+             */
+            public java.lang.String getInitialInventoryCommands(int index) {
+                return initialInventoryCommands_.get(index);
+            }
+
+            /**
+             * <code>repeated string initialInventoryCommands = 1;</code>
+             *
+             * @param index The index of the value to return.
+             * @return The bytes of the initialInventoryCommands at the given index.
+             */
+            public com.google.protobuf.ByteString
+            getInitialInventoryCommandsBytes(int index) {
+                return initialInventoryCommands_.getByteString(index);
+            }
+
+            /**
+             * <code>repeated string initialInventoryCommands = 1;</code>
+             *
+             * @param index The index to set the value at.
+             * @param value The initialInventoryCommands to set.
+             * @return This builder for chaining.
+             */
+            public Builder setInitialInventoryCommands(
+                    int index, java.lang.String value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
                 ensureInitialInventoryCommandsIsMutable();
-                initialInventoryCommands_.add(s);
-                break;
-              } // case 10
-              case 16: {
-                int v = input.readInt32();
-                ensureInitialPositionIsMutable();
-                initialPosition_.addInt(v);
-                break;
-              } // case 16
-              case 18: {
-                int length = input.readRawVarint32();
-                int limit = input.pushLimit(length);
-                ensureInitialPositionIsMutable();
-                while (input.getBytesUntilLimit() > 0) {
-                  initialPosition_.addInt(input.readInt32());
+                initialInventoryCommands_.set(index, value);
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>repeated string initialInventoryCommands = 1;</code>
+             *
+             * @param value The initialInventoryCommands to add.
+             * @return This builder for chaining.
+             */
+            public Builder addInitialInventoryCommands(
+                    java.lang.String value) {
+                if (value == null) {
+                    throw new NullPointerException();
                 }
-                input.popLimit(limit);
-                break;
-              } // case 18
-              case 26: {
-                java.lang.String s = input.readStringRequireUtf8();
+                ensureInitialInventoryCommandsIsMutable();
+                initialInventoryCommands_.add(value);
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>repeated string initialInventoryCommands = 1;</code>
+             *
+             * @param values The initialInventoryCommands to add.
+             * @return This builder for chaining.
+             */
+            public Builder addAllInitialInventoryCommands(
+                    java.lang.Iterable<java.lang.String> values) {
+                ensureInitialInventoryCommandsIsMutable();
+                com.google.protobuf.AbstractMessageLite.Builder.addAll(
+                        values, initialInventoryCommands_);
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>repeated string initialInventoryCommands = 1;</code>
+             *
+             * @return This builder for chaining.
+             */
+            public Builder clearInitialInventoryCommands() {
+                initialInventoryCommands_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+                bitField0_ = (bitField0_ & ~0x00000001);
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>repeated string initialInventoryCommands = 1;</code>
+             *
+             * @param value The bytes of the initialInventoryCommands to add.
+             * @return This builder for chaining.
+             */
+            public Builder addInitialInventoryCommandsBytes(
+                    com.google.protobuf.ByteString value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                checkByteStringIsUtf8(value);
+                ensureInitialInventoryCommandsIsMutable();
+                initialInventoryCommands_.add(value);
+                onChanged();
+                return this;
+            }
+
+            private void ensureInitialPositionIsMutable() {
+                if (!((bitField0_ & 0x00000002) != 0)) {
+                    initialPosition_ = mutableCopy(initialPosition_);
+                    bitField0_ |= 0x00000002;
+                }
+            }
+
+            /**
+             * <code>repeated int32 initialPosition = 2;</code>
+             *
+             * @return A list containing the initialPosition.
+             */
+            public java.util.List<java.lang.Integer>
+            getInitialPositionList() {
+                return ((bitField0_ & 0x00000002) != 0) ?
+                        java.util.Collections.unmodifiableList(initialPosition_) : initialPosition_;
+            }
+
+            /**
+             * <code>repeated int32 initialPosition = 2;</code>
+             *
+             * @return The count of initialPosition.
+             */
+            public int getInitialPositionCount() {
+                return initialPosition_.size();
+            }
+
+            /**
+             * <code>repeated int32 initialPosition = 2;</code>
+             *
+             * @param index The index of the element to return.
+             * @return The initialPosition at the given index.
+             */
+            public int getInitialPosition(int index) {
+                return initialPosition_.getInt(index);
+            }
+
+            /**
+             * <code>repeated int32 initialPosition = 2;</code>
+             *
+             * @param index The index to set the value at.
+             * @param value The initialPosition to set.
+             * @return This builder for chaining.
+             */
+            public Builder setInitialPosition(
+                    int index, int value) {
+
+                ensureInitialPositionIsMutable();
+                initialPosition_.setInt(index, value);
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>repeated int32 initialPosition = 2;</code>
+             *
+             * @param value The initialPosition to add.
+             * @return This builder for chaining.
+             */
+            public Builder addInitialPosition(int value) {
+
+                ensureInitialPositionIsMutable();
+                initialPosition_.addInt(value);
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>repeated int32 initialPosition = 2;</code>
+             *
+             * @param values The initialPosition to add.
+             * @return This builder for chaining.
+             */
+            public Builder addAllInitialPosition(
+                    java.lang.Iterable<? extends java.lang.Integer> values) {
+                ensureInitialPositionIsMutable();
+                com.google.protobuf.AbstractMessageLite.Builder.addAll(
+                        values, initialPosition_);
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>repeated int32 initialPosition = 2;</code>
+             *
+             * @return This builder for chaining.
+             */
+            public Builder clearInitialPosition() {
+                initialPosition_ = emptyIntList();
+                bitField0_ = (bitField0_ & ~0x00000002);
+                onChanged();
+                return this;
+            }
+
+            private void ensureInitialMobsCommandsIsMutable() {
+                if (!((bitField0_ & 0x00000004) != 0)) {
+                    initialMobsCommands_ = new com.google.protobuf.LazyStringArrayList(initialMobsCommands_);
+                    bitField0_ |= 0x00000004;
+                }
+            }
+
+            /**
+             * <code>repeated string initialMobsCommands = 3;</code>
+             *
+             * @return A list containing the initialMobsCommands.
+             */
+            public com.google.protobuf.ProtocolStringList
+            getInitialMobsCommandsList() {
+                return initialMobsCommands_.getUnmodifiableView();
+            }
+
+            /**
+             * <code>repeated string initialMobsCommands = 3;</code>
+             *
+             * @return The count of initialMobsCommands.
+             */
+            public int getInitialMobsCommandsCount() {
+                return initialMobsCommands_.size();
+            }
+
+            /**
+             * <code>repeated string initialMobsCommands = 3;</code>
+             *
+             * @param index The index of the element to return.
+             * @return The initialMobsCommands at the given index.
+             */
+            public java.lang.String getInitialMobsCommands(int index) {
+                return initialMobsCommands_.get(index);
+            }
+
+            /**
+             * <code>repeated string initialMobsCommands = 3;</code>
+             *
+             * @param index The index of the value to return.
+             * @return The bytes of the initialMobsCommands at the given index.
+             */
+            public com.google.protobuf.ByteString
+            getInitialMobsCommandsBytes(int index) {
+                return initialMobsCommands_.getByteString(index);
+            }
+
+            /**
+             * <code>repeated string initialMobsCommands = 3;</code>
+             *
+             * @param index The index to set the value at.
+             * @param value The initialMobsCommands to set.
+             * @return This builder for chaining.
+             */
+            public Builder setInitialMobsCommands(
+                    int index, java.lang.String value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
                 ensureInitialMobsCommandsIsMutable();
-                initialMobsCommands_.add(s);
-                break;
-              } // case 26
-              case 32: {
-                imageSizeX_ = input.readInt32();
-                bitField0_ |= 0x00000008;
-                break;
-              } // case 32
-              case 40: {
-                imageSizeY_ = input.readInt32();
-                bitField0_ |= 0x00000010;
-                break;
-              } // case 40
-              case 48: {
-                seed_ = input.readInt64();
-                bitField0_ |= 0x00000020;
-                break;
-              } // case 48
-              case 56: {
-                allowMobSpawn_ = input.readBool();
-                bitField0_ |= 0x00000040;
-                break;
-              } // case 56
-              case 64: {
-                alwaysNight_ = input.readBool();
-                bitField0_ |= 0x00000080;
-                break;
-              } // case 64
-              case 72: {
-                alwaysDay_ = input.readBool();
-                bitField0_ |= 0x00000100;
-                break;
-              } // case 72
-              case 82: {
-                initialWeather_ = input.readStringRequireUtf8();
-                bitField0_ |= 0x00000200;
-                break;
-              } // case 82
-              case 88: {
-                isWorldFlat_ = input.readBool();
-                bitField0_ |= 0x00000400;
-                break;
-              } // case 88
-              case 96: {
-                visibleSizeX_ = input.readInt32();
-                bitField0_ |= 0x00000800;
-                break;
-              } // case 96
-              case 104: {
-                visibleSizeY_ = input.readInt32();
-                bitField0_ |= 0x00001000;
-                break;
-              } // case 104
-              case 114: {
-                java.lang.String s = input.readStringRequireUtf8();
-                ensureInitialExtraCommandsIsMutable();
-                initialExtraCommands_.add(s);
-                break;
-              } // case 114
-              case 122: {
-                java.lang.String s = input.readStringRequireUtf8();
-                ensureKilledStatKeysIsMutable();
-                killedStatKeys_.add(s);
-                break;
-              } // case 122
-              case 130: {
-                java.lang.String s = input.readStringRequireUtf8();
-                ensureMinedStatKeysIsMutable();
-                minedStatKeys_.add(s);
-                break;
-              } // case 130
-              case 138: {
-                java.lang.String s = input.readStringRequireUtf8();
-                ensureMiscStatKeysIsMutable();
-                miscStatKeys_.add(s);
-                break;
-              } // case 138
-              default: {
-                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                  done = true; // was an endgroup tag
+                initialMobsCommands_.set(index, value);
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>repeated string initialMobsCommands = 3;</code>
+             *
+             * @param value The initialMobsCommands to add.
+             * @return This builder for chaining.
+             */
+            public Builder addInitialMobsCommands(
+                    java.lang.String value) {
+                if (value == null) {
+                    throw new NullPointerException();
                 }
-                break;
-              } // default:
-            } // switch (tag)
-          } // while (!done)
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          throw e.unwrapIOException();
-        } finally {
-          onChanged();
-        } // finally
-        return this;
-      }
-      private int bitField0_;
+                ensureInitialMobsCommandsIsMutable();
+                initialMobsCommands_.add(value);
+                onChanged();
+                return this;
+            }
 
-      private com.google.protobuf.LazyStringList initialInventoryCommands_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-      private void ensureInitialInventoryCommandsIsMutable() {
-        if (!((bitField0_ & 0x00000001) != 0)) {
-          initialInventoryCommands_ = new com.google.protobuf.LazyStringArrayList(initialInventoryCommands_);
-          bitField0_ |= 0x00000001;
-         }
-      }
-      /**
-       * <code>repeated string initialInventoryCommands = 1;</code>
-       * @return A list containing the initialInventoryCommands.
-       */
-      public com.google.protobuf.ProtocolStringList
-          getInitialInventoryCommandsList() {
-        return initialInventoryCommands_.getUnmodifiableView();
-      }
-      /**
-       * <code>repeated string initialInventoryCommands = 1;</code>
-       * @return The count of initialInventoryCommands.
-       */
-      public int getInitialInventoryCommandsCount() {
-        return initialInventoryCommands_.size();
-      }
-      /**
-       * <code>repeated string initialInventoryCommands = 1;</code>
-       * @param index The index of the element to return.
-       * @return The initialInventoryCommands at the given index.
-       */
-      public java.lang.String getInitialInventoryCommands(int index) {
-        return initialInventoryCommands_.get(index);
-      }
-      /**
-       * <code>repeated string initialInventoryCommands = 1;</code>
-       * @param index The index of the value to return.
-       * @return The bytes of the initialInventoryCommands at the given index.
-       */
-      public com.google.protobuf.ByteString
-          getInitialInventoryCommandsBytes(int index) {
-        return initialInventoryCommands_.getByteString(index);
-      }
-      /**
-       * <code>repeated string initialInventoryCommands = 1;</code>
-       * @param index The index to set the value at.
-       * @param value The initialInventoryCommands to set.
-       * @return This builder for chaining.
-       */
-      public Builder setInitialInventoryCommands(
-          int index, java.lang.String value) {
-        if (value == null) { throw new NullPointerException(); }
-        ensureInitialInventoryCommandsIsMutable();
-        initialInventoryCommands_.set(index, value);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated string initialInventoryCommands = 1;</code>
-       * @param value The initialInventoryCommands to add.
-       * @return This builder for chaining.
-       */
-      public Builder addInitialInventoryCommands(
-          java.lang.String value) {
-        if (value == null) { throw new NullPointerException(); }
-        ensureInitialInventoryCommandsIsMutable();
-        initialInventoryCommands_.add(value);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated string initialInventoryCommands = 1;</code>
-       * @param values The initialInventoryCommands to add.
-       * @return This builder for chaining.
-       */
-      public Builder addAllInitialInventoryCommands(
-          java.lang.Iterable<java.lang.String> values) {
-        ensureInitialInventoryCommandsIsMutable();
-        com.google.protobuf.AbstractMessageLite.Builder.addAll(
-            values, initialInventoryCommands_);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated string initialInventoryCommands = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearInitialInventoryCommands() {
-        initialInventoryCommands_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-        bitField0_ = (bitField0_ & ~0x00000001);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated string initialInventoryCommands = 1;</code>
-       * @param value The bytes of the initialInventoryCommands to add.
-       * @return This builder for chaining.
-       */
-      public Builder addInitialInventoryCommandsBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) { throw new NullPointerException(); }
-        checkByteStringIsUtf8(value);
-        ensureInitialInventoryCommandsIsMutable();
-        initialInventoryCommands_.add(value);
-        onChanged();
-        return this;
-      }
+            /**
+             * <code>repeated string initialMobsCommands = 3;</code>
+             *
+             * @param values The initialMobsCommands to add.
+             * @return This builder for chaining.
+             */
+            public Builder addAllInitialMobsCommands(
+                    java.lang.Iterable<java.lang.String> values) {
+                ensureInitialMobsCommandsIsMutable();
+                com.google.protobuf.AbstractMessageLite.Builder.addAll(
+                        values, initialMobsCommands_);
+                onChanged();
+                return this;
+            }
 
-      private com.google.protobuf.Internal.IntList initialPosition_ = emptyIntList();
-      private void ensureInitialPositionIsMutable() {
-        if (!((bitField0_ & 0x00000002) != 0)) {
-          initialPosition_ = mutableCopy(initialPosition_);
-          bitField0_ |= 0x00000002;
+            /**
+             * <code>repeated string initialMobsCommands = 3;</code>
+             *
+             * @return This builder for chaining.
+             */
+            public Builder clearInitialMobsCommands() {
+                initialMobsCommands_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+                bitField0_ = (bitField0_ & ~0x00000004);
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>repeated string initialMobsCommands = 3;</code>
+             *
+             * @param value The bytes of the initialMobsCommands to add.
+             * @return This builder for chaining.
+             */
+            public Builder addInitialMobsCommandsBytes(
+                    com.google.protobuf.ByteString value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                checkByteStringIsUtf8(value);
+                ensureInitialMobsCommandsIsMutable();
+                initialMobsCommands_.add(value);
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>int32 imageSizeX = 4;</code>
+             *
+             * @return The imageSizeX.
+             */
+            @java.lang.Override
+            public int getImageSizeX() {
+                return imageSizeX_;
+            }
+
+            /**
+             * <code>int32 imageSizeX = 4;</code>
+             *
+             * @param value The imageSizeX to set.
+             * @return This builder for chaining.
+             */
+            public Builder setImageSizeX(int value) {
+
+                imageSizeX_ = value;
+                bitField0_ |= 0x00000008;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>int32 imageSizeX = 4;</code>
+             *
+             * @return This builder for chaining.
+             */
+            public Builder clearImageSizeX() {
+                bitField0_ = (bitField0_ & ~0x00000008);
+                imageSizeX_ = 0;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>int32 imageSizeY = 5;</code>
+             *
+             * @return The imageSizeY.
+             */
+            @java.lang.Override
+            public int getImageSizeY() {
+                return imageSizeY_;
+            }
+
+            /**
+             * <code>int32 imageSizeY = 5;</code>
+             *
+             * @param value The imageSizeY to set.
+             * @return This builder for chaining.
+             */
+            public Builder setImageSizeY(int value) {
+
+                imageSizeY_ = value;
+                bitField0_ |= 0x00000010;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>int32 imageSizeY = 5;</code>
+             *
+             * @return This builder for chaining.
+             */
+            public Builder clearImageSizeY() {
+                bitField0_ = (bitField0_ & ~0x00000010);
+                imageSizeY_ = 0;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>int64 seed = 6;</code>
+             *
+             * @return The seed.
+             */
+            @java.lang.Override
+            public long getSeed() {
+                return seed_;
+            }
+
+            /**
+             * <code>int64 seed = 6;</code>
+             *
+             * @param value The seed to set.
+             * @return This builder for chaining.
+             */
+            public Builder setSeed(long value) {
+
+                seed_ = value;
+                bitField0_ |= 0x00000020;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>int64 seed = 6;</code>
+             *
+             * @return This builder for chaining.
+             */
+            public Builder clearSeed() {
+                bitField0_ = (bitField0_ & ~0x00000020);
+                seed_ = 0L;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>bool allowMobSpawn = 7;</code>
+             *
+             * @return The allowMobSpawn.
+             */
+            @java.lang.Override
+            public boolean getAllowMobSpawn() {
+                return allowMobSpawn_;
+            }
+
+            /**
+             * <code>bool allowMobSpawn = 7;</code>
+             *
+             * @param value The allowMobSpawn to set.
+             * @return This builder for chaining.
+             */
+            public Builder setAllowMobSpawn(boolean value) {
+
+                allowMobSpawn_ = value;
+                bitField0_ |= 0x00000040;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>bool allowMobSpawn = 7;</code>
+             *
+             * @return This builder for chaining.
+             */
+            public Builder clearAllowMobSpawn() {
+                bitField0_ = (bitField0_ & ~0x00000040);
+                allowMobSpawn_ = false;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>bool alwaysNight = 8;</code>
+             *
+             * @return The alwaysNight.
+             */
+            @java.lang.Override
+            public boolean getAlwaysNight() {
+                return alwaysNight_;
+            }
+
+            /**
+             * <code>bool alwaysNight = 8;</code>
+             *
+             * @param value The alwaysNight to set.
+             * @return This builder for chaining.
+             */
+            public Builder setAlwaysNight(boolean value) {
+
+                alwaysNight_ = value;
+                bitField0_ |= 0x00000080;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>bool alwaysNight = 8;</code>
+             *
+             * @return This builder for chaining.
+             */
+            public Builder clearAlwaysNight() {
+                bitField0_ = (bitField0_ & ~0x00000080);
+                alwaysNight_ = false;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>bool alwaysDay = 9;</code>
+             *
+             * @return The alwaysDay.
+             */
+            @java.lang.Override
+            public boolean getAlwaysDay() {
+                return alwaysDay_;
+            }
+
+            /**
+             * <code>bool alwaysDay = 9;</code>
+             *
+             * @param value The alwaysDay to set.
+             * @return This builder for chaining.
+             */
+            public Builder setAlwaysDay(boolean value) {
+
+                alwaysDay_ = value;
+                bitField0_ |= 0x00000100;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>bool alwaysDay = 9;</code>
+             *
+             * @return This builder for chaining.
+             */
+            public Builder clearAlwaysDay() {
+                bitField0_ = (bitField0_ & ~0x00000100);
+                alwaysDay_ = false;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>string initialWeather = 10;</code>
+             *
+             * @return The initialWeather.
+             */
+            public java.lang.String getInitialWeather() {
+                java.lang.Object ref = initialWeather_;
+                if (!(ref instanceof java.lang.String)) {
+                    com.google.protobuf.ByteString bs =
+                            (com.google.protobuf.ByteString) ref;
+                    java.lang.String s = bs.toStringUtf8();
+                    initialWeather_ = s;
+                    return s;
+                } else {
+                    return (java.lang.String) ref;
+                }
+            }
+
+            /**
+             * <code>string initialWeather = 10;</code>
+             *
+             * @param value The initialWeather to set.
+             * @return This builder for chaining.
+             */
+            public Builder setInitialWeather(
+                    java.lang.String value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                initialWeather_ = value;
+                bitField0_ |= 0x00000200;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>string initialWeather = 10;</code>
+             *
+             * @return The bytes for initialWeather.
+             */
+            public com.google.protobuf.ByteString
+            getInitialWeatherBytes() {
+                java.lang.Object ref = initialWeather_;
+                if (ref instanceof String) {
+                    com.google.protobuf.ByteString b =
+                            com.google.protobuf.ByteString.copyFromUtf8(
+                                    (java.lang.String) ref);
+                    initialWeather_ = b;
+                    return b;
+                } else {
+                    return (com.google.protobuf.ByteString) ref;
+                }
+            }
+
+            /**
+             * <code>string initialWeather = 10;</code>
+             *
+             * @param value The bytes for initialWeather to set.
+             * @return This builder for chaining.
+             */
+            public Builder setInitialWeatherBytes(
+                    com.google.protobuf.ByteString value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                checkByteStringIsUtf8(value);
+                initialWeather_ = value;
+                bitField0_ |= 0x00000200;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>string initialWeather = 10;</code>
+             *
+             * @return This builder for chaining.
+             */
+            public Builder clearInitialWeather() {
+                initialWeather_ = getDefaultInstance().getInitialWeather();
+                bitField0_ = (bitField0_ & ~0x00000200);
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>bool isWorldFlat = 11;</code>
+             *
+             * @return The isWorldFlat.
+             */
+            @java.lang.Override
+            public boolean getIsWorldFlat() {
+                return isWorldFlat_;
+            }
+
+            /**
+             * <code>bool isWorldFlat = 11;</code>
+             *
+             * @param value The isWorldFlat to set.
+             * @return This builder for chaining.
+             */
+            public Builder setIsWorldFlat(boolean value) {
+
+                isWorldFlat_ = value;
+                bitField0_ |= 0x00000400;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>bool isWorldFlat = 11;</code>
+             *
+             * @return This builder for chaining.
+             */
+            public Builder clearIsWorldFlat() {
+                bitField0_ = (bitField0_ & ~0x00000400);
+                isWorldFlat_ = false;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>int32 visibleSizeX = 12;</code>
+             *
+             * @return The visibleSizeX.
+             */
+            @java.lang.Override
+            public int getVisibleSizeX() {
+                return visibleSizeX_;
+            }
+
+            /**
+             * <code>int32 visibleSizeX = 12;</code>
+             *
+             * @param value The visibleSizeX to set.
+             * @return This builder for chaining.
+             */
+            public Builder setVisibleSizeX(int value) {
+
+                visibleSizeX_ = value;
+                bitField0_ |= 0x00000800;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>int32 visibleSizeX = 12;</code>
+             *
+             * @return This builder for chaining.
+             */
+            public Builder clearVisibleSizeX() {
+                bitField0_ = (bitField0_ & ~0x00000800);
+                visibleSizeX_ = 0;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>int32 visibleSizeY = 13;</code>
+             *
+             * @return The visibleSizeY.
+             */
+            @java.lang.Override
+            public int getVisibleSizeY() {
+                return visibleSizeY_;
+            }
+
+            /**
+             * <code>int32 visibleSizeY = 13;</code>
+             *
+             * @param value The visibleSizeY to set.
+             * @return This builder for chaining.
+             */
+            public Builder setVisibleSizeY(int value) {
+
+                visibleSizeY_ = value;
+                bitField0_ |= 0x00001000;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>int32 visibleSizeY = 13;</code>
+             *
+             * @return This builder for chaining.
+             */
+            public Builder clearVisibleSizeY() {
+                bitField0_ = (bitField0_ & ~0x00001000);
+                visibleSizeY_ = 0;
+                onChanged();
+                return this;
+            }
+
+            private void ensureInitialExtraCommandsIsMutable() {
+                if (!((bitField0_ & 0x00002000) != 0)) {
+                    initialExtraCommands_ = new com.google.protobuf.LazyStringArrayList(initialExtraCommands_);
+                    bitField0_ |= 0x00002000;
+                }
+            }
+
+            /**
+             * <code>repeated string initialExtraCommands = 14;</code>
+             *
+             * @return A list containing the initialExtraCommands.
+             */
+            public com.google.protobuf.ProtocolStringList
+            getInitialExtraCommandsList() {
+                return initialExtraCommands_.getUnmodifiableView();
+            }
+
+            /**
+             * <code>repeated string initialExtraCommands = 14;</code>
+             *
+             * @return The count of initialExtraCommands.
+             */
+            public int getInitialExtraCommandsCount() {
+                return initialExtraCommands_.size();
+            }
+
+            /**
+             * <code>repeated string initialExtraCommands = 14;</code>
+             *
+             * @param index The index of the element to return.
+             * @return The initialExtraCommands at the given index.
+             */
+            public java.lang.String getInitialExtraCommands(int index) {
+                return initialExtraCommands_.get(index);
+            }
+
+            /**
+             * <code>repeated string initialExtraCommands = 14;</code>
+             *
+             * @param index The index of the value to return.
+             * @return The bytes of the initialExtraCommands at the given index.
+             */
+            public com.google.protobuf.ByteString
+            getInitialExtraCommandsBytes(int index) {
+                return initialExtraCommands_.getByteString(index);
+            }
+
+            /**
+             * <code>repeated string initialExtraCommands = 14;</code>
+             *
+             * @param index The index to set the value at.
+             * @param value The initialExtraCommands to set.
+             * @return This builder for chaining.
+             */
+            public Builder setInitialExtraCommands(
+                    int index, java.lang.String value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                ensureInitialExtraCommandsIsMutable();
+                initialExtraCommands_.set(index, value);
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>repeated string initialExtraCommands = 14;</code>
+             *
+             * @param value The initialExtraCommands to add.
+             * @return This builder for chaining.
+             */
+            public Builder addInitialExtraCommands(
+                    java.lang.String value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                ensureInitialExtraCommandsIsMutable();
+                initialExtraCommands_.add(value);
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>repeated string initialExtraCommands = 14;</code>
+             *
+             * @param values The initialExtraCommands to add.
+             * @return This builder for chaining.
+             */
+            public Builder addAllInitialExtraCommands(
+                    java.lang.Iterable<java.lang.String> values) {
+                ensureInitialExtraCommandsIsMutable();
+                com.google.protobuf.AbstractMessageLite.Builder.addAll(
+                        values, initialExtraCommands_);
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>repeated string initialExtraCommands = 14;</code>
+             *
+             * @return This builder for chaining.
+             */
+            public Builder clearInitialExtraCommands() {
+                initialExtraCommands_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+                bitField0_ = (bitField0_ & ~0x00002000);
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>repeated string initialExtraCommands = 14;</code>
+             *
+             * @param value The bytes of the initialExtraCommands to add.
+             * @return This builder for chaining.
+             */
+            public Builder addInitialExtraCommandsBytes(
+                    com.google.protobuf.ByteString value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                checkByteStringIsUtf8(value);
+                ensureInitialExtraCommandsIsMutable();
+                initialExtraCommands_.add(value);
+                onChanged();
+                return this;
+            }
+
+            private void ensureKilledStatKeysIsMutable() {
+                if (!((bitField0_ & 0x00004000) != 0)) {
+                    killedStatKeys_ = new com.google.protobuf.LazyStringArrayList(killedStatKeys_);
+                    bitField0_ |= 0x00004000;
+                }
+            }
+
+            /**
+             * <code>repeated string killedStatKeys = 15;</code>
+             *
+             * @return A list containing the killedStatKeys.
+             */
+            public com.google.protobuf.ProtocolStringList
+            getKilledStatKeysList() {
+                return killedStatKeys_.getUnmodifiableView();
+            }
+
+            /**
+             * <code>repeated string killedStatKeys = 15;</code>
+             *
+             * @return The count of killedStatKeys.
+             */
+            public int getKilledStatKeysCount() {
+                return killedStatKeys_.size();
+            }
+
+            /**
+             * <code>repeated string killedStatKeys = 15;</code>
+             *
+             * @param index The index of the element to return.
+             * @return The killedStatKeys at the given index.
+             */
+            public java.lang.String getKilledStatKeys(int index) {
+                return killedStatKeys_.get(index);
+            }
+
+            /**
+             * <code>repeated string killedStatKeys = 15;</code>
+             *
+             * @param index The index of the value to return.
+             * @return The bytes of the killedStatKeys at the given index.
+             */
+            public com.google.protobuf.ByteString
+            getKilledStatKeysBytes(int index) {
+                return killedStatKeys_.getByteString(index);
+            }
+
+            /**
+             * <code>repeated string killedStatKeys = 15;</code>
+             *
+             * @param index The index to set the value at.
+             * @param value The killedStatKeys to set.
+             * @return This builder for chaining.
+             */
+            public Builder setKilledStatKeys(
+                    int index, java.lang.String value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                ensureKilledStatKeysIsMutable();
+                killedStatKeys_.set(index, value);
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>repeated string killedStatKeys = 15;</code>
+             *
+             * @param value The killedStatKeys to add.
+             * @return This builder for chaining.
+             */
+            public Builder addKilledStatKeys(
+                    java.lang.String value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                ensureKilledStatKeysIsMutable();
+                killedStatKeys_.add(value);
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>repeated string killedStatKeys = 15;</code>
+             *
+             * @param values The killedStatKeys to add.
+             * @return This builder for chaining.
+             */
+            public Builder addAllKilledStatKeys(
+                    java.lang.Iterable<java.lang.String> values) {
+                ensureKilledStatKeysIsMutable();
+                com.google.protobuf.AbstractMessageLite.Builder.addAll(
+                        values, killedStatKeys_);
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>repeated string killedStatKeys = 15;</code>
+             *
+             * @return This builder for chaining.
+             */
+            public Builder clearKilledStatKeys() {
+                killedStatKeys_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+                bitField0_ = (bitField0_ & ~0x00004000);
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>repeated string killedStatKeys = 15;</code>
+             *
+             * @param value The bytes of the killedStatKeys to add.
+             * @return This builder for chaining.
+             */
+            public Builder addKilledStatKeysBytes(
+                    com.google.protobuf.ByteString value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                checkByteStringIsUtf8(value);
+                ensureKilledStatKeysIsMutable();
+                killedStatKeys_.add(value);
+                onChanged();
+                return this;
+            }
+
+            private void ensureMinedStatKeysIsMutable() {
+                if (!((bitField0_ & 0x00008000) != 0)) {
+                    minedStatKeys_ = new com.google.protobuf.LazyStringArrayList(minedStatKeys_);
+                    bitField0_ |= 0x00008000;
+                }
+            }
+
+            /**
+             * <code>repeated string minedStatKeys = 16;</code>
+             *
+             * @return A list containing the minedStatKeys.
+             */
+            public com.google.protobuf.ProtocolStringList
+            getMinedStatKeysList() {
+                return minedStatKeys_.getUnmodifiableView();
+            }
+
+            /**
+             * <code>repeated string minedStatKeys = 16;</code>
+             *
+             * @return The count of minedStatKeys.
+             */
+            public int getMinedStatKeysCount() {
+                return minedStatKeys_.size();
+            }
+
+            /**
+             * <code>repeated string minedStatKeys = 16;</code>
+             *
+             * @param index The index of the element to return.
+             * @return The minedStatKeys at the given index.
+             */
+            public java.lang.String getMinedStatKeys(int index) {
+                return minedStatKeys_.get(index);
+            }
+
+            /**
+             * <code>repeated string minedStatKeys = 16;</code>
+             *
+             * @param index The index of the value to return.
+             * @return The bytes of the minedStatKeys at the given index.
+             */
+            public com.google.protobuf.ByteString
+            getMinedStatKeysBytes(int index) {
+                return minedStatKeys_.getByteString(index);
+            }
+
+            /**
+             * <code>repeated string minedStatKeys = 16;</code>
+             *
+             * @param index The index to set the value at.
+             * @param value The minedStatKeys to set.
+             * @return This builder for chaining.
+             */
+            public Builder setMinedStatKeys(
+                    int index, java.lang.String value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                ensureMinedStatKeysIsMutable();
+                minedStatKeys_.set(index, value);
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>repeated string minedStatKeys = 16;</code>
+             *
+             * @param value The minedStatKeys to add.
+             * @return This builder for chaining.
+             */
+            public Builder addMinedStatKeys(
+                    java.lang.String value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                ensureMinedStatKeysIsMutable();
+                minedStatKeys_.add(value);
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>repeated string minedStatKeys = 16;</code>
+             *
+             * @param values The minedStatKeys to add.
+             * @return This builder for chaining.
+             */
+            public Builder addAllMinedStatKeys(
+                    java.lang.Iterable<java.lang.String> values) {
+                ensureMinedStatKeysIsMutable();
+                com.google.protobuf.AbstractMessageLite.Builder.addAll(
+                        values, minedStatKeys_);
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>repeated string minedStatKeys = 16;</code>
+             *
+             * @return This builder for chaining.
+             */
+            public Builder clearMinedStatKeys() {
+                minedStatKeys_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+                bitField0_ = (bitField0_ & ~0x00008000);
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>repeated string minedStatKeys = 16;</code>
+             *
+             * @param value The bytes of the minedStatKeys to add.
+             * @return This builder for chaining.
+             */
+            public Builder addMinedStatKeysBytes(
+                    com.google.protobuf.ByteString value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                checkByteStringIsUtf8(value);
+                ensureMinedStatKeysIsMutable();
+                minedStatKeys_.add(value);
+                onChanged();
+                return this;
+            }
+
+            private void ensureMiscStatKeysIsMutable() {
+                if (!((bitField0_ & 0x00010000) != 0)) {
+                    miscStatKeys_ = new com.google.protobuf.LazyStringArrayList(miscStatKeys_);
+                    bitField0_ |= 0x00010000;
+                }
+            }
+
+            /**
+             * <code>repeated string miscStatKeys = 17;</code>
+             *
+             * @return A list containing the miscStatKeys.
+             */
+            public com.google.protobuf.ProtocolStringList
+            getMiscStatKeysList() {
+                return miscStatKeys_.getUnmodifiableView();
+            }
+
+            /**
+             * <code>repeated string miscStatKeys = 17;</code>
+             *
+             * @return The count of miscStatKeys.
+             */
+            public int getMiscStatKeysCount() {
+                return miscStatKeys_.size();
+            }
+
+            /**
+             * <code>repeated string miscStatKeys = 17;</code>
+             *
+             * @param index The index of the element to return.
+             * @return The miscStatKeys at the given index.
+             */
+            public java.lang.String getMiscStatKeys(int index) {
+                return miscStatKeys_.get(index);
+            }
+
+            /**
+             * <code>repeated string miscStatKeys = 17;</code>
+             *
+             * @param index The index of the value to return.
+             * @return The bytes of the miscStatKeys at the given index.
+             */
+            public com.google.protobuf.ByteString
+            getMiscStatKeysBytes(int index) {
+                return miscStatKeys_.getByteString(index);
+            }
+
+            /**
+             * <code>repeated string miscStatKeys = 17;</code>
+             *
+             * @param index The index to set the value at.
+             * @param value The miscStatKeys to set.
+             * @return This builder for chaining.
+             */
+            public Builder setMiscStatKeys(
+                    int index, java.lang.String value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                ensureMiscStatKeysIsMutable();
+                miscStatKeys_.set(index, value);
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>repeated string miscStatKeys = 17;</code>
+             *
+             * @param value The miscStatKeys to add.
+             * @return This builder for chaining.
+             */
+            public Builder addMiscStatKeys(
+                    java.lang.String value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                ensureMiscStatKeysIsMutable();
+                miscStatKeys_.add(value);
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>repeated string miscStatKeys = 17;</code>
+             *
+             * @param values The miscStatKeys to add.
+             * @return This builder for chaining.
+             */
+            public Builder addAllMiscStatKeys(
+                    java.lang.Iterable<java.lang.String> values) {
+                ensureMiscStatKeysIsMutable();
+                com.google.protobuf.AbstractMessageLite.Builder.addAll(
+                        values, miscStatKeys_);
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>repeated string miscStatKeys = 17;</code>
+             *
+             * @return This builder for chaining.
+             */
+            public Builder clearMiscStatKeys() {
+                miscStatKeys_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+                bitField0_ = (bitField0_ & ~0x00010000);
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>repeated string miscStatKeys = 17;</code>
+             *
+             * @param value The bytes of the miscStatKeys to add.
+             * @return This builder for chaining.
+             */
+            public Builder addMiscStatKeysBytes(
+                    com.google.protobuf.ByteString value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                checkByteStringIsUtf8(value);
+                ensureMiscStatKeysIsMutable();
+                miscStatKeys_.add(value);
+                onChanged();
+                return this;
+            }
+
+            @java.lang.Override
+            public final Builder setUnknownFields(
+                    final com.google.protobuf.UnknownFieldSet unknownFields) {
+                return super.setUnknownFields(unknownFields);
+            }
+
+            @java.lang.Override
+            public final Builder mergeUnknownFields(
+                    final com.google.protobuf.UnknownFieldSet unknownFields) {
+                return super.mergeUnknownFields(unknownFields);
+            }
+
+
+            // @@protoc_insertion_point(builder_scope:InitialEnvironmentMessage)
         }
-      }
-      /**
-       * <code>repeated int32 initialPosition = 2;</code>
-       * @return A list containing the initialPosition.
-       */
-      public java.util.List<java.lang.Integer>
-          getInitialPositionList() {
-        return ((bitField0_ & 0x00000002) != 0) ?
-                 java.util.Collections.unmodifiableList(initialPosition_) : initialPosition_;
-      }
-      /**
-       * <code>repeated int32 initialPosition = 2;</code>
-       * @return The count of initialPosition.
-       */
-      public int getInitialPositionCount() {
-        return initialPosition_.size();
-      }
-      /**
-       * <code>repeated int32 initialPosition = 2;</code>
-       * @param index The index of the element to return.
-       * @return The initialPosition at the given index.
-       */
-      public int getInitialPosition(int index) {
-        return initialPosition_.getInt(index);
-      }
-      /**
-       * <code>repeated int32 initialPosition = 2;</code>
-       * @param index The index to set the value at.
-       * @param value The initialPosition to set.
-       * @return This builder for chaining.
-       */
-      public Builder setInitialPosition(
-          int index, int value) {
-        
-        ensureInitialPositionIsMutable();
-        initialPosition_.setInt(index, value);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated int32 initialPosition = 2;</code>
-       * @param value The initialPosition to add.
-       * @return This builder for chaining.
-       */
-      public Builder addInitialPosition(int value) {
-        
-        ensureInitialPositionIsMutable();
-        initialPosition_.addInt(value);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated int32 initialPosition = 2;</code>
-       * @param values The initialPosition to add.
-       * @return This builder for chaining.
-       */
-      public Builder addAllInitialPosition(
-          java.lang.Iterable<? extends java.lang.Integer> values) {
-        ensureInitialPositionIsMutable();
-        com.google.protobuf.AbstractMessageLite.Builder.addAll(
-            values, initialPosition_);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated int32 initialPosition = 2;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearInitialPosition() {
-        initialPosition_ = emptyIntList();
-        bitField0_ = (bitField0_ & ~0x00000002);
-        onChanged();
-        return this;
-      }
 
-      private com.google.protobuf.LazyStringList initialMobsCommands_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-      private void ensureInitialMobsCommandsIsMutable() {
-        if (!((bitField0_ & 0x00000004) != 0)) {
-          initialMobsCommands_ = new com.google.protobuf.LazyStringArrayList(initialMobsCommands_);
-          bitField0_ |= 0x00000004;
-         }
-      }
-      /**
-       * <code>repeated string initialMobsCommands = 3;</code>
-       * @return A list containing the initialMobsCommands.
-       */
-      public com.google.protobuf.ProtocolStringList
-          getInitialMobsCommandsList() {
-        return initialMobsCommands_.getUnmodifiableView();
-      }
-      /**
-       * <code>repeated string initialMobsCommands = 3;</code>
-       * @return The count of initialMobsCommands.
-       */
-      public int getInitialMobsCommandsCount() {
-        return initialMobsCommands_.size();
-      }
-      /**
-       * <code>repeated string initialMobsCommands = 3;</code>
-       * @param index The index of the element to return.
-       * @return The initialMobsCommands at the given index.
-       */
-      public java.lang.String getInitialMobsCommands(int index) {
-        return initialMobsCommands_.get(index);
-      }
-      /**
-       * <code>repeated string initialMobsCommands = 3;</code>
-       * @param index The index of the value to return.
-       * @return The bytes of the initialMobsCommands at the given index.
-       */
-      public com.google.protobuf.ByteString
-          getInitialMobsCommandsBytes(int index) {
-        return initialMobsCommands_.getByteString(index);
-      }
-      /**
-       * <code>repeated string initialMobsCommands = 3;</code>
-       * @param index The index to set the value at.
-       * @param value The initialMobsCommands to set.
-       * @return This builder for chaining.
-       */
-      public Builder setInitialMobsCommands(
-          int index, java.lang.String value) {
-        if (value == null) { throw new NullPointerException(); }
-        ensureInitialMobsCommandsIsMutable();
-        initialMobsCommands_.set(index, value);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated string initialMobsCommands = 3;</code>
-       * @param value The initialMobsCommands to add.
-       * @return This builder for chaining.
-       */
-      public Builder addInitialMobsCommands(
-          java.lang.String value) {
-        if (value == null) { throw new NullPointerException(); }
-        ensureInitialMobsCommandsIsMutable();
-        initialMobsCommands_.add(value);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated string initialMobsCommands = 3;</code>
-       * @param values The initialMobsCommands to add.
-       * @return This builder for chaining.
-       */
-      public Builder addAllInitialMobsCommands(
-          java.lang.Iterable<java.lang.String> values) {
-        ensureInitialMobsCommandsIsMutable();
-        com.google.protobuf.AbstractMessageLite.Builder.addAll(
-            values, initialMobsCommands_);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated string initialMobsCommands = 3;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearInitialMobsCommands() {
-        initialMobsCommands_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-        bitField0_ = (bitField0_ & ~0x00000004);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated string initialMobsCommands = 3;</code>
-       * @param value The bytes of the initialMobsCommands to add.
-       * @return This builder for chaining.
-       */
-      public Builder addInitialMobsCommandsBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) { throw new NullPointerException(); }
-        checkByteStringIsUtf8(value);
-        ensureInitialMobsCommandsIsMutable();
-        initialMobsCommands_.add(value);
-        onChanged();
-        return this;
-      }
-
-      private int imageSizeX_ ;
-      /**
-       * <code>int32 imageSizeX = 4;</code>
-       * @return The imageSizeX.
-       */
-      @java.lang.Override
-      public int getImageSizeX() {
-        return imageSizeX_;
-      }
-      /**
-       * <code>int32 imageSizeX = 4;</code>
-       * @param value The imageSizeX to set.
-       * @return This builder for chaining.
-       */
-      public Builder setImageSizeX(int value) {
-        
-        imageSizeX_ = value;
-        bitField0_ |= 0x00000008;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>int32 imageSizeX = 4;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearImageSizeX() {
-        bitField0_ = (bitField0_ & ~0x00000008);
-        imageSizeX_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private int imageSizeY_ ;
-      /**
-       * <code>int32 imageSizeY = 5;</code>
-       * @return The imageSizeY.
-       */
-      @java.lang.Override
-      public int getImageSizeY() {
-        return imageSizeY_;
-      }
-      /**
-       * <code>int32 imageSizeY = 5;</code>
-       * @param value The imageSizeY to set.
-       * @return This builder for chaining.
-       */
-      public Builder setImageSizeY(int value) {
-        
-        imageSizeY_ = value;
-        bitField0_ |= 0x00000010;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>int32 imageSizeY = 5;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearImageSizeY() {
-        bitField0_ = (bitField0_ & ~0x00000010);
-        imageSizeY_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private long seed_ ;
-      /**
-       * <code>int64 seed = 6;</code>
-       * @return The seed.
-       */
-      @java.lang.Override
-      public long getSeed() {
-        return seed_;
-      }
-      /**
-       * <code>int64 seed = 6;</code>
-       * @param value The seed to set.
-       * @return This builder for chaining.
-       */
-      public Builder setSeed(long value) {
-        
-        seed_ = value;
-        bitField0_ |= 0x00000020;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>int64 seed = 6;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearSeed() {
-        bitField0_ = (bitField0_ & ~0x00000020);
-        seed_ = 0L;
-        onChanged();
-        return this;
-      }
-
-      private boolean allowMobSpawn_ ;
-      /**
-       * <code>bool allowMobSpawn = 7;</code>
-       * @return The allowMobSpawn.
-       */
-      @java.lang.Override
-      public boolean getAllowMobSpawn() {
-        return allowMobSpawn_;
-      }
-      /**
-       * <code>bool allowMobSpawn = 7;</code>
-       * @param value The allowMobSpawn to set.
-       * @return This builder for chaining.
-       */
-      public Builder setAllowMobSpawn(boolean value) {
-        
-        allowMobSpawn_ = value;
-        bitField0_ |= 0x00000040;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>bool allowMobSpawn = 7;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearAllowMobSpawn() {
-        bitField0_ = (bitField0_ & ~0x00000040);
-        allowMobSpawn_ = false;
-        onChanged();
-        return this;
-      }
-
-      private boolean alwaysNight_ ;
-      /**
-       * <code>bool alwaysNight = 8;</code>
-       * @return The alwaysNight.
-       */
-      @java.lang.Override
-      public boolean getAlwaysNight() {
-        return alwaysNight_;
-      }
-      /**
-       * <code>bool alwaysNight = 8;</code>
-       * @param value The alwaysNight to set.
-       * @return This builder for chaining.
-       */
-      public Builder setAlwaysNight(boolean value) {
-        
-        alwaysNight_ = value;
-        bitField0_ |= 0x00000080;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>bool alwaysNight = 8;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearAlwaysNight() {
-        bitField0_ = (bitField0_ & ~0x00000080);
-        alwaysNight_ = false;
-        onChanged();
-        return this;
-      }
-
-      private boolean alwaysDay_ ;
-      /**
-       * <code>bool alwaysDay = 9;</code>
-       * @return The alwaysDay.
-       */
-      @java.lang.Override
-      public boolean getAlwaysDay() {
-        return alwaysDay_;
-      }
-      /**
-       * <code>bool alwaysDay = 9;</code>
-       * @param value The alwaysDay to set.
-       * @return This builder for chaining.
-       */
-      public Builder setAlwaysDay(boolean value) {
-        
-        alwaysDay_ = value;
-        bitField0_ |= 0x00000100;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>bool alwaysDay = 9;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearAlwaysDay() {
-        bitField0_ = (bitField0_ & ~0x00000100);
-        alwaysDay_ = false;
-        onChanged();
-        return this;
-      }
-
-      private java.lang.Object initialWeather_ = "";
-      /**
-       * <code>string initialWeather = 10;</code>
-       * @return The initialWeather.
-       */
-      public java.lang.String getInitialWeather() {
-        java.lang.Object ref = initialWeather_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          initialWeather_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string initialWeather = 10;</code>
-       * @return The bytes for initialWeather.
-       */
-      public com.google.protobuf.ByteString
-          getInitialWeatherBytes() {
-        java.lang.Object ref = initialWeather_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          initialWeather_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string initialWeather = 10;</code>
-       * @param value The initialWeather to set.
-       * @return This builder for chaining.
-       */
-      public Builder setInitialWeather(
-          java.lang.String value) {
-        if (value == null) { throw new NullPointerException(); }
-        initialWeather_ = value;
-        bitField0_ |= 0x00000200;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string initialWeather = 10;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearInitialWeather() {
-        initialWeather_ = getDefaultInstance().getInitialWeather();
-        bitField0_ = (bitField0_ & ~0x00000200);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string initialWeather = 10;</code>
-       * @param value The bytes for initialWeather to set.
-       * @return This builder for chaining.
-       */
-      public Builder setInitialWeatherBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) { throw new NullPointerException(); }
-        checkByteStringIsUtf8(value);
-        initialWeather_ = value;
-        bitField0_ |= 0x00000200;
-        onChanged();
-        return this;
-      }
-
-      private boolean isWorldFlat_ ;
-      /**
-       * <code>bool isWorldFlat = 11;</code>
-       * @return The isWorldFlat.
-       */
-      @java.lang.Override
-      public boolean getIsWorldFlat() {
-        return isWorldFlat_;
-      }
-      /**
-       * <code>bool isWorldFlat = 11;</code>
-       * @param value The isWorldFlat to set.
-       * @return This builder for chaining.
-       */
-      public Builder setIsWorldFlat(boolean value) {
-        
-        isWorldFlat_ = value;
-        bitField0_ |= 0x00000400;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>bool isWorldFlat = 11;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearIsWorldFlat() {
-        bitField0_ = (bitField0_ & ~0x00000400);
-        isWorldFlat_ = false;
-        onChanged();
-        return this;
-      }
-
-      private int visibleSizeX_ ;
-      /**
-       * <code>int32 visibleSizeX = 12;</code>
-       * @return The visibleSizeX.
-       */
-      @java.lang.Override
-      public int getVisibleSizeX() {
-        return visibleSizeX_;
-      }
-      /**
-       * <code>int32 visibleSizeX = 12;</code>
-       * @param value The visibleSizeX to set.
-       * @return This builder for chaining.
-       */
-      public Builder setVisibleSizeX(int value) {
-        
-        visibleSizeX_ = value;
-        bitField0_ |= 0x00000800;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>int32 visibleSizeX = 12;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearVisibleSizeX() {
-        bitField0_ = (bitField0_ & ~0x00000800);
-        visibleSizeX_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private int visibleSizeY_ ;
-      /**
-       * <code>int32 visibleSizeY = 13;</code>
-       * @return The visibleSizeY.
-       */
-      @java.lang.Override
-      public int getVisibleSizeY() {
-        return visibleSizeY_;
-      }
-      /**
-       * <code>int32 visibleSizeY = 13;</code>
-       * @param value The visibleSizeY to set.
-       * @return This builder for chaining.
-       */
-      public Builder setVisibleSizeY(int value) {
-        
-        visibleSizeY_ = value;
-        bitField0_ |= 0x00001000;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>int32 visibleSizeY = 13;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearVisibleSizeY() {
-        bitField0_ = (bitField0_ & ~0x00001000);
-        visibleSizeY_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private com.google.protobuf.LazyStringList initialExtraCommands_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-      private void ensureInitialExtraCommandsIsMutable() {
-        if (!((bitField0_ & 0x00002000) != 0)) {
-          initialExtraCommands_ = new com.google.protobuf.LazyStringArrayList(initialExtraCommands_);
-          bitField0_ |= 0x00002000;
-         }
-      }
-      /**
-       * <code>repeated string initialExtraCommands = 14;</code>
-       * @return A list containing the initialExtraCommands.
-       */
-      public com.google.protobuf.ProtocolStringList
-          getInitialExtraCommandsList() {
-        return initialExtraCommands_.getUnmodifiableView();
-      }
-      /**
-       * <code>repeated string initialExtraCommands = 14;</code>
-       * @return The count of initialExtraCommands.
-       */
-      public int getInitialExtraCommandsCount() {
-        return initialExtraCommands_.size();
-      }
-      /**
-       * <code>repeated string initialExtraCommands = 14;</code>
-       * @param index The index of the element to return.
-       * @return The initialExtraCommands at the given index.
-       */
-      public java.lang.String getInitialExtraCommands(int index) {
-        return initialExtraCommands_.get(index);
-      }
-      /**
-       * <code>repeated string initialExtraCommands = 14;</code>
-       * @param index The index of the value to return.
-       * @return The bytes of the initialExtraCommands at the given index.
-       */
-      public com.google.protobuf.ByteString
-          getInitialExtraCommandsBytes(int index) {
-        return initialExtraCommands_.getByteString(index);
-      }
-      /**
-       * <code>repeated string initialExtraCommands = 14;</code>
-       * @param index The index to set the value at.
-       * @param value The initialExtraCommands to set.
-       * @return This builder for chaining.
-       */
-      public Builder setInitialExtraCommands(
-          int index, java.lang.String value) {
-        if (value == null) { throw new NullPointerException(); }
-        ensureInitialExtraCommandsIsMutable();
-        initialExtraCommands_.set(index, value);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated string initialExtraCommands = 14;</code>
-       * @param value The initialExtraCommands to add.
-       * @return This builder for chaining.
-       */
-      public Builder addInitialExtraCommands(
-          java.lang.String value) {
-        if (value == null) { throw new NullPointerException(); }
-        ensureInitialExtraCommandsIsMutable();
-        initialExtraCommands_.add(value);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated string initialExtraCommands = 14;</code>
-       * @param values The initialExtraCommands to add.
-       * @return This builder for chaining.
-       */
-      public Builder addAllInitialExtraCommands(
-          java.lang.Iterable<java.lang.String> values) {
-        ensureInitialExtraCommandsIsMutable();
-        com.google.protobuf.AbstractMessageLite.Builder.addAll(
-            values, initialExtraCommands_);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated string initialExtraCommands = 14;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearInitialExtraCommands() {
-        initialExtraCommands_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-        bitField0_ = (bitField0_ & ~0x00002000);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated string initialExtraCommands = 14;</code>
-       * @param value The bytes of the initialExtraCommands to add.
-       * @return This builder for chaining.
-       */
-      public Builder addInitialExtraCommandsBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) { throw new NullPointerException(); }
-        checkByteStringIsUtf8(value);
-        ensureInitialExtraCommandsIsMutable();
-        initialExtraCommands_.add(value);
-        onChanged();
-        return this;
-      }
-
-      private com.google.protobuf.LazyStringList killedStatKeys_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-      private void ensureKilledStatKeysIsMutable() {
-        if (!((bitField0_ & 0x00004000) != 0)) {
-          killedStatKeys_ = new com.google.protobuf.LazyStringArrayList(killedStatKeys_);
-          bitField0_ |= 0x00004000;
-         }
-      }
-      /**
-       * <code>repeated string killedStatKeys = 15;</code>
-       * @return A list containing the killedStatKeys.
-       */
-      public com.google.protobuf.ProtocolStringList
-          getKilledStatKeysList() {
-        return killedStatKeys_.getUnmodifiableView();
-      }
-      /**
-       * <code>repeated string killedStatKeys = 15;</code>
-       * @return The count of killedStatKeys.
-       */
-      public int getKilledStatKeysCount() {
-        return killedStatKeys_.size();
-      }
-      /**
-       * <code>repeated string killedStatKeys = 15;</code>
-       * @param index The index of the element to return.
-       * @return The killedStatKeys at the given index.
-       */
-      public java.lang.String getKilledStatKeys(int index) {
-        return killedStatKeys_.get(index);
-      }
-      /**
-       * <code>repeated string killedStatKeys = 15;</code>
-       * @param index The index of the value to return.
-       * @return The bytes of the killedStatKeys at the given index.
-       */
-      public com.google.protobuf.ByteString
-          getKilledStatKeysBytes(int index) {
-        return killedStatKeys_.getByteString(index);
-      }
-      /**
-       * <code>repeated string killedStatKeys = 15;</code>
-       * @param index The index to set the value at.
-       * @param value The killedStatKeys to set.
-       * @return This builder for chaining.
-       */
-      public Builder setKilledStatKeys(
-          int index, java.lang.String value) {
-        if (value == null) { throw new NullPointerException(); }
-        ensureKilledStatKeysIsMutable();
-        killedStatKeys_.set(index, value);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated string killedStatKeys = 15;</code>
-       * @param value The killedStatKeys to add.
-       * @return This builder for chaining.
-       */
-      public Builder addKilledStatKeys(
-          java.lang.String value) {
-        if (value == null) { throw new NullPointerException(); }
-        ensureKilledStatKeysIsMutable();
-        killedStatKeys_.add(value);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated string killedStatKeys = 15;</code>
-       * @param values The killedStatKeys to add.
-       * @return This builder for chaining.
-       */
-      public Builder addAllKilledStatKeys(
-          java.lang.Iterable<java.lang.String> values) {
-        ensureKilledStatKeysIsMutable();
-        com.google.protobuf.AbstractMessageLite.Builder.addAll(
-            values, killedStatKeys_);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated string killedStatKeys = 15;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearKilledStatKeys() {
-        killedStatKeys_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-        bitField0_ = (bitField0_ & ~0x00004000);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated string killedStatKeys = 15;</code>
-       * @param value The bytes of the killedStatKeys to add.
-       * @return This builder for chaining.
-       */
-      public Builder addKilledStatKeysBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) { throw new NullPointerException(); }
-        checkByteStringIsUtf8(value);
-        ensureKilledStatKeysIsMutable();
-        killedStatKeys_.add(value);
-        onChanged();
-        return this;
-      }
-
-      private com.google.protobuf.LazyStringList minedStatKeys_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-      private void ensureMinedStatKeysIsMutable() {
-        if (!((bitField0_ & 0x00008000) != 0)) {
-          minedStatKeys_ = new com.google.protobuf.LazyStringArrayList(minedStatKeys_);
-          bitField0_ |= 0x00008000;
-         }
-      }
-      /**
-       * <code>repeated string minedStatKeys = 16;</code>
-       * @return A list containing the minedStatKeys.
-       */
-      public com.google.protobuf.ProtocolStringList
-          getMinedStatKeysList() {
-        return minedStatKeys_.getUnmodifiableView();
-      }
-      /**
-       * <code>repeated string minedStatKeys = 16;</code>
-       * @return The count of minedStatKeys.
-       */
-      public int getMinedStatKeysCount() {
-        return minedStatKeys_.size();
-      }
-      /**
-       * <code>repeated string minedStatKeys = 16;</code>
-       * @param index The index of the element to return.
-       * @return The minedStatKeys at the given index.
-       */
-      public java.lang.String getMinedStatKeys(int index) {
-        return minedStatKeys_.get(index);
-      }
-      /**
-       * <code>repeated string minedStatKeys = 16;</code>
-       * @param index The index of the value to return.
-       * @return The bytes of the minedStatKeys at the given index.
-       */
-      public com.google.protobuf.ByteString
-          getMinedStatKeysBytes(int index) {
-        return minedStatKeys_.getByteString(index);
-      }
-      /**
-       * <code>repeated string minedStatKeys = 16;</code>
-       * @param index The index to set the value at.
-       * @param value The minedStatKeys to set.
-       * @return This builder for chaining.
-       */
-      public Builder setMinedStatKeys(
-          int index, java.lang.String value) {
-        if (value == null) { throw new NullPointerException(); }
-        ensureMinedStatKeysIsMutable();
-        minedStatKeys_.set(index, value);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated string minedStatKeys = 16;</code>
-       * @param value The minedStatKeys to add.
-       * @return This builder for chaining.
-       */
-      public Builder addMinedStatKeys(
-          java.lang.String value) {
-        if (value == null) { throw new NullPointerException(); }
-        ensureMinedStatKeysIsMutable();
-        minedStatKeys_.add(value);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated string minedStatKeys = 16;</code>
-       * @param values The minedStatKeys to add.
-       * @return This builder for chaining.
-       */
-      public Builder addAllMinedStatKeys(
-          java.lang.Iterable<java.lang.String> values) {
-        ensureMinedStatKeysIsMutable();
-        com.google.protobuf.AbstractMessageLite.Builder.addAll(
-            values, minedStatKeys_);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated string minedStatKeys = 16;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearMinedStatKeys() {
-        minedStatKeys_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-        bitField0_ = (bitField0_ & ~0x00008000);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated string minedStatKeys = 16;</code>
-       * @param value The bytes of the minedStatKeys to add.
-       * @return This builder for chaining.
-       */
-      public Builder addMinedStatKeysBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) { throw new NullPointerException(); }
-        checkByteStringIsUtf8(value);
-        ensureMinedStatKeysIsMutable();
-        minedStatKeys_.add(value);
-        onChanged();
-        return this;
-      }
-
-      private com.google.protobuf.LazyStringList miscStatKeys_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-      private void ensureMiscStatKeysIsMutable() {
-        if (!((bitField0_ & 0x00010000) != 0)) {
-          miscStatKeys_ = new com.google.protobuf.LazyStringArrayList(miscStatKeys_);
-          bitField0_ |= 0x00010000;
-         }
-      }
-      /**
-       * <code>repeated string miscStatKeys = 17;</code>
-       * @return A list containing the miscStatKeys.
-       */
-      public com.google.protobuf.ProtocolStringList
-          getMiscStatKeysList() {
-        return miscStatKeys_.getUnmodifiableView();
-      }
-      /**
-       * <code>repeated string miscStatKeys = 17;</code>
-       * @return The count of miscStatKeys.
-       */
-      public int getMiscStatKeysCount() {
-        return miscStatKeys_.size();
-      }
-      /**
-       * <code>repeated string miscStatKeys = 17;</code>
-       * @param index The index of the element to return.
-       * @return The miscStatKeys at the given index.
-       */
-      public java.lang.String getMiscStatKeys(int index) {
-        return miscStatKeys_.get(index);
-      }
-      /**
-       * <code>repeated string miscStatKeys = 17;</code>
-       * @param index The index of the value to return.
-       * @return The bytes of the miscStatKeys at the given index.
-       */
-      public com.google.protobuf.ByteString
-          getMiscStatKeysBytes(int index) {
-        return miscStatKeys_.getByteString(index);
-      }
-      /**
-       * <code>repeated string miscStatKeys = 17;</code>
-       * @param index The index to set the value at.
-       * @param value The miscStatKeys to set.
-       * @return This builder for chaining.
-       */
-      public Builder setMiscStatKeys(
-          int index, java.lang.String value) {
-        if (value == null) { throw new NullPointerException(); }
-        ensureMiscStatKeysIsMutable();
-        miscStatKeys_.set(index, value);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated string miscStatKeys = 17;</code>
-       * @param value The miscStatKeys to add.
-       * @return This builder for chaining.
-       */
-      public Builder addMiscStatKeys(
-          java.lang.String value) {
-        if (value == null) { throw new NullPointerException(); }
-        ensureMiscStatKeysIsMutable();
-        miscStatKeys_.add(value);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated string miscStatKeys = 17;</code>
-       * @param values The miscStatKeys to add.
-       * @return This builder for chaining.
-       */
-      public Builder addAllMiscStatKeys(
-          java.lang.Iterable<java.lang.String> values) {
-        ensureMiscStatKeysIsMutable();
-        com.google.protobuf.AbstractMessageLite.Builder.addAll(
-            values, miscStatKeys_);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated string miscStatKeys = 17;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearMiscStatKeys() {
-        miscStatKeys_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-        bitField0_ = (bitField0_ & ~0x00010000);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated string miscStatKeys = 17;</code>
-       * @param value The bytes of the miscStatKeys to add.
-       * @return This builder for chaining.
-       */
-      public Builder addMiscStatKeysBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) { throw new NullPointerException(); }
-        checkByteStringIsUtf8(value);
-        ensureMiscStatKeysIsMutable();
-        miscStatKeys_.add(value);
-        onChanged();
-        return this;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:InitialEnvironmentMessage)
     }
 
-    // @@protoc_insertion_point(class_scope:InitialEnvironmentMessage)
-    private static final com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage();
-    }
-
-    public static com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<InitialEnvironmentMessage>
-        PARSER = new com.google.protobuf.AbstractParser<InitialEnvironmentMessage>() {
-      @java.lang.Override
-      public InitialEnvironmentMessage parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        Builder builder = newBuilder();
-        try {
-          builder.mergeFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          throw e.setUnfinishedMessage(builder.buildPartial());
-        } catch (com.google.protobuf.UninitializedMessageException e) {
-          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
-        } catch (java.io.IOException e) {
-          throw new com.google.protobuf.InvalidProtocolBufferException(e)
-              .setUnfinishedMessage(builder.buildPartial());
-        }
-        return builder.buildPartial();
-      }
-    };
-
-    public static com.google.protobuf.Parser<InitialEnvironmentMessage> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<InitialEnvironmentMessage> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_InitialEnvironmentMessage_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_InitialEnvironmentMessage_fieldAccessorTable;
-
-  public static com.google.protobuf.Descriptors.FileDescriptor
-      getDescriptor() {
-    return descriptor;
-  }
-  private static  com.google.protobuf.Descriptors.FileDescriptor
-      descriptor;
-  static {
-    java.lang.String[] descriptorData = {
-      "\n\031initial_environment.proto\"\244\003\n\031InitialE" +
-      "nvironmentMessage\022 \n\030initialInventoryCom" +
-      "mands\030\001 \003(\t\022\027\n\017initialPosition\030\002 \003(\005\022\033\n\023" +
-      "initialMobsCommands\030\003 \003(\t\022\022\n\nimageSizeX\030" +
-      "\004 \001(\005\022\022\n\nimageSizeY\030\005 \001(\005\022\014\n\004seed\030\006 \001(\003\022" +
-      "\025\n\rallowMobSpawn\030\007 \001(\010\022\023\n\013alwaysNight\030\010 " +
-      "\001(\010\022\021\n\talwaysDay\030\t \001(\010\022\026\n\016initialWeather" +
-      "\030\n \001(\t\022\023\n\013isWorldFlat\030\013 \001(\010\022\024\n\014visibleSi" +
-      "zeX\030\014 \001(\005\022\024\n\014visibleSizeY\030\r \001(\005\022\034\n\024initi" +
-      "alExtraCommands\030\016 \003(\t\022\026\n\016killedStatKeys\030" +
-      "\017 \003(\t\022\025\n\rminedStatKeys\030\020 \003(\t\022\024\n\014miscStat" +
-      "Keys\030\021 \003(\tB&\n$com.kyhsgeekcode.minecraft" +
-      "_env.protob\006proto3"
-    };
-    descriptor = com.google.protobuf.Descriptors.FileDescriptor
-      .internalBuildGeneratedFileFrom(descriptorData,
-        new com.google.protobuf.Descriptors.FileDescriptor[] {
-        });
-    internal_static_InitialEnvironmentMessage_descriptor =
-      getDescriptor().getMessageTypes().get(0);
-    internal_static_InitialEnvironmentMessage_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_InitialEnvironmentMessage_descriptor,
-        new java.lang.String[] { "InitialInventoryCommands", "InitialPosition", "InitialMobsCommands", "ImageSizeX", "ImageSizeY", "Seed", "AllowMobSpawn", "AlwaysNight", "AlwaysDay", "InitialWeather", "IsWorldFlat", "VisibleSizeX", "VisibleSizeY", "InitialExtraCommands", "KilledStatKeys", "MinedStatKeys", "MiscStatKeys", });
-  }
-
-  // @@protoc_insertion_point(outer_class_scope)
+    // @@protoc_insertion_point(outer_class_scope)
 }

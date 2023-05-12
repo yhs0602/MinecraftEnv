@@ -8,6 +8,13 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 @Mixin(net.minecraft.client.network.ClientPlayerEntity.class)
 public class KeyboardInputMixin {
 
+    private static float getMovementMultiplier(boolean positive, boolean negative) {
+        if (positive == negative) {
+            return 0.0f;
+        }
+        return positive ? 1.0f : -1.0f;
+    }
+
     @Redirect(method = "tickMovement", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/input/Input;tick(ZF)V"))
     private void onTick(Input instance, boolean slowDown, float f) {
         instance.movementForward = getMovementMultiplier(instance.pressingForward, instance.pressingBack);
@@ -16,12 +23,5 @@ public class KeyboardInputMixin {
             instance.movementSideways *= f;
             instance.movementForward *= f;
         }
-    }
-
-    private static float getMovementMultiplier(boolean positive, boolean negative) {
-        if (positive == negative) {
-            return 0.0f;
-        }
-        return positive ? 1.0f : -1.0f;
     }
 }

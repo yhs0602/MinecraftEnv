@@ -7,5 +7,5 @@ import org.spongepowered.asm.mixin.gen.Invoker;
 @Mixin(MinecraftClient.class)
 public interface ClientDoItemUseInvoker {
     @Invoker("doItemUse")
-    public void invokeDoItemUse();
+    void invokeDoItemUse();
 }

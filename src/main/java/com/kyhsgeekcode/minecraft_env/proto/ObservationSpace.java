@@ -4,9215 +4,10058 @@
 package com.kyhsgeekcode.minecraft_env.proto;
 
 public final class ObservationSpace {
-  private ObservationSpace() {}
-  public static void registerAllExtensions(
-      com.google.protobuf.ExtensionRegistryLite registry) {
-  }
+    private static final com.google.protobuf.Descriptors.Descriptor
+            internal_static_ItemStack_descriptor;
+    private static final
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+            internal_static_ItemStack_fieldAccessorTable;
+    private static final com.google.protobuf.Descriptors.Descriptor
+            internal_static_BlockInfo_descriptor;
+    private static final
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+            internal_static_BlockInfo_fieldAccessorTable;
+    private static final com.google.protobuf.Descriptors.Descriptor
+            internal_static_EntityInfo_descriptor;
+    private static final
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+            internal_static_EntityInfo_fieldAccessorTable;
+    private static final com.google.protobuf.Descriptors.Descriptor
+            internal_static_HitResult_descriptor;
+    private static final
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+            internal_static_HitResult_fieldAccessorTable;
+    private static final com.google.protobuf.Descriptors.Descriptor
+            internal_static_StatusEffect_descriptor;
+    private static final
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+            internal_static_StatusEffect_fieldAccessorTable;
+    private static final com.google.protobuf.Descriptors.Descriptor
+            internal_static_SoundEntry_descriptor;
+    private static final
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+            internal_static_SoundEntry_fieldAccessorTable;
+    private static final com.google.protobuf.Descriptors.Descriptor
+            internal_static_ObservationSpaceMessage_descriptor;
+    private static final
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+            internal_static_ObservationSpaceMessage_fieldAccessorTable;
+    private static final com.google.protobuf.Descriptors.Descriptor
+            internal_static_ObservationSpaceMessage_KilledStatisticsEntry_descriptor;
+    private static final
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+            internal_static_ObservationSpaceMessage_KilledStatisticsEntry_fieldAccessorTable;
+    private static final com.google.protobuf.Descriptors.Descriptor
+            internal_static_ObservationSpaceMessage_MinedStatisticsEntry_descriptor;
+    private static final
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+            internal_static_ObservationSpaceMessage_MinedStatisticsEntry_fieldAccessorTable;
+    private static final com.google.protobuf.Descriptors.Descriptor
+            internal_static_ObservationSpaceMessage_MiscStatisticsEntry_descriptor;
+    private static final
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+            internal_static_ObservationSpaceMessage_MiscStatisticsEntry_fieldAccessorTable;
+    private static com.google.protobuf.Descriptors.FileDescriptor
+            descriptor;
 
-  public static void registerAllExtensions(
-      com.google.protobuf.ExtensionRegistry registry) {
-    registerAllExtensions(
-        (com.google.protobuf.ExtensionRegistryLite) registry);
-  }
-  public interface ItemStackOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:ItemStack)
-      com.google.protobuf.MessageOrBuilder {
+    static {
+        java.lang.String[] descriptorData = {
+                "\n\027observation_space.proto\"o\n\tItemStack\022\016" +
+                        "\n\006raw_id\030\001 \001(\005\022\027\n\017translation_key\030\002 \001(\t\022" +
+                        "\r\n\005count\030\003 \001(\005\022\022\n\ndurability\030\004 \001(\005\022\026\n\016ma" +
+                        "x_durability\030\005 \001(\005\"E\n\tBlockInfo\022\t\n\001x\030\001 \001" +
+                        "(\005\022\t\n\001y\030\002 \001(\005\022\t\n\001z\030\003 \001(\005\022\027\n\017translation_" +
+                        "key\030\004 \001(\t\"\207\001\n\nEntityInfo\022\023\n\013unique_name\030" +
+                        "\001 \001(\t\022\027\n\017translation_key\030\002 \001(\t\022\t\n\001x\030\003 \001(" +
+                        "\001\022\t\n\001y\030\004 \001(\001\022\t\n\001z\030\005 \001(\001\022\013\n\003yaw\030\006 \001(\001\022\r\n\005" +
+                        "pitch\030\007 \001(\001\022\016\n\006health\030\010 \001(\001\"\231\001\n\tHitResul" +
+                        "t\022\035\n\004type\030\001 \001(\0162\017.HitResult.Type\022 \n\014targ" +
+                        "et_block\030\002 \001(\0132\n.BlockInfo\022\"\n\rtarget_ent" +
+                        "ity\030\003 \001(\0132\013.EntityInfo\"\'\n\004Type\022\010\n\004MISS\020\000" +
+                        "\022\t\n\005BLOCK\020\001\022\n\n\006ENTITY\020\002\"L\n\014StatusEffect\022" +
+                        "\027\n\017translation_key\030\001 \001(\t\022\020\n\010duration\030\002 \001" +
+                        "(\005\022\021\n\tamplifier\030\003 \001(\005\"Q\n\nSoundEntry\022\025\n\rt" +
+                        "ranslate_key\030\001 \001(\t\022\013\n\003age\030\002 \001(\003\022\t\n\001x\030\003 \001" +
+                        "(\001\022\t\n\001y\030\004 \001(\001\022\t\n\001z\030\005 \001(\001\"\356\005\n\027Observation" +
+                        "SpaceMessage\022\r\n\005image\030\001 \001(\014\022\t\n\001x\030\002 \001(\001\022\t" +
+                        "\n\001y\030\003 \001(\001\022\t\n\001z\030\004 \001(\001\022\013\n\003yaw\030\005 \001(\001\022\r\n\005pit" +
+                        "ch\030\006 \001(\001\022\016\n\006health\030\007 \001(\001\022\022\n\nfood_level\030\010" +
+                        " \001(\001\022\030\n\020saturation_level\030\t \001(\001\022\017\n\007is_dea" +
+                        "d\030\n \001(\010\022\035\n\tinventory\030\013 \003(\0132\n.ItemStack\022\"" +
+                        "\n\016raycast_result\030\014 \001(\0132\n.HitResult\022$\n\017so" +
+                        "und_subtitles\030\r \003(\0132\013.SoundEntry\022%\n\016stat" +
+                        "us_effects\030\016 \003(\0132\r.StatusEffect\022I\n\021kille" +
+                        "d_statistics\030\017 \003(\0132..ObservationSpaceMes" +
+                        "sage.KilledStatisticsEntry\022G\n\020mined_stat" +
+                        "istics\030\020 \003(\0132-.ObservationSpaceMessage.M" +
+                        "inedStatisticsEntry\022E\n\017misc_statistics\030\021" +
+                        " \003(\0132,.ObservationSpaceMessage.MiscStati" +
+                        "sticsEntry\022%\n\020visible_entities\030\022 \003(\0132\013.E" +
+                        "ntityInfo\0327\n\025KilledStatisticsEntry\022\013\n\003ke" +
+                        "y\030\001 \001(\t\022\r\n\005value\030\002 \001(\005:\0028\001\0326\n\024MinedStati" +
+                        "sticsEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\005:\002" +
+                        "8\001\0325\n\023MiscStatisticsEntry\022\013\n\003key\030\001 \001(\t\022\r" +
+                        "\n\005value\030\002 \001(\005:\0028\001B&\n$com.kyhsgeekcode.mi" +
+                        "necraft_env.protob\006proto3"
+        };
+        descriptor = com.google.protobuf.Descriptors.FileDescriptor
+                .internalBuildGeneratedFileFrom(descriptorData,
+                        new com.google.protobuf.Descriptors.FileDescriptor[]{
+                        });
+        internal_static_ItemStack_descriptor =
+                getDescriptor().getMessageTypes().get(0);
+        internal_static_ItemStack_fieldAccessorTable = new
+                com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+                internal_static_ItemStack_descriptor,
+                new java.lang.String[]{"RawId", "TranslationKey", "Count", "Durability", "MaxDurability",});
+        internal_static_BlockInfo_descriptor =
+                getDescriptor().getMessageTypes().get(1);
+        internal_static_BlockInfo_fieldAccessorTable = new
+                com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+                internal_static_BlockInfo_descriptor,
+                new java.lang.String[]{"X", "Y", "Z", "TranslationKey",});
+        internal_static_EntityInfo_descriptor =
+                getDescriptor().getMessageTypes().get(2);
+        internal_static_EntityInfo_fieldAccessorTable = new
+                com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+                internal_static_EntityInfo_descriptor,
+                new java.lang.String[]{"UniqueName", "TranslationKey", "X", "Y", "Z", "Yaw", "Pitch", "Health",});
+        internal_static_HitResult_descriptor =
+                getDescriptor().getMessageTypes().get(3);
+        internal_static_HitResult_fieldAccessorTable = new
+                com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+                internal_static_HitResult_descriptor,
+                new java.lang.String[]{"Type", "TargetBlock", "TargetEntity",});
+        internal_static_StatusEffect_descriptor =
+                getDescriptor().getMessageTypes().get(4);
+        internal_static_StatusEffect_fieldAccessorTable = new
+                com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+                internal_static_StatusEffect_descriptor,
+                new java.lang.String[]{"TranslationKey", "Duration", "Amplifier",});
+        internal_static_SoundEntry_descriptor =
+                getDescriptor().getMessageTypes().get(5);
+        internal_static_SoundEntry_fieldAccessorTable = new
+                com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+                internal_static_SoundEntry_descriptor,
+                new java.lang.String[]{"TranslateKey", "Age", "X", "Y", "Z",});
+        internal_static_ObservationSpaceMessage_descriptor =
+                getDescriptor().getMessageTypes().get(6);
+        internal_static_ObservationSpaceMessage_fieldAccessorTable = new
+                com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+                internal_static_ObservationSpaceMessage_descriptor,
+                new java.lang.String[]{"Image", "X", "Y", "Z", "Yaw", "Pitch", "Health", "FoodLevel", "SaturationLevel", "IsDead", "Inventory", "RaycastResult", "SoundSubtitles", "StatusEffects", "KilledStatistics", "MinedStatistics", "MiscStatistics", "VisibleEntities",});
+        internal_static_ObservationSpaceMessage_KilledStatisticsEntry_descriptor =
+                internal_static_ObservationSpaceMessage_descriptor.getNestedTypes().get(0);
+        internal_static_ObservationSpaceMessage_KilledStatisticsEntry_fieldAccessorTable = new
+                com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+                internal_static_ObservationSpaceMessage_KilledStatisticsEntry_descriptor,
+                new java.lang.String[]{"Key", "Value",});
+        internal_static_ObservationSpaceMessage_MinedStatisticsEntry_descriptor =
+                internal_static_ObservationSpaceMessage_descriptor.getNestedTypes().get(1);
+        internal_static_ObservationSpaceMessage_MinedStatisticsEntry_fieldAccessorTable = new
+                com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+                internal_static_ObservationSpaceMessage_MinedStatisticsEntry_descriptor,
+                new java.lang.String[]{"Key", "Value",});
+        internal_static_ObservationSpaceMessage_MiscStatisticsEntry_descriptor =
+                internal_static_ObservationSpaceMessage_descriptor.getNestedTypes().get(2);
+        internal_static_ObservationSpaceMessage_MiscStatisticsEntry_fieldAccessorTable = new
+                com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+                internal_static_ObservationSpaceMessage_MiscStatisticsEntry_descriptor,
+                new java.lang.String[]{"Key", "Value",});
+    }
+    private ObservationSpace() {
+    }
 
-    /**
-     * <code>int32 raw_id = 1;</code>
-     * @return The rawId.
-     */
-    int getRawId();
+    public static void registerAllExtensions(
+            com.google.protobuf.ExtensionRegistryLite registry) {
+    }
 
-    /**
-     * <code>string translation_key = 2;</code>
-     * @return The translationKey.
-     */
-    java.lang.String getTranslationKey();
-    /**
-     * <code>string translation_key = 2;</code>
-     * @return The bytes for translationKey.
-     */
-    com.google.protobuf.ByteString
+    public static void registerAllExtensions(
+            com.google.protobuf.ExtensionRegistry registry) {
+        registerAllExtensions(
+                (com.google.protobuf.ExtensionRegistryLite) registry);
+    }
+
+    public static com.google.protobuf.Descriptors.FileDescriptor
+    getDescriptor() {
+        return descriptor;
+    }
+    public interface ItemStackOrBuilder extends
+            // @@protoc_insertion_point(interface_extends:ItemStack)
+            com.google.protobuf.MessageOrBuilder {
+
+        /**
+         * <code>int32 raw_id = 1;</code>
+         *
+         * @return The rawId.
+         */
+        int getRawId();
+
+        /**
+         * <code>string translation_key = 2;</code>
+         *
+         * @return The translationKey.
+         */
+        java.lang.String getTranslationKey();
+
+        /**
+         * <code>string translation_key = 2;</code>
+         *
+         * @return The bytes for translationKey.
+         */
+        com.google.protobuf.ByteString
         getTranslationKeyBytes();
 
-    /**
-     * <code>int32 count = 3;</code>
-     * @return The count.
-     */
-    int getCount();
+        /**
+         * <code>int32 count = 3;</code>
+         *
+         * @return The count.
+         */
+        int getCount();
 
-    /**
-     * <code>int32 durability = 4;</code>
-     * @return The durability.
-     */
-    int getDurability();
+        /**
+         * <code>int32 durability = 4;</code>
+         *
+         * @return The durability.
+         */
+        int getDurability();
 
-    /**
-     * <code>int32 max_durability = 5;</code>
-     * @return The maxDurability.
-     */
-    int getMaxDurability();
-  }
-  /**
-   * Protobuf type {@code ItemStack}
-   */
-  public static final class ItemStack extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:ItemStack)
-      ItemStackOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use ItemStack.newBuilder() to construct.
-    private ItemStack(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
+        /**
+         * <code>int32 max_durability = 5;</code>
+         *
+         * @return The maxDurability.
+         */
+        int getMaxDurability();
     }
-    private ItemStack() {
-      translationKey_ = "";
+    public interface BlockInfoOrBuilder extends
+            // @@protoc_insertion_point(interface_extends:BlockInfo)
+            com.google.protobuf.MessageOrBuilder {
+
+        /**
+         * <code>int32 x = 1;</code>
+         *
+         * @return The x.
+         */
+        int getX();
+
+        /**
+         * <code>int32 y = 2;</code>
+         *
+         * @return The y.
+         */
+        int getY();
+
+        /**
+         * <code>int32 z = 3;</code>
+         *
+         * @return The z.
+         */
+        int getZ();
+
+        /**
+         * <code>string translation_key = 4;</code>
+         *
+         * @return The translationKey.
+         */
+        java.lang.String getTranslationKey();
+
+        /**
+         * <code>string translation_key = 4;</code>
+         *
+         * @return The bytes for translationKey.
+         */
+        com.google.protobuf.ByteString
+        getTranslationKeyBytes();
+    }
+    public interface EntityInfoOrBuilder extends
+            // @@protoc_insertion_point(interface_extends:EntityInfo)
+            com.google.protobuf.MessageOrBuilder {
+
+        /**
+         * <code>string unique_name = 1;</code>
+         *
+         * @return The uniqueName.
+         */
+        java.lang.String getUniqueName();
+
+        /**
+         * <code>string unique_name = 1;</code>
+         *
+         * @return The bytes for uniqueName.
+         */
+        com.google.protobuf.ByteString
+        getUniqueNameBytes();
+
+        /**
+         * <code>string translation_key = 2;</code>
+         *
+         * @return The translationKey.
+         */
+        java.lang.String getTranslationKey();
+
+        /**
+         * <code>string translation_key = 2;</code>
+         *
+         * @return The bytes for translationKey.
+         */
+        com.google.protobuf.ByteString
+        getTranslationKeyBytes();
+
+        /**
+         * <code>double x = 3;</code>
+         *
+         * @return The x.
+         */
+        double getX();
+
+        /**
+         * <code>double y = 4;</code>
+         *
+         * @return The y.
+         */
+        double getY();
+
+        /**
+         * <code>double z = 5;</code>
+         *
+         * @return The z.
+         */
+        double getZ();
+
+        /**
+         * <code>double yaw = 6;</code>
+         *
+         * @return The yaw.
+         */
+        double getYaw();
+
+        /**
+         * <code>double pitch = 7;</code>
+         *
+         * @return The pitch.
+         */
+        double getPitch();
+
+        /**
+         * <code>double health = 8;</code>
+         *
+         * @return The health.
+         */
+        double getHealth();
+    }
+    public interface HitResultOrBuilder extends
+            // @@protoc_insertion_point(interface_extends:HitResult)
+            com.google.protobuf.MessageOrBuilder {
+
+        /**
+         * <code>.HitResult.Type type = 1;</code>
+         *
+         * @return The enum numeric value on the wire for type.
+         */
+        int getTypeValue();
+
+        /**
+         * <code>.HitResult.Type type = 1;</code>
+         *
+         * @return The type.
+         */
+        com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult.Type getType();
+
+        /**
+         * <code>.BlockInfo target_block = 2;</code>
+         *
+         * @return Whether the targetBlock field is set.
+         */
+        boolean hasTargetBlock();
+
+        /**
+         * <code>.BlockInfo target_block = 2;</code>
+         *
+         * @return The targetBlock.
+         */
+        com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo getTargetBlock();
+
+        /**
+         * <code>.BlockInfo target_block = 2;</code>
+         */
+        com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfoOrBuilder getTargetBlockOrBuilder();
+
+        /**
+         * <code>.EntityInfo target_entity = 3;</code>
+         *
+         * @return Whether the targetEntity field is set.
+         */
+        boolean hasTargetEntity();
+
+        /**
+         * <code>.EntityInfo target_entity = 3;</code>
+         *
+         * @return The targetEntity.
+         */
+        com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo getTargetEntity();
+
+        /**
+         * <code>.EntityInfo target_entity = 3;</code>
+         */
+        com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfoOrBuilder getTargetEntityOrBuilder();
+    }
+    public interface StatusEffectOrBuilder extends
+            // @@protoc_insertion_point(interface_extends:StatusEffect)
+            com.google.protobuf.MessageOrBuilder {
+
+        /**
+         * <code>string translation_key = 1;</code>
+         *
+         * @return The translationKey.
+         */
+        java.lang.String getTranslationKey();
+
+        /**
+         * <code>string translation_key = 1;</code>
+         *
+         * @return The bytes for translationKey.
+         */
+        com.google.protobuf.ByteString
+        getTranslationKeyBytes();
+
+        /**
+         * <code>int32 duration = 2;</code>
+         *
+         * @return The duration.
+         */
+        int getDuration();
+
+        /**
+         * <code>int32 amplifier = 3;</code>
+         *
+         * @return The amplifier.
+         */
+        int getAmplifier();
+    }
+    public interface SoundEntryOrBuilder extends
+            // @@protoc_insertion_point(interface_extends:SoundEntry)
+            com.google.protobuf.MessageOrBuilder {
+
+        /**
+         * <code>string translate_key = 1;</code>
+         *
+         * @return The translateKey.
+         */
+        java.lang.String getTranslateKey();
+
+        /**
+         * <code>string translate_key = 1;</code>
+         *
+         * @return The bytes for translateKey.
+         */
+        com.google.protobuf.ByteString
+        getTranslateKeyBytes();
+
+        /**
+         * <code>int64 age = 2;</code>
+         *
+         * @return The age.
+         */
+        long getAge();
+
+        /**
+         * <code>double x = 3;</code>
+         *
+         * @return The x.
+         */
+        double getX();
+
+        /**
+         * <code>double y = 4;</code>
+         *
+         * @return The y.
+         */
+        double getY();
+
+        /**
+         * <code>double z = 5;</code>
+         *
+         * @return The z.
+         */
+        double getZ();
+    }
+    public interface ObservationSpaceMessageOrBuilder extends
+            // @@protoc_insertion_point(interface_extends:ObservationSpaceMessage)
+            com.google.protobuf.MessageOrBuilder {
+
+        /**
+         * <code>bytes image = 1;</code>
+         *
+         * @return The image.
+         */
+        com.google.protobuf.ByteString getImage();
+
+        /**
+         * <code>double x = 2;</code>
+         *
+         * @return The x.
+         */
+        double getX();
+
+        /**
+         * <code>double y = 3;</code>
+         *
+         * @return The y.
+         */
+        double getY();
+
+        /**
+         * <code>double z = 4;</code>
+         *
+         * @return The z.
+         */
+        double getZ();
+
+        /**
+         * <code>double yaw = 5;</code>
+         *
+         * @return The yaw.
+         */
+        double getYaw();
+
+        /**
+         * <code>double pitch = 6;</code>
+         *
+         * @return The pitch.
+         */
+        double getPitch();
+
+        /**
+         * <code>double health = 7;</code>
+         *
+         * @return The health.
+         */
+        double getHealth();
+
+        /**
+         * <code>double food_level = 8;</code>
+         *
+         * @return The foodLevel.
+         */
+        double getFoodLevel();
+
+        /**
+         * <code>double saturation_level = 9;</code>
+         *
+         * @return The saturationLevel.
+         */
+        double getSaturationLevel();
+
+        /**
+         * <code>bool is_dead = 10;</code>
+         *
+         * @return The isDead.
+         */
+        boolean getIsDead();
+
+        /**
+         * <code>repeated .ItemStack inventory = 11;</code>
+         */
+        java.util.List<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack>
+        getInventoryList();
+
+        /**
+         * <code>repeated .ItemStack inventory = 11;</code>
+         */
+        com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack getInventory(int index);
+
+        /**
+         * <code>repeated .ItemStack inventory = 11;</code>
+         */
+        int getInventoryCount();
+
+        /**
+         * <code>repeated .ItemStack inventory = 11;</code>
+         */
+        java.util.List<? extends com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStackOrBuilder>
+        getInventoryOrBuilderList();
+
+        /**
+         * <code>repeated .ItemStack inventory = 11;</code>
+         */
+        com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStackOrBuilder getInventoryOrBuilder(
+                int index);
+
+        /**
+         * <code>.HitResult raycast_result = 12;</code>
+         *
+         * @return Whether the raycastResult field is set.
+         */
+        boolean hasRaycastResult();
+
+        /**
+         * <code>.HitResult raycast_result = 12;</code>
+         *
+         * @return The raycastResult.
+         */
+        com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult getRaycastResult();
+
+        /**
+         * <code>.HitResult raycast_result = 12;</code>
+         */
+        com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResultOrBuilder getRaycastResultOrBuilder();
+
+        /**
+         * <code>repeated .SoundEntry sound_subtitles = 13;</code>
+         */
+        java.util.List<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry>
+        getSoundSubtitlesList();
+
+        /**
+         * <code>repeated .SoundEntry sound_subtitles = 13;</code>
+         */
+        com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry getSoundSubtitles(int index);
+
+        /**
+         * <code>repeated .SoundEntry sound_subtitles = 13;</code>
+         */
+        int getSoundSubtitlesCount();
+
+        /**
+         * <code>repeated .SoundEntry sound_subtitles = 13;</code>
+         */
+        java.util.List<? extends com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntryOrBuilder>
+        getSoundSubtitlesOrBuilderList();
+
+        /**
+         * <code>repeated .SoundEntry sound_subtitles = 13;</code>
+         */
+        com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntryOrBuilder getSoundSubtitlesOrBuilder(
+                int index);
+
+        /**
+         * <code>repeated .StatusEffect status_effects = 14;</code>
+         */
+        java.util.List<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect>
+        getStatusEffectsList();
+
+        /**
+         * <code>repeated .StatusEffect status_effects = 14;</code>
+         */
+        com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect getStatusEffects(int index);
+
+        /**
+         * <code>repeated .StatusEffect status_effects = 14;</code>
+         */
+        int getStatusEffectsCount();
+
+        /**
+         * <code>repeated .StatusEffect status_effects = 14;</code>
+         */
+        java.util.List<? extends com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffectOrBuilder>
+        getStatusEffectsOrBuilderList();
+
+        /**
+         * <code>repeated .StatusEffect status_effects = 14;</code>
+         */
+        com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffectOrBuilder getStatusEffectsOrBuilder(
+                int index);
+
+        /**
+         * <code>map&lt;string, int32&gt; killed_statistics = 15;</code>
+         */
+        int getKilledStatisticsCount();
+
+        /**
+         * <code>map&lt;string, int32&gt; killed_statistics = 15;</code>
+         */
+        boolean containsKilledStatistics(
+                java.lang.String key);
+
+        /**
+         * Use {@link #getKilledStatisticsMap()} instead.
+         */
+        @java.lang.Deprecated
+        java.util.Map<java.lang.String, java.lang.Integer>
+        getKilledStatistics();
+
+        /**
+         * <code>map&lt;string, int32&gt; killed_statistics = 15;</code>
+         */
+        java.util.Map<java.lang.String, java.lang.Integer>
+        getKilledStatisticsMap();
+
+        /**
+         * <code>map&lt;string, int32&gt; killed_statistics = 15;</code>
+         */
+        int getKilledStatisticsOrDefault(
+                java.lang.String key,
+                int defaultValue);
+
+        /**
+         * <code>map&lt;string, int32&gt; killed_statistics = 15;</code>
+         */
+        int getKilledStatisticsOrThrow(
+                java.lang.String key);
+
+        /**
+         * <code>map&lt;string, int32&gt; mined_statistics = 16;</code>
+         */
+        int getMinedStatisticsCount();
+
+        /**
+         * <code>map&lt;string, int32&gt; mined_statistics = 16;</code>
+         */
+        boolean containsMinedStatistics(
+                java.lang.String key);
+
+        /**
+         * Use {@link #getMinedStatisticsMap()} instead.
+         */
+        @java.lang.Deprecated
+        java.util.Map<java.lang.String, java.lang.Integer>
+        getMinedStatistics();
+
+        /**
+         * <code>map&lt;string, int32&gt; mined_statistics = 16;</code>
+         */
+        java.util.Map<java.lang.String, java.lang.Integer>
+        getMinedStatisticsMap();
+
+        /**
+         * <code>map&lt;string, int32&gt; mined_statistics = 16;</code>
+         */
+        int getMinedStatisticsOrDefault(
+                java.lang.String key,
+                int defaultValue);
+
+        /**
+         * <code>map&lt;string, int32&gt; mined_statistics = 16;</code>
+         */
+        int getMinedStatisticsOrThrow(
+                java.lang.String key);
+
+        /**
+         * <code>map&lt;string, int32&gt; misc_statistics = 17;</code>
+         */
+        int getMiscStatisticsCount();
+
+        /**
+         * <code>map&lt;string, int32&gt; misc_statistics = 17;</code>
+         */
+        boolean containsMiscStatistics(
+                java.lang.String key);
+
+        /**
+         * Use {@link #getMiscStatisticsMap()} instead.
+         */
+        @java.lang.Deprecated
+        java.util.Map<java.lang.String, java.lang.Integer>
+        getMiscStatistics();
+
+        /**
+         * <code>map&lt;string, int32&gt; misc_statistics = 17;</code>
+         */
+        java.util.Map<java.lang.String, java.lang.Integer>
+        getMiscStatisticsMap();
+
+        /**
+         * <code>map&lt;string, int32&gt; misc_statistics = 17;</code>
+         */
+        int getMiscStatisticsOrDefault(
+                java.lang.String key,
+                int defaultValue);
+
+        /**
+         * <code>map&lt;string, int32&gt; misc_statistics = 17;</code>
+         */
+        int getMiscStatisticsOrThrow(
+                java.lang.String key);
+
+        /**
+         * <code>repeated .EntityInfo visible_entities = 18;</code>
+         */
+        java.util.List<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo>
+        getVisibleEntitiesList();
+
+        /**
+         * <code>repeated .EntityInfo visible_entities = 18;</code>
+         */
+        com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo getVisibleEntities(int index);
+
+        /**
+         * <code>repeated .EntityInfo visible_entities = 18;</code>
+         */
+        int getVisibleEntitiesCount();
+
+        /**
+         * <code>repeated .EntityInfo visible_entities = 18;</code>
+         */
+        java.util.List<? extends com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfoOrBuilder>
+        getVisibleEntitiesOrBuilderList();
+
+        /**
+         * <code>repeated .EntityInfo visible_entities = 18;</code>
+         */
+        com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfoOrBuilder getVisibleEntitiesOrBuilder(
+                int index);
     }
 
-    @java.lang.Override
-    @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
-      return new ItemStack();
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_ItemStack_descriptor;
-    }
-
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_ItemStack_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack.class, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack.Builder.class);
-    }
-
-    public static final int RAW_ID_FIELD_NUMBER = 1;
-    private int rawId_ = 0;
-    /**
-     * <code>int32 raw_id = 1;</code>
-     * @return The rawId.
-     */
-    @java.lang.Override
-    public int getRawId() {
-      return rawId_;
-    }
-
-    public static final int TRANSLATION_KEY_FIELD_NUMBER = 2;
-    @SuppressWarnings("serial")
-    private volatile java.lang.Object translationKey_ = "";
-    /**
-     * <code>string translation_key = 2;</code>
-     * @return The translationKey.
-     */
-    @java.lang.Override
-    public java.lang.String getTranslationKey() {
-      java.lang.Object ref = translationKey_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        translationKey_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string translation_key = 2;</code>
-     * @return The bytes for translationKey.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString
-        getTranslationKeyBytes() {
-      java.lang.Object ref = translationKey_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        translationKey_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int COUNT_FIELD_NUMBER = 3;
-    private int count_ = 0;
-    /**
-     * <code>int32 count = 3;</code>
-     * @return The count.
-     */
-    @java.lang.Override
-    public int getCount() {
-      return count_;
-    }
-
-    public static final int DURABILITY_FIELD_NUMBER = 4;
-    private int durability_ = 0;
-    /**
-     * <code>int32 durability = 4;</code>
-     * @return The durability.
-     */
-    @java.lang.Override
-    public int getDurability() {
-      return durability_;
-    }
-
-    public static final int MAX_DURABILITY_FIELD_NUMBER = 5;
-    private int maxDurability_ = 0;
-    /**
-     * <code>int32 max_durability = 5;</code>
-     * @return The maxDurability.
-     */
-    @java.lang.Override
-    public int getMaxDurability() {
-      return maxDurability_;
-    }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (rawId_ != 0) {
-        output.writeInt32(1, rawId_);
-      }
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(translationKey_)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, translationKey_);
-      }
-      if (count_ != 0) {
-        output.writeInt32(3, count_);
-      }
-      if (durability_ != 0) {
-        output.writeInt32(4, durability_);
-      }
-      if (maxDurability_ != 0) {
-        output.writeInt32(5, maxDurability_);
-      }
-      getUnknownFields().writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (rawId_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, rawId_);
-      }
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(translationKey_)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, translationKey_);
-      }
-      if (count_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(3, count_);
-      }
-      if (durability_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(4, durability_);
-      }
-      if (maxDurability_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(5, maxDurability_);
-      }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack)) {
-        return super.equals(obj);
-      }
-      com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack other = (com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack) obj;
-
-      if (getRawId()
-          != other.getRawId()) return false;
-      if (!getTranslationKey()
-          .equals(other.getTranslationKey())) return false;
-      if (getCount()
-          != other.getCount()) return false;
-      if (getDurability()
-          != other.getDurability()) return false;
-      if (getMaxDurability()
-          != other.getMaxDurability()) return false;
-      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
-      return true;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + RAW_ID_FIELD_NUMBER;
-      hash = (53 * hash) + getRawId();
-      hash = (37 * hash) + TRANSLATION_KEY_FIELD_NUMBER;
-      hash = (53 * hash) + getTranslationKey().hashCode();
-      hash = (37 * hash) + COUNT_FIELD_NUMBER;
-      hash = (53 * hash) + getCount();
-      hash = (37 * hash) + DURABILITY_FIELD_NUMBER;
-      hash = (53 * hash) + getDurability();
-      hash = (37 * hash) + MAX_DURABILITY_FIELD_NUMBER;
-      hash = (53 * hash) + getMaxDurability();
-      hash = (29 * hash) + getUnknownFields().hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
     /**
      * Protobuf type {@code ItemStack}
      */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:ItemStack)
-        com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStackOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_ItemStack_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_ItemStack_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack.class, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack.Builder.class);
-      }
-
-      // Construct using com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack.newBuilder()
-      private Builder() {
-
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        bitField0_ = 0;
-        rawId_ = 0;
-        translationKey_ = "";
-        count_ = 0;
-        durability_ = 0;
-        maxDurability_ = 0;
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_ItemStack_descriptor;
-      }
-
-      @java.lang.Override
-      public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack getDefaultInstanceForType() {
-        return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack build() {
-        com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack buildPartial() {
-        com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack result = new com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack(this);
-        if (bitField0_ != 0) { buildPartial0(result); }
-        onBuilt();
-        return result;
-      }
-
-      private void buildPartial0(com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack result) {
-        int from_bitField0_ = bitField0_;
-        if (((from_bitField0_ & 0x00000001) != 0)) {
-          result.rawId_ = rawId_;
-        }
-        if (((from_bitField0_ & 0x00000002) != 0)) {
-          result.translationKey_ = translationKey_;
-        }
-        if (((from_bitField0_ & 0x00000004) != 0)) {
-          result.count_ = count_;
-        }
-        if (((from_bitField0_ & 0x00000008) != 0)) {
-          result.durability_ = durability_;
-        }
-        if (((from_bitField0_ & 0x00000010) != 0)) {
-          result.maxDurability_ = maxDurability_;
-        }
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack) {
-          return mergeFrom((com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack other) {
-        if (other == com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack.getDefaultInstance()) return this;
-        if (other.getRawId() != 0) {
-          setRawId(other.getRawId());
-        }
-        if (!other.getTranslationKey().isEmpty()) {
-          translationKey_ = other.translationKey_;
-          bitField0_ |= 0x00000002;
-          onChanged();
-        }
-        if (other.getCount() != 0) {
-          setCount(other.getCount());
-        }
-        if (other.getDurability() != 0) {
-          setDurability(other.getDurability());
-        }
-        if (other.getMaxDurability() != 0) {
-          setMaxDurability(other.getMaxDurability());
-        }
-        this.mergeUnknownFields(other.getUnknownFields());
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        if (extensionRegistry == null) {
-          throw new java.lang.NullPointerException();
-        }
-        try {
-          boolean done = false;
-          while (!done) {
-            int tag = input.readTag();
-            switch (tag) {
-              case 0:
-                done = true;
-                break;
-              case 8: {
-                rawId_ = input.readInt32();
-                bitField0_ |= 0x00000001;
-                break;
-              } // case 8
-              case 18: {
-                translationKey_ = input.readStringRequireUtf8();
-                bitField0_ |= 0x00000002;
-                break;
-              } // case 18
-              case 24: {
-                count_ = input.readInt32();
-                bitField0_ |= 0x00000004;
-                break;
-              } // case 24
-              case 32: {
-                durability_ = input.readInt32();
-                bitField0_ |= 0x00000008;
-                break;
-              } // case 32
-              case 40: {
-                maxDurability_ = input.readInt32();
-                bitField0_ |= 0x00000010;
-                break;
-              } // case 40
-              default: {
-                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                  done = true; // was an endgroup tag
+    public static final class ItemStack extends
+            com.google.protobuf.GeneratedMessageV3 implements
+            // @@protoc_insertion_point(message_implements:ItemStack)
+            ItemStackOrBuilder {
+        public static final int RAW_ID_FIELD_NUMBER = 1;
+        public static final int TRANSLATION_KEY_FIELD_NUMBER = 2;
+        public static final int COUNT_FIELD_NUMBER = 3;
+        public static final int DURABILITY_FIELD_NUMBER = 4;
+        public static final int MAX_DURABILITY_FIELD_NUMBER = 5;
+        private static final long serialVersionUID = 0L;
+        // @@protoc_insertion_point(class_scope:ItemStack)
+        private static final com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack DEFAULT_INSTANCE;
+        private static final com.google.protobuf.Parser<ItemStack>
+                PARSER = new com.google.protobuf.AbstractParser<ItemStack>() {
+            @java.lang.Override
+            public ItemStack parsePartialFrom(
+                    com.google.protobuf.CodedInputStream input,
+                    com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                    throws com.google.protobuf.InvalidProtocolBufferException {
+                Builder builder = newBuilder();
+                try {
+                    builder.mergeFrom(input, extensionRegistry);
+                } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                    throw e.setUnfinishedMessage(builder.buildPartial());
+                } catch (com.google.protobuf.UninitializedMessageException e) {
+                    throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+                } catch (java.io.IOException e) {
+                    throw new com.google.protobuf.InvalidProtocolBufferException(e)
+                            .setUnfinishedMessage(builder.buildPartial());
                 }
-                break;
-              } // default:
-            } // switch (tag)
-          } // while (!done)
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          throw e.unwrapIOException();
-        } finally {
-          onChanged();
-        } // finally
-        return this;
-      }
-      private int bitField0_;
+                return builder.buildPartial();
+            }
+        };
 
-      private int rawId_ ;
-      /**
-       * <code>int32 raw_id = 1;</code>
-       * @return The rawId.
-       */
-      @java.lang.Override
-      public int getRawId() {
-        return rawId_;
-      }
-      /**
-       * <code>int32 raw_id = 1;</code>
-       * @param value The rawId to set.
-       * @return This builder for chaining.
-       */
-      public Builder setRawId(int value) {
-        
-        rawId_ = value;
-        bitField0_ |= 0x00000001;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>int32 raw_id = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearRawId() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        rawId_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private java.lang.Object translationKey_ = "";
-      /**
-       * <code>string translation_key = 2;</code>
-       * @return The translationKey.
-       */
-      public java.lang.String getTranslationKey() {
-        java.lang.Object ref = translationKey_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          translationKey_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
+        static {
+            DEFAULT_INSTANCE = new com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack();
         }
-      }
-      /**
-       * <code>string translation_key = 2;</code>
-       * @return The bytes for translationKey.
-       */
-      public com.google.protobuf.ByteString
-          getTranslationKeyBytes() {
-        java.lang.Object ref = translationKey_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          translationKey_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
+
+        private int rawId_ = 0;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object translationKey_ = "";
+        private int count_ = 0;
+        private int durability_ = 0;
+        private int maxDurability_ = 0;
+        private byte memoizedIsInitialized = -1;
+        // Use ItemStack.newBuilder() to construct.
+        private ItemStack(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+            super(builder);
         }
-      }
-      /**
-       * <code>string translation_key = 2;</code>
-       * @param value The translationKey to set.
-       * @return This builder for chaining.
-       */
-      public Builder setTranslationKey(
-          java.lang.String value) {
-        if (value == null) { throw new NullPointerException(); }
-        translationKey_ = value;
-        bitField0_ |= 0x00000002;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string translation_key = 2;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearTranslationKey() {
-        translationKey_ = getDefaultInstance().getTranslationKey();
-        bitField0_ = (bitField0_ & ~0x00000002);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string translation_key = 2;</code>
-       * @param value The bytes for translationKey to set.
-       * @return This builder for chaining.
-       */
-      public Builder setTranslationKeyBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) { throw new NullPointerException(); }
-        checkByteStringIsUtf8(value);
-        translationKey_ = value;
-        bitField0_ |= 0x00000002;
-        onChanged();
-        return this;
-      }
 
-      private int count_ ;
-      /**
-       * <code>int32 count = 3;</code>
-       * @return The count.
-       */
-      @java.lang.Override
-      public int getCount() {
-        return count_;
-      }
-      /**
-       * <code>int32 count = 3;</code>
-       * @param value The count to set.
-       * @return This builder for chaining.
-       */
-      public Builder setCount(int value) {
-        
-        count_ = value;
-        bitField0_ |= 0x00000004;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>int32 count = 3;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearCount() {
-        bitField0_ = (bitField0_ & ~0x00000004);
-        count_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private int durability_ ;
-      /**
-       * <code>int32 durability = 4;</code>
-       * @return The durability.
-       */
-      @java.lang.Override
-      public int getDurability() {
-        return durability_;
-      }
-      /**
-       * <code>int32 durability = 4;</code>
-       * @param value The durability to set.
-       * @return This builder for chaining.
-       */
-      public Builder setDurability(int value) {
-        
-        durability_ = value;
-        bitField0_ |= 0x00000008;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>int32 durability = 4;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearDurability() {
-        bitField0_ = (bitField0_ & ~0x00000008);
-        durability_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private int maxDurability_ ;
-      /**
-       * <code>int32 max_durability = 5;</code>
-       * @return The maxDurability.
-       */
-      @java.lang.Override
-      public int getMaxDurability() {
-        return maxDurability_;
-      }
-      /**
-       * <code>int32 max_durability = 5;</code>
-       * @param value The maxDurability to set.
-       * @return This builder for chaining.
-       */
-      public Builder setMaxDurability(int value) {
-        
-        maxDurability_ = value;
-        bitField0_ |= 0x00000010;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>int32 max_durability = 5;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearMaxDurability() {
-        bitField0_ = (bitField0_ & ~0x00000010);
-        maxDurability_ = 0;
-        onChanged();
-        return this;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:ItemStack)
-    }
-
-    // @@protoc_insertion_point(class_scope:ItemStack)
-    private static final com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack();
-    }
-
-    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<ItemStack>
-        PARSER = new com.google.protobuf.AbstractParser<ItemStack>() {
-      @java.lang.Override
-      public ItemStack parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        Builder builder = newBuilder();
-        try {
-          builder.mergeFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          throw e.setUnfinishedMessage(builder.buildPartial());
-        } catch (com.google.protobuf.UninitializedMessageException e) {
-          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
-        } catch (java.io.IOException e) {
-          throw new com.google.protobuf.InvalidProtocolBufferException(e)
-              .setUnfinishedMessage(builder.buildPartial());
+        private ItemStack() {
+            translationKey_ = "";
         }
-        return builder.buildPartial();
-      }
-    };
 
-    public static com.google.protobuf.Parser<ItemStack> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<ItemStack> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
-  public interface BlockInfoOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:BlockInfo)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>int32 x = 1;</code>
-     * @return The x.
-     */
-    int getX();
-
-    /**
-     * <code>int32 y = 2;</code>
-     * @return The y.
-     */
-    int getY();
-
-    /**
-     * <code>int32 z = 3;</code>
-     * @return The z.
-     */
-    int getZ();
-
-    /**
-     * <code>string translation_key = 4;</code>
-     * @return The translationKey.
-     */
-    java.lang.String getTranslationKey();
-    /**
-     * <code>string translation_key = 4;</code>
-     * @return The bytes for translationKey.
-     */
-    com.google.protobuf.ByteString
-        getTranslationKeyBytes();
-  }
-  /**
-   * Protobuf type {@code BlockInfo}
-   */
-  public static final class BlockInfo extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:BlockInfo)
-      BlockInfoOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use BlockInfo.newBuilder() to construct.
-    private BlockInfo(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private BlockInfo() {
-      translationKey_ = "";
-    }
-
-    @java.lang.Override
-    @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
-      return new BlockInfo();
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
+        public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_BlockInfo_descriptor;
-    }
+            return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_ItemStack_descriptor;
+        }
 
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack parseFrom(
+                java.nio.ByteBuffer data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
+
+        public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack parseFrom(
+                java.nio.ByteBuffer data,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
+        }
+
+        public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack parseFrom(
+                com.google.protobuf.ByteString data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
+
+        public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack parseFrom(
+                com.google.protobuf.ByteString data,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
+        }
+
+        public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack parseFrom(byte[] data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
+
+        public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack parseFrom(
+                byte[] data,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
+        }
+
+        public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack parseFrom(java.io.InputStream input)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3
+                    .parseWithIOException(PARSER, input);
+        }
+
+        public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack parseFrom(
+                java.io.InputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3
+                    .parseWithIOException(PARSER, input, extensionRegistry);
+        }
+
+        public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack parseDelimitedFrom(java.io.InputStream input)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3
+                    .parseDelimitedWithIOException(PARSER, input);
+        }
+
+        public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack parseDelimitedFrom(
+                java.io.InputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3
+                    .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+        }
+
+        public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack parseFrom(
+                com.google.protobuf.CodedInputStream input)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3
+                    .parseWithIOException(PARSER, input);
+        }
+
+        public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack parseFrom(
+                com.google.protobuf.CodedInputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3
+                    .parseWithIOException(PARSER, input, extensionRegistry);
+        }
+
+        public static Builder newBuilder() {
+            return DEFAULT_INSTANCE.toBuilder();
+        }
+
+        public static Builder newBuilder(com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack prototype) {
+            return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+        }
+
+        public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack getDefaultInstance() {
+            return DEFAULT_INSTANCE;
+        }
+
+        public static com.google.protobuf.Parser<ItemStack> parser() {
+            return PARSER;
+        }
+
+        @java.lang.Override
+        @SuppressWarnings({"unused"})
+        protected java.lang.Object newInstance(
+                UnusedPrivateParameter unused) {
+            return new ItemStack();
+        }
+
+        @java.lang.Override
+        public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+            return this.unknownFields;
+        }
+
+        @java.lang.Override
+        protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_BlockInfo_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo.class, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo.Builder.class);
-    }
+            return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_ItemStack_fieldAccessorTable
+                    .ensureFieldAccessorsInitialized(
+                            com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack.class, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack.Builder.class);
+        }
 
-    public static final int X_FIELD_NUMBER = 1;
-    private int x_ = 0;
-    /**
-     * <code>int32 x = 1;</code>
-     * @return The x.
-     */
-    @java.lang.Override
-    public int getX() {
-      return x_;
-    }
+        /**
+         * <code>int32 raw_id = 1;</code>
+         *
+         * @return The rawId.
+         */
+        @java.lang.Override
+        public int getRawId() {
+            return rawId_;
+        }
 
-    public static final int Y_FIELD_NUMBER = 2;
-    private int y_ = 0;
-    /**
-     * <code>int32 y = 2;</code>
-     * @return The y.
-     */
-    @java.lang.Override
-    public int getY() {
-      return y_;
-    }
+        /**
+         * <code>string translation_key = 2;</code>
+         *
+         * @return The translationKey.
+         */
+        @java.lang.Override
+        public java.lang.String getTranslationKey() {
+            java.lang.Object ref = translationKey_;
+            if (ref instanceof java.lang.String) {
+                return (java.lang.String) ref;
+            } else {
+                com.google.protobuf.ByteString bs =
+                        (com.google.protobuf.ByteString) ref;
+                java.lang.String s = bs.toStringUtf8();
+                translationKey_ = s;
+                return s;
+            }
+        }
 
-    public static final int Z_FIELD_NUMBER = 3;
-    private int z_ = 0;
-    /**
-     * <code>int32 z = 3;</code>
-     * @return The z.
-     */
-    @java.lang.Override
-    public int getZ() {
-      return z_;
-    }
-
-    public static final int TRANSLATION_KEY_FIELD_NUMBER = 4;
-    @SuppressWarnings("serial")
-    private volatile java.lang.Object translationKey_ = "";
-    /**
-     * <code>string translation_key = 4;</code>
-     * @return The translationKey.
-     */
-    @java.lang.Override
-    public java.lang.String getTranslationKey() {
-      java.lang.Object ref = translationKey_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        translationKey_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string translation_key = 4;</code>
-     * @return The bytes for translationKey.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString
+        /**
+         * <code>string translation_key = 2;</code>
+         *
+         * @return The bytes for translationKey.
+         */
+        @java.lang.Override
+        public com.google.protobuf.ByteString
         getTranslationKeyBytes() {
-      java.lang.Object ref = translationKey_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        translationKey_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
+            java.lang.Object ref = translationKey_;
+            if (ref instanceof java.lang.String) {
+                com.google.protobuf.ByteString b =
+                        com.google.protobuf.ByteString.copyFromUtf8(
+                                (java.lang.String) ref);
+                translationKey_ = b;
+                return b;
+            } else {
+                return (com.google.protobuf.ByteString) ref;
+            }
+        }
+
+        /**
+         * <code>int32 count = 3;</code>
+         *
+         * @return The count.
+         */
+        @java.lang.Override
+        public int getCount() {
+            return count_;
+        }
+
+        /**
+         * <code>int32 durability = 4;</code>
+         *
+         * @return The durability.
+         */
+        @java.lang.Override
+        public int getDurability() {
+            return durability_;
+        }
+
+        /**
+         * <code>int32 max_durability = 5;</code>
+         *
+         * @return The maxDurability.
+         */
+        @java.lang.Override
+        public int getMaxDurability() {
+            return maxDurability_;
+        }
+
+        @java.lang.Override
+        public final boolean isInitialized() {
+            byte isInitialized = memoizedIsInitialized;
+            if (isInitialized == 1) return true;
+            if (isInitialized == 0) return false;
+
+            memoizedIsInitialized = 1;
+            return true;
+        }
+
+        @java.lang.Override
+        public void writeTo(com.google.protobuf.CodedOutputStream output)
+                throws java.io.IOException {
+            if (rawId_ != 0) {
+                output.writeInt32(1, rawId_);
+            }
+            if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(translationKey_)) {
+                com.google.protobuf.GeneratedMessageV3.writeString(output, 2, translationKey_);
+            }
+            if (count_ != 0) {
+                output.writeInt32(3, count_);
+            }
+            if (durability_ != 0) {
+                output.writeInt32(4, durability_);
+            }
+            if (maxDurability_ != 0) {
+                output.writeInt32(5, maxDurability_);
+            }
+            getUnknownFields().writeTo(output);
+        }
+
+        @java.lang.Override
+        public int getSerializedSize() {
+            int size = memoizedSize;
+            if (size != -1) return size;
+
+            size = 0;
+            if (rawId_ != 0) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeInt32Size(1, rawId_);
+            }
+            if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(translationKey_)) {
+                size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, translationKey_);
+            }
+            if (count_ != 0) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeInt32Size(3, count_);
+            }
+            if (durability_ != 0) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeInt32Size(4, durability_);
+            }
+            if (maxDurability_ != 0) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeInt32Size(5, maxDurability_);
+            }
+            size += getUnknownFields().getSerializedSize();
+            memoizedSize = size;
+            return size;
+        }
+
+        @java.lang.Override
+        public boolean equals(final java.lang.Object obj) {
+            if (obj == this) {
+                return true;
+            }
+            if (!(obj instanceof com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack)) {
+                return super.equals(obj);
+            }
+            com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack other = (com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack) obj;
+
+            if (getRawId()
+                    != other.getRawId()) return false;
+            if (!getTranslationKey()
+                    .equals(other.getTranslationKey())) return false;
+            if (getCount()
+                    != other.getCount()) return false;
+            if (getDurability()
+                    != other.getDurability()) return false;
+            if (getMaxDurability()
+                    != other.getMaxDurability()) return false;
+            if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+            return true;
+        }
+
+        @java.lang.Override
+        public int hashCode() {
+            if (memoizedHashCode != 0) {
+                return memoizedHashCode;
+            }
+            int hash = 41;
+            hash = (19 * hash) + getDescriptor().hashCode();
+            hash = (37 * hash) + RAW_ID_FIELD_NUMBER;
+            hash = (53 * hash) + getRawId();
+            hash = (37 * hash) + TRANSLATION_KEY_FIELD_NUMBER;
+            hash = (53 * hash) + getTranslationKey().hashCode();
+            hash = (37 * hash) + COUNT_FIELD_NUMBER;
+            hash = (53 * hash) + getCount();
+            hash = (37 * hash) + DURABILITY_FIELD_NUMBER;
+            hash = (53 * hash) + getDurability();
+            hash = (37 * hash) + MAX_DURABILITY_FIELD_NUMBER;
+            hash = (53 * hash) + getMaxDurability();
+            hash = (29 * hash) + getUnknownFields().hashCode();
+            memoizedHashCode = hash;
+            return hash;
+        }
+
+        @java.lang.Override
+        public Builder newBuilderForType() {
+            return newBuilder();
+        }
+
+        @java.lang.Override
+        public Builder toBuilder() {
+            return this == DEFAULT_INSTANCE
+                    ? new Builder() : new Builder().mergeFrom(this);
+        }
+
+        @java.lang.Override
+        protected Builder newBuilderForType(
+                com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+            Builder builder = new Builder(parent);
+            return builder;
+        }
+
+        @java.lang.Override
+        public com.google.protobuf.Parser<ItemStack> getParserForType() {
+            return PARSER;
+        }
+
+        @java.lang.Override
+        public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack getDefaultInstanceForType() {
+            return DEFAULT_INSTANCE;
+        }
+
+        /**
+         * Protobuf type {@code ItemStack}
+         */
+        public static final class Builder extends
+                com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+                // @@protoc_insertion_point(builder_implements:ItemStack)
+                com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStackOrBuilder {
+            private int bitField0_;
+            private int rawId_;
+            private java.lang.Object translationKey_ = "";
+            private int count_;
+            private int durability_;
+            private int maxDurability_;
+
+            // Construct using com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack.newBuilder()
+            private Builder() {
+
+            }
+
+            private Builder(
+                    com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+                super(parent);
+
+            }
+
+            public static final com.google.protobuf.Descriptors.Descriptor
+            getDescriptor() {
+                return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_ItemStack_descriptor;
+            }
+
+            @java.lang.Override
+            protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+            internalGetFieldAccessorTable() {
+                return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_ItemStack_fieldAccessorTable
+                        .ensureFieldAccessorsInitialized(
+                                com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack.class, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack.Builder.class);
+            }
+
+            @java.lang.Override
+            public Builder clear() {
+                super.clear();
+                bitField0_ = 0;
+                rawId_ = 0;
+                translationKey_ = "";
+                count_ = 0;
+                durability_ = 0;
+                maxDurability_ = 0;
+                return this;
+            }
+
+            @java.lang.Override
+            public com.google.protobuf.Descriptors.Descriptor
+            getDescriptorForType() {
+                return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_ItemStack_descriptor;
+            }
+
+            @java.lang.Override
+            public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack getDefaultInstanceForType() {
+                return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack.getDefaultInstance();
+            }
+
+            @java.lang.Override
+            public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack build() {
+                com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack result = buildPartial();
+                if (!result.isInitialized()) {
+                    throw newUninitializedMessageException(result);
+                }
+                return result;
+            }
+
+            @java.lang.Override
+            public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack buildPartial() {
+                com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack result = new com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack(this);
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
+                }
+                onBuilt();
+                return result;
+            }
+
+            private void buildPartial0(com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack result) {
+                int from_bitField0_ = bitField0_;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    result.rawId_ = rawId_;
+                }
+                if (((from_bitField0_ & 0x00000002) != 0)) {
+                    result.translationKey_ = translationKey_;
+                }
+                if (((from_bitField0_ & 0x00000004) != 0)) {
+                    result.count_ = count_;
+                }
+                if (((from_bitField0_ & 0x00000008) != 0)) {
+                    result.durability_ = durability_;
+                }
+                if (((from_bitField0_ & 0x00000010) != 0)) {
+                    result.maxDurability_ = maxDurability_;
+                }
+            }
+
+            @java.lang.Override
+            public Builder clone() {
+                return super.clone();
+            }
+
+            @java.lang.Override
+            public Builder setField(
+                    com.google.protobuf.Descriptors.FieldDescriptor field,
+                    java.lang.Object value) {
+                return super.setField(field, value);
+            }
+
+            @java.lang.Override
+            public Builder clearField(
+                    com.google.protobuf.Descriptors.FieldDescriptor field) {
+                return super.clearField(field);
+            }
+
+            @java.lang.Override
+            public Builder clearOneof(
+                    com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+                return super.clearOneof(oneof);
+            }
+
+            @java.lang.Override
+            public Builder setRepeatedField(
+                    com.google.protobuf.Descriptors.FieldDescriptor field,
+                    int index, java.lang.Object value) {
+                return super.setRepeatedField(field, index, value);
+            }
+
+            @java.lang.Override
+            public Builder addRepeatedField(
+                    com.google.protobuf.Descriptors.FieldDescriptor field,
+                    java.lang.Object value) {
+                return super.addRepeatedField(field, value);
+            }
+
+            @java.lang.Override
+            public Builder mergeFrom(com.google.protobuf.Message other) {
+                if (other instanceof com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack) {
+                    return mergeFrom((com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack) other);
+                } else {
+                    super.mergeFrom(other);
+                    return this;
+                }
+            }
+
+            public Builder mergeFrom(com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack other) {
+                if (other == com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack.getDefaultInstance())
+                    return this;
+                if (other.getRawId() != 0) {
+                    setRawId(other.getRawId());
+                }
+                if (!other.getTranslationKey().isEmpty()) {
+                    translationKey_ = other.translationKey_;
+                    bitField0_ |= 0x00000002;
+                    onChanged();
+                }
+                if (other.getCount() != 0) {
+                    setCount(other.getCount());
+                }
+                if (other.getDurability() != 0) {
+                    setDurability(other.getDurability());
+                }
+                if (other.getMaxDurability() != 0) {
+                    setMaxDurability(other.getMaxDurability());
+                }
+                this.mergeUnknownFields(other.getUnknownFields());
+                onChanged();
+                return this;
+            }
+
+            @java.lang.Override
+            public final boolean isInitialized() {
+                return true;
+            }
+
+            @java.lang.Override
+            public Builder mergeFrom(
+                    com.google.protobuf.CodedInputStream input,
+                    com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                    throws java.io.IOException {
+                if (extensionRegistry == null) {
+                    throw new java.lang.NullPointerException();
+                }
+                try {
+                    boolean done = false;
+                    while (!done) {
+                        int tag = input.readTag();
+                        switch (tag) {
+                            case 0:
+                                done = true;
+                                break;
+                            case 8: {
+                                rawId_ = input.readInt32();
+                                bitField0_ |= 0x00000001;
+                                break;
+                            } // case 8
+                            case 18: {
+                                translationKey_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000002;
+                                break;
+                            } // case 18
+                            case 24: {
+                                count_ = input.readInt32();
+                                bitField0_ |= 0x00000004;
+                                break;
+                            } // case 24
+                            case 32: {
+                                durability_ = input.readInt32();
+                                bitField0_ |= 0x00000008;
+                                break;
+                            } // case 32
+                            case 40: {
+                                maxDurability_ = input.readInt32();
+                                bitField0_ |= 0x00000010;
+                                break;
+                            } // case 40
+                            default: {
+                                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                                    done = true; // was an endgroup tag
+                                }
+                                break;
+                            } // default:
+                        } // switch (tag)
+                    } // while (!done)
+                } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                    throw e.unwrapIOException();
+                } finally {
+                    onChanged();
+                } // finally
+                return this;
+            }
+
+            /**
+             * <code>int32 raw_id = 1;</code>
+             *
+             * @return The rawId.
+             */
+            @java.lang.Override
+            public int getRawId() {
+                return rawId_;
+            }
+
+            /**
+             * <code>int32 raw_id = 1;</code>
+             *
+             * @param value The rawId to set.
+             * @return This builder for chaining.
+             */
+            public Builder setRawId(int value) {
+
+                rawId_ = value;
+                bitField0_ |= 0x00000001;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>int32 raw_id = 1;</code>
+             *
+             * @return This builder for chaining.
+             */
+            public Builder clearRawId() {
+                bitField0_ = (bitField0_ & ~0x00000001);
+                rawId_ = 0;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>string translation_key = 2;</code>
+             *
+             * @return The translationKey.
+             */
+            public java.lang.String getTranslationKey() {
+                java.lang.Object ref = translationKey_;
+                if (!(ref instanceof java.lang.String)) {
+                    com.google.protobuf.ByteString bs =
+                            (com.google.protobuf.ByteString) ref;
+                    java.lang.String s = bs.toStringUtf8();
+                    translationKey_ = s;
+                    return s;
+                } else {
+                    return (java.lang.String) ref;
+                }
+            }
+
+            /**
+             * <code>string translation_key = 2;</code>
+             *
+             * @param value The translationKey to set.
+             * @return This builder for chaining.
+             */
+            public Builder setTranslationKey(
+                    java.lang.String value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                translationKey_ = value;
+                bitField0_ |= 0x00000002;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>string translation_key = 2;</code>
+             *
+             * @return The bytes for translationKey.
+             */
+            public com.google.protobuf.ByteString
+            getTranslationKeyBytes() {
+                java.lang.Object ref = translationKey_;
+                if (ref instanceof String) {
+                    com.google.protobuf.ByteString b =
+                            com.google.protobuf.ByteString.copyFromUtf8(
+                                    (java.lang.String) ref);
+                    translationKey_ = b;
+                    return b;
+                } else {
+                    return (com.google.protobuf.ByteString) ref;
+                }
+            }
+
+            /**
+             * <code>string translation_key = 2;</code>
+             *
+             * @param value The bytes for translationKey to set.
+             * @return This builder for chaining.
+             */
+            public Builder setTranslationKeyBytes(
+                    com.google.protobuf.ByteString value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                checkByteStringIsUtf8(value);
+                translationKey_ = value;
+                bitField0_ |= 0x00000002;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>string translation_key = 2;</code>
+             *
+             * @return This builder for chaining.
+             */
+            public Builder clearTranslationKey() {
+                translationKey_ = getDefaultInstance().getTranslationKey();
+                bitField0_ = (bitField0_ & ~0x00000002);
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>int32 count = 3;</code>
+             *
+             * @return The count.
+             */
+            @java.lang.Override
+            public int getCount() {
+                return count_;
+            }
+
+            /**
+             * <code>int32 count = 3;</code>
+             *
+             * @param value The count to set.
+             * @return This builder for chaining.
+             */
+            public Builder setCount(int value) {
+
+                count_ = value;
+                bitField0_ |= 0x00000004;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>int32 count = 3;</code>
+             *
+             * @return This builder for chaining.
+             */
+            public Builder clearCount() {
+                bitField0_ = (bitField0_ & ~0x00000004);
+                count_ = 0;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>int32 durability = 4;</code>
+             *
+             * @return The durability.
+             */
+            @java.lang.Override
+            public int getDurability() {
+                return durability_;
+            }
+
+            /**
+             * <code>int32 durability = 4;</code>
+             *
+             * @param value The durability to set.
+             * @return This builder for chaining.
+             */
+            public Builder setDurability(int value) {
+
+                durability_ = value;
+                bitField0_ |= 0x00000008;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>int32 durability = 4;</code>
+             *
+             * @return This builder for chaining.
+             */
+            public Builder clearDurability() {
+                bitField0_ = (bitField0_ & ~0x00000008);
+                durability_ = 0;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>int32 max_durability = 5;</code>
+             *
+             * @return The maxDurability.
+             */
+            @java.lang.Override
+            public int getMaxDurability() {
+                return maxDurability_;
+            }
+
+            /**
+             * <code>int32 max_durability = 5;</code>
+             *
+             * @param value The maxDurability to set.
+             * @return This builder for chaining.
+             */
+            public Builder setMaxDurability(int value) {
+
+                maxDurability_ = value;
+                bitField0_ |= 0x00000010;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>int32 max_durability = 5;</code>
+             *
+             * @return This builder for chaining.
+             */
+            public Builder clearMaxDurability() {
+                bitField0_ = (bitField0_ & ~0x00000010);
+                maxDurability_ = 0;
+                onChanged();
+                return this;
+            }
+
+            @java.lang.Override
+            public final Builder setUnknownFields(
+                    final com.google.protobuf.UnknownFieldSet unknownFields) {
+                return super.setUnknownFields(unknownFields);
+            }
+
+            @java.lang.Override
+            public final Builder mergeUnknownFields(
+                    final com.google.protobuf.UnknownFieldSet unknownFields) {
+                return super.mergeUnknownFields(unknownFields);
+            }
+
+
+            // @@protoc_insertion_point(builder_scope:ItemStack)
+        }
+
     }
 
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (x_ != 0) {
-        output.writeInt32(1, x_);
-      }
-      if (y_ != 0) {
-        output.writeInt32(2, y_);
-      }
-      if (z_ != 0) {
-        output.writeInt32(3, z_);
-      }
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(translationKey_)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, translationKey_);
-      }
-      getUnknownFields().writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (x_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, x_);
-      }
-      if (y_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, y_);
-      }
-      if (z_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(3, z_);
-      }
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(translationKey_)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, translationKey_);
-      }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo)) {
-        return super.equals(obj);
-      }
-      com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo other = (com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo) obj;
-
-      if (getX()
-          != other.getX()) return false;
-      if (getY()
-          != other.getY()) return false;
-      if (getZ()
-          != other.getZ()) return false;
-      if (!getTranslationKey()
-          .equals(other.getTranslationKey())) return false;
-      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
-      return true;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + X_FIELD_NUMBER;
-      hash = (53 * hash) + getX();
-      hash = (37 * hash) + Y_FIELD_NUMBER;
-      hash = (53 * hash) + getY();
-      hash = (37 * hash) + Z_FIELD_NUMBER;
-      hash = (53 * hash) + getZ();
-      hash = (37 * hash) + TRANSLATION_KEY_FIELD_NUMBER;
-      hash = (53 * hash) + getTranslationKey().hashCode();
-      hash = (29 * hash) + getUnknownFields().hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
     /**
      * Protobuf type {@code BlockInfo}
      */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:BlockInfo)
-        com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfoOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_BlockInfo_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_BlockInfo_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo.class, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo.Builder.class);
-      }
-
-      // Construct using com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo.newBuilder()
-      private Builder() {
-
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        bitField0_ = 0;
-        x_ = 0;
-        y_ = 0;
-        z_ = 0;
-        translationKey_ = "";
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_BlockInfo_descriptor;
-      }
-
-      @java.lang.Override
-      public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo getDefaultInstanceForType() {
-        return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo build() {
-        com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo buildPartial() {
-        com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo result = new com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo(this);
-        if (bitField0_ != 0) { buildPartial0(result); }
-        onBuilt();
-        return result;
-      }
-
-      private void buildPartial0(com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo result) {
-        int from_bitField0_ = bitField0_;
-        if (((from_bitField0_ & 0x00000001) != 0)) {
-          result.x_ = x_;
-        }
-        if (((from_bitField0_ & 0x00000002) != 0)) {
-          result.y_ = y_;
-        }
-        if (((from_bitField0_ & 0x00000004) != 0)) {
-          result.z_ = z_;
-        }
-        if (((from_bitField0_ & 0x00000008) != 0)) {
-          result.translationKey_ = translationKey_;
-        }
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo) {
-          return mergeFrom((com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo other) {
-        if (other == com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo.getDefaultInstance()) return this;
-        if (other.getX() != 0) {
-          setX(other.getX());
-        }
-        if (other.getY() != 0) {
-          setY(other.getY());
-        }
-        if (other.getZ() != 0) {
-          setZ(other.getZ());
-        }
-        if (!other.getTranslationKey().isEmpty()) {
-          translationKey_ = other.translationKey_;
-          bitField0_ |= 0x00000008;
-          onChanged();
-        }
-        this.mergeUnknownFields(other.getUnknownFields());
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        if (extensionRegistry == null) {
-          throw new java.lang.NullPointerException();
-        }
-        try {
-          boolean done = false;
-          while (!done) {
-            int tag = input.readTag();
-            switch (tag) {
-              case 0:
-                done = true;
-                break;
-              case 8: {
-                x_ = input.readInt32();
-                bitField0_ |= 0x00000001;
-                break;
-              } // case 8
-              case 16: {
-                y_ = input.readInt32();
-                bitField0_ |= 0x00000002;
-                break;
-              } // case 16
-              case 24: {
-                z_ = input.readInt32();
-                bitField0_ |= 0x00000004;
-                break;
-              } // case 24
-              case 34: {
-                translationKey_ = input.readStringRequireUtf8();
-                bitField0_ |= 0x00000008;
-                break;
-              } // case 34
-              default: {
-                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                  done = true; // was an endgroup tag
+    public static final class BlockInfo extends
+            com.google.protobuf.GeneratedMessageV3 implements
+            // @@protoc_insertion_point(message_implements:BlockInfo)
+            BlockInfoOrBuilder {
+        public static final int X_FIELD_NUMBER = 1;
+        public static final int Y_FIELD_NUMBER = 2;
+        public static final int Z_FIELD_NUMBER = 3;
+        public static final int TRANSLATION_KEY_FIELD_NUMBER = 4;
+        private static final long serialVersionUID = 0L;
+        // @@protoc_insertion_point(class_scope:BlockInfo)
+        private static final com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo DEFAULT_INSTANCE;
+        private static final com.google.protobuf.Parser<BlockInfo>
+                PARSER = new com.google.protobuf.AbstractParser<BlockInfo>() {
+            @java.lang.Override
+            public BlockInfo parsePartialFrom(
+                    com.google.protobuf.CodedInputStream input,
+                    com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                    throws com.google.protobuf.InvalidProtocolBufferException {
+                Builder builder = newBuilder();
+                try {
+                    builder.mergeFrom(input, extensionRegistry);
+                } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                    throw e.setUnfinishedMessage(builder.buildPartial());
+                } catch (com.google.protobuf.UninitializedMessageException e) {
+                    throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+                } catch (java.io.IOException e) {
+                    throw new com.google.protobuf.InvalidProtocolBufferException(e)
+                            .setUnfinishedMessage(builder.buildPartial());
                 }
-                break;
-              } // default:
-            } // switch (tag)
-          } // while (!done)
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          throw e.unwrapIOException();
-        } finally {
-          onChanged();
-        } // finally
-        return this;
-      }
-      private int bitField0_;
+                return builder.buildPartial();
+            }
+        };
 
-      private int x_ ;
-      /**
-       * <code>int32 x = 1;</code>
-       * @return The x.
-       */
-      @java.lang.Override
-      public int getX() {
-        return x_;
-      }
-      /**
-       * <code>int32 x = 1;</code>
-       * @param value The x to set.
-       * @return This builder for chaining.
-       */
-      public Builder setX(int value) {
-        
-        x_ = value;
-        bitField0_ |= 0x00000001;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>int32 x = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearX() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        x_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private int y_ ;
-      /**
-       * <code>int32 y = 2;</code>
-       * @return The y.
-       */
-      @java.lang.Override
-      public int getY() {
-        return y_;
-      }
-      /**
-       * <code>int32 y = 2;</code>
-       * @param value The y to set.
-       * @return This builder for chaining.
-       */
-      public Builder setY(int value) {
-        
-        y_ = value;
-        bitField0_ |= 0x00000002;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>int32 y = 2;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearY() {
-        bitField0_ = (bitField0_ & ~0x00000002);
-        y_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private int z_ ;
-      /**
-       * <code>int32 z = 3;</code>
-       * @return The z.
-       */
-      @java.lang.Override
-      public int getZ() {
-        return z_;
-      }
-      /**
-       * <code>int32 z = 3;</code>
-       * @param value The z to set.
-       * @return This builder for chaining.
-       */
-      public Builder setZ(int value) {
-        
-        z_ = value;
-        bitField0_ |= 0x00000004;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>int32 z = 3;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearZ() {
-        bitField0_ = (bitField0_ & ~0x00000004);
-        z_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private java.lang.Object translationKey_ = "";
-      /**
-       * <code>string translation_key = 4;</code>
-       * @return The translationKey.
-       */
-      public java.lang.String getTranslationKey() {
-        java.lang.Object ref = translationKey_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          translationKey_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
+        static {
+            DEFAULT_INSTANCE = new com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo();
         }
-      }
-      /**
-       * <code>string translation_key = 4;</code>
-       * @return The bytes for translationKey.
-       */
-      public com.google.protobuf.ByteString
-          getTranslationKeyBytes() {
-        java.lang.Object ref = translationKey_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          translationKey_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
+
+        private int x_ = 0;
+        private int y_ = 0;
+        private int z_ = 0;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object translationKey_ = "";
+        private byte memoizedIsInitialized = -1;
+
+        // Use BlockInfo.newBuilder() to construct.
+        private BlockInfo(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+            super(builder);
         }
-      }
-      /**
-       * <code>string translation_key = 4;</code>
-       * @param value The translationKey to set.
-       * @return This builder for chaining.
-       */
-      public Builder setTranslationKey(
-          java.lang.String value) {
-        if (value == null) { throw new NullPointerException(); }
-        translationKey_ = value;
-        bitField0_ |= 0x00000008;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string translation_key = 4;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearTranslationKey() {
-        translationKey_ = getDefaultInstance().getTranslationKey();
-        bitField0_ = (bitField0_ & ~0x00000008);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string translation_key = 4;</code>
-       * @param value The bytes for translationKey to set.
-       * @return This builder for chaining.
-       */
-      public Builder setTranslationKeyBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) { throw new NullPointerException(); }
-        checkByteStringIsUtf8(value);
-        translationKey_ = value;
-        bitField0_ |= 0x00000008;
-        onChanged();
-        return this;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:BlockInfo)
-    }
-
-    // @@protoc_insertion_point(class_scope:BlockInfo)
-    private static final com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo();
-    }
-
-    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<BlockInfo>
-        PARSER = new com.google.protobuf.AbstractParser<BlockInfo>() {
-      @java.lang.Override
-      public BlockInfo parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        Builder builder = newBuilder();
-        try {
-          builder.mergeFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          throw e.setUnfinishedMessage(builder.buildPartial());
-        } catch (com.google.protobuf.UninitializedMessageException e) {
-          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
-        } catch (java.io.IOException e) {
-          throw new com.google.protobuf.InvalidProtocolBufferException(e)
-              .setUnfinishedMessage(builder.buildPartial());
+        private BlockInfo() {
+            translationKey_ = "";
         }
-        return builder.buildPartial();
-      }
-    };
 
-    public static com.google.protobuf.Parser<BlockInfo> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<BlockInfo> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
-  public interface EntityInfoOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:EntityInfo)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>string unique_name = 1;</code>
-     * @return The uniqueName.
-     */
-    java.lang.String getUniqueName();
-    /**
-     * <code>string unique_name = 1;</code>
-     * @return The bytes for uniqueName.
-     */
-    com.google.protobuf.ByteString
-        getUniqueNameBytes();
-
-    /**
-     * <code>string translation_key = 2;</code>
-     * @return The translationKey.
-     */
-    java.lang.String getTranslationKey();
-    /**
-     * <code>string translation_key = 2;</code>
-     * @return The bytes for translationKey.
-     */
-    com.google.protobuf.ByteString
-        getTranslationKeyBytes();
-
-    /**
-     * <code>double x = 3;</code>
-     * @return The x.
-     */
-    double getX();
-
-    /**
-     * <code>double y = 4;</code>
-     * @return The y.
-     */
-    double getY();
-
-    /**
-     * <code>double z = 5;</code>
-     * @return The z.
-     */
-    double getZ();
-
-    /**
-     * <code>double yaw = 6;</code>
-     * @return The yaw.
-     */
-    double getYaw();
-
-    /**
-     * <code>double pitch = 7;</code>
-     * @return The pitch.
-     */
-    double getPitch();
-
-    /**
-     * <code>double health = 8;</code>
-     * @return The health.
-     */
-    double getHealth();
-  }
-  /**
-   * Protobuf type {@code EntityInfo}
-   */
-  public static final class EntityInfo extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:EntityInfo)
-      EntityInfoOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use EntityInfo.newBuilder() to construct.
-    private EntityInfo(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private EntityInfo() {
-      uniqueName_ = "";
-      translationKey_ = "";
-    }
-
-    @java.lang.Override
-    @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
-      return new EntityInfo();
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
+        public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_EntityInfo_descriptor;
-    }
+            return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_BlockInfo_descriptor;
+        }
 
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo parseFrom(
+                java.nio.ByteBuffer data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
+
+        public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo parseFrom(
+                java.nio.ByteBuffer data,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
+        }
+
+        public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo parseFrom(
+                com.google.protobuf.ByteString data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
+
+        public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo parseFrom(
+                com.google.protobuf.ByteString data,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
+        }
+
+        public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo parseFrom(byte[] data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
+
+        public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo parseFrom(
+                byte[] data,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
+        }
+
+        public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo parseFrom(java.io.InputStream input)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3
+                    .parseWithIOException(PARSER, input);
+        }
+
+        public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo parseFrom(
+                java.io.InputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3
+                    .parseWithIOException(PARSER, input, extensionRegistry);
+        }
+
+        public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo parseDelimitedFrom(java.io.InputStream input)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3
+                    .parseDelimitedWithIOException(PARSER, input);
+        }
+
+        public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo parseDelimitedFrom(
+                java.io.InputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3
+                    .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+        }
+
+        public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo parseFrom(
+                com.google.protobuf.CodedInputStream input)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3
+                    .parseWithIOException(PARSER, input);
+        }
+
+        public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo parseFrom(
+                com.google.protobuf.CodedInputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3
+                    .parseWithIOException(PARSER, input, extensionRegistry);
+        }
+
+        public static Builder newBuilder() {
+            return DEFAULT_INSTANCE.toBuilder();
+        }
+
+        public static Builder newBuilder(com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo prototype) {
+            return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+        }
+
+        public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo getDefaultInstance() {
+            return DEFAULT_INSTANCE;
+        }
+
+        public static com.google.protobuf.Parser<BlockInfo> parser() {
+            return PARSER;
+        }
+
+        @java.lang.Override
+        @SuppressWarnings({"unused"})
+        protected java.lang.Object newInstance(
+                UnusedPrivateParameter unused) {
+            return new BlockInfo();
+        }
+
+        @java.lang.Override
+        public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+            return this.unknownFields;
+        }
+
+        @java.lang.Override
+        protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_EntityInfo_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo.class, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo.Builder.class);
-    }
+            return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_BlockInfo_fieldAccessorTable
+                    .ensureFieldAccessorsInitialized(
+                            com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo.class, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo.Builder.class);
+        }
 
-    public static final int UNIQUE_NAME_FIELD_NUMBER = 1;
-    @SuppressWarnings("serial")
-    private volatile java.lang.Object uniqueName_ = "";
-    /**
-     * <code>string unique_name = 1;</code>
-     * @return The uniqueName.
-     */
-    @java.lang.Override
-    public java.lang.String getUniqueName() {
-      java.lang.Object ref = uniqueName_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        uniqueName_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string unique_name = 1;</code>
-     * @return The bytes for uniqueName.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString
-        getUniqueNameBytes() {
-      java.lang.Object ref = uniqueName_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        uniqueName_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
+        /**
+         * <code>int32 x = 1;</code>
+         *
+         * @return The x.
+         */
+        @java.lang.Override
+        public int getX() {
+            return x_;
+        }
 
-    public static final int TRANSLATION_KEY_FIELD_NUMBER = 2;
-    @SuppressWarnings("serial")
-    private volatile java.lang.Object translationKey_ = "";
-    /**
-     * <code>string translation_key = 2;</code>
-     * @return The translationKey.
-     */
-    @java.lang.Override
-    public java.lang.String getTranslationKey() {
-      java.lang.Object ref = translationKey_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        translationKey_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string translation_key = 2;</code>
-     * @return The bytes for translationKey.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString
+        /**
+         * <code>int32 y = 2;</code>
+         *
+         * @return The y.
+         */
+        @java.lang.Override
+        public int getY() {
+            return y_;
+        }
+
+        /**
+         * <code>int32 z = 3;</code>
+         *
+         * @return The z.
+         */
+        @java.lang.Override
+        public int getZ() {
+            return z_;
+        }
+
+        /**
+         * <code>string translation_key = 4;</code>
+         *
+         * @return The translationKey.
+         */
+        @java.lang.Override
+        public java.lang.String getTranslationKey() {
+            java.lang.Object ref = translationKey_;
+            if (ref instanceof java.lang.String) {
+                return (java.lang.String) ref;
+            } else {
+                com.google.protobuf.ByteString bs =
+                        (com.google.protobuf.ByteString) ref;
+                java.lang.String s = bs.toStringUtf8();
+                translationKey_ = s;
+                return s;
+            }
+        }
+
+        /**
+         * <code>string translation_key = 4;</code>
+         *
+         * @return The bytes for translationKey.
+         */
+        @java.lang.Override
+        public com.google.protobuf.ByteString
         getTranslationKeyBytes() {
-      java.lang.Object ref = translationKey_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        translationKey_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
+            java.lang.Object ref = translationKey_;
+            if (ref instanceof java.lang.String) {
+                com.google.protobuf.ByteString b =
+                        com.google.protobuf.ByteString.copyFromUtf8(
+                                (java.lang.String) ref);
+                translationKey_ = b;
+                return b;
+            } else {
+                return (com.google.protobuf.ByteString) ref;
+            }
+        }
+
+        @java.lang.Override
+        public final boolean isInitialized() {
+            byte isInitialized = memoizedIsInitialized;
+            if (isInitialized == 1) return true;
+            if (isInitialized == 0) return false;
+
+            memoizedIsInitialized = 1;
+            return true;
+        }
+
+        @java.lang.Override
+        public void writeTo(com.google.protobuf.CodedOutputStream output)
+                throws java.io.IOException {
+            if (x_ != 0) {
+                output.writeInt32(1, x_);
+            }
+            if (y_ != 0) {
+                output.writeInt32(2, y_);
+            }
+            if (z_ != 0) {
+                output.writeInt32(3, z_);
+            }
+            if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(translationKey_)) {
+                com.google.protobuf.GeneratedMessageV3.writeString(output, 4, translationKey_);
+            }
+            getUnknownFields().writeTo(output);
+        }
+
+        @java.lang.Override
+        public int getSerializedSize() {
+            int size = memoizedSize;
+            if (size != -1) return size;
+
+            size = 0;
+            if (x_ != 0) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeInt32Size(1, x_);
+            }
+            if (y_ != 0) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeInt32Size(2, y_);
+            }
+            if (z_ != 0) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeInt32Size(3, z_);
+            }
+            if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(translationKey_)) {
+                size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, translationKey_);
+            }
+            size += getUnknownFields().getSerializedSize();
+            memoizedSize = size;
+            return size;
+        }
+
+        @java.lang.Override
+        public boolean equals(final java.lang.Object obj) {
+            if (obj == this) {
+                return true;
+            }
+            if (!(obj instanceof com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo)) {
+                return super.equals(obj);
+            }
+            com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo other = (com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo) obj;
+
+            if (getX()
+                    != other.getX()) return false;
+            if (getY()
+                    != other.getY()) return false;
+            if (getZ()
+                    != other.getZ()) return false;
+            if (!getTranslationKey()
+                    .equals(other.getTranslationKey())) return false;
+            if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+            return true;
+        }
+
+        @java.lang.Override
+        public int hashCode() {
+            if (memoizedHashCode != 0) {
+                return memoizedHashCode;
+            }
+            int hash = 41;
+            hash = (19 * hash) + getDescriptor().hashCode();
+            hash = (37 * hash) + X_FIELD_NUMBER;
+            hash = (53 * hash) + getX();
+            hash = (37 * hash) + Y_FIELD_NUMBER;
+            hash = (53 * hash) + getY();
+            hash = (37 * hash) + Z_FIELD_NUMBER;
+            hash = (53 * hash) + getZ();
+            hash = (37 * hash) + TRANSLATION_KEY_FIELD_NUMBER;
+            hash = (53 * hash) + getTranslationKey().hashCode();
+            hash = (29 * hash) + getUnknownFields().hashCode();
+            memoizedHashCode = hash;
+            return hash;
+        }
+
+        @java.lang.Override
+        public Builder newBuilderForType() {
+            return newBuilder();
+        }
+
+        @java.lang.Override
+        public Builder toBuilder() {
+            return this == DEFAULT_INSTANCE
+                    ? new Builder() : new Builder().mergeFrom(this);
+        }
+
+        @java.lang.Override
+        protected Builder newBuilderForType(
+                com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+            Builder builder = new Builder(parent);
+            return builder;
+        }
+
+        @java.lang.Override
+        public com.google.protobuf.Parser<BlockInfo> getParserForType() {
+            return PARSER;
+        }
+
+        @java.lang.Override
+        public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo getDefaultInstanceForType() {
+            return DEFAULT_INSTANCE;
+        }
+
+        /**
+         * Protobuf type {@code BlockInfo}
+         */
+        public static final class Builder extends
+                com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+                // @@protoc_insertion_point(builder_implements:BlockInfo)
+                com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfoOrBuilder {
+            private int bitField0_;
+            private int x_;
+            private int y_;
+            private int z_;
+            private java.lang.Object translationKey_ = "";
+
+            // Construct using com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo.newBuilder()
+            private Builder() {
+
+            }
+
+            private Builder(
+                    com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+                super(parent);
+
+            }
+
+            public static final com.google.protobuf.Descriptors.Descriptor
+            getDescriptor() {
+                return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_BlockInfo_descriptor;
+            }
+
+            @java.lang.Override
+            protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+            internalGetFieldAccessorTable() {
+                return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_BlockInfo_fieldAccessorTable
+                        .ensureFieldAccessorsInitialized(
+                                com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo.class, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo.Builder.class);
+            }
+
+            @java.lang.Override
+            public Builder clear() {
+                super.clear();
+                bitField0_ = 0;
+                x_ = 0;
+                y_ = 0;
+                z_ = 0;
+                translationKey_ = "";
+                return this;
+            }
+
+            @java.lang.Override
+            public com.google.protobuf.Descriptors.Descriptor
+            getDescriptorForType() {
+                return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_BlockInfo_descriptor;
+            }
+
+            @java.lang.Override
+            public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo getDefaultInstanceForType() {
+                return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo.getDefaultInstance();
+            }
+
+            @java.lang.Override
+            public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo build() {
+                com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo result = buildPartial();
+                if (!result.isInitialized()) {
+                    throw newUninitializedMessageException(result);
+                }
+                return result;
+            }
+
+            @java.lang.Override
+            public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo buildPartial() {
+                com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo result = new com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo(this);
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
+                }
+                onBuilt();
+                return result;
+            }
+
+            private void buildPartial0(com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo result) {
+                int from_bitField0_ = bitField0_;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    result.x_ = x_;
+                }
+                if (((from_bitField0_ & 0x00000002) != 0)) {
+                    result.y_ = y_;
+                }
+                if (((from_bitField0_ & 0x00000004) != 0)) {
+                    result.z_ = z_;
+                }
+                if (((from_bitField0_ & 0x00000008) != 0)) {
+                    result.translationKey_ = translationKey_;
+                }
+            }
+
+            @java.lang.Override
+            public Builder clone() {
+                return super.clone();
+            }
+
+            @java.lang.Override
+            public Builder setField(
+                    com.google.protobuf.Descriptors.FieldDescriptor field,
+                    java.lang.Object value) {
+                return super.setField(field, value);
+            }
+
+            @java.lang.Override
+            public Builder clearField(
+                    com.google.protobuf.Descriptors.FieldDescriptor field) {
+                return super.clearField(field);
+            }
+
+            @java.lang.Override
+            public Builder clearOneof(
+                    com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+                return super.clearOneof(oneof);
+            }
+
+            @java.lang.Override
+            public Builder setRepeatedField(
+                    com.google.protobuf.Descriptors.FieldDescriptor field,
+                    int index, java.lang.Object value) {
+                return super.setRepeatedField(field, index, value);
+            }
+
+            @java.lang.Override
+            public Builder addRepeatedField(
+                    com.google.protobuf.Descriptors.FieldDescriptor field,
+                    java.lang.Object value) {
+                return super.addRepeatedField(field, value);
+            }
+
+            @java.lang.Override
+            public Builder mergeFrom(com.google.protobuf.Message other) {
+                if (other instanceof com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo) {
+                    return mergeFrom((com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo) other);
+                } else {
+                    super.mergeFrom(other);
+                    return this;
+                }
+            }
+
+            public Builder mergeFrom(com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo other) {
+                if (other == com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo.getDefaultInstance())
+                    return this;
+                if (other.getX() != 0) {
+                    setX(other.getX());
+                }
+                if (other.getY() != 0) {
+                    setY(other.getY());
+                }
+                if (other.getZ() != 0) {
+                    setZ(other.getZ());
+                }
+                if (!other.getTranslationKey().isEmpty()) {
+                    translationKey_ = other.translationKey_;
+                    bitField0_ |= 0x00000008;
+                    onChanged();
+                }
+                this.mergeUnknownFields(other.getUnknownFields());
+                onChanged();
+                return this;
+            }
+
+            @java.lang.Override
+            public final boolean isInitialized() {
+                return true;
+            }
+
+            @java.lang.Override
+            public Builder mergeFrom(
+                    com.google.protobuf.CodedInputStream input,
+                    com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                    throws java.io.IOException {
+                if (extensionRegistry == null) {
+                    throw new java.lang.NullPointerException();
+                }
+                try {
+                    boolean done = false;
+                    while (!done) {
+                        int tag = input.readTag();
+                        switch (tag) {
+                            case 0:
+                                done = true;
+                                break;
+                            case 8: {
+                                x_ = input.readInt32();
+                                bitField0_ |= 0x00000001;
+                                break;
+                            } // case 8
+                            case 16: {
+                                y_ = input.readInt32();
+                                bitField0_ |= 0x00000002;
+                                break;
+                            } // case 16
+                            case 24: {
+                                z_ = input.readInt32();
+                                bitField0_ |= 0x00000004;
+                                break;
+                            } // case 24
+                            case 34: {
+                                translationKey_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000008;
+                                break;
+                            } // case 34
+                            default: {
+                                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                                    done = true; // was an endgroup tag
+                                }
+                                break;
+                            } // default:
+                        } // switch (tag)
+                    } // while (!done)
+                } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                    throw e.unwrapIOException();
+                } finally {
+                    onChanged();
+                } // finally
+                return this;
+            }
+
+            /**
+             * <code>int32 x = 1;</code>
+             *
+             * @return The x.
+             */
+            @java.lang.Override
+            public int getX() {
+                return x_;
+            }
+
+            /**
+             * <code>int32 x = 1;</code>
+             *
+             * @param value The x to set.
+             * @return This builder for chaining.
+             */
+            public Builder setX(int value) {
+
+                x_ = value;
+                bitField0_ |= 0x00000001;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>int32 x = 1;</code>
+             *
+             * @return This builder for chaining.
+             */
+            public Builder clearX() {
+                bitField0_ = (bitField0_ & ~0x00000001);
+                x_ = 0;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>int32 y = 2;</code>
+             *
+             * @return The y.
+             */
+            @java.lang.Override
+            public int getY() {
+                return y_;
+            }
+
+            /**
+             * <code>int32 y = 2;</code>
+             *
+             * @param value The y to set.
+             * @return This builder for chaining.
+             */
+            public Builder setY(int value) {
+
+                y_ = value;
+                bitField0_ |= 0x00000002;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>int32 y = 2;</code>
+             *
+             * @return This builder for chaining.
+             */
+            public Builder clearY() {
+                bitField0_ = (bitField0_ & ~0x00000002);
+                y_ = 0;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>int32 z = 3;</code>
+             *
+             * @return The z.
+             */
+            @java.lang.Override
+            public int getZ() {
+                return z_;
+            }
+
+            /**
+             * <code>int32 z = 3;</code>
+             *
+             * @param value The z to set.
+             * @return This builder for chaining.
+             */
+            public Builder setZ(int value) {
+
+                z_ = value;
+                bitField0_ |= 0x00000004;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>int32 z = 3;</code>
+             *
+             * @return This builder for chaining.
+             */
+            public Builder clearZ() {
+                bitField0_ = (bitField0_ & ~0x00000004);
+                z_ = 0;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>string translation_key = 4;</code>
+             *
+             * @return The translationKey.
+             */
+            public java.lang.String getTranslationKey() {
+                java.lang.Object ref = translationKey_;
+                if (!(ref instanceof java.lang.String)) {
+                    com.google.protobuf.ByteString bs =
+                            (com.google.protobuf.ByteString) ref;
+                    java.lang.String s = bs.toStringUtf8();
+                    translationKey_ = s;
+                    return s;
+                } else {
+                    return (java.lang.String) ref;
+                }
+            }
+
+            /**
+             * <code>string translation_key = 4;</code>
+             *
+             * @param value The translationKey to set.
+             * @return This builder for chaining.
+             */
+            public Builder setTranslationKey(
+                    java.lang.String value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                translationKey_ = value;
+                bitField0_ |= 0x00000008;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>string translation_key = 4;</code>
+             *
+             * @return The bytes for translationKey.
+             */
+            public com.google.protobuf.ByteString
+            getTranslationKeyBytes() {
+                java.lang.Object ref = translationKey_;
+                if (ref instanceof String) {
+                    com.google.protobuf.ByteString b =
+                            com.google.protobuf.ByteString.copyFromUtf8(
+                                    (java.lang.String) ref);
+                    translationKey_ = b;
+                    return b;
+                } else {
+                    return (com.google.protobuf.ByteString) ref;
+                }
+            }
+
+            /**
+             * <code>string translation_key = 4;</code>
+             *
+             * @param value The bytes for translationKey to set.
+             * @return This builder for chaining.
+             */
+            public Builder setTranslationKeyBytes(
+                    com.google.protobuf.ByteString value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                checkByteStringIsUtf8(value);
+                translationKey_ = value;
+                bitField0_ |= 0x00000008;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>string translation_key = 4;</code>
+             *
+             * @return This builder for chaining.
+             */
+            public Builder clearTranslationKey() {
+                translationKey_ = getDefaultInstance().getTranslationKey();
+                bitField0_ = (bitField0_ & ~0x00000008);
+                onChanged();
+                return this;
+            }
+
+            @java.lang.Override
+            public final Builder setUnknownFields(
+                    final com.google.protobuf.UnknownFieldSet unknownFields) {
+                return super.setUnknownFields(unknownFields);
+            }
+
+            @java.lang.Override
+            public final Builder mergeUnknownFields(
+                    final com.google.protobuf.UnknownFieldSet unknownFields) {
+                return super.mergeUnknownFields(unknownFields);
+            }
+
+
+            // @@protoc_insertion_point(builder_scope:BlockInfo)
+        }
+
     }
 
-    public static final int X_FIELD_NUMBER = 3;
-    private double x_ = 0D;
-    /**
-     * <code>double x = 3;</code>
-     * @return The x.
-     */
-    @java.lang.Override
-    public double getX() {
-      return x_;
-    }
-
-    public static final int Y_FIELD_NUMBER = 4;
-    private double y_ = 0D;
-    /**
-     * <code>double y = 4;</code>
-     * @return The y.
-     */
-    @java.lang.Override
-    public double getY() {
-      return y_;
-    }
-
-    public static final int Z_FIELD_NUMBER = 5;
-    private double z_ = 0D;
-    /**
-     * <code>double z = 5;</code>
-     * @return The z.
-     */
-    @java.lang.Override
-    public double getZ() {
-      return z_;
-    }
-
-    public static final int YAW_FIELD_NUMBER = 6;
-    private double yaw_ = 0D;
-    /**
-     * <code>double yaw = 6;</code>
-     * @return The yaw.
-     */
-    @java.lang.Override
-    public double getYaw() {
-      return yaw_;
-    }
-
-    public static final int PITCH_FIELD_NUMBER = 7;
-    private double pitch_ = 0D;
-    /**
-     * <code>double pitch = 7;</code>
-     * @return The pitch.
-     */
-    @java.lang.Override
-    public double getPitch() {
-      return pitch_;
-    }
-
-    public static final int HEALTH_FIELD_NUMBER = 8;
-    private double health_ = 0D;
-    /**
-     * <code>double health = 8;</code>
-     * @return The health.
-     */
-    @java.lang.Override
-    public double getHealth() {
-      return health_;
-    }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(uniqueName_)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, uniqueName_);
-      }
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(translationKey_)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, translationKey_);
-      }
-      if (java.lang.Double.doubleToRawLongBits(x_) != 0) {
-        output.writeDouble(3, x_);
-      }
-      if (java.lang.Double.doubleToRawLongBits(y_) != 0) {
-        output.writeDouble(4, y_);
-      }
-      if (java.lang.Double.doubleToRawLongBits(z_) != 0) {
-        output.writeDouble(5, z_);
-      }
-      if (java.lang.Double.doubleToRawLongBits(yaw_) != 0) {
-        output.writeDouble(6, yaw_);
-      }
-      if (java.lang.Double.doubleToRawLongBits(pitch_) != 0) {
-        output.writeDouble(7, pitch_);
-      }
-      if (java.lang.Double.doubleToRawLongBits(health_) != 0) {
-        output.writeDouble(8, health_);
-      }
-      getUnknownFields().writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(uniqueName_)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, uniqueName_);
-      }
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(translationKey_)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, translationKey_);
-      }
-      if (java.lang.Double.doubleToRawLongBits(x_) != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeDoubleSize(3, x_);
-      }
-      if (java.lang.Double.doubleToRawLongBits(y_) != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeDoubleSize(4, y_);
-      }
-      if (java.lang.Double.doubleToRawLongBits(z_) != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeDoubleSize(5, z_);
-      }
-      if (java.lang.Double.doubleToRawLongBits(yaw_) != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeDoubleSize(6, yaw_);
-      }
-      if (java.lang.Double.doubleToRawLongBits(pitch_) != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeDoubleSize(7, pitch_);
-      }
-      if (java.lang.Double.doubleToRawLongBits(health_) != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeDoubleSize(8, health_);
-      }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo)) {
-        return super.equals(obj);
-      }
-      com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo other = (com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo) obj;
-
-      if (!getUniqueName()
-          .equals(other.getUniqueName())) return false;
-      if (!getTranslationKey()
-          .equals(other.getTranslationKey())) return false;
-      if (java.lang.Double.doubleToLongBits(getX())
-          != java.lang.Double.doubleToLongBits(
-              other.getX())) return false;
-      if (java.lang.Double.doubleToLongBits(getY())
-          != java.lang.Double.doubleToLongBits(
-              other.getY())) return false;
-      if (java.lang.Double.doubleToLongBits(getZ())
-          != java.lang.Double.doubleToLongBits(
-              other.getZ())) return false;
-      if (java.lang.Double.doubleToLongBits(getYaw())
-          != java.lang.Double.doubleToLongBits(
-              other.getYaw())) return false;
-      if (java.lang.Double.doubleToLongBits(getPitch())
-          != java.lang.Double.doubleToLongBits(
-              other.getPitch())) return false;
-      if (java.lang.Double.doubleToLongBits(getHealth())
-          != java.lang.Double.doubleToLongBits(
-              other.getHealth())) return false;
-      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
-      return true;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + UNIQUE_NAME_FIELD_NUMBER;
-      hash = (53 * hash) + getUniqueName().hashCode();
-      hash = (37 * hash) + TRANSLATION_KEY_FIELD_NUMBER;
-      hash = (53 * hash) + getTranslationKey().hashCode();
-      hash = (37 * hash) + X_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          java.lang.Double.doubleToLongBits(getX()));
-      hash = (37 * hash) + Y_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          java.lang.Double.doubleToLongBits(getY()));
-      hash = (37 * hash) + Z_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          java.lang.Double.doubleToLongBits(getZ()));
-      hash = (37 * hash) + YAW_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          java.lang.Double.doubleToLongBits(getYaw()));
-      hash = (37 * hash) + PITCH_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          java.lang.Double.doubleToLongBits(getPitch()));
-      hash = (37 * hash) + HEALTH_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          java.lang.Double.doubleToLongBits(getHealth()));
-      hash = (29 * hash) + getUnknownFields().hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
     /**
      * Protobuf type {@code EntityInfo}
      */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:EntityInfo)
-        com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfoOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_EntityInfo_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_EntityInfo_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo.class, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo.Builder.class);
-      }
-
-      // Construct using com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo.newBuilder()
-      private Builder() {
-
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        bitField0_ = 0;
-        uniqueName_ = "";
-        translationKey_ = "";
-        x_ = 0D;
-        y_ = 0D;
-        z_ = 0D;
-        yaw_ = 0D;
-        pitch_ = 0D;
-        health_ = 0D;
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_EntityInfo_descriptor;
-      }
-
-      @java.lang.Override
-      public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo getDefaultInstanceForType() {
-        return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo build() {
-        com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo buildPartial() {
-        com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo result = new com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo(this);
-        if (bitField0_ != 0) { buildPartial0(result); }
-        onBuilt();
-        return result;
-      }
-
-      private void buildPartial0(com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo result) {
-        int from_bitField0_ = bitField0_;
-        if (((from_bitField0_ & 0x00000001) != 0)) {
-          result.uniqueName_ = uniqueName_;
-        }
-        if (((from_bitField0_ & 0x00000002) != 0)) {
-          result.translationKey_ = translationKey_;
-        }
-        if (((from_bitField0_ & 0x00000004) != 0)) {
-          result.x_ = x_;
-        }
-        if (((from_bitField0_ & 0x00000008) != 0)) {
-          result.y_ = y_;
-        }
-        if (((from_bitField0_ & 0x00000010) != 0)) {
-          result.z_ = z_;
-        }
-        if (((from_bitField0_ & 0x00000020) != 0)) {
-          result.yaw_ = yaw_;
-        }
-        if (((from_bitField0_ & 0x00000040) != 0)) {
-          result.pitch_ = pitch_;
-        }
-        if (((from_bitField0_ & 0x00000080) != 0)) {
-          result.health_ = health_;
-        }
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo) {
-          return mergeFrom((com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo other) {
-        if (other == com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo.getDefaultInstance()) return this;
-        if (!other.getUniqueName().isEmpty()) {
-          uniqueName_ = other.uniqueName_;
-          bitField0_ |= 0x00000001;
-          onChanged();
-        }
-        if (!other.getTranslationKey().isEmpty()) {
-          translationKey_ = other.translationKey_;
-          bitField0_ |= 0x00000002;
-          onChanged();
-        }
-        if (other.getX() != 0D) {
-          setX(other.getX());
-        }
-        if (other.getY() != 0D) {
-          setY(other.getY());
-        }
-        if (other.getZ() != 0D) {
-          setZ(other.getZ());
-        }
-        if (other.getYaw() != 0D) {
-          setYaw(other.getYaw());
-        }
-        if (other.getPitch() != 0D) {
-          setPitch(other.getPitch());
-        }
-        if (other.getHealth() != 0D) {
-          setHealth(other.getHealth());
-        }
-        this.mergeUnknownFields(other.getUnknownFields());
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        if (extensionRegistry == null) {
-          throw new java.lang.NullPointerException();
-        }
-        try {
-          boolean done = false;
-          while (!done) {
-            int tag = input.readTag();
-            switch (tag) {
-              case 0:
-                done = true;
-                break;
-              case 10: {
-                uniqueName_ = input.readStringRequireUtf8();
-                bitField0_ |= 0x00000001;
-                break;
-              } // case 10
-              case 18: {
-                translationKey_ = input.readStringRequireUtf8();
-                bitField0_ |= 0x00000002;
-                break;
-              } // case 18
-              case 25: {
-                x_ = input.readDouble();
-                bitField0_ |= 0x00000004;
-                break;
-              } // case 25
-              case 33: {
-                y_ = input.readDouble();
-                bitField0_ |= 0x00000008;
-                break;
-              } // case 33
-              case 41: {
-                z_ = input.readDouble();
-                bitField0_ |= 0x00000010;
-                break;
-              } // case 41
-              case 49: {
-                yaw_ = input.readDouble();
-                bitField0_ |= 0x00000020;
-                break;
-              } // case 49
-              case 57: {
-                pitch_ = input.readDouble();
-                bitField0_ |= 0x00000040;
-                break;
-              } // case 57
-              case 65: {
-                health_ = input.readDouble();
-                bitField0_ |= 0x00000080;
-                break;
-              } // case 65
-              default: {
-                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                  done = true; // was an endgroup tag
+    public static final class EntityInfo extends
+            com.google.protobuf.GeneratedMessageV3 implements
+            // @@protoc_insertion_point(message_implements:EntityInfo)
+            EntityInfoOrBuilder {
+        public static final int UNIQUE_NAME_FIELD_NUMBER = 1;
+        public static final int TRANSLATION_KEY_FIELD_NUMBER = 2;
+        public static final int X_FIELD_NUMBER = 3;
+        public static final int Y_FIELD_NUMBER = 4;
+        public static final int Z_FIELD_NUMBER = 5;
+        public static final int YAW_FIELD_NUMBER = 6;
+        public static final int PITCH_FIELD_NUMBER = 7;
+        public static final int HEALTH_FIELD_NUMBER = 8;
+        private static final long serialVersionUID = 0L;
+        // @@protoc_insertion_point(class_scope:EntityInfo)
+        private static final com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo DEFAULT_INSTANCE;
+        private static final com.google.protobuf.Parser<EntityInfo>
+                PARSER = new com.google.protobuf.AbstractParser<EntityInfo>() {
+            @java.lang.Override
+            public EntityInfo parsePartialFrom(
+                    com.google.protobuf.CodedInputStream input,
+                    com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                    throws com.google.protobuf.InvalidProtocolBufferException {
+                Builder builder = newBuilder();
+                try {
+                    builder.mergeFrom(input, extensionRegistry);
+                } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                    throw e.setUnfinishedMessage(builder.buildPartial());
+                } catch (com.google.protobuf.UninitializedMessageException e) {
+                    throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+                } catch (java.io.IOException e) {
+                    throw new com.google.protobuf.InvalidProtocolBufferException(e)
+                            .setUnfinishedMessage(builder.buildPartial());
                 }
-                break;
-              } // default:
-            } // switch (tag)
-          } // while (!done)
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          throw e.unwrapIOException();
-        } finally {
-          onChanged();
-        } // finally
-        return this;
-      }
-      private int bitField0_;
+                return builder.buildPartial();
+            }
+        };
 
-      private java.lang.Object uniqueName_ = "";
-      /**
-       * <code>string unique_name = 1;</code>
-       * @return The uniqueName.
-       */
-      public java.lang.String getUniqueName() {
-        java.lang.Object ref = uniqueName_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          uniqueName_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
+        static {
+            DEFAULT_INSTANCE = new com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo();
         }
-      }
-      /**
-       * <code>string unique_name = 1;</code>
-       * @return The bytes for uniqueName.
-       */
-      public com.google.protobuf.ByteString
-          getUniqueNameBytes() {
-        java.lang.Object ref = uniqueName_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          uniqueName_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
+
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object uniqueName_ = "";
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object translationKey_ = "";
+        private double x_ = 0D;
+        private double y_ = 0D;
+        private double z_ = 0D;
+        private double yaw_ = 0D;
+        private double pitch_ = 0D;
+        private double health_ = 0D;
+        private byte memoizedIsInitialized = -1;
+
+        // Use EntityInfo.newBuilder() to construct.
+        private EntityInfo(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+            super(builder);
         }
-      }
-      /**
-       * <code>string unique_name = 1;</code>
-       * @param value The uniqueName to set.
-       * @return This builder for chaining.
-       */
-      public Builder setUniqueName(
-          java.lang.String value) {
-        if (value == null) { throw new NullPointerException(); }
-        uniqueName_ = value;
-        bitField0_ |= 0x00000001;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string unique_name = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearUniqueName() {
-        uniqueName_ = getDefaultInstance().getUniqueName();
-        bitField0_ = (bitField0_ & ~0x00000001);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string unique_name = 1;</code>
-       * @param value The bytes for uniqueName to set.
-       * @return This builder for chaining.
-       */
-      public Builder setUniqueNameBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) { throw new NullPointerException(); }
-        checkByteStringIsUtf8(value);
-        uniqueName_ = value;
-        bitField0_ |= 0x00000001;
-        onChanged();
-        return this;
-      }
-
-      private java.lang.Object translationKey_ = "";
-      /**
-       * <code>string translation_key = 2;</code>
-       * @return The translationKey.
-       */
-      public java.lang.String getTranslationKey() {
-        java.lang.Object ref = translationKey_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          translationKey_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
+        private EntityInfo() {
+            uniqueName_ = "";
+            translationKey_ = "";
         }
-      }
-      /**
-       * <code>string translation_key = 2;</code>
-       * @return The bytes for translationKey.
-       */
-      public com.google.protobuf.ByteString
-          getTranslationKeyBytes() {
-        java.lang.Object ref = translationKey_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          translationKey_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string translation_key = 2;</code>
-       * @param value The translationKey to set.
-       * @return This builder for chaining.
-       */
-      public Builder setTranslationKey(
-          java.lang.String value) {
-        if (value == null) { throw new NullPointerException(); }
-        translationKey_ = value;
-        bitField0_ |= 0x00000002;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string translation_key = 2;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearTranslationKey() {
-        translationKey_ = getDefaultInstance().getTranslationKey();
-        bitField0_ = (bitField0_ & ~0x00000002);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string translation_key = 2;</code>
-       * @param value The bytes for translationKey to set.
-       * @return This builder for chaining.
-       */
-      public Builder setTranslationKeyBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) { throw new NullPointerException(); }
-        checkByteStringIsUtf8(value);
-        translationKey_ = value;
-        bitField0_ |= 0x00000002;
-        onChanged();
-        return this;
-      }
 
-      private double x_ ;
-      /**
-       * <code>double x = 3;</code>
-       * @return The x.
-       */
-      @java.lang.Override
-      public double getX() {
-        return x_;
-      }
-      /**
-       * <code>double x = 3;</code>
-       * @param value The x to set.
-       * @return This builder for chaining.
-       */
-      public Builder setX(double value) {
-        
-        x_ = value;
-        bitField0_ |= 0x00000004;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>double x = 3;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearX() {
-        bitField0_ = (bitField0_ & ~0x00000004);
-        x_ = 0D;
-        onChanged();
-        return this;
-      }
-
-      private double y_ ;
-      /**
-       * <code>double y = 4;</code>
-       * @return The y.
-       */
-      @java.lang.Override
-      public double getY() {
-        return y_;
-      }
-      /**
-       * <code>double y = 4;</code>
-       * @param value The y to set.
-       * @return This builder for chaining.
-       */
-      public Builder setY(double value) {
-        
-        y_ = value;
-        bitField0_ |= 0x00000008;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>double y = 4;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearY() {
-        bitField0_ = (bitField0_ & ~0x00000008);
-        y_ = 0D;
-        onChanged();
-        return this;
-      }
-
-      private double z_ ;
-      /**
-       * <code>double z = 5;</code>
-       * @return The z.
-       */
-      @java.lang.Override
-      public double getZ() {
-        return z_;
-      }
-      /**
-       * <code>double z = 5;</code>
-       * @param value The z to set.
-       * @return This builder for chaining.
-       */
-      public Builder setZ(double value) {
-        
-        z_ = value;
-        bitField0_ |= 0x00000010;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>double z = 5;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearZ() {
-        bitField0_ = (bitField0_ & ~0x00000010);
-        z_ = 0D;
-        onChanged();
-        return this;
-      }
-
-      private double yaw_ ;
-      /**
-       * <code>double yaw = 6;</code>
-       * @return The yaw.
-       */
-      @java.lang.Override
-      public double getYaw() {
-        return yaw_;
-      }
-      /**
-       * <code>double yaw = 6;</code>
-       * @param value The yaw to set.
-       * @return This builder for chaining.
-       */
-      public Builder setYaw(double value) {
-        
-        yaw_ = value;
-        bitField0_ |= 0x00000020;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>double yaw = 6;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearYaw() {
-        bitField0_ = (bitField0_ & ~0x00000020);
-        yaw_ = 0D;
-        onChanged();
-        return this;
-      }
-
-      private double pitch_ ;
-      /**
-       * <code>double pitch = 7;</code>
-       * @return The pitch.
-       */
-      @java.lang.Override
-      public double getPitch() {
-        return pitch_;
-      }
-      /**
-       * <code>double pitch = 7;</code>
-       * @param value The pitch to set.
-       * @return This builder for chaining.
-       */
-      public Builder setPitch(double value) {
-        
-        pitch_ = value;
-        bitField0_ |= 0x00000040;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>double pitch = 7;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearPitch() {
-        bitField0_ = (bitField0_ & ~0x00000040);
-        pitch_ = 0D;
-        onChanged();
-        return this;
-      }
-
-      private double health_ ;
-      /**
-       * <code>double health = 8;</code>
-       * @return The health.
-       */
-      @java.lang.Override
-      public double getHealth() {
-        return health_;
-      }
-      /**
-       * <code>double health = 8;</code>
-       * @param value The health to set.
-       * @return This builder for chaining.
-       */
-      public Builder setHealth(double value) {
-        
-        health_ = value;
-        bitField0_ |= 0x00000080;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>double health = 8;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearHealth() {
-        bitField0_ = (bitField0_ & ~0x00000080);
-        health_ = 0D;
-        onChanged();
-        return this;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:EntityInfo)
-    }
-
-    // @@protoc_insertion_point(class_scope:EntityInfo)
-    private static final com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo();
-    }
-
-    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<EntityInfo>
-        PARSER = new com.google.protobuf.AbstractParser<EntityInfo>() {
-      @java.lang.Override
-      public EntityInfo parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        Builder builder = newBuilder();
-        try {
-          builder.mergeFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          throw e.setUnfinishedMessage(builder.buildPartial());
-        } catch (com.google.protobuf.UninitializedMessageException e) {
-          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
-        } catch (java.io.IOException e) {
-          throw new com.google.protobuf.InvalidProtocolBufferException(e)
-              .setUnfinishedMessage(builder.buildPartial());
-        }
-        return builder.buildPartial();
-      }
-    };
-
-    public static com.google.protobuf.Parser<EntityInfo> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<EntityInfo> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
-  public interface HitResultOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:HitResult)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>.HitResult.Type type = 1;</code>
-     * @return The enum numeric value on the wire for type.
-     */
-    int getTypeValue();
-    /**
-     * <code>.HitResult.Type type = 1;</code>
-     * @return The type.
-     */
-    com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult.Type getType();
-
-    /**
-     * <code>.BlockInfo target_block = 2;</code>
-     * @return Whether the targetBlock field is set.
-     */
-    boolean hasTargetBlock();
-    /**
-     * <code>.BlockInfo target_block = 2;</code>
-     * @return The targetBlock.
-     */
-    com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo getTargetBlock();
-    /**
-     * <code>.BlockInfo target_block = 2;</code>
-     */
-    com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfoOrBuilder getTargetBlockOrBuilder();
-
-    /**
-     * <code>.EntityInfo target_entity = 3;</code>
-     * @return Whether the targetEntity field is set.
-     */
-    boolean hasTargetEntity();
-    /**
-     * <code>.EntityInfo target_entity = 3;</code>
-     * @return The targetEntity.
-     */
-    com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo getTargetEntity();
-    /**
-     * <code>.EntityInfo target_entity = 3;</code>
-     */
-    com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfoOrBuilder getTargetEntityOrBuilder();
-  }
-  /**
-   * Protobuf type {@code HitResult}
-   */
-  public static final class HitResult extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:HitResult)
-      HitResultOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use HitResult.newBuilder() to construct.
-    private HitResult(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private HitResult() {
-      type_ = 0;
-    }
-
-    @java.lang.Override
-    @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
-      return new HitResult();
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
+        public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_HitResult_descriptor;
-    }
+            return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_EntityInfo_descriptor;
+        }
 
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo parseFrom(
+                java.nio.ByteBuffer data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
+
+        public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo parseFrom(
+                java.nio.ByteBuffer data,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
+        }
+
+        public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo parseFrom(
+                com.google.protobuf.ByteString data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
+
+        public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo parseFrom(
+                com.google.protobuf.ByteString data,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
+        }
+
+        public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo parseFrom(byte[] data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
+
+        public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo parseFrom(
+                byte[] data,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
+        }
+
+        public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo parseFrom(java.io.InputStream input)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3
+                    .parseWithIOException(PARSER, input);
+        }
+
+        public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo parseFrom(
+                java.io.InputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3
+                    .parseWithIOException(PARSER, input, extensionRegistry);
+        }
+
+        public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo parseDelimitedFrom(java.io.InputStream input)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3
+                    .parseDelimitedWithIOException(PARSER, input);
+        }
+
+        public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo parseDelimitedFrom(
+                java.io.InputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3
+                    .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+        }
+
+        public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo parseFrom(
+                com.google.protobuf.CodedInputStream input)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3
+                    .parseWithIOException(PARSER, input);
+        }
+
+        public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo parseFrom(
+                com.google.protobuf.CodedInputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3
+                    .parseWithIOException(PARSER, input, extensionRegistry);
+        }
+
+        public static Builder newBuilder() {
+            return DEFAULT_INSTANCE.toBuilder();
+        }
+
+        public static Builder newBuilder(com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo prototype) {
+            return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+        }
+
+        public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo getDefaultInstance() {
+            return DEFAULT_INSTANCE;
+        }
+
+        public static com.google.protobuf.Parser<EntityInfo> parser() {
+            return PARSER;
+        }
+
+        @java.lang.Override
+        @SuppressWarnings({"unused"})
+        protected java.lang.Object newInstance(
+                UnusedPrivateParameter unused) {
+            return new EntityInfo();
+        }
+
+        @java.lang.Override
+        public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+            return this.unknownFields;
+        }
+
+        @java.lang.Override
+        protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_HitResult_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult.class, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult.Builder.class);
-    }
-
-    /**
-     * Protobuf enum {@code HitResult.Type}
-     */
-    public enum Type
-        implements com.google.protobuf.ProtocolMessageEnum {
-      /**
-       * <code>MISS = 0;</code>
-       */
-      MISS(0),
-      /**
-       * <code>BLOCK = 1;</code>
-       */
-      BLOCK(1),
-      /**
-       * <code>ENTITY = 2;</code>
-       */
-      ENTITY(2),
-      UNRECOGNIZED(-1),
-      ;
-
-      /**
-       * <code>MISS = 0;</code>
-       */
-      public static final int MISS_VALUE = 0;
-      /**
-       * <code>BLOCK = 1;</code>
-       */
-      public static final int BLOCK_VALUE = 1;
-      /**
-       * <code>ENTITY = 2;</code>
-       */
-      public static final int ENTITY_VALUE = 2;
-
-
-      public final int getNumber() {
-        if (this == UNRECOGNIZED) {
-          throw new java.lang.IllegalArgumentException(
-              "Can't get the number of an unknown enum value.");
+            return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_EntityInfo_fieldAccessorTable
+                    .ensureFieldAccessorsInitialized(
+                            com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo.class, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo.Builder.class);
         }
-        return value;
-      }
 
-      /**
-       * @param value The numeric wire value of the corresponding enum entry.
-       * @return The enum associated with the given numeric wire value.
-       * @deprecated Use {@link #forNumber(int)} instead.
-       */
-      @java.lang.Deprecated
-      public static Type valueOf(int value) {
-        return forNumber(value);
-      }
-
-      /**
-       * @param value The numeric wire value of the corresponding enum entry.
-       * @return The enum associated with the given numeric wire value.
-       */
-      public static Type forNumber(int value) {
-        switch (value) {
-          case 0: return MISS;
-          case 1: return BLOCK;
-          case 2: return ENTITY;
-          default: return null;
+        /**
+         * <code>string unique_name = 1;</code>
+         *
+         * @return The uniqueName.
+         */
+        @java.lang.Override
+        public java.lang.String getUniqueName() {
+            java.lang.Object ref = uniqueName_;
+            if (ref instanceof java.lang.String) {
+                return (java.lang.String) ref;
+            } else {
+                com.google.protobuf.ByteString bs =
+                        (com.google.protobuf.ByteString) ref;
+                java.lang.String s = bs.toStringUtf8();
+                uniqueName_ = s;
+                return s;
+            }
         }
-      }
 
-      public static com.google.protobuf.Internal.EnumLiteMap<Type>
-          internalGetValueMap() {
-        return internalValueMap;
-      }
-      private static final com.google.protobuf.Internal.EnumLiteMap<
-          Type> internalValueMap =
-            new com.google.protobuf.Internal.EnumLiteMap<Type>() {
-              public Type findValueByNumber(int number) {
-                return Type.forNumber(number);
-              }
-            };
-
-      public final com.google.protobuf.Descriptors.EnumValueDescriptor
-          getValueDescriptor() {
-        if (this == UNRECOGNIZED) {
-          throw new java.lang.IllegalStateException(
-              "Can't get the descriptor of an unrecognized enum value.");
+        /**
+         * <code>string unique_name = 1;</code>
+         *
+         * @return The bytes for uniqueName.
+         */
+        @java.lang.Override
+        public com.google.protobuf.ByteString
+        getUniqueNameBytes() {
+            java.lang.Object ref = uniqueName_;
+            if (ref instanceof java.lang.String) {
+                com.google.protobuf.ByteString b =
+                        com.google.protobuf.ByteString.copyFromUtf8(
+                                (java.lang.String) ref);
+                uniqueName_ = b;
+                return b;
+            } else {
+                return (com.google.protobuf.ByteString) ref;
+            }
         }
-        return getDescriptor().getValues().get(ordinal());
-      }
-      public final com.google.protobuf.Descriptors.EnumDescriptor
-          getDescriptorForType() {
-        return getDescriptor();
-      }
-      public static final com.google.protobuf.Descriptors.EnumDescriptor
-          getDescriptor() {
-        return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult.getDescriptor().getEnumTypes().get(0);
-      }
 
-      private static final Type[] VALUES = values();
-
-      public static Type valueOf(
-          com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
-        if (desc.getType() != getDescriptor()) {
-          throw new java.lang.IllegalArgumentException(
-            "EnumValueDescriptor is not for this type.");
+        /**
+         * <code>string translation_key = 2;</code>
+         *
+         * @return The translationKey.
+         */
+        @java.lang.Override
+        public java.lang.String getTranslationKey() {
+            java.lang.Object ref = translationKey_;
+            if (ref instanceof java.lang.String) {
+                return (java.lang.String) ref;
+            } else {
+                com.google.protobuf.ByteString bs =
+                        (com.google.protobuf.ByteString) ref;
+                java.lang.String s = bs.toStringUtf8();
+                translationKey_ = s;
+                return s;
+            }
         }
-        if (desc.getIndex() == -1) {
-          return UNRECOGNIZED;
+
+        /**
+         * <code>string translation_key = 2;</code>
+         *
+         * @return The bytes for translationKey.
+         */
+        @java.lang.Override
+        public com.google.protobuf.ByteString
+        getTranslationKeyBytes() {
+            java.lang.Object ref = translationKey_;
+            if (ref instanceof java.lang.String) {
+                com.google.protobuf.ByteString b =
+                        com.google.protobuf.ByteString.copyFromUtf8(
+                                (java.lang.String) ref);
+                translationKey_ = b;
+                return b;
+            } else {
+                return (com.google.protobuf.ByteString) ref;
+            }
         }
-        return VALUES[desc.getIndex()];
-      }
 
-      private final int value;
+        /**
+         * <code>double x = 3;</code>
+         *
+         * @return The x.
+         */
+        @java.lang.Override
+        public double getX() {
+            return x_;
+        }
 
-      private Type(int value) {
-        this.value = value;
-      }
+        /**
+         * <code>double y = 4;</code>
+         *
+         * @return The y.
+         */
+        @java.lang.Override
+        public double getY() {
+            return y_;
+        }
 
-      // @@protoc_insertion_point(enum_scope:HitResult.Type)
+        /**
+         * <code>double z = 5;</code>
+         *
+         * @return The z.
+         */
+        @java.lang.Override
+        public double getZ() {
+            return z_;
+        }
+
+        /**
+         * <code>double yaw = 6;</code>
+         *
+         * @return The yaw.
+         */
+        @java.lang.Override
+        public double getYaw() {
+            return yaw_;
+        }
+
+        /**
+         * <code>double pitch = 7;</code>
+         *
+         * @return The pitch.
+         */
+        @java.lang.Override
+        public double getPitch() {
+            return pitch_;
+        }
+
+        /**
+         * <code>double health = 8;</code>
+         *
+         * @return The health.
+         */
+        @java.lang.Override
+        public double getHealth() {
+            return health_;
+        }
+
+        @java.lang.Override
+        public final boolean isInitialized() {
+            byte isInitialized = memoizedIsInitialized;
+            if (isInitialized == 1) return true;
+            if (isInitialized == 0) return false;
+
+            memoizedIsInitialized = 1;
+            return true;
+        }
+
+        @java.lang.Override
+        public void writeTo(com.google.protobuf.CodedOutputStream output)
+                throws java.io.IOException {
+            if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(uniqueName_)) {
+                com.google.protobuf.GeneratedMessageV3.writeString(output, 1, uniqueName_);
+            }
+            if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(translationKey_)) {
+                com.google.protobuf.GeneratedMessageV3.writeString(output, 2, translationKey_);
+            }
+            if (java.lang.Double.doubleToRawLongBits(x_) != 0) {
+                output.writeDouble(3, x_);
+            }
+            if (java.lang.Double.doubleToRawLongBits(y_) != 0) {
+                output.writeDouble(4, y_);
+            }
+            if (java.lang.Double.doubleToRawLongBits(z_) != 0) {
+                output.writeDouble(5, z_);
+            }
+            if (java.lang.Double.doubleToRawLongBits(yaw_) != 0) {
+                output.writeDouble(6, yaw_);
+            }
+            if (java.lang.Double.doubleToRawLongBits(pitch_) != 0) {
+                output.writeDouble(7, pitch_);
+            }
+            if (java.lang.Double.doubleToRawLongBits(health_) != 0) {
+                output.writeDouble(8, health_);
+            }
+            getUnknownFields().writeTo(output);
+        }
+
+        @java.lang.Override
+        public int getSerializedSize() {
+            int size = memoizedSize;
+            if (size != -1) return size;
+
+            size = 0;
+            if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(uniqueName_)) {
+                size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, uniqueName_);
+            }
+            if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(translationKey_)) {
+                size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, translationKey_);
+            }
+            if (java.lang.Double.doubleToRawLongBits(x_) != 0) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeDoubleSize(3, x_);
+            }
+            if (java.lang.Double.doubleToRawLongBits(y_) != 0) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeDoubleSize(4, y_);
+            }
+            if (java.lang.Double.doubleToRawLongBits(z_) != 0) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeDoubleSize(5, z_);
+            }
+            if (java.lang.Double.doubleToRawLongBits(yaw_) != 0) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeDoubleSize(6, yaw_);
+            }
+            if (java.lang.Double.doubleToRawLongBits(pitch_) != 0) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeDoubleSize(7, pitch_);
+            }
+            if (java.lang.Double.doubleToRawLongBits(health_) != 0) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeDoubleSize(8, health_);
+            }
+            size += getUnknownFields().getSerializedSize();
+            memoizedSize = size;
+            return size;
+        }
+
+        @java.lang.Override
+        public boolean equals(final java.lang.Object obj) {
+            if (obj == this) {
+                return true;
+            }
+            if (!(obj instanceof com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo)) {
+                return super.equals(obj);
+            }
+            com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo other = (com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo) obj;
+
+            if (!getUniqueName()
+                    .equals(other.getUniqueName())) return false;
+            if (!getTranslationKey()
+                    .equals(other.getTranslationKey())) return false;
+            if (java.lang.Double.doubleToLongBits(getX())
+                    != java.lang.Double.doubleToLongBits(
+                    other.getX())) return false;
+            if (java.lang.Double.doubleToLongBits(getY())
+                    != java.lang.Double.doubleToLongBits(
+                    other.getY())) return false;
+            if (java.lang.Double.doubleToLongBits(getZ())
+                    != java.lang.Double.doubleToLongBits(
+                    other.getZ())) return false;
+            if (java.lang.Double.doubleToLongBits(getYaw())
+                    != java.lang.Double.doubleToLongBits(
+                    other.getYaw())) return false;
+            if (java.lang.Double.doubleToLongBits(getPitch())
+                    != java.lang.Double.doubleToLongBits(
+                    other.getPitch())) return false;
+            if (java.lang.Double.doubleToLongBits(getHealth())
+                    != java.lang.Double.doubleToLongBits(
+                    other.getHealth())) return false;
+            if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+            return true;
+        }
+
+        @java.lang.Override
+        public int hashCode() {
+            if (memoizedHashCode != 0) {
+                return memoizedHashCode;
+            }
+            int hash = 41;
+            hash = (19 * hash) + getDescriptor().hashCode();
+            hash = (37 * hash) + UNIQUE_NAME_FIELD_NUMBER;
+            hash = (53 * hash) + getUniqueName().hashCode();
+            hash = (37 * hash) + TRANSLATION_KEY_FIELD_NUMBER;
+            hash = (53 * hash) + getTranslationKey().hashCode();
+            hash = (37 * hash) + X_FIELD_NUMBER;
+            hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+                    java.lang.Double.doubleToLongBits(getX()));
+            hash = (37 * hash) + Y_FIELD_NUMBER;
+            hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+                    java.lang.Double.doubleToLongBits(getY()));
+            hash = (37 * hash) + Z_FIELD_NUMBER;
+            hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+                    java.lang.Double.doubleToLongBits(getZ()));
+            hash = (37 * hash) + YAW_FIELD_NUMBER;
+            hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+                    java.lang.Double.doubleToLongBits(getYaw()));
+            hash = (37 * hash) + PITCH_FIELD_NUMBER;
+            hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+                    java.lang.Double.doubleToLongBits(getPitch()));
+            hash = (37 * hash) + HEALTH_FIELD_NUMBER;
+            hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+                    java.lang.Double.doubleToLongBits(getHealth()));
+            hash = (29 * hash) + getUnknownFields().hashCode();
+            memoizedHashCode = hash;
+            return hash;
+        }
+
+        @java.lang.Override
+        public Builder newBuilderForType() {
+            return newBuilder();
+        }
+
+        @java.lang.Override
+        public Builder toBuilder() {
+            return this == DEFAULT_INSTANCE
+                    ? new Builder() : new Builder().mergeFrom(this);
+        }
+
+        @java.lang.Override
+        protected Builder newBuilderForType(
+                com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+            Builder builder = new Builder(parent);
+            return builder;
+        }
+
+        @java.lang.Override
+        public com.google.protobuf.Parser<EntityInfo> getParserForType() {
+            return PARSER;
+        }
+
+        @java.lang.Override
+        public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo getDefaultInstanceForType() {
+            return DEFAULT_INSTANCE;
+        }
+
+        /**
+         * Protobuf type {@code EntityInfo}
+         */
+        public static final class Builder extends
+                com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+                // @@protoc_insertion_point(builder_implements:EntityInfo)
+                com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfoOrBuilder {
+            private int bitField0_;
+            private java.lang.Object uniqueName_ = "";
+            private java.lang.Object translationKey_ = "";
+            private double x_;
+            private double y_;
+            private double z_;
+            private double yaw_;
+            private double pitch_;
+            private double health_;
+
+            // Construct using com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo.newBuilder()
+            private Builder() {
+
+            }
+
+            private Builder(
+                    com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+                super(parent);
+
+            }
+
+            public static final com.google.protobuf.Descriptors.Descriptor
+            getDescriptor() {
+                return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_EntityInfo_descriptor;
+            }
+
+            @java.lang.Override
+            protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+            internalGetFieldAccessorTable() {
+                return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_EntityInfo_fieldAccessorTable
+                        .ensureFieldAccessorsInitialized(
+                                com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo.class, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo.Builder.class);
+            }
+
+            @java.lang.Override
+            public Builder clear() {
+                super.clear();
+                bitField0_ = 0;
+                uniqueName_ = "";
+                translationKey_ = "";
+                x_ = 0D;
+                y_ = 0D;
+                z_ = 0D;
+                yaw_ = 0D;
+                pitch_ = 0D;
+                health_ = 0D;
+                return this;
+            }
+
+            @java.lang.Override
+            public com.google.protobuf.Descriptors.Descriptor
+            getDescriptorForType() {
+                return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_EntityInfo_descriptor;
+            }
+
+            @java.lang.Override
+            public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo getDefaultInstanceForType() {
+                return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo.getDefaultInstance();
+            }
+
+            @java.lang.Override
+            public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo build() {
+                com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo result = buildPartial();
+                if (!result.isInitialized()) {
+                    throw newUninitializedMessageException(result);
+                }
+                return result;
+            }
+
+            @java.lang.Override
+            public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo buildPartial() {
+                com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo result = new com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo(this);
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
+                }
+                onBuilt();
+                return result;
+            }
+
+            private void buildPartial0(com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo result) {
+                int from_bitField0_ = bitField0_;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    result.uniqueName_ = uniqueName_;
+                }
+                if (((from_bitField0_ & 0x00000002) != 0)) {
+                    result.translationKey_ = translationKey_;
+                }
+                if (((from_bitField0_ & 0x00000004) != 0)) {
+                    result.x_ = x_;
+                }
+                if (((from_bitField0_ & 0x00000008) != 0)) {
+                    result.y_ = y_;
+                }
+                if (((from_bitField0_ & 0x00000010) != 0)) {
+                    result.z_ = z_;
+                }
+                if (((from_bitField0_ & 0x00000020) != 0)) {
+                    result.yaw_ = yaw_;
+                }
+                if (((from_bitField0_ & 0x00000040) != 0)) {
+                    result.pitch_ = pitch_;
+                }
+                if (((from_bitField0_ & 0x00000080) != 0)) {
+                    result.health_ = health_;
+                }
+            }
+
+            @java.lang.Override
+            public Builder clone() {
+                return super.clone();
+            }
+
+            @java.lang.Override
+            public Builder setField(
+                    com.google.protobuf.Descriptors.FieldDescriptor field,
+                    java.lang.Object value) {
+                return super.setField(field, value);
+            }
+
+            @java.lang.Override
+            public Builder clearField(
+                    com.google.protobuf.Descriptors.FieldDescriptor field) {
+                return super.clearField(field);
+            }
+
+            @java.lang.Override
+            public Builder clearOneof(
+                    com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+                return super.clearOneof(oneof);
+            }
+
+            @java.lang.Override
+            public Builder setRepeatedField(
+                    com.google.protobuf.Descriptors.FieldDescriptor field,
+                    int index, java.lang.Object value) {
+                return super.setRepeatedField(field, index, value);
+            }
+
+            @java.lang.Override
+            public Builder addRepeatedField(
+                    com.google.protobuf.Descriptors.FieldDescriptor field,
+                    java.lang.Object value) {
+                return super.addRepeatedField(field, value);
+            }
+
+            @java.lang.Override
+            public Builder mergeFrom(com.google.protobuf.Message other) {
+                if (other instanceof com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo) {
+                    return mergeFrom((com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo) other);
+                } else {
+                    super.mergeFrom(other);
+                    return this;
+                }
+            }
+
+            public Builder mergeFrom(com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo other) {
+                if (other == com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo.getDefaultInstance())
+                    return this;
+                if (!other.getUniqueName().isEmpty()) {
+                    uniqueName_ = other.uniqueName_;
+                    bitField0_ |= 0x00000001;
+                    onChanged();
+                }
+                if (!other.getTranslationKey().isEmpty()) {
+                    translationKey_ = other.translationKey_;
+                    bitField0_ |= 0x00000002;
+                    onChanged();
+                }
+                if (other.getX() != 0D) {
+                    setX(other.getX());
+                }
+                if (other.getY() != 0D) {
+                    setY(other.getY());
+                }
+                if (other.getZ() != 0D) {
+                    setZ(other.getZ());
+                }
+                if (other.getYaw() != 0D) {
+                    setYaw(other.getYaw());
+                }
+                if (other.getPitch() != 0D) {
+                    setPitch(other.getPitch());
+                }
+                if (other.getHealth() != 0D) {
+                    setHealth(other.getHealth());
+                }
+                this.mergeUnknownFields(other.getUnknownFields());
+                onChanged();
+                return this;
+            }
+
+            @java.lang.Override
+            public final boolean isInitialized() {
+                return true;
+            }
+
+            @java.lang.Override
+            public Builder mergeFrom(
+                    com.google.protobuf.CodedInputStream input,
+                    com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                    throws java.io.IOException {
+                if (extensionRegistry == null) {
+                    throw new java.lang.NullPointerException();
+                }
+                try {
+                    boolean done = false;
+                    while (!done) {
+                        int tag = input.readTag();
+                        switch (tag) {
+                            case 0:
+                                done = true;
+                                break;
+                            case 10: {
+                                uniqueName_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000001;
+                                break;
+                            } // case 10
+                            case 18: {
+                                translationKey_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000002;
+                                break;
+                            } // case 18
+                            case 25: {
+                                x_ = input.readDouble();
+                                bitField0_ |= 0x00000004;
+                                break;
+                            } // case 25
+                            case 33: {
+                                y_ = input.readDouble();
+                                bitField0_ |= 0x00000008;
+                                break;
+                            } // case 33
+                            case 41: {
+                                z_ = input.readDouble();
+                                bitField0_ |= 0x00000010;
+                                break;
+                            } // case 41
+                            case 49: {
+                                yaw_ = input.readDouble();
+                                bitField0_ |= 0x00000020;
+                                break;
+                            } // case 49
+                            case 57: {
+                                pitch_ = input.readDouble();
+                                bitField0_ |= 0x00000040;
+                                break;
+                            } // case 57
+                            case 65: {
+                                health_ = input.readDouble();
+                                bitField0_ |= 0x00000080;
+                                break;
+                            } // case 65
+                            default: {
+                                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                                    done = true; // was an endgroup tag
+                                }
+                                break;
+                            } // default:
+                        } // switch (tag)
+                    } // while (!done)
+                } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                    throw e.unwrapIOException();
+                } finally {
+                    onChanged();
+                } // finally
+                return this;
+            }
+
+            /**
+             * <code>string unique_name = 1;</code>
+             *
+             * @return The uniqueName.
+             */
+            public java.lang.String getUniqueName() {
+                java.lang.Object ref = uniqueName_;
+                if (!(ref instanceof java.lang.String)) {
+                    com.google.protobuf.ByteString bs =
+                            (com.google.protobuf.ByteString) ref;
+                    java.lang.String s = bs.toStringUtf8();
+                    uniqueName_ = s;
+                    return s;
+                } else {
+                    return (java.lang.String) ref;
+                }
+            }
+
+            /**
+             * <code>string unique_name = 1;</code>
+             *
+             * @param value The uniqueName to set.
+             * @return This builder for chaining.
+             */
+            public Builder setUniqueName(
+                    java.lang.String value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                uniqueName_ = value;
+                bitField0_ |= 0x00000001;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>string unique_name = 1;</code>
+             *
+             * @return The bytes for uniqueName.
+             */
+            public com.google.protobuf.ByteString
+            getUniqueNameBytes() {
+                java.lang.Object ref = uniqueName_;
+                if (ref instanceof String) {
+                    com.google.protobuf.ByteString b =
+                            com.google.protobuf.ByteString.copyFromUtf8(
+                                    (java.lang.String) ref);
+                    uniqueName_ = b;
+                    return b;
+                } else {
+                    return (com.google.protobuf.ByteString) ref;
+                }
+            }
+
+            /**
+             * <code>string unique_name = 1;</code>
+             *
+             * @param value The bytes for uniqueName to set.
+             * @return This builder for chaining.
+             */
+            public Builder setUniqueNameBytes(
+                    com.google.protobuf.ByteString value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                checkByteStringIsUtf8(value);
+                uniqueName_ = value;
+                bitField0_ |= 0x00000001;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>string unique_name = 1;</code>
+             *
+             * @return This builder for chaining.
+             */
+            public Builder clearUniqueName() {
+                uniqueName_ = getDefaultInstance().getUniqueName();
+                bitField0_ = (bitField0_ & ~0x00000001);
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>string translation_key = 2;</code>
+             *
+             * @return The translationKey.
+             */
+            public java.lang.String getTranslationKey() {
+                java.lang.Object ref = translationKey_;
+                if (!(ref instanceof java.lang.String)) {
+                    com.google.protobuf.ByteString bs =
+                            (com.google.protobuf.ByteString) ref;
+                    java.lang.String s = bs.toStringUtf8();
+                    translationKey_ = s;
+                    return s;
+                } else {
+                    return (java.lang.String) ref;
+                }
+            }
+
+            /**
+             * <code>string translation_key = 2;</code>
+             *
+             * @param value The translationKey to set.
+             * @return This builder for chaining.
+             */
+            public Builder setTranslationKey(
+                    java.lang.String value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                translationKey_ = value;
+                bitField0_ |= 0x00000002;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>string translation_key = 2;</code>
+             *
+             * @return The bytes for translationKey.
+             */
+            public com.google.protobuf.ByteString
+            getTranslationKeyBytes() {
+                java.lang.Object ref = translationKey_;
+                if (ref instanceof String) {
+                    com.google.protobuf.ByteString b =
+                            com.google.protobuf.ByteString.copyFromUtf8(
+                                    (java.lang.String) ref);
+                    translationKey_ = b;
+                    return b;
+                } else {
+                    return (com.google.protobuf.ByteString) ref;
+                }
+            }
+
+            /**
+             * <code>string translation_key = 2;</code>
+             *
+             * @param value The bytes for translationKey to set.
+             * @return This builder for chaining.
+             */
+            public Builder setTranslationKeyBytes(
+                    com.google.protobuf.ByteString value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                checkByteStringIsUtf8(value);
+                translationKey_ = value;
+                bitField0_ |= 0x00000002;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>string translation_key = 2;</code>
+             *
+             * @return This builder for chaining.
+             */
+            public Builder clearTranslationKey() {
+                translationKey_ = getDefaultInstance().getTranslationKey();
+                bitField0_ = (bitField0_ & ~0x00000002);
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>double x = 3;</code>
+             *
+             * @return The x.
+             */
+            @java.lang.Override
+            public double getX() {
+                return x_;
+            }
+
+            /**
+             * <code>double x = 3;</code>
+             *
+             * @param value The x to set.
+             * @return This builder for chaining.
+             */
+            public Builder setX(double value) {
+
+                x_ = value;
+                bitField0_ |= 0x00000004;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>double x = 3;</code>
+             *
+             * @return This builder for chaining.
+             */
+            public Builder clearX() {
+                bitField0_ = (bitField0_ & ~0x00000004);
+                x_ = 0D;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>double y = 4;</code>
+             *
+             * @return The y.
+             */
+            @java.lang.Override
+            public double getY() {
+                return y_;
+            }
+
+            /**
+             * <code>double y = 4;</code>
+             *
+             * @param value The y to set.
+             * @return This builder for chaining.
+             */
+            public Builder setY(double value) {
+
+                y_ = value;
+                bitField0_ |= 0x00000008;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>double y = 4;</code>
+             *
+             * @return This builder for chaining.
+             */
+            public Builder clearY() {
+                bitField0_ = (bitField0_ & ~0x00000008);
+                y_ = 0D;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>double z = 5;</code>
+             *
+             * @return The z.
+             */
+            @java.lang.Override
+            public double getZ() {
+                return z_;
+            }
+
+            /**
+             * <code>double z = 5;</code>
+             *
+             * @param value The z to set.
+             * @return This builder for chaining.
+             */
+            public Builder setZ(double value) {
+
+                z_ = value;
+                bitField0_ |= 0x00000010;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>double z = 5;</code>
+             *
+             * @return This builder for chaining.
+             */
+            public Builder clearZ() {
+                bitField0_ = (bitField0_ & ~0x00000010);
+                z_ = 0D;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>double yaw = 6;</code>
+             *
+             * @return The yaw.
+             */
+            @java.lang.Override
+            public double getYaw() {
+                return yaw_;
+            }
+
+            /**
+             * <code>double yaw = 6;</code>
+             *
+             * @param value The yaw to set.
+             * @return This builder for chaining.
+             */
+            public Builder setYaw(double value) {
+
+                yaw_ = value;
+                bitField0_ |= 0x00000020;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>double yaw = 6;</code>
+             *
+             * @return This builder for chaining.
+             */
+            public Builder clearYaw() {
+                bitField0_ = (bitField0_ & ~0x00000020);
+                yaw_ = 0D;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>double pitch = 7;</code>
+             *
+             * @return The pitch.
+             */
+            @java.lang.Override
+            public double getPitch() {
+                return pitch_;
+            }
+
+            /**
+             * <code>double pitch = 7;</code>
+             *
+             * @param value The pitch to set.
+             * @return This builder for chaining.
+             */
+            public Builder setPitch(double value) {
+
+                pitch_ = value;
+                bitField0_ |= 0x00000040;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>double pitch = 7;</code>
+             *
+             * @return This builder for chaining.
+             */
+            public Builder clearPitch() {
+                bitField0_ = (bitField0_ & ~0x00000040);
+                pitch_ = 0D;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>double health = 8;</code>
+             *
+             * @return The health.
+             */
+            @java.lang.Override
+            public double getHealth() {
+                return health_;
+            }
+
+            /**
+             * <code>double health = 8;</code>
+             *
+             * @param value The health to set.
+             * @return This builder for chaining.
+             */
+            public Builder setHealth(double value) {
+
+                health_ = value;
+                bitField0_ |= 0x00000080;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>double health = 8;</code>
+             *
+             * @return This builder for chaining.
+             */
+            public Builder clearHealth() {
+                bitField0_ = (bitField0_ & ~0x00000080);
+                health_ = 0D;
+                onChanged();
+                return this;
+            }
+
+            @java.lang.Override
+            public final Builder setUnknownFields(
+                    final com.google.protobuf.UnknownFieldSet unknownFields) {
+                return super.setUnknownFields(unknownFields);
+            }
+
+            @java.lang.Override
+            public final Builder mergeUnknownFields(
+                    final com.google.protobuf.UnknownFieldSet unknownFields) {
+                return super.mergeUnknownFields(unknownFields);
+            }
+
+
+            // @@protoc_insertion_point(builder_scope:EntityInfo)
+        }
+
     }
 
-    public static final int TYPE_FIELD_NUMBER = 1;
-    private int type_ = 0;
-    /**
-     * <code>.HitResult.Type type = 1;</code>
-     * @return The enum numeric value on the wire for type.
-     */
-    @java.lang.Override public int getTypeValue() {
-      return type_;
-    }
-    /**
-     * <code>.HitResult.Type type = 1;</code>
-     * @return The type.
-     */
-    @java.lang.Override public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult.Type getType() {
-      com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult.Type result = com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult.Type.forNumber(type_);
-      return result == null ? com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult.Type.UNRECOGNIZED : result;
-    }
-
-    public static final int TARGET_BLOCK_FIELD_NUMBER = 2;
-    private com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo targetBlock_;
-    /**
-     * <code>.BlockInfo target_block = 2;</code>
-     * @return Whether the targetBlock field is set.
-     */
-    @java.lang.Override
-    public boolean hasTargetBlock() {
-      return targetBlock_ != null;
-    }
-    /**
-     * <code>.BlockInfo target_block = 2;</code>
-     * @return The targetBlock.
-     */
-    @java.lang.Override
-    public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo getTargetBlock() {
-      return targetBlock_ == null ? com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo.getDefaultInstance() : targetBlock_;
-    }
-    /**
-     * <code>.BlockInfo target_block = 2;</code>
-     */
-    @java.lang.Override
-    public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfoOrBuilder getTargetBlockOrBuilder() {
-      return targetBlock_ == null ? com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo.getDefaultInstance() : targetBlock_;
-    }
-
-    public static final int TARGET_ENTITY_FIELD_NUMBER = 3;
-    private com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo targetEntity_;
-    /**
-     * <code>.EntityInfo target_entity = 3;</code>
-     * @return Whether the targetEntity field is set.
-     */
-    @java.lang.Override
-    public boolean hasTargetEntity() {
-      return targetEntity_ != null;
-    }
-    /**
-     * <code>.EntityInfo target_entity = 3;</code>
-     * @return The targetEntity.
-     */
-    @java.lang.Override
-    public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo getTargetEntity() {
-      return targetEntity_ == null ? com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo.getDefaultInstance() : targetEntity_;
-    }
-    /**
-     * <code>.EntityInfo target_entity = 3;</code>
-     */
-    @java.lang.Override
-    public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfoOrBuilder getTargetEntityOrBuilder() {
-      return targetEntity_ == null ? com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo.getDefaultInstance() : targetEntity_;
-    }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (type_ != com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult.Type.MISS.getNumber()) {
-        output.writeEnum(1, type_);
-      }
-      if (targetBlock_ != null) {
-        output.writeMessage(2, getTargetBlock());
-      }
-      if (targetEntity_ != null) {
-        output.writeMessage(3, getTargetEntity());
-      }
-      getUnknownFields().writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (type_ != com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult.Type.MISS.getNumber()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(1, type_);
-      }
-      if (targetBlock_ != null) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, getTargetBlock());
-      }
-      if (targetEntity_ != null) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(3, getTargetEntity());
-      }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult)) {
-        return super.equals(obj);
-      }
-      com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult other = (com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult) obj;
-
-      if (type_ != other.type_) return false;
-      if (hasTargetBlock() != other.hasTargetBlock()) return false;
-      if (hasTargetBlock()) {
-        if (!getTargetBlock()
-            .equals(other.getTargetBlock())) return false;
-      }
-      if (hasTargetEntity() != other.hasTargetEntity()) return false;
-      if (hasTargetEntity()) {
-        if (!getTargetEntity()
-            .equals(other.getTargetEntity())) return false;
-      }
-      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
-      return true;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + TYPE_FIELD_NUMBER;
-      hash = (53 * hash) + type_;
-      if (hasTargetBlock()) {
-        hash = (37 * hash) + TARGET_BLOCK_FIELD_NUMBER;
-        hash = (53 * hash) + getTargetBlock().hashCode();
-      }
-      if (hasTargetEntity()) {
-        hash = (37 * hash) + TARGET_ENTITY_FIELD_NUMBER;
-        hash = (53 * hash) + getTargetEntity().hashCode();
-      }
-      hash = (29 * hash) + getUnknownFields().hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
     /**
      * Protobuf type {@code HitResult}
      */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:HitResult)
-        com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResultOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_HitResult_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_HitResult_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult.class, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult.Builder.class);
-      }
-
-      // Construct using com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult.newBuilder()
-      private Builder() {
-
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        bitField0_ = 0;
-        type_ = 0;
-        targetBlock_ = null;
-        if (targetBlockBuilder_ != null) {
-          targetBlockBuilder_.dispose();
-          targetBlockBuilder_ = null;
-        }
-        targetEntity_ = null;
-        if (targetEntityBuilder_ != null) {
-          targetEntityBuilder_.dispose();
-          targetEntityBuilder_ = null;
-        }
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_HitResult_descriptor;
-      }
-
-      @java.lang.Override
-      public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult getDefaultInstanceForType() {
-        return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult build() {
-        com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult buildPartial() {
-        com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult result = new com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult(this);
-        if (bitField0_ != 0) { buildPartial0(result); }
-        onBuilt();
-        return result;
-      }
-
-      private void buildPartial0(com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult result) {
-        int from_bitField0_ = bitField0_;
-        if (((from_bitField0_ & 0x00000001) != 0)) {
-          result.type_ = type_;
-        }
-        if (((from_bitField0_ & 0x00000002) != 0)) {
-          result.targetBlock_ = targetBlockBuilder_ == null
-              ? targetBlock_
-              : targetBlockBuilder_.build();
-        }
-        if (((from_bitField0_ & 0x00000004) != 0)) {
-          result.targetEntity_ = targetEntityBuilder_ == null
-              ? targetEntity_
-              : targetEntityBuilder_.build();
-        }
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult) {
-          return mergeFrom((com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult other) {
-        if (other == com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult.getDefaultInstance()) return this;
-        if (other.type_ != 0) {
-          setTypeValue(other.getTypeValue());
-        }
-        if (other.hasTargetBlock()) {
-          mergeTargetBlock(other.getTargetBlock());
-        }
-        if (other.hasTargetEntity()) {
-          mergeTargetEntity(other.getTargetEntity());
-        }
-        this.mergeUnknownFields(other.getUnknownFields());
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        if (extensionRegistry == null) {
-          throw new java.lang.NullPointerException();
-        }
-        try {
-          boolean done = false;
-          while (!done) {
-            int tag = input.readTag();
-            switch (tag) {
-              case 0:
-                done = true;
-                break;
-              case 8: {
-                type_ = input.readEnum();
-                bitField0_ |= 0x00000001;
-                break;
-              } // case 8
-              case 18: {
-                input.readMessage(
-                    getTargetBlockFieldBuilder().getBuilder(),
-                    extensionRegistry);
-                bitField0_ |= 0x00000002;
-                break;
-              } // case 18
-              case 26: {
-                input.readMessage(
-                    getTargetEntityFieldBuilder().getBuilder(),
-                    extensionRegistry);
-                bitField0_ |= 0x00000004;
-                break;
-              } // case 26
-              default: {
-                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                  done = true; // was an endgroup tag
+    public static final class HitResult extends
+            com.google.protobuf.GeneratedMessageV3 implements
+            // @@protoc_insertion_point(message_implements:HitResult)
+            HitResultOrBuilder {
+        public static final int TYPE_FIELD_NUMBER = 1;
+        public static final int TARGET_BLOCK_FIELD_NUMBER = 2;
+        public static final int TARGET_ENTITY_FIELD_NUMBER = 3;
+        private static final long serialVersionUID = 0L;
+        // @@protoc_insertion_point(class_scope:HitResult)
+        private static final com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult DEFAULT_INSTANCE;
+        private static final com.google.protobuf.Parser<HitResult>
+                PARSER = new com.google.protobuf.AbstractParser<HitResult>() {
+            @java.lang.Override
+            public HitResult parsePartialFrom(
+                    com.google.protobuf.CodedInputStream input,
+                    com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                    throws com.google.protobuf.InvalidProtocolBufferException {
+                Builder builder = newBuilder();
+                try {
+                    builder.mergeFrom(input, extensionRegistry);
+                } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                    throw e.setUnfinishedMessage(builder.buildPartial());
+                } catch (com.google.protobuf.UninitializedMessageException e) {
+                    throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+                } catch (java.io.IOException e) {
+                    throw new com.google.protobuf.InvalidProtocolBufferException(e)
+                            .setUnfinishedMessage(builder.buildPartial());
                 }
-                break;
-              } // default:
-            } // switch (tag)
-          } // while (!done)
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          throw e.unwrapIOException();
-        } finally {
-          onChanged();
-        } // finally
-        return this;
-      }
-      private int bitField0_;
+                return builder.buildPartial();
+            }
+        };
 
-      private int type_ = 0;
-      /**
-       * <code>.HitResult.Type type = 1;</code>
-       * @return The enum numeric value on the wire for type.
-       */
-      @java.lang.Override public int getTypeValue() {
-        return type_;
-      }
-      /**
-       * <code>.HitResult.Type type = 1;</code>
-       * @param value The enum numeric value on the wire for type to set.
-       * @return This builder for chaining.
-       */
-      public Builder setTypeValue(int value) {
-        type_ = value;
-        bitField0_ |= 0x00000001;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>.HitResult.Type type = 1;</code>
-       * @return The type.
-       */
-      @java.lang.Override
-      public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult.Type getType() {
-        com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult.Type result = com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult.Type.forNumber(type_);
-        return result == null ? com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult.Type.UNRECOGNIZED : result;
-      }
-      /**
-       * <code>.HitResult.Type type = 1;</code>
-       * @param value The type to set.
-       * @return This builder for chaining.
-       */
-      public Builder setType(com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult.Type value) {
-        if (value == null) {
-          throw new NullPointerException();
+        static {
+            DEFAULT_INSTANCE = new com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult();
         }
-        bitField0_ |= 0x00000001;
-        type_ = value.getNumber();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>.HitResult.Type type = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearType() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        type_ = 0;
-        onChanged();
-        return this;
-      }
 
-      private com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo targetBlock_;
-      private com.google.protobuf.SingleFieldBuilderV3<
-          com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo.Builder, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfoOrBuilder> targetBlockBuilder_;
-      /**
-       * <code>.BlockInfo target_block = 2;</code>
-       * @return Whether the targetBlock field is set.
-       */
-      public boolean hasTargetBlock() {
-        return ((bitField0_ & 0x00000002) != 0);
-      }
-      /**
-       * <code>.BlockInfo target_block = 2;</code>
-       * @return The targetBlock.
-       */
-      public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo getTargetBlock() {
-        if (targetBlockBuilder_ == null) {
-          return targetBlock_ == null ? com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo.getDefaultInstance() : targetBlock_;
-        } else {
-          return targetBlockBuilder_.getMessage();
+        private int type_ = 0;
+        private com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo targetBlock_;
+        private com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo targetEntity_;
+        private byte memoizedIsInitialized = -1;
+
+        // Use HitResult.newBuilder() to construct.
+        private HitResult(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+            super(builder);
         }
-      }
-      /**
-       * <code>.BlockInfo target_block = 2;</code>
-       */
-      public Builder setTargetBlock(com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo value) {
-        if (targetBlockBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          targetBlock_ = value;
-        } else {
-          targetBlockBuilder_.setMessage(value);
+
+        private HitResult() {
+            type_ = 0;
         }
-        bitField0_ |= 0x00000002;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>.BlockInfo target_block = 2;</code>
-       */
-      public Builder setTargetBlock(
-          com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo.Builder builderForValue) {
-        if (targetBlockBuilder_ == null) {
-          targetBlock_ = builderForValue.build();
-        } else {
-          targetBlockBuilder_.setMessage(builderForValue.build());
-        }
-        bitField0_ |= 0x00000002;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>.BlockInfo target_block = 2;</code>
-       */
-      public Builder mergeTargetBlock(com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo value) {
-        if (targetBlockBuilder_ == null) {
-          if (((bitField0_ & 0x00000002) != 0) &&
-            targetBlock_ != null &&
-            targetBlock_ != com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo.getDefaultInstance()) {
-            getTargetBlockBuilder().mergeFrom(value);
-          } else {
-            targetBlock_ = value;
-          }
-        } else {
-          targetBlockBuilder_.mergeFrom(value);
-        }
-        bitField0_ |= 0x00000002;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>.BlockInfo target_block = 2;</code>
-       */
-      public Builder clearTargetBlock() {
-        bitField0_ = (bitField0_ & ~0x00000002);
-        targetBlock_ = null;
-        if (targetBlockBuilder_ != null) {
-          targetBlockBuilder_.dispose();
-          targetBlockBuilder_ = null;
-        }
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>.BlockInfo target_block = 2;</code>
-       */
-      public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo.Builder getTargetBlockBuilder() {
-        bitField0_ |= 0x00000002;
-        onChanged();
-        return getTargetBlockFieldBuilder().getBuilder();
-      }
-      /**
-       * <code>.BlockInfo target_block = 2;</code>
-       */
-      public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfoOrBuilder getTargetBlockOrBuilder() {
-        if (targetBlockBuilder_ != null) {
-          return targetBlockBuilder_.getMessageOrBuilder();
-        } else {
-          return targetBlock_ == null ?
-              com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo.getDefaultInstance() : targetBlock_;
-        }
-      }
-      /**
-       * <code>.BlockInfo target_block = 2;</code>
-       */
-      private com.google.protobuf.SingleFieldBuilderV3<
-          com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo.Builder, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfoOrBuilder> 
-          getTargetBlockFieldBuilder() {
-        if (targetBlockBuilder_ == null) {
-          targetBlockBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo.Builder, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfoOrBuilder>(
-                  getTargetBlock(),
-                  getParentForChildren(),
-                  isClean());
-          targetBlock_ = null;
-        }
-        return targetBlockBuilder_;
-      }
 
-      private com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo targetEntity_;
-      private com.google.protobuf.SingleFieldBuilderV3<
-          com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo.Builder, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfoOrBuilder> targetEntityBuilder_;
-      /**
-       * <code>.EntityInfo target_entity = 3;</code>
-       * @return Whether the targetEntity field is set.
-       */
-      public boolean hasTargetEntity() {
-        return ((bitField0_ & 0x00000004) != 0);
-      }
-      /**
-       * <code>.EntityInfo target_entity = 3;</code>
-       * @return The targetEntity.
-       */
-      public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo getTargetEntity() {
-        if (targetEntityBuilder_ == null) {
-          return targetEntity_ == null ? com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo.getDefaultInstance() : targetEntity_;
-        } else {
-          return targetEntityBuilder_.getMessage();
-        }
-      }
-      /**
-       * <code>.EntityInfo target_entity = 3;</code>
-       */
-      public Builder setTargetEntity(com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo value) {
-        if (targetEntityBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          targetEntity_ = value;
-        } else {
-          targetEntityBuilder_.setMessage(value);
-        }
-        bitField0_ |= 0x00000004;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>.EntityInfo target_entity = 3;</code>
-       */
-      public Builder setTargetEntity(
-          com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo.Builder builderForValue) {
-        if (targetEntityBuilder_ == null) {
-          targetEntity_ = builderForValue.build();
-        } else {
-          targetEntityBuilder_.setMessage(builderForValue.build());
-        }
-        bitField0_ |= 0x00000004;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>.EntityInfo target_entity = 3;</code>
-       */
-      public Builder mergeTargetEntity(com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo value) {
-        if (targetEntityBuilder_ == null) {
-          if (((bitField0_ & 0x00000004) != 0) &&
-            targetEntity_ != null &&
-            targetEntity_ != com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo.getDefaultInstance()) {
-            getTargetEntityBuilder().mergeFrom(value);
-          } else {
-            targetEntity_ = value;
-          }
-        } else {
-          targetEntityBuilder_.mergeFrom(value);
-        }
-        bitField0_ |= 0x00000004;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>.EntityInfo target_entity = 3;</code>
-       */
-      public Builder clearTargetEntity() {
-        bitField0_ = (bitField0_ & ~0x00000004);
-        targetEntity_ = null;
-        if (targetEntityBuilder_ != null) {
-          targetEntityBuilder_.dispose();
-          targetEntityBuilder_ = null;
-        }
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>.EntityInfo target_entity = 3;</code>
-       */
-      public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo.Builder getTargetEntityBuilder() {
-        bitField0_ |= 0x00000004;
-        onChanged();
-        return getTargetEntityFieldBuilder().getBuilder();
-      }
-      /**
-       * <code>.EntityInfo target_entity = 3;</code>
-       */
-      public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfoOrBuilder getTargetEntityOrBuilder() {
-        if (targetEntityBuilder_ != null) {
-          return targetEntityBuilder_.getMessageOrBuilder();
-        } else {
-          return targetEntity_ == null ?
-              com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo.getDefaultInstance() : targetEntity_;
-        }
-      }
-      /**
-       * <code>.EntityInfo target_entity = 3;</code>
-       */
-      private com.google.protobuf.SingleFieldBuilderV3<
-          com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo.Builder, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfoOrBuilder> 
-          getTargetEntityFieldBuilder() {
-        if (targetEntityBuilder_ == null) {
-          targetEntityBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo.Builder, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfoOrBuilder>(
-                  getTargetEntity(),
-                  getParentForChildren(),
-                  isClean());
-          targetEntity_ = null;
-        }
-        return targetEntityBuilder_;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:HitResult)
-    }
-
-    // @@protoc_insertion_point(class_scope:HitResult)
-    private static final com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult();
-    }
-
-    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<HitResult>
-        PARSER = new com.google.protobuf.AbstractParser<HitResult>() {
-      @java.lang.Override
-      public HitResult parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        Builder builder = newBuilder();
-        try {
-          builder.mergeFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          throw e.setUnfinishedMessage(builder.buildPartial());
-        } catch (com.google.protobuf.UninitializedMessageException e) {
-          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
-        } catch (java.io.IOException e) {
-          throw new com.google.protobuf.InvalidProtocolBufferException(e)
-              .setUnfinishedMessage(builder.buildPartial());
-        }
-        return builder.buildPartial();
-      }
-    };
-
-    public static com.google.protobuf.Parser<HitResult> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<HitResult> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
-  public interface StatusEffectOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:StatusEffect)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>string translation_key = 1;</code>
-     * @return The translationKey.
-     */
-    java.lang.String getTranslationKey();
-    /**
-     * <code>string translation_key = 1;</code>
-     * @return The bytes for translationKey.
-     */
-    com.google.protobuf.ByteString
-        getTranslationKeyBytes();
-
-    /**
-     * <code>int32 duration = 2;</code>
-     * @return The duration.
-     */
-    int getDuration();
-
-    /**
-     * <code>int32 amplifier = 3;</code>
-     * @return The amplifier.
-     */
-    int getAmplifier();
-  }
-  /**
-   * Protobuf type {@code StatusEffect}
-   */
-  public static final class StatusEffect extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:StatusEffect)
-      StatusEffectOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use StatusEffect.newBuilder() to construct.
-    private StatusEffect(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private StatusEffect() {
-      translationKey_ = "";
-    }
-
-    @java.lang.Override
-    @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
-      return new StatusEffect();
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
+        public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_StatusEffect_descriptor;
-    }
+            return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_HitResult_descriptor;
+        }
 
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult parseFrom(
+                java.nio.ByteBuffer data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
+
+        public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult parseFrom(
+                java.nio.ByteBuffer data,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
+        }
+
+        public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult parseFrom(
+                com.google.protobuf.ByteString data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
+
+        public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult parseFrom(
+                com.google.protobuf.ByteString data,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
+        }
+
+        public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult parseFrom(byte[] data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
+
+        public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult parseFrom(
+                byte[] data,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
+        }
+
+        public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult parseFrom(java.io.InputStream input)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3
+                    .parseWithIOException(PARSER, input);
+        }
+
+        public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult parseFrom(
+                java.io.InputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3
+                    .parseWithIOException(PARSER, input, extensionRegistry);
+        }
+
+        public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult parseDelimitedFrom(java.io.InputStream input)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3
+                    .parseDelimitedWithIOException(PARSER, input);
+        }
+
+        public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult parseDelimitedFrom(
+                java.io.InputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3
+                    .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+        }
+
+        public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult parseFrom(
+                com.google.protobuf.CodedInputStream input)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3
+                    .parseWithIOException(PARSER, input);
+        }
+
+        public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult parseFrom(
+                com.google.protobuf.CodedInputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3
+                    .parseWithIOException(PARSER, input, extensionRegistry);
+        }
+
+        public static Builder newBuilder() {
+            return DEFAULT_INSTANCE.toBuilder();
+        }
+
+        public static Builder newBuilder(com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult prototype) {
+            return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+        }
+
+        public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult getDefaultInstance() {
+            return DEFAULT_INSTANCE;
+        }
+
+        public static com.google.protobuf.Parser<HitResult> parser() {
+            return PARSER;
+        }
+
+        @java.lang.Override
+        @SuppressWarnings({"unused"})
+        protected java.lang.Object newInstance(
+                UnusedPrivateParameter unused) {
+            return new HitResult();
+        }
+
+        @java.lang.Override
+        public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+            return this.unknownFields;
+        }
+
+        @java.lang.Override
+        protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_StatusEffect_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect.class, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect.Builder.class);
+            return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_HitResult_fieldAccessorTable
+                    .ensureFieldAccessorsInitialized(
+                            com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult.class, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult.Builder.class);
+        }
+
+        /**
+         * <code>.HitResult.Type type = 1;</code>
+         *
+         * @return The enum numeric value on the wire for type.
+         */
+        @java.lang.Override
+        public int getTypeValue() {
+            return type_;
+        }
+
+        /**
+         * <code>.HitResult.Type type = 1;</code>
+         *
+         * @return The type.
+         */
+        @java.lang.Override
+        public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult.Type getType() {
+            com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult.Type result = com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult.Type.forNumber(type_);
+            return result == null ? com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult.Type.UNRECOGNIZED : result;
+        }
+
+        /**
+         * <code>.BlockInfo target_block = 2;</code>
+         *
+         * @return Whether the targetBlock field is set.
+         */
+        @java.lang.Override
+        public boolean hasTargetBlock() {
+            return targetBlock_ != null;
+        }
+
+        /**
+         * <code>.BlockInfo target_block = 2;</code>
+         *
+         * @return The targetBlock.
+         */
+        @java.lang.Override
+        public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo getTargetBlock() {
+            return targetBlock_ == null ? com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo.getDefaultInstance() : targetBlock_;
+        }
+
+        /**
+         * <code>.BlockInfo target_block = 2;</code>
+         */
+        @java.lang.Override
+        public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfoOrBuilder getTargetBlockOrBuilder() {
+            return targetBlock_ == null ? com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo.getDefaultInstance() : targetBlock_;
+        }
+
+        /**
+         * <code>.EntityInfo target_entity = 3;</code>
+         *
+         * @return Whether the targetEntity field is set.
+         */
+        @java.lang.Override
+        public boolean hasTargetEntity() {
+            return targetEntity_ != null;
+        }
+
+        /**
+         * <code>.EntityInfo target_entity = 3;</code>
+         *
+         * @return The targetEntity.
+         */
+        @java.lang.Override
+        public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo getTargetEntity() {
+            return targetEntity_ == null ? com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo.getDefaultInstance() : targetEntity_;
+        }
+
+        /**
+         * <code>.EntityInfo target_entity = 3;</code>
+         */
+        @java.lang.Override
+        public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfoOrBuilder getTargetEntityOrBuilder() {
+            return targetEntity_ == null ? com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo.getDefaultInstance() : targetEntity_;
+        }
+
+        @java.lang.Override
+        public final boolean isInitialized() {
+            byte isInitialized = memoizedIsInitialized;
+            if (isInitialized == 1) return true;
+            if (isInitialized == 0) return false;
+
+            memoizedIsInitialized = 1;
+            return true;
+        }
+
+        @java.lang.Override
+        public void writeTo(com.google.protobuf.CodedOutputStream output)
+                throws java.io.IOException {
+            if (type_ != com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult.Type.MISS.getNumber()) {
+                output.writeEnum(1, type_);
+            }
+            if (targetBlock_ != null) {
+                output.writeMessage(2, getTargetBlock());
+            }
+            if (targetEntity_ != null) {
+                output.writeMessage(3, getTargetEntity());
+            }
+            getUnknownFields().writeTo(output);
+        }
+
+        @java.lang.Override
+        public int getSerializedSize() {
+            int size = memoizedSize;
+            if (size != -1) return size;
+
+            size = 0;
+            if (type_ != com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult.Type.MISS.getNumber()) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeEnumSize(1, type_);
+            }
+            if (targetBlock_ != null) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeMessageSize(2, getTargetBlock());
+            }
+            if (targetEntity_ != null) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeMessageSize(3, getTargetEntity());
+            }
+            size += getUnknownFields().getSerializedSize();
+            memoizedSize = size;
+            return size;
+        }
+
+        @java.lang.Override
+        public boolean equals(final java.lang.Object obj) {
+            if (obj == this) {
+                return true;
+            }
+            if (!(obj instanceof com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult)) {
+                return super.equals(obj);
+            }
+            com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult other = (com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult) obj;
+
+            if (type_ != other.type_) return false;
+            if (hasTargetBlock() != other.hasTargetBlock()) return false;
+            if (hasTargetBlock()) {
+                if (!getTargetBlock()
+                        .equals(other.getTargetBlock())) return false;
+            }
+            if (hasTargetEntity() != other.hasTargetEntity()) return false;
+            if (hasTargetEntity()) {
+                if (!getTargetEntity()
+                        .equals(other.getTargetEntity())) return false;
+            }
+            if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+            return true;
+        }
+
+        @java.lang.Override
+        public int hashCode() {
+            if (memoizedHashCode != 0) {
+                return memoizedHashCode;
+            }
+            int hash = 41;
+            hash = (19 * hash) + getDescriptor().hashCode();
+            hash = (37 * hash) + TYPE_FIELD_NUMBER;
+            hash = (53 * hash) + type_;
+            if (hasTargetBlock()) {
+                hash = (37 * hash) + TARGET_BLOCK_FIELD_NUMBER;
+                hash = (53 * hash) + getTargetBlock().hashCode();
+            }
+            if (hasTargetEntity()) {
+                hash = (37 * hash) + TARGET_ENTITY_FIELD_NUMBER;
+                hash = (53 * hash) + getTargetEntity().hashCode();
+            }
+            hash = (29 * hash) + getUnknownFields().hashCode();
+            memoizedHashCode = hash;
+            return hash;
+        }
+
+        @java.lang.Override
+        public Builder newBuilderForType() {
+            return newBuilder();
+        }
+
+        @java.lang.Override
+        public Builder toBuilder() {
+            return this == DEFAULT_INSTANCE
+                    ? new Builder() : new Builder().mergeFrom(this);
+        }
+
+        @java.lang.Override
+        protected Builder newBuilderForType(
+                com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+            Builder builder = new Builder(parent);
+            return builder;
+        }
+
+        @java.lang.Override
+        public com.google.protobuf.Parser<HitResult> getParserForType() {
+            return PARSER;
+        }
+
+        @java.lang.Override
+        public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult getDefaultInstanceForType() {
+            return DEFAULT_INSTANCE;
+        }
+
+        /**
+         * Protobuf enum {@code HitResult.Type}
+         */
+        public enum Type
+                implements com.google.protobuf.ProtocolMessageEnum {
+            /**
+             * <code>MISS = 0;</code>
+             */
+            MISS(0),
+            /**
+             * <code>BLOCK = 1;</code>
+             */
+            BLOCK(1),
+            /**
+             * <code>ENTITY = 2;</code>
+             */
+            ENTITY(2),
+            UNRECOGNIZED(-1),
+            ;
+
+            /**
+             * <code>MISS = 0;</code>
+             */
+            public static final int MISS_VALUE = 0;
+            /**
+             * <code>BLOCK = 1;</code>
+             */
+            public static final int BLOCK_VALUE = 1;
+            /**
+             * <code>ENTITY = 2;</code>
+             */
+            public static final int ENTITY_VALUE = 2;
+            private static final com.google.protobuf.Internal.EnumLiteMap<
+                    Type> internalValueMap =
+                    new com.google.protobuf.Internal.EnumLiteMap<Type>() {
+                        public Type findValueByNumber(int number) {
+                            return Type.forNumber(number);
+                        }
+                    };
+            private static final Type[] VALUES = values();
+            private final int value;
+
+            private Type(int value) {
+                this.value = value;
+            }
+
+            /**
+             * @param value The numeric wire value of the corresponding enum entry.
+             * @return The enum associated with the given numeric wire value.
+             * @deprecated Use {@link #forNumber(int)} instead.
+             */
+            @java.lang.Deprecated
+            public static Type valueOf(int value) {
+                return forNumber(value);
+            }
+
+            /**
+             * @param value The numeric wire value of the corresponding enum entry.
+             * @return The enum associated with the given numeric wire value.
+             */
+            public static Type forNumber(int value) {
+                switch (value) {
+                    case 0:
+                        return MISS;
+                    case 1:
+                        return BLOCK;
+                    case 2:
+                        return ENTITY;
+                    default:
+                        return null;
+                }
+            }
+
+            public static com.google.protobuf.Internal.EnumLiteMap<Type>
+            internalGetValueMap() {
+                return internalValueMap;
+            }
+
+            public static final com.google.protobuf.Descriptors.EnumDescriptor
+            getDescriptor() {
+                return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult.getDescriptor().getEnumTypes().get(0);
+            }
+
+            public static Type valueOf(
+                    com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+                if (desc.getType() != getDescriptor()) {
+                    throw new java.lang.IllegalArgumentException(
+                            "EnumValueDescriptor is not for this type.");
+                }
+                if (desc.getIndex() == -1) {
+                    return UNRECOGNIZED;
+                }
+                return VALUES[desc.getIndex()];
+            }
+
+            public final int getNumber() {
+                if (this == UNRECOGNIZED) {
+                    throw new java.lang.IllegalArgumentException(
+                            "Can't get the number of an unknown enum value.");
+                }
+                return value;
+            }
+
+            public final com.google.protobuf.Descriptors.EnumValueDescriptor
+            getValueDescriptor() {
+                if (this == UNRECOGNIZED) {
+                    throw new java.lang.IllegalStateException(
+                            "Can't get the descriptor of an unrecognized enum value.");
+                }
+                return getDescriptor().getValues().get(ordinal());
+            }
+
+            public final com.google.protobuf.Descriptors.EnumDescriptor
+            getDescriptorForType() {
+                return getDescriptor();
+            }
+
+            // @@protoc_insertion_point(enum_scope:HitResult.Type)
+        }
+
+        /**
+         * Protobuf type {@code HitResult}
+         */
+        public static final class Builder extends
+                com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+                // @@protoc_insertion_point(builder_implements:HitResult)
+                com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResultOrBuilder {
+            private int bitField0_;
+            private int type_ = 0;
+            private com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo targetBlock_;
+            private com.google.protobuf.SingleFieldBuilderV3<
+                    com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo.Builder, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfoOrBuilder> targetBlockBuilder_;
+            private com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo targetEntity_;
+            private com.google.protobuf.SingleFieldBuilderV3<
+                    com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo.Builder, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfoOrBuilder> targetEntityBuilder_;
+
+            // Construct using com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult.newBuilder()
+            private Builder() {
+
+            }
+
+            private Builder(
+                    com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+                super(parent);
+
+            }
+
+            public static final com.google.protobuf.Descriptors.Descriptor
+            getDescriptor() {
+                return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_HitResult_descriptor;
+            }
+
+            @java.lang.Override
+            protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+            internalGetFieldAccessorTable() {
+                return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_HitResult_fieldAccessorTable
+                        .ensureFieldAccessorsInitialized(
+                                com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult.class, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult.Builder.class);
+            }
+
+            @java.lang.Override
+            public Builder clear() {
+                super.clear();
+                bitField0_ = 0;
+                type_ = 0;
+                targetBlock_ = null;
+                if (targetBlockBuilder_ != null) {
+                    targetBlockBuilder_.dispose();
+                    targetBlockBuilder_ = null;
+                }
+                targetEntity_ = null;
+                if (targetEntityBuilder_ != null) {
+                    targetEntityBuilder_.dispose();
+                    targetEntityBuilder_ = null;
+                }
+                return this;
+            }
+
+            @java.lang.Override
+            public com.google.protobuf.Descriptors.Descriptor
+            getDescriptorForType() {
+                return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_HitResult_descriptor;
+            }
+
+            @java.lang.Override
+            public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult getDefaultInstanceForType() {
+                return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult.getDefaultInstance();
+            }
+
+            @java.lang.Override
+            public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult build() {
+                com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult result = buildPartial();
+                if (!result.isInitialized()) {
+                    throw newUninitializedMessageException(result);
+                }
+                return result;
+            }
+
+            @java.lang.Override
+            public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult buildPartial() {
+                com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult result = new com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult(this);
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
+                }
+                onBuilt();
+                return result;
+            }
+
+            private void buildPartial0(com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult result) {
+                int from_bitField0_ = bitField0_;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    result.type_ = type_;
+                }
+                if (((from_bitField0_ & 0x00000002) != 0)) {
+                    result.targetBlock_ = targetBlockBuilder_ == null
+                            ? targetBlock_
+                            : targetBlockBuilder_.build();
+                }
+                if (((from_bitField0_ & 0x00000004) != 0)) {
+                    result.targetEntity_ = targetEntityBuilder_ == null
+                            ? targetEntity_
+                            : targetEntityBuilder_.build();
+                }
+            }
+
+            @java.lang.Override
+            public Builder clone() {
+                return super.clone();
+            }
+
+            @java.lang.Override
+            public Builder setField(
+                    com.google.protobuf.Descriptors.FieldDescriptor field,
+                    java.lang.Object value) {
+                return super.setField(field, value);
+            }
+
+            @java.lang.Override
+            public Builder clearField(
+                    com.google.protobuf.Descriptors.FieldDescriptor field) {
+                return super.clearField(field);
+            }
+
+            @java.lang.Override
+            public Builder clearOneof(
+                    com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+                return super.clearOneof(oneof);
+            }
+
+            @java.lang.Override
+            public Builder setRepeatedField(
+                    com.google.protobuf.Descriptors.FieldDescriptor field,
+                    int index, java.lang.Object value) {
+                return super.setRepeatedField(field, index, value);
+            }
+
+            @java.lang.Override
+            public Builder addRepeatedField(
+                    com.google.protobuf.Descriptors.FieldDescriptor field,
+                    java.lang.Object value) {
+                return super.addRepeatedField(field, value);
+            }
+
+            @java.lang.Override
+            public Builder mergeFrom(com.google.protobuf.Message other) {
+                if (other instanceof com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult) {
+                    return mergeFrom((com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult) other);
+                } else {
+                    super.mergeFrom(other);
+                    return this;
+                }
+            }
+
+            public Builder mergeFrom(com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult other) {
+                if (other == com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult.getDefaultInstance())
+                    return this;
+                if (other.type_ != 0) {
+                    setTypeValue(other.getTypeValue());
+                }
+                if (other.hasTargetBlock()) {
+                    mergeTargetBlock(other.getTargetBlock());
+                }
+                if (other.hasTargetEntity()) {
+                    mergeTargetEntity(other.getTargetEntity());
+                }
+                this.mergeUnknownFields(other.getUnknownFields());
+                onChanged();
+                return this;
+            }
+
+            @java.lang.Override
+            public final boolean isInitialized() {
+                return true;
+            }
+
+            @java.lang.Override
+            public Builder mergeFrom(
+                    com.google.protobuf.CodedInputStream input,
+                    com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                    throws java.io.IOException {
+                if (extensionRegistry == null) {
+                    throw new java.lang.NullPointerException();
+                }
+                try {
+                    boolean done = false;
+                    while (!done) {
+                        int tag = input.readTag();
+                        switch (tag) {
+                            case 0:
+                                done = true;
+                                break;
+                            case 8: {
+                                type_ = input.readEnum();
+                                bitField0_ |= 0x00000001;
+                                break;
+                            } // case 8
+                            case 18: {
+                                input.readMessage(
+                                        getTargetBlockFieldBuilder().getBuilder(),
+                                        extensionRegistry);
+                                bitField0_ |= 0x00000002;
+                                break;
+                            } // case 18
+                            case 26: {
+                                input.readMessage(
+                                        getTargetEntityFieldBuilder().getBuilder(),
+                                        extensionRegistry);
+                                bitField0_ |= 0x00000004;
+                                break;
+                            } // case 26
+                            default: {
+                                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                                    done = true; // was an endgroup tag
+                                }
+                                break;
+                            } // default:
+                        } // switch (tag)
+                    } // while (!done)
+                } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                    throw e.unwrapIOException();
+                } finally {
+                    onChanged();
+                } // finally
+                return this;
+            }
+
+            /**
+             * <code>.HitResult.Type type = 1;</code>
+             *
+             * @return The enum numeric value on the wire for type.
+             */
+            @java.lang.Override
+            public int getTypeValue() {
+                return type_;
+            }
+
+            /**
+             * <code>.HitResult.Type type = 1;</code>
+             *
+             * @param value The enum numeric value on the wire for type to set.
+             * @return This builder for chaining.
+             */
+            public Builder setTypeValue(int value) {
+                type_ = value;
+                bitField0_ |= 0x00000001;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>.HitResult.Type type = 1;</code>
+             *
+             * @return The type.
+             */
+            @java.lang.Override
+            public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult.Type getType() {
+                com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult.Type result = com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult.Type.forNumber(type_);
+                return result == null ? com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult.Type.UNRECOGNIZED : result;
+            }
+
+            /**
+             * <code>.HitResult.Type type = 1;</code>
+             *
+             * @param value The type to set.
+             * @return This builder for chaining.
+             */
+            public Builder setType(com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult.Type value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                bitField0_ |= 0x00000001;
+                type_ = value.getNumber();
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>.HitResult.Type type = 1;</code>
+             *
+             * @return This builder for chaining.
+             */
+            public Builder clearType() {
+                bitField0_ = (bitField0_ & ~0x00000001);
+                type_ = 0;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>.BlockInfo target_block = 2;</code>
+             *
+             * @return Whether the targetBlock field is set.
+             */
+            public boolean hasTargetBlock() {
+                return ((bitField0_ & 0x00000002) != 0);
+            }
+
+            /**
+             * <code>.BlockInfo target_block = 2;</code>
+             *
+             * @return The targetBlock.
+             */
+            public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo getTargetBlock() {
+                if (targetBlockBuilder_ == null) {
+                    return targetBlock_ == null ? com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo.getDefaultInstance() : targetBlock_;
+                } else {
+                    return targetBlockBuilder_.getMessage();
+                }
+            }
+
+            /**
+             * <code>.BlockInfo target_block = 2;</code>
+             */
+            public Builder setTargetBlock(com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo value) {
+                if (targetBlockBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    targetBlock_ = value;
+                } else {
+                    targetBlockBuilder_.setMessage(value);
+                }
+                bitField0_ |= 0x00000002;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>.BlockInfo target_block = 2;</code>
+             */
+            public Builder setTargetBlock(
+                    com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo.Builder builderForValue) {
+                if (targetBlockBuilder_ == null) {
+                    targetBlock_ = builderForValue.build();
+                } else {
+                    targetBlockBuilder_.setMessage(builderForValue.build());
+                }
+                bitField0_ |= 0x00000002;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>.BlockInfo target_block = 2;</code>
+             */
+            public Builder mergeTargetBlock(com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo value) {
+                if (targetBlockBuilder_ == null) {
+                    if (((bitField0_ & 0x00000002) != 0) &&
+                            targetBlock_ != null &&
+                            targetBlock_ != com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo.getDefaultInstance()) {
+                        getTargetBlockBuilder().mergeFrom(value);
+                    } else {
+                        targetBlock_ = value;
+                    }
+                } else {
+                    targetBlockBuilder_.mergeFrom(value);
+                }
+                bitField0_ |= 0x00000002;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>.BlockInfo target_block = 2;</code>
+             */
+            public Builder clearTargetBlock() {
+                bitField0_ = (bitField0_ & ~0x00000002);
+                targetBlock_ = null;
+                if (targetBlockBuilder_ != null) {
+                    targetBlockBuilder_.dispose();
+                    targetBlockBuilder_ = null;
+                }
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>.BlockInfo target_block = 2;</code>
+             */
+            public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo.Builder getTargetBlockBuilder() {
+                bitField0_ |= 0x00000002;
+                onChanged();
+                return getTargetBlockFieldBuilder().getBuilder();
+            }
+
+            /**
+             * <code>.BlockInfo target_block = 2;</code>
+             */
+            public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfoOrBuilder getTargetBlockOrBuilder() {
+                if (targetBlockBuilder_ != null) {
+                    return targetBlockBuilder_.getMessageOrBuilder();
+                } else {
+                    return targetBlock_ == null ?
+                            com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo.getDefaultInstance() : targetBlock_;
+                }
+            }
+
+            /**
+             * <code>.BlockInfo target_block = 2;</code>
+             */
+            private com.google.protobuf.SingleFieldBuilderV3<
+                    com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo.Builder, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfoOrBuilder>
+            getTargetBlockFieldBuilder() {
+                if (targetBlockBuilder_ == null) {
+                    targetBlockBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+                            com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfo.Builder, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfoOrBuilder>(
+                            getTargetBlock(),
+                            getParentForChildren(),
+                            isClean());
+                    targetBlock_ = null;
+                }
+                return targetBlockBuilder_;
+            }
+
+            /**
+             * <code>.EntityInfo target_entity = 3;</code>
+             *
+             * @return Whether the targetEntity field is set.
+             */
+            public boolean hasTargetEntity() {
+                return ((bitField0_ & 0x00000004) != 0);
+            }
+
+            /**
+             * <code>.EntityInfo target_entity = 3;</code>
+             *
+             * @return The targetEntity.
+             */
+            public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo getTargetEntity() {
+                if (targetEntityBuilder_ == null) {
+                    return targetEntity_ == null ? com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo.getDefaultInstance() : targetEntity_;
+                } else {
+                    return targetEntityBuilder_.getMessage();
+                }
+            }
+
+            /**
+             * <code>.EntityInfo target_entity = 3;</code>
+             */
+            public Builder setTargetEntity(com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo value) {
+                if (targetEntityBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    targetEntity_ = value;
+                } else {
+                    targetEntityBuilder_.setMessage(value);
+                }
+                bitField0_ |= 0x00000004;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>.EntityInfo target_entity = 3;</code>
+             */
+            public Builder setTargetEntity(
+                    com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo.Builder builderForValue) {
+                if (targetEntityBuilder_ == null) {
+                    targetEntity_ = builderForValue.build();
+                } else {
+                    targetEntityBuilder_.setMessage(builderForValue.build());
+                }
+                bitField0_ |= 0x00000004;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>.EntityInfo target_entity = 3;</code>
+             */
+            public Builder mergeTargetEntity(com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo value) {
+                if (targetEntityBuilder_ == null) {
+                    if (((bitField0_ & 0x00000004) != 0) &&
+                            targetEntity_ != null &&
+                            targetEntity_ != com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo.getDefaultInstance()) {
+                        getTargetEntityBuilder().mergeFrom(value);
+                    } else {
+                        targetEntity_ = value;
+                    }
+                } else {
+                    targetEntityBuilder_.mergeFrom(value);
+                }
+                bitField0_ |= 0x00000004;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>.EntityInfo target_entity = 3;</code>
+             */
+            public Builder clearTargetEntity() {
+                bitField0_ = (bitField0_ & ~0x00000004);
+                targetEntity_ = null;
+                if (targetEntityBuilder_ != null) {
+                    targetEntityBuilder_.dispose();
+                    targetEntityBuilder_ = null;
+                }
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>.EntityInfo target_entity = 3;</code>
+             */
+            public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo.Builder getTargetEntityBuilder() {
+                bitField0_ |= 0x00000004;
+                onChanged();
+                return getTargetEntityFieldBuilder().getBuilder();
+            }
+
+            /**
+             * <code>.EntityInfo target_entity = 3;</code>
+             */
+            public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfoOrBuilder getTargetEntityOrBuilder() {
+                if (targetEntityBuilder_ != null) {
+                    return targetEntityBuilder_.getMessageOrBuilder();
+                } else {
+                    return targetEntity_ == null ?
+                            com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo.getDefaultInstance() : targetEntity_;
+                }
+            }
+
+            /**
+             * <code>.EntityInfo target_entity = 3;</code>
+             */
+            private com.google.protobuf.SingleFieldBuilderV3<
+                    com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo.Builder, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfoOrBuilder>
+            getTargetEntityFieldBuilder() {
+                if (targetEntityBuilder_ == null) {
+                    targetEntityBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+                            com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo.Builder, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfoOrBuilder>(
+                            getTargetEntity(),
+                            getParentForChildren(),
+                            isClean());
+                    targetEntity_ = null;
+                }
+                return targetEntityBuilder_;
+            }
+
+            @java.lang.Override
+            public final Builder setUnknownFields(
+                    final com.google.protobuf.UnknownFieldSet unknownFields) {
+                return super.setUnknownFields(unknownFields);
+            }
+
+            @java.lang.Override
+            public final Builder mergeUnknownFields(
+                    final com.google.protobuf.UnknownFieldSet unknownFields) {
+                return super.mergeUnknownFields(unknownFields);
+            }
+
+
+            // @@protoc_insertion_point(builder_scope:HitResult)
+        }
+
     }
 
-    public static final int TRANSLATION_KEY_FIELD_NUMBER = 1;
-    @SuppressWarnings("serial")
-    private volatile java.lang.Object translationKey_ = "";
-    /**
-     * <code>string translation_key = 1;</code>
-     * @return The translationKey.
-     */
-    @java.lang.Override
-    public java.lang.String getTranslationKey() {
-      java.lang.Object ref = translationKey_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        translationKey_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string translation_key = 1;</code>
-     * @return The bytes for translationKey.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString
-        getTranslationKeyBytes() {
-      java.lang.Object ref = translationKey_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        translationKey_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int DURATION_FIELD_NUMBER = 2;
-    private int duration_ = 0;
-    /**
-     * <code>int32 duration = 2;</code>
-     * @return The duration.
-     */
-    @java.lang.Override
-    public int getDuration() {
-      return duration_;
-    }
-
-    public static final int AMPLIFIER_FIELD_NUMBER = 3;
-    private int amplifier_ = 0;
-    /**
-     * <code>int32 amplifier = 3;</code>
-     * @return The amplifier.
-     */
-    @java.lang.Override
-    public int getAmplifier() {
-      return amplifier_;
-    }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(translationKey_)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, translationKey_);
-      }
-      if (duration_ != 0) {
-        output.writeInt32(2, duration_);
-      }
-      if (amplifier_ != 0) {
-        output.writeInt32(3, amplifier_);
-      }
-      getUnknownFields().writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(translationKey_)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, translationKey_);
-      }
-      if (duration_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, duration_);
-      }
-      if (amplifier_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(3, amplifier_);
-      }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect)) {
-        return super.equals(obj);
-      }
-      com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect other = (com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect) obj;
-
-      if (!getTranslationKey()
-          .equals(other.getTranslationKey())) return false;
-      if (getDuration()
-          != other.getDuration()) return false;
-      if (getAmplifier()
-          != other.getAmplifier()) return false;
-      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
-      return true;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + TRANSLATION_KEY_FIELD_NUMBER;
-      hash = (53 * hash) + getTranslationKey().hashCode();
-      hash = (37 * hash) + DURATION_FIELD_NUMBER;
-      hash = (53 * hash) + getDuration();
-      hash = (37 * hash) + AMPLIFIER_FIELD_NUMBER;
-      hash = (53 * hash) + getAmplifier();
-      hash = (29 * hash) + getUnknownFields().hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
     /**
      * Protobuf type {@code StatusEffect}
      */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:StatusEffect)
-        com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffectOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_StatusEffect_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_StatusEffect_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect.class, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect.Builder.class);
-      }
-
-      // Construct using com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect.newBuilder()
-      private Builder() {
-
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        bitField0_ = 0;
-        translationKey_ = "";
-        duration_ = 0;
-        amplifier_ = 0;
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_StatusEffect_descriptor;
-      }
-
-      @java.lang.Override
-      public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect getDefaultInstanceForType() {
-        return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect build() {
-        com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect buildPartial() {
-        com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect result = new com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect(this);
-        if (bitField0_ != 0) { buildPartial0(result); }
-        onBuilt();
-        return result;
-      }
-
-      private void buildPartial0(com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect result) {
-        int from_bitField0_ = bitField0_;
-        if (((from_bitField0_ & 0x00000001) != 0)) {
-          result.translationKey_ = translationKey_;
-        }
-        if (((from_bitField0_ & 0x00000002) != 0)) {
-          result.duration_ = duration_;
-        }
-        if (((from_bitField0_ & 0x00000004) != 0)) {
-          result.amplifier_ = amplifier_;
-        }
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect) {
-          return mergeFrom((com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect other) {
-        if (other == com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect.getDefaultInstance()) return this;
-        if (!other.getTranslationKey().isEmpty()) {
-          translationKey_ = other.translationKey_;
-          bitField0_ |= 0x00000001;
-          onChanged();
-        }
-        if (other.getDuration() != 0) {
-          setDuration(other.getDuration());
-        }
-        if (other.getAmplifier() != 0) {
-          setAmplifier(other.getAmplifier());
-        }
-        this.mergeUnknownFields(other.getUnknownFields());
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        if (extensionRegistry == null) {
-          throw new java.lang.NullPointerException();
-        }
-        try {
-          boolean done = false;
-          while (!done) {
-            int tag = input.readTag();
-            switch (tag) {
-              case 0:
-                done = true;
-                break;
-              case 10: {
-                translationKey_ = input.readStringRequireUtf8();
-                bitField0_ |= 0x00000001;
-                break;
-              } // case 10
-              case 16: {
-                duration_ = input.readInt32();
-                bitField0_ |= 0x00000002;
-                break;
-              } // case 16
-              case 24: {
-                amplifier_ = input.readInt32();
-                bitField0_ |= 0x00000004;
-                break;
-              } // case 24
-              default: {
-                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                  done = true; // was an endgroup tag
+    public static final class StatusEffect extends
+            com.google.protobuf.GeneratedMessageV3 implements
+            // @@protoc_insertion_point(message_implements:StatusEffect)
+            StatusEffectOrBuilder {
+        public static final int TRANSLATION_KEY_FIELD_NUMBER = 1;
+        public static final int DURATION_FIELD_NUMBER = 2;
+        public static final int AMPLIFIER_FIELD_NUMBER = 3;
+        private static final long serialVersionUID = 0L;
+        // @@protoc_insertion_point(class_scope:StatusEffect)
+        private static final com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect DEFAULT_INSTANCE;
+        private static final com.google.protobuf.Parser<StatusEffect>
+                PARSER = new com.google.protobuf.AbstractParser<StatusEffect>() {
+            @java.lang.Override
+            public StatusEffect parsePartialFrom(
+                    com.google.protobuf.CodedInputStream input,
+                    com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                    throws com.google.protobuf.InvalidProtocolBufferException {
+                Builder builder = newBuilder();
+                try {
+                    builder.mergeFrom(input, extensionRegistry);
+                } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                    throw e.setUnfinishedMessage(builder.buildPartial());
+                } catch (com.google.protobuf.UninitializedMessageException e) {
+                    throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+                } catch (java.io.IOException e) {
+                    throw new com.google.protobuf.InvalidProtocolBufferException(e)
+                            .setUnfinishedMessage(builder.buildPartial());
                 }
-                break;
-              } // default:
-            } // switch (tag)
-          } // while (!done)
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          throw e.unwrapIOException();
-        } finally {
-          onChanged();
-        } // finally
-        return this;
-      }
-      private int bitField0_;
+                return builder.buildPartial();
+            }
+        };
 
-      private java.lang.Object translationKey_ = "";
-      /**
-       * <code>string translation_key = 1;</code>
-       * @return The translationKey.
-       */
-      public java.lang.String getTranslationKey() {
-        java.lang.Object ref = translationKey_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          translationKey_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
+        static {
+            DEFAULT_INSTANCE = new com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect();
         }
-      }
-      /**
-       * <code>string translation_key = 1;</code>
-       * @return The bytes for translationKey.
-       */
-      public com.google.protobuf.ByteString
-          getTranslationKeyBytes() {
-        java.lang.Object ref = translationKey_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          translationKey_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
+
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object translationKey_ = "";
+        private int duration_ = 0;
+        private int amplifier_ = 0;
+        private byte memoizedIsInitialized = -1;
+
+        // Use StatusEffect.newBuilder() to construct.
+        private StatusEffect(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+            super(builder);
         }
-      }
-      /**
-       * <code>string translation_key = 1;</code>
-       * @param value The translationKey to set.
-       * @return This builder for chaining.
-       */
-      public Builder setTranslationKey(
-          java.lang.String value) {
-        if (value == null) { throw new NullPointerException(); }
-        translationKey_ = value;
-        bitField0_ |= 0x00000001;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string translation_key = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearTranslationKey() {
-        translationKey_ = getDefaultInstance().getTranslationKey();
-        bitField0_ = (bitField0_ & ~0x00000001);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string translation_key = 1;</code>
-       * @param value The bytes for translationKey to set.
-       * @return This builder for chaining.
-       */
-      public Builder setTranslationKeyBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) { throw new NullPointerException(); }
-        checkByteStringIsUtf8(value);
-        translationKey_ = value;
-        bitField0_ |= 0x00000001;
-        onChanged();
-        return this;
-      }
-
-      private int duration_ ;
-      /**
-       * <code>int32 duration = 2;</code>
-       * @return The duration.
-       */
-      @java.lang.Override
-      public int getDuration() {
-        return duration_;
-      }
-      /**
-       * <code>int32 duration = 2;</code>
-       * @param value The duration to set.
-       * @return This builder for chaining.
-       */
-      public Builder setDuration(int value) {
-        
-        duration_ = value;
-        bitField0_ |= 0x00000002;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>int32 duration = 2;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearDuration() {
-        bitField0_ = (bitField0_ & ~0x00000002);
-        duration_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private int amplifier_ ;
-      /**
-       * <code>int32 amplifier = 3;</code>
-       * @return The amplifier.
-       */
-      @java.lang.Override
-      public int getAmplifier() {
-        return amplifier_;
-      }
-      /**
-       * <code>int32 amplifier = 3;</code>
-       * @param value The amplifier to set.
-       * @return This builder for chaining.
-       */
-      public Builder setAmplifier(int value) {
-        
-        amplifier_ = value;
-        bitField0_ |= 0x00000004;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>int32 amplifier = 3;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearAmplifier() {
-        bitField0_ = (bitField0_ & ~0x00000004);
-        amplifier_ = 0;
-        onChanged();
-        return this;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:StatusEffect)
-    }
-
-    // @@protoc_insertion_point(class_scope:StatusEffect)
-    private static final com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect();
-    }
-
-    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<StatusEffect>
-        PARSER = new com.google.protobuf.AbstractParser<StatusEffect>() {
-      @java.lang.Override
-      public StatusEffect parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        Builder builder = newBuilder();
-        try {
-          builder.mergeFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          throw e.setUnfinishedMessage(builder.buildPartial());
-        } catch (com.google.protobuf.UninitializedMessageException e) {
-          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
-        } catch (java.io.IOException e) {
-          throw new com.google.protobuf.InvalidProtocolBufferException(e)
-              .setUnfinishedMessage(builder.buildPartial());
+        private StatusEffect() {
+            translationKey_ = "";
         }
-        return builder.buildPartial();
-      }
-    };
 
-    public static com.google.protobuf.Parser<StatusEffect> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<StatusEffect> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
-  public interface SoundEntryOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:SoundEntry)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>string translate_key = 1;</code>
-     * @return The translateKey.
-     */
-    java.lang.String getTranslateKey();
-    /**
-     * <code>string translate_key = 1;</code>
-     * @return The bytes for translateKey.
-     */
-    com.google.protobuf.ByteString
-        getTranslateKeyBytes();
-
-    /**
-     * <code>int64 age = 2;</code>
-     * @return The age.
-     */
-    long getAge();
-
-    /**
-     * <code>double x = 3;</code>
-     * @return The x.
-     */
-    double getX();
-
-    /**
-     * <code>double y = 4;</code>
-     * @return The y.
-     */
-    double getY();
-
-    /**
-     * <code>double z = 5;</code>
-     * @return The z.
-     */
-    double getZ();
-  }
-  /**
-   * Protobuf type {@code SoundEntry}
-   */
-  public static final class SoundEntry extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:SoundEntry)
-      SoundEntryOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use SoundEntry.newBuilder() to construct.
-    private SoundEntry(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private SoundEntry() {
-      translateKey_ = "";
-    }
-
-    @java.lang.Override
-    @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
-      return new SoundEntry();
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
+        public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_SoundEntry_descriptor;
-    }
+            return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_StatusEffect_descriptor;
+        }
 
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect parseFrom(
+                java.nio.ByteBuffer data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
+
+        public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect parseFrom(
+                java.nio.ByteBuffer data,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
+        }
+
+        public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect parseFrom(
+                com.google.protobuf.ByteString data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
+
+        public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect parseFrom(
+                com.google.protobuf.ByteString data,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
+        }
+
+        public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect parseFrom(byte[] data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
+
+        public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect parseFrom(
+                byte[] data,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
+        }
+
+        public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect parseFrom(java.io.InputStream input)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3
+                    .parseWithIOException(PARSER, input);
+        }
+
+        public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect parseFrom(
+                java.io.InputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3
+                    .parseWithIOException(PARSER, input, extensionRegistry);
+        }
+
+        public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect parseDelimitedFrom(java.io.InputStream input)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3
+                    .parseDelimitedWithIOException(PARSER, input);
+        }
+
+        public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect parseDelimitedFrom(
+                java.io.InputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3
+                    .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+        }
+
+        public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect parseFrom(
+                com.google.protobuf.CodedInputStream input)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3
+                    .parseWithIOException(PARSER, input);
+        }
+
+        public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect parseFrom(
+                com.google.protobuf.CodedInputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3
+                    .parseWithIOException(PARSER, input, extensionRegistry);
+        }
+
+        public static Builder newBuilder() {
+            return DEFAULT_INSTANCE.toBuilder();
+        }
+
+        public static Builder newBuilder(com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect prototype) {
+            return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+        }
+
+        public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect getDefaultInstance() {
+            return DEFAULT_INSTANCE;
+        }
+
+        public static com.google.protobuf.Parser<StatusEffect> parser() {
+            return PARSER;
+        }
+
+        @java.lang.Override
+        @SuppressWarnings({"unused"})
+        protected java.lang.Object newInstance(
+                UnusedPrivateParameter unused) {
+            return new StatusEffect();
+        }
+
+        @java.lang.Override
+        public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+            return this.unknownFields;
+        }
+
+        @java.lang.Override
+        protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_SoundEntry_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry.class, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry.Builder.class);
+            return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_StatusEffect_fieldAccessorTable
+                    .ensureFieldAccessorsInitialized(
+                            com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect.class, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect.Builder.class);
+        }
+
+        /**
+         * <code>string translation_key = 1;</code>
+         *
+         * @return The translationKey.
+         */
+        @java.lang.Override
+        public java.lang.String getTranslationKey() {
+            java.lang.Object ref = translationKey_;
+            if (ref instanceof java.lang.String) {
+                return (java.lang.String) ref;
+            } else {
+                com.google.protobuf.ByteString bs =
+                        (com.google.protobuf.ByteString) ref;
+                java.lang.String s = bs.toStringUtf8();
+                translationKey_ = s;
+                return s;
+            }
+        }
+
+        /**
+         * <code>string translation_key = 1;</code>
+         *
+         * @return The bytes for translationKey.
+         */
+        @java.lang.Override
+        public com.google.protobuf.ByteString
+        getTranslationKeyBytes() {
+            java.lang.Object ref = translationKey_;
+            if (ref instanceof java.lang.String) {
+                com.google.protobuf.ByteString b =
+                        com.google.protobuf.ByteString.copyFromUtf8(
+                                (java.lang.String) ref);
+                translationKey_ = b;
+                return b;
+            } else {
+                return (com.google.protobuf.ByteString) ref;
+            }
+        }
+
+        /**
+         * <code>int32 duration = 2;</code>
+         *
+         * @return The duration.
+         */
+        @java.lang.Override
+        public int getDuration() {
+            return duration_;
+        }
+
+        /**
+         * <code>int32 amplifier = 3;</code>
+         *
+         * @return The amplifier.
+         */
+        @java.lang.Override
+        public int getAmplifier() {
+            return amplifier_;
+        }
+
+        @java.lang.Override
+        public final boolean isInitialized() {
+            byte isInitialized = memoizedIsInitialized;
+            if (isInitialized == 1) return true;
+            if (isInitialized == 0) return false;
+
+            memoizedIsInitialized = 1;
+            return true;
+        }
+
+        @java.lang.Override
+        public void writeTo(com.google.protobuf.CodedOutputStream output)
+                throws java.io.IOException {
+            if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(translationKey_)) {
+                com.google.protobuf.GeneratedMessageV3.writeString(output, 1, translationKey_);
+            }
+            if (duration_ != 0) {
+                output.writeInt32(2, duration_);
+            }
+            if (amplifier_ != 0) {
+                output.writeInt32(3, amplifier_);
+            }
+            getUnknownFields().writeTo(output);
+        }
+
+        @java.lang.Override
+        public int getSerializedSize() {
+            int size = memoizedSize;
+            if (size != -1) return size;
+
+            size = 0;
+            if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(translationKey_)) {
+                size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, translationKey_);
+            }
+            if (duration_ != 0) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeInt32Size(2, duration_);
+            }
+            if (amplifier_ != 0) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeInt32Size(3, amplifier_);
+            }
+            size += getUnknownFields().getSerializedSize();
+            memoizedSize = size;
+            return size;
+        }
+
+        @java.lang.Override
+        public boolean equals(final java.lang.Object obj) {
+            if (obj == this) {
+                return true;
+            }
+            if (!(obj instanceof com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect)) {
+                return super.equals(obj);
+            }
+            com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect other = (com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect) obj;
+
+            if (!getTranslationKey()
+                    .equals(other.getTranslationKey())) return false;
+            if (getDuration()
+                    != other.getDuration()) return false;
+            if (getAmplifier()
+                    != other.getAmplifier()) return false;
+            if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+            return true;
+        }
+
+        @java.lang.Override
+        public int hashCode() {
+            if (memoizedHashCode != 0) {
+                return memoizedHashCode;
+            }
+            int hash = 41;
+            hash = (19 * hash) + getDescriptor().hashCode();
+            hash = (37 * hash) + TRANSLATION_KEY_FIELD_NUMBER;
+            hash = (53 * hash) + getTranslationKey().hashCode();
+            hash = (37 * hash) + DURATION_FIELD_NUMBER;
+            hash = (53 * hash) + getDuration();
+            hash = (37 * hash) + AMPLIFIER_FIELD_NUMBER;
+            hash = (53 * hash) + getAmplifier();
+            hash = (29 * hash) + getUnknownFields().hashCode();
+            memoizedHashCode = hash;
+            return hash;
+        }
+
+        @java.lang.Override
+        public Builder newBuilderForType() {
+            return newBuilder();
+        }
+
+        @java.lang.Override
+        public Builder toBuilder() {
+            return this == DEFAULT_INSTANCE
+                    ? new Builder() : new Builder().mergeFrom(this);
+        }
+
+        @java.lang.Override
+        protected Builder newBuilderForType(
+                com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+            Builder builder = new Builder(parent);
+            return builder;
+        }
+
+        @java.lang.Override
+        public com.google.protobuf.Parser<StatusEffect> getParserForType() {
+            return PARSER;
+        }
+
+        @java.lang.Override
+        public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect getDefaultInstanceForType() {
+            return DEFAULT_INSTANCE;
+        }
+
+        /**
+         * Protobuf type {@code StatusEffect}
+         */
+        public static final class Builder extends
+                com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+                // @@protoc_insertion_point(builder_implements:StatusEffect)
+                com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffectOrBuilder {
+            private int bitField0_;
+            private java.lang.Object translationKey_ = "";
+            private int duration_;
+            private int amplifier_;
+
+            // Construct using com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect.newBuilder()
+            private Builder() {
+
+            }
+
+            private Builder(
+                    com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+                super(parent);
+
+            }
+
+            public static final com.google.protobuf.Descriptors.Descriptor
+            getDescriptor() {
+                return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_StatusEffect_descriptor;
+            }
+
+            @java.lang.Override
+            protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+            internalGetFieldAccessorTable() {
+                return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_StatusEffect_fieldAccessorTable
+                        .ensureFieldAccessorsInitialized(
+                                com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect.class, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect.Builder.class);
+            }
+
+            @java.lang.Override
+            public Builder clear() {
+                super.clear();
+                bitField0_ = 0;
+                translationKey_ = "";
+                duration_ = 0;
+                amplifier_ = 0;
+                return this;
+            }
+
+            @java.lang.Override
+            public com.google.protobuf.Descriptors.Descriptor
+            getDescriptorForType() {
+                return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_StatusEffect_descriptor;
+            }
+
+            @java.lang.Override
+            public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect getDefaultInstanceForType() {
+                return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect.getDefaultInstance();
+            }
+
+            @java.lang.Override
+            public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect build() {
+                com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect result = buildPartial();
+                if (!result.isInitialized()) {
+                    throw newUninitializedMessageException(result);
+                }
+                return result;
+            }
+
+            @java.lang.Override
+            public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect buildPartial() {
+                com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect result = new com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect(this);
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
+                }
+                onBuilt();
+                return result;
+            }
+
+            private void buildPartial0(com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect result) {
+                int from_bitField0_ = bitField0_;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    result.translationKey_ = translationKey_;
+                }
+                if (((from_bitField0_ & 0x00000002) != 0)) {
+                    result.duration_ = duration_;
+                }
+                if (((from_bitField0_ & 0x00000004) != 0)) {
+                    result.amplifier_ = amplifier_;
+                }
+            }
+
+            @java.lang.Override
+            public Builder clone() {
+                return super.clone();
+            }
+
+            @java.lang.Override
+            public Builder setField(
+                    com.google.protobuf.Descriptors.FieldDescriptor field,
+                    java.lang.Object value) {
+                return super.setField(field, value);
+            }
+
+            @java.lang.Override
+            public Builder clearField(
+                    com.google.protobuf.Descriptors.FieldDescriptor field) {
+                return super.clearField(field);
+            }
+
+            @java.lang.Override
+            public Builder clearOneof(
+                    com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+                return super.clearOneof(oneof);
+            }
+
+            @java.lang.Override
+            public Builder setRepeatedField(
+                    com.google.protobuf.Descriptors.FieldDescriptor field,
+                    int index, java.lang.Object value) {
+                return super.setRepeatedField(field, index, value);
+            }
+
+            @java.lang.Override
+            public Builder addRepeatedField(
+                    com.google.protobuf.Descriptors.FieldDescriptor field,
+                    java.lang.Object value) {
+                return super.addRepeatedField(field, value);
+            }
+
+            @java.lang.Override
+            public Builder mergeFrom(com.google.protobuf.Message other) {
+                if (other instanceof com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect) {
+                    return mergeFrom((com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect) other);
+                } else {
+                    super.mergeFrom(other);
+                    return this;
+                }
+            }
+
+            public Builder mergeFrom(com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect other) {
+                if (other == com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect.getDefaultInstance())
+                    return this;
+                if (!other.getTranslationKey().isEmpty()) {
+                    translationKey_ = other.translationKey_;
+                    bitField0_ |= 0x00000001;
+                    onChanged();
+                }
+                if (other.getDuration() != 0) {
+                    setDuration(other.getDuration());
+                }
+                if (other.getAmplifier() != 0) {
+                    setAmplifier(other.getAmplifier());
+                }
+                this.mergeUnknownFields(other.getUnknownFields());
+                onChanged();
+                return this;
+            }
+
+            @java.lang.Override
+            public final boolean isInitialized() {
+                return true;
+            }
+
+            @java.lang.Override
+            public Builder mergeFrom(
+                    com.google.protobuf.CodedInputStream input,
+                    com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                    throws java.io.IOException {
+                if (extensionRegistry == null) {
+                    throw new java.lang.NullPointerException();
+                }
+                try {
+                    boolean done = false;
+                    while (!done) {
+                        int tag = input.readTag();
+                        switch (tag) {
+                            case 0:
+                                done = true;
+                                break;
+                            case 10: {
+                                translationKey_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000001;
+                                break;
+                            } // case 10
+                            case 16: {
+                                duration_ = input.readInt32();
+                                bitField0_ |= 0x00000002;
+                                break;
+                            } // case 16
+                            case 24: {
+                                amplifier_ = input.readInt32();
+                                bitField0_ |= 0x00000004;
+                                break;
+                            } // case 24
+                            default: {
+                                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                                    done = true; // was an endgroup tag
+                                }
+                                break;
+                            } // default:
+                        } // switch (tag)
+                    } // while (!done)
+                } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                    throw e.unwrapIOException();
+                } finally {
+                    onChanged();
+                } // finally
+                return this;
+            }
+
+            /**
+             * <code>string translation_key = 1;</code>
+             *
+             * @return The translationKey.
+             */
+            public java.lang.String getTranslationKey() {
+                java.lang.Object ref = translationKey_;
+                if (!(ref instanceof java.lang.String)) {
+                    com.google.protobuf.ByteString bs =
+                            (com.google.protobuf.ByteString) ref;
+                    java.lang.String s = bs.toStringUtf8();
+                    translationKey_ = s;
+                    return s;
+                } else {
+                    return (java.lang.String) ref;
+                }
+            }
+
+            /**
+             * <code>string translation_key = 1;</code>
+             *
+             * @param value The translationKey to set.
+             * @return This builder for chaining.
+             */
+            public Builder setTranslationKey(
+                    java.lang.String value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                translationKey_ = value;
+                bitField0_ |= 0x00000001;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>string translation_key = 1;</code>
+             *
+             * @return The bytes for translationKey.
+             */
+            public com.google.protobuf.ByteString
+            getTranslationKeyBytes() {
+                java.lang.Object ref = translationKey_;
+                if (ref instanceof String) {
+                    com.google.protobuf.ByteString b =
+                            com.google.protobuf.ByteString.copyFromUtf8(
+                                    (java.lang.String) ref);
+                    translationKey_ = b;
+                    return b;
+                } else {
+                    return (com.google.protobuf.ByteString) ref;
+                }
+            }
+
+            /**
+             * <code>string translation_key = 1;</code>
+             *
+             * @param value The bytes for translationKey to set.
+             * @return This builder for chaining.
+             */
+            public Builder setTranslationKeyBytes(
+                    com.google.protobuf.ByteString value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                checkByteStringIsUtf8(value);
+                translationKey_ = value;
+                bitField0_ |= 0x00000001;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>string translation_key = 1;</code>
+             *
+             * @return This builder for chaining.
+             */
+            public Builder clearTranslationKey() {
+                translationKey_ = getDefaultInstance().getTranslationKey();
+                bitField0_ = (bitField0_ & ~0x00000001);
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>int32 duration = 2;</code>
+             *
+             * @return The duration.
+             */
+            @java.lang.Override
+            public int getDuration() {
+                return duration_;
+            }
+
+            /**
+             * <code>int32 duration = 2;</code>
+             *
+             * @param value The duration to set.
+             * @return This builder for chaining.
+             */
+            public Builder setDuration(int value) {
+
+                duration_ = value;
+                bitField0_ |= 0x00000002;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>int32 duration = 2;</code>
+             *
+             * @return This builder for chaining.
+             */
+            public Builder clearDuration() {
+                bitField0_ = (bitField0_ & ~0x00000002);
+                duration_ = 0;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>int32 amplifier = 3;</code>
+             *
+             * @return The amplifier.
+             */
+            @java.lang.Override
+            public int getAmplifier() {
+                return amplifier_;
+            }
+
+            /**
+             * <code>int32 amplifier = 3;</code>
+             *
+             * @param value The amplifier to set.
+             * @return This builder for chaining.
+             */
+            public Builder setAmplifier(int value) {
+
+                amplifier_ = value;
+                bitField0_ |= 0x00000004;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>int32 amplifier = 3;</code>
+             *
+             * @return This builder for chaining.
+             */
+            public Builder clearAmplifier() {
+                bitField0_ = (bitField0_ & ~0x00000004);
+                amplifier_ = 0;
+                onChanged();
+                return this;
+            }
+
+            @java.lang.Override
+            public final Builder setUnknownFields(
+                    final com.google.protobuf.UnknownFieldSet unknownFields) {
+                return super.setUnknownFields(unknownFields);
+            }
+
+            @java.lang.Override
+            public final Builder mergeUnknownFields(
+                    final com.google.protobuf.UnknownFieldSet unknownFields) {
+                return super.mergeUnknownFields(unknownFields);
+            }
+
+
+            // @@protoc_insertion_point(builder_scope:StatusEffect)
+        }
+
     }
 
-    public static final int TRANSLATE_KEY_FIELD_NUMBER = 1;
-    @SuppressWarnings("serial")
-    private volatile java.lang.Object translateKey_ = "";
-    /**
-     * <code>string translate_key = 1;</code>
-     * @return The translateKey.
-     */
-    @java.lang.Override
-    public java.lang.String getTranslateKey() {
-      java.lang.Object ref = translateKey_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        translateKey_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string translate_key = 1;</code>
-     * @return The bytes for translateKey.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString
-        getTranslateKeyBytes() {
-      java.lang.Object ref = translateKey_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        translateKey_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int AGE_FIELD_NUMBER = 2;
-    private long age_ = 0L;
-    /**
-     * <code>int64 age = 2;</code>
-     * @return The age.
-     */
-    @java.lang.Override
-    public long getAge() {
-      return age_;
-    }
-
-    public static final int X_FIELD_NUMBER = 3;
-    private double x_ = 0D;
-    /**
-     * <code>double x = 3;</code>
-     * @return The x.
-     */
-    @java.lang.Override
-    public double getX() {
-      return x_;
-    }
-
-    public static final int Y_FIELD_NUMBER = 4;
-    private double y_ = 0D;
-    /**
-     * <code>double y = 4;</code>
-     * @return The y.
-     */
-    @java.lang.Override
-    public double getY() {
-      return y_;
-    }
-
-    public static final int Z_FIELD_NUMBER = 5;
-    private double z_ = 0D;
-    /**
-     * <code>double z = 5;</code>
-     * @return The z.
-     */
-    @java.lang.Override
-    public double getZ() {
-      return z_;
-    }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(translateKey_)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, translateKey_);
-      }
-      if (age_ != 0L) {
-        output.writeInt64(2, age_);
-      }
-      if (java.lang.Double.doubleToRawLongBits(x_) != 0) {
-        output.writeDouble(3, x_);
-      }
-      if (java.lang.Double.doubleToRawLongBits(y_) != 0) {
-        output.writeDouble(4, y_);
-      }
-      if (java.lang.Double.doubleToRawLongBits(z_) != 0) {
-        output.writeDouble(5, z_);
-      }
-      getUnknownFields().writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(translateKey_)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, translateKey_);
-      }
-      if (age_ != 0L) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt64Size(2, age_);
-      }
-      if (java.lang.Double.doubleToRawLongBits(x_) != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeDoubleSize(3, x_);
-      }
-      if (java.lang.Double.doubleToRawLongBits(y_) != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeDoubleSize(4, y_);
-      }
-      if (java.lang.Double.doubleToRawLongBits(z_) != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeDoubleSize(5, z_);
-      }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry)) {
-        return super.equals(obj);
-      }
-      com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry other = (com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry) obj;
-
-      if (!getTranslateKey()
-          .equals(other.getTranslateKey())) return false;
-      if (getAge()
-          != other.getAge()) return false;
-      if (java.lang.Double.doubleToLongBits(getX())
-          != java.lang.Double.doubleToLongBits(
-              other.getX())) return false;
-      if (java.lang.Double.doubleToLongBits(getY())
-          != java.lang.Double.doubleToLongBits(
-              other.getY())) return false;
-      if (java.lang.Double.doubleToLongBits(getZ())
-          != java.lang.Double.doubleToLongBits(
-              other.getZ())) return false;
-      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
-      return true;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + TRANSLATE_KEY_FIELD_NUMBER;
-      hash = (53 * hash) + getTranslateKey().hashCode();
-      hash = (37 * hash) + AGE_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          getAge());
-      hash = (37 * hash) + X_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          java.lang.Double.doubleToLongBits(getX()));
-      hash = (37 * hash) + Y_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          java.lang.Double.doubleToLongBits(getY()));
-      hash = (37 * hash) + Z_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          java.lang.Double.doubleToLongBits(getZ()));
-      hash = (29 * hash) + getUnknownFields().hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
     /**
      * Protobuf type {@code SoundEntry}
      */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:SoundEntry)
-        com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntryOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_SoundEntry_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_SoundEntry_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry.class, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry.Builder.class);
-      }
-
-      // Construct using com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry.newBuilder()
-      private Builder() {
-
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        bitField0_ = 0;
-        translateKey_ = "";
-        age_ = 0L;
-        x_ = 0D;
-        y_ = 0D;
-        z_ = 0D;
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_SoundEntry_descriptor;
-      }
-
-      @java.lang.Override
-      public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry getDefaultInstanceForType() {
-        return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry build() {
-        com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry buildPartial() {
-        com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry result = new com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry(this);
-        if (bitField0_ != 0) { buildPartial0(result); }
-        onBuilt();
-        return result;
-      }
-
-      private void buildPartial0(com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry result) {
-        int from_bitField0_ = bitField0_;
-        if (((from_bitField0_ & 0x00000001) != 0)) {
-          result.translateKey_ = translateKey_;
-        }
-        if (((from_bitField0_ & 0x00000002) != 0)) {
-          result.age_ = age_;
-        }
-        if (((from_bitField0_ & 0x00000004) != 0)) {
-          result.x_ = x_;
-        }
-        if (((from_bitField0_ & 0x00000008) != 0)) {
-          result.y_ = y_;
-        }
-        if (((from_bitField0_ & 0x00000010) != 0)) {
-          result.z_ = z_;
-        }
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry) {
-          return mergeFrom((com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry other) {
-        if (other == com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry.getDefaultInstance()) return this;
-        if (!other.getTranslateKey().isEmpty()) {
-          translateKey_ = other.translateKey_;
-          bitField0_ |= 0x00000001;
-          onChanged();
-        }
-        if (other.getAge() != 0L) {
-          setAge(other.getAge());
-        }
-        if (other.getX() != 0D) {
-          setX(other.getX());
-        }
-        if (other.getY() != 0D) {
-          setY(other.getY());
-        }
-        if (other.getZ() != 0D) {
-          setZ(other.getZ());
-        }
-        this.mergeUnknownFields(other.getUnknownFields());
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        if (extensionRegistry == null) {
-          throw new java.lang.NullPointerException();
-        }
-        try {
-          boolean done = false;
-          while (!done) {
-            int tag = input.readTag();
-            switch (tag) {
-              case 0:
-                done = true;
-                break;
-              case 10: {
-                translateKey_ = input.readStringRequireUtf8();
-                bitField0_ |= 0x00000001;
-                break;
-              } // case 10
-              case 16: {
-                age_ = input.readInt64();
-                bitField0_ |= 0x00000002;
-                break;
-              } // case 16
-              case 25: {
-                x_ = input.readDouble();
-                bitField0_ |= 0x00000004;
-                break;
-              } // case 25
-              case 33: {
-                y_ = input.readDouble();
-                bitField0_ |= 0x00000008;
-                break;
-              } // case 33
-              case 41: {
-                z_ = input.readDouble();
-                bitField0_ |= 0x00000010;
-                break;
-              } // case 41
-              default: {
-                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                  done = true; // was an endgroup tag
+    public static final class SoundEntry extends
+            com.google.protobuf.GeneratedMessageV3 implements
+            // @@protoc_insertion_point(message_implements:SoundEntry)
+            SoundEntryOrBuilder {
+        public static final int TRANSLATE_KEY_FIELD_NUMBER = 1;
+        public static final int AGE_FIELD_NUMBER = 2;
+        public static final int X_FIELD_NUMBER = 3;
+        public static final int Y_FIELD_NUMBER = 4;
+        public static final int Z_FIELD_NUMBER = 5;
+        private static final long serialVersionUID = 0L;
+        // @@protoc_insertion_point(class_scope:SoundEntry)
+        private static final com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry DEFAULT_INSTANCE;
+        private static final com.google.protobuf.Parser<SoundEntry>
+                PARSER = new com.google.protobuf.AbstractParser<SoundEntry>() {
+            @java.lang.Override
+            public SoundEntry parsePartialFrom(
+                    com.google.protobuf.CodedInputStream input,
+                    com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                    throws com.google.protobuf.InvalidProtocolBufferException {
+                Builder builder = newBuilder();
+                try {
+                    builder.mergeFrom(input, extensionRegistry);
+                } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                    throw e.setUnfinishedMessage(builder.buildPartial());
+                } catch (com.google.protobuf.UninitializedMessageException e) {
+                    throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+                } catch (java.io.IOException e) {
+                    throw new com.google.protobuf.InvalidProtocolBufferException(e)
+                            .setUnfinishedMessage(builder.buildPartial());
                 }
-                break;
-              } // default:
-            } // switch (tag)
-          } // while (!done)
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          throw e.unwrapIOException();
-        } finally {
-          onChanged();
-        } // finally
-        return this;
-      }
-      private int bitField0_;
+                return builder.buildPartial();
+            }
+        };
 
-      private java.lang.Object translateKey_ = "";
-      /**
-       * <code>string translate_key = 1;</code>
-       * @return The translateKey.
-       */
-      public java.lang.String getTranslateKey() {
-        java.lang.Object ref = translateKey_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          translateKey_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
+        static {
+            DEFAULT_INSTANCE = new com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry();
         }
-      }
-      /**
-       * <code>string translate_key = 1;</code>
-       * @return The bytes for translateKey.
-       */
-      public com.google.protobuf.ByteString
-          getTranslateKeyBytes() {
-        java.lang.Object ref = translateKey_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          translateKey_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
+
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object translateKey_ = "";
+        private long age_ = 0L;
+        private double x_ = 0D;
+        private double y_ = 0D;
+        private double z_ = 0D;
+        private byte memoizedIsInitialized = -1;
+        // Use SoundEntry.newBuilder() to construct.
+        private SoundEntry(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+            super(builder);
         }
-      }
-      /**
-       * <code>string translate_key = 1;</code>
-       * @param value The translateKey to set.
-       * @return This builder for chaining.
-       */
-      public Builder setTranslateKey(
-          java.lang.String value) {
-        if (value == null) { throw new NullPointerException(); }
-        translateKey_ = value;
-        bitField0_ |= 0x00000001;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string translate_key = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearTranslateKey() {
-        translateKey_ = getDefaultInstance().getTranslateKey();
-        bitField0_ = (bitField0_ & ~0x00000001);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string translate_key = 1;</code>
-       * @param value The bytes for translateKey to set.
-       * @return This builder for chaining.
-       */
-      public Builder setTranslateKeyBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) { throw new NullPointerException(); }
-        checkByteStringIsUtf8(value);
-        translateKey_ = value;
-        bitField0_ |= 0x00000001;
-        onChanged();
-        return this;
-      }
 
-      private long age_ ;
-      /**
-       * <code>int64 age = 2;</code>
-       * @return The age.
-       */
-      @java.lang.Override
-      public long getAge() {
-        return age_;
-      }
-      /**
-       * <code>int64 age = 2;</code>
-       * @param value The age to set.
-       * @return This builder for chaining.
-       */
-      public Builder setAge(long value) {
-        
-        age_ = value;
-        bitField0_ |= 0x00000002;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>int64 age = 2;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearAge() {
-        bitField0_ = (bitField0_ & ~0x00000002);
-        age_ = 0L;
-        onChanged();
-        return this;
-      }
-
-      private double x_ ;
-      /**
-       * <code>double x = 3;</code>
-       * @return The x.
-       */
-      @java.lang.Override
-      public double getX() {
-        return x_;
-      }
-      /**
-       * <code>double x = 3;</code>
-       * @param value The x to set.
-       * @return This builder for chaining.
-       */
-      public Builder setX(double value) {
-        
-        x_ = value;
-        bitField0_ |= 0x00000004;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>double x = 3;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearX() {
-        bitField0_ = (bitField0_ & ~0x00000004);
-        x_ = 0D;
-        onChanged();
-        return this;
-      }
-
-      private double y_ ;
-      /**
-       * <code>double y = 4;</code>
-       * @return The y.
-       */
-      @java.lang.Override
-      public double getY() {
-        return y_;
-      }
-      /**
-       * <code>double y = 4;</code>
-       * @param value The y to set.
-       * @return This builder for chaining.
-       */
-      public Builder setY(double value) {
-        
-        y_ = value;
-        bitField0_ |= 0x00000008;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>double y = 4;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearY() {
-        bitField0_ = (bitField0_ & ~0x00000008);
-        y_ = 0D;
-        onChanged();
-        return this;
-      }
-
-      private double z_ ;
-      /**
-       * <code>double z = 5;</code>
-       * @return The z.
-       */
-      @java.lang.Override
-      public double getZ() {
-        return z_;
-      }
-      /**
-       * <code>double z = 5;</code>
-       * @param value The z to set.
-       * @return This builder for chaining.
-       */
-      public Builder setZ(double value) {
-        
-        z_ = value;
-        bitField0_ |= 0x00000010;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>double z = 5;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearZ() {
-        bitField0_ = (bitField0_ & ~0x00000010);
-        z_ = 0D;
-        onChanged();
-        return this;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:SoundEntry)
-    }
-
-    // @@protoc_insertion_point(class_scope:SoundEntry)
-    private static final com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry();
-    }
-
-    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<SoundEntry>
-        PARSER = new com.google.protobuf.AbstractParser<SoundEntry>() {
-      @java.lang.Override
-      public SoundEntry parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        Builder builder = newBuilder();
-        try {
-          builder.mergeFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          throw e.setUnfinishedMessage(builder.buildPartial());
-        } catch (com.google.protobuf.UninitializedMessageException e) {
-          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
-        } catch (java.io.IOException e) {
-          throw new com.google.protobuf.InvalidProtocolBufferException(e)
-              .setUnfinishedMessage(builder.buildPartial());
+        private SoundEntry() {
+            translateKey_ = "";
         }
-        return builder.buildPartial();
-      }
-    };
 
-    public static com.google.protobuf.Parser<SoundEntry> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<SoundEntry> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
-  public interface ObservationSpaceMessageOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:ObservationSpaceMessage)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>bytes image = 1;</code>
-     * @return The image.
-     */
-    com.google.protobuf.ByteString getImage();
-
-    /**
-     * <code>double x = 2;</code>
-     * @return The x.
-     */
-    double getX();
-
-    /**
-     * <code>double y = 3;</code>
-     * @return The y.
-     */
-    double getY();
-
-    /**
-     * <code>double z = 4;</code>
-     * @return The z.
-     */
-    double getZ();
-
-    /**
-     * <code>double yaw = 5;</code>
-     * @return The yaw.
-     */
-    double getYaw();
-
-    /**
-     * <code>double pitch = 6;</code>
-     * @return The pitch.
-     */
-    double getPitch();
-
-    /**
-     * <code>double health = 7;</code>
-     * @return The health.
-     */
-    double getHealth();
-
-    /**
-     * <code>double food_level = 8;</code>
-     * @return The foodLevel.
-     */
-    double getFoodLevel();
-
-    /**
-     * <code>double saturation_level = 9;</code>
-     * @return The saturationLevel.
-     */
-    double getSaturationLevel();
-
-    /**
-     * <code>bool is_dead = 10;</code>
-     * @return The isDead.
-     */
-    boolean getIsDead();
-
-    /**
-     * <code>repeated .ItemStack inventory = 11;</code>
-     */
-    java.util.List<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack> 
-        getInventoryList();
-    /**
-     * <code>repeated .ItemStack inventory = 11;</code>
-     */
-    com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack getInventory(int index);
-    /**
-     * <code>repeated .ItemStack inventory = 11;</code>
-     */
-    int getInventoryCount();
-    /**
-     * <code>repeated .ItemStack inventory = 11;</code>
-     */
-    java.util.List<? extends com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStackOrBuilder> 
-        getInventoryOrBuilderList();
-    /**
-     * <code>repeated .ItemStack inventory = 11;</code>
-     */
-    com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStackOrBuilder getInventoryOrBuilder(
-        int index);
-
-    /**
-     * <code>.HitResult raycast_result = 12;</code>
-     * @return Whether the raycastResult field is set.
-     */
-    boolean hasRaycastResult();
-    /**
-     * <code>.HitResult raycast_result = 12;</code>
-     * @return The raycastResult.
-     */
-    com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult getRaycastResult();
-    /**
-     * <code>.HitResult raycast_result = 12;</code>
-     */
-    com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResultOrBuilder getRaycastResultOrBuilder();
-
-    /**
-     * <code>repeated .SoundEntry sound_subtitles = 13;</code>
-     */
-    java.util.List<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry> 
-        getSoundSubtitlesList();
-    /**
-     * <code>repeated .SoundEntry sound_subtitles = 13;</code>
-     */
-    com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry getSoundSubtitles(int index);
-    /**
-     * <code>repeated .SoundEntry sound_subtitles = 13;</code>
-     */
-    int getSoundSubtitlesCount();
-    /**
-     * <code>repeated .SoundEntry sound_subtitles = 13;</code>
-     */
-    java.util.List<? extends com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntryOrBuilder> 
-        getSoundSubtitlesOrBuilderList();
-    /**
-     * <code>repeated .SoundEntry sound_subtitles = 13;</code>
-     */
-    com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntryOrBuilder getSoundSubtitlesOrBuilder(
-        int index);
-
-    /**
-     * <code>repeated .StatusEffect status_effects = 14;</code>
-     */
-    java.util.List<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect> 
-        getStatusEffectsList();
-    /**
-     * <code>repeated .StatusEffect status_effects = 14;</code>
-     */
-    com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect getStatusEffects(int index);
-    /**
-     * <code>repeated .StatusEffect status_effects = 14;</code>
-     */
-    int getStatusEffectsCount();
-    /**
-     * <code>repeated .StatusEffect status_effects = 14;</code>
-     */
-    java.util.List<? extends com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffectOrBuilder> 
-        getStatusEffectsOrBuilderList();
-    /**
-     * <code>repeated .StatusEffect status_effects = 14;</code>
-     */
-    com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffectOrBuilder getStatusEffectsOrBuilder(
-        int index);
-
-    /**
-     * <code>map&lt;string, int32&gt; killed_statistics = 15;</code>
-     */
-    int getKilledStatisticsCount();
-    /**
-     * <code>map&lt;string, int32&gt; killed_statistics = 15;</code>
-     */
-    boolean containsKilledStatistics(
-        java.lang.String key);
-    /**
-     * Use {@link #getKilledStatisticsMap()} instead.
-     */
-    @java.lang.Deprecated
-    java.util.Map<java.lang.String, java.lang.Integer>
-    getKilledStatistics();
-    /**
-     * <code>map&lt;string, int32&gt; killed_statistics = 15;</code>
-     */
-    java.util.Map<java.lang.String, java.lang.Integer>
-    getKilledStatisticsMap();
-    /**
-     * <code>map&lt;string, int32&gt; killed_statistics = 15;</code>
-     */
-    int getKilledStatisticsOrDefault(
-        java.lang.String key,
-        int defaultValue);
-    /**
-     * <code>map&lt;string, int32&gt; killed_statistics = 15;</code>
-     */
-    int getKilledStatisticsOrThrow(
-        java.lang.String key);
-
-    /**
-     * <code>map&lt;string, int32&gt; mined_statistics = 16;</code>
-     */
-    int getMinedStatisticsCount();
-    /**
-     * <code>map&lt;string, int32&gt; mined_statistics = 16;</code>
-     */
-    boolean containsMinedStatistics(
-        java.lang.String key);
-    /**
-     * Use {@link #getMinedStatisticsMap()} instead.
-     */
-    @java.lang.Deprecated
-    java.util.Map<java.lang.String, java.lang.Integer>
-    getMinedStatistics();
-    /**
-     * <code>map&lt;string, int32&gt; mined_statistics = 16;</code>
-     */
-    java.util.Map<java.lang.String, java.lang.Integer>
-    getMinedStatisticsMap();
-    /**
-     * <code>map&lt;string, int32&gt; mined_statistics = 16;</code>
-     */
-    int getMinedStatisticsOrDefault(
-        java.lang.String key,
-        int defaultValue);
-    /**
-     * <code>map&lt;string, int32&gt; mined_statistics = 16;</code>
-     */
-    int getMinedStatisticsOrThrow(
-        java.lang.String key);
-
-    /**
-     * <code>map&lt;string, int32&gt; misc_statistics = 17;</code>
-     */
-    int getMiscStatisticsCount();
-    /**
-     * <code>map&lt;string, int32&gt; misc_statistics = 17;</code>
-     */
-    boolean containsMiscStatistics(
-        java.lang.String key);
-    /**
-     * Use {@link #getMiscStatisticsMap()} instead.
-     */
-    @java.lang.Deprecated
-    java.util.Map<java.lang.String, java.lang.Integer>
-    getMiscStatistics();
-    /**
-     * <code>map&lt;string, int32&gt; misc_statistics = 17;</code>
-     */
-    java.util.Map<java.lang.String, java.lang.Integer>
-    getMiscStatisticsMap();
-    /**
-     * <code>map&lt;string, int32&gt; misc_statistics = 17;</code>
-     */
-    int getMiscStatisticsOrDefault(
-        java.lang.String key,
-        int defaultValue);
-    /**
-     * <code>map&lt;string, int32&gt; misc_statistics = 17;</code>
-     */
-    int getMiscStatisticsOrThrow(
-        java.lang.String key);
-
-    /**
-     * <code>repeated .EntityInfo visible_entities = 18;</code>
-     */
-    java.util.List<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo> 
-        getVisibleEntitiesList();
-    /**
-     * <code>repeated .EntityInfo visible_entities = 18;</code>
-     */
-    com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo getVisibleEntities(int index);
-    /**
-     * <code>repeated .EntityInfo visible_entities = 18;</code>
-     */
-    int getVisibleEntitiesCount();
-    /**
-     * <code>repeated .EntityInfo visible_entities = 18;</code>
-     */
-    java.util.List<? extends com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfoOrBuilder> 
-        getVisibleEntitiesOrBuilderList();
-    /**
-     * <code>repeated .EntityInfo visible_entities = 18;</code>
-     */
-    com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfoOrBuilder getVisibleEntitiesOrBuilder(
-        int index);
-  }
-  /**
-   * Protobuf type {@code ObservationSpaceMessage}
-   */
-  public static final class ObservationSpaceMessage extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:ObservationSpaceMessage)
-      ObservationSpaceMessageOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use ObservationSpaceMessage.newBuilder() to construct.
-    private ObservationSpaceMessage(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private ObservationSpaceMessage() {
-      image_ = com.google.protobuf.ByteString.EMPTY;
-      inventory_ = java.util.Collections.emptyList();
-      soundSubtitles_ = java.util.Collections.emptyList();
-      statusEffects_ = java.util.Collections.emptyList();
-      visibleEntities_ = java.util.Collections.emptyList();
-    }
-
-    @java.lang.Override
-    @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
-      return new ObservationSpaceMessage();
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
+        public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_ObservationSpaceMessage_descriptor;
-    }
+            return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_SoundEntry_descriptor;
+        }
 
-    @SuppressWarnings({"rawtypes"})
-    @java.lang.Override
-    protected com.google.protobuf.MapField internalGetMapField(
-        int number) {
-      switch (number) {
-        case 15:
-          return internalGetKilledStatistics();
-        case 16:
-          return internalGetMinedStatistics();
-        case 17:
-          return internalGetMiscStatistics();
-        default:
-          throw new RuntimeException(
-              "Invalid map field number: " + number);
-      }
-    }
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry parseFrom(
+                java.nio.ByteBuffer data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
+
+        public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry parseFrom(
+                java.nio.ByteBuffer data,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
+        }
+
+        public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry parseFrom(
+                com.google.protobuf.ByteString data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
+
+        public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry parseFrom(
+                com.google.protobuf.ByteString data,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
+        }
+
+        public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry parseFrom(byte[] data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
+
+        public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry parseFrom(
+                byte[] data,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
+        }
+
+        public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry parseFrom(java.io.InputStream input)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3
+                    .parseWithIOException(PARSER, input);
+        }
+
+        public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry parseFrom(
+                java.io.InputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3
+                    .parseWithIOException(PARSER, input, extensionRegistry);
+        }
+
+        public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry parseDelimitedFrom(java.io.InputStream input)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3
+                    .parseDelimitedWithIOException(PARSER, input);
+        }
+
+        public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry parseDelimitedFrom(
+                java.io.InputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3
+                    .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+        }
+
+        public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry parseFrom(
+                com.google.protobuf.CodedInputStream input)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3
+                    .parseWithIOException(PARSER, input);
+        }
+
+        public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry parseFrom(
+                com.google.protobuf.CodedInputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3
+                    .parseWithIOException(PARSER, input, extensionRegistry);
+        }
+
+        public static Builder newBuilder() {
+            return DEFAULT_INSTANCE.toBuilder();
+        }
+
+        public static Builder newBuilder(com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry prototype) {
+            return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+        }
+
+        public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry getDefaultInstance() {
+            return DEFAULT_INSTANCE;
+        }
+
+        public static com.google.protobuf.Parser<SoundEntry> parser() {
+            return PARSER;
+        }
+
+        @java.lang.Override
+        @SuppressWarnings({"unused"})
+        protected java.lang.Object newInstance(
+                UnusedPrivateParameter unused) {
+            return new SoundEntry();
+        }
+
+        @java.lang.Override
+        public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+            return this.unknownFields;
+        }
+
+        @java.lang.Override
+        protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_ObservationSpaceMessage_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ObservationSpaceMessage.class, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ObservationSpaceMessage.Builder.class);
+            return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_SoundEntry_fieldAccessorTable
+                    .ensureFieldAccessorsInitialized(
+                            com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry.class, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry.Builder.class);
+        }
+
+        /**
+         * <code>string translate_key = 1;</code>
+         *
+         * @return The translateKey.
+         */
+        @java.lang.Override
+        public java.lang.String getTranslateKey() {
+            java.lang.Object ref = translateKey_;
+            if (ref instanceof java.lang.String) {
+                return (java.lang.String) ref;
+            } else {
+                com.google.protobuf.ByteString bs =
+                        (com.google.protobuf.ByteString) ref;
+                java.lang.String s = bs.toStringUtf8();
+                translateKey_ = s;
+                return s;
+            }
+        }
+
+        /**
+         * <code>string translate_key = 1;</code>
+         *
+         * @return The bytes for translateKey.
+         */
+        @java.lang.Override
+        public com.google.protobuf.ByteString
+        getTranslateKeyBytes() {
+            java.lang.Object ref = translateKey_;
+            if (ref instanceof java.lang.String) {
+                com.google.protobuf.ByteString b =
+                        com.google.protobuf.ByteString.copyFromUtf8(
+                                (java.lang.String) ref);
+                translateKey_ = b;
+                return b;
+            } else {
+                return (com.google.protobuf.ByteString) ref;
+            }
+        }
+
+        /**
+         * <code>int64 age = 2;</code>
+         *
+         * @return The age.
+         */
+        @java.lang.Override
+        public long getAge() {
+            return age_;
+        }
+
+        /**
+         * <code>double x = 3;</code>
+         *
+         * @return The x.
+         */
+        @java.lang.Override
+        public double getX() {
+            return x_;
+        }
+
+        /**
+         * <code>double y = 4;</code>
+         *
+         * @return The y.
+         */
+        @java.lang.Override
+        public double getY() {
+            return y_;
+        }
+
+        /**
+         * <code>double z = 5;</code>
+         *
+         * @return The z.
+         */
+        @java.lang.Override
+        public double getZ() {
+            return z_;
+        }
+
+        @java.lang.Override
+        public final boolean isInitialized() {
+            byte isInitialized = memoizedIsInitialized;
+            if (isInitialized == 1) return true;
+            if (isInitialized == 0) return false;
+
+            memoizedIsInitialized = 1;
+            return true;
+        }
+
+        @java.lang.Override
+        public void writeTo(com.google.protobuf.CodedOutputStream output)
+                throws java.io.IOException {
+            if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(translateKey_)) {
+                com.google.protobuf.GeneratedMessageV3.writeString(output, 1, translateKey_);
+            }
+            if (age_ != 0L) {
+                output.writeInt64(2, age_);
+            }
+            if (java.lang.Double.doubleToRawLongBits(x_) != 0) {
+                output.writeDouble(3, x_);
+            }
+            if (java.lang.Double.doubleToRawLongBits(y_) != 0) {
+                output.writeDouble(4, y_);
+            }
+            if (java.lang.Double.doubleToRawLongBits(z_) != 0) {
+                output.writeDouble(5, z_);
+            }
+            getUnknownFields().writeTo(output);
+        }
+
+        @java.lang.Override
+        public int getSerializedSize() {
+            int size = memoizedSize;
+            if (size != -1) return size;
+
+            size = 0;
+            if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(translateKey_)) {
+                size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, translateKey_);
+            }
+            if (age_ != 0L) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeInt64Size(2, age_);
+            }
+            if (java.lang.Double.doubleToRawLongBits(x_) != 0) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeDoubleSize(3, x_);
+            }
+            if (java.lang.Double.doubleToRawLongBits(y_) != 0) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeDoubleSize(4, y_);
+            }
+            if (java.lang.Double.doubleToRawLongBits(z_) != 0) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeDoubleSize(5, z_);
+            }
+            size += getUnknownFields().getSerializedSize();
+            memoizedSize = size;
+            return size;
+        }
+
+        @java.lang.Override
+        public boolean equals(final java.lang.Object obj) {
+            if (obj == this) {
+                return true;
+            }
+            if (!(obj instanceof com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry)) {
+                return super.equals(obj);
+            }
+            com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry other = (com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry) obj;
+
+            if (!getTranslateKey()
+                    .equals(other.getTranslateKey())) return false;
+            if (getAge()
+                    != other.getAge()) return false;
+            if (java.lang.Double.doubleToLongBits(getX())
+                    != java.lang.Double.doubleToLongBits(
+                    other.getX())) return false;
+            if (java.lang.Double.doubleToLongBits(getY())
+                    != java.lang.Double.doubleToLongBits(
+                    other.getY())) return false;
+            if (java.lang.Double.doubleToLongBits(getZ())
+                    != java.lang.Double.doubleToLongBits(
+                    other.getZ())) return false;
+            if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+            return true;
+        }
+
+        @java.lang.Override
+        public int hashCode() {
+            if (memoizedHashCode != 0) {
+                return memoizedHashCode;
+            }
+            int hash = 41;
+            hash = (19 * hash) + getDescriptor().hashCode();
+            hash = (37 * hash) + TRANSLATE_KEY_FIELD_NUMBER;
+            hash = (53 * hash) + getTranslateKey().hashCode();
+            hash = (37 * hash) + AGE_FIELD_NUMBER;
+            hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+                    getAge());
+            hash = (37 * hash) + X_FIELD_NUMBER;
+            hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+                    java.lang.Double.doubleToLongBits(getX()));
+            hash = (37 * hash) + Y_FIELD_NUMBER;
+            hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+                    java.lang.Double.doubleToLongBits(getY()));
+            hash = (37 * hash) + Z_FIELD_NUMBER;
+            hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+                    java.lang.Double.doubleToLongBits(getZ()));
+            hash = (29 * hash) + getUnknownFields().hashCode();
+            memoizedHashCode = hash;
+            return hash;
+        }
+
+        @java.lang.Override
+        public Builder newBuilderForType() {
+            return newBuilder();
+        }
+
+        @java.lang.Override
+        public Builder toBuilder() {
+            return this == DEFAULT_INSTANCE
+                    ? new Builder() : new Builder().mergeFrom(this);
+        }
+
+        @java.lang.Override
+        protected Builder newBuilderForType(
+                com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+            Builder builder = new Builder(parent);
+            return builder;
+        }
+
+        @java.lang.Override
+        public com.google.protobuf.Parser<SoundEntry> getParserForType() {
+            return PARSER;
+        }
+
+        @java.lang.Override
+        public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry getDefaultInstanceForType() {
+            return DEFAULT_INSTANCE;
+        }
+
+        /**
+         * Protobuf type {@code SoundEntry}
+         */
+        public static final class Builder extends
+                com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+                // @@protoc_insertion_point(builder_implements:SoundEntry)
+                com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntryOrBuilder {
+            private int bitField0_;
+            private java.lang.Object translateKey_ = "";
+            private long age_;
+            private double x_;
+            private double y_;
+            private double z_;
+
+            // Construct using com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry.newBuilder()
+            private Builder() {
+
+            }
+
+            private Builder(
+                    com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+                super(parent);
+
+            }
+
+            public static final com.google.protobuf.Descriptors.Descriptor
+            getDescriptor() {
+                return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_SoundEntry_descriptor;
+            }
+
+            @java.lang.Override
+            protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+            internalGetFieldAccessorTable() {
+                return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_SoundEntry_fieldAccessorTable
+                        .ensureFieldAccessorsInitialized(
+                                com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry.class, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry.Builder.class);
+            }
+
+            @java.lang.Override
+            public Builder clear() {
+                super.clear();
+                bitField0_ = 0;
+                translateKey_ = "";
+                age_ = 0L;
+                x_ = 0D;
+                y_ = 0D;
+                z_ = 0D;
+                return this;
+            }
+
+            @java.lang.Override
+            public com.google.protobuf.Descriptors.Descriptor
+            getDescriptorForType() {
+                return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_SoundEntry_descriptor;
+            }
+
+            @java.lang.Override
+            public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry getDefaultInstanceForType() {
+                return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry.getDefaultInstance();
+            }
+
+            @java.lang.Override
+            public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry build() {
+                com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry result = buildPartial();
+                if (!result.isInitialized()) {
+                    throw newUninitializedMessageException(result);
+                }
+                return result;
+            }
+
+            @java.lang.Override
+            public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry buildPartial() {
+                com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry result = new com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry(this);
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
+                }
+                onBuilt();
+                return result;
+            }
+
+            private void buildPartial0(com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry result) {
+                int from_bitField0_ = bitField0_;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    result.translateKey_ = translateKey_;
+                }
+                if (((from_bitField0_ & 0x00000002) != 0)) {
+                    result.age_ = age_;
+                }
+                if (((from_bitField0_ & 0x00000004) != 0)) {
+                    result.x_ = x_;
+                }
+                if (((from_bitField0_ & 0x00000008) != 0)) {
+                    result.y_ = y_;
+                }
+                if (((from_bitField0_ & 0x00000010) != 0)) {
+                    result.z_ = z_;
+                }
+            }
+
+            @java.lang.Override
+            public Builder clone() {
+                return super.clone();
+            }
+
+            @java.lang.Override
+            public Builder setField(
+                    com.google.protobuf.Descriptors.FieldDescriptor field,
+                    java.lang.Object value) {
+                return super.setField(field, value);
+            }
+
+            @java.lang.Override
+            public Builder clearField(
+                    com.google.protobuf.Descriptors.FieldDescriptor field) {
+                return super.clearField(field);
+            }
+
+            @java.lang.Override
+            public Builder clearOneof(
+                    com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+                return super.clearOneof(oneof);
+            }
+
+            @java.lang.Override
+            public Builder setRepeatedField(
+                    com.google.protobuf.Descriptors.FieldDescriptor field,
+                    int index, java.lang.Object value) {
+                return super.setRepeatedField(field, index, value);
+            }
+
+            @java.lang.Override
+            public Builder addRepeatedField(
+                    com.google.protobuf.Descriptors.FieldDescriptor field,
+                    java.lang.Object value) {
+                return super.addRepeatedField(field, value);
+            }
+
+            @java.lang.Override
+            public Builder mergeFrom(com.google.protobuf.Message other) {
+                if (other instanceof com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry) {
+                    return mergeFrom((com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry) other);
+                } else {
+                    super.mergeFrom(other);
+                    return this;
+                }
+            }
+
+            public Builder mergeFrom(com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry other) {
+                if (other == com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry.getDefaultInstance())
+                    return this;
+                if (!other.getTranslateKey().isEmpty()) {
+                    translateKey_ = other.translateKey_;
+                    bitField0_ |= 0x00000001;
+                    onChanged();
+                }
+                if (other.getAge() != 0L) {
+                    setAge(other.getAge());
+                }
+                if (other.getX() != 0D) {
+                    setX(other.getX());
+                }
+                if (other.getY() != 0D) {
+                    setY(other.getY());
+                }
+                if (other.getZ() != 0D) {
+                    setZ(other.getZ());
+                }
+                this.mergeUnknownFields(other.getUnknownFields());
+                onChanged();
+                return this;
+            }
+
+            @java.lang.Override
+            public final boolean isInitialized() {
+                return true;
+            }
+
+            @java.lang.Override
+            public Builder mergeFrom(
+                    com.google.protobuf.CodedInputStream input,
+                    com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                    throws java.io.IOException {
+                if (extensionRegistry == null) {
+                    throw new java.lang.NullPointerException();
+                }
+                try {
+                    boolean done = false;
+                    while (!done) {
+                        int tag = input.readTag();
+                        switch (tag) {
+                            case 0:
+                                done = true;
+                                break;
+                            case 10: {
+                                translateKey_ = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000001;
+                                break;
+                            } // case 10
+                            case 16: {
+                                age_ = input.readInt64();
+                                bitField0_ |= 0x00000002;
+                                break;
+                            } // case 16
+                            case 25: {
+                                x_ = input.readDouble();
+                                bitField0_ |= 0x00000004;
+                                break;
+                            } // case 25
+                            case 33: {
+                                y_ = input.readDouble();
+                                bitField0_ |= 0x00000008;
+                                break;
+                            } // case 33
+                            case 41: {
+                                z_ = input.readDouble();
+                                bitField0_ |= 0x00000010;
+                                break;
+                            } // case 41
+                            default: {
+                                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                                    done = true; // was an endgroup tag
+                                }
+                                break;
+                            } // default:
+                        } // switch (tag)
+                    } // while (!done)
+                } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                    throw e.unwrapIOException();
+                } finally {
+                    onChanged();
+                } // finally
+                return this;
+            }
+
+            /**
+             * <code>string translate_key = 1;</code>
+             *
+             * @return The translateKey.
+             */
+            public java.lang.String getTranslateKey() {
+                java.lang.Object ref = translateKey_;
+                if (!(ref instanceof java.lang.String)) {
+                    com.google.protobuf.ByteString bs =
+                            (com.google.protobuf.ByteString) ref;
+                    java.lang.String s = bs.toStringUtf8();
+                    translateKey_ = s;
+                    return s;
+                } else {
+                    return (java.lang.String) ref;
+                }
+            }
+
+            /**
+             * <code>string translate_key = 1;</code>
+             *
+             * @param value The translateKey to set.
+             * @return This builder for chaining.
+             */
+            public Builder setTranslateKey(
+                    java.lang.String value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                translateKey_ = value;
+                bitField0_ |= 0x00000001;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>string translate_key = 1;</code>
+             *
+             * @return The bytes for translateKey.
+             */
+            public com.google.protobuf.ByteString
+            getTranslateKeyBytes() {
+                java.lang.Object ref = translateKey_;
+                if (ref instanceof String) {
+                    com.google.protobuf.ByteString b =
+                            com.google.protobuf.ByteString.copyFromUtf8(
+                                    (java.lang.String) ref);
+                    translateKey_ = b;
+                    return b;
+                } else {
+                    return (com.google.protobuf.ByteString) ref;
+                }
+            }
+
+            /**
+             * <code>string translate_key = 1;</code>
+             *
+             * @param value The bytes for translateKey to set.
+             * @return This builder for chaining.
+             */
+            public Builder setTranslateKeyBytes(
+                    com.google.protobuf.ByteString value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                checkByteStringIsUtf8(value);
+                translateKey_ = value;
+                bitField0_ |= 0x00000001;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>string translate_key = 1;</code>
+             *
+             * @return This builder for chaining.
+             */
+            public Builder clearTranslateKey() {
+                translateKey_ = getDefaultInstance().getTranslateKey();
+                bitField0_ = (bitField0_ & ~0x00000001);
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>int64 age = 2;</code>
+             *
+             * @return The age.
+             */
+            @java.lang.Override
+            public long getAge() {
+                return age_;
+            }
+
+            /**
+             * <code>int64 age = 2;</code>
+             *
+             * @param value The age to set.
+             * @return This builder for chaining.
+             */
+            public Builder setAge(long value) {
+
+                age_ = value;
+                bitField0_ |= 0x00000002;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>int64 age = 2;</code>
+             *
+             * @return This builder for chaining.
+             */
+            public Builder clearAge() {
+                bitField0_ = (bitField0_ & ~0x00000002);
+                age_ = 0L;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>double x = 3;</code>
+             *
+             * @return The x.
+             */
+            @java.lang.Override
+            public double getX() {
+                return x_;
+            }
+
+            /**
+             * <code>double x = 3;</code>
+             *
+             * @param value The x to set.
+             * @return This builder for chaining.
+             */
+            public Builder setX(double value) {
+
+                x_ = value;
+                bitField0_ |= 0x00000004;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>double x = 3;</code>
+             *
+             * @return This builder for chaining.
+             */
+            public Builder clearX() {
+                bitField0_ = (bitField0_ & ~0x00000004);
+                x_ = 0D;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>double y = 4;</code>
+             *
+             * @return The y.
+             */
+            @java.lang.Override
+            public double getY() {
+                return y_;
+            }
+
+            /**
+             * <code>double y = 4;</code>
+             *
+             * @param value The y to set.
+             * @return This builder for chaining.
+             */
+            public Builder setY(double value) {
+
+                y_ = value;
+                bitField0_ |= 0x00000008;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>double y = 4;</code>
+             *
+             * @return This builder for chaining.
+             */
+            public Builder clearY() {
+                bitField0_ = (bitField0_ & ~0x00000008);
+                y_ = 0D;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>double z = 5;</code>
+             *
+             * @return The z.
+             */
+            @java.lang.Override
+            public double getZ() {
+                return z_;
+            }
+
+            /**
+             * <code>double z = 5;</code>
+             *
+             * @param value The z to set.
+             * @return This builder for chaining.
+             */
+            public Builder setZ(double value) {
+
+                z_ = value;
+                bitField0_ |= 0x00000010;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>double z = 5;</code>
+             *
+             * @return This builder for chaining.
+             */
+            public Builder clearZ() {
+                bitField0_ = (bitField0_ & ~0x00000010);
+                z_ = 0D;
+                onChanged();
+                return this;
+            }
+
+            @java.lang.Override
+            public final Builder setUnknownFields(
+                    final com.google.protobuf.UnknownFieldSet unknownFields) {
+                return super.setUnknownFields(unknownFields);
+            }
+
+            @java.lang.Override
+            public final Builder mergeUnknownFields(
+                    final com.google.protobuf.UnknownFieldSet unknownFields) {
+                return super.mergeUnknownFields(unknownFields);
+            }
+
+
+            // @@protoc_insertion_point(builder_scope:SoundEntry)
+        }
+
     }
 
-    public static final int IMAGE_FIELD_NUMBER = 1;
-    private com.google.protobuf.ByteString image_ = com.google.protobuf.ByteString.EMPTY;
-    /**
-     * <code>bytes image = 1;</code>
-     * @return The image.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString getImage() {
-      return image_;
-    }
-
-    public static final int X_FIELD_NUMBER = 2;
-    private double x_ = 0D;
-    /**
-     * <code>double x = 2;</code>
-     * @return The x.
-     */
-    @java.lang.Override
-    public double getX() {
-      return x_;
-    }
-
-    public static final int Y_FIELD_NUMBER = 3;
-    private double y_ = 0D;
-    /**
-     * <code>double y = 3;</code>
-     * @return The y.
-     */
-    @java.lang.Override
-    public double getY() {
-      return y_;
-    }
-
-    public static final int Z_FIELD_NUMBER = 4;
-    private double z_ = 0D;
-    /**
-     * <code>double z = 4;</code>
-     * @return The z.
-     */
-    @java.lang.Override
-    public double getZ() {
-      return z_;
-    }
-
-    public static final int YAW_FIELD_NUMBER = 5;
-    private double yaw_ = 0D;
-    /**
-     * <code>double yaw = 5;</code>
-     * @return The yaw.
-     */
-    @java.lang.Override
-    public double getYaw() {
-      return yaw_;
-    }
-
-    public static final int PITCH_FIELD_NUMBER = 6;
-    private double pitch_ = 0D;
-    /**
-     * <code>double pitch = 6;</code>
-     * @return The pitch.
-     */
-    @java.lang.Override
-    public double getPitch() {
-      return pitch_;
-    }
-
-    public static final int HEALTH_FIELD_NUMBER = 7;
-    private double health_ = 0D;
-    /**
-     * <code>double health = 7;</code>
-     * @return The health.
-     */
-    @java.lang.Override
-    public double getHealth() {
-      return health_;
-    }
-
-    public static final int FOOD_LEVEL_FIELD_NUMBER = 8;
-    private double foodLevel_ = 0D;
-    /**
-     * <code>double food_level = 8;</code>
-     * @return The foodLevel.
-     */
-    @java.lang.Override
-    public double getFoodLevel() {
-      return foodLevel_;
-    }
-
-    public static final int SATURATION_LEVEL_FIELD_NUMBER = 9;
-    private double saturationLevel_ = 0D;
-    /**
-     * <code>double saturation_level = 9;</code>
-     * @return The saturationLevel.
-     */
-    @java.lang.Override
-    public double getSaturationLevel() {
-      return saturationLevel_;
-    }
-
-    public static final int IS_DEAD_FIELD_NUMBER = 10;
-    private boolean isDead_ = false;
-    /**
-     * <code>bool is_dead = 10;</code>
-     * @return The isDead.
-     */
-    @java.lang.Override
-    public boolean getIsDead() {
-      return isDead_;
-    }
-
-    public static final int INVENTORY_FIELD_NUMBER = 11;
-    @SuppressWarnings("serial")
-    private java.util.List<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack> inventory_;
-    /**
-     * <code>repeated .ItemStack inventory = 11;</code>
-     */
-    @java.lang.Override
-    public java.util.List<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack> getInventoryList() {
-      return inventory_;
-    }
-    /**
-     * <code>repeated .ItemStack inventory = 11;</code>
-     */
-    @java.lang.Override
-    public java.util.List<? extends com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStackOrBuilder> 
-        getInventoryOrBuilderList() {
-      return inventory_;
-    }
-    /**
-     * <code>repeated .ItemStack inventory = 11;</code>
-     */
-    @java.lang.Override
-    public int getInventoryCount() {
-      return inventory_.size();
-    }
-    /**
-     * <code>repeated .ItemStack inventory = 11;</code>
-     */
-    @java.lang.Override
-    public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack getInventory(int index) {
-      return inventory_.get(index);
-    }
-    /**
-     * <code>repeated .ItemStack inventory = 11;</code>
-     */
-    @java.lang.Override
-    public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStackOrBuilder getInventoryOrBuilder(
-        int index) {
-      return inventory_.get(index);
-    }
-
-    public static final int RAYCAST_RESULT_FIELD_NUMBER = 12;
-    private com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult raycastResult_;
-    /**
-     * <code>.HitResult raycast_result = 12;</code>
-     * @return Whether the raycastResult field is set.
-     */
-    @java.lang.Override
-    public boolean hasRaycastResult() {
-      return raycastResult_ != null;
-    }
-    /**
-     * <code>.HitResult raycast_result = 12;</code>
-     * @return The raycastResult.
-     */
-    @java.lang.Override
-    public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult getRaycastResult() {
-      return raycastResult_ == null ? com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult.getDefaultInstance() : raycastResult_;
-    }
-    /**
-     * <code>.HitResult raycast_result = 12;</code>
-     */
-    @java.lang.Override
-    public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResultOrBuilder getRaycastResultOrBuilder() {
-      return raycastResult_ == null ? com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult.getDefaultInstance() : raycastResult_;
-    }
-
-    public static final int SOUND_SUBTITLES_FIELD_NUMBER = 13;
-    @SuppressWarnings("serial")
-    private java.util.List<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry> soundSubtitles_;
-    /**
-     * <code>repeated .SoundEntry sound_subtitles = 13;</code>
-     */
-    @java.lang.Override
-    public java.util.List<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry> getSoundSubtitlesList() {
-      return soundSubtitles_;
-    }
-    /**
-     * <code>repeated .SoundEntry sound_subtitles = 13;</code>
-     */
-    @java.lang.Override
-    public java.util.List<? extends com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntryOrBuilder> 
-        getSoundSubtitlesOrBuilderList() {
-      return soundSubtitles_;
-    }
-    /**
-     * <code>repeated .SoundEntry sound_subtitles = 13;</code>
-     */
-    @java.lang.Override
-    public int getSoundSubtitlesCount() {
-      return soundSubtitles_.size();
-    }
-    /**
-     * <code>repeated .SoundEntry sound_subtitles = 13;</code>
-     */
-    @java.lang.Override
-    public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry getSoundSubtitles(int index) {
-      return soundSubtitles_.get(index);
-    }
-    /**
-     * <code>repeated .SoundEntry sound_subtitles = 13;</code>
-     */
-    @java.lang.Override
-    public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntryOrBuilder getSoundSubtitlesOrBuilder(
-        int index) {
-      return soundSubtitles_.get(index);
-    }
-
-    public static final int STATUS_EFFECTS_FIELD_NUMBER = 14;
-    @SuppressWarnings("serial")
-    private java.util.List<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect> statusEffects_;
-    /**
-     * <code>repeated .StatusEffect status_effects = 14;</code>
-     */
-    @java.lang.Override
-    public java.util.List<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect> getStatusEffectsList() {
-      return statusEffects_;
-    }
-    /**
-     * <code>repeated .StatusEffect status_effects = 14;</code>
-     */
-    @java.lang.Override
-    public java.util.List<? extends com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffectOrBuilder> 
-        getStatusEffectsOrBuilderList() {
-      return statusEffects_;
-    }
-    /**
-     * <code>repeated .StatusEffect status_effects = 14;</code>
-     */
-    @java.lang.Override
-    public int getStatusEffectsCount() {
-      return statusEffects_.size();
-    }
-    /**
-     * <code>repeated .StatusEffect status_effects = 14;</code>
-     */
-    @java.lang.Override
-    public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect getStatusEffects(int index) {
-      return statusEffects_.get(index);
-    }
-    /**
-     * <code>repeated .StatusEffect status_effects = 14;</code>
-     */
-    @java.lang.Override
-    public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffectOrBuilder getStatusEffectsOrBuilder(
-        int index) {
-      return statusEffects_.get(index);
-    }
-
-    public static final int KILLED_STATISTICS_FIELD_NUMBER = 15;
-    private static final class KilledStatisticsDefaultEntryHolder {
-      static final com.google.protobuf.MapEntry<
-          java.lang.String, java.lang.Integer> defaultEntry =
-              com.google.protobuf.MapEntry
-              .<java.lang.String, java.lang.Integer>newDefaultInstance(
-                  com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_ObservationSpaceMessage_KilledStatisticsEntry_descriptor, 
-                  com.google.protobuf.WireFormat.FieldType.STRING,
-                  "",
-                  com.google.protobuf.WireFormat.FieldType.INT32,
-                  0);
-    }
-    @SuppressWarnings("serial")
-    private com.google.protobuf.MapField<
-        java.lang.String, java.lang.Integer> killedStatistics_;
-    private com.google.protobuf.MapField<java.lang.String, java.lang.Integer>
-    internalGetKilledStatistics() {
-      if (killedStatistics_ == null) {
-        return com.google.protobuf.MapField.emptyMapField(
-            KilledStatisticsDefaultEntryHolder.defaultEntry);
-      }
-      return killedStatistics_;
-    }
-    public int getKilledStatisticsCount() {
-      return internalGetKilledStatistics().getMap().size();
-    }
-    /**
-     * <code>map&lt;string, int32&gt; killed_statistics = 15;</code>
-     */
-    @java.lang.Override
-    public boolean containsKilledStatistics(
-        java.lang.String key) {
-      if (key == null) { throw new NullPointerException("map key"); }
-      return internalGetKilledStatistics().getMap().containsKey(key);
-    }
-    /**
-     * Use {@link #getKilledStatisticsMap()} instead.
-     */
-    @java.lang.Override
-    @java.lang.Deprecated
-    public java.util.Map<java.lang.String, java.lang.Integer> getKilledStatistics() {
-      return getKilledStatisticsMap();
-    }
-    /**
-     * <code>map&lt;string, int32&gt; killed_statistics = 15;</code>
-     */
-    @java.lang.Override
-    public java.util.Map<java.lang.String, java.lang.Integer> getKilledStatisticsMap() {
-      return internalGetKilledStatistics().getMap();
-    }
-    /**
-     * <code>map&lt;string, int32&gt; killed_statistics = 15;</code>
-     */
-    @java.lang.Override
-    public int getKilledStatisticsOrDefault(
-        java.lang.String key,
-        int defaultValue) {
-      if (key == null) { throw new NullPointerException("map key"); }
-      java.util.Map<java.lang.String, java.lang.Integer> map =
-          internalGetKilledStatistics().getMap();
-      return map.containsKey(key) ? map.get(key) : defaultValue;
-    }
-    /**
-     * <code>map&lt;string, int32&gt; killed_statistics = 15;</code>
-     */
-    @java.lang.Override
-    public int getKilledStatisticsOrThrow(
-        java.lang.String key) {
-      if (key == null) { throw new NullPointerException("map key"); }
-      java.util.Map<java.lang.String, java.lang.Integer> map =
-          internalGetKilledStatistics().getMap();
-      if (!map.containsKey(key)) {
-        throw new java.lang.IllegalArgumentException();
-      }
-      return map.get(key);
-    }
-
-    public static final int MINED_STATISTICS_FIELD_NUMBER = 16;
-    private static final class MinedStatisticsDefaultEntryHolder {
-      static final com.google.protobuf.MapEntry<
-          java.lang.String, java.lang.Integer> defaultEntry =
-              com.google.protobuf.MapEntry
-              .<java.lang.String, java.lang.Integer>newDefaultInstance(
-                  com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_ObservationSpaceMessage_MinedStatisticsEntry_descriptor, 
-                  com.google.protobuf.WireFormat.FieldType.STRING,
-                  "",
-                  com.google.protobuf.WireFormat.FieldType.INT32,
-                  0);
-    }
-    @SuppressWarnings("serial")
-    private com.google.protobuf.MapField<
-        java.lang.String, java.lang.Integer> minedStatistics_;
-    private com.google.protobuf.MapField<java.lang.String, java.lang.Integer>
-    internalGetMinedStatistics() {
-      if (minedStatistics_ == null) {
-        return com.google.protobuf.MapField.emptyMapField(
-            MinedStatisticsDefaultEntryHolder.defaultEntry);
-      }
-      return minedStatistics_;
-    }
-    public int getMinedStatisticsCount() {
-      return internalGetMinedStatistics().getMap().size();
-    }
-    /**
-     * <code>map&lt;string, int32&gt; mined_statistics = 16;</code>
-     */
-    @java.lang.Override
-    public boolean containsMinedStatistics(
-        java.lang.String key) {
-      if (key == null) { throw new NullPointerException("map key"); }
-      return internalGetMinedStatistics().getMap().containsKey(key);
-    }
-    /**
-     * Use {@link #getMinedStatisticsMap()} instead.
-     */
-    @java.lang.Override
-    @java.lang.Deprecated
-    public java.util.Map<java.lang.String, java.lang.Integer> getMinedStatistics() {
-      return getMinedStatisticsMap();
-    }
-    /**
-     * <code>map&lt;string, int32&gt; mined_statistics = 16;</code>
-     */
-    @java.lang.Override
-    public java.util.Map<java.lang.String, java.lang.Integer> getMinedStatisticsMap() {
-      return internalGetMinedStatistics().getMap();
-    }
-    /**
-     * <code>map&lt;string, int32&gt; mined_statistics = 16;</code>
-     */
-    @java.lang.Override
-    public int getMinedStatisticsOrDefault(
-        java.lang.String key,
-        int defaultValue) {
-      if (key == null) { throw new NullPointerException("map key"); }
-      java.util.Map<java.lang.String, java.lang.Integer> map =
-          internalGetMinedStatistics().getMap();
-      return map.containsKey(key) ? map.get(key) : defaultValue;
-    }
-    /**
-     * <code>map&lt;string, int32&gt; mined_statistics = 16;</code>
-     */
-    @java.lang.Override
-    public int getMinedStatisticsOrThrow(
-        java.lang.String key) {
-      if (key == null) { throw new NullPointerException("map key"); }
-      java.util.Map<java.lang.String, java.lang.Integer> map =
-          internalGetMinedStatistics().getMap();
-      if (!map.containsKey(key)) {
-        throw new java.lang.IllegalArgumentException();
-      }
-      return map.get(key);
-    }
-
-    public static final int MISC_STATISTICS_FIELD_NUMBER = 17;
-    private static final class MiscStatisticsDefaultEntryHolder {
-      static final com.google.protobuf.MapEntry<
-          java.lang.String, java.lang.Integer> defaultEntry =
-              com.google.protobuf.MapEntry
-              .<java.lang.String, java.lang.Integer>newDefaultInstance(
-                  com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_ObservationSpaceMessage_MiscStatisticsEntry_descriptor, 
-                  com.google.protobuf.WireFormat.FieldType.STRING,
-                  "",
-                  com.google.protobuf.WireFormat.FieldType.INT32,
-                  0);
-    }
-    @SuppressWarnings("serial")
-    private com.google.protobuf.MapField<
-        java.lang.String, java.lang.Integer> miscStatistics_;
-    private com.google.protobuf.MapField<java.lang.String, java.lang.Integer>
-    internalGetMiscStatistics() {
-      if (miscStatistics_ == null) {
-        return com.google.protobuf.MapField.emptyMapField(
-            MiscStatisticsDefaultEntryHolder.defaultEntry);
-      }
-      return miscStatistics_;
-    }
-    public int getMiscStatisticsCount() {
-      return internalGetMiscStatistics().getMap().size();
-    }
-    /**
-     * <code>map&lt;string, int32&gt; misc_statistics = 17;</code>
-     */
-    @java.lang.Override
-    public boolean containsMiscStatistics(
-        java.lang.String key) {
-      if (key == null) { throw new NullPointerException("map key"); }
-      return internalGetMiscStatistics().getMap().containsKey(key);
-    }
-    /**
-     * Use {@link #getMiscStatisticsMap()} instead.
-     */
-    @java.lang.Override
-    @java.lang.Deprecated
-    public java.util.Map<java.lang.String, java.lang.Integer> getMiscStatistics() {
-      return getMiscStatisticsMap();
-    }
-    /**
-     * <code>map&lt;string, int32&gt; misc_statistics = 17;</code>
-     */
-    @java.lang.Override
-    public java.util.Map<java.lang.String, java.lang.Integer> getMiscStatisticsMap() {
-      return internalGetMiscStatistics().getMap();
-    }
-    /**
-     * <code>map&lt;string, int32&gt; misc_statistics = 17;</code>
-     */
-    @java.lang.Override
-    public int getMiscStatisticsOrDefault(
-        java.lang.String key,
-        int defaultValue) {
-      if (key == null) { throw new NullPointerException("map key"); }
-      java.util.Map<java.lang.String, java.lang.Integer> map =
-          internalGetMiscStatistics().getMap();
-      return map.containsKey(key) ? map.get(key) : defaultValue;
-    }
-    /**
-     * <code>map&lt;string, int32&gt; misc_statistics = 17;</code>
-     */
-    @java.lang.Override
-    public int getMiscStatisticsOrThrow(
-        java.lang.String key) {
-      if (key == null) { throw new NullPointerException("map key"); }
-      java.util.Map<java.lang.String, java.lang.Integer> map =
-          internalGetMiscStatistics().getMap();
-      if (!map.containsKey(key)) {
-        throw new java.lang.IllegalArgumentException();
-      }
-      return map.get(key);
-    }
-
-    public static final int VISIBLE_ENTITIES_FIELD_NUMBER = 18;
-    @SuppressWarnings("serial")
-    private java.util.List<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo> visibleEntities_;
-    /**
-     * <code>repeated .EntityInfo visible_entities = 18;</code>
-     */
-    @java.lang.Override
-    public java.util.List<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo> getVisibleEntitiesList() {
-      return visibleEntities_;
-    }
-    /**
-     * <code>repeated .EntityInfo visible_entities = 18;</code>
-     */
-    @java.lang.Override
-    public java.util.List<? extends com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfoOrBuilder> 
-        getVisibleEntitiesOrBuilderList() {
-      return visibleEntities_;
-    }
-    /**
-     * <code>repeated .EntityInfo visible_entities = 18;</code>
-     */
-    @java.lang.Override
-    public int getVisibleEntitiesCount() {
-      return visibleEntities_.size();
-    }
-    /**
-     * <code>repeated .EntityInfo visible_entities = 18;</code>
-     */
-    @java.lang.Override
-    public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo getVisibleEntities(int index) {
-      return visibleEntities_.get(index);
-    }
-    /**
-     * <code>repeated .EntityInfo visible_entities = 18;</code>
-     */
-    @java.lang.Override
-    public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfoOrBuilder getVisibleEntitiesOrBuilder(
-        int index) {
-      return visibleEntities_.get(index);
-    }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (!image_.isEmpty()) {
-        output.writeBytes(1, image_);
-      }
-      if (java.lang.Double.doubleToRawLongBits(x_) != 0) {
-        output.writeDouble(2, x_);
-      }
-      if (java.lang.Double.doubleToRawLongBits(y_) != 0) {
-        output.writeDouble(3, y_);
-      }
-      if (java.lang.Double.doubleToRawLongBits(z_) != 0) {
-        output.writeDouble(4, z_);
-      }
-      if (java.lang.Double.doubleToRawLongBits(yaw_) != 0) {
-        output.writeDouble(5, yaw_);
-      }
-      if (java.lang.Double.doubleToRawLongBits(pitch_) != 0) {
-        output.writeDouble(6, pitch_);
-      }
-      if (java.lang.Double.doubleToRawLongBits(health_) != 0) {
-        output.writeDouble(7, health_);
-      }
-      if (java.lang.Double.doubleToRawLongBits(foodLevel_) != 0) {
-        output.writeDouble(8, foodLevel_);
-      }
-      if (java.lang.Double.doubleToRawLongBits(saturationLevel_) != 0) {
-        output.writeDouble(9, saturationLevel_);
-      }
-      if (isDead_ != false) {
-        output.writeBool(10, isDead_);
-      }
-      for (int i = 0; i < inventory_.size(); i++) {
-        output.writeMessage(11, inventory_.get(i));
-      }
-      if (raycastResult_ != null) {
-        output.writeMessage(12, getRaycastResult());
-      }
-      for (int i = 0; i < soundSubtitles_.size(); i++) {
-        output.writeMessage(13, soundSubtitles_.get(i));
-      }
-      for (int i = 0; i < statusEffects_.size(); i++) {
-        output.writeMessage(14, statusEffects_.get(i));
-      }
-      com.google.protobuf.GeneratedMessageV3
-        .serializeStringMapTo(
-          output,
-          internalGetKilledStatistics(),
-          KilledStatisticsDefaultEntryHolder.defaultEntry,
-          15);
-      com.google.protobuf.GeneratedMessageV3
-        .serializeStringMapTo(
-          output,
-          internalGetMinedStatistics(),
-          MinedStatisticsDefaultEntryHolder.defaultEntry,
-          16);
-      com.google.protobuf.GeneratedMessageV3
-        .serializeStringMapTo(
-          output,
-          internalGetMiscStatistics(),
-          MiscStatisticsDefaultEntryHolder.defaultEntry,
-          17);
-      for (int i = 0; i < visibleEntities_.size(); i++) {
-        output.writeMessage(18, visibleEntities_.get(i));
-      }
-      getUnknownFields().writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (!image_.isEmpty()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(1, image_);
-      }
-      if (java.lang.Double.doubleToRawLongBits(x_) != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeDoubleSize(2, x_);
-      }
-      if (java.lang.Double.doubleToRawLongBits(y_) != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeDoubleSize(3, y_);
-      }
-      if (java.lang.Double.doubleToRawLongBits(z_) != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeDoubleSize(4, z_);
-      }
-      if (java.lang.Double.doubleToRawLongBits(yaw_) != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeDoubleSize(5, yaw_);
-      }
-      if (java.lang.Double.doubleToRawLongBits(pitch_) != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeDoubleSize(6, pitch_);
-      }
-      if (java.lang.Double.doubleToRawLongBits(health_) != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeDoubleSize(7, health_);
-      }
-      if (java.lang.Double.doubleToRawLongBits(foodLevel_) != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeDoubleSize(8, foodLevel_);
-      }
-      if (java.lang.Double.doubleToRawLongBits(saturationLevel_) != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeDoubleSize(9, saturationLevel_);
-      }
-      if (isDead_ != false) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(10, isDead_);
-      }
-      for (int i = 0; i < inventory_.size(); i++) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(11, inventory_.get(i));
-      }
-      if (raycastResult_ != null) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(12, getRaycastResult());
-      }
-      for (int i = 0; i < soundSubtitles_.size(); i++) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(13, soundSubtitles_.get(i));
-      }
-      for (int i = 0; i < statusEffects_.size(); i++) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(14, statusEffects_.get(i));
-      }
-      for (java.util.Map.Entry<java.lang.String, java.lang.Integer> entry
-           : internalGetKilledStatistics().getMap().entrySet()) {
-        com.google.protobuf.MapEntry<java.lang.String, java.lang.Integer>
-        killedStatistics__ = KilledStatisticsDefaultEntryHolder.defaultEntry.newBuilderForType()
-            .setKey(entry.getKey())
-            .setValue(entry.getValue())
-            .build();
-        size += com.google.protobuf.CodedOutputStream
-            .computeMessageSize(15, killedStatistics__);
-      }
-      for (java.util.Map.Entry<java.lang.String, java.lang.Integer> entry
-           : internalGetMinedStatistics().getMap().entrySet()) {
-        com.google.protobuf.MapEntry<java.lang.String, java.lang.Integer>
-        minedStatistics__ = MinedStatisticsDefaultEntryHolder.defaultEntry.newBuilderForType()
-            .setKey(entry.getKey())
-            .setValue(entry.getValue())
-            .build();
-        size += com.google.protobuf.CodedOutputStream
-            .computeMessageSize(16, minedStatistics__);
-      }
-      for (java.util.Map.Entry<java.lang.String, java.lang.Integer> entry
-           : internalGetMiscStatistics().getMap().entrySet()) {
-        com.google.protobuf.MapEntry<java.lang.String, java.lang.Integer>
-        miscStatistics__ = MiscStatisticsDefaultEntryHolder.defaultEntry.newBuilderForType()
-            .setKey(entry.getKey())
-            .setValue(entry.getValue())
-            .build();
-        size += com.google.protobuf.CodedOutputStream
-            .computeMessageSize(17, miscStatistics__);
-      }
-      for (int i = 0; i < visibleEntities_.size(); i++) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(18, visibleEntities_.get(i));
-      }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ObservationSpaceMessage)) {
-        return super.equals(obj);
-      }
-      com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ObservationSpaceMessage other = (com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ObservationSpaceMessage) obj;
-
-      if (!getImage()
-          .equals(other.getImage())) return false;
-      if (java.lang.Double.doubleToLongBits(getX())
-          != java.lang.Double.doubleToLongBits(
-              other.getX())) return false;
-      if (java.lang.Double.doubleToLongBits(getY())
-          != java.lang.Double.doubleToLongBits(
-              other.getY())) return false;
-      if (java.lang.Double.doubleToLongBits(getZ())
-          != java.lang.Double.doubleToLongBits(
-              other.getZ())) return false;
-      if (java.lang.Double.doubleToLongBits(getYaw())
-          != java.lang.Double.doubleToLongBits(
-              other.getYaw())) return false;
-      if (java.lang.Double.doubleToLongBits(getPitch())
-          != java.lang.Double.doubleToLongBits(
-              other.getPitch())) return false;
-      if (java.lang.Double.doubleToLongBits(getHealth())
-          != java.lang.Double.doubleToLongBits(
-              other.getHealth())) return false;
-      if (java.lang.Double.doubleToLongBits(getFoodLevel())
-          != java.lang.Double.doubleToLongBits(
-              other.getFoodLevel())) return false;
-      if (java.lang.Double.doubleToLongBits(getSaturationLevel())
-          != java.lang.Double.doubleToLongBits(
-              other.getSaturationLevel())) return false;
-      if (getIsDead()
-          != other.getIsDead()) return false;
-      if (!getInventoryList()
-          .equals(other.getInventoryList())) return false;
-      if (hasRaycastResult() != other.hasRaycastResult()) return false;
-      if (hasRaycastResult()) {
-        if (!getRaycastResult()
-            .equals(other.getRaycastResult())) return false;
-      }
-      if (!getSoundSubtitlesList()
-          .equals(other.getSoundSubtitlesList())) return false;
-      if (!getStatusEffectsList()
-          .equals(other.getStatusEffectsList())) return false;
-      if (!internalGetKilledStatistics().equals(
-          other.internalGetKilledStatistics())) return false;
-      if (!internalGetMinedStatistics().equals(
-          other.internalGetMinedStatistics())) return false;
-      if (!internalGetMiscStatistics().equals(
-          other.internalGetMiscStatistics())) return false;
-      if (!getVisibleEntitiesList()
-          .equals(other.getVisibleEntitiesList())) return false;
-      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
-      return true;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + IMAGE_FIELD_NUMBER;
-      hash = (53 * hash) + getImage().hashCode();
-      hash = (37 * hash) + X_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          java.lang.Double.doubleToLongBits(getX()));
-      hash = (37 * hash) + Y_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          java.lang.Double.doubleToLongBits(getY()));
-      hash = (37 * hash) + Z_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          java.lang.Double.doubleToLongBits(getZ()));
-      hash = (37 * hash) + YAW_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          java.lang.Double.doubleToLongBits(getYaw()));
-      hash = (37 * hash) + PITCH_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          java.lang.Double.doubleToLongBits(getPitch()));
-      hash = (37 * hash) + HEALTH_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          java.lang.Double.doubleToLongBits(getHealth()));
-      hash = (37 * hash) + FOOD_LEVEL_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          java.lang.Double.doubleToLongBits(getFoodLevel()));
-      hash = (37 * hash) + SATURATION_LEVEL_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          java.lang.Double.doubleToLongBits(getSaturationLevel()));
-      hash = (37 * hash) + IS_DEAD_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
-          getIsDead());
-      if (getInventoryCount() > 0) {
-        hash = (37 * hash) + INVENTORY_FIELD_NUMBER;
-        hash = (53 * hash) + getInventoryList().hashCode();
-      }
-      if (hasRaycastResult()) {
-        hash = (37 * hash) + RAYCAST_RESULT_FIELD_NUMBER;
-        hash = (53 * hash) + getRaycastResult().hashCode();
-      }
-      if (getSoundSubtitlesCount() > 0) {
-        hash = (37 * hash) + SOUND_SUBTITLES_FIELD_NUMBER;
-        hash = (53 * hash) + getSoundSubtitlesList().hashCode();
-      }
-      if (getStatusEffectsCount() > 0) {
-        hash = (37 * hash) + STATUS_EFFECTS_FIELD_NUMBER;
-        hash = (53 * hash) + getStatusEffectsList().hashCode();
-      }
-      if (!internalGetKilledStatistics().getMap().isEmpty()) {
-        hash = (37 * hash) + KILLED_STATISTICS_FIELD_NUMBER;
-        hash = (53 * hash) + internalGetKilledStatistics().hashCode();
-      }
-      if (!internalGetMinedStatistics().getMap().isEmpty()) {
-        hash = (37 * hash) + MINED_STATISTICS_FIELD_NUMBER;
-        hash = (53 * hash) + internalGetMinedStatistics().hashCode();
-      }
-      if (!internalGetMiscStatistics().getMap().isEmpty()) {
-        hash = (37 * hash) + MISC_STATISTICS_FIELD_NUMBER;
-        hash = (53 * hash) + internalGetMiscStatistics().hashCode();
-      }
-      if (getVisibleEntitiesCount() > 0) {
-        hash = (37 * hash) + VISIBLE_ENTITIES_FIELD_NUMBER;
-        hash = (53 * hash) + getVisibleEntitiesList().hashCode();
-      }
-      hash = (29 * hash) + getUnknownFields().hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ObservationSpaceMessage parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ObservationSpaceMessage parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ObservationSpaceMessage parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ObservationSpaceMessage parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ObservationSpaceMessage parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ObservationSpaceMessage parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ObservationSpaceMessage parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ObservationSpaceMessage parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ObservationSpaceMessage parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ObservationSpaceMessage parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ObservationSpaceMessage parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ObservationSpaceMessage parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ObservationSpaceMessage prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
     /**
      * Protobuf type {@code ObservationSpaceMessage}
      */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:ObservationSpaceMessage)
-        com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ObservationSpaceMessageOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_ObservationSpaceMessage_descriptor;
-      }
-
-      @SuppressWarnings({"rawtypes"})
-      protected com.google.protobuf.MapField internalGetMapField(
-          int number) {
-        switch (number) {
-          case 15:
-            return internalGetKilledStatistics();
-          case 16:
-            return internalGetMinedStatistics();
-          case 17:
-            return internalGetMiscStatistics();
-          default:
-            throw new RuntimeException(
-                "Invalid map field number: " + number);
-        }
-      }
-      @SuppressWarnings({"rawtypes"})
-      protected com.google.protobuf.MapField internalGetMutableMapField(
-          int number) {
-        switch (number) {
-          case 15:
-            return internalGetMutableKilledStatistics();
-          case 16:
-            return internalGetMutableMinedStatistics();
-          case 17:
-            return internalGetMutableMiscStatistics();
-          default:
-            throw new RuntimeException(
-                "Invalid map field number: " + number);
-        }
-      }
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_ObservationSpaceMessage_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ObservationSpaceMessage.class, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ObservationSpaceMessage.Builder.class);
-      }
-
-      // Construct using com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ObservationSpaceMessage.newBuilder()
-      private Builder() {
-
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        bitField0_ = 0;
-        image_ = com.google.protobuf.ByteString.EMPTY;
-        x_ = 0D;
-        y_ = 0D;
-        z_ = 0D;
-        yaw_ = 0D;
-        pitch_ = 0D;
-        health_ = 0D;
-        foodLevel_ = 0D;
-        saturationLevel_ = 0D;
-        isDead_ = false;
-        if (inventoryBuilder_ == null) {
-          inventory_ = java.util.Collections.emptyList();
-        } else {
-          inventory_ = null;
-          inventoryBuilder_.clear();
-        }
-        bitField0_ = (bitField0_ & ~0x00000400);
-        raycastResult_ = null;
-        if (raycastResultBuilder_ != null) {
-          raycastResultBuilder_.dispose();
-          raycastResultBuilder_ = null;
-        }
-        if (soundSubtitlesBuilder_ == null) {
-          soundSubtitles_ = java.util.Collections.emptyList();
-        } else {
-          soundSubtitles_ = null;
-          soundSubtitlesBuilder_.clear();
-        }
-        bitField0_ = (bitField0_ & ~0x00001000);
-        if (statusEffectsBuilder_ == null) {
-          statusEffects_ = java.util.Collections.emptyList();
-        } else {
-          statusEffects_ = null;
-          statusEffectsBuilder_.clear();
-        }
-        bitField0_ = (bitField0_ & ~0x00002000);
-        internalGetMutableKilledStatistics().clear();
-        internalGetMutableMinedStatistics().clear();
-        internalGetMutableMiscStatistics().clear();
-        if (visibleEntitiesBuilder_ == null) {
-          visibleEntities_ = java.util.Collections.emptyList();
-        } else {
-          visibleEntities_ = null;
-          visibleEntitiesBuilder_.clear();
-        }
-        bitField0_ = (bitField0_ & ~0x00020000);
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_ObservationSpaceMessage_descriptor;
-      }
-
-      @java.lang.Override
-      public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ObservationSpaceMessage getDefaultInstanceForType() {
-        return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ObservationSpaceMessage.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ObservationSpaceMessage build() {
-        com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ObservationSpaceMessage result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ObservationSpaceMessage buildPartial() {
-        com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ObservationSpaceMessage result = new com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ObservationSpaceMessage(this);
-        buildPartialRepeatedFields(result);
-        if (bitField0_ != 0) { buildPartial0(result); }
-        onBuilt();
-        return result;
-      }
-
-      private void buildPartialRepeatedFields(com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ObservationSpaceMessage result) {
-        if (inventoryBuilder_ == null) {
-          if (((bitField0_ & 0x00000400) != 0)) {
-            inventory_ = java.util.Collections.unmodifiableList(inventory_);
-            bitField0_ = (bitField0_ & ~0x00000400);
-          }
-          result.inventory_ = inventory_;
-        } else {
-          result.inventory_ = inventoryBuilder_.build();
-        }
-        if (soundSubtitlesBuilder_ == null) {
-          if (((bitField0_ & 0x00001000) != 0)) {
-            soundSubtitles_ = java.util.Collections.unmodifiableList(soundSubtitles_);
-            bitField0_ = (bitField0_ & ~0x00001000);
-          }
-          result.soundSubtitles_ = soundSubtitles_;
-        } else {
-          result.soundSubtitles_ = soundSubtitlesBuilder_.build();
-        }
-        if (statusEffectsBuilder_ == null) {
-          if (((bitField0_ & 0x00002000) != 0)) {
-            statusEffects_ = java.util.Collections.unmodifiableList(statusEffects_);
-            bitField0_ = (bitField0_ & ~0x00002000);
-          }
-          result.statusEffects_ = statusEffects_;
-        } else {
-          result.statusEffects_ = statusEffectsBuilder_.build();
-        }
-        if (visibleEntitiesBuilder_ == null) {
-          if (((bitField0_ & 0x00020000) != 0)) {
-            visibleEntities_ = java.util.Collections.unmodifiableList(visibleEntities_);
-            bitField0_ = (bitField0_ & ~0x00020000);
-          }
-          result.visibleEntities_ = visibleEntities_;
-        } else {
-          result.visibleEntities_ = visibleEntitiesBuilder_.build();
-        }
-      }
-
-      private void buildPartial0(com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ObservationSpaceMessage result) {
-        int from_bitField0_ = bitField0_;
-        if (((from_bitField0_ & 0x00000001) != 0)) {
-          result.image_ = image_;
-        }
-        if (((from_bitField0_ & 0x00000002) != 0)) {
-          result.x_ = x_;
-        }
-        if (((from_bitField0_ & 0x00000004) != 0)) {
-          result.y_ = y_;
-        }
-        if (((from_bitField0_ & 0x00000008) != 0)) {
-          result.z_ = z_;
-        }
-        if (((from_bitField0_ & 0x00000010) != 0)) {
-          result.yaw_ = yaw_;
-        }
-        if (((from_bitField0_ & 0x00000020) != 0)) {
-          result.pitch_ = pitch_;
-        }
-        if (((from_bitField0_ & 0x00000040) != 0)) {
-          result.health_ = health_;
-        }
-        if (((from_bitField0_ & 0x00000080) != 0)) {
-          result.foodLevel_ = foodLevel_;
-        }
-        if (((from_bitField0_ & 0x00000100) != 0)) {
-          result.saturationLevel_ = saturationLevel_;
-        }
-        if (((from_bitField0_ & 0x00000200) != 0)) {
-          result.isDead_ = isDead_;
-        }
-        if (((from_bitField0_ & 0x00000800) != 0)) {
-          result.raycastResult_ = raycastResultBuilder_ == null
-              ? raycastResult_
-              : raycastResultBuilder_.build();
-        }
-        if (((from_bitField0_ & 0x00004000) != 0)) {
-          result.killedStatistics_ = internalGetKilledStatistics();
-          result.killedStatistics_.makeImmutable();
-        }
-        if (((from_bitField0_ & 0x00008000) != 0)) {
-          result.minedStatistics_ = internalGetMinedStatistics();
-          result.minedStatistics_.makeImmutable();
-        }
-        if (((from_bitField0_ & 0x00010000) != 0)) {
-          result.miscStatistics_ = internalGetMiscStatistics();
-          result.miscStatistics_.makeImmutable();
-        }
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ObservationSpaceMessage) {
-          return mergeFrom((com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ObservationSpaceMessage)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ObservationSpaceMessage other) {
-        if (other == com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ObservationSpaceMessage.getDefaultInstance()) return this;
-        if (other.getImage() != com.google.protobuf.ByteString.EMPTY) {
-          setImage(other.getImage());
-        }
-        if (other.getX() != 0D) {
-          setX(other.getX());
-        }
-        if (other.getY() != 0D) {
-          setY(other.getY());
-        }
-        if (other.getZ() != 0D) {
-          setZ(other.getZ());
-        }
-        if (other.getYaw() != 0D) {
-          setYaw(other.getYaw());
-        }
-        if (other.getPitch() != 0D) {
-          setPitch(other.getPitch());
-        }
-        if (other.getHealth() != 0D) {
-          setHealth(other.getHealth());
-        }
-        if (other.getFoodLevel() != 0D) {
-          setFoodLevel(other.getFoodLevel());
-        }
-        if (other.getSaturationLevel() != 0D) {
-          setSaturationLevel(other.getSaturationLevel());
-        }
-        if (other.getIsDead() != false) {
-          setIsDead(other.getIsDead());
-        }
-        if (inventoryBuilder_ == null) {
-          if (!other.inventory_.isEmpty()) {
-            if (inventory_.isEmpty()) {
-              inventory_ = other.inventory_;
-              bitField0_ = (bitField0_ & ~0x00000400);
-            } else {
-              ensureInventoryIsMutable();
-              inventory_.addAll(other.inventory_);
+    public static final class ObservationSpaceMessage extends
+            com.google.protobuf.GeneratedMessageV3 implements
+            // @@protoc_insertion_point(message_implements:ObservationSpaceMessage)
+            ObservationSpaceMessageOrBuilder {
+        public static final int IMAGE_FIELD_NUMBER = 1;
+        public static final int X_FIELD_NUMBER = 2;
+        public static final int Y_FIELD_NUMBER = 3;
+        public static final int Z_FIELD_NUMBER = 4;
+        public static final int YAW_FIELD_NUMBER = 5;
+        public static final int PITCH_FIELD_NUMBER = 6;
+        public static final int HEALTH_FIELD_NUMBER = 7;
+        public static final int FOOD_LEVEL_FIELD_NUMBER = 8;
+        public static final int SATURATION_LEVEL_FIELD_NUMBER = 9;
+        public static final int IS_DEAD_FIELD_NUMBER = 10;
+        public static final int INVENTORY_FIELD_NUMBER = 11;
+        public static final int RAYCAST_RESULT_FIELD_NUMBER = 12;
+        public static final int SOUND_SUBTITLES_FIELD_NUMBER = 13;
+        public static final int STATUS_EFFECTS_FIELD_NUMBER = 14;
+        public static final int KILLED_STATISTICS_FIELD_NUMBER = 15;
+        public static final int MINED_STATISTICS_FIELD_NUMBER = 16;
+        public static final int MISC_STATISTICS_FIELD_NUMBER = 17;
+        public static final int VISIBLE_ENTITIES_FIELD_NUMBER = 18;
+        private static final long serialVersionUID = 0L;
+        // @@protoc_insertion_point(class_scope:ObservationSpaceMessage)
+        private static final com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ObservationSpaceMessage DEFAULT_INSTANCE;
+        private static final com.google.protobuf.Parser<ObservationSpaceMessage>
+                PARSER = new com.google.protobuf.AbstractParser<ObservationSpaceMessage>() {
+            @java.lang.Override
+            public ObservationSpaceMessage parsePartialFrom(
+                    com.google.protobuf.CodedInputStream input,
+                    com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                    throws com.google.protobuf.InvalidProtocolBufferException {
+                Builder builder = newBuilder();
+                try {
+                    builder.mergeFrom(input, extensionRegistry);
+                } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                    throw e.setUnfinishedMessage(builder.buildPartial());
+                } catch (com.google.protobuf.UninitializedMessageException e) {
+                    throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+                } catch (java.io.IOException e) {
+                    throw new com.google.protobuf.InvalidProtocolBufferException(e)
+                            .setUnfinishedMessage(builder.buildPartial());
+                }
+                return builder.buildPartial();
             }
-            onChanged();
-          }
-        } else {
-          if (!other.inventory_.isEmpty()) {
-            if (inventoryBuilder_.isEmpty()) {
-              inventoryBuilder_.dispose();
-              inventoryBuilder_ = null;
-              inventory_ = other.inventory_;
-              bitField0_ = (bitField0_ & ~0x00000400);
-              inventoryBuilder_ = 
-                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
-                   getInventoryFieldBuilder() : null;
-            } else {
-              inventoryBuilder_.addAllMessages(other.inventory_);
-            }
-          }
-        }
-        if (other.hasRaycastResult()) {
-          mergeRaycastResult(other.getRaycastResult());
-        }
-        if (soundSubtitlesBuilder_ == null) {
-          if (!other.soundSubtitles_.isEmpty()) {
-            if (soundSubtitles_.isEmpty()) {
-              soundSubtitles_ = other.soundSubtitles_;
-              bitField0_ = (bitField0_ & ~0x00001000);
-            } else {
-              ensureSoundSubtitlesIsMutable();
-              soundSubtitles_.addAll(other.soundSubtitles_);
-            }
-            onChanged();
-          }
-        } else {
-          if (!other.soundSubtitles_.isEmpty()) {
-            if (soundSubtitlesBuilder_.isEmpty()) {
-              soundSubtitlesBuilder_.dispose();
-              soundSubtitlesBuilder_ = null;
-              soundSubtitles_ = other.soundSubtitles_;
-              bitField0_ = (bitField0_ & ~0x00001000);
-              soundSubtitlesBuilder_ = 
-                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
-                   getSoundSubtitlesFieldBuilder() : null;
-            } else {
-              soundSubtitlesBuilder_.addAllMessages(other.soundSubtitles_);
-            }
-          }
-        }
-        if (statusEffectsBuilder_ == null) {
-          if (!other.statusEffects_.isEmpty()) {
-            if (statusEffects_.isEmpty()) {
-              statusEffects_ = other.statusEffects_;
-              bitField0_ = (bitField0_ & ~0x00002000);
-            } else {
-              ensureStatusEffectsIsMutable();
-              statusEffects_.addAll(other.statusEffects_);
-            }
-            onChanged();
-          }
-        } else {
-          if (!other.statusEffects_.isEmpty()) {
-            if (statusEffectsBuilder_.isEmpty()) {
-              statusEffectsBuilder_.dispose();
-              statusEffectsBuilder_ = null;
-              statusEffects_ = other.statusEffects_;
-              bitField0_ = (bitField0_ & ~0x00002000);
-              statusEffectsBuilder_ = 
-                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
-                   getStatusEffectsFieldBuilder() : null;
-            } else {
-              statusEffectsBuilder_.addAllMessages(other.statusEffects_);
-            }
-          }
-        }
-        internalGetMutableKilledStatistics().mergeFrom(
-            other.internalGetKilledStatistics());
-        bitField0_ |= 0x00004000;
-        internalGetMutableMinedStatistics().mergeFrom(
-            other.internalGetMinedStatistics());
-        bitField0_ |= 0x00008000;
-        internalGetMutableMiscStatistics().mergeFrom(
-            other.internalGetMiscStatistics());
-        bitField0_ |= 0x00010000;
-        if (visibleEntitiesBuilder_ == null) {
-          if (!other.visibleEntities_.isEmpty()) {
-            if (visibleEntities_.isEmpty()) {
-              visibleEntities_ = other.visibleEntities_;
-              bitField0_ = (bitField0_ & ~0x00020000);
-            } else {
-              ensureVisibleEntitiesIsMutable();
-              visibleEntities_.addAll(other.visibleEntities_);
-            }
-            onChanged();
-          }
-        } else {
-          if (!other.visibleEntities_.isEmpty()) {
-            if (visibleEntitiesBuilder_.isEmpty()) {
-              visibleEntitiesBuilder_.dispose();
-              visibleEntitiesBuilder_ = null;
-              visibleEntities_ = other.visibleEntities_;
-              bitField0_ = (bitField0_ & ~0x00020000);
-              visibleEntitiesBuilder_ = 
-                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
-                   getVisibleEntitiesFieldBuilder() : null;
-            } else {
-              visibleEntitiesBuilder_.addAllMessages(other.visibleEntities_);
-            }
-          }
-        }
-        this.mergeUnknownFields(other.getUnknownFields());
-        onChanged();
-        return this;
-      }
+        };
 
-      @java.lang.Override
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        if (extensionRegistry == null) {
-          throw new java.lang.NullPointerException();
+        static {
+            DEFAULT_INSTANCE = new com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ObservationSpaceMessage();
         }
-        try {
-          boolean done = false;
-          while (!done) {
-            int tag = input.readTag();
-            switch (tag) {
-              case 0:
-                done = true;
-                break;
-              case 10: {
-                image_ = input.readBytes();
-                bitField0_ |= 0x00000001;
-                break;
-              } // case 10
-              case 17: {
-                x_ = input.readDouble();
-                bitField0_ |= 0x00000002;
-                break;
-              } // case 17
-              case 25: {
-                y_ = input.readDouble();
-                bitField0_ |= 0x00000004;
-                break;
-              } // case 25
-              case 33: {
-                z_ = input.readDouble();
-                bitField0_ |= 0x00000008;
-                break;
-              } // case 33
-              case 41: {
-                yaw_ = input.readDouble();
-                bitField0_ |= 0x00000010;
-                break;
-              } // case 41
-              case 49: {
-                pitch_ = input.readDouble();
-                bitField0_ |= 0x00000020;
-                break;
-              } // case 49
-              case 57: {
-                health_ = input.readDouble();
-                bitField0_ |= 0x00000040;
-                break;
-              } // case 57
-              case 65: {
-                foodLevel_ = input.readDouble();
-                bitField0_ |= 0x00000080;
-                break;
-              } // case 65
-              case 73: {
-                saturationLevel_ = input.readDouble();
-                bitField0_ |= 0x00000100;
-                break;
-              } // case 73
-              case 80: {
-                isDead_ = input.readBool();
-                bitField0_ |= 0x00000200;
-                break;
-              } // case 80
-              case 90: {
-                com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack m =
-                    input.readMessage(
-                        com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack.parser(),
-                        extensionRegistry);
+
+        private com.google.protobuf.ByteString image_ = com.google.protobuf.ByteString.EMPTY;
+        private double x_ = 0D;
+        private double y_ = 0D;
+        private double z_ = 0D;
+        private double yaw_ = 0D;
+        private double pitch_ = 0D;
+        private double health_ = 0D;
+        private double foodLevel_ = 0D;
+        private double saturationLevel_ = 0D;
+        private boolean isDead_ = false;
+        @SuppressWarnings("serial")
+        private java.util.List<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack> inventory_;
+        private com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult raycastResult_;
+        @SuppressWarnings("serial")
+        private java.util.List<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry> soundSubtitles_;
+        @SuppressWarnings("serial")
+        private java.util.List<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect> statusEffects_;
+        @SuppressWarnings("serial")
+        private com.google.protobuf.MapField<
+                java.lang.String, java.lang.Integer> killedStatistics_;
+        @SuppressWarnings("serial")
+        private com.google.protobuf.MapField<
+                java.lang.String, java.lang.Integer> minedStatistics_;
+        @SuppressWarnings("serial")
+        private com.google.protobuf.MapField<
+                java.lang.String, java.lang.Integer> miscStatistics_;
+        @SuppressWarnings("serial")
+        private java.util.List<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo> visibleEntities_;
+        private byte memoizedIsInitialized = -1;
+
+        // Use ObservationSpaceMessage.newBuilder() to construct.
+        private ObservationSpaceMessage(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+            super(builder);
+        }
+
+        private ObservationSpaceMessage() {
+            image_ = com.google.protobuf.ByteString.EMPTY;
+            inventory_ = java.util.Collections.emptyList();
+            soundSubtitles_ = java.util.Collections.emptyList();
+            statusEffects_ = java.util.Collections.emptyList();
+            visibleEntities_ = java.util.Collections.emptyList();
+        }
+
+        public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+            return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_ObservationSpaceMessage_descriptor;
+        }
+
+        public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ObservationSpaceMessage parseFrom(
+                java.nio.ByteBuffer data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
+
+        public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ObservationSpaceMessage parseFrom(
+                java.nio.ByteBuffer data,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
+        }
+
+        public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ObservationSpaceMessage parseFrom(
+                com.google.protobuf.ByteString data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
+
+        public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ObservationSpaceMessage parseFrom(
+                com.google.protobuf.ByteString data,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
+        }
+
+        public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ObservationSpaceMessage parseFrom(byte[] data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
+
+        public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ObservationSpaceMessage parseFrom(
+                byte[] data,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
+        }
+
+        public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ObservationSpaceMessage parseFrom(java.io.InputStream input)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3
+                    .parseWithIOException(PARSER, input);
+        }
+
+        public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ObservationSpaceMessage parseFrom(
+                java.io.InputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3
+                    .parseWithIOException(PARSER, input, extensionRegistry);
+        }
+
+        public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ObservationSpaceMessage parseDelimitedFrom(java.io.InputStream input)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3
+                    .parseDelimitedWithIOException(PARSER, input);
+        }
+
+        public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ObservationSpaceMessage parseDelimitedFrom(
+                java.io.InputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3
+                    .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+        }
+
+        public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ObservationSpaceMessage parseFrom(
+                com.google.protobuf.CodedInputStream input)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3
+                    .parseWithIOException(PARSER, input);
+        }
+
+        public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ObservationSpaceMessage parseFrom(
+                com.google.protobuf.CodedInputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3
+                    .parseWithIOException(PARSER, input, extensionRegistry);
+        }
+
+        public static Builder newBuilder() {
+            return DEFAULT_INSTANCE.toBuilder();
+        }
+
+        public static Builder newBuilder(com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ObservationSpaceMessage prototype) {
+            return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+        }
+
+        public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ObservationSpaceMessage getDefaultInstance() {
+            return DEFAULT_INSTANCE;
+        }
+
+        public static com.google.protobuf.Parser<ObservationSpaceMessage> parser() {
+            return PARSER;
+        }
+
+        @java.lang.Override
+        @SuppressWarnings({"unused"})
+        protected java.lang.Object newInstance(
+                UnusedPrivateParameter unused) {
+            return new ObservationSpaceMessage();
+        }
+
+        @java.lang.Override
+        public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+            return this.unknownFields;
+        }
+
+        @SuppressWarnings({"rawtypes"})
+        @java.lang.Override
+        protected com.google.protobuf.MapField internalGetMapField(
+                int number) {
+            switch (number) {
+                case 15:
+                    return internalGetKilledStatistics();
+                case 16:
+                    return internalGetMinedStatistics();
+                case 17:
+                    return internalGetMiscStatistics();
+                default:
+                    throw new RuntimeException(
+                            "Invalid map field number: " + number);
+            }
+        }
+
+        @java.lang.Override
+        protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+            return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_ObservationSpaceMessage_fieldAccessorTable
+                    .ensureFieldAccessorsInitialized(
+                            com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ObservationSpaceMessage.class, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ObservationSpaceMessage.Builder.class);
+        }
+
+        /**
+         * <code>bytes image = 1;</code>
+         *
+         * @return The image.
+         */
+        @java.lang.Override
+        public com.google.protobuf.ByteString getImage() {
+            return image_;
+        }
+
+        /**
+         * <code>double x = 2;</code>
+         *
+         * @return The x.
+         */
+        @java.lang.Override
+        public double getX() {
+            return x_;
+        }
+
+        /**
+         * <code>double y = 3;</code>
+         *
+         * @return The y.
+         */
+        @java.lang.Override
+        public double getY() {
+            return y_;
+        }
+
+        /**
+         * <code>double z = 4;</code>
+         *
+         * @return The z.
+         */
+        @java.lang.Override
+        public double getZ() {
+            return z_;
+        }
+
+        /**
+         * <code>double yaw = 5;</code>
+         *
+         * @return The yaw.
+         */
+        @java.lang.Override
+        public double getYaw() {
+            return yaw_;
+        }
+
+        /**
+         * <code>double pitch = 6;</code>
+         *
+         * @return The pitch.
+         */
+        @java.lang.Override
+        public double getPitch() {
+            return pitch_;
+        }
+
+        /**
+         * <code>double health = 7;</code>
+         *
+         * @return The health.
+         */
+        @java.lang.Override
+        public double getHealth() {
+            return health_;
+        }
+
+        /**
+         * <code>double food_level = 8;</code>
+         *
+         * @return The foodLevel.
+         */
+        @java.lang.Override
+        public double getFoodLevel() {
+            return foodLevel_;
+        }
+
+        /**
+         * <code>double saturation_level = 9;</code>
+         *
+         * @return The saturationLevel.
+         */
+        @java.lang.Override
+        public double getSaturationLevel() {
+            return saturationLevel_;
+        }
+
+        /**
+         * <code>bool is_dead = 10;</code>
+         *
+         * @return The isDead.
+         */
+        @java.lang.Override
+        public boolean getIsDead() {
+            return isDead_;
+        }
+
+        /**
+         * <code>repeated .ItemStack inventory = 11;</code>
+         */
+        @java.lang.Override
+        public java.util.List<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack> getInventoryList() {
+            return inventory_;
+        }
+
+        /**
+         * <code>repeated .ItemStack inventory = 11;</code>
+         */
+        @java.lang.Override
+        public java.util.List<? extends com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStackOrBuilder>
+        getInventoryOrBuilderList() {
+            return inventory_;
+        }
+
+        /**
+         * <code>repeated .ItemStack inventory = 11;</code>
+         */
+        @java.lang.Override
+        public int getInventoryCount() {
+            return inventory_.size();
+        }
+
+        /**
+         * <code>repeated .ItemStack inventory = 11;</code>
+         */
+        @java.lang.Override
+        public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack getInventory(int index) {
+            return inventory_.get(index);
+        }
+
+        /**
+         * <code>repeated .ItemStack inventory = 11;</code>
+         */
+        @java.lang.Override
+        public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStackOrBuilder getInventoryOrBuilder(
+                int index) {
+            return inventory_.get(index);
+        }
+
+        /**
+         * <code>.HitResult raycast_result = 12;</code>
+         *
+         * @return Whether the raycastResult field is set.
+         */
+        @java.lang.Override
+        public boolean hasRaycastResult() {
+            return raycastResult_ != null;
+        }
+
+        /**
+         * <code>.HitResult raycast_result = 12;</code>
+         *
+         * @return The raycastResult.
+         */
+        @java.lang.Override
+        public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult getRaycastResult() {
+            return raycastResult_ == null ? com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult.getDefaultInstance() : raycastResult_;
+        }
+
+        /**
+         * <code>.HitResult raycast_result = 12;</code>
+         */
+        @java.lang.Override
+        public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResultOrBuilder getRaycastResultOrBuilder() {
+            return raycastResult_ == null ? com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult.getDefaultInstance() : raycastResult_;
+        }
+
+        /**
+         * <code>repeated .SoundEntry sound_subtitles = 13;</code>
+         */
+        @java.lang.Override
+        public java.util.List<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry> getSoundSubtitlesList() {
+            return soundSubtitles_;
+        }
+
+        /**
+         * <code>repeated .SoundEntry sound_subtitles = 13;</code>
+         */
+        @java.lang.Override
+        public java.util.List<? extends com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntryOrBuilder>
+        getSoundSubtitlesOrBuilderList() {
+            return soundSubtitles_;
+        }
+
+        /**
+         * <code>repeated .SoundEntry sound_subtitles = 13;</code>
+         */
+        @java.lang.Override
+        public int getSoundSubtitlesCount() {
+            return soundSubtitles_.size();
+        }
+
+        /**
+         * <code>repeated .SoundEntry sound_subtitles = 13;</code>
+         */
+        @java.lang.Override
+        public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry getSoundSubtitles(int index) {
+            return soundSubtitles_.get(index);
+        }
+
+        /**
+         * <code>repeated .SoundEntry sound_subtitles = 13;</code>
+         */
+        @java.lang.Override
+        public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntryOrBuilder getSoundSubtitlesOrBuilder(
+                int index) {
+            return soundSubtitles_.get(index);
+        }
+
+        /**
+         * <code>repeated .StatusEffect status_effects = 14;</code>
+         */
+        @java.lang.Override
+        public java.util.List<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect> getStatusEffectsList() {
+            return statusEffects_;
+        }
+
+        /**
+         * <code>repeated .StatusEffect status_effects = 14;</code>
+         */
+        @java.lang.Override
+        public java.util.List<? extends com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffectOrBuilder>
+        getStatusEffectsOrBuilderList() {
+            return statusEffects_;
+        }
+
+        /**
+         * <code>repeated .StatusEffect status_effects = 14;</code>
+         */
+        @java.lang.Override
+        public int getStatusEffectsCount() {
+            return statusEffects_.size();
+        }
+
+        /**
+         * <code>repeated .StatusEffect status_effects = 14;</code>
+         */
+        @java.lang.Override
+        public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect getStatusEffects(int index) {
+            return statusEffects_.get(index);
+        }
+
+        /**
+         * <code>repeated .StatusEffect status_effects = 14;</code>
+         */
+        @java.lang.Override
+        public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffectOrBuilder getStatusEffectsOrBuilder(
+                int index) {
+            return statusEffects_.get(index);
+        }
+
+        private com.google.protobuf.MapField<java.lang.String, java.lang.Integer>
+        internalGetKilledStatistics() {
+            if (killedStatistics_ == null) {
+                return com.google.protobuf.MapField.emptyMapField(
+                        KilledStatisticsDefaultEntryHolder.defaultEntry);
+            }
+            return killedStatistics_;
+        }
+
+        public int getKilledStatisticsCount() {
+            return internalGetKilledStatistics().getMap().size();
+        }
+
+        /**
+         * <code>map&lt;string, int32&gt; killed_statistics = 15;</code>
+         */
+        @java.lang.Override
+        public boolean containsKilledStatistics(
+                java.lang.String key) {
+            if (key == null) {
+                throw new NullPointerException("map key");
+            }
+            return internalGetKilledStatistics().getMap().containsKey(key);
+        }
+
+        /**
+         * Use {@link #getKilledStatisticsMap()} instead.
+         */
+        @java.lang.Override
+        @java.lang.Deprecated
+        public java.util.Map<java.lang.String, java.lang.Integer> getKilledStatistics() {
+            return getKilledStatisticsMap();
+        }
+
+        /**
+         * <code>map&lt;string, int32&gt; killed_statistics = 15;</code>
+         */
+        @java.lang.Override
+        public java.util.Map<java.lang.String, java.lang.Integer> getKilledStatisticsMap() {
+            return internalGetKilledStatistics().getMap();
+        }
+
+        /**
+         * <code>map&lt;string, int32&gt; killed_statistics = 15;</code>
+         */
+        @java.lang.Override
+        public int getKilledStatisticsOrDefault(
+                java.lang.String key,
+                int defaultValue) {
+            if (key == null) {
+                throw new NullPointerException("map key");
+            }
+            java.util.Map<java.lang.String, java.lang.Integer> map =
+                    internalGetKilledStatistics().getMap();
+            return map.containsKey(key) ? map.get(key) : defaultValue;
+        }
+
+        /**
+         * <code>map&lt;string, int32&gt; killed_statistics = 15;</code>
+         */
+        @java.lang.Override
+        public int getKilledStatisticsOrThrow(
+                java.lang.String key) {
+            if (key == null) {
+                throw new NullPointerException("map key");
+            }
+            java.util.Map<java.lang.String, java.lang.Integer> map =
+                    internalGetKilledStatistics().getMap();
+            if (!map.containsKey(key)) {
+                throw new java.lang.IllegalArgumentException();
+            }
+            return map.get(key);
+        }
+
+        private com.google.protobuf.MapField<java.lang.String, java.lang.Integer>
+        internalGetMinedStatistics() {
+            if (minedStatistics_ == null) {
+                return com.google.protobuf.MapField.emptyMapField(
+                        MinedStatisticsDefaultEntryHolder.defaultEntry);
+            }
+            return minedStatistics_;
+        }
+
+        public int getMinedStatisticsCount() {
+            return internalGetMinedStatistics().getMap().size();
+        }
+
+        /**
+         * <code>map&lt;string, int32&gt; mined_statistics = 16;</code>
+         */
+        @java.lang.Override
+        public boolean containsMinedStatistics(
+                java.lang.String key) {
+            if (key == null) {
+                throw new NullPointerException("map key");
+            }
+            return internalGetMinedStatistics().getMap().containsKey(key);
+        }
+
+        /**
+         * Use {@link #getMinedStatisticsMap()} instead.
+         */
+        @java.lang.Override
+        @java.lang.Deprecated
+        public java.util.Map<java.lang.String, java.lang.Integer> getMinedStatistics() {
+            return getMinedStatisticsMap();
+        }
+
+        /**
+         * <code>map&lt;string, int32&gt; mined_statistics = 16;</code>
+         */
+        @java.lang.Override
+        public java.util.Map<java.lang.String, java.lang.Integer> getMinedStatisticsMap() {
+            return internalGetMinedStatistics().getMap();
+        }
+
+        /**
+         * <code>map&lt;string, int32&gt; mined_statistics = 16;</code>
+         */
+        @java.lang.Override
+        public int getMinedStatisticsOrDefault(
+                java.lang.String key,
+                int defaultValue) {
+            if (key == null) {
+                throw new NullPointerException("map key");
+            }
+            java.util.Map<java.lang.String, java.lang.Integer> map =
+                    internalGetMinedStatistics().getMap();
+            return map.containsKey(key) ? map.get(key) : defaultValue;
+        }
+
+        /**
+         * <code>map&lt;string, int32&gt; mined_statistics = 16;</code>
+         */
+        @java.lang.Override
+        public int getMinedStatisticsOrThrow(
+                java.lang.String key) {
+            if (key == null) {
+                throw new NullPointerException("map key");
+            }
+            java.util.Map<java.lang.String, java.lang.Integer> map =
+                    internalGetMinedStatistics().getMap();
+            if (!map.containsKey(key)) {
+                throw new java.lang.IllegalArgumentException();
+            }
+            return map.get(key);
+        }
+
+        private com.google.protobuf.MapField<java.lang.String, java.lang.Integer>
+        internalGetMiscStatistics() {
+            if (miscStatistics_ == null) {
+                return com.google.protobuf.MapField.emptyMapField(
+                        MiscStatisticsDefaultEntryHolder.defaultEntry);
+            }
+            return miscStatistics_;
+        }
+
+        public int getMiscStatisticsCount() {
+            return internalGetMiscStatistics().getMap().size();
+        }
+
+        /**
+         * <code>map&lt;string, int32&gt; misc_statistics = 17;</code>
+         */
+        @java.lang.Override
+        public boolean containsMiscStatistics(
+                java.lang.String key) {
+            if (key == null) {
+                throw new NullPointerException("map key");
+            }
+            return internalGetMiscStatistics().getMap().containsKey(key);
+        }
+
+        /**
+         * Use {@link #getMiscStatisticsMap()} instead.
+         */
+        @java.lang.Override
+        @java.lang.Deprecated
+        public java.util.Map<java.lang.String, java.lang.Integer> getMiscStatistics() {
+            return getMiscStatisticsMap();
+        }
+
+        /**
+         * <code>map&lt;string, int32&gt; misc_statistics = 17;</code>
+         */
+        @java.lang.Override
+        public java.util.Map<java.lang.String, java.lang.Integer> getMiscStatisticsMap() {
+            return internalGetMiscStatistics().getMap();
+        }
+
+        /**
+         * <code>map&lt;string, int32&gt; misc_statistics = 17;</code>
+         */
+        @java.lang.Override
+        public int getMiscStatisticsOrDefault(
+                java.lang.String key,
+                int defaultValue) {
+            if (key == null) {
+                throw new NullPointerException("map key");
+            }
+            java.util.Map<java.lang.String, java.lang.Integer> map =
+                    internalGetMiscStatistics().getMap();
+            return map.containsKey(key) ? map.get(key) : defaultValue;
+        }
+
+        /**
+         * <code>map&lt;string, int32&gt; misc_statistics = 17;</code>
+         */
+        @java.lang.Override
+        public int getMiscStatisticsOrThrow(
+                java.lang.String key) {
+            if (key == null) {
+                throw new NullPointerException("map key");
+            }
+            java.util.Map<java.lang.String, java.lang.Integer> map =
+                    internalGetMiscStatistics().getMap();
+            if (!map.containsKey(key)) {
+                throw new java.lang.IllegalArgumentException();
+            }
+            return map.get(key);
+        }
+
+        /**
+         * <code>repeated .EntityInfo visible_entities = 18;</code>
+         */
+        @java.lang.Override
+        public java.util.List<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo> getVisibleEntitiesList() {
+            return visibleEntities_;
+        }
+
+        /**
+         * <code>repeated .EntityInfo visible_entities = 18;</code>
+         */
+        @java.lang.Override
+        public java.util.List<? extends com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfoOrBuilder>
+        getVisibleEntitiesOrBuilderList() {
+            return visibleEntities_;
+        }
+
+        /**
+         * <code>repeated .EntityInfo visible_entities = 18;</code>
+         */
+        @java.lang.Override
+        public int getVisibleEntitiesCount() {
+            return visibleEntities_.size();
+        }
+
+        /**
+         * <code>repeated .EntityInfo visible_entities = 18;</code>
+         */
+        @java.lang.Override
+        public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo getVisibleEntities(int index) {
+            return visibleEntities_.get(index);
+        }
+
+        /**
+         * <code>repeated .EntityInfo visible_entities = 18;</code>
+         */
+        @java.lang.Override
+        public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfoOrBuilder getVisibleEntitiesOrBuilder(
+                int index) {
+            return visibleEntities_.get(index);
+        }
+
+        @java.lang.Override
+        public final boolean isInitialized() {
+            byte isInitialized = memoizedIsInitialized;
+            if (isInitialized == 1) return true;
+            if (isInitialized == 0) return false;
+
+            memoizedIsInitialized = 1;
+            return true;
+        }
+
+        @java.lang.Override
+        public void writeTo(com.google.protobuf.CodedOutputStream output)
+                throws java.io.IOException {
+            if (!image_.isEmpty()) {
+                output.writeBytes(1, image_);
+            }
+            if (java.lang.Double.doubleToRawLongBits(x_) != 0) {
+                output.writeDouble(2, x_);
+            }
+            if (java.lang.Double.doubleToRawLongBits(y_) != 0) {
+                output.writeDouble(3, y_);
+            }
+            if (java.lang.Double.doubleToRawLongBits(z_) != 0) {
+                output.writeDouble(4, z_);
+            }
+            if (java.lang.Double.doubleToRawLongBits(yaw_) != 0) {
+                output.writeDouble(5, yaw_);
+            }
+            if (java.lang.Double.doubleToRawLongBits(pitch_) != 0) {
+                output.writeDouble(6, pitch_);
+            }
+            if (java.lang.Double.doubleToRawLongBits(health_) != 0) {
+                output.writeDouble(7, health_);
+            }
+            if (java.lang.Double.doubleToRawLongBits(foodLevel_) != 0) {
+                output.writeDouble(8, foodLevel_);
+            }
+            if (java.lang.Double.doubleToRawLongBits(saturationLevel_) != 0) {
+                output.writeDouble(9, saturationLevel_);
+            }
+            if (isDead_ != false) {
+                output.writeBool(10, isDead_);
+            }
+            for (int i = 0; i < inventory_.size(); i++) {
+                output.writeMessage(11, inventory_.get(i));
+            }
+            if (raycastResult_ != null) {
+                output.writeMessage(12, getRaycastResult());
+            }
+            for (int i = 0; i < soundSubtitles_.size(); i++) {
+                output.writeMessage(13, soundSubtitles_.get(i));
+            }
+            for (int i = 0; i < statusEffects_.size(); i++) {
+                output.writeMessage(14, statusEffects_.get(i));
+            }
+            com.google.protobuf.GeneratedMessageV3
+                    .serializeStringMapTo(
+                            output,
+                            internalGetKilledStatistics(),
+                            KilledStatisticsDefaultEntryHolder.defaultEntry,
+                            15);
+            com.google.protobuf.GeneratedMessageV3
+                    .serializeStringMapTo(
+                            output,
+                            internalGetMinedStatistics(),
+                            MinedStatisticsDefaultEntryHolder.defaultEntry,
+                            16);
+            com.google.protobuf.GeneratedMessageV3
+                    .serializeStringMapTo(
+                            output,
+                            internalGetMiscStatistics(),
+                            MiscStatisticsDefaultEntryHolder.defaultEntry,
+                            17);
+            for (int i = 0; i < visibleEntities_.size(); i++) {
+                output.writeMessage(18, visibleEntities_.get(i));
+            }
+            getUnknownFields().writeTo(output);
+        }
+
+        @java.lang.Override
+        public int getSerializedSize() {
+            int size = memoizedSize;
+            if (size != -1) return size;
+
+            size = 0;
+            if (!image_.isEmpty()) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeBytesSize(1, image_);
+            }
+            if (java.lang.Double.doubleToRawLongBits(x_) != 0) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeDoubleSize(2, x_);
+            }
+            if (java.lang.Double.doubleToRawLongBits(y_) != 0) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeDoubleSize(3, y_);
+            }
+            if (java.lang.Double.doubleToRawLongBits(z_) != 0) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeDoubleSize(4, z_);
+            }
+            if (java.lang.Double.doubleToRawLongBits(yaw_) != 0) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeDoubleSize(5, yaw_);
+            }
+            if (java.lang.Double.doubleToRawLongBits(pitch_) != 0) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeDoubleSize(6, pitch_);
+            }
+            if (java.lang.Double.doubleToRawLongBits(health_) != 0) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeDoubleSize(7, health_);
+            }
+            if (java.lang.Double.doubleToRawLongBits(foodLevel_) != 0) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeDoubleSize(8, foodLevel_);
+            }
+            if (java.lang.Double.doubleToRawLongBits(saturationLevel_) != 0) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeDoubleSize(9, saturationLevel_);
+            }
+            if (isDead_ != false) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeBoolSize(10, isDead_);
+            }
+            for (int i = 0; i < inventory_.size(); i++) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeMessageSize(11, inventory_.get(i));
+            }
+            if (raycastResult_ != null) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeMessageSize(12, getRaycastResult());
+            }
+            for (int i = 0; i < soundSubtitles_.size(); i++) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeMessageSize(13, soundSubtitles_.get(i));
+            }
+            for (int i = 0; i < statusEffects_.size(); i++) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeMessageSize(14, statusEffects_.get(i));
+            }
+            for (java.util.Map.Entry<java.lang.String, java.lang.Integer> entry
+                    : internalGetKilledStatistics().getMap().entrySet()) {
+                com.google.protobuf.MapEntry<java.lang.String, java.lang.Integer>
+                        killedStatistics__ = KilledStatisticsDefaultEntryHolder.defaultEntry.newBuilderForType()
+                        .setKey(entry.getKey())
+                        .setValue(entry.getValue())
+                        .build();
+                size += com.google.protobuf.CodedOutputStream
+                        .computeMessageSize(15, killedStatistics__);
+            }
+            for (java.util.Map.Entry<java.lang.String, java.lang.Integer> entry
+                    : internalGetMinedStatistics().getMap().entrySet()) {
+                com.google.protobuf.MapEntry<java.lang.String, java.lang.Integer>
+                        minedStatistics__ = MinedStatisticsDefaultEntryHolder.defaultEntry.newBuilderForType()
+                        .setKey(entry.getKey())
+                        .setValue(entry.getValue())
+                        .build();
+                size += com.google.protobuf.CodedOutputStream
+                        .computeMessageSize(16, minedStatistics__);
+            }
+            for (java.util.Map.Entry<java.lang.String, java.lang.Integer> entry
+                    : internalGetMiscStatistics().getMap().entrySet()) {
+                com.google.protobuf.MapEntry<java.lang.String, java.lang.Integer>
+                        miscStatistics__ = MiscStatisticsDefaultEntryHolder.defaultEntry.newBuilderForType()
+                        .setKey(entry.getKey())
+                        .setValue(entry.getValue())
+                        .build();
+                size += com.google.protobuf.CodedOutputStream
+                        .computeMessageSize(17, miscStatistics__);
+            }
+            for (int i = 0; i < visibleEntities_.size(); i++) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeMessageSize(18, visibleEntities_.get(i));
+            }
+            size += getUnknownFields().getSerializedSize();
+            memoizedSize = size;
+            return size;
+        }
+
+        @java.lang.Override
+        public boolean equals(final java.lang.Object obj) {
+            if (obj == this) {
+                return true;
+            }
+            if (!(obj instanceof com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ObservationSpaceMessage)) {
+                return super.equals(obj);
+            }
+            com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ObservationSpaceMessage other = (com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ObservationSpaceMessage) obj;
+
+            if (!getImage()
+                    .equals(other.getImage())) return false;
+            if (java.lang.Double.doubleToLongBits(getX())
+                    != java.lang.Double.doubleToLongBits(
+                    other.getX())) return false;
+            if (java.lang.Double.doubleToLongBits(getY())
+                    != java.lang.Double.doubleToLongBits(
+                    other.getY())) return false;
+            if (java.lang.Double.doubleToLongBits(getZ())
+                    != java.lang.Double.doubleToLongBits(
+                    other.getZ())) return false;
+            if (java.lang.Double.doubleToLongBits(getYaw())
+                    != java.lang.Double.doubleToLongBits(
+                    other.getYaw())) return false;
+            if (java.lang.Double.doubleToLongBits(getPitch())
+                    != java.lang.Double.doubleToLongBits(
+                    other.getPitch())) return false;
+            if (java.lang.Double.doubleToLongBits(getHealth())
+                    != java.lang.Double.doubleToLongBits(
+                    other.getHealth())) return false;
+            if (java.lang.Double.doubleToLongBits(getFoodLevel())
+                    != java.lang.Double.doubleToLongBits(
+                    other.getFoodLevel())) return false;
+            if (java.lang.Double.doubleToLongBits(getSaturationLevel())
+                    != java.lang.Double.doubleToLongBits(
+                    other.getSaturationLevel())) return false;
+            if (getIsDead()
+                    != other.getIsDead()) return false;
+            if (!getInventoryList()
+                    .equals(other.getInventoryList())) return false;
+            if (hasRaycastResult() != other.hasRaycastResult()) return false;
+            if (hasRaycastResult()) {
+                if (!getRaycastResult()
+                        .equals(other.getRaycastResult())) return false;
+            }
+            if (!getSoundSubtitlesList()
+                    .equals(other.getSoundSubtitlesList())) return false;
+            if (!getStatusEffectsList()
+                    .equals(other.getStatusEffectsList())) return false;
+            if (!internalGetKilledStatistics().equals(
+                    other.internalGetKilledStatistics())) return false;
+            if (!internalGetMinedStatistics().equals(
+                    other.internalGetMinedStatistics())) return false;
+            if (!internalGetMiscStatistics().equals(
+                    other.internalGetMiscStatistics())) return false;
+            if (!getVisibleEntitiesList()
+                    .equals(other.getVisibleEntitiesList())) return false;
+            if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+            return true;
+        }
+
+        @java.lang.Override
+        public int hashCode() {
+            if (memoizedHashCode != 0) {
+                return memoizedHashCode;
+            }
+            int hash = 41;
+            hash = (19 * hash) + getDescriptor().hashCode();
+            hash = (37 * hash) + IMAGE_FIELD_NUMBER;
+            hash = (53 * hash) + getImage().hashCode();
+            hash = (37 * hash) + X_FIELD_NUMBER;
+            hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+                    java.lang.Double.doubleToLongBits(getX()));
+            hash = (37 * hash) + Y_FIELD_NUMBER;
+            hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+                    java.lang.Double.doubleToLongBits(getY()));
+            hash = (37 * hash) + Z_FIELD_NUMBER;
+            hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+                    java.lang.Double.doubleToLongBits(getZ()));
+            hash = (37 * hash) + YAW_FIELD_NUMBER;
+            hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+                    java.lang.Double.doubleToLongBits(getYaw()));
+            hash = (37 * hash) + PITCH_FIELD_NUMBER;
+            hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+                    java.lang.Double.doubleToLongBits(getPitch()));
+            hash = (37 * hash) + HEALTH_FIELD_NUMBER;
+            hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+                    java.lang.Double.doubleToLongBits(getHealth()));
+            hash = (37 * hash) + FOOD_LEVEL_FIELD_NUMBER;
+            hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+                    java.lang.Double.doubleToLongBits(getFoodLevel()));
+            hash = (37 * hash) + SATURATION_LEVEL_FIELD_NUMBER;
+            hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+                    java.lang.Double.doubleToLongBits(getSaturationLevel()));
+            hash = (37 * hash) + IS_DEAD_FIELD_NUMBER;
+            hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+                    getIsDead());
+            if (getInventoryCount() > 0) {
+                hash = (37 * hash) + INVENTORY_FIELD_NUMBER;
+                hash = (53 * hash) + getInventoryList().hashCode();
+            }
+            if (hasRaycastResult()) {
+                hash = (37 * hash) + RAYCAST_RESULT_FIELD_NUMBER;
+                hash = (53 * hash) + getRaycastResult().hashCode();
+            }
+            if (getSoundSubtitlesCount() > 0) {
+                hash = (37 * hash) + SOUND_SUBTITLES_FIELD_NUMBER;
+                hash = (53 * hash) + getSoundSubtitlesList().hashCode();
+            }
+            if (getStatusEffectsCount() > 0) {
+                hash = (37 * hash) + STATUS_EFFECTS_FIELD_NUMBER;
+                hash = (53 * hash) + getStatusEffectsList().hashCode();
+            }
+            if (!internalGetKilledStatistics().getMap().isEmpty()) {
+                hash = (37 * hash) + KILLED_STATISTICS_FIELD_NUMBER;
+                hash = (53 * hash) + internalGetKilledStatistics().hashCode();
+            }
+            if (!internalGetMinedStatistics().getMap().isEmpty()) {
+                hash = (37 * hash) + MINED_STATISTICS_FIELD_NUMBER;
+                hash = (53 * hash) + internalGetMinedStatistics().hashCode();
+            }
+            if (!internalGetMiscStatistics().getMap().isEmpty()) {
+                hash = (37 * hash) + MISC_STATISTICS_FIELD_NUMBER;
+                hash = (53 * hash) + internalGetMiscStatistics().hashCode();
+            }
+            if (getVisibleEntitiesCount() > 0) {
+                hash = (37 * hash) + VISIBLE_ENTITIES_FIELD_NUMBER;
+                hash = (53 * hash) + getVisibleEntitiesList().hashCode();
+            }
+            hash = (29 * hash) + getUnknownFields().hashCode();
+            memoizedHashCode = hash;
+            return hash;
+        }
+
+        @java.lang.Override
+        public Builder newBuilderForType() {
+            return newBuilder();
+        }
+
+        @java.lang.Override
+        public Builder toBuilder() {
+            return this == DEFAULT_INSTANCE
+                    ? new Builder() : new Builder().mergeFrom(this);
+        }
+
+        @java.lang.Override
+        protected Builder newBuilderForType(
+                com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+            Builder builder = new Builder(parent);
+            return builder;
+        }
+
+        @java.lang.Override
+        public com.google.protobuf.Parser<ObservationSpaceMessage> getParserForType() {
+            return PARSER;
+        }
+
+        @java.lang.Override
+        public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ObservationSpaceMessage getDefaultInstanceForType() {
+            return DEFAULT_INSTANCE;
+        }
+
+        private static final class KilledStatisticsDefaultEntryHolder {
+            static final com.google.protobuf.MapEntry<
+                    java.lang.String, java.lang.Integer> defaultEntry =
+                    com.google.protobuf.MapEntry
+                            .<java.lang.String, java.lang.Integer>newDefaultInstance(
+                                    com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_ObservationSpaceMessage_KilledStatisticsEntry_descriptor,
+                                    com.google.protobuf.WireFormat.FieldType.STRING,
+                                    "",
+                                    com.google.protobuf.WireFormat.FieldType.INT32,
+                                    0);
+        }
+
+        private static final class MinedStatisticsDefaultEntryHolder {
+            static final com.google.protobuf.MapEntry<
+                    java.lang.String, java.lang.Integer> defaultEntry =
+                    com.google.protobuf.MapEntry
+                            .<java.lang.String, java.lang.Integer>newDefaultInstance(
+                                    com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_ObservationSpaceMessage_MinedStatisticsEntry_descriptor,
+                                    com.google.protobuf.WireFormat.FieldType.STRING,
+                                    "",
+                                    com.google.protobuf.WireFormat.FieldType.INT32,
+                                    0);
+        }
+
+        private static final class MiscStatisticsDefaultEntryHolder {
+            static final com.google.protobuf.MapEntry<
+                    java.lang.String, java.lang.Integer> defaultEntry =
+                    com.google.protobuf.MapEntry
+                            .<java.lang.String, java.lang.Integer>newDefaultInstance(
+                                    com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_ObservationSpaceMessage_MiscStatisticsEntry_descriptor,
+                                    com.google.protobuf.WireFormat.FieldType.STRING,
+                                    "",
+                                    com.google.protobuf.WireFormat.FieldType.INT32,
+                                    0);
+        }
+
+        /**
+         * Protobuf type {@code ObservationSpaceMessage}
+         */
+        public static final class Builder extends
+                com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+                // @@protoc_insertion_point(builder_implements:ObservationSpaceMessage)
+                com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ObservationSpaceMessageOrBuilder {
+            private int bitField0_;
+            private com.google.protobuf.ByteString image_ = com.google.protobuf.ByteString.EMPTY;
+            private double x_;
+            private double y_;
+            private double z_;
+            private double yaw_;
+            private double pitch_;
+            private double health_;
+            private double foodLevel_;
+            private double saturationLevel_;
+            private boolean isDead_;
+            private java.util.List<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack> inventory_ =
+                    java.util.Collections.emptyList();
+            private com.google.protobuf.RepeatedFieldBuilderV3<
+                    com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack.Builder, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStackOrBuilder> inventoryBuilder_;
+            private com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult raycastResult_;
+            private com.google.protobuf.SingleFieldBuilderV3<
+                    com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult.Builder, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResultOrBuilder> raycastResultBuilder_;
+            private java.util.List<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry> soundSubtitles_ =
+                    java.util.Collections.emptyList();
+            private com.google.protobuf.RepeatedFieldBuilderV3<
+                    com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry.Builder, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntryOrBuilder> soundSubtitlesBuilder_;
+            private java.util.List<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect> statusEffects_ =
+                    java.util.Collections.emptyList();
+            private com.google.protobuf.RepeatedFieldBuilderV3<
+                    com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect.Builder, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffectOrBuilder> statusEffectsBuilder_;
+            private com.google.protobuf.MapField<
+                    java.lang.String, java.lang.Integer> killedStatistics_;
+            private com.google.protobuf.MapField<
+                    java.lang.String, java.lang.Integer> minedStatistics_;
+            private com.google.protobuf.MapField<
+                    java.lang.String, java.lang.Integer> miscStatistics_;
+            private java.util.List<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo> visibleEntities_ =
+                    java.util.Collections.emptyList();
+            private com.google.protobuf.RepeatedFieldBuilderV3<
+                    com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo.Builder, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfoOrBuilder> visibleEntitiesBuilder_;
+
+            // Construct using com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ObservationSpaceMessage.newBuilder()
+            private Builder() {
+
+            }
+
+            private Builder(
+                    com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+                super(parent);
+
+            }
+
+            public static final com.google.protobuf.Descriptors.Descriptor
+            getDescriptor() {
+                return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_ObservationSpaceMessage_descriptor;
+            }
+
+            @SuppressWarnings({"rawtypes"})
+            protected com.google.protobuf.MapField internalGetMapField(
+                    int number) {
+                switch (number) {
+                    case 15:
+                        return internalGetKilledStatistics();
+                    case 16:
+                        return internalGetMinedStatistics();
+                    case 17:
+                        return internalGetMiscStatistics();
+                    default:
+                        throw new RuntimeException(
+                                "Invalid map field number: " + number);
+                }
+            }
+
+            @SuppressWarnings({"rawtypes"})
+            protected com.google.protobuf.MapField internalGetMutableMapField(
+                    int number) {
+                switch (number) {
+                    case 15:
+                        return internalGetMutableKilledStatistics();
+                    case 16:
+                        return internalGetMutableMinedStatistics();
+                    case 17:
+                        return internalGetMutableMiscStatistics();
+                    default:
+                        throw new RuntimeException(
+                                "Invalid map field number: " + number);
+                }
+            }
+
+            @java.lang.Override
+            protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+            internalGetFieldAccessorTable() {
+                return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_ObservationSpaceMessage_fieldAccessorTable
+                        .ensureFieldAccessorsInitialized(
+                                com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ObservationSpaceMessage.class, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ObservationSpaceMessage.Builder.class);
+            }
+
+            @java.lang.Override
+            public Builder clear() {
+                super.clear();
+                bitField0_ = 0;
+                image_ = com.google.protobuf.ByteString.EMPTY;
+                x_ = 0D;
+                y_ = 0D;
+                z_ = 0D;
+                yaw_ = 0D;
+                pitch_ = 0D;
+                health_ = 0D;
+                foodLevel_ = 0D;
+                saturationLevel_ = 0D;
+                isDead_ = false;
                 if (inventoryBuilder_ == null) {
-                  ensureInventoryIsMutable();
-                  inventory_.add(m);
+                    inventory_ = java.util.Collections.emptyList();
                 } else {
-                  inventoryBuilder_.addMessage(m);
+                    inventory_ = null;
+                    inventoryBuilder_.clear();
                 }
-                break;
-              } // case 90
-              case 98: {
-                input.readMessage(
-                    getRaycastResultFieldBuilder().getBuilder(),
-                    extensionRegistry);
-                bitField0_ |= 0x00000800;
-                break;
-              } // case 98
-              case 106: {
-                com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry m =
-                    input.readMessage(
-                        com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry.parser(),
-                        extensionRegistry);
+                bitField0_ = (bitField0_ & ~0x00000400);
+                raycastResult_ = null;
+                if (raycastResultBuilder_ != null) {
+                    raycastResultBuilder_.dispose();
+                    raycastResultBuilder_ = null;
+                }
                 if (soundSubtitlesBuilder_ == null) {
-                  ensureSoundSubtitlesIsMutable();
-                  soundSubtitles_.add(m);
+                    soundSubtitles_ = java.util.Collections.emptyList();
                 } else {
-                  soundSubtitlesBuilder_.addMessage(m);
+                    soundSubtitles_ = null;
+                    soundSubtitlesBuilder_.clear();
                 }
-                break;
-              } // case 106
-              case 114: {
-                com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect m =
-                    input.readMessage(
-                        com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect.parser(),
-                        extensionRegistry);
+                bitField0_ = (bitField0_ & ~0x00001000);
                 if (statusEffectsBuilder_ == null) {
-                  ensureStatusEffectsIsMutable();
-                  statusEffects_.add(m);
+                    statusEffects_ = java.util.Collections.emptyList();
                 } else {
-                  statusEffectsBuilder_.addMessage(m);
+                    statusEffects_ = null;
+                    statusEffectsBuilder_.clear();
                 }
-                break;
-              } // case 114
-              case 122: {
-                com.google.protobuf.MapEntry<java.lang.String, java.lang.Integer>
-                killedStatistics__ = input.readMessage(
-                    KilledStatisticsDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
-                internalGetMutableKilledStatistics().getMutableMap().put(
-                    killedStatistics__.getKey(), killedStatistics__.getValue());
-                bitField0_ |= 0x00004000;
-                break;
-              } // case 122
-              case 130: {
-                com.google.protobuf.MapEntry<java.lang.String, java.lang.Integer>
-                minedStatistics__ = input.readMessage(
-                    MinedStatisticsDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
-                internalGetMutableMinedStatistics().getMutableMap().put(
-                    minedStatistics__.getKey(), minedStatistics__.getValue());
-                bitField0_ |= 0x00008000;
-                break;
-              } // case 130
-              case 138: {
-                com.google.protobuf.MapEntry<java.lang.String, java.lang.Integer>
-                miscStatistics__ = input.readMessage(
-                    MiscStatisticsDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
-                internalGetMutableMiscStatistics().getMutableMap().put(
-                    miscStatistics__.getKey(), miscStatistics__.getValue());
-                bitField0_ |= 0x00010000;
-                break;
-              } // case 138
-              case 146: {
-                com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo m =
-                    input.readMessage(
-                        com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo.parser(),
-                        extensionRegistry);
+                bitField0_ = (bitField0_ & ~0x00002000);
+                internalGetMutableKilledStatistics().clear();
+                internalGetMutableMinedStatistics().clear();
+                internalGetMutableMiscStatistics().clear();
                 if (visibleEntitiesBuilder_ == null) {
-                  ensureVisibleEntitiesIsMutable();
-                  visibleEntities_.add(m);
+                    visibleEntities_ = java.util.Collections.emptyList();
                 } else {
-                  visibleEntitiesBuilder_.addMessage(m);
+                    visibleEntities_ = null;
+                    visibleEntitiesBuilder_.clear();
                 }
-                break;
-              } // case 146
-              default: {
-                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                  done = true; // was an endgroup tag
+                bitField0_ = (bitField0_ & ~0x00020000);
+                return this;
+            }
+
+            @java.lang.Override
+            public com.google.protobuf.Descriptors.Descriptor
+            getDescriptorForType() {
+                return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_ObservationSpaceMessage_descriptor;
+            }
+
+            @java.lang.Override
+            public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ObservationSpaceMessage getDefaultInstanceForType() {
+                return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ObservationSpaceMessage.getDefaultInstance();
+            }
+
+            @java.lang.Override
+            public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ObservationSpaceMessage build() {
+                com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ObservationSpaceMessage result = buildPartial();
+                if (!result.isInitialized()) {
+                    throw newUninitializedMessageException(result);
                 }
-                break;
-              } // default:
-            } // switch (tag)
-          } // while (!done)
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          throw e.unwrapIOException();
-        } finally {
-          onChanged();
-        } // finally
-        return this;
-      }
-      private int bitField0_;
+                return result;
+            }
 
-      private com.google.protobuf.ByteString image_ = com.google.protobuf.ByteString.EMPTY;
-      /**
-       * <code>bytes image = 1;</code>
-       * @return The image.
-       */
-      @java.lang.Override
-      public com.google.protobuf.ByteString getImage() {
-        return image_;
-      }
-      /**
-       * <code>bytes image = 1;</code>
-       * @param value The image to set.
-       * @return This builder for chaining.
-       */
-      public Builder setImage(com.google.protobuf.ByteString value) {
-        if (value == null) { throw new NullPointerException(); }
-        image_ = value;
-        bitField0_ |= 0x00000001;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>bytes image = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearImage() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        image_ = getDefaultInstance().getImage();
-        onChanged();
-        return this;
-      }
+            @java.lang.Override
+            public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ObservationSpaceMessage buildPartial() {
+                com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ObservationSpaceMessage result = new com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ObservationSpaceMessage(this);
+                buildPartialRepeatedFields(result);
+                if (bitField0_ != 0) {
+                    buildPartial0(result);
+                }
+                onBuilt();
+                return result;
+            }
 
-      private double x_ ;
-      /**
-       * <code>double x = 2;</code>
-       * @return The x.
-       */
-      @java.lang.Override
-      public double getX() {
-        return x_;
-      }
-      /**
-       * <code>double x = 2;</code>
-       * @param value The x to set.
-       * @return This builder for chaining.
-       */
-      public Builder setX(double value) {
-        
-        x_ = value;
-        bitField0_ |= 0x00000002;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>double x = 2;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearX() {
-        bitField0_ = (bitField0_ & ~0x00000002);
-        x_ = 0D;
-        onChanged();
-        return this;
-      }
+            private void buildPartialRepeatedFields(com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ObservationSpaceMessage result) {
+                if (inventoryBuilder_ == null) {
+                    if (((bitField0_ & 0x00000400) != 0)) {
+                        inventory_ = java.util.Collections.unmodifiableList(inventory_);
+                        bitField0_ = (bitField0_ & ~0x00000400);
+                    }
+                    result.inventory_ = inventory_;
+                } else {
+                    result.inventory_ = inventoryBuilder_.build();
+                }
+                if (soundSubtitlesBuilder_ == null) {
+                    if (((bitField0_ & 0x00001000) != 0)) {
+                        soundSubtitles_ = java.util.Collections.unmodifiableList(soundSubtitles_);
+                        bitField0_ = (bitField0_ & ~0x00001000);
+                    }
+                    result.soundSubtitles_ = soundSubtitles_;
+                } else {
+                    result.soundSubtitles_ = soundSubtitlesBuilder_.build();
+                }
+                if (statusEffectsBuilder_ == null) {
+                    if (((bitField0_ & 0x00002000) != 0)) {
+                        statusEffects_ = java.util.Collections.unmodifiableList(statusEffects_);
+                        bitField0_ = (bitField0_ & ~0x00002000);
+                    }
+                    result.statusEffects_ = statusEffects_;
+                } else {
+                    result.statusEffects_ = statusEffectsBuilder_.build();
+                }
+                if (visibleEntitiesBuilder_ == null) {
+                    if (((bitField0_ & 0x00020000) != 0)) {
+                        visibleEntities_ = java.util.Collections.unmodifiableList(visibleEntities_);
+                        bitField0_ = (bitField0_ & ~0x00020000);
+                    }
+                    result.visibleEntities_ = visibleEntities_;
+                } else {
+                    result.visibleEntities_ = visibleEntitiesBuilder_.build();
+                }
+            }
 
-      private double y_ ;
-      /**
-       * <code>double y = 3;</code>
-       * @return The y.
-       */
-      @java.lang.Override
-      public double getY() {
-        return y_;
-      }
-      /**
-       * <code>double y = 3;</code>
-       * @param value The y to set.
-       * @return This builder for chaining.
-       */
-      public Builder setY(double value) {
-        
-        y_ = value;
-        bitField0_ |= 0x00000004;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>double y = 3;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearY() {
-        bitField0_ = (bitField0_ & ~0x00000004);
-        y_ = 0D;
-        onChanged();
-        return this;
-      }
+            private void buildPartial0(com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ObservationSpaceMessage result) {
+                int from_bitField0_ = bitField0_;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    result.image_ = image_;
+                }
+                if (((from_bitField0_ & 0x00000002) != 0)) {
+                    result.x_ = x_;
+                }
+                if (((from_bitField0_ & 0x00000004) != 0)) {
+                    result.y_ = y_;
+                }
+                if (((from_bitField0_ & 0x00000008) != 0)) {
+                    result.z_ = z_;
+                }
+                if (((from_bitField0_ & 0x00000010) != 0)) {
+                    result.yaw_ = yaw_;
+                }
+                if (((from_bitField0_ & 0x00000020) != 0)) {
+                    result.pitch_ = pitch_;
+                }
+                if (((from_bitField0_ & 0x00000040) != 0)) {
+                    result.health_ = health_;
+                }
+                if (((from_bitField0_ & 0x00000080) != 0)) {
+                    result.foodLevel_ = foodLevel_;
+                }
+                if (((from_bitField0_ & 0x00000100) != 0)) {
+                    result.saturationLevel_ = saturationLevel_;
+                }
+                if (((from_bitField0_ & 0x00000200) != 0)) {
+                    result.isDead_ = isDead_;
+                }
+                if (((from_bitField0_ & 0x00000800) != 0)) {
+                    result.raycastResult_ = raycastResultBuilder_ == null
+                            ? raycastResult_
+                            : raycastResultBuilder_.build();
+                }
+                if (((from_bitField0_ & 0x00004000) != 0)) {
+                    result.killedStatistics_ = internalGetKilledStatistics();
+                    result.killedStatistics_.makeImmutable();
+                }
+                if (((from_bitField0_ & 0x00008000) != 0)) {
+                    result.minedStatistics_ = internalGetMinedStatistics();
+                    result.minedStatistics_.makeImmutable();
+                }
+                if (((from_bitField0_ & 0x00010000) != 0)) {
+                    result.miscStatistics_ = internalGetMiscStatistics();
+                    result.miscStatistics_.makeImmutable();
+                }
+            }
 
-      private double z_ ;
-      /**
-       * <code>double z = 4;</code>
-       * @return The z.
-       */
-      @java.lang.Override
-      public double getZ() {
-        return z_;
-      }
-      /**
-       * <code>double z = 4;</code>
-       * @param value The z to set.
-       * @return This builder for chaining.
-       */
-      public Builder setZ(double value) {
-        
-        z_ = value;
-        bitField0_ |= 0x00000008;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>double z = 4;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearZ() {
-        bitField0_ = (bitField0_ & ~0x00000008);
-        z_ = 0D;
-        onChanged();
-        return this;
-      }
+            @java.lang.Override
+            public Builder clone() {
+                return super.clone();
+            }
 
-      private double yaw_ ;
-      /**
-       * <code>double yaw = 5;</code>
-       * @return The yaw.
-       */
-      @java.lang.Override
-      public double getYaw() {
-        return yaw_;
-      }
-      /**
-       * <code>double yaw = 5;</code>
-       * @param value The yaw to set.
-       * @return This builder for chaining.
-       */
-      public Builder setYaw(double value) {
-        
-        yaw_ = value;
-        bitField0_ |= 0x00000010;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>double yaw = 5;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearYaw() {
-        bitField0_ = (bitField0_ & ~0x00000010);
-        yaw_ = 0D;
-        onChanged();
-        return this;
-      }
+            @java.lang.Override
+            public Builder setField(
+                    com.google.protobuf.Descriptors.FieldDescriptor field,
+                    java.lang.Object value) {
+                return super.setField(field, value);
+            }
 
-      private double pitch_ ;
-      /**
-       * <code>double pitch = 6;</code>
-       * @return The pitch.
-       */
-      @java.lang.Override
-      public double getPitch() {
-        return pitch_;
-      }
-      /**
-       * <code>double pitch = 6;</code>
-       * @param value The pitch to set.
-       * @return This builder for chaining.
-       */
-      public Builder setPitch(double value) {
-        
-        pitch_ = value;
-        bitField0_ |= 0x00000020;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>double pitch = 6;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearPitch() {
-        bitField0_ = (bitField0_ & ~0x00000020);
-        pitch_ = 0D;
-        onChanged();
-        return this;
-      }
+            @java.lang.Override
+            public Builder clearField(
+                    com.google.protobuf.Descriptors.FieldDescriptor field) {
+                return super.clearField(field);
+            }
 
-      private double health_ ;
-      /**
-       * <code>double health = 7;</code>
-       * @return The health.
-       */
-      @java.lang.Override
-      public double getHealth() {
-        return health_;
-      }
-      /**
-       * <code>double health = 7;</code>
-       * @param value The health to set.
-       * @return This builder for chaining.
-       */
-      public Builder setHealth(double value) {
-        
-        health_ = value;
-        bitField0_ |= 0x00000040;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>double health = 7;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearHealth() {
-        bitField0_ = (bitField0_ & ~0x00000040);
-        health_ = 0D;
-        onChanged();
-        return this;
-      }
+            @java.lang.Override
+            public Builder clearOneof(
+                    com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+                return super.clearOneof(oneof);
+            }
 
-      private double foodLevel_ ;
-      /**
-       * <code>double food_level = 8;</code>
-       * @return The foodLevel.
-       */
-      @java.lang.Override
-      public double getFoodLevel() {
-        return foodLevel_;
-      }
-      /**
-       * <code>double food_level = 8;</code>
-       * @param value The foodLevel to set.
-       * @return This builder for chaining.
-       */
-      public Builder setFoodLevel(double value) {
-        
-        foodLevel_ = value;
-        bitField0_ |= 0x00000080;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>double food_level = 8;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearFoodLevel() {
-        bitField0_ = (bitField0_ & ~0x00000080);
-        foodLevel_ = 0D;
-        onChanged();
-        return this;
-      }
+            @java.lang.Override
+            public Builder setRepeatedField(
+                    com.google.protobuf.Descriptors.FieldDescriptor field,
+                    int index, java.lang.Object value) {
+                return super.setRepeatedField(field, index, value);
+            }
 
-      private double saturationLevel_ ;
-      /**
-       * <code>double saturation_level = 9;</code>
-       * @return The saturationLevel.
-       */
-      @java.lang.Override
-      public double getSaturationLevel() {
-        return saturationLevel_;
-      }
-      /**
-       * <code>double saturation_level = 9;</code>
-       * @param value The saturationLevel to set.
-       * @return This builder for chaining.
-       */
-      public Builder setSaturationLevel(double value) {
-        
-        saturationLevel_ = value;
-        bitField0_ |= 0x00000100;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>double saturation_level = 9;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearSaturationLevel() {
-        bitField0_ = (bitField0_ & ~0x00000100);
-        saturationLevel_ = 0D;
-        onChanged();
-        return this;
-      }
+            @java.lang.Override
+            public Builder addRepeatedField(
+                    com.google.protobuf.Descriptors.FieldDescriptor field,
+                    java.lang.Object value) {
+                return super.addRepeatedField(field, value);
+            }
 
-      private boolean isDead_ ;
-      /**
-       * <code>bool is_dead = 10;</code>
-       * @return The isDead.
-       */
-      @java.lang.Override
-      public boolean getIsDead() {
-        return isDead_;
-      }
-      /**
-       * <code>bool is_dead = 10;</code>
-       * @param value The isDead to set.
-       * @return This builder for chaining.
-       */
-      public Builder setIsDead(boolean value) {
-        
-        isDead_ = value;
-        bitField0_ |= 0x00000200;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>bool is_dead = 10;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearIsDead() {
-        bitField0_ = (bitField0_ & ~0x00000200);
-        isDead_ = false;
-        onChanged();
-        return this;
-      }
+            @java.lang.Override
+            public Builder mergeFrom(com.google.protobuf.Message other) {
+                if (other instanceof com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ObservationSpaceMessage) {
+                    return mergeFrom((com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ObservationSpaceMessage) other);
+                } else {
+                    super.mergeFrom(other);
+                    return this;
+                }
+            }
 
-      private java.util.List<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack> inventory_ =
-        java.util.Collections.emptyList();
-      private void ensureInventoryIsMutable() {
-        if (!((bitField0_ & 0x00000400) != 0)) {
-          inventory_ = new java.util.ArrayList<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack>(inventory_);
-          bitField0_ |= 0x00000400;
-         }
-      }
+            public Builder mergeFrom(com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ObservationSpaceMessage other) {
+                if (other == com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ObservationSpaceMessage.getDefaultInstance())
+                    return this;
+                if (other.getImage() != com.google.protobuf.ByteString.EMPTY) {
+                    setImage(other.getImage());
+                }
+                if (other.getX() != 0D) {
+                    setX(other.getX());
+                }
+                if (other.getY() != 0D) {
+                    setY(other.getY());
+                }
+                if (other.getZ() != 0D) {
+                    setZ(other.getZ());
+                }
+                if (other.getYaw() != 0D) {
+                    setYaw(other.getYaw());
+                }
+                if (other.getPitch() != 0D) {
+                    setPitch(other.getPitch());
+                }
+                if (other.getHealth() != 0D) {
+                    setHealth(other.getHealth());
+                }
+                if (other.getFoodLevel() != 0D) {
+                    setFoodLevel(other.getFoodLevel());
+                }
+                if (other.getSaturationLevel() != 0D) {
+                    setSaturationLevel(other.getSaturationLevel());
+                }
+                if (other.getIsDead() != false) {
+                    setIsDead(other.getIsDead());
+                }
+                if (inventoryBuilder_ == null) {
+                    if (!other.inventory_.isEmpty()) {
+                        if (inventory_.isEmpty()) {
+                            inventory_ = other.inventory_;
+                            bitField0_ = (bitField0_ & ~0x00000400);
+                        } else {
+                            ensureInventoryIsMutable();
+                            inventory_.addAll(other.inventory_);
+                        }
+                        onChanged();
+                    }
+                } else {
+                    if (!other.inventory_.isEmpty()) {
+                        if (inventoryBuilder_.isEmpty()) {
+                            inventoryBuilder_.dispose();
+                            inventoryBuilder_ = null;
+                            inventory_ = other.inventory_;
+                            bitField0_ = (bitField0_ & ~0x00000400);
+                            inventoryBuilder_ =
+                                    com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                                            getInventoryFieldBuilder() : null;
+                        } else {
+                            inventoryBuilder_.addAllMessages(other.inventory_);
+                        }
+                    }
+                }
+                if (other.hasRaycastResult()) {
+                    mergeRaycastResult(other.getRaycastResult());
+                }
+                if (soundSubtitlesBuilder_ == null) {
+                    if (!other.soundSubtitles_.isEmpty()) {
+                        if (soundSubtitles_.isEmpty()) {
+                            soundSubtitles_ = other.soundSubtitles_;
+                            bitField0_ = (bitField0_ & ~0x00001000);
+                        } else {
+                            ensureSoundSubtitlesIsMutable();
+                            soundSubtitles_.addAll(other.soundSubtitles_);
+                        }
+                        onChanged();
+                    }
+                } else {
+                    if (!other.soundSubtitles_.isEmpty()) {
+                        if (soundSubtitlesBuilder_.isEmpty()) {
+                            soundSubtitlesBuilder_.dispose();
+                            soundSubtitlesBuilder_ = null;
+                            soundSubtitles_ = other.soundSubtitles_;
+                            bitField0_ = (bitField0_ & ~0x00001000);
+                            soundSubtitlesBuilder_ =
+                                    com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                                            getSoundSubtitlesFieldBuilder() : null;
+                        } else {
+                            soundSubtitlesBuilder_.addAllMessages(other.soundSubtitles_);
+                        }
+                    }
+                }
+                if (statusEffectsBuilder_ == null) {
+                    if (!other.statusEffects_.isEmpty()) {
+                        if (statusEffects_.isEmpty()) {
+                            statusEffects_ = other.statusEffects_;
+                            bitField0_ = (bitField0_ & ~0x00002000);
+                        } else {
+                            ensureStatusEffectsIsMutable();
+                            statusEffects_.addAll(other.statusEffects_);
+                        }
+                        onChanged();
+                    }
+                } else {
+                    if (!other.statusEffects_.isEmpty()) {
+                        if (statusEffectsBuilder_.isEmpty()) {
+                            statusEffectsBuilder_.dispose();
+                            statusEffectsBuilder_ = null;
+                            statusEffects_ = other.statusEffects_;
+                            bitField0_ = (bitField0_ & ~0x00002000);
+                            statusEffectsBuilder_ =
+                                    com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                                            getStatusEffectsFieldBuilder() : null;
+                        } else {
+                            statusEffectsBuilder_.addAllMessages(other.statusEffects_);
+                        }
+                    }
+                }
+                internalGetMutableKilledStatistics().mergeFrom(
+                        other.internalGetKilledStatistics());
+                bitField0_ |= 0x00004000;
+                internalGetMutableMinedStatistics().mergeFrom(
+                        other.internalGetMinedStatistics());
+                bitField0_ |= 0x00008000;
+                internalGetMutableMiscStatistics().mergeFrom(
+                        other.internalGetMiscStatistics());
+                bitField0_ |= 0x00010000;
+                if (visibleEntitiesBuilder_ == null) {
+                    if (!other.visibleEntities_.isEmpty()) {
+                        if (visibleEntities_.isEmpty()) {
+                            visibleEntities_ = other.visibleEntities_;
+                            bitField0_ = (bitField0_ & ~0x00020000);
+                        } else {
+                            ensureVisibleEntitiesIsMutable();
+                            visibleEntities_.addAll(other.visibleEntities_);
+                        }
+                        onChanged();
+                    }
+                } else {
+                    if (!other.visibleEntities_.isEmpty()) {
+                        if (visibleEntitiesBuilder_.isEmpty()) {
+                            visibleEntitiesBuilder_.dispose();
+                            visibleEntitiesBuilder_ = null;
+                            visibleEntities_ = other.visibleEntities_;
+                            bitField0_ = (bitField0_ & ~0x00020000);
+                            visibleEntitiesBuilder_ =
+                                    com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                                            getVisibleEntitiesFieldBuilder() : null;
+                        } else {
+                            visibleEntitiesBuilder_.addAllMessages(other.visibleEntities_);
+                        }
+                    }
+                }
+                this.mergeUnknownFields(other.getUnknownFields());
+                onChanged();
+                return this;
+            }
 
-      private com.google.protobuf.RepeatedFieldBuilderV3<
-          com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack.Builder, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStackOrBuilder> inventoryBuilder_;
+            @java.lang.Override
+            public final boolean isInitialized() {
+                return true;
+            }
 
-      /**
-       * <code>repeated .ItemStack inventory = 11;</code>
-       */
-      public java.util.List<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack> getInventoryList() {
-        if (inventoryBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(inventory_);
-        } else {
-          return inventoryBuilder_.getMessageList();
-        }
-      }
-      /**
-       * <code>repeated .ItemStack inventory = 11;</code>
-       */
-      public int getInventoryCount() {
-        if (inventoryBuilder_ == null) {
-          return inventory_.size();
-        } else {
-          return inventoryBuilder_.getCount();
-        }
-      }
-      /**
-       * <code>repeated .ItemStack inventory = 11;</code>
-       */
-      public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack getInventory(int index) {
-        if (inventoryBuilder_ == null) {
-          return inventory_.get(index);
-        } else {
-          return inventoryBuilder_.getMessage(index);
-        }
-      }
-      /**
-       * <code>repeated .ItemStack inventory = 11;</code>
-       */
-      public Builder setInventory(
-          int index, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack value) {
-        if (inventoryBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureInventoryIsMutable();
-          inventory_.set(index, value);
-          onChanged();
-        } else {
-          inventoryBuilder_.setMessage(index, value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .ItemStack inventory = 11;</code>
-       */
-      public Builder setInventory(
-          int index, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack.Builder builderForValue) {
-        if (inventoryBuilder_ == null) {
-          ensureInventoryIsMutable();
-          inventory_.set(index, builderForValue.build());
-          onChanged();
-        } else {
-          inventoryBuilder_.setMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .ItemStack inventory = 11;</code>
-       */
-      public Builder addInventory(com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack value) {
-        if (inventoryBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureInventoryIsMutable();
-          inventory_.add(value);
-          onChanged();
-        } else {
-          inventoryBuilder_.addMessage(value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .ItemStack inventory = 11;</code>
-       */
-      public Builder addInventory(
-          int index, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack value) {
-        if (inventoryBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureInventoryIsMutable();
-          inventory_.add(index, value);
-          onChanged();
-        } else {
-          inventoryBuilder_.addMessage(index, value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .ItemStack inventory = 11;</code>
-       */
-      public Builder addInventory(
-          com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack.Builder builderForValue) {
-        if (inventoryBuilder_ == null) {
-          ensureInventoryIsMutable();
-          inventory_.add(builderForValue.build());
-          onChanged();
-        } else {
-          inventoryBuilder_.addMessage(builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .ItemStack inventory = 11;</code>
-       */
-      public Builder addInventory(
-          int index, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack.Builder builderForValue) {
-        if (inventoryBuilder_ == null) {
-          ensureInventoryIsMutable();
-          inventory_.add(index, builderForValue.build());
-          onChanged();
-        } else {
-          inventoryBuilder_.addMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .ItemStack inventory = 11;</code>
-       */
-      public Builder addAllInventory(
-          java.lang.Iterable<? extends com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack> values) {
-        if (inventoryBuilder_ == null) {
-          ensureInventoryIsMutable();
-          com.google.protobuf.AbstractMessageLite.Builder.addAll(
-              values, inventory_);
-          onChanged();
-        } else {
-          inventoryBuilder_.addAllMessages(values);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .ItemStack inventory = 11;</code>
-       */
-      public Builder clearInventory() {
-        if (inventoryBuilder_ == null) {
-          inventory_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000400);
-          onChanged();
-        } else {
-          inventoryBuilder_.clear();
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .ItemStack inventory = 11;</code>
-       */
-      public Builder removeInventory(int index) {
-        if (inventoryBuilder_ == null) {
-          ensureInventoryIsMutable();
-          inventory_.remove(index);
-          onChanged();
-        } else {
-          inventoryBuilder_.remove(index);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .ItemStack inventory = 11;</code>
-       */
-      public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack.Builder getInventoryBuilder(
-          int index) {
-        return getInventoryFieldBuilder().getBuilder(index);
-      }
-      /**
-       * <code>repeated .ItemStack inventory = 11;</code>
-       */
-      public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStackOrBuilder getInventoryOrBuilder(
-          int index) {
-        if (inventoryBuilder_ == null) {
-          return inventory_.get(index);  } else {
-          return inventoryBuilder_.getMessageOrBuilder(index);
-        }
-      }
-      /**
-       * <code>repeated .ItemStack inventory = 11;</code>
-       */
-      public java.util.List<? extends com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStackOrBuilder> 
-           getInventoryOrBuilderList() {
-        if (inventoryBuilder_ != null) {
-          return inventoryBuilder_.getMessageOrBuilderList();
-        } else {
-          return java.util.Collections.unmodifiableList(inventory_);
-        }
-      }
-      /**
-       * <code>repeated .ItemStack inventory = 11;</code>
-       */
-      public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack.Builder addInventoryBuilder() {
-        return getInventoryFieldBuilder().addBuilder(
-            com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .ItemStack inventory = 11;</code>
-       */
-      public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack.Builder addInventoryBuilder(
-          int index) {
-        return getInventoryFieldBuilder().addBuilder(
-            index, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .ItemStack inventory = 11;</code>
-       */
-      public java.util.List<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack.Builder> 
-           getInventoryBuilderList() {
-        return getInventoryFieldBuilder().getBuilderList();
-      }
-      private com.google.protobuf.RepeatedFieldBuilderV3<
-          com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack.Builder, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStackOrBuilder> 
-          getInventoryFieldBuilder() {
-        if (inventoryBuilder_ == null) {
-          inventoryBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-              com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack.Builder, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStackOrBuilder>(
-                  inventory_,
-                  ((bitField0_ & 0x00000400) != 0),
-                  getParentForChildren(),
-                  isClean());
-          inventory_ = null;
-        }
-        return inventoryBuilder_;
-      }
+            @java.lang.Override
+            public Builder mergeFrom(
+                    com.google.protobuf.CodedInputStream input,
+                    com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                    throws java.io.IOException {
+                if (extensionRegistry == null) {
+                    throw new java.lang.NullPointerException();
+                }
+                try {
+                    boolean done = false;
+                    while (!done) {
+                        int tag = input.readTag();
+                        switch (tag) {
+                            case 0:
+                                done = true;
+                                break;
+                            case 10: {
+                                image_ = input.readBytes();
+                                bitField0_ |= 0x00000001;
+                                break;
+                            } // case 10
+                            case 17: {
+                                x_ = input.readDouble();
+                                bitField0_ |= 0x00000002;
+                                break;
+                            } // case 17
+                            case 25: {
+                                y_ = input.readDouble();
+                                bitField0_ |= 0x00000004;
+                                break;
+                            } // case 25
+                            case 33: {
+                                z_ = input.readDouble();
+                                bitField0_ |= 0x00000008;
+                                break;
+                            } // case 33
+                            case 41: {
+                                yaw_ = input.readDouble();
+                                bitField0_ |= 0x00000010;
+                                break;
+                            } // case 41
+                            case 49: {
+                                pitch_ = input.readDouble();
+                                bitField0_ |= 0x00000020;
+                                break;
+                            } // case 49
+                            case 57: {
+                                health_ = input.readDouble();
+                                bitField0_ |= 0x00000040;
+                                break;
+                            } // case 57
+                            case 65: {
+                                foodLevel_ = input.readDouble();
+                                bitField0_ |= 0x00000080;
+                                break;
+                            } // case 65
+                            case 73: {
+                                saturationLevel_ = input.readDouble();
+                                bitField0_ |= 0x00000100;
+                                break;
+                            } // case 73
+                            case 80: {
+                                isDead_ = input.readBool();
+                                bitField0_ |= 0x00000200;
+                                break;
+                            } // case 80
+                            case 90: {
+                                com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack m =
+                                        input.readMessage(
+                                                com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack.parser(),
+                                                extensionRegistry);
+                                if (inventoryBuilder_ == null) {
+                                    ensureInventoryIsMutable();
+                                    inventory_.add(m);
+                                } else {
+                                    inventoryBuilder_.addMessage(m);
+                                }
+                                break;
+                            } // case 90
+                            case 98: {
+                                input.readMessage(
+                                        getRaycastResultFieldBuilder().getBuilder(),
+                                        extensionRegistry);
+                                bitField0_ |= 0x00000800;
+                                break;
+                            } // case 98
+                            case 106: {
+                                com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry m =
+                                        input.readMessage(
+                                                com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry.parser(),
+                                                extensionRegistry);
+                                if (soundSubtitlesBuilder_ == null) {
+                                    ensureSoundSubtitlesIsMutable();
+                                    soundSubtitles_.add(m);
+                                } else {
+                                    soundSubtitlesBuilder_.addMessage(m);
+                                }
+                                break;
+                            } // case 106
+                            case 114: {
+                                com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect m =
+                                        input.readMessage(
+                                                com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect.parser(),
+                                                extensionRegistry);
+                                if (statusEffectsBuilder_ == null) {
+                                    ensureStatusEffectsIsMutable();
+                                    statusEffects_.add(m);
+                                } else {
+                                    statusEffectsBuilder_.addMessage(m);
+                                }
+                                break;
+                            } // case 114
+                            case 122: {
+                                com.google.protobuf.MapEntry<java.lang.String, java.lang.Integer>
+                                        killedStatistics__ = input.readMessage(
+                                        KilledStatisticsDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
+                                internalGetMutableKilledStatistics().getMutableMap().put(
+                                        killedStatistics__.getKey(), killedStatistics__.getValue());
+                                bitField0_ |= 0x00004000;
+                                break;
+                            } // case 122
+                            case 130: {
+                                com.google.protobuf.MapEntry<java.lang.String, java.lang.Integer>
+                                        minedStatistics__ = input.readMessage(
+                                        MinedStatisticsDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
+                                internalGetMutableMinedStatistics().getMutableMap().put(
+                                        minedStatistics__.getKey(), minedStatistics__.getValue());
+                                bitField0_ |= 0x00008000;
+                                break;
+                            } // case 130
+                            case 138: {
+                                com.google.protobuf.MapEntry<java.lang.String, java.lang.Integer>
+                                        miscStatistics__ = input.readMessage(
+                                        MiscStatisticsDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
+                                internalGetMutableMiscStatistics().getMutableMap().put(
+                                        miscStatistics__.getKey(), miscStatistics__.getValue());
+                                bitField0_ |= 0x00010000;
+                                break;
+                            } // case 138
+                            case 146: {
+                                com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo m =
+                                        input.readMessage(
+                                                com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo.parser(),
+                                                extensionRegistry);
+                                if (visibleEntitiesBuilder_ == null) {
+                                    ensureVisibleEntitiesIsMutable();
+                                    visibleEntities_.add(m);
+                                } else {
+                                    visibleEntitiesBuilder_.addMessage(m);
+                                }
+                                break;
+                            } // case 146
+                            default: {
+                                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                                    done = true; // was an endgroup tag
+                                }
+                                break;
+                            } // default:
+                        } // switch (tag)
+                    } // while (!done)
+                } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                    throw e.unwrapIOException();
+                } finally {
+                    onChanged();
+                } // finally
+                return this;
+            }
 
-      private com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult raycastResult_;
-      private com.google.protobuf.SingleFieldBuilderV3<
-          com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult.Builder, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResultOrBuilder> raycastResultBuilder_;
-      /**
-       * <code>.HitResult raycast_result = 12;</code>
-       * @return Whether the raycastResult field is set.
-       */
-      public boolean hasRaycastResult() {
-        return ((bitField0_ & 0x00000800) != 0);
-      }
-      /**
-       * <code>.HitResult raycast_result = 12;</code>
-       * @return The raycastResult.
-       */
-      public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult getRaycastResult() {
-        if (raycastResultBuilder_ == null) {
-          return raycastResult_ == null ? com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult.getDefaultInstance() : raycastResult_;
-        } else {
-          return raycastResultBuilder_.getMessage();
-        }
-      }
-      /**
-       * <code>.HitResult raycast_result = 12;</code>
-       */
-      public Builder setRaycastResult(com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult value) {
-        if (raycastResultBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          raycastResult_ = value;
-        } else {
-          raycastResultBuilder_.setMessage(value);
-        }
-        bitField0_ |= 0x00000800;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>.HitResult raycast_result = 12;</code>
-       */
-      public Builder setRaycastResult(
-          com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult.Builder builderForValue) {
-        if (raycastResultBuilder_ == null) {
-          raycastResult_ = builderForValue.build();
-        } else {
-          raycastResultBuilder_.setMessage(builderForValue.build());
-        }
-        bitField0_ |= 0x00000800;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>.HitResult raycast_result = 12;</code>
-       */
-      public Builder mergeRaycastResult(com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult value) {
-        if (raycastResultBuilder_ == null) {
-          if (((bitField0_ & 0x00000800) != 0) &&
-            raycastResult_ != null &&
-            raycastResult_ != com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult.getDefaultInstance()) {
-            getRaycastResultBuilder().mergeFrom(value);
-          } else {
-            raycastResult_ = value;
-          }
-        } else {
-          raycastResultBuilder_.mergeFrom(value);
-        }
-        bitField0_ |= 0x00000800;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>.HitResult raycast_result = 12;</code>
-       */
-      public Builder clearRaycastResult() {
-        bitField0_ = (bitField0_ & ~0x00000800);
-        raycastResult_ = null;
-        if (raycastResultBuilder_ != null) {
-          raycastResultBuilder_.dispose();
-          raycastResultBuilder_ = null;
-        }
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>.HitResult raycast_result = 12;</code>
-       */
-      public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult.Builder getRaycastResultBuilder() {
-        bitField0_ |= 0x00000800;
-        onChanged();
-        return getRaycastResultFieldBuilder().getBuilder();
-      }
-      /**
-       * <code>.HitResult raycast_result = 12;</code>
-       */
-      public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResultOrBuilder getRaycastResultOrBuilder() {
-        if (raycastResultBuilder_ != null) {
-          return raycastResultBuilder_.getMessageOrBuilder();
-        } else {
-          return raycastResult_ == null ?
-              com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult.getDefaultInstance() : raycastResult_;
-        }
-      }
-      /**
-       * <code>.HitResult raycast_result = 12;</code>
-       */
-      private com.google.protobuf.SingleFieldBuilderV3<
-          com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult.Builder, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResultOrBuilder> 
-          getRaycastResultFieldBuilder() {
-        if (raycastResultBuilder_ == null) {
-          raycastResultBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult.Builder, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResultOrBuilder>(
-                  getRaycastResult(),
-                  getParentForChildren(),
-                  isClean());
-          raycastResult_ = null;
-        }
-        return raycastResultBuilder_;
-      }
+            /**
+             * <code>bytes image = 1;</code>
+             *
+             * @return The image.
+             */
+            @java.lang.Override
+            public com.google.protobuf.ByteString getImage() {
+                return image_;
+            }
 
-      private java.util.List<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry> soundSubtitles_ =
-        java.util.Collections.emptyList();
-      private void ensureSoundSubtitlesIsMutable() {
-        if (!((bitField0_ & 0x00001000) != 0)) {
-          soundSubtitles_ = new java.util.ArrayList<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry>(soundSubtitles_);
-          bitField0_ |= 0x00001000;
-         }
-      }
+            /**
+             * <code>bytes image = 1;</code>
+             *
+             * @param value The image to set.
+             * @return This builder for chaining.
+             */
+            public Builder setImage(com.google.protobuf.ByteString value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                image_ = value;
+                bitField0_ |= 0x00000001;
+                onChanged();
+                return this;
+            }
 
-      private com.google.protobuf.RepeatedFieldBuilderV3<
-          com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry.Builder, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntryOrBuilder> soundSubtitlesBuilder_;
+            /**
+             * <code>bytes image = 1;</code>
+             *
+             * @return This builder for chaining.
+             */
+            public Builder clearImage() {
+                bitField0_ = (bitField0_ & ~0x00000001);
+                image_ = getDefaultInstance().getImage();
+                onChanged();
+                return this;
+            }
 
-      /**
-       * <code>repeated .SoundEntry sound_subtitles = 13;</code>
-       */
-      public java.util.List<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry> getSoundSubtitlesList() {
-        if (soundSubtitlesBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(soundSubtitles_);
-        } else {
-          return soundSubtitlesBuilder_.getMessageList();
-        }
-      }
-      /**
-       * <code>repeated .SoundEntry sound_subtitles = 13;</code>
-       */
-      public int getSoundSubtitlesCount() {
-        if (soundSubtitlesBuilder_ == null) {
-          return soundSubtitles_.size();
-        } else {
-          return soundSubtitlesBuilder_.getCount();
-        }
-      }
-      /**
-       * <code>repeated .SoundEntry sound_subtitles = 13;</code>
-       */
-      public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry getSoundSubtitles(int index) {
-        if (soundSubtitlesBuilder_ == null) {
-          return soundSubtitles_.get(index);
-        } else {
-          return soundSubtitlesBuilder_.getMessage(index);
-        }
-      }
-      /**
-       * <code>repeated .SoundEntry sound_subtitles = 13;</code>
-       */
-      public Builder setSoundSubtitles(
-          int index, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry value) {
-        if (soundSubtitlesBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureSoundSubtitlesIsMutable();
-          soundSubtitles_.set(index, value);
-          onChanged();
-        } else {
-          soundSubtitlesBuilder_.setMessage(index, value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .SoundEntry sound_subtitles = 13;</code>
-       */
-      public Builder setSoundSubtitles(
-          int index, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry.Builder builderForValue) {
-        if (soundSubtitlesBuilder_ == null) {
-          ensureSoundSubtitlesIsMutable();
-          soundSubtitles_.set(index, builderForValue.build());
-          onChanged();
-        } else {
-          soundSubtitlesBuilder_.setMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .SoundEntry sound_subtitles = 13;</code>
-       */
-      public Builder addSoundSubtitles(com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry value) {
-        if (soundSubtitlesBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureSoundSubtitlesIsMutable();
-          soundSubtitles_.add(value);
-          onChanged();
-        } else {
-          soundSubtitlesBuilder_.addMessage(value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .SoundEntry sound_subtitles = 13;</code>
-       */
-      public Builder addSoundSubtitles(
-          int index, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry value) {
-        if (soundSubtitlesBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureSoundSubtitlesIsMutable();
-          soundSubtitles_.add(index, value);
-          onChanged();
-        } else {
-          soundSubtitlesBuilder_.addMessage(index, value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .SoundEntry sound_subtitles = 13;</code>
-       */
-      public Builder addSoundSubtitles(
-          com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry.Builder builderForValue) {
-        if (soundSubtitlesBuilder_ == null) {
-          ensureSoundSubtitlesIsMutable();
-          soundSubtitles_.add(builderForValue.build());
-          onChanged();
-        } else {
-          soundSubtitlesBuilder_.addMessage(builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .SoundEntry sound_subtitles = 13;</code>
-       */
-      public Builder addSoundSubtitles(
-          int index, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry.Builder builderForValue) {
-        if (soundSubtitlesBuilder_ == null) {
-          ensureSoundSubtitlesIsMutable();
-          soundSubtitles_.add(index, builderForValue.build());
-          onChanged();
-        } else {
-          soundSubtitlesBuilder_.addMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .SoundEntry sound_subtitles = 13;</code>
-       */
-      public Builder addAllSoundSubtitles(
-          java.lang.Iterable<? extends com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry> values) {
-        if (soundSubtitlesBuilder_ == null) {
-          ensureSoundSubtitlesIsMutable();
-          com.google.protobuf.AbstractMessageLite.Builder.addAll(
-              values, soundSubtitles_);
-          onChanged();
-        } else {
-          soundSubtitlesBuilder_.addAllMessages(values);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .SoundEntry sound_subtitles = 13;</code>
-       */
-      public Builder clearSoundSubtitles() {
-        if (soundSubtitlesBuilder_ == null) {
-          soundSubtitles_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00001000);
-          onChanged();
-        } else {
-          soundSubtitlesBuilder_.clear();
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .SoundEntry sound_subtitles = 13;</code>
-       */
-      public Builder removeSoundSubtitles(int index) {
-        if (soundSubtitlesBuilder_ == null) {
-          ensureSoundSubtitlesIsMutable();
-          soundSubtitles_.remove(index);
-          onChanged();
-        } else {
-          soundSubtitlesBuilder_.remove(index);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .SoundEntry sound_subtitles = 13;</code>
-       */
-      public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry.Builder getSoundSubtitlesBuilder(
-          int index) {
-        return getSoundSubtitlesFieldBuilder().getBuilder(index);
-      }
-      /**
-       * <code>repeated .SoundEntry sound_subtitles = 13;</code>
-       */
-      public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntryOrBuilder getSoundSubtitlesOrBuilder(
-          int index) {
-        if (soundSubtitlesBuilder_ == null) {
-          return soundSubtitles_.get(index);  } else {
-          return soundSubtitlesBuilder_.getMessageOrBuilder(index);
-        }
-      }
-      /**
-       * <code>repeated .SoundEntry sound_subtitles = 13;</code>
-       */
-      public java.util.List<? extends com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntryOrBuilder> 
-           getSoundSubtitlesOrBuilderList() {
-        if (soundSubtitlesBuilder_ != null) {
-          return soundSubtitlesBuilder_.getMessageOrBuilderList();
-        } else {
-          return java.util.Collections.unmodifiableList(soundSubtitles_);
-        }
-      }
-      /**
-       * <code>repeated .SoundEntry sound_subtitles = 13;</code>
-       */
-      public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry.Builder addSoundSubtitlesBuilder() {
-        return getSoundSubtitlesFieldBuilder().addBuilder(
-            com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .SoundEntry sound_subtitles = 13;</code>
-       */
-      public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry.Builder addSoundSubtitlesBuilder(
-          int index) {
-        return getSoundSubtitlesFieldBuilder().addBuilder(
-            index, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .SoundEntry sound_subtitles = 13;</code>
-       */
-      public java.util.List<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry.Builder> 
-           getSoundSubtitlesBuilderList() {
-        return getSoundSubtitlesFieldBuilder().getBuilderList();
-      }
-      private com.google.protobuf.RepeatedFieldBuilderV3<
-          com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry.Builder, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntryOrBuilder> 
-          getSoundSubtitlesFieldBuilder() {
-        if (soundSubtitlesBuilder_ == null) {
-          soundSubtitlesBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-              com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry.Builder, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntryOrBuilder>(
-                  soundSubtitles_,
-                  ((bitField0_ & 0x00001000) != 0),
-                  getParentForChildren(),
-                  isClean());
-          soundSubtitles_ = null;
-        }
-        return soundSubtitlesBuilder_;
-      }
+            /**
+             * <code>double x = 2;</code>
+             *
+             * @return The x.
+             */
+            @java.lang.Override
+            public double getX() {
+                return x_;
+            }
 
-      private java.util.List<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect> statusEffects_ =
-        java.util.Collections.emptyList();
-      private void ensureStatusEffectsIsMutable() {
-        if (!((bitField0_ & 0x00002000) != 0)) {
-          statusEffects_ = new java.util.ArrayList<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect>(statusEffects_);
-          bitField0_ |= 0x00002000;
-         }
-      }
+            /**
+             * <code>double x = 2;</code>
+             *
+             * @param value The x to set.
+             * @return This builder for chaining.
+             */
+            public Builder setX(double value) {
 
-      private com.google.protobuf.RepeatedFieldBuilderV3<
-          com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect.Builder, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffectOrBuilder> statusEffectsBuilder_;
+                x_ = value;
+                bitField0_ |= 0x00000002;
+                onChanged();
+                return this;
+            }
 
-      /**
-       * <code>repeated .StatusEffect status_effects = 14;</code>
-       */
-      public java.util.List<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect> getStatusEffectsList() {
-        if (statusEffectsBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(statusEffects_);
-        } else {
-          return statusEffectsBuilder_.getMessageList();
-        }
-      }
-      /**
-       * <code>repeated .StatusEffect status_effects = 14;</code>
-       */
-      public int getStatusEffectsCount() {
-        if (statusEffectsBuilder_ == null) {
-          return statusEffects_.size();
-        } else {
-          return statusEffectsBuilder_.getCount();
-        }
-      }
-      /**
-       * <code>repeated .StatusEffect status_effects = 14;</code>
-       */
-      public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect getStatusEffects(int index) {
-        if (statusEffectsBuilder_ == null) {
-          return statusEffects_.get(index);
-        } else {
-          return statusEffectsBuilder_.getMessage(index);
-        }
-      }
-      /**
-       * <code>repeated .StatusEffect status_effects = 14;</code>
-       */
-      public Builder setStatusEffects(
-          int index, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect value) {
-        if (statusEffectsBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureStatusEffectsIsMutable();
-          statusEffects_.set(index, value);
-          onChanged();
-        } else {
-          statusEffectsBuilder_.setMessage(index, value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .StatusEffect status_effects = 14;</code>
-       */
-      public Builder setStatusEffects(
-          int index, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect.Builder builderForValue) {
-        if (statusEffectsBuilder_ == null) {
-          ensureStatusEffectsIsMutable();
-          statusEffects_.set(index, builderForValue.build());
-          onChanged();
-        } else {
-          statusEffectsBuilder_.setMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .StatusEffect status_effects = 14;</code>
-       */
-      public Builder addStatusEffects(com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect value) {
-        if (statusEffectsBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureStatusEffectsIsMutable();
-          statusEffects_.add(value);
-          onChanged();
-        } else {
-          statusEffectsBuilder_.addMessage(value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .StatusEffect status_effects = 14;</code>
-       */
-      public Builder addStatusEffects(
-          int index, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect value) {
-        if (statusEffectsBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureStatusEffectsIsMutable();
-          statusEffects_.add(index, value);
-          onChanged();
-        } else {
-          statusEffectsBuilder_.addMessage(index, value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .StatusEffect status_effects = 14;</code>
-       */
-      public Builder addStatusEffects(
-          com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect.Builder builderForValue) {
-        if (statusEffectsBuilder_ == null) {
-          ensureStatusEffectsIsMutable();
-          statusEffects_.add(builderForValue.build());
-          onChanged();
-        } else {
-          statusEffectsBuilder_.addMessage(builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .StatusEffect status_effects = 14;</code>
-       */
-      public Builder addStatusEffects(
-          int index, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect.Builder builderForValue) {
-        if (statusEffectsBuilder_ == null) {
-          ensureStatusEffectsIsMutable();
-          statusEffects_.add(index, builderForValue.build());
-          onChanged();
-        } else {
-          statusEffectsBuilder_.addMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .StatusEffect status_effects = 14;</code>
-       */
-      public Builder addAllStatusEffects(
-          java.lang.Iterable<? extends com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect> values) {
-        if (statusEffectsBuilder_ == null) {
-          ensureStatusEffectsIsMutable();
-          com.google.protobuf.AbstractMessageLite.Builder.addAll(
-              values, statusEffects_);
-          onChanged();
-        } else {
-          statusEffectsBuilder_.addAllMessages(values);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .StatusEffect status_effects = 14;</code>
-       */
-      public Builder clearStatusEffects() {
-        if (statusEffectsBuilder_ == null) {
-          statusEffects_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00002000);
-          onChanged();
-        } else {
-          statusEffectsBuilder_.clear();
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .StatusEffect status_effects = 14;</code>
-       */
-      public Builder removeStatusEffects(int index) {
-        if (statusEffectsBuilder_ == null) {
-          ensureStatusEffectsIsMutable();
-          statusEffects_.remove(index);
-          onChanged();
-        } else {
-          statusEffectsBuilder_.remove(index);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .StatusEffect status_effects = 14;</code>
-       */
-      public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect.Builder getStatusEffectsBuilder(
-          int index) {
-        return getStatusEffectsFieldBuilder().getBuilder(index);
-      }
-      /**
-       * <code>repeated .StatusEffect status_effects = 14;</code>
-       */
-      public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffectOrBuilder getStatusEffectsOrBuilder(
-          int index) {
-        if (statusEffectsBuilder_ == null) {
-          return statusEffects_.get(index);  } else {
-          return statusEffectsBuilder_.getMessageOrBuilder(index);
-        }
-      }
-      /**
-       * <code>repeated .StatusEffect status_effects = 14;</code>
-       */
-      public java.util.List<? extends com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffectOrBuilder> 
-           getStatusEffectsOrBuilderList() {
-        if (statusEffectsBuilder_ != null) {
-          return statusEffectsBuilder_.getMessageOrBuilderList();
-        } else {
-          return java.util.Collections.unmodifiableList(statusEffects_);
-        }
-      }
-      /**
-       * <code>repeated .StatusEffect status_effects = 14;</code>
-       */
-      public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect.Builder addStatusEffectsBuilder() {
-        return getStatusEffectsFieldBuilder().addBuilder(
-            com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .StatusEffect status_effects = 14;</code>
-       */
-      public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect.Builder addStatusEffectsBuilder(
-          int index) {
-        return getStatusEffectsFieldBuilder().addBuilder(
-            index, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .StatusEffect status_effects = 14;</code>
-       */
-      public java.util.List<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect.Builder> 
-           getStatusEffectsBuilderList() {
-        return getStatusEffectsFieldBuilder().getBuilderList();
-      }
-      private com.google.protobuf.RepeatedFieldBuilderV3<
-          com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect.Builder, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffectOrBuilder> 
-          getStatusEffectsFieldBuilder() {
-        if (statusEffectsBuilder_ == null) {
-          statusEffectsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-              com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect.Builder, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffectOrBuilder>(
-                  statusEffects_,
-                  ((bitField0_ & 0x00002000) != 0),
-                  getParentForChildren(),
-                  isClean());
-          statusEffects_ = null;
-        }
-        return statusEffectsBuilder_;
-      }
+            /**
+             * <code>double x = 2;</code>
+             *
+             * @return This builder for chaining.
+             */
+            public Builder clearX() {
+                bitField0_ = (bitField0_ & ~0x00000002);
+                x_ = 0D;
+                onChanged();
+                return this;
+            }
 
-      private com.google.protobuf.MapField<
-          java.lang.String, java.lang.Integer> killedStatistics_;
-      private com.google.protobuf.MapField<java.lang.String, java.lang.Integer>
-          internalGetKilledStatistics() {
-        if (killedStatistics_ == null) {
-          return com.google.protobuf.MapField.emptyMapField(
-              KilledStatisticsDefaultEntryHolder.defaultEntry);
-        }
-        return killedStatistics_;
-      }
-      private com.google.protobuf.MapField<java.lang.String, java.lang.Integer>
-          internalGetMutableKilledStatistics() {
-        if (killedStatistics_ == null) {
-          killedStatistics_ = com.google.protobuf.MapField.newMapField(
-              KilledStatisticsDefaultEntryHolder.defaultEntry);
-        }
-        if (!killedStatistics_.isMutable()) {
-          killedStatistics_ = killedStatistics_.copy();
-        }
-        bitField0_ |= 0x00004000;
-        onChanged();
-        return killedStatistics_;
-      }
-      public int getKilledStatisticsCount() {
-        return internalGetKilledStatistics().getMap().size();
-      }
-      /**
-       * <code>map&lt;string, int32&gt; killed_statistics = 15;</code>
-       */
-      @java.lang.Override
-      public boolean containsKilledStatistics(
-          java.lang.String key) {
-        if (key == null) { throw new NullPointerException("map key"); }
-        return internalGetKilledStatistics().getMap().containsKey(key);
-      }
-      /**
-       * Use {@link #getKilledStatisticsMap()} instead.
-       */
-      @java.lang.Override
-      @java.lang.Deprecated
-      public java.util.Map<java.lang.String, java.lang.Integer> getKilledStatistics() {
-        return getKilledStatisticsMap();
-      }
-      /**
-       * <code>map&lt;string, int32&gt; killed_statistics = 15;</code>
-       */
-      @java.lang.Override
-      public java.util.Map<java.lang.String, java.lang.Integer> getKilledStatisticsMap() {
-        return internalGetKilledStatistics().getMap();
-      }
-      /**
-       * <code>map&lt;string, int32&gt; killed_statistics = 15;</code>
-       */
-      @java.lang.Override
-      public int getKilledStatisticsOrDefault(
-          java.lang.String key,
-          int defaultValue) {
-        if (key == null) { throw new NullPointerException("map key"); }
-        java.util.Map<java.lang.String, java.lang.Integer> map =
-            internalGetKilledStatistics().getMap();
-        return map.containsKey(key) ? map.get(key) : defaultValue;
-      }
-      /**
-       * <code>map&lt;string, int32&gt; killed_statistics = 15;</code>
-       */
-      @java.lang.Override
-      public int getKilledStatisticsOrThrow(
-          java.lang.String key) {
-        if (key == null) { throw new NullPointerException("map key"); }
-        java.util.Map<java.lang.String, java.lang.Integer> map =
-            internalGetKilledStatistics().getMap();
-        if (!map.containsKey(key)) {
-          throw new java.lang.IllegalArgumentException();
-        }
-        return map.get(key);
-      }
-      public Builder clearKilledStatistics() {
-        bitField0_ = (bitField0_ & ~0x00004000);
-        internalGetMutableKilledStatistics().getMutableMap()
-            .clear();
-        return this;
-      }
-      /**
-       * <code>map&lt;string, int32&gt; killed_statistics = 15;</code>
-       */
-      public Builder removeKilledStatistics(
-          java.lang.String key) {
-        if (key == null) { throw new NullPointerException("map key"); }
-        internalGetMutableKilledStatistics().getMutableMap()
-            .remove(key);
-        return this;
-      }
-      /**
-       * Use alternate mutation accessors instead.
-       */
-      @java.lang.Deprecated
-      public java.util.Map<java.lang.String, java.lang.Integer>
-          getMutableKilledStatistics() {
-        bitField0_ |= 0x00004000;
-        return internalGetMutableKilledStatistics().getMutableMap();
-      }
-      /**
-       * <code>map&lt;string, int32&gt; killed_statistics = 15;</code>
-       */
-      public Builder putKilledStatistics(
-          java.lang.String key,
-          int value) {
-        if (key == null) { throw new NullPointerException("map key"); }
-        
-        internalGetMutableKilledStatistics().getMutableMap()
-            .put(key, value);
-        bitField0_ |= 0x00004000;
-        return this;
-      }
-      /**
-       * <code>map&lt;string, int32&gt; killed_statistics = 15;</code>
-       */
-      public Builder putAllKilledStatistics(
-          java.util.Map<java.lang.String, java.lang.Integer> values) {
-        internalGetMutableKilledStatistics().getMutableMap()
-            .putAll(values);
-        bitField0_ |= 0x00004000;
-        return this;
-      }
+            /**
+             * <code>double y = 3;</code>
+             *
+             * @return The y.
+             */
+            @java.lang.Override
+            public double getY() {
+                return y_;
+            }
 
-      private com.google.protobuf.MapField<
-          java.lang.String, java.lang.Integer> minedStatistics_;
-      private com.google.protobuf.MapField<java.lang.String, java.lang.Integer>
-          internalGetMinedStatistics() {
-        if (minedStatistics_ == null) {
-          return com.google.protobuf.MapField.emptyMapField(
-              MinedStatisticsDefaultEntryHolder.defaultEntry);
-        }
-        return minedStatistics_;
-      }
-      private com.google.protobuf.MapField<java.lang.String, java.lang.Integer>
-          internalGetMutableMinedStatistics() {
-        if (minedStatistics_ == null) {
-          minedStatistics_ = com.google.protobuf.MapField.newMapField(
-              MinedStatisticsDefaultEntryHolder.defaultEntry);
-        }
-        if (!minedStatistics_.isMutable()) {
-          minedStatistics_ = minedStatistics_.copy();
-        }
-        bitField0_ |= 0x00008000;
-        onChanged();
-        return minedStatistics_;
-      }
-      public int getMinedStatisticsCount() {
-        return internalGetMinedStatistics().getMap().size();
-      }
-      /**
-       * <code>map&lt;string, int32&gt; mined_statistics = 16;</code>
-       */
-      @java.lang.Override
-      public boolean containsMinedStatistics(
-          java.lang.String key) {
-        if (key == null) { throw new NullPointerException("map key"); }
-        return internalGetMinedStatistics().getMap().containsKey(key);
-      }
-      /**
-       * Use {@link #getMinedStatisticsMap()} instead.
-       */
-      @java.lang.Override
-      @java.lang.Deprecated
-      public java.util.Map<java.lang.String, java.lang.Integer> getMinedStatistics() {
-        return getMinedStatisticsMap();
-      }
-      /**
-       * <code>map&lt;string, int32&gt; mined_statistics = 16;</code>
-       */
-      @java.lang.Override
-      public java.util.Map<java.lang.String, java.lang.Integer> getMinedStatisticsMap() {
-        return internalGetMinedStatistics().getMap();
-      }
-      /**
-       * <code>map&lt;string, int32&gt; mined_statistics = 16;</code>
-       */
-      @java.lang.Override
-      public int getMinedStatisticsOrDefault(
-          java.lang.String key,
-          int defaultValue) {
-        if (key == null) { throw new NullPointerException("map key"); }
-        java.util.Map<java.lang.String, java.lang.Integer> map =
-            internalGetMinedStatistics().getMap();
-        return map.containsKey(key) ? map.get(key) : defaultValue;
-      }
-      /**
-       * <code>map&lt;string, int32&gt; mined_statistics = 16;</code>
-       */
-      @java.lang.Override
-      public int getMinedStatisticsOrThrow(
-          java.lang.String key) {
-        if (key == null) { throw new NullPointerException("map key"); }
-        java.util.Map<java.lang.String, java.lang.Integer> map =
-            internalGetMinedStatistics().getMap();
-        if (!map.containsKey(key)) {
-          throw new java.lang.IllegalArgumentException();
-        }
-        return map.get(key);
-      }
-      public Builder clearMinedStatistics() {
-        bitField0_ = (bitField0_ & ~0x00008000);
-        internalGetMutableMinedStatistics().getMutableMap()
-            .clear();
-        return this;
-      }
-      /**
-       * <code>map&lt;string, int32&gt; mined_statistics = 16;</code>
-       */
-      public Builder removeMinedStatistics(
-          java.lang.String key) {
-        if (key == null) { throw new NullPointerException("map key"); }
-        internalGetMutableMinedStatistics().getMutableMap()
-            .remove(key);
-        return this;
-      }
-      /**
-       * Use alternate mutation accessors instead.
-       */
-      @java.lang.Deprecated
-      public java.util.Map<java.lang.String, java.lang.Integer>
-          getMutableMinedStatistics() {
-        bitField0_ |= 0x00008000;
-        return internalGetMutableMinedStatistics().getMutableMap();
-      }
-      /**
-       * <code>map&lt;string, int32&gt; mined_statistics = 16;</code>
-       */
-      public Builder putMinedStatistics(
-          java.lang.String key,
-          int value) {
-        if (key == null) { throw new NullPointerException("map key"); }
-        
-        internalGetMutableMinedStatistics().getMutableMap()
-            .put(key, value);
-        bitField0_ |= 0x00008000;
-        return this;
-      }
-      /**
-       * <code>map&lt;string, int32&gt; mined_statistics = 16;</code>
-       */
-      public Builder putAllMinedStatistics(
-          java.util.Map<java.lang.String, java.lang.Integer> values) {
-        internalGetMutableMinedStatistics().getMutableMap()
-            .putAll(values);
-        bitField0_ |= 0x00008000;
-        return this;
-      }
+            /**
+             * <code>double y = 3;</code>
+             *
+             * @param value The y to set.
+             * @return This builder for chaining.
+             */
+            public Builder setY(double value) {
 
-      private com.google.protobuf.MapField<
-          java.lang.String, java.lang.Integer> miscStatistics_;
-      private com.google.protobuf.MapField<java.lang.String, java.lang.Integer>
-          internalGetMiscStatistics() {
-        if (miscStatistics_ == null) {
-          return com.google.protobuf.MapField.emptyMapField(
-              MiscStatisticsDefaultEntryHolder.defaultEntry);
-        }
-        return miscStatistics_;
-      }
-      private com.google.protobuf.MapField<java.lang.String, java.lang.Integer>
-          internalGetMutableMiscStatistics() {
-        if (miscStatistics_ == null) {
-          miscStatistics_ = com.google.protobuf.MapField.newMapField(
-              MiscStatisticsDefaultEntryHolder.defaultEntry);
-        }
-        if (!miscStatistics_.isMutable()) {
-          miscStatistics_ = miscStatistics_.copy();
-        }
-        bitField0_ |= 0x00010000;
-        onChanged();
-        return miscStatistics_;
-      }
-      public int getMiscStatisticsCount() {
-        return internalGetMiscStatistics().getMap().size();
-      }
-      /**
-       * <code>map&lt;string, int32&gt; misc_statistics = 17;</code>
-       */
-      @java.lang.Override
-      public boolean containsMiscStatistics(
-          java.lang.String key) {
-        if (key == null) { throw new NullPointerException("map key"); }
-        return internalGetMiscStatistics().getMap().containsKey(key);
-      }
-      /**
-       * Use {@link #getMiscStatisticsMap()} instead.
-       */
-      @java.lang.Override
-      @java.lang.Deprecated
-      public java.util.Map<java.lang.String, java.lang.Integer> getMiscStatistics() {
-        return getMiscStatisticsMap();
-      }
-      /**
-       * <code>map&lt;string, int32&gt; misc_statistics = 17;</code>
-       */
-      @java.lang.Override
-      public java.util.Map<java.lang.String, java.lang.Integer> getMiscStatisticsMap() {
-        return internalGetMiscStatistics().getMap();
-      }
-      /**
-       * <code>map&lt;string, int32&gt; misc_statistics = 17;</code>
-       */
-      @java.lang.Override
-      public int getMiscStatisticsOrDefault(
-          java.lang.String key,
-          int defaultValue) {
-        if (key == null) { throw new NullPointerException("map key"); }
-        java.util.Map<java.lang.String, java.lang.Integer> map =
-            internalGetMiscStatistics().getMap();
-        return map.containsKey(key) ? map.get(key) : defaultValue;
-      }
-      /**
-       * <code>map&lt;string, int32&gt; misc_statistics = 17;</code>
-       */
-      @java.lang.Override
-      public int getMiscStatisticsOrThrow(
-          java.lang.String key) {
-        if (key == null) { throw new NullPointerException("map key"); }
-        java.util.Map<java.lang.String, java.lang.Integer> map =
-            internalGetMiscStatistics().getMap();
-        if (!map.containsKey(key)) {
-          throw new java.lang.IllegalArgumentException();
-        }
-        return map.get(key);
-      }
-      public Builder clearMiscStatistics() {
-        bitField0_ = (bitField0_ & ~0x00010000);
-        internalGetMutableMiscStatistics().getMutableMap()
-            .clear();
-        return this;
-      }
-      /**
-       * <code>map&lt;string, int32&gt; misc_statistics = 17;</code>
-       */
-      public Builder removeMiscStatistics(
-          java.lang.String key) {
-        if (key == null) { throw new NullPointerException("map key"); }
-        internalGetMutableMiscStatistics().getMutableMap()
-            .remove(key);
-        return this;
-      }
-      /**
-       * Use alternate mutation accessors instead.
-       */
-      @java.lang.Deprecated
-      public java.util.Map<java.lang.String, java.lang.Integer>
-          getMutableMiscStatistics() {
-        bitField0_ |= 0x00010000;
-        return internalGetMutableMiscStatistics().getMutableMap();
-      }
-      /**
-       * <code>map&lt;string, int32&gt; misc_statistics = 17;</code>
-       */
-      public Builder putMiscStatistics(
-          java.lang.String key,
-          int value) {
-        if (key == null) { throw new NullPointerException("map key"); }
-        
-        internalGetMutableMiscStatistics().getMutableMap()
-            .put(key, value);
-        bitField0_ |= 0x00010000;
-        return this;
-      }
-      /**
-       * <code>map&lt;string, int32&gt; misc_statistics = 17;</code>
-       */
-      public Builder putAllMiscStatistics(
-          java.util.Map<java.lang.String, java.lang.Integer> values) {
-        internalGetMutableMiscStatistics().getMutableMap()
-            .putAll(values);
-        bitField0_ |= 0x00010000;
-        return this;
-      }
+                y_ = value;
+                bitField0_ |= 0x00000004;
+                onChanged();
+                return this;
+            }
 
-      private java.util.List<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo> visibleEntities_ =
-        java.util.Collections.emptyList();
-      private void ensureVisibleEntitiesIsMutable() {
-        if (!((bitField0_ & 0x00020000) != 0)) {
-          visibleEntities_ = new java.util.ArrayList<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo>(visibleEntities_);
-          bitField0_ |= 0x00020000;
-         }
-      }
+            /**
+             * <code>double y = 3;</code>
+             *
+             * @return This builder for chaining.
+             */
+            public Builder clearY() {
+                bitField0_ = (bitField0_ & ~0x00000004);
+                y_ = 0D;
+                onChanged();
+                return this;
+            }
 
-      private com.google.protobuf.RepeatedFieldBuilderV3<
-          com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo.Builder, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfoOrBuilder> visibleEntitiesBuilder_;
+            /**
+             * <code>double z = 4;</code>
+             *
+             * @return The z.
+             */
+            @java.lang.Override
+            public double getZ() {
+                return z_;
+            }
 
-      /**
-       * <code>repeated .EntityInfo visible_entities = 18;</code>
-       */
-      public java.util.List<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo> getVisibleEntitiesList() {
-        if (visibleEntitiesBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(visibleEntities_);
-        } else {
-          return visibleEntitiesBuilder_.getMessageList();
-        }
-      }
-      /**
-       * <code>repeated .EntityInfo visible_entities = 18;</code>
-       */
-      public int getVisibleEntitiesCount() {
-        if (visibleEntitiesBuilder_ == null) {
-          return visibleEntities_.size();
-        } else {
-          return visibleEntitiesBuilder_.getCount();
-        }
-      }
-      /**
-       * <code>repeated .EntityInfo visible_entities = 18;</code>
-       */
-      public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo getVisibleEntities(int index) {
-        if (visibleEntitiesBuilder_ == null) {
-          return visibleEntities_.get(index);
-        } else {
-          return visibleEntitiesBuilder_.getMessage(index);
-        }
-      }
-      /**
-       * <code>repeated .EntityInfo visible_entities = 18;</code>
-       */
-      public Builder setVisibleEntities(
-          int index, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo value) {
-        if (visibleEntitiesBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureVisibleEntitiesIsMutable();
-          visibleEntities_.set(index, value);
-          onChanged();
-        } else {
-          visibleEntitiesBuilder_.setMessage(index, value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .EntityInfo visible_entities = 18;</code>
-       */
-      public Builder setVisibleEntities(
-          int index, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo.Builder builderForValue) {
-        if (visibleEntitiesBuilder_ == null) {
-          ensureVisibleEntitiesIsMutable();
-          visibleEntities_.set(index, builderForValue.build());
-          onChanged();
-        } else {
-          visibleEntitiesBuilder_.setMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .EntityInfo visible_entities = 18;</code>
-       */
-      public Builder addVisibleEntities(com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo value) {
-        if (visibleEntitiesBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureVisibleEntitiesIsMutable();
-          visibleEntities_.add(value);
-          onChanged();
-        } else {
-          visibleEntitiesBuilder_.addMessage(value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .EntityInfo visible_entities = 18;</code>
-       */
-      public Builder addVisibleEntities(
-          int index, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo value) {
-        if (visibleEntitiesBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureVisibleEntitiesIsMutable();
-          visibleEntities_.add(index, value);
-          onChanged();
-        } else {
-          visibleEntitiesBuilder_.addMessage(index, value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .EntityInfo visible_entities = 18;</code>
-       */
-      public Builder addVisibleEntities(
-          com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo.Builder builderForValue) {
-        if (visibleEntitiesBuilder_ == null) {
-          ensureVisibleEntitiesIsMutable();
-          visibleEntities_.add(builderForValue.build());
-          onChanged();
-        } else {
-          visibleEntitiesBuilder_.addMessage(builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .EntityInfo visible_entities = 18;</code>
-       */
-      public Builder addVisibleEntities(
-          int index, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo.Builder builderForValue) {
-        if (visibleEntitiesBuilder_ == null) {
-          ensureVisibleEntitiesIsMutable();
-          visibleEntities_.add(index, builderForValue.build());
-          onChanged();
-        } else {
-          visibleEntitiesBuilder_.addMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .EntityInfo visible_entities = 18;</code>
-       */
-      public Builder addAllVisibleEntities(
-          java.lang.Iterable<? extends com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo> values) {
-        if (visibleEntitiesBuilder_ == null) {
-          ensureVisibleEntitiesIsMutable();
-          com.google.protobuf.AbstractMessageLite.Builder.addAll(
-              values, visibleEntities_);
-          onChanged();
-        } else {
-          visibleEntitiesBuilder_.addAllMessages(values);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .EntityInfo visible_entities = 18;</code>
-       */
-      public Builder clearVisibleEntities() {
-        if (visibleEntitiesBuilder_ == null) {
-          visibleEntities_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00020000);
-          onChanged();
-        } else {
-          visibleEntitiesBuilder_.clear();
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .EntityInfo visible_entities = 18;</code>
-       */
-      public Builder removeVisibleEntities(int index) {
-        if (visibleEntitiesBuilder_ == null) {
-          ensureVisibleEntitiesIsMutable();
-          visibleEntities_.remove(index);
-          onChanged();
-        } else {
-          visibleEntitiesBuilder_.remove(index);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .EntityInfo visible_entities = 18;</code>
-       */
-      public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo.Builder getVisibleEntitiesBuilder(
-          int index) {
-        return getVisibleEntitiesFieldBuilder().getBuilder(index);
-      }
-      /**
-       * <code>repeated .EntityInfo visible_entities = 18;</code>
-       */
-      public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfoOrBuilder getVisibleEntitiesOrBuilder(
-          int index) {
-        if (visibleEntitiesBuilder_ == null) {
-          return visibleEntities_.get(index);  } else {
-          return visibleEntitiesBuilder_.getMessageOrBuilder(index);
-        }
-      }
-      /**
-       * <code>repeated .EntityInfo visible_entities = 18;</code>
-       */
-      public java.util.List<? extends com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfoOrBuilder> 
-           getVisibleEntitiesOrBuilderList() {
-        if (visibleEntitiesBuilder_ != null) {
-          return visibleEntitiesBuilder_.getMessageOrBuilderList();
-        } else {
-          return java.util.Collections.unmodifiableList(visibleEntities_);
-        }
-      }
-      /**
-       * <code>repeated .EntityInfo visible_entities = 18;</code>
-       */
-      public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo.Builder addVisibleEntitiesBuilder() {
-        return getVisibleEntitiesFieldBuilder().addBuilder(
-            com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .EntityInfo visible_entities = 18;</code>
-       */
-      public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo.Builder addVisibleEntitiesBuilder(
-          int index) {
-        return getVisibleEntitiesFieldBuilder().addBuilder(
-            index, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .EntityInfo visible_entities = 18;</code>
-       */
-      public java.util.List<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo.Builder> 
-           getVisibleEntitiesBuilderList() {
-        return getVisibleEntitiesFieldBuilder().getBuilderList();
-      }
-      private com.google.protobuf.RepeatedFieldBuilderV3<
-          com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo.Builder, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfoOrBuilder> 
-          getVisibleEntitiesFieldBuilder() {
-        if (visibleEntitiesBuilder_ == null) {
-          visibleEntitiesBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-              com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo.Builder, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfoOrBuilder>(
-                  visibleEntities_,
-                  ((bitField0_ & 0x00020000) != 0),
-                  getParentForChildren(),
-                  isClean());
-          visibleEntities_ = null;
-        }
-        return visibleEntitiesBuilder_;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
-      }
+            /**
+             * <code>double z = 4;</code>
+             *
+             * @param value The z to set.
+             * @return This builder for chaining.
+             */
+            public Builder setZ(double value) {
 
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
+                z_ = value;
+                bitField0_ |= 0x00000008;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>double z = 4;</code>
+             *
+             * @return This builder for chaining.
+             */
+            public Builder clearZ() {
+                bitField0_ = (bitField0_ & ~0x00000008);
+                z_ = 0D;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>double yaw = 5;</code>
+             *
+             * @return The yaw.
+             */
+            @java.lang.Override
+            public double getYaw() {
+                return yaw_;
+            }
+
+            /**
+             * <code>double yaw = 5;</code>
+             *
+             * @param value The yaw to set.
+             * @return This builder for chaining.
+             */
+            public Builder setYaw(double value) {
+
+                yaw_ = value;
+                bitField0_ |= 0x00000010;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>double yaw = 5;</code>
+             *
+             * @return This builder for chaining.
+             */
+            public Builder clearYaw() {
+                bitField0_ = (bitField0_ & ~0x00000010);
+                yaw_ = 0D;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>double pitch = 6;</code>
+             *
+             * @return The pitch.
+             */
+            @java.lang.Override
+            public double getPitch() {
+                return pitch_;
+            }
+
+            /**
+             * <code>double pitch = 6;</code>
+             *
+             * @param value The pitch to set.
+             * @return This builder for chaining.
+             */
+            public Builder setPitch(double value) {
+
+                pitch_ = value;
+                bitField0_ |= 0x00000020;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>double pitch = 6;</code>
+             *
+             * @return This builder for chaining.
+             */
+            public Builder clearPitch() {
+                bitField0_ = (bitField0_ & ~0x00000020);
+                pitch_ = 0D;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>double health = 7;</code>
+             *
+             * @return The health.
+             */
+            @java.lang.Override
+            public double getHealth() {
+                return health_;
+            }
+
+            /**
+             * <code>double health = 7;</code>
+             *
+             * @param value The health to set.
+             * @return This builder for chaining.
+             */
+            public Builder setHealth(double value) {
+
+                health_ = value;
+                bitField0_ |= 0x00000040;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>double health = 7;</code>
+             *
+             * @return This builder for chaining.
+             */
+            public Builder clearHealth() {
+                bitField0_ = (bitField0_ & ~0x00000040);
+                health_ = 0D;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>double food_level = 8;</code>
+             *
+             * @return The foodLevel.
+             */
+            @java.lang.Override
+            public double getFoodLevel() {
+                return foodLevel_;
+            }
+
+            /**
+             * <code>double food_level = 8;</code>
+             *
+             * @param value The foodLevel to set.
+             * @return This builder for chaining.
+             */
+            public Builder setFoodLevel(double value) {
+
+                foodLevel_ = value;
+                bitField0_ |= 0x00000080;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>double food_level = 8;</code>
+             *
+             * @return This builder for chaining.
+             */
+            public Builder clearFoodLevel() {
+                bitField0_ = (bitField0_ & ~0x00000080);
+                foodLevel_ = 0D;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>double saturation_level = 9;</code>
+             *
+             * @return The saturationLevel.
+             */
+            @java.lang.Override
+            public double getSaturationLevel() {
+                return saturationLevel_;
+            }
+
+            /**
+             * <code>double saturation_level = 9;</code>
+             *
+             * @param value The saturationLevel to set.
+             * @return This builder for chaining.
+             */
+            public Builder setSaturationLevel(double value) {
+
+                saturationLevel_ = value;
+                bitField0_ |= 0x00000100;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>double saturation_level = 9;</code>
+             *
+             * @return This builder for chaining.
+             */
+            public Builder clearSaturationLevel() {
+                bitField0_ = (bitField0_ & ~0x00000100);
+                saturationLevel_ = 0D;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>bool is_dead = 10;</code>
+             *
+             * @return The isDead.
+             */
+            @java.lang.Override
+            public boolean getIsDead() {
+                return isDead_;
+            }
+
+            /**
+             * <code>bool is_dead = 10;</code>
+             *
+             * @param value The isDead to set.
+             * @return This builder for chaining.
+             */
+            public Builder setIsDead(boolean value) {
+
+                isDead_ = value;
+                bitField0_ |= 0x00000200;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>bool is_dead = 10;</code>
+             *
+             * @return This builder for chaining.
+             */
+            public Builder clearIsDead() {
+                bitField0_ = (bitField0_ & ~0x00000200);
+                isDead_ = false;
+                onChanged();
+                return this;
+            }
+
+            private void ensureInventoryIsMutable() {
+                if (!((bitField0_ & 0x00000400) != 0)) {
+                    inventory_ = new java.util.ArrayList<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack>(inventory_);
+                    bitField0_ |= 0x00000400;
+                }
+            }
+
+            /**
+             * <code>repeated .ItemStack inventory = 11;</code>
+             */
+            public java.util.List<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack> getInventoryList() {
+                if (inventoryBuilder_ == null) {
+                    return java.util.Collections.unmodifiableList(inventory_);
+                } else {
+                    return inventoryBuilder_.getMessageList();
+                }
+            }
+
+            /**
+             * <code>repeated .ItemStack inventory = 11;</code>
+             */
+            public int getInventoryCount() {
+                if (inventoryBuilder_ == null) {
+                    return inventory_.size();
+                } else {
+                    return inventoryBuilder_.getCount();
+                }
+            }
+
+            /**
+             * <code>repeated .ItemStack inventory = 11;</code>
+             */
+            public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack getInventory(int index) {
+                if (inventoryBuilder_ == null) {
+                    return inventory_.get(index);
+                } else {
+                    return inventoryBuilder_.getMessage(index);
+                }
+            }
+
+            /**
+             * <code>repeated .ItemStack inventory = 11;</code>
+             */
+            public Builder setInventory(
+                    int index, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack value) {
+                if (inventoryBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    ensureInventoryIsMutable();
+                    inventory_.set(index, value);
+                    onChanged();
+                } else {
+                    inventoryBuilder_.setMessage(index, value);
+                }
+                return this;
+            }
+
+            /**
+             * <code>repeated .ItemStack inventory = 11;</code>
+             */
+            public Builder setInventory(
+                    int index, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack.Builder builderForValue) {
+                if (inventoryBuilder_ == null) {
+                    ensureInventoryIsMutable();
+                    inventory_.set(index, builderForValue.build());
+                    onChanged();
+                } else {
+                    inventoryBuilder_.setMessage(index, builderForValue.build());
+                }
+                return this;
+            }
+
+            /**
+             * <code>repeated .ItemStack inventory = 11;</code>
+             */
+            public Builder addInventory(com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack value) {
+                if (inventoryBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    ensureInventoryIsMutable();
+                    inventory_.add(value);
+                    onChanged();
+                } else {
+                    inventoryBuilder_.addMessage(value);
+                }
+                return this;
+            }
+
+            /**
+             * <code>repeated .ItemStack inventory = 11;</code>
+             */
+            public Builder addInventory(
+                    int index, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack value) {
+                if (inventoryBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    ensureInventoryIsMutable();
+                    inventory_.add(index, value);
+                    onChanged();
+                } else {
+                    inventoryBuilder_.addMessage(index, value);
+                }
+                return this;
+            }
+
+            /**
+             * <code>repeated .ItemStack inventory = 11;</code>
+             */
+            public Builder addInventory(
+                    com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack.Builder builderForValue) {
+                if (inventoryBuilder_ == null) {
+                    ensureInventoryIsMutable();
+                    inventory_.add(builderForValue.build());
+                    onChanged();
+                } else {
+                    inventoryBuilder_.addMessage(builderForValue.build());
+                }
+                return this;
+            }
+
+            /**
+             * <code>repeated .ItemStack inventory = 11;</code>
+             */
+            public Builder addInventory(
+                    int index, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack.Builder builderForValue) {
+                if (inventoryBuilder_ == null) {
+                    ensureInventoryIsMutable();
+                    inventory_.add(index, builderForValue.build());
+                    onChanged();
+                } else {
+                    inventoryBuilder_.addMessage(index, builderForValue.build());
+                }
+                return this;
+            }
+
+            /**
+             * <code>repeated .ItemStack inventory = 11;</code>
+             */
+            public Builder addAllInventory(
+                    java.lang.Iterable<? extends com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack> values) {
+                if (inventoryBuilder_ == null) {
+                    ensureInventoryIsMutable();
+                    com.google.protobuf.AbstractMessageLite.Builder.addAll(
+                            values, inventory_);
+                    onChanged();
+                } else {
+                    inventoryBuilder_.addAllMessages(values);
+                }
+                return this;
+            }
+
+            /**
+             * <code>repeated .ItemStack inventory = 11;</code>
+             */
+            public Builder clearInventory() {
+                if (inventoryBuilder_ == null) {
+                    inventory_ = java.util.Collections.emptyList();
+                    bitField0_ = (bitField0_ & ~0x00000400);
+                    onChanged();
+                } else {
+                    inventoryBuilder_.clear();
+                }
+                return this;
+            }
+
+            /**
+             * <code>repeated .ItemStack inventory = 11;</code>
+             */
+            public Builder removeInventory(int index) {
+                if (inventoryBuilder_ == null) {
+                    ensureInventoryIsMutable();
+                    inventory_.remove(index);
+                    onChanged();
+                } else {
+                    inventoryBuilder_.remove(index);
+                }
+                return this;
+            }
+
+            /**
+             * <code>repeated .ItemStack inventory = 11;</code>
+             */
+            public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack.Builder getInventoryBuilder(
+                    int index) {
+                return getInventoryFieldBuilder().getBuilder(index);
+            }
+
+            /**
+             * <code>repeated .ItemStack inventory = 11;</code>
+             */
+            public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStackOrBuilder getInventoryOrBuilder(
+                    int index) {
+                if (inventoryBuilder_ == null) {
+                    return inventory_.get(index);
+                } else {
+                    return inventoryBuilder_.getMessageOrBuilder(index);
+                }
+            }
+
+            /**
+             * <code>repeated .ItemStack inventory = 11;</code>
+             */
+            public java.util.List<? extends com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStackOrBuilder>
+            getInventoryOrBuilderList() {
+                if (inventoryBuilder_ != null) {
+                    return inventoryBuilder_.getMessageOrBuilderList();
+                } else {
+                    return java.util.Collections.unmodifiableList(inventory_);
+                }
+            }
+
+            /**
+             * <code>repeated .ItemStack inventory = 11;</code>
+             */
+            public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack.Builder addInventoryBuilder() {
+                return getInventoryFieldBuilder().addBuilder(
+                        com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack.getDefaultInstance());
+            }
+
+            /**
+             * <code>repeated .ItemStack inventory = 11;</code>
+             */
+            public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack.Builder addInventoryBuilder(
+                    int index) {
+                return getInventoryFieldBuilder().addBuilder(
+                        index, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack.getDefaultInstance());
+            }
+
+            /**
+             * <code>repeated .ItemStack inventory = 11;</code>
+             */
+            public java.util.List<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack.Builder>
+            getInventoryBuilderList() {
+                return getInventoryFieldBuilder().getBuilderList();
+            }
+
+            private com.google.protobuf.RepeatedFieldBuilderV3<
+                    com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack.Builder, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStackOrBuilder>
+            getInventoryFieldBuilder() {
+                if (inventoryBuilder_ == null) {
+                    inventoryBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+                            com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStack.Builder, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ItemStackOrBuilder>(
+                            inventory_,
+                            ((bitField0_ & 0x00000400) != 0),
+                            getParentForChildren(),
+                            isClean());
+                    inventory_ = null;
+                }
+                return inventoryBuilder_;
+            }
+
+            /**
+             * <code>.HitResult raycast_result = 12;</code>
+             *
+             * @return Whether the raycastResult field is set.
+             */
+            public boolean hasRaycastResult() {
+                return ((bitField0_ & 0x00000800) != 0);
+            }
+
+            /**
+             * <code>.HitResult raycast_result = 12;</code>
+             *
+             * @return The raycastResult.
+             */
+            public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult getRaycastResult() {
+                if (raycastResultBuilder_ == null) {
+                    return raycastResult_ == null ? com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult.getDefaultInstance() : raycastResult_;
+                } else {
+                    return raycastResultBuilder_.getMessage();
+                }
+            }
+
+            /**
+             * <code>.HitResult raycast_result = 12;</code>
+             */
+            public Builder setRaycastResult(com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult value) {
+                if (raycastResultBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    raycastResult_ = value;
+                } else {
+                    raycastResultBuilder_.setMessage(value);
+                }
+                bitField0_ |= 0x00000800;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>.HitResult raycast_result = 12;</code>
+             */
+            public Builder setRaycastResult(
+                    com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult.Builder builderForValue) {
+                if (raycastResultBuilder_ == null) {
+                    raycastResult_ = builderForValue.build();
+                } else {
+                    raycastResultBuilder_.setMessage(builderForValue.build());
+                }
+                bitField0_ |= 0x00000800;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>.HitResult raycast_result = 12;</code>
+             */
+            public Builder mergeRaycastResult(com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult value) {
+                if (raycastResultBuilder_ == null) {
+                    if (((bitField0_ & 0x00000800) != 0) &&
+                            raycastResult_ != null &&
+                            raycastResult_ != com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult.getDefaultInstance()) {
+                        getRaycastResultBuilder().mergeFrom(value);
+                    } else {
+                        raycastResult_ = value;
+                    }
+                } else {
+                    raycastResultBuilder_.mergeFrom(value);
+                }
+                bitField0_ |= 0x00000800;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>.HitResult raycast_result = 12;</code>
+             */
+            public Builder clearRaycastResult() {
+                bitField0_ = (bitField0_ & ~0x00000800);
+                raycastResult_ = null;
+                if (raycastResultBuilder_ != null) {
+                    raycastResultBuilder_.dispose();
+                    raycastResultBuilder_ = null;
+                }
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>.HitResult raycast_result = 12;</code>
+             */
+            public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult.Builder getRaycastResultBuilder() {
+                bitField0_ |= 0x00000800;
+                onChanged();
+                return getRaycastResultFieldBuilder().getBuilder();
+            }
+
+            /**
+             * <code>.HitResult raycast_result = 12;</code>
+             */
+            public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResultOrBuilder getRaycastResultOrBuilder() {
+                if (raycastResultBuilder_ != null) {
+                    return raycastResultBuilder_.getMessageOrBuilder();
+                } else {
+                    return raycastResult_ == null ?
+                            com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult.getDefaultInstance() : raycastResult_;
+                }
+            }
+
+            /**
+             * <code>.HitResult raycast_result = 12;</code>
+             */
+            private com.google.protobuf.SingleFieldBuilderV3<
+                    com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult.Builder, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResultOrBuilder>
+            getRaycastResultFieldBuilder() {
+                if (raycastResultBuilder_ == null) {
+                    raycastResultBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+                            com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult.Builder, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResultOrBuilder>(
+                            getRaycastResult(),
+                            getParentForChildren(),
+                            isClean());
+                    raycastResult_ = null;
+                }
+                return raycastResultBuilder_;
+            }
+
+            private void ensureSoundSubtitlesIsMutable() {
+                if (!((bitField0_ & 0x00001000) != 0)) {
+                    soundSubtitles_ = new java.util.ArrayList<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry>(soundSubtitles_);
+                    bitField0_ |= 0x00001000;
+                }
+            }
+
+            /**
+             * <code>repeated .SoundEntry sound_subtitles = 13;</code>
+             */
+            public java.util.List<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry> getSoundSubtitlesList() {
+                if (soundSubtitlesBuilder_ == null) {
+                    return java.util.Collections.unmodifiableList(soundSubtitles_);
+                } else {
+                    return soundSubtitlesBuilder_.getMessageList();
+                }
+            }
+
+            /**
+             * <code>repeated .SoundEntry sound_subtitles = 13;</code>
+             */
+            public int getSoundSubtitlesCount() {
+                if (soundSubtitlesBuilder_ == null) {
+                    return soundSubtitles_.size();
+                } else {
+                    return soundSubtitlesBuilder_.getCount();
+                }
+            }
+
+            /**
+             * <code>repeated .SoundEntry sound_subtitles = 13;</code>
+             */
+            public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry getSoundSubtitles(int index) {
+                if (soundSubtitlesBuilder_ == null) {
+                    return soundSubtitles_.get(index);
+                } else {
+                    return soundSubtitlesBuilder_.getMessage(index);
+                }
+            }
+
+            /**
+             * <code>repeated .SoundEntry sound_subtitles = 13;</code>
+             */
+            public Builder setSoundSubtitles(
+                    int index, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry value) {
+                if (soundSubtitlesBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    ensureSoundSubtitlesIsMutable();
+                    soundSubtitles_.set(index, value);
+                    onChanged();
+                } else {
+                    soundSubtitlesBuilder_.setMessage(index, value);
+                }
+                return this;
+            }
+
+            /**
+             * <code>repeated .SoundEntry sound_subtitles = 13;</code>
+             */
+            public Builder setSoundSubtitles(
+                    int index, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry.Builder builderForValue) {
+                if (soundSubtitlesBuilder_ == null) {
+                    ensureSoundSubtitlesIsMutable();
+                    soundSubtitles_.set(index, builderForValue.build());
+                    onChanged();
+                } else {
+                    soundSubtitlesBuilder_.setMessage(index, builderForValue.build());
+                }
+                return this;
+            }
+
+            /**
+             * <code>repeated .SoundEntry sound_subtitles = 13;</code>
+             */
+            public Builder addSoundSubtitles(com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry value) {
+                if (soundSubtitlesBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    ensureSoundSubtitlesIsMutable();
+                    soundSubtitles_.add(value);
+                    onChanged();
+                } else {
+                    soundSubtitlesBuilder_.addMessage(value);
+                }
+                return this;
+            }
+
+            /**
+             * <code>repeated .SoundEntry sound_subtitles = 13;</code>
+             */
+            public Builder addSoundSubtitles(
+                    int index, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry value) {
+                if (soundSubtitlesBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    ensureSoundSubtitlesIsMutable();
+                    soundSubtitles_.add(index, value);
+                    onChanged();
+                } else {
+                    soundSubtitlesBuilder_.addMessage(index, value);
+                }
+                return this;
+            }
+
+            /**
+             * <code>repeated .SoundEntry sound_subtitles = 13;</code>
+             */
+            public Builder addSoundSubtitles(
+                    com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry.Builder builderForValue) {
+                if (soundSubtitlesBuilder_ == null) {
+                    ensureSoundSubtitlesIsMutable();
+                    soundSubtitles_.add(builderForValue.build());
+                    onChanged();
+                } else {
+                    soundSubtitlesBuilder_.addMessage(builderForValue.build());
+                }
+                return this;
+            }
+
+            /**
+             * <code>repeated .SoundEntry sound_subtitles = 13;</code>
+             */
+            public Builder addSoundSubtitles(
+                    int index, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry.Builder builderForValue) {
+                if (soundSubtitlesBuilder_ == null) {
+                    ensureSoundSubtitlesIsMutable();
+                    soundSubtitles_.add(index, builderForValue.build());
+                    onChanged();
+                } else {
+                    soundSubtitlesBuilder_.addMessage(index, builderForValue.build());
+                }
+                return this;
+            }
+
+            /**
+             * <code>repeated .SoundEntry sound_subtitles = 13;</code>
+             */
+            public Builder addAllSoundSubtitles(
+                    java.lang.Iterable<? extends com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry> values) {
+                if (soundSubtitlesBuilder_ == null) {
+                    ensureSoundSubtitlesIsMutable();
+                    com.google.protobuf.AbstractMessageLite.Builder.addAll(
+                            values, soundSubtitles_);
+                    onChanged();
+                } else {
+                    soundSubtitlesBuilder_.addAllMessages(values);
+                }
+                return this;
+            }
+
+            /**
+             * <code>repeated .SoundEntry sound_subtitles = 13;</code>
+             */
+            public Builder clearSoundSubtitles() {
+                if (soundSubtitlesBuilder_ == null) {
+                    soundSubtitles_ = java.util.Collections.emptyList();
+                    bitField0_ = (bitField0_ & ~0x00001000);
+                    onChanged();
+                } else {
+                    soundSubtitlesBuilder_.clear();
+                }
+                return this;
+            }
+
+            /**
+             * <code>repeated .SoundEntry sound_subtitles = 13;</code>
+             */
+            public Builder removeSoundSubtitles(int index) {
+                if (soundSubtitlesBuilder_ == null) {
+                    ensureSoundSubtitlesIsMutable();
+                    soundSubtitles_.remove(index);
+                    onChanged();
+                } else {
+                    soundSubtitlesBuilder_.remove(index);
+                }
+                return this;
+            }
+
+            /**
+             * <code>repeated .SoundEntry sound_subtitles = 13;</code>
+             */
+            public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry.Builder getSoundSubtitlesBuilder(
+                    int index) {
+                return getSoundSubtitlesFieldBuilder().getBuilder(index);
+            }
+
+            /**
+             * <code>repeated .SoundEntry sound_subtitles = 13;</code>
+             */
+            public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntryOrBuilder getSoundSubtitlesOrBuilder(
+                    int index) {
+                if (soundSubtitlesBuilder_ == null) {
+                    return soundSubtitles_.get(index);
+                } else {
+                    return soundSubtitlesBuilder_.getMessageOrBuilder(index);
+                }
+            }
+
+            /**
+             * <code>repeated .SoundEntry sound_subtitles = 13;</code>
+             */
+            public java.util.List<? extends com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntryOrBuilder>
+            getSoundSubtitlesOrBuilderList() {
+                if (soundSubtitlesBuilder_ != null) {
+                    return soundSubtitlesBuilder_.getMessageOrBuilderList();
+                } else {
+                    return java.util.Collections.unmodifiableList(soundSubtitles_);
+                }
+            }
+
+            /**
+             * <code>repeated .SoundEntry sound_subtitles = 13;</code>
+             */
+            public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry.Builder addSoundSubtitlesBuilder() {
+                return getSoundSubtitlesFieldBuilder().addBuilder(
+                        com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry.getDefaultInstance());
+            }
+
+            /**
+             * <code>repeated .SoundEntry sound_subtitles = 13;</code>
+             */
+            public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry.Builder addSoundSubtitlesBuilder(
+                    int index) {
+                return getSoundSubtitlesFieldBuilder().addBuilder(
+                        index, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry.getDefaultInstance());
+            }
+
+            /**
+             * <code>repeated .SoundEntry sound_subtitles = 13;</code>
+             */
+            public java.util.List<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry.Builder>
+            getSoundSubtitlesBuilderList() {
+                return getSoundSubtitlesFieldBuilder().getBuilderList();
+            }
+
+            private com.google.protobuf.RepeatedFieldBuilderV3<
+                    com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry.Builder, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntryOrBuilder>
+            getSoundSubtitlesFieldBuilder() {
+                if (soundSubtitlesBuilder_ == null) {
+                    soundSubtitlesBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+                            com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntry.Builder, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.SoundEntryOrBuilder>(
+                            soundSubtitles_,
+                            ((bitField0_ & 0x00001000) != 0),
+                            getParentForChildren(),
+                            isClean());
+                    soundSubtitles_ = null;
+                }
+                return soundSubtitlesBuilder_;
+            }
+
+            private void ensureStatusEffectsIsMutable() {
+                if (!((bitField0_ & 0x00002000) != 0)) {
+                    statusEffects_ = new java.util.ArrayList<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect>(statusEffects_);
+                    bitField0_ |= 0x00002000;
+                }
+            }
+
+            /**
+             * <code>repeated .StatusEffect status_effects = 14;</code>
+             */
+            public java.util.List<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect> getStatusEffectsList() {
+                if (statusEffectsBuilder_ == null) {
+                    return java.util.Collections.unmodifiableList(statusEffects_);
+                } else {
+                    return statusEffectsBuilder_.getMessageList();
+                }
+            }
+
+            /**
+             * <code>repeated .StatusEffect status_effects = 14;</code>
+             */
+            public int getStatusEffectsCount() {
+                if (statusEffectsBuilder_ == null) {
+                    return statusEffects_.size();
+                } else {
+                    return statusEffectsBuilder_.getCount();
+                }
+            }
+
+            /**
+             * <code>repeated .StatusEffect status_effects = 14;</code>
+             */
+            public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect getStatusEffects(int index) {
+                if (statusEffectsBuilder_ == null) {
+                    return statusEffects_.get(index);
+                } else {
+                    return statusEffectsBuilder_.getMessage(index);
+                }
+            }
+
+            /**
+             * <code>repeated .StatusEffect status_effects = 14;</code>
+             */
+            public Builder setStatusEffects(
+                    int index, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect value) {
+                if (statusEffectsBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    ensureStatusEffectsIsMutable();
+                    statusEffects_.set(index, value);
+                    onChanged();
+                } else {
+                    statusEffectsBuilder_.setMessage(index, value);
+                }
+                return this;
+            }
+
+            /**
+             * <code>repeated .StatusEffect status_effects = 14;</code>
+             */
+            public Builder setStatusEffects(
+                    int index, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect.Builder builderForValue) {
+                if (statusEffectsBuilder_ == null) {
+                    ensureStatusEffectsIsMutable();
+                    statusEffects_.set(index, builderForValue.build());
+                    onChanged();
+                } else {
+                    statusEffectsBuilder_.setMessage(index, builderForValue.build());
+                }
+                return this;
+            }
+
+            /**
+             * <code>repeated .StatusEffect status_effects = 14;</code>
+             */
+            public Builder addStatusEffects(com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect value) {
+                if (statusEffectsBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    ensureStatusEffectsIsMutable();
+                    statusEffects_.add(value);
+                    onChanged();
+                } else {
+                    statusEffectsBuilder_.addMessage(value);
+                }
+                return this;
+            }
+
+            /**
+             * <code>repeated .StatusEffect status_effects = 14;</code>
+             */
+            public Builder addStatusEffects(
+                    int index, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect value) {
+                if (statusEffectsBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    ensureStatusEffectsIsMutable();
+                    statusEffects_.add(index, value);
+                    onChanged();
+                } else {
+                    statusEffectsBuilder_.addMessage(index, value);
+                }
+                return this;
+            }
+
+            /**
+             * <code>repeated .StatusEffect status_effects = 14;</code>
+             */
+            public Builder addStatusEffects(
+                    com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect.Builder builderForValue) {
+                if (statusEffectsBuilder_ == null) {
+                    ensureStatusEffectsIsMutable();
+                    statusEffects_.add(builderForValue.build());
+                    onChanged();
+                } else {
+                    statusEffectsBuilder_.addMessage(builderForValue.build());
+                }
+                return this;
+            }
+
+            /**
+             * <code>repeated .StatusEffect status_effects = 14;</code>
+             */
+            public Builder addStatusEffects(
+                    int index, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect.Builder builderForValue) {
+                if (statusEffectsBuilder_ == null) {
+                    ensureStatusEffectsIsMutable();
+                    statusEffects_.add(index, builderForValue.build());
+                    onChanged();
+                } else {
+                    statusEffectsBuilder_.addMessage(index, builderForValue.build());
+                }
+                return this;
+            }
+
+            /**
+             * <code>repeated .StatusEffect status_effects = 14;</code>
+             */
+            public Builder addAllStatusEffects(
+                    java.lang.Iterable<? extends com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect> values) {
+                if (statusEffectsBuilder_ == null) {
+                    ensureStatusEffectsIsMutable();
+                    com.google.protobuf.AbstractMessageLite.Builder.addAll(
+                            values, statusEffects_);
+                    onChanged();
+                } else {
+                    statusEffectsBuilder_.addAllMessages(values);
+                }
+                return this;
+            }
+
+            /**
+             * <code>repeated .StatusEffect status_effects = 14;</code>
+             */
+            public Builder clearStatusEffects() {
+                if (statusEffectsBuilder_ == null) {
+                    statusEffects_ = java.util.Collections.emptyList();
+                    bitField0_ = (bitField0_ & ~0x00002000);
+                    onChanged();
+                } else {
+                    statusEffectsBuilder_.clear();
+                }
+                return this;
+            }
+
+            /**
+             * <code>repeated .StatusEffect status_effects = 14;</code>
+             */
+            public Builder removeStatusEffects(int index) {
+                if (statusEffectsBuilder_ == null) {
+                    ensureStatusEffectsIsMutable();
+                    statusEffects_.remove(index);
+                    onChanged();
+                } else {
+                    statusEffectsBuilder_.remove(index);
+                }
+                return this;
+            }
+
+            /**
+             * <code>repeated .StatusEffect status_effects = 14;</code>
+             */
+            public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect.Builder getStatusEffectsBuilder(
+                    int index) {
+                return getStatusEffectsFieldBuilder().getBuilder(index);
+            }
+
+            /**
+             * <code>repeated .StatusEffect status_effects = 14;</code>
+             */
+            public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffectOrBuilder getStatusEffectsOrBuilder(
+                    int index) {
+                if (statusEffectsBuilder_ == null) {
+                    return statusEffects_.get(index);
+                } else {
+                    return statusEffectsBuilder_.getMessageOrBuilder(index);
+                }
+            }
+
+            /**
+             * <code>repeated .StatusEffect status_effects = 14;</code>
+             */
+            public java.util.List<? extends com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffectOrBuilder>
+            getStatusEffectsOrBuilderList() {
+                if (statusEffectsBuilder_ != null) {
+                    return statusEffectsBuilder_.getMessageOrBuilderList();
+                } else {
+                    return java.util.Collections.unmodifiableList(statusEffects_);
+                }
+            }
+
+            /**
+             * <code>repeated .StatusEffect status_effects = 14;</code>
+             */
+            public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect.Builder addStatusEffectsBuilder() {
+                return getStatusEffectsFieldBuilder().addBuilder(
+                        com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect.getDefaultInstance());
+            }
+
+            /**
+             * <code>repeated .StatusEffect status_effects = 14;</code>
+             */
+            public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect.Builder addStatusEffectsBuilder(
+                    int index) {
+                return getStatusEffectsFieldBuilder().addBuilder(
+                        index, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect.getDefaultInstance());
+            }
+
+            /**
+             * <code>repeated .StatusEffect status_effects = 14;</code>
+             */
+            public java.util.List<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect.Builder>
+            getStatusEffectsBuilderList() {
+                return getStatusEffectsFieldBuilder().getBuilderList();
+            }
+
+            private com.google.protobuf.RepeatedFieldBuilderV3<
+                    com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect.Builder, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffectOrBuilder>
+            getStatusEffectsFieldBuilder() {
+                if (statusEffectsBuilder_ == null) {
+                    statusEffectsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+                            com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect.Builder, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffectOrBuilder>(
+                            statusEffects_,
+                            ((bitField0_ & 0x00002000) != 0),
+                            getParentForChildren(),
+                            isClean());
+                    statusEffects_ = null;
+                }
+                return statusEffectsBuilder_;
+            }
+
+            private com.google.protobuf.MapField<java.lang.String, java.lang.Integer>
+            internalGetKilledStatistics() {
+                if (killedStatistics_ == null) {
+                    return com.google.protobuf.MapField.emptyMapField(
+                            KilledStatisticsDefaultEntryHolder.defaultEntry);
+                }
+                return killedStatistics_;
+            }
+
+            private com.google.protobuf.MapField<java.lang.String, java.lang.Integer>
+            internalGetMutableKilledStatistics() {
+                if (killedStatistics_ == null) {
+                    killedStatistics_ = com.google.protobuf.MapField.newMapField(
+                            KilledStatisticsDefaultEntryHolder.defaultEntry);
+                }
+                if (!killedStatistics_.isMutable()) {
+                    killedStatistics_ = killedStatistics_.copy();
+                }
+                bitField0_ |= 0x00004000;
+                onChanged();
+                return killedStatistics_;
+            }
+
+            public int getKilledStatisticsCount() {
+                return internalGetKilledStatistics().getMap().size();
+            }
+
+            /**
+             * <code>map&lt;string, int32&gt; killed_statistics = 15;</code>
+             */
+            @java.lang.Override
+            public boolean containsKilledStatistics(
+                    java.lang.String key) {
+                if (key == null) {
+                    throw new NullPointerException("map key");
+                }
+                return internalGetKilledStatistics().getMap().containsKey(key);
+            }
+
+            /**
+             * Use {@link #getKilledStatisticsMap()} instead.
+             */
+            @java.lang.Override
+            @java.lang.Deprecated
+            public java.util.Map<java.lang.String, java.lang.Integer> getKilledStatistics() {
+                return getKilledStatisticsMap();
+            }
+
+            /**
+             * <code>map&lt;string, int32&gt; killed_statistics = 15;</code>
+             */
+            @java.lang.Override
+            public java.util.Map<java.lang.String, java.lang.Integer> getKilledStatisticsMap() {
+                return internalGetKilledStatistics().getMap();
+            }
+
+            /**
+             * <code>map&lt;string, int32&gt; killed_statistics = 15;</code>
+             */
+            @java.lang.Override
+            public int getKilledStatisticsOrDefault(
+                    java.lang.String key,
+                    int defaultValue) {
+                if (key == null) {
+                    throw new NullPointerException("map key");
+                }
+                java.util.Map<java.lang.String, java.lang.Integer> map =
+                        internalGetKilledStatistics().getMap();
+                return map.containsKey(key) ? map.get(key) : defaultValue;
+            }
+
+            /**
+             * <code>map&lt;string, int32&gt; killed_statistics = 15;</code>
+             */
+            @java.lang.Override
+            public int getKilledStatisticsOrThrow(
+                    java.lang.String key) {
+                if (key == null) {
+                    throw new NullPointerException("map key");
+                }
+                java.util.Map<java.lang.String, java.lang.Integer> map =
+                        internalGetKilledStatistics().getMap();
+                if (!map.containsKey(key)) {
+                    throw new java.lang.IllegalArgumentException();
+                }
+                return map.get(key);
+            }
+
+            public Builder clearKilledStatistics() {
+                bitField0_ = (bitField0_ & ~0x00004000);
+                internalGetMutableKilledStatistics().getMutableMap()
+                        .clear();
+                return this;
+            }
+
+            /**
+             * <code>map&lt;string, int32&gt; killed_statistics = 15;</code>
+             */
+            public Builder removeKilledStatistics(
+                    java.lang.String key) {
+                if (key == null) {
+                    throw new NullPointerException("map key");
+                }
+                internalGetMutableKilledStatistics().getMutableMap()
+                        .remove(key);
+                return this;
+            }
+
+            /**
+             * Use alternate mutation accessors instead.
+             */
+            @java.lang.Deprecated
+            public java.util.Map<java.lang.String, java.lang.Integer>
+            getMutableKilledStatistics() {
+                bitField0_ |= 0x00004000;
+                return internalGetMutableKilledStatistics().getMutableMap();
+            }
+
+            /**
+             * <code>map&lt;string, int32&gt; killed_statistics = 15;</code>
+             */
+            public Builder putKilledStatistics(
+                    java.lang.String key,
+                    int value) {
+                if (key == null) {
+                    throw new NullPointerException("map key");
+                }
+
+                internalGetMutableKilledStatistics().getMutableMap()
+                        .put(key, value);
+                bitField0_ |= 0x00004000;
+                return this;
+            }
+
+            /**
+             * <code>map&lt;string, int32&gt; killed_statistics = 15;</code>
+             */
+            public Builder putAllKilledStatistics(
+                    java.util.Map<java.lang.String, java.lang.Integer> values) {
+                internalGetMutableKilledStatistics().getMutableMap()
+                        .putAll(values);
+                bitField0_ |= 0x00004000;
+                return this;
+            }
+
+            private com.google.protobuf.MapField<java.lang.String, java.lang.Integer>
+            internalGetMinedStatistics() {
+                if (minedStatistics_ == null) {
+                    return com.google.protobuf.MapField.emptyMapField(
+                            MinedStatisticsDefaultEntryHolder.defaultEntry);
+                }
+                return minedStatistics_;
+            }
+
+            private com.google.protobuf.MapField<java.lang.String, java.lang.Integer>
+            internalGetMutableMinedStatistics() {
+                if (minedStatistics_ == null) {
+                    minedStatistics_ = com.google.protobuf.MapField.newMapField(
+                            MinedStatisticsDefaultEntryHolder.defaultEntry);
+                }
+                if (!minedStatistics_.isMutable()) {
+                    minedStatistics_ = minedStatistics_.copy();
+                }
+                bitField0_ |= 0x00008000;
+                onChanged();
+                return minedStatistics_;
+            }
+
+            public int getMinedStatisticsCount() {
+                return internalGetMinedStatistics().getMap().size();
+            }
+
+            /**
+             * <code>map&lt;string, int32&gt; mined_statistics = 16;</code>
+             */
+            @java.lang.Override
+            public boolean containsMinedStatistics(
+                    java.lang.String key) {
+                if (key == null) {
+                    throw new NullPointerException("map key");
+                }
+                return internalGetMinedStatistics().getMap().containsKey(key);
+            }
+
+            /**
+             * Use {@link #getMinedStatisticsMap()} instead.
+             */
+            @java.lang.Override
+            @java.lang.Deprecated
+            public java.util.Map<java.lang.String, java.lang.Integer> getMinedStatistics() {
+                return getMinedStatisticsMap();
+            }
+
+            /**
+             * <code>map&lt;string, int32&gt; mined_statistics = 16;</code>
+             */
+            @java.lang.Override
+            public java.util.Map<java.lang.String, java.lang.Integer> getMinedStatisticsMap() {
+                return internalGetMinedStatistics().getMap();
+            }
+
+            /**
+             * <code>map&lt;string, int32&gt; mined_statistics = 16;</code>
+             */
+            @java.lang.Override
+            public int getMinedStatisticsOrDefault(
+                    java.lang.String key,
+                    int defaultValue) {
+                if (key == null) {
+                    throw new NullPointerException("map key");
+                }
+                java.util.Map<java.lang.String, java.lang.Integer> map =
+                        internalGetMinedStatistics().getMap();
+                return map.containsKey(key) ? map.get(key) : defaultValue;
+            }
+
+            /**
+             * <code>map&lt;string, int32&gt; mined_statistics = 16;</code>
+             */
+            @java.lang.Override
+            public int getMinedStatisticsOrThrow(
+                    java.lang.String key) {
+                if (key == null) {
+                    throw new NullPointerException("map key");
+                }
+                java.util.Map<java.lang.String, java.lang.Integer> map =
+                        internalGetMinedStatistics().getMap();
+                if (!map.containsKey(key)) {
+                    throw new java.lang.IllegalArgumentException();
+                }
+                return map.get(key);
+            }
+
+            public Builder clearMinedStatistics() {
+                bitField0_ = (bitField0_ & ~0x00008000);
+                internalGetMutableMinedStatistics().getMutableMap()
+                        .clear();
+                return this;
+            }
+
+            /**
+             * <code>map&lt;string, int32&gt; mined_statistics = 16;</code>
+             */
+            public Builder removeMinedStatistics(
+                    java.lang.String key) {
+                if (key == null) {
+                    throw new NullPointerException("map key");
+                }
+                internalGetMutableMinedStatistics().getMutableMap()
+                        .remove(key);
+                return this;
+            }
+
+            /**
+             * Use alternate mutation accessors instead.
+             */
+            @java.lang.Deprecated
+            public java.util.Map<java.lang.String, java.lang.Integer>
+            getMutableMinedStatistics() {
+                bitField0_ |= 0x00008000;
+                return internalGetMutableMinedStatistics().getMutableMap();
+            }
+
+            /**
+             * <code>map&lt;string, int32&gt; mined_statistics = 16;</code>
+             */
+            public Builder putMinedStatistics(
+                    java.lang.String key,
+                    int value) {
+                if (key == null) {
+                    throw new NullPointerException("map key");
+                }
+
+                internalGetMutableMinedStatistics().getMutableMap()
+                        .put(key, value);
+                bitField0_ |= 0x00008000;
+                return this;
+            }
+
+            /**
+             * <code>map&lt;string, int32&gt; mined_statistics = 16;</code>
+             */
+            public Builder putAllMinedStatistics(
+                    java.util.Map<java.lang.String, java.lang.Integer> values) {
+                internalGetMutableMinedStatistics().getMutableMap()
+                        .putAll(values);
+                bitField0_ |= 0x00008000;
+                return this;
+            }
+
+            private com.google.protobuf.MapField<java.lang.String, java.lang.Integer>
+            internalGetMiscStatistics() {
+                if (miscStatistics_ == null) {
+                    return com.google.protobuf.MapField.emptyMapField(
+                            MiscStatisticsDefaultEntryHolder.defaultEntry);
+                }
+                return miscStatistics_;
+            }
+
+            private com.google.protobuf.MapField<java.lang.String, java.lang.Integer>
+            internalGetMutableMiscStatistics() {
+                if (miscStatistics_ == null) {
+                    miscStatistics_ = com.google.protobuf.MapField.newMapField(
+                            MiscStatisticsDefaultEntryHolder.defaultEntry);
+                }
+                if (!miscStatistics_.isMutable()) {
+                    miscStatistics_ = miscStatistics_.copy();
+                }
+                bitField0_ |= 0x00010000;
+                onChanged();
+                return miscStatistics_;
+            }
+
+            public int getMiscStatisticsCount() {
+                return internalGetMiscStatistics().getMap().size();
+            }
+
+            /**
+             * <code>map&lt;string, int32&gt; misc_statistics = 17;</code>
+             */
+            @java.lang.Override
+            public boolean containsMiscStatistics(
+                    java.lang.String key) {
+                if (key == null) {
+                    throw new NullPointerException("map key");
+                }
+                return internalGetMiscStatistics().getMap().containsKey(key);
+            }
+
+            /**
+             * Use {@link #getMiscStatisticsMap()} instead.
+             */
+            @java.lang.Override
+            @java.lang.Deprecated
+            public java.util.Map<java.lang.String, java.lang.Integer> getMiscStatistics() {
+                return getMiscStatisticsMap();
+            }
+
+            /**
+             * <code>map&lt;string, int32&gt; misc_statistics = 17;</code>
+             */
+            @java.lang.Override
+            public java.util.Map<java.lang.String, java.lang.Integer> getMiscStatisticsMap() {
+                return internalGetMiscStatistics().getMap();
+            }
+
+            /**
+             * <code>map&lt;string, int32&gt; misc_statistics = 17;</code>
+             */
+            @java.lang.Override
+            public int getMiscStatisticsOrDefault(
+                    java.lang.String key,
+                    int defaultValue) {
+                if (key == null) {
+                    throw new NullPointerException("map key");
+                }
+                java.util.Map<java.lang.String, java.lang.Integer> map =
+                        internalGetMiscStatistics().getMap();
+                return map.containsKey(key) ? map.get(key) : defaultValue;
+            }
+
+            /**
+             * <code>map&lt;string, int32&gt; misc_statistics = 17;</code>
+             */
+            @java.lang.Override
+            public int getMiscStatisticsOrThrow(
+                    java.lang.String key) {
+                if (key == null) {
+                    throw new NullPointerException("map key");
+                }
+                java.util.Map<java.lang.String, java.lang.Integer> map =
+                        internalGetMiscStatistics().getMap();
+                if (!map.containsKey(key)) {
+                    throw new java.lang.IllegalArgumentException();
+                }
+                return map.get(key);
+            }
+
+            public Builder clearMiscStatistics() {
+                bitField0_ = (bitField0_ & ~0x00010000);
+                internalGetMutableMiscStatistics().getMutableMap()
+                        .clear();
+                return this;
+            }
+
+            /**
+             * <code>map&lt;string, int32&gt; misc_statistics = 17;</code>
+             */
+            public Builder removeMiscStatistics(
+                    java.lang.String key) {
+                if (key == null) {
+                    throw new NullPointerException("map key");
+                }
+                internalGetMutableMiscStatistics().getMutableMap()
+                        .remove(key);
+                return this;
+            }
+
+            /**
+             * Use alternate mutation accessors instead.
+             */
+            @java.lang.Deprecated
+            public java.util.Map<java.lang.String, java.lang.Integer>
+            getMutableMiscStatistics() {
+                bitField0_ |= 0x00010000;
+                return internalGetMutableMiscStatistics().getMutableMap();
+            }
+
+            /**
+             * <code>map&lt;string, int32&gt; misc_statistics = 17;</code>
+             */
+            public Builder putMiscStatistics(
+                    java.lang.String key,
+                    int value) {
+                if (key == null) {
+                    throw new NullPointerException("map key");
+                }
+
+                internalGetMutableMiscStatistics().getMutableMap()
+                        .put(key, value);
+                bitField0_ |= 0x00010000;
+                return this;
+            }
+
+            /**
+             * <code>map&lt;string, int32&gt; misc_statistics = 17;</code>
+             */
+            public Builder putAllMiscStatistics(
+                    java.util.Map<java.lang.String, java.lang.Integer> values) {
+                internalGetMutableMiscStatistics().getMutableMap()
+                        .putAll(values);
+                bitField0_ |= 0x00010000;
+                return this;
+            }
+
+            private void ensureVisibleEntitiesIsMutable() {
+                if (!((bitField0_ & 0x00020000) != 0)) {
+                    visibleEntities_ = new java.util.ArrayList<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo>(visibleEntities_);
+                    bitField0_ |= 0x00020000;
+                }
+            }
+
+            /**
+             * <code>repeated .EntityInfo visible_entities = 18;</code>
+             */
+            public java.util.List<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo> getVisibleEntitiesList() {
+                if (visibleEntitiesBuilder_ == null) {
+                    return java.util.Collections.unmodifiableList(visibleEntities_);
+                } else {
+                    return visibleEntitiesBuilder_.getMessageList();
+                }
+            }
+
+            /**
+             * <code>repeated .EntityInfo visible_entities = 18;</code>
+             */
+            public int getVisibleEntitiesCount() {
+                if (visibleEntitiesBuilder_ == null) {
+                    return visibleEntities_.size();
+                } else {
+                    return visibleEntitiesBuilder_.getCount();
+                }
+            }
+
+            /**
+             * <code>repeated .EntityInfo visible_entities = 18;</code>
+             */
+            public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo getVisibleEntities(int index) {
+                if (visibleEntitiesBuilder_ == null) {
+                    return visibleEntities_.get(index);
+                } else {
+                    return visibleEntitiesBuilder_.getMessage(index);
+                }
+            }
+
+            /**
+             * <code>repeated .EntityInfo visible_entities = 18;</code>
+             */
+            public Builder setVisibleEntities(
+                    int index, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo value) {
+                if (visibleEntitiesBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    ensureVisibleEntitiesIsMutable();
+                    visibleEntities_.set(index, value);
+                    onChanged();
+                } else {
+                    visibleEntitiesBuilder_.setMessage(index, value);
+                }
+                return this;
+            }
+
+            /**
+             * <code>repeated .EntityInfo visible_entities = 18;</code>
+             */
+            public Builder setVisibleEntities(
+                    int index, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo.Builder builderForValue) {
+                if (visibleEntitiesBuilder_ == null) {
+                    ensureVisibleEntitiesIsMutable();
+                    visibleEntities_.set(index, builderForValue.build());
+                    onChanged();
+                } else {
+                    visibleEntitiesBuilder_.setMessage(index, builderForValue.build());
+                }
+                return this;
+            }
+
+            /**
+             * <code>repeated .EntityInfo visible_entities = 18;</code>
+             */
+            public Builder addVisibleEntities(com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo value) {
+                if (visibleEntitiesBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    ensureVisibleEntitiesIsMutable();
+                    visibleEntities_.add(value);
+                    onChanged();
+                } else {
+                    visibleEntitiesBuilder_.addMessage(value);
+                }
+                return this;
+            }
+
+            /**
+             * <code>repeated .EntityInfo visible_entities = 18;</code>
+             */
+            public Builder addVisibleEntities(
+                    int index, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo value) {
+                if (visibleEntitiesBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    ensureVisibleEntitiesIsMutable();
+                    visibleEntities_.add(index, value);
+                    onChanged();
+                } else {
+                    visibleEntitiesBuilder_.addMessage(index, value);
+                }
+                return this;
+            }
+
+            /**
+             * <code>repeated .EntityInfo visible_entities = 18;</code>
+             */
+            public Builder addVisibleEntities(
+                    com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo.Builder builderForValue) {
+                if (visibleEntitiesBuilder_ == null) {
+                    ensureVisibleEntitiesIsMutable();
+                    visibleEntities_.add(builderForValue.build());
+                    onChanged();
+                } else {
+                    visibleEntitiesBuilder_.addMessage(builderForValue.build());
+                }
+                return this;
+            }
+
+            /**
+             * <code>repeated .EntityInfo visible_entities = 18;</code>
+             */
+            public Builder addVisibleEntities(
+                    int index, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo.Builder builderForValue) {
+                if (visibleEntitiesBuilder_ == null) {
+                    ensureVisibleEntitiesIsMutable();
+                    visibleEntities_.add(index, builderForValue.build());
+                    onChanged();
+                } else {
+                    visibleEntitiesBuilder_.addMessage(index, builderForValue.build());
+                }
+                return this;
+            }
+
+            /**
+             * <code>repeated .EntityInfo visible_entities = 18;</code>
+             */
+            public Builder addAllVisibleEntities(
+                    java.lang.Iterable<? extends com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo> values) {
+                if (visibleEntitiesBuilder_ == null) {
+                    ensureVisibleEntitiesIsMutable();
+                    com.google.protobuf.AbstractMessageLite.Builder.addAll(
+                            values, visibleEntities_);
+                    onChanged();
+                } else {
+                    visibleEntitiesBuilder_.addAllMessages(values);
+                }
+                return this;
+            }
+
+            /**
+             * <code>repeated .EntityInfo visible_entities = 18;</code>
+             */
+            public Builder clearVisibleEntities() {
+                if (visibleEntitiesBuilder_ == null) {
+                    visibleEntities_ = java.util.Collections.emptyList();
+                    bitField0_ = (bitField0_ & ~0x00020000);
+                    onChanged();
+                } else {
+                    visibleEntitiesBuilder_.clear();
+                }
+                return this;
+            }
+
+            /**
+             * <code>repeated .EntityInfo visible_entities = 18;</code>
+             */
+            public Builder removeVisibleEntities(int index) {
+                if (visibleEntitiesBuilder_ == null) {
+                    ensureVisibleEntitiesIsMutable();
+                    visibleEntities_.remove(index);
+                    onChanged();
+                } else {
+                    visibleEntitiesBuilder_.remove(index);
+                }
+                return this;
+            }
+
+            /**
+             * <code>repeated .EntityInfo visible_entities = 18;</code>
+             */
+            public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo.Builder getVisibleEntitiesBuilder(
+                    int index) {
+                return getVisibleEntitiesFieldBuilder().getBuilder(index);
+            }
+
+            /**
+             * <code>repeated .EntityInfo visible_entities = 18;</code>
+             */
+            public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfoOrBuilder getVisibleEntitiesOrBuilder(
+                    int index) {
+                if (visibleEntitiesBuilder_ == null) {
+                    return visibleEntities_.get(index);
+                } else {
+                    return visibleEntitiesBuilder_.getMessageOrBuilder(index);
+                }
+            }
+
+            /**
+             * <code>repeated .EntityInfo visible_entities = 18;</code>
+             */
+            public java.util.List<? extends com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfoOrBuilder>
+            getVisibleEntitiesOrBuilderList() {
+                if (visibleEntitiesBuilder_ != null) {
+                    return visibleEntitiesBuilder_.getMessageOrBuilderList();
+                } else {
+                    return java.util.Collections.unmodifiableList(visibleEntities_);
+                }
+            }
+
+            /**
+             * <code>repeated .EntityInfo visible_entities = 18;</code>
+             */
+            public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo.Builder addVisibleEntitiesBuilder() {
+                return getVisibleEntitiesFieldBuilder().addBuilder(
+                        com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo.getDefaultInstance());
+            }
+
+            /**
+             * <code>repeated .EntityInfo visible_entities = 18;</code>
+             */
+            public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo.Builder addVisibleEntitiesBuilder(
+                    int index) {
+                return getVisibleEntitiesFieldBuilder().addBuilder(
+                        index, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo.getDefaultInstance());
+            }
+
+            /**
+             * <code>repeated .EntityInfo visible_entities = 18;</code>
+             */
+            public java.util.List<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo.Builder>
+            getVisibleEntitiesBuilderList() {
+                return getVisibleEntitiesFieldBuilder().getBuilderList();
+            }
+
+            private com.google.protobuf.RepeatedFieldBuilderV3<
+                    com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo.Builder, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfoOrBuilder>
+            getVisibleEntitiesFieldBuilder() {
+                if (visibleEntitiesBuilder_ == null) {
+                    visibleEntitiesBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+                            com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo.Builder, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfoOrBuilder>(
+                            visibleEntities_,
+                            ((bitField0_ & 0x00020000) != 0),
+                            getParentForChildren(),
+                            isClean());
+                    visibleEntities_ = null;
+                }
+                return visibleEntitiesBuilder_;
+            }
+
+            @java.lang.Override
+            public final Builder setUnknownFields(
+                    final com.google.protobuf.UnknownFieldSet unknownFields) {
+                return super.setUnknownFields(unknownFields);
+            }
+
+            @java.lang.Override
+            public final Builder mergeUnknownFields(
+                    final com.google.protobuf.UnknownFieldSet unknownFields) {
+                return super.mergeUnknownFields(unknownFields);
+            }
 
 
-      // @@protoc_insertion_point(builder_scope:ObservationSpaceMessage)
+            // @@protoc_insertion_point(builder_scope:ObservationSpaceMessage)
+        }
+
     }
 
-    // @@protoc_insertion_point(class_scope:ObservationSpaceMessage)
-    private static final com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ObservationSpaceMessage DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ObservationSpaceMessage();
-    }
-
-    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ObservationSpaceMessage getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<ObservationSpaceMessage>
-        PARSER = new com.google.protobuf.AbstractParser<ObservationSpaceMessage>() {
-      @java.lang.Override
-      public ObservationSpaceMessage parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        Builder builder = newBuilder();
-        try {
-          builder.mergeFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          throw e.setUnfinishedMessage(builder.buildPartial());
-        } catch (com.google.protobuf.UninitializedMessageException e) {
-          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
-        } catch (java.io.IOException e) {
-          throw new com.google.protobuf.InvalidProtocolBufferException(e)
-              .setUnfinishedMessage(builder.buildPartial());
-        }
-        return builder.buildPartial();
-      }
-    };
-
-    public static com.google.protobuf.Parser<ObservationSpaceMessage> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<ObservationSpaceMessage> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ObservationSpaceMessage getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_ItemStack_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_ItemStack_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_BlockInfo_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_BlockInfo_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_EntityInfo_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_EntityInfo_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_HitResult_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_HitResult_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_StatusEffect_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_StatusEffect_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_SoundEntry_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_SoundEntry_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_ObservationSpaceMessage_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_ObservationSpaceMessage_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_ObservationSpaceMessage_KilledStatisticsEntry_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_ObservationSpaceMessage_KilledStatisticsEntry_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_ObservationSpaceMessage_MinedStatisticsEntry_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_ObservationSpaceMessage_MinedStatisticsEntry_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_ObservationSpaceMessage_MiscStatisticsEntry_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_ObservationSpaceMessage_MiscStatisticsEntry_fieldAccessorTable;
-
-  public static com.google.protobuf.Descriptors.FileDescriptor
-      getDescriptor() {
-    return descriptor;
-  }
-  private static  com.google.protobuf.Descriptors.FileDescriptor
-      descriptor;
-  static {
-    java.lang.String[] descriptorData = {
-      "\n\027observation_space.proto\"o\n\tItemStack\022\016" +
-      "\n\006raw_id\030\001 \001(\005\022\027\n\017translation_key\030\002 \001(\t\022" +
-      "\r\n\005count\030\003 \001(\005\022\022\n\ndurability\030\004 \001(\005\022\026\n\016ma" +
-      "x_durability\030\005 \001(\005\"E\n\tBlockInfo\022\t\n\001x\030\001 \001" +
-      "(\005\022\t\n\001y\030\002 \001(\005\022\t\n\001z\030\003 \001(\005\022\027\n\017translation_" +
-      "key\030\004 \001(\t\"\207\001\n\nEntityInfo\022\023\n\013unique_name\030" +
-      "\001 \001(\t\022\027\n\017translation_key\030\002 \001(\t\022\t\n\001x\030\003 \001(" +
-      "\001\022\t\n\001y\030\004 \001(\001\022\t\n\001z\030\005 \001(\001\022\013\n\003yaw\030\006 \001(\001\022\r\n\005" +
-      "pitch\030\007 \001(\001\022\016\n\006health\030\010 \001(\001\"\231\001\n\tHitResul" +
-      "t\022\035\n\004type\030\001 \001(\0162\017.HitResult.Type\022 \n\014targ" +
-      "et_block\030\002 \001(\0132\n.BlockInfo\022\"\n\rtarget_ent" +
-      "ity\030\003 \001(\0132\013.EntityInfo\"\'\n\004Type\022\010\n\004MISS\020\000" +
-      "\022\t\n\005BLOCK\020\001\022\n\n\006ENTITY\020\002\"L\n\014StatusEffect\022" +
-      "\027\n\017translation_key\030\001 \001(\t\022\020\n\010duration\030\002 \001" +
-      "(\005\022\021\n\tamplifier\030\003 \001(\005\"Q\n\nSoundEntry\022\025\n\rt" +
-      "ranslate_key\030\001 \001(\t\022\013\n\003age\030\002 \001(\003\022\t\n\001x\030\003 \001" +
-      "(\001\022\t\n\001y\030\004 \001(\001\022\t\n\001z\030\005 \001(\001\"\356\005\n\027Observation" +
-      "SpaceMessage\022\r\n\005image\030\001 \001(\014\022\t\n\001x\030\002 \001(\001\022\t" +
-      "\n\001y\030\003 \001(\001\022\t\n\001z\030\004 \001(\001\022\013\n\003yaw\030\005 \001(\001\022\r\n\005pit" +
-      "ch\030\006 \001(\001\022\016\n\006health\030\007 \001(\001\022\022\n\nfood_level\030\010" +
-      " \001(\001\022\030\n\020saturation_level\030\t \001(\001\022\017\n\007is_dea" +
-      "d\030\n \001(\010\022\035\n\tinventory\030\013 \003(\0132\n.ItemStack\022\"" +
-      "\n\016raycast_result\030\014 \001(\0132\n.HitResult\022$\n\017so" +
-      "und_subtitles\030\r \003(\0132\013.SoundEntry\022%\n\016stat" +
-      "us_effects\030\016 \003(\0132\r.StatusEffect\022I\n\021kille" +
-      "d_statistics\030\017 \003(\0132..ObservationSpaceMes" +
-      "sage.KilledStatisticsEntry\022G\n\020mined_stat" +
-      "istics\030\020 \003(\0132-.ObservationSpaceMessage.M" +
-      "inedStatisticsEntry\022E\n\017misc_statistics\030\021" +
-      " \003(\0132,.ObservationSpaceMessage.MiscStati" +
-      "sticsEntry\022%\n\020visible_entities\030\022 \003(\0132\013.E" +
-      "ntityInfo\0327\n\025KilledStatisticsEntry\022\013\n\003ke" +
-      "y\030\001 \001(\t\022\r\n\005value\030\002 \001(\005:\0028\001\0326\n\024MinedStati" +
-      "sticsEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\005:\002" +
-      "8\001\0325\n\023MiscStatisticsEntry\022\013\n\003key\030\001 \001(\t\022\r" +
-      "\n\005value\030\002 \001(\005:\0028\001B&\n$com.kyhsgeekcode.mi" +
-      "necraft_env.protob\006proto3"
-    };
-    descriptor = com.google.protobuf.Descriptors.FileDescriptor
-      .internalBuildGeneratedFileFrom(descriptorData,
-        new com.google.protobuf.Descriptors.FileDescriptor[] {
-        });
-    internal_static_ItemStack_descriptor =
-      getDescriptor().getMessageTypes().get(0);
-    internal_static_ItemStack_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_ItemStack_descriptor,
-        new java.lang.String[] { "RawId", "TranslationKey", "Count", "Durability", "MaxDurability", });
-    internal_static_BlockInfo_descriptor =
-      getDescriptor().getMessageTypes().get(1);
-    internal_static_BlockInfo_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_BlockInfo_descriptor,
-        new java.lang.String[] { "X", "Y", "Z", "TranslationKey", });
-    internal_static_EntityInfo_descriptor =
-      getDescriptor().getMessageTypes().get(2);
-    internal_static_EntityInfo_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_EntityInfo_descriptor,
-        new java.lang.String[] { "UniqueName", "TranslationKey", "X", "Y", "Z", "Yaw", "Pitch", "Health", });
-    internal_static_HitResult_descriptor =
-      getDescriptor().getMessageTypes().get(3);
-    internal_static_HitResult_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_HitResult_descriptor,
-        new java.lang.String[] { "Type", "TargetBlock", "TargetEntity", });
-    internal_static_StatusEffect_descriptor =
-      getDescriptor().getMessageTypes().get(4);
-    internal_static_StatusEffect_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_StatusEffect_descriptor,
-        new java.lang.String[] { "TranslationKey", "Duration", "Amplifier", });
-    internal_static_SoundEntry_descriptor =
-      getDescriptor().getMessageTypes().get(5);
-    internal_static_SoundEntry_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_SoundEntry_descriptor,
-        new java.lang.String[] { "TranslateKey", "Age", "X", "Y", "Z", });
-    internal_static_ObservationSpaceMessage_descriptor =
-      getDescriptor().getMessageTypes().get(6);
-    internal_static_ObservationSpaceMessage_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_ObservationSpaceMessage_descriptor,
-        new java.lang.String[] { "Image", "X", "Y", "Z", "Yaw", "Pitch", "Health", "FoodLevel", "SaturationLevel", "IsDead", "Inventory", "RaycastResult", "SoundSubtitles", "StatusEffects", "KilledStatistics", "MinedStatistics", "MiscStatistics", "VisibleEntities", });
-    internal_static_ObservationSpaceMessage_KilledStatisticsEntry_descriptor =
-      internal_static_ObservationSpaceMessage_descriptor.getNestedTypes().get(0);
-    internal_static_ObservationSpaceMessage_KilledStatisticsEntry_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_ObservationSpaceMessage_KilledStatisticsEntry_descriptor,
-        new java.lang.String[] { "Key", "Value", });
-    internal_static_ObservationSpaceMessage_MinedStatisticsEntry_descriptor =
-      internal_static_ObservationSpaceMessage_descriptor.getNestedTypes().get(1);
-    internal_static_ObservationSpaceMessage_MinedStatisticsEntry_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_ObservationSpaceMessage_MinedStatisticsEntry_descriptor,
-        new java.lang.String[] { "Key", "Value", });
-    internal_static_ObservationSpaceMessage_MiscStatisticsEntry_descriptor =
-      internal_static_ObservationSpaceMessage_descriptor.getNestedTypes().get(2);
-    internal_static_ObservationSpaceMessage_MiscStatisticsEntry_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_ObservationSpaceMessage_MiscStatisticsEntry_descriptor,
-        new java.lang.String[] { "Key", "Value", });
-  }
-
-  // @@protoc_insertion_point(outer_class_scope)
+    // @@protoc_insertion_point(outer_class_scope)
 }
