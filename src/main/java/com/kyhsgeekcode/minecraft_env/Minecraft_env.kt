@@ -54,12 +54,6 @@ class Minecraft_env : ModInitializer, CommandExecutor {
 
     private var serverTickRunning = false
     private val serverTickLock = Object()
-
-
-    private val ID_END_SERVER_TICK = Identifier("minecraft_env", "end_server_tick")
-    private val ID_END_SEND_OBSERVATION = Identifier("minecraft_env", "end_send_observation")
-    private val ID_SET_SCREEN_NULL = Identifier("minecraft_env", "set_screen_null")
-
     private fun printWithTime(msg: String) {
         println("${formatter.format(java.time.LocalDateTime.now())} $msg")
     }
@@ -82,27 +76,6 @@ class Minecraft_env : ModInitializer, CommandExecutor {
         readInitialEnvironment(inputStream, outputStream)
         resetPhase = ResetPhase.WAIT_INIT_ENDS
         val initializer = EnvironmentInitializer(initialEnvironment)
-
-//        ClientPlayNetworking.registerGlobalReceiver(ID_END_SERVER_TICK) { client, handler, buf, responseSender ->
-//            client.execute {
-//                if (resetPhase != ResetPhase.END_RESET) {
-//                    printWithTime("Reset phase is not end reset at end server tick")
-//                    return@execute
-//                }
-//                val clientWorld = client.world
-//                if (clientWorld == null) {
-//                    printWithTime("Client world is null")
-//                    return@execute
-//                }
-//                sendObservation(outputStream, clientWorld)
-//                shouldSendObservation = false
-//            }
-//        }
-//        ClientPlayNetworking.registerGlobalReceiver(ID_SET_SCREEN_NULL) { client, handler, buf, responseSender ->
-//            client.execute {
-//                client.setScreen(null)
-//            }
-//        }
         ClientTickEvents.START_CLIENT_TICK.register(ClientTickEvents.StartTick { client: MinecraftClient ->
             initializer.onClientTick(client)
             if (soundListener == null) soundListener = MinecraftSoundListener(client.soundManager)
@@ -126,19 +99,23 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                 }
             }
             // send observation
-            when(resetPhase) {
+            when (resetPhase) {
                 ResetPhase.WAIT_PLAYER_DEATH -> {
 
                 }
+
                 ResetPhase.WAIT_PLAYER_RESPAWN -> {
 
                 }
+
                 ResetPhase.WAIT_INIT_ENDS -> {
 
                 }
+
                 ResetPhase.END_RESET -> {
                     sendObservation(outputStream, world)
                 }
+
                 ResetPhase.IDLE -> {
                     sendObservation(outputStream, world)
 
