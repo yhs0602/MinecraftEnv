@@ -15,6 +15,6 @@ public class WindowOffScreenMixin {
     public void createWindow(WindowSettings settings, String videoMode, String title, CallbackInfoReturnable<Window> cir) {
 //        GLFW.glfwWindowHint(GLFW.GLFW_VISIBLE, GLFW.GLFW_FALSE);
 //        GLFW.glfwIconifyWindow(cir.getReturnValue().getHandle());
-//        GLFW.glfwHideWindow(cir.getReturnValue().getHandle());
+        GLFW.glfwHideWindow(cir.getReturnValue().getHandle());
     }
 }
