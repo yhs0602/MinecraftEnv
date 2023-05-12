@@ -3,7 +3,9 @@
   "minVersion": "0.8",
   "package": "com.kyhsgeekcode.minecraft_env.mixin",
   "compatibilityLevel": "JAVA_17",
-  "mixins": [],
+  "mixins": [
+    "MinecraftServer_tickspeedMixin"
+  ],
   "client": [
     "ChatVisibleMessageAccessor",
     "ClientDoAttackInvoker",

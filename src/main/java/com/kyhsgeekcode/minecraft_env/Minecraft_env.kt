@@ -21,7 +21,7 @@ import net.minecraft.entity.EntityType
 import net.minecraft.item.Item
 import net.minecraft.registry.Registries
 import net.minecraft.registry.Registry
-import net.minecraft.server.world.ServerWorld
+import net.minecraft.server.MinecraftServer
 import net.minecraft.stat.Stats
 import net.minecraft.util.Identifier
 import net.minecraft.util.math.MathHelper
@@ -42,6 +42,13 @@ enum class ResetPhase {
     IDLE,
 }
 
+enum class RunPhase {
+    READ_ACTION,
+    CLIENT_TICK,
+    SERVER_TICK,
+    SEND_OBSERVATION,
+}
+
 class Minecraft_env : ModInitializer, CommandExecutor {
     private lateinit var initialEnvironment: InitialEnvironment.InitialEnvironmentMessage
     private var soundListener: MinecraftSoundListener? = null
@@ -49,11 +56,10 @@ class Minecraft_env : ModInitializer, CommandExecutor {
     private var resetPhase: ResetPhase = ResetPhase.END_RESET
     private val formatter: DateTimeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss.SSSSSS")
 
-    private var clientTickRunning = false
-    private val clientTickLock = Object()
+    private var nextPhase: RunPhase = RunPhase.SERVER_TICK
+    private val runPhaseLock = Object()
+    private var skipClientTick = true
 
-    private var serverTickRunning = false
-    private val serverTickLock = Object()
     private fun printWithTime(msg: String) {
         println("${formatter.format(java.time.LocalDateTime.now())} $msg")
     }
@@ -83,19 +89,41 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                 EntityRenderListenerImpl(client.worldRenderer as AddListenerInterface)
         })
         ClientTickEvents.START_WORLD_TICK.register(ClientTickEvents.StartWorldTick { world: ClientWorld ->
+            synchronized(runPhaseLock) {
+                printWithTime("Skip client tick set to false")
+                skipClientTick = false
+                nextPhase = RunPhase.READ_ACTION
+                runPhaseLock.notifyAll()
+            }
             // read input
+            synchronized(runPhaseLock) {
+                printWithTime("Waiting for state to be read action")
+                while (nextPhase != RunPhase.READ_ACTION) {
+                    runPhaseLock.wait()
+                }
+            }
+
+            printWithTime("Start client world tick1")
             onStartWorldTick(initializer, world, inputStream)
+            printWithTime("Start client world tick2")
+
+            synchronized(runPhaseLock) {
+                nextPhase = RunPhase.CLIENT_TICK
+                runPhaseLock.notifyAll()
+            }
         })
         ClientTickEvents.END_WORLD_TICK.register(ClientTickEvents.EndWorldTick { world: ClientWorld ->
             // allow server to start tick
-            synchronized(clientTickLock) {
-                clientTickRunning = false
-                clientTickLock.notifyAll()
+            printWithTime("End client world tick1")
+            synchronized(runPhaseLock) {
+                nextPhase = RunPhase.SERVER_TICK
+                runPhaseLock.notifyAll()
             }
             // wait until server tick ends
-            synchronized(serverTickLock) {
-                while (serverTickRunning) {
-                    serverTickLock.wait()
+            printWithTime("Wait server world tick ends")
+            synchronized(runPhaseLock) {
+                while (nextPhase != RunPhase.SEND_OBSERVATION) {
+                    runPhaseLock.wait()
                 }
             }
             // send observation
@@ -118,24 +146,33 @@ class Minecraft_env : ModInitializer, CommandExecutor {
 
                 ResetPhase.IDLE -> {
                     sendObservation(outputStream, world)
-
                 }
             }
+            printWithTime("End client world tick2")
+            synchronized(runPhaseLock) {
+                nextPhase = RunPhase.READ_ACTION
+                runPhaseLock.notifyAll()
+            }
         })
-        ServerTickEvents.START_WORLD_TICK.register(ServerTickEvents.StartWorldTick { world: ServerWorld ->
+        ServerTickEvents.START_SERVER_TICK.register(ServerTickEvents.StartTick { server: MinecraftServer ->
             // wait until client tick ends
-            synchronized(clientTickLock) {
-                while (clientTickRunning) {
-                    clientTickLock.wait()
+            printWithTime("Start server tick1")
+            printWithTime("Wait client world tick ends")
+            synchronized(runPhaseLock) {
+                while (nextPhase != RunPhase.SERVER_TICK && !skipClientTick) {
+                    runPhaseLock.wait()
                 }
             }
+            printWithTime("Start server tick2")
         })
-        ServerTickEvents.END_WORLD_TICK.register(ServerTickEvents.EndWorldTick { world: ServerWorld ->
+        ServerTickEvents.END_SERVER_TICK.register(ServerTickEvents.EndTick { server: MinecraftServer ->
             // allow client to end tick
-            synchronized(serverTickLock) {
-                serverTickRunning = false
-                serverTickLock.notifyAll()
+            printWithTime("End server tick1")
+            synchronized(runPhaseLock) {
+                nextPhase = RunPhase.SEND_OBSERVATION
+                runPhaseLock.notifyAll()
             }
+            printWithTime("End server world tick2")
         })
     }
 
@@ -394,7 +431,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
     }
 
     private fun sendObservation(outputStream: OutputStream, world: World) {
-//        println("send time: " + world.time)
+        printWithTime("send Observation")
         val client = MinecraftClient.getInstance()
         val player = client.player
         if (player == null) {
