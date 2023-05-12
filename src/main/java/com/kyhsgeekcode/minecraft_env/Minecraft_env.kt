@@ -9,22 +9,18 @@ import com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment
 import com.kyhsgeekcode.minecraft_env.proto.observationSpaceMessage
 import net.fabricmc.api.ModInitializer
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents
-import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings
-import net.fabricmc.fabric.api.networking.v1.PacketByteBufs
-import net.fabricmc.fabric.api.networking.v1.PlayerLookup
-import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking
 import net.fabricmc.fabric.api.registry.FuelRegistry
 import net.minecraft.client.MinecraftClient
 import net.minecraft.client.gui.screen.DeathScreen
 import net.minecraft.client.network.ClientPlayerEntity
 import net.minecraft.client.util.ScreenshotRecorder
+import net.minecraft.client.world.ClientWorld
 import net.minecraft.entity.EntityType
 import net.minecraft.item.Item
 import net.minecraft.registry.Registries
 import net.minecraft.registry.Registry
-import net.minecraft.server.MinecraftServer
 import net.minecraft.server.world.ServerWorld
 import net.minecraft.stat.Stats
 import net.minecraft.util.Identifier
@@ -42,7 +38,8 @@ enum class ResetPhase {
     WAIT_PLAYER_DEATH,
     WAIT_PLAYER_RESPAWN,
     WAIT_INIT_ENDS,
-    END_RESET
+    END_RESET,
+    IDLE,
 }
 
 class Minecraft_env : ModInitializer, CommandExecutor {
@@ -50,17 +47,20 @@ class Minecraft_env : ModInitializer, CommandExecutor {
     private var soundListener: MinecraftSoundListener? = null
     private var entityListener: EntityRenderListenerImpl? = null // tracks the entities rendered in the last tick
     private var resetPhase: ResetPhase = ResetPhase.END_RESET
-    private var sendingObservation = false
-    private val sendingObservationLock = Object()
-    private var shouldSendObservation = false
     private val formatter: DateTimeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss.SSSSSS")
+
+    private var clientTickRunning = false
+    private val clientTickLock = Object()
+
+    private var serverTickRunning = false
+    private val serverTickLock = Object()
 
 
     private val ID_END_SERVER_TICK = Identifier("minecraft_env", "end_server_tick")
     private val ID_END_SEND_OBSERVATION = Identifier("minecraft_env", "end_send_observation")
     private val ID_SET_SCREEN_NULL = Identifier("minecraft_env", "set_screen_null")
 
-    fun printWithTime(msg: String) {
+    private fun printWithTime(msg: String) {
         println("${formatter.format(java.time.LocalDateTime.now())} $msg")
     }
 
@@ -83,73 +83,96 @@ class Minecraft_env : ModInitializer, CommandExecutor {
         resetPhase = ResetPhase.WAIT_INIT_ENDS
         val initializer = EnvironmentInitializer(initialEnvironment)
 
-        ClientPlayNetworking.registerGlobalReceiver(ID_END_SERVER_TICK) { client, handler, buf, responseSender ->
-            client.execute {
-                if (resetPhase != ResetPhase.END_RESET) {
-                    printWithTime("Reset phase is not end reset at end server tick")
-                    return@execute
-                }
-                val clientWorld = client.world
-                if (clientWorld == null) {
-                    printWithTime("Client world is null")
-                    return@execute
-                }
-                sendObservation(outputStream, clientWorld)
-                shouldSendObservation = false
-            }
-        }
-        ClientPlayNetworking.registerGlobalReceiver(ID_SET_SCREEN_NULL) { client, handler, buf, responseSender ->
-            client.execute {
-                client.setScreen(null)
-            }
-        }
+//        ClientPlayNetworking.registerGlobalReceiver(ID_END_SERVER_TICK) { client, handler, buf, responseSender ->
+//            client.execute {
+//                if (resetPhase != ResetPhase.END_RESET) {
+//                    printWithTime("Reset phase is not end reset at end server tick")
+//                    return@execute
+//                }
+//                val clientWorld = client.world
+//                if (clientWorld == null) {
+//                    printWithTime("Client world is null")
+//                    return@execute
+//                }
+//                sendObservation(outputStream, clientWorld)
+//                shouldSendObservation = false
+//            }
+//        }
+//        ClientPlayNetworking.registerGlobalReceiver(ID_SET_SCREEN_NULL) { client, handler, buf, responseSender ->
+//            client.execute {
+//                client.setScreen(null)
+//            }
+//        }
         ClientTickEvents.START_CLIENT_TICK.register(ClientTickEvents.StartTick { client: MinecraftClient ->
             initializer.onClientTick(client)
             if (soundListener == null) soundListener = MinecraftSoundListener(client.soundManager)
             if (entityListener == null) entityListener =
                 EntityRenderListenerImpl(client.worldRenderer as AddListenerInterface)
         })
-        ServerTickEvents.START_WORLD_TICK.register(ServerTickEvents.StartWorldTick { world: ServerWorld ->
+        ClientTickEvents.START_WORLD_TICK.register(ClientTickEvents.StartWorldTick { world: ClientWorld ->
+            // read input
             onStartWorldTick(initializer, world, inputStream)
         })
-        ServerTickEvents.END_WORLD_TICK.register(ServerTickEvents.EndWorldTick { world: ServerWorld ->
-            if (resetPhase == ResetPhase.END_RESET) {
-                // Iterate over all players tracking a position in the world and send the packet to each player
-                for (player in PlayerLookup.all(world.server)) {
-                    ServerPlayNetworking.send(
-                        player,
-                        ID_END_SERVER_TICK,
-                        PacketByteBufs.empty()
-                    ) // notify client to send observation, as the server tick is ended
+        ClientTickEvents.END_WORLD_TICK.register(ClientTickEvents.EndWorldTick { world: ClientWorld ->
+            // allow server to start tick
+            synchronized(clientTickLock) {
+                clientTickRunning = false
+                clientTickLock.notifyAll()
+            }
+            // wait until server tick ends
+            synchronized(serverTickLock) {
+                while (serverTickRunning) {
+                    serverTickLock.wait()
                 }
+            }
+            // send observation
+            when(resetPhase) {
+                ResetPhase.WAIT_PLAYER_DEATH -> {
+
+                }
+                ResetPhase.WAIT_PLAYER_RESPAWN -> {
+
+                }
+                ResetPhase.WAIT_INIT_ENDS -> {
+
+                }
+                ResetPhase.END_RESET -> {
+                    sendObservation(outputStream, world)
+                }
+                ResetPhase.IDLE -> {
+                    sendObservation(outputStream, world)
+
+                }
+            }
+        })
+        ServerTickEvents.START_WORLD_TICK.register(ServerTickEvents.StartWorldTick { world: ServerWorld ->
+            // wait until client tick ends
+            synchronized(clientTickLock) {
+                while (clientTickRunning) {
+                    clientTickLock.wait()
+                }
+            }
+        })
+        ServerTickEvents.END_WORLD_TICK.register(ServerTickEvents.EndWorldTick { world: ServerWorld ->
+            // allow client to end tick
+            synchronized(serverTickLock) {
+                serverTickRunning = false
+                serverTickLock.notifyAll()
             }
         })
     }
 
     private fun onStartWorldTick(
         initializer: EnvironmentInitializer,
-        world: ServerWorld,
+        world: ClientWorld,
         inputStream: InputStream,
     ) {
-        // wait until client finish sending observation
-        synchronized(sendingObservationLock) {
-            while (sendingObservation) {
-                sendingObservationLock.wait()
-            }
-        }
-
-//        println("start time: " + world.time)
         val client = MinecraftClient.getInstance()
         soundListener!!.onTick()
         if (client.isPaused) return
-        val tracker = client.worldGenerationProgressTracker
-        if (tracker != null && tracker.progressPercentage < 100) {
-            printWithTime("World is generating: " + client.worldGenerationProgressTracker!!.progressPercentage + "%")
-            return
-        }
         val player = client.player ?: return
         if (!player.isDead) {
-            sendSetScreenNull(world)
+            sendSetScreenNull(client)
         }
         initializer.onWorldTick(world.server, client.inGameHud.chatHud, this)
 
@@ -175,9 +198,8 @@ class Minecraft_env : ModInitializer, CommandExecutor {
             ResetPhase.WAIT_INIT_ENDS -> {
                 println("Waiting for the initialization ends")
                 if (initializer.initWorldFinished) {
-                    sendSetScreenNull(world) // clear death screen
+                    sendSetScreenNull(client) // clear death screen
                     resetPhase = ResetPhase.END_RESET
-                    shouldSendObservation = true
                 }
                 return
             }
@@ -185,11 +207,8 @@ class Minecraft_env : ModInitializer, CommandExecutor {
             ResetPhase.END_RESET -> {
                 printWithTime("Reset end")
             }
-        }
-//        println("real start time: " + world.time)
-        // Disable pause on lost focus
-        if (shouldSendObservation) { // should send observation before reading action
-            return
+
+            ResetPhase.IDLE -> TODO()
         }
         try {
             val action = readAction(inputStream)
@@ -199,7 +218,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                 handleCommand(command, client, world, player)
                 return
             }
-            if (player.isDead) return else sendSetScreenNull(world)
+            if (player.isDead) return else sendSetScreenNull(client)
             val actionArray = action.actionList
             if (applyAction(actionArray, player, client)) return
         } catch (e: SocketTimeoutException) {
@@ -209,35 +228,30 @@ class Minecraft_env : ModInitializer, CommandExecutor {
         }
     }
 
-    private fun sendSetScreenNull(world: ServerWorld) {
-        for (p in PlayerLookup.all(world.server)) {
-            ServerPlayNetworking.send(
-                p,
-                ID_SET_SCREEN_NULL,
-                PacketByteBufs.empty()
-            ) // notify client to send observation, as the server tick is ended
-        }
+    private fun sendSetScreenNull(client: MinecraftClient) {
+        client.setScreen(null)
     }
 
 
     private fun handleCommand(
         command: String,
         client: MinecraftClient,
-        world: ServerWorld,
+        world: ClientWorld,
         player: ClientPlayerEntity
     ): Boolean {
         if (command == "respawn") {
             if (client.currentScreen is DeathScreen && player.isDead) {
                 player.requestRespawn()
-                sendSetScreenNull(world)
+                sendSetScreenNull(client)
             }
         } else if (command == "fastreset") {
             printWithTime("Fast resetting")
             resetPhase = ResetPhase.WAIT_PLAYER_DEATH
-            runCommand(world.server, "/kill @p") // kill player
-            runCommand(world.server, "/tp @e[type=!player] ~ -500 ~") // send to void
+            player.kill() //kill player
+//            runCommand(world.server, "/kill @p") // kill player
+            runCommand(player, "/tp @e[type=!player] ~ -500 ~") // send to void
         } else {
-            runCommand(world.server, command)
+            runCommand(player, command)
             println("Executed command: $command")
         }
         return true
@@ -403,11 +417,6 @@ class Minecraft_env : ModInitializer, CommandExecutor {
     }
 
     private fun sendObservation(outputStream: OutputStream, world: World) {
-        synchronized(sendingObservationLock) {
-            printWithTime("Set sending observation to true")
-            sendingObservation = true
-            sendingObservationLock.notifyAll()
-        }
 //        println("send time: " + world.time)
         val client = MinecraftClient.getInstance()
         val player = client.player
@@ -473,11 +482,6 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                     }
                 }
                 writeObservation(observationSpaceMessage, outputStream)
-                synchronized(sendingObservationLock) {
-                    printWithTime("Set sending observation to false")
-                    sendingObservation = false
-                    sendingObservationLock.notifyAll()
-                }
             }
         } catch (e: IOException) {
             throw RuntimeException(e)
@@ -522,8 +526,13 @@ class Minecraft_env : ModInitializer, CommandExecutor {
         }
     }
 
-    override fun runCommand(server: MinecraftServer, command: String) {
-        server.commandManager.executeWithPrefix(server.commandSource, command)
+    override fun runCommand(player: ClientPlayerEntity, command: String) {
+        var command = command
+        println("Running command: $command")
+        if (command.startsWith("/")) {
+            command = command.substring(1)
+        }
+        player.networkHandler.sendChatCommand(command)
         printWithTime("End send command: $command")
     }
 
