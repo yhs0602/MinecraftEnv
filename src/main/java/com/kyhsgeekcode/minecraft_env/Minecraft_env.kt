@@ -105,9 +105,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                 }
             }
 
-            printWithTime("Start client world tick1")
             onStartWorldTick(initializer, world, inputStream)
-            printWithTime("Start client world tick2")
 
             synchronized(runPhaseLock) {
                 nextPhase = RunPhase.CLIENT_TICK
@@ -116,7 +114,6 @@ class Minecraft_env : ModInitializer, CommandExecutor {
         })
         ClientTickEvents.END_WORLD_TICK.register(ClientTickEvents.EndWorldTick { world: ClientWorld ->
             // allow server to start tick
-            printWithTime("End client world tick1")
             synchronized(runPhaseLock) {
                 nextPhase = RunPhase.SERVER_TICK
                 runPhaseLock.notifyAll()
@@ -146,7 +143,6 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                     sendObservation(outputStream, world)
                 }
             }
-            printWithTime("End client world tick2")
             synchronized(runPhaseLock) {
                 nextPhase = RunPhase.READ_ACTION
                 runPhaseLock.notifyAll()
@@ -154,23 +150,19 @@ class Minecraft_env : ModInitializer, CommandExecutor {
         })
         ServerTickEvents.START_SERVER_TICK.register(ServerTickEvents.StartTick { server: MinecraftServer ->
             // wait until client tick ends
-            printWithTime("Start server tick1")
             printWithTime("Wait client world tick ends")
             synchronized(runPhaseLock) {
                 while (nextPhase != RunPhase.SERVER_TICK && !skipClientTick) {
                     runPhaseLock.wait()
                 }
             }
-            printWithTime("Start server tick2")
         })
         ServerTickEvents.END_SERVER_TICK.register(ServerTickEvents.EndTick { server: MinecraftServer ->
             // allow client to end tick
-            printWithTime("End server tick1")
             synchronized(runPhaseLock) {
                 nextPhase = RunPhase.SEND_OBSERVATION
                 runPhaseLock.notifyAll()
             }
-            printWithTime("End server world tick2")
         })
     }
 
@@ -257,8 +249,8 @@ class Minecraft_env : ModInitializer, CommandExecutor {
         } else if (command == "fastreset") {
             printWithTime("Fast resetting")
             resetPhase = ResetPhase.WAIT_PLAYER_DEATH
-            player.kill() //kill player
-//            runCommand(world.server, "/kill @p") // kill player
+//            player.kill() //kill player
+            runCommand(player, "/kill @p") // kill player
             runCommand(player, "/tp @e[type=!player] ~ -500 ~") // send to void
         } else {
             runCommand(player, command)
