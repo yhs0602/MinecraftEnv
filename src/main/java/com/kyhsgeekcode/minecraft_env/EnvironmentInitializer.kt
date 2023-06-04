@@ -176,6 +176,7 @@ class EnvironmentInitializer(
         val myCommandExecutor = { player: ClientPlayerEntity, c: String ->
             commandExecutor.runCommand(player, c)
         }
+//        setupBlocks(myCommandExecutor)
         setupInitialPosition(myCommandExecutor)
         setupInitialWeather(myCommandExecutor)
         setupAllowMobSpawn(myCommandExecutor)
@@ -191,6 +192,13 @@ class EnvironmentInitializer(
         initWorldFinished = false
         hasRunInitWorld = true
     }
+
+//    private fun setupBlocks(myCommandExecutor: (ClientPlayerEntity, String) -> Unit) {
+//        for (block in initialEnvironment.initialBlockStatesList) {
+//
+//            val blockPos = block.x
+//        }
+//    }
 
     private fun setupAllowCheats(
         cheatButton: CyclingButtonWidget<*>,

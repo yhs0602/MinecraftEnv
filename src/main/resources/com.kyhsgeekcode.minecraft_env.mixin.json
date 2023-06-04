@@ -15,6 +15,7 @@
     "KeyboardInputMixin",
     "RenderTickCounterAccessor",
     "TickSpeedMixin",
+    "Window_offscreenMixin",
     "WindowOffScreenMixin",
     "WorldRendererCallEntityRenderMixin"
   ],
