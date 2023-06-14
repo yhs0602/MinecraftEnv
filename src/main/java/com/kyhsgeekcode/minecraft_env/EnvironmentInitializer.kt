@@ -29,7 +29,6 @@ class EnvironmentInitializer(
 
     private lateinit var minecraftServer: MinecraftServer
     private lateinit var player: ClientPlayerEntity
-
     fun onClientTick(client: MinecraftClient) {
         when (val screen = client.currentScreen) {
             is TitleScreen -> {
@@ -141,18 +140,19 @@ class EnvironmentInitializer(
         disablePauseOnLostFocus(client)
     }
 
-    fun reset(chatHud: ChatHud, commandExecutor: CommandExecutor) {
+    fun reset(chatHud: ChatHud, commandExecutor: CommandExecutor, variableCommandAfterReset: List<String>) {
         println("Resetting...")
         hasRunInitWorld = false
         initWorldFinished = false
         chatHud.clear(true)
-        onWorldTick(null, chatHud, commandExecutor)
+        onWorldTick(null, chatHud, commandExecutor, variableCommandAfterReset)
     }
 
     fun onWorldTick(
         minecraftServer: MinecraftServer?,
         chatHud: ChatHud,
-        commandExecutor: CommandExecutor
+        commandExecutor: CommandExecutor,
+        variableCommandsAfterReset: List<String>,
     ) {
         player = MinecraftClient.getInstance().player ?: return
         val messages = ArrayList((chatHud as ChatVisibleMessageAccessor).visibleMessages)
@@ -186,6 +186,8 @@ class EnvironmentInitializer(
         if (initialEnvironment.alwaysNight)
             setupAlwaysNight(myCommandExecutor)
         for (command in initialEnvironment.initialExtraCommandsList)
+            commandExecutor.runCommand(this.player, "/$command")
+        for (command in variableCommandsAfterReset)
             commandExecutor.runCommand(this.player, "/$command")
         commandExecutor.runCommand(this.player, "/say Initialization Done")
         initWorldFinished = false

@@ -59,8 +59,11 @@ class Minecraft_env : ModInitializer, CommandExecutor {
     private val runPhaseLock = Object()
     private var skipClientTick = true
 
+    private val variableCommandsAfterReset = mutableListOf<String>()
+
     private fun printWithTime(msg: String) {
-        println("${formatter.format(java.time.LocalDateTime.now())} $msg")
+        if (false)
+            println("${formatter.format(java.time.LocalDateTime.now())} $msg")
     }
 
     override fun onInitialize() {
@@ -178,7 +181,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
         if (!player.isDead) {
             sendSetScreenNull(client)
         }
-        initializer.onWorldTick(world.server, client.inGameHud.chatHud, this)
+        initializer.onWorldTick(world.server, client.inGameHud.chatHud, this, emptyList())
 
         when (resetPhase) {
             ResetPhase.WAIT_PLAYER_DEATH -> {
@@ -193,7 +196,8 @@ class Minecraft_env : ModInitializer, CommandExecutor {
             ResetPhase.WAIT_PLAYER_RESPAWN -> {
                 println("Waiting for player respawn")
                 if (!player.isDead) {
-                    initializer.reset(client.inGameHud.chatHud, this)
+                    initializer.reset(client.inGameHud.chatHud, this, variableCommandsAfterReset)
+                    variableCommandsAfterReset.clear()
                     resetPhase = ResetPhase.WAIT_INIT_ENDS
                 }
                 return
@@ -246,8 +250,14 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                 player.requestRespawn()
                 sendSetScreenNull(client)
             }
-        } else if (command == "fastreset") {
+        } else if (command.startsWith("fastreset")) {
             printWithTime("Fast resetting")
+            val extraCommand = command.substringAfter("fastreset ").trim()
+            if (extraCommand.isNotEmpty()) {
+                val commands = extraCommand.split(";")
+                println("Extra commands: $commands")
+                variableCommandsAfterReset.addAll(commands)
+            }
             resetPhase = ResetPhase.WAIT_PLAYER_DEATH
 //            player.kill() //kill player
             runCommand(player, "/kill @p") // kill player
