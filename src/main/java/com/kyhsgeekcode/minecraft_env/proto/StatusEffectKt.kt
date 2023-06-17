@@ -5,83 +5,76 @@ package com.kyhsgeekcode.minecraft_env.proto;
 
 @kotlin.jvm.JvmName("-initializestatusEffect")
 public inline fun statusEffect(block: com.kyhsgeekcode.minecraft_env.proto.StatusEffectKt.Dsl.() -> kotlin.Unit): com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect =
-    com.kyhsgeekcode.minecraft_env.proto.StatusEffectKt.Dsl._create(com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect.newBuilder())
-        .apply { block() }._build()
-
+  com.kyhsgeekcode.minecraft_env.proto.StatusEffectKt.Dsl._create(com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect.newBuilder()).apply { block() }._build()
 public object StatusEffectKt {
-    @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
-    @com.google.protobuf.kotlin.ProtoDslMarker
-    public class Dsl private constructor(
-        private val _builder: com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect.Builder
-    ) {
-        public companion object {
-            @kotlin.jvm.JvmSynthetic
-            @kotlin.PublishedApi
-            internal fun _create(builder: com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect.Builder): Dsl =
-                Dsl(builder)
-        }
-
-        @kotlin.jvm.JvmSynthetic
-        @kotlin.PublishedApi
-        internal fun _build(): com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect = _builder.build()
-
-        /**
-         * <code>string translation_key = 1;</code>
-         */
-        public var translationKey: kotlin.String
-            @JvmName("getTranslationKey")
-            get() = _builder.getTranslationKey()
-            @JvmName("setTranslationKey")
-            set(value) {
-                _builder.setTranslationKey(value)
-            }
-
-        /**
-         * <code>string translation_key = 1;</code>
-         */
-        public fun clearTranslationKey() {
-            _builder.clearTranslationKey()
-        }
-
-        /**
-         * <code>int32 duration = 2;</code>
-         */
-        public var duration: kotlin.Int
-            @JvmName("getDuration")
-            get() = _builder.getDuration()
-            @JvmName("setDuration")
-            set(value) {
-                _builder.setDuration(value)
-            }
-
-        /**
-         * <code>int32 duration = 2;</code>
-         */
-        public fun clearDuration() {
-            _builder.clearDuration()
-        }
-
-        /**
-         * <code>int32 amplifier = 3;</code>
-         */
-        public var amplifier: kotlin.Int
-            @JvmName("getAmplifier")
-            get() = _builder.getAmplifier()
-            @JvmName("setAmplifier")
-            set(value) {
-                _builder.setAmplifier(value)
-            }
-
-        /**
-         * <code>int32 amplifier = 3;</code>
-         */
-        public fun clearAmplifier() {
-            _builder.clearAmplifier()
-        }
+  @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
+  @com.google.protobuf.kotlin.ProtoDslMarker
+  public class Dsl private constructor(
+    private val _builder: com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect.Builder
+  ) {
+    public companion object {
+      @kotlin.jvm.JvmSynthetic
+      @kotlin.PublishedApi
+      internal fun _create(builder: com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect.Builder): Dsl = Dsl(builder)
     }
-}
 
+    @kotlin.jvm.JvmSynthetic
+    @kotlin.PublishedApi
+    internal fun _build(): com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect = _builder.build()
+
+    /**
+     * <code>string translation_key = 1;</code>
+     */
+    public var translationKey: kotlin.String
+      @JvmName("getTranslationKey")
+      get() = _builder.getTranslationKey()
+      @JvmName("setTranslationKey")
+      set(value) {
+        _builder.setTranslationKey(value)
+      }
+    /**
+     * <code>string translation_key = 1;</code>
+     */
+    public fun clearTranslationKey() {
+      _builder.clearTranslationKey()
+    }
+
+    /**
+     * <code>int32 duration = 2;</code>
+     */
+    public var duration: kotlin.Int
+      @JvmName("getDuration")
+      get() = _builder.getDuration()
+      @JvmName("setDuration")
+      set(value) {
+        _builder.setDuration(value)
+      }
+    /**
+     * <code>int32 duration = 2;</code>
+     */
+    public fun clearDuration() {
+      _builder.clearDuration()
+    }
+
+    /**
+     * <code>int32 amplifier = 3;</code>
+     */
+    public var amplifier: kotlin.Int
+      @JvmName("getAmplifier")
+      get() = _builder.getAmplifier()
+      @JvmName("setAmplifier")
+      set(value) {
+        _builder.setAmplifier(value)
+      }
+    /**
+     * <code>int32 amplifier = 3;</code>
+     */
+    public fun clearAmplifier() {
+      _builder.clearAmplifier()
+    }
+  }
+}
 @kotlin.jvm.JvmSynthetic
 public inline fun com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect.copy(block: com.kyhsgeekcode.minecraft_env.proto.StatusEffectKt.Dsl.() -> kotlin.Unit): com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.StatusEffect =
-    com.kyhsgeekcode.minecraft_env.proto.StatusEffectKt.Dsl._create(this.toBuilder()).apply { block() }._build()
+  com.kyhsgeekcode.minecraft_env.proto.StatusEffectKt.Dsl._create(this.toBuilder()).apply { block() }._build()
 

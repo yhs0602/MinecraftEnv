@@ -221,8 +221,8 @@ class Minecraft_env : ModInitializer, CommandExecutor {
             val command = action.command
 
             if (command.isNotEmpty()) {
-                handleCommand(command, client, world, player)
-                return
+                if (handleCommand(command, client, world, player))
+                    return
             }
             if (player.isDead) return else sendSetScreenNull(client)
             val actionArray = action.actionList
@@ -239,6 +239,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
     }
 
 
+    // Returns: Should ignore action
     private fun handleCommand(
         command: String,
         client: MinecraftClient,
@@ -250,6 +251,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                 player.requestRespawn()
                 sendSetScreenNull(client)
             }
+            return true
         } else if (command.startsWith("fastreset")) {
             printWithTime("Fast resetting")
             val extraCommand = command.substringAfter("fastreset ").trim()
@@ -262,11 +264,12 @@ class Minecraft_env : ModInitializer, CommandExecutor {
 //            player.kill() //kill player
             runCommand(player, "/kill @p") // kill player
             runCommand(player, "/tp @e[type=!player] ~ -500 ~") // send to void
+            return true
         } else {
             runCommand(player, command)
             println("Executed command: $command")
+            return false
         }
-        return true
     }
 
     private fun applyAction(
@@ -491,6 +494,9 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                             // notify where entity is, what it is (supervised)
                             visibleEntities.add(entity.toMessage())
                         }
+                    }
+                    world.getOtherEntities(player, player.boundingBox.expand(10.0, 10.0, 10.0)).forEach {
+                        visibleEntities.add(it.toMessage())
                     }
                 }
                 writeObservation(observationSpaceMessage, outputStream)
