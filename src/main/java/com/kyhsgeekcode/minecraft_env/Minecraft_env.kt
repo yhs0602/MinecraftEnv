@@ -218,11 +218,13 @@ class Minecraft_env : ModInitializer, CommandExecutor {
         }
         try {
             val action = readAction(inputStream)
-            val command = action.command
+            val commands = action.commandsList
 
-            if (command.isNotEmpty()) {
-                if (handleCommand(command, client, world, player))
-                    return
+            if (commands.isNotEmpty()) {
+                for (command in commands) {
+                    if (handleCommand(command, client, world, player))
+                        return
+                }
             }
             if (player.isDead) return else sendSetScreenNull(client)
             val actionArray = action.actionList
