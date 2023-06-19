@@ -12,18 +12,25 @@ import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings
 import net.fabricmc.fabric.api.registry.FuelRegistry
+import net.minecraft.block.Block
 import net.minecraft.client.MinecraftClient
 import net.minecraft.client.gui.screen.DeathScreen
 import net.minecraft.client.network.ClientPlayerEntity
 import net.minecraft.client.util.ScreenshotRecorder
 import net.minecraft.client.world.ClientWorld
 import net.minecraft.entity.EntityType
+import net.minecraft.entity.LargeEntitySpawnHelper
+import net.minecraft.entity.SpawnReason
+import net.minecraft.entity.mob.MobEntity
 import net.minecraft.item.Item
 import net.minecraft.registry.Registries
 import net.minecraft.registry.Registry
 import net.minecraft.server.MinecraftServer
+import net.minecraft.server.world.ServerWorld
 import net.minecraft.stat.Stats
 import net.minecraft.util.Identifier
+import net.minecraft.util.math.BlockPos
+import net.minecraft.util.math.Direction
 import net.minecraft.util.math.MathHelper
 import net.minecraft.world.World
 import java.io.IOException
@@ -33,6 +40,7 @@ import java.net.ServerSocket
 import java.net.SocketTimeoutException
 import java.nio.ByteBuffer
 import java.time.format.DateTimeFormatter
+import kotlin.jvm.optionals.getOrNull
 
 enum class ResetPhase {
     WAIT_PLAYER_DEATH,
@@ -67,6 +75,8 @@ class Minecraft_env : ModInitializer, CommandExecutor {
     }
 
     override fun onInitialize() {
+        Registry.register(Registries.ITEM, "minecraft_env:custom_item", CUSTOM_ITEM)
+        FuelRegistry.INSTANCE.add(CUSTOM_ITEM, 300)
         val inputStream: InputStream
         val outputStream: OutputStream
         try {
@@ -82,8 +92,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
             throw RuntimeException(e)
         }
         printWithTime("Hello Fabric world!")
-        Registry.register(Registries.ITEM, "minecraft_env:custom_item", CUSTOM_ITEM)
-        FuelRegistry.INSTANCE.add(CUSTOM_ITEM, 300)
+
         readInitialEnvironment(inputStream, outputStream)
         resetPhase = ResetPhase.WAIT_INIT_ENDS
         val initializer = EnvironmentInitializer(initialEnvironment)
@@ -222,7 +231,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
 
             if (commands.isNotEmpty()) {
                 for (command in commands) {
-                    if (handleCommand(command, client, world, player))
+                    if (handleCommand(command, client, player))
                         return
                 }
             }
@@ -245,7 +254,6 @@ class Minecraft_env : ModInitializer, CommandExecutor {
     private fun handleCommand(
         command: String,
         client: MinecraftClient,
-        world: ClientWorld,
         player: ClientPlayerEntity
     ): Boolean {
         if (command == "respawn") {
@@ -267,6 +275,31 @@ class Minecraft_env : ModInitializer, CommandExecutor {
             runCommand(player, "/kill @p") // kill player
             runCommand(player, "/tp @e[type=!player] ~ -500 ~") // send to void
             return true
+        } else if (command.startsWith("random-summon")) {
+            printWithTime("Random summon")
+            val arguments = command.substringAfter("random-summon ").trim()
+            val argumentsList = arguments.split(" ")
+            val entityName = argumentsList[0]
+            val x = argumentsList[1].toInt()
+            val y = argumentsList[2].toInt()
+            val z = argumentsList[3].toInt()
+//            val entityType = EntityType.get(entityName).getOrNull() as? MobEntity ?: return false
+//            LargeEntitySpawnHelper.trySpawnAt(
+//                entityType.type,
+//                SpawnReason.COMMAND,
+//                world,
+//                BlockPos(x, y, z),
+//                20,
+//                20,
+//                20,
+//                LargeEntitySpawnHelper.Requirements { world, pos, state, abovePos, aboveState ->
+//                    aboveState.getCollisionShape(
+//                        world,
+//                        abovePos
+//                    ).isEmpty && Block.isFaceFullSquare(state.getCollisionShape(world, pos), Direction.UP
+//                }
+//            )
+            return false
         } else {
             runCommand(player, command)
             println("Executed command: $command")
