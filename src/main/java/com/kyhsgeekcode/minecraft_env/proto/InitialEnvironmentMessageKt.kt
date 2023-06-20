@@ -748,7 +748,72 @@ public object InitialEnvironmentMessageKt {
       _builder.clearInitialBlockStates()
     }
 
-  }
+
+    /**
+     * An uninstantiable, behaviorless type to represent the field in
+     * generics.
+     */
+    @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
+    public class SurroundingEntityDistancesProxy private constructor() : com.google.protobuf.kotlin.DslProxy()
+    /**
+     * <code>repeated int32 surroundingEntityDistances = 19;</code>
+     */
+     public val surroundingEntityDistances: com.google.protobuf.kotlin.DslList<kotlin.Int, SurroundingEntityDistancesProxy>
+      @kotlin.jvm.JvmSynthetic
+      get() = com.google.protobuf.kotlin.DslList(
+        _builder.getSurroundingEntityDistancesList()
+      )
+    /**
+     * <code>repeated int32 surroundingEntityDistances = 19;</code>
+     * @param value The surroundingEntityDistances to add.
+     */
+    @kotlin.jvm.JvmSynthetic
+    @kotlin.jvm.JvmName("addSurroundingEntityDistances")
+    public fun com.google.protobuf.kotlin.DslList<kotlin.Int, SurroundingEntityDistancesProxy>.add(value: kotlin.Int) {
+      _builder.addSurroundingEntityDistances(value)
+    }/**
+     * <code>repeated int32 surroundingEntityDistances = 19;</code>
+     * @param value The surroundingEntityDistances to add.
+     */
+    @kotlin.jvm.JvmSynthetic
+    @kotlin.jvm.JvmName("plusAssignSurroundingEntityDistances")
+    @Suppress("NOTHING_TO_INLINE")
+    public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.Int, SurroundingEntityDistancesProxy>.plusAssign(value: kotlin.Int) {
+      add(value)
+    }/**
+     * <code>repeated int32 surroundingEntityDistances = 19;</code>
+     * @param values The surroundingEntityDistances to add.
+     */
+    @kotlin.jvm.JvmSynthetic
+    @kotlin.jvm.JvmName("addAllSurroundingEntityDistances")
+    public fun com.google.protobuf.kotlin.DslList<kotlin.Int, SurroundingEntityDistancesProxy>.addAll(values: kotlin.collections.Iterable<kotlin.Int>) {
+      _builder.addAllSurroundingEntityDistances(values)
+    }/**
+     * <code>repeated int32 surroundingEntityDistances = 19;</code>
+     * @param values The surroundingEntityDistances to add.
+     */
+    @kotlin.jvm.JvmSynthetic
+    @kotlin.jvm.JvmName("plusAssignAllSurroundingEntityDistances")
+    @Suppress("NOTHING_TO_INLINE")
+    public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.Int, SurroundingEntityDistancesProxy>.plusAssign(values: kotlin.collections.Iterable<kotlin.Int>) {
+      addAll(values)
+    }/**
+     * <code>repeated int32 surroundingEntityDistances = 19;</code>
+     * @param index The index to set the value at.
+     * @param value The surroundingEntityDistances to set.
+     */
+    @kotlin.jvm.JvmSynthetic
+    @kotlin.jvm.JvmName("setSurroundingEntityDistances")
+    public operator fun com.google.protobuf.kotlin.DslList<kotlin.Int, SurroundingEntityDistancesProxy>.set(index: kotlin.Int, value: kotlin.Int) {
+      _builder.setSurroundingEntityDistances(index, value)
+    }/**
+     * <code>repeated int32 surroundingEntityDistances = 19;</code>
+     */
+    @kotlin.jvm.JvmSynthetic
+    @kotlin.jvm.JvmName("clearSurroundingEntityDistances")
+    public fun com.google.protobuf.kotlin.DslList<kotlin.Int, SurroundingEntityDistancesProxy>.clear() {
+      _builder.clearSurroundingEntityDistances()
+    }}
 }
 @kotlin.jvm.JvmSynthetic
 public inline fun com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage.copy(block: com.kyhsgeekcode.minecraft_env.proto.InitialEnvironmentMessageKt.Dsl.() -> kotlin.Unit): com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage =

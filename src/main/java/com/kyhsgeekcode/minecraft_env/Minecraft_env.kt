@@ -6,31 +6,25 @@ import com.kyhsgeekcode.minecraft_env.mixin.ClientDoAttackInvoker
 import com.kyhsgeekcode.minecraft_env.mixin.ClientDoItemUseInvoker
 import com.kyhsgeekcode.minecraft_env.proto.ActionSpace.ActionSpaceMessage
 import com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment
+import com.kyhsgeekcode.minecraft_env.proto.entitiesWithinDistance
 import com.kyhsgeekcode.minecraft_env.proto.observationSpaceMessage
 import net.fabricmc.api.ModInitializer
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings
 import net.fabricmc.fabric.api.registry.FuelRegistry
-import net.minecraft.block.Block
 import net.minecraft.client.MinecraftClient
 import net.minecraft.client.gui.screen.DeathScreen
 import net.minecraft.client.network.ClientPlayerEntity
 import net.minecraft.client.util.ScreenshotRecorder
 import net.minecraft.client.world.ClientWorld
 import net.minecraft.entity.EntityType
-import net.minecraft.entity.LargeEntitySpawnHelper
-import net.minecraft.entity.SpawnReason
-import net.minecraft.entity.mob.MobEntity
 import net.minecraft.item.Item
 import net.minecraft.registry.Registries
 import net.minecraft.registry.Registry
 import net.minecraft.server.MinecraftServer
-import net.minecraft.server.world.ServerWorld
 import net.minecraft.stat.Stats
 import net.minecraft.util.Identifier
-import net.minecraft.util.math.BlockPos
-import net.minecraft.util.math.Direction
 import net.minecraft.util.math.MathHelper
 import net.minecraft.world.World
 import java.io.IOException
@@ -40,7 +34,6 @@ import java.net.ServerSocket
 import java.net.SocketTimeoutException
 import java.nio.ByteBuffer
 import java.time.format.DateTimeFormatter
-import kotlin.jvm.optionals.getOrNull
 
 enum class ResetPhase {
     WAIT_PLAYER_DEATH,
@@ -530,8 +523,18 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                             visibleEntities.add(entity.toMessage())
                         }
                     }
-                    world.getOtherEntities(player, player.boundingBox.expand(10.0, 10.0, 10.0)).forEach {
-                        visibleEntities.add(it.toMessage())
+                    for (distance in initialEnvironment.surroundingEntityDistancesList) {
+                        val distanceDouble = distance.toDouble()
+                        val EntitiesWithinDistanceMessage = entitiesWithinDistance {
+                            world.getOtherEntities(
+                                player,
+                                player.boundingBox.expand(distanceDouble, distanceDouble, distanceDouble)
+                            )
+                                .forEach {
+                                    entities.add(it.toMessage())
+                                }
+                        }
+                        surroundingEntities[distance] = EntitiesWithinDistanceMessage
                     }
                 }
                 writeObservation(observationSpaceMessage, outputStream)

@@ -694,70 +694,59 @@ public object ObservationSpaceMessageKt {
     @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
     public class SurroundingEntitiesProxy private constructor() : com.google.protobuf.kotlin.DslProxy()
     /**
-     * <code>repeated .EntityInfo surrounding_entities = 19;</code>
+     * <code>map&lt;int32, .EntitiesWithinDistance&gt; surrounding_entities = 19;</code>
      */
-     public val surroundingEntities: com.google.protobuf.kotlin.DslList<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo, SurroundingEntitiesProxy>
+     public val surroundingEntities: com.google.protobuf.kotlin.DslMap<kotlin.Int, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance, SurroundingEntitiesProxy>
       @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
-        _builder.getSurroundingEntitiesList()
+      @JvmName("getSurroundingEntitiesMap")
+      get() = com.google.protobuf.kotlin.DslMap(
+        _builder.getSurroundingEntitiesMap()
       )
     /**
-     * <code>repeated .EntityInfo surrounding_entities = 19;</code>
-     * @param value The surroundingEntities to add.
+     * <code>map&lt;int32, .EntitiesWithinDistance&gt; surrounding_entities = 19;</code>
      */
-    @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addSurroundingEntities")
-    public fun com.google.protobuf.kotlin.DslList<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo, SurroundingEntitiesProxy>.add(value: com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo) {
-      _builder.addSurroundingEntities(value)
-    }
+    @JvmName("putSurroundingEntities")
+    public fun com.google.protobuf.kotlin.DslMap<kotlin.Int, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance, SurroundingEntitiesProxy>
+      .put(key: kotlin.Int, value: com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance) {
+         _builder.putSurroundingEntities(key, value)
+       }
     /**
-     * <code>repeated .EntityInfo surrounding_entities = 19;</code>
-     * @param value The surroundingEntities to add.
+     * <code>map&lt;int32, .EntitiesWithinDistance&gt; surrounding_entities = 19;</code>
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignSurroundingEntities")
+    @JvmName("setSurroundingEntities")
     @Suppress("NOTHING_TO_INLINE")
-    public inline operator fun com.google.protobuf.kotlin.DslList<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo, SurroundingEntitiesProxy>.plusAssign(value: com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo) {
-      add(value)
-    }
+    public inline operator fun com.google.protobuf.kotlin.DslMap<kotlin.Int, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance, SurroundingEntitiesProxy>
+      .set(key: kotlin.Int, value: com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance) {
+         put(key, value)
+       }
     /**
-     * <code>repeated .EntityInfo surrounding_entities = 19;</code>
-     * @param values The surroundingEntities to add.
+     * <code>map&lt;int32, .EntitiesWithinDistance&gt; surrounding_entities = 19;</code>
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllSurroundingEntities")
-    public fun com.google.protobuf.kotlin.DslList<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo, SurroundingEntitiesProxy>.addAll(values: kotlin.collections.Iterable<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo>) {
-      _builder.addAllSurroundingEntities(values)
-    }
+    @JvmName("removeSurroundingEntities")
+    public fun com.google.protobuf.kotlin.DslMap<kotlin.Int, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance, SurroundingEntitiesProxy>
+      .remove(key: kotlin.Int) {
+         _builder.removeSurroundingEntities(key)
+       }
     /**
-     * <code>repeated .EntityInfo surrounding_entities = 19;</code>
-     * @param values The surroundingEntities to add.
+     * <code>map&lt;int32, .EntitiesWithinDistance&gt; surrounding_entities = 19;</code>
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllSurroundingEntities")
-    @Suppress("NOTHING_TO_INLINE")
-    public inline operator fun com.google.protobuf.kotlin.DslList<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo, SurroundingEntitiesProxy>.plusAssign(values: kotlin.collections.Iterable<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo>) {
-      addAll(values)
-    }
+    @JvmName("putAllSurroundingEntities")
+    public fun com.google.protobuf.kotlin.DslMap<kotlin.Int, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance, SurroundingEntitiesProxy>
+      .putAll(map: kotlin.collections.Map<kotlin.Int, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance>) {
+         _builder.putAllSurroundingEntities(map)
+       }
     /**
-     * <code>repeated .EntityInfo surrounding_entities = 19;</code>
-     * @param index The index to set the value at.
-     * @param value The surroundingEntities to set.
+     * <code>map&lt;int32, .EntitiesWithinDistance&gt; surrounding_entities = 19;</code>
      */
     @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setSurroundingEntities")
-    public operator fun com.google.protobuf.kotlin.DslList<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo, SurroundingEntitiesProxy>.set(index: kotlin.Int, value: com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo) {
-      _builder.setSurroundingEntities(index, value)
-    }
-    /**
-     * <code>repeated .EntityInfo surrounding_entities = 19;</code>
-     */
-    @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearSurroundingEntities")
-    public fun com.google.protobuf.kotlin.DslList<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo, SurroundingEntitiesProxy>.clear() {
-      _builder.clearSurroundingEntities()
-    }
-
+    @JvmName("clearSurroundingEntities")
+    public fun com.google.protobuf.kotlin.DslMap<kotlin.Int, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance, SurroundingEntitiesProxy>
+      .clear() {
+         _builder.clearSurroundingEntities()
+       }
   }
 }
 @kotlin.jvm.JvmSynthetic

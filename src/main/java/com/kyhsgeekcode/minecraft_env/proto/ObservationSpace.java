@@ -5345,6 +5345,791 @@ public final class ObservationSpace {
 
   }
 
+  public interface EntitiesWithinDistanceOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:EntitiesWithinDistance)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>repeated .EntityInfo entities = 1;</code>
+     */
+    java.util.List<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo> 
+        getEntitiesList();
+    /**
+     * <code>repeated .EntityInfo entities = 1;</code>
+     */
+    com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo getEntities(int index);
+    /**
+     * <code>repeated .EntityInfo entities = 1;</code>
+     */
+    int getEntitiesCount();
+    /**
+     * <code>repeated .EntityInfo entities = 1;</code>
+     */
+    java.util.List<? extends com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfoOrBuilder> 
+        getEntitiesOrBuilderList();
+    /**
+     * <code>repeated .EntityInfo entities = 1;</code>
+     */
+    com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfoOrBuilder getEntitiesOrBuilder(
+        int index);
+  }
+  /**
+   * Protobuf type {@code EntitiesWithinDistance}
+   */
+  public static final class EntitiesWithinDistance extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:EntitiesWithinDistance)
+      EntitiesWithinDistanceOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use EntitiesWithinDistance.newBuilder() to construct.
+    private EntitiesWithinDistance(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private EntitiesWithinDistance() {
+      entities_ = java.util.Collections.emptyList();
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new EntitiesWithinDistance();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_EntitiesWithinDistance_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_EntitiesWithinDistance_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance.class, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance.Builder.class);
+    }
+
+    public static final int ENTITIES_FIELD_NUMBER = 1;
+    @SuppressWarnings("serial")
+    private java.util.List<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo> entities_;
+    /**
+     * <code>repeated .EntityInfo entities = 1;</code>
+     */
+    @java.lang.Override
+    public java.util.List<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo> getEntitiesList() {
+      return entities_;
+    }
+    /**
+     * <code>repeated .EntityInfo entities = 1;</code>
+     */
+    @java.lang.Override
+    public java.util.List<? extends com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfoOrBuilder> 
+        getEntitiesOrBuilderList() {
+      return entities_;
+    }
+    /**
+     * <code>repeated .EntityInfo entities = 1;</code>
+     */
+    @java.lang.Override
+    public int getEntitiesCount() {
+      return entities_.size();
+    }
+    /**
+     * <code>repeated .EntityInfo entities = 1;</code>
+     */
+    @java.lang.Override
+    public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo getEntities(int index) {
+      return entities_.get(index);
+    }
+    /**
+     * <code>repeated .EntityInfo entities = 1;</code>
+     */
+    @java.lang.Override
+    public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfoOrBuilder getEntitiesOrBuilder(
+        int index) {
+      return entities_.get(index);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      for (int i = 0; i < entities_.size(); i++) {
+        output.writeMessage(1, entities_.get(i));
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      for (int i = 0; i < entities_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, entities_.get(i));
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance)) {
+        return super.equals(obj);
+      }
+      com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance other = (com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance) obj;
+
+      if (!getEntitiesList()
+          .equals(other.getEntitiesList())) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (getEntitiesCount() > 0) {
+        hash = (37 * hash) + ENTITIES_FIELD_NUMBER;
+        hash = (53 * hash) + getEntitiesList().hashCode();
+      }
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code EntitiesWithinDistance}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:EntitiesWithinDistance)
+        com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistanceOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_EntitiesWithinDistance_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_EntitiesWithinDistance_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance.class, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance.Builder.class);
+      }
+
+      // Construct using com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        if (entitiesBuilder_ == null) {
+          entities_ = java.util.Collections.emptyList();
+        } else {
+          entities_ = null;
+          entitiesBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_EntitiesWithinDistance_descriptor;
+      }
+
+      @java.lang.Override
+      public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance getDefaultInstanceForType() {
+        return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance build() {
+        com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance buildPartial() {
+        com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance result = new com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance(this);
+        buildPartialRepeatedFields(result);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartialRepeatedFields(com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance result) {
+        if (entitiesBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) != 0)) {
+            entities_ = java.util.Collections.unmodifiableList(entities_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.entities_ = entities_;
+        } else {
+          result.entities_ = entitiesBuilder_.build();
+        }
+      }
+
+      private void buildPartial0(com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance result) {
+        int from_bitField0_ = bitField0_;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance) {
+          return mergeFrom((com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance other) {
+        if (other == com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance.getDefaultInstance()) return this;
+        if (entitiesBuilder_ == null) {
+          if (!other.entities_.isEmpty()) {
+            if (entities_.isEmpty()) {
+              entities_ = other.entities_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureEntitiesIsMutable();
+              entities_.addAll(other.entities_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.entities_.isEmpty()) {
+            if (entitiesBuilder_.isEmpty()) {
+              entitiesBuilder_.dispose();
+              entitiesBuilder_ = null;
+              entities_ = other.entities_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              entitiesBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getEntitiesFieldBuilder() : null;
+            } else {
+              entitiesBuilder_.addAllMessages(other.entities_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo m =
+                    input.readMessage(
+                        com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo.parser(),
+                        extensionRegistry);
+                if (entitiesBuilder_ == null) {
+                  ensureEntitiesIsMutable();
+                  entities_.add(m);
+                } else {
+                  entitiesBuilder_.addMessage(m);
+                }
+                break;
+              } // case 10
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private java.util.List<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo> entities_ =
+        java.util.Collections.emptyList();
+      private void ensureEntitiesIsMutable() {
+        if (!((bitField0_ & 0x00000001) != 0)) {
+          entities_ = new java.util.ArrayList<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo>(entities_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo.Builder, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfoOrBuilder> entitiesBuilder_;
+
+      /**
+       * <code>repeated .EntityInfo entities = 1;</code>
+       */
+      public java.util.List<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo> getEntitiesList() {
+        if (entitiesBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(entities_);
+        } else {
+          return entitiesBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .EntityInfo entities = 1;</code>
+       */
+      public int getEntitiesCount() {
+        if (entitiesBuilder_ == null) {
+          return entities_.size();
+        } else {
+          return entitiesBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .EntityInfo entities = 1;</code>
+       */
+      public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo getEntities(int index) {
+        if (entitiesBuilder_ == null) {
+          return entities_.get(index);
+        } else {
+          return entitiesBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .EntityInfo entities = 1;</code>
+       */
+      public Builder setEntities(
+          int index, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo value) {
+        if (entitiesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureEntitiesIsMutable();
+          entities_.set(index, value);
+          onChanged();
+        } else {
+          entitiesBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .EntityInfo entities = 1;</code>
+       */
+      public Builder setEntities(
+          int index, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo.Builder builderForValue) {
+        if (entitiesBuilder_ == null) {
+          ensureEntitiesIsMutable();
+          entities_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          entitiesBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .EntityInfo entities = 1;</code>
+       */
+      public Builder addEntities(com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo value) {
+        if (entitiesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureEntitiesIsMutable();
+          entities_.add(value);
+          onChanged();
+        } else {
+          entitiesBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .EntityInfo entities = 1;</code>
+       */
+      public Builder addEntities(
+          int index, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo value) {
+        if (entitiesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureEntitiesIsMutable();
+          entities_.add(index, value);
+          onChanged();
+        } else {
+          entitiesBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .EntityInfo entities = 1;</code>
+       */
+      public Builder addEntities(
+          com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo.Builder builderForValue) {
+        if (entitiesBuilder_ == null) {
+          ensureEntitiesIsMutable();
+          entities_.add(builderForValue.build());
+          onChanged();
+        } else {
+          entitiesBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .EntityInfo entities = 1;</code>
+       */
+      public Builder addEntities(
+          int index, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo.Builder builderForValue) {
+        if (entitiesBuilder_ == null) {
+          ensureEntitiesIsMutable();
+          entities_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          entitiesBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .EntityInfo entities = 1;</code>
+       */
+      public Builder addAllEntities(
+          java.lang.Iterable<? extends com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo> values) {
+        if (entitiesBuilder_ == null) {
+          ensureEntitiesIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, entities_);
+          onChanged();
+        } else {
+          entitiesBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .EntityInfo entities = 1;</code>
+       */
+      public Builder clearEntities() {
+        if (entitiesBuilder_ == null) {
+          entities_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          entitiesBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .EntityInfo entities = 1;</code>
+       */
+      public Builder removeEntities(int index) {
+        if (entitiesBuilder_ == null) {
+          ensureEntitiesIsMutable();
+          entities_.remove(index);
+          onChanged();
+        } else {
+          entitiesBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .EntityInfo entities = 1;</code>
+       */
+      public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo.Builder getEntitiesBuilder(
+          int index) {
+        return getEntitiesFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .EntityInfo entities = 1;</code>
+       */
+      public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfoOrBuilder getEntitiesOrBuilder(
+          int index) {
+        if (entitiesBuilder_ == null) {
+          return entities_.get(index);  } else {
+          return entitiesBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .EntityInfo entities = 1;</code>
+       */
+      public java.util.List<? extends com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfoOrBuilder> 
+           getEntitiesOrBuilderList() {
+        if (entitiesBuilder_ != null) {
+          return entitiesBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(entities_);
+        }
+      }
+      /**
+       * <code>repeated .EntityInfo entities = 1;</code>
+       */
+      public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo.Builder addEntitiesBuilder() {
+        return getEntitiesFieldBuilder().addBuilder(
+            com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .EntityInfo entities = 1;</code>
+       */
+      public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo.Builder addEntitiesBuilder(
+          int index) {
+        return getEntitiesFieldBuilder().addBuilder(
+            index, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .EntityInfo entities = 1;</code>
+       */
+      public java.util.List<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo.Builder> 
+           getEntitiesBuilderList() {
+        return getEntitiesFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo.Builder, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfoOrBuilder> 
+          getEntitiesFieldBuilder() {
+        if (entitiesBuilder_ == null) {
+          entitiesBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo.Builder, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfoOrBuilder>(
+                  entities_,
+                  ((bitField0_ & 0x00000001) != 0),
+                  getParentForChildren(),
+                  isClean());
+          entities_ = null;
+        }
+        return entitiesBuilder_;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:EntitiesWithinDistance)
+    }
+
+    // @@protoc_insertion_point(class_scope:EntitiesWithinDistance)
+    private static final com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance();
+    }
+
+    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<EntitiesWithinDistance>
+        PARSER = new com.google.protobuf.AbstractParser<EntitiesWithinDistance>() {
+      @java.lang.Override
+      public EntitiesWithinDistance parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<EntitiesWithinDistance> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<EntitiesWithinDistance> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   public interface ObservationSpaceMessageOrBuilder extends
       // @@protoc_insertion_point(interface_extends:ObservationSpaceMessage)
       com.google.protobuf.MessageOrBuilder {
@@ -5617,28 +6402,38 @@ public final class ObservationSpace {
         int index);
 
     /**
-     * <code>repeated .EntityInfo surrounding_entities = 19;</code>
-     */
-    java.util.List<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo> 
-        getSurroundingEntitiesList();
-    /**
-     * <code>repeated .EntityInfo surrounding_entities = 19;</code>
-     */
-    com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo getSurroundingEntities(int index);
-    /**
-     * <code>repeated .EntityInfo surrounding_entities = 19;</code>
+     * <code>map&lt;int32, .EntitiesWithinDistance&gt; surrounding_entities = 19;</code>
      */
     int getSurroundingEntitiesCount();
     /**
-     * <code>repeated .EntityInfo surrounding_entities = 19;</code>
+     * <code>map&lt;int32, .EntitiesWithinDistance&gt; surrounding_entities = 19;</code>
      */
-    java.util.List<? extends com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfoOrBuilder> 
-        getSurroundingEntitiesOrBuilderList();
+    boolean containsSurroundingEntities(
+        int key);
     /**
-     * <code>repeated .EntityInfo surrounding_entities = 19;</code>
+     * Use {@link #getSurroundingEntitiesMap()} instead.
      */
-    com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfoOrBuilder getSurroundingEntitiesOrBuilder(
-        int index);
+    @java.lang.Deprecated
+    java.util.Map<java.lang.Integer, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance>
+    getSurroundingEntities();
+    /**
+     * <code>map&lt;int32, .EntitiesWithinDistance&gt; surrounding_entities = 19;</code>
+     */
+    java.util.Map<java.lang.Integer, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance>
+    getSurroundingEntitiesMap();
+    /**
+     * <code>map&lt;int32, .EntitiesWithinDistance&gt; surrounding_entities = 19;</code>
+     */
+    /* nullable */
+com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance getSurroundingEntitiesOrDefault(
+        int key,
+        /* nullable */
+com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance defaultValue);
+    /**
+     * <code>map&lt;int32, .EntitiesWithinDistance&gt; surrounding_entities = 19;</code>
+     */
+    com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance getSurroundingEntitiesOrThrow(
+        int key);
   }
   /**
    * Protobuf type {@code ObservationSpaceMessage}
@@ -5658,7 +6453,6 @@ public final class ObservationSpace {
       soundSubtitles_ = java.util.Collections.emptyList();
       statusEffects_ = java.util.Collections.emptyList();
       visibleEntities_ = java.util.Collections.emptyList();
-      surroundingEntities_ = java.util.Collections.emptyList();
     }
 
     @java.lang.Override
@@ -5689,6 +6483,8 @@ public final class ObservationSpace {
           return internalGetMinedStatistics();
         case 17:
           return internalGetMiscStatistics();
+        case 19:
+          return internalGetSurroundingEntities();
         default:
           throw new RuntimeException(
               "Invalid map field number: " + number);
@@ -6234,44 +7030,82 @@ public final class ObservationSpace {
     }
 
     public static final int SURROUNDING_ENTITIES_FIELD_NUMBER = 19;
+    private static final class SurroundingEntitiesDefaultEntryHolder {
+      static final com.google.protobuf.MapEntry<
+          java.lang.Integer, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance> defaultEntry =
+              com.google.protobuf.MapEntry
+              .<java.lang.Integer, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance>newDefaultInstance(
+                  com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_ObservationSpaceMessage_SurroundingEntitiesEntry_descriptor, 
+                  com.google.protobuf.WireFormat.FieldType.INT32,
+                  0,
+                  com.google.protobuf.WireFormat.FieldType.MESSAGE,
+                  com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance.getDefaultInstance());
+    }
     @SuppressWarnings("serial")
-    private java.util.List<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo> surroundingEntities_;
-    /**
-     * <code>repeated .EntityInfo surrounding_entities = 19;</code>
-     */
-    @java.lang.Override
-    public java.util.List<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo> getSurroundingEntitiesList() {
+    private com.google.protobuf.MapField<
+        java.lang.Integer, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance> surroundingEntities_;
+    private com.google.protobuf.MapField<java.lang.Integer, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance>
+    internalGetSurroundingEntities() {
+      if (surroundingEntities_ == null) {
+        return com.google.protobuf.MapField.emptyMapField(
+            SurroundingEntitiesDefaultEntryHolder.defaultEntry);
+      }
       return surroundingEntities_;
     }
-    /**
-     * <code>repeated .EntityInfo surrounding_entities = 19;</code>
-     */
-    @java.lang.Override
-    public java.util.List<? extends com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfoOrBuilder> 
-        getSurroundingEntitiesOrBuilderList() {
-      return surroundingEntities_;
-    }
-    /**
-     * <code>repeated .EntityInfo surrounding_entities = 19;</code>
-     */
-    @java.lang.Override
     public int getSurroundingEntitiesCount() {
-      return surroundingEntities_.size();
+      return internalGetSurroundingEntities().getMap().size();
     }
     /**
-     * <code>repeated .EntityInfo surrounding_entities = 19;</code>
+     * <code>map&lt;int32, .EntitiesWithinDistance&gt; surrounding_entities = 19;</code>
      */
     @java.lang.Override
-    public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo getSurroundingEntities(int index) {
-      return surroundingEntities_.get(index);
+    public boolean containsSurroundingEntities(
+        int key) {
+      
+      return internalGetSurroundingEntities().getMap().containsKey(key);
     }
     /**
-     * <code>repeated .EntityInfo surrounding_entities = 19;</code>
+     * Use {@link #getSurroundingEntitiesMap()} instead.
      */
     @java.lang.Override
-    public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfoOrBuilder getSurroundingEntitiesOrBuilder(
-        int index) {
-      return surroundingEntities_.get(index);
+    @java.lang.Deprecated
+    public java.util.Map<java.lang.Integer, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance> getSurroundingEntities() {
+      return getSurroundingEntitiesMap();
+    }
+    /**
+     * <code>map&lt;int32, .EntitiesWithinDistance&gt; surrounding_entities = 19;</code>
+     */
+    @java.lang.Override
+    public java.util.Map<java.lang.Integer, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance> getSurroundingEntitiesMap() {
+      return internalGetSurroundingEntities().getMap();
+    }
+    /**
+     * <code>map&lt;int32, .EntitiesWithinDistance&gt; surrounding_entities = 19;</code>
+     */
+    @java.lang.Override
+    public /* nullable */
+com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance getSurroundingEntitiesOrDefault(
+        int key,
+        /* nullable */
+com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance defaultValue) {
+      
+      java.util.Map<java.lang.Integer, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance> map =
+          internalGetSurroundingEntities().getMap();
+      return map.containsKey(key) ? map.get(key) : defaultValue;
+    }
+    /**
+     * <code>map&lt;int32, .EntitiesWithinDistance&gt; surrounding_entities = 19;</code>
+     */
+    @java.lang.Override
+    public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance getSurroundingEntitiesOrThrow(
+        int key) {
+      
+      java.util.Map<java.lang.Integer, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance> map =
+          internalGetSurroundingEntities().getMap();
+      if (!map.containsKey(key)) {
+        throw new java.lang.IllegalArgumentException();
+      }
+      return map.get(key);
     }
 
     private byte memoizedIsInitialized = -1;
@@ -6351,9 +7185,12 @@ public final class ObservationSpace {
       for (int i = 0; i < visibleEntities_.size(); i++) {
         output.writeMessage(18, visibleEntities_.get(i));
       }
-      for (int i = 0; i < surroundingEntities_.size(); i++) {
-        output.writeMessage(19, surroundingEntities_.get(i));
-      }
+      com.google.protobuf.GeneratedMessageV3
+        .serializeIntegerMapTo(
+          output,
+          internalGetSurroundingEntities(),
+          SurroundingEntitiesDefaultEntryHolder.defaultEntry,
+          19);
       getUnknownFields().writeTo(output);
     }
 
@@ -6453,9 +7290,15 @@ public final class ObservationSpace {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(18, visibleEntities_.get(i));
       }
-      for (int i = 0; i < surroundingEntities_.size(); i++) {
+      for (java.util.Map.Entry<java.lang.Integer, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance> entry
+           : internalGetSurroundingEntities().getMap().entrySet()) {
+        com.google.protobuf.MapEntry<java.lang.Integer, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance>
+        surroundingEntities__ = SurroundingEntitiesDefaultEntryHolder.defaultEntry.newBuilderForType()
+            .setKey(entry.getKey())
+            .setValue(entry.getValue())
+            .build();
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(19, surroundingEntities_.get(i));
+            .computeMessageSize(19, surroundingEntities__);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
@@ -6519,8 +7362,8 @@ public final class ObservationSpace {
           other.internalGetMiscStatistics())) return false;
       if (!getVisibleEntitiesList()
           .equals(other.getVisibleEntitiesList())) return false;
-      if (!getSurroundingEntitiesList()
-          .equals(other.getSurroundingEntitiesList())) return false;
+      if (!internalGetSurroundingEntities().equals(
+          other.internalGetSurroundingEntities())) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -6593,9 +7436,9 @@ public final class ObservationSpace {
         hash = (37 * hash) + VISIBLE_ENTITIES_FIELD_NUMBER;
         hash = (53 * hash) + getVisibleEntitiesList().hashCode();
       }
-      if (getSurroundingEntitiesCount() > 0) {
+      if (!internalGetSurroundingEntities().getMap().isEmpty()) {
         hash = (37 * hash) + SURROUNDING_ENTITIES_FIELD_NUMBER;
-        hash = (53 * hash) + getSurroundingEntitiesList().hashCode();
+        hash = (53 * hash) + internalGetSurroundingEntities().hashCode();
       }
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
@@ -6714,6 +7557,8 @@ public final class ObservationSpace {
             return internalGetMinedStatistics();
           case 17:
             return internalGetMiscStatistics();
+          case 19:
+            return internalGetSurroundingEntities();
           default:
             throw new RuntimeException(
                 "Invalid map field number: " + number);
@@ -6729,6 +7574,8 @@ public final class ObservationSpace {
             return internalGetMutableMinedStatistics();
           case 17:
             return internalGetMutableMiscStatistics();
+          case 19:
+            return internalGetMutableSurroundingEntities();
           default:
             throw new RuntimeException(
                 "Invalid map field number: " + number);
@@ -6802,13 +7649,7 @@ public final class ObservationSpace {
           visibleEntitiesBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00020000);
-        if (surroundingEntitiesBuilder_ == null) {
-          surroundingEntities_ = java.util.Collections.emptyList();
-        } else {
-          surroundingEntities_ = null;
-          surroundingEntitiesBuilder_.clear();
-        }
-        bitField0_ = (bitField0_ & ~0x00040000);
+        internalGetMutableSurroundingEntities().clear();
         return this;
       }
 
@@ -6878,15 +7719,6 @@ public final class ObservationSpace {
         } else {
           result.visibleEntities_ = visibleEntitiesBuilder_.build();
         }
-        if (surroundingEntitiesBuilder_ == null) {
-          if (((bitField0_ & 0x00040000) != 0)) {
-            surroundingEntities_ = java.util.Collections.unmodifiableList(surroundingEntities_);
-            bitField0_ = (bitField0_ & ~0x00040000);
-          }
-          result.surroundingEntities_ = surroundingEntities_;
-        } else {
-          result.surroundingEntities_ = surroundingEntitiesBuilder_.build();
-        }
       }
 
       private void buildPartial0(com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ObservationSpaceMessage result) {
@@ -6937,6 +7769,10 @@ public final class ObservationSpace {
         if (((from_bitField0_ & 0x00010000) != 0)) {
           result.miscStatistics_ = internalGetMiscStatistics();
           result.miscStatistics_.makeImmutable();
+        }
+        if (((from_bitField0_ & 0x00040000) != 0)) {
+          result.surroundingEntities_ = internalGetSurroundingEntities();
+          result.surroundingEntities_.makeImmutable();
         }
       }
 
@@ -7130,32 +7966,9 @@ public final class ObservationSpace {
             }
           }
         }
-        if (surroundingEntitiesBuilder_ == null) {
-          if (!other.surroundingEntities_.isEmpty()) {
-            if (surroundingEntities_.isEmpty()) {
-              surroundingEntities_ = other.surroundingEntities_;
-              bitField0_ = (bitField0_ & ~0x00040000);
-            } else {
-              ensureSurroundingEntitiesIsMutable();
-              surroundingEntities_.addAll(other.surroundingEntities_);
-            }
-            onChanged();
-          }
-        } else {
-          if (!other.surroundingEntities_.isEmpty()) {
-            if (surroundingEntitiesBuilder_.isEmpty()) {
-              surroundingEntitiesBuilder_.dispose();
-              surroundingEntitiesBuilder_ = null;
-              surroundingEntities_ = other.surroundingEntities_;
-              bitField0_ = (bitField0_ & ~0x00040000);
-              surroundingEntitiesBuilder_ = 
-                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
-                   getSurroundingEntitiesFieldBuilder() : null;
-            } else {
-              surroundingEntitiesBuilder_.addAllMessages(other.surroundingEntities_);
-            }
-          }
-        }
+        internalGetMutableSurroundingEntities().mergeFrom(
+            other.internalGetSurroundingEntities());
+        bitField0_ |= 0x00040000;
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
@@ -7319,16 +8132,12 @@ public final class ObservationSpace {
                 break;
               } // case 146
               case 154: {
-                com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo m =
-                    input.readMessage(
-                        com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo.parser(),
-                        extensionRegistry);
-                if (surroundingEntitiesBuilder_ == null) {
-                  ensureSurroundingEntitiesIsMutable();
-                  surroundingEntities_.add(m);
-                } else {
-                  surroundingEntitiesBuilder_.addMessage(m);
-                }
+                com.google.protobuf.MapEntry<java.lang.Integer, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance>
+                surroundingEntities__ = input.readMessage(
+                    SurroundingEntitiesDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
+                internalGetMutableSurroundingEntities().getMutableMap().put(
+                    surroundingEntities__.getKey(), surroundingEntities__.getValue());
+                bitField0_ |= 0x00040000;
                 break;
               } // case 154
               default: {
@@ -9122,244 +9931,131 @@ public final class ObservationSpace {
         return visibleEntitiesBuilder_;
       }
 
-      private java.util.List<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo> surroundingEntities_ =
-        java.util.Collections.emptyList();
-      private void ensureSurroundingEntitiesIsMutable() {
-        if (!((bitField0_ & 0x00040000) != 0)) {
-          surroundingEntities_ = new java.util.ArrayList<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo>(surroundingEntities_);
-          bitField0_ |= 0x00040000;
-         }
-      }
-
-      private com.google.protobuf.RepeatedFieldBuilderV3<
-          com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo.Builder, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfoOrBuilder> surroundingEntitiesBuilder_;
-
-      /**
-       * <code>repeated .EntityInfo surrounding_entities = 19;</code>
-       */
-      public java.util.List<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo> getSurroundingEntitiesList() {
-        if (surroundingEntitiesBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(surroundingEntities_);
-        } else {
-          return surroundingEntitiesBuilder_.getMessageList();
+      private com.google.protobuf.MapField<
+          java.lang.Integer, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance> surroundingEntities_;
+      private com.google.protobuf.MapField<java.lang.Integer, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance>
+          internalGetSurroundingEntities() {
+        if (surroundingEntities_ == null) {
+          return com.google.protobuf.MapField.emptyMapField(
+              SurroundingEntitiesDefaultEntryHolder.defaultEntry);
         }
+        return surroundingEntities_;
       }
-      /**
-       * <code>repeated .EntityInfo surrounding_entities = 19;</code>
-       */
+      private com.google.protobuf.MapField<java.lang.Integer, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance>
+          internalGetMutableSurroundingEntities() {
+        if (surroundingEntities_ == null) {
+          surroundingEntities_ = com.google.protobuf.MapField.newMapField(
+              SurroundingEntitiesDefaultEntryHolder.defaultEntry);
+        }
+        if (!surroundingEntities_.isMutable()) {
+          surroundingEntities_ = surroundingEntities_.copy();
+        }
+        bitField0_ |= 0x00040000;
+        onChanged();
+        return surroundingEntities_;
+      }
       public int getSurroundingEntitiesCount() {
-        if (surroundingEntitiesBuilder_ == null) {
-          return surroundingEntities_.size();
-        } else {
-          return surroundingEntitiesBuilder_.getCount();
-        }
+        return internalGetSurroundingEntities().getMap().size();
       }
       /**
-       * <code>repeated .EntityInfo surrounding_entities = 19;</code>
+       * <code>map&lt;int32, .EntitiesWithinDistance&gt; surrounding_entities = 19;</code>
        */
-      public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo getSurroundingEntities(int index) {
-        if (surroundingEntitiesBuilder_ == null) {
-          return surroundingEntities_.get(index);
-        } else {
-          return surroundingEntitiesBuilder_.getMessage(index);
-        }
+      @java.lang.Override
+      public boolean containsSurroundingEntities(
+          int key) {
+        
+        return internalGetSurroundingEntities().getMap().containsKey(key);
       }
       /**
-       * <code>repeated .EntityInfo surrounding_entities = 19;</code>
+       * Use {@link #getSurroundingEntitiesMap()} instead.
        */
-      public Builder setSurroundingEntities(
-          int index, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo value) {
-        if (surroundingEntitiesBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureSurroundingEntitiesIsMutable();
-          surroundingEntities_.set(index, value);
-          onChanged();
-        } else {
-          surroundingEntitiesBuilder_.setMessage(index, value);
-        }
-        return this;
+      @java.lang.Override
+      @java.lang.Deprecated
+      public java.util.Map<java.lang.Integer, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance> getSurroundingEntities() {
+        return getSurroundingEntitiesMap();
       }
       /**
-       * <code>repeated .EntityInfo surrounding_entities = 19;</code>
+       * <code>map&lt;int32, .EntitiesWithinDistance&gt; surrounding_entities = 19;</code>
        */
-      public Builder setSurroundingEntities(
-          int index, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo.Builder builderForValue) {
-        if (surroundingEntitiesBuilder_ == null) {
-          ensureSurroundingEntitiesIsMutable();
-          surroundingEntities_.set(index, builderForValue.build());
-          onChanged();
-        } else {
-          surroundingEntitiesBuilder_.setMessage(index, builderForValue.build());
-        }
-        return this;
+      @java.lang.Override
+      public java.util.Map<java.lang.Integer, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance> getSurroundingEntitiesMap() {
+        return internalGetSurroundingEntities().getMap();
       }
       /**
-       * <code>repeated .EntityInfo surrounding_entities = 19;</code>
+       * <code>map&lt;int32, .EntitiesWithinDistance&gt; surrounding_entities = 19;</code>
        */
-      public Builder addSurroundingEntities(com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo value) {
-        if (surroundingEntitiesBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureSurroundingEntitiesIsMutable();
-          surroundingEntities_.add(value);
-          onChanged();
-        } else {
-          surroundingEntitiesBuilder_.addMessage(value);
-        }
-        return this;
+      @java.lang.Override
+      public /* nullable */
+com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance getSurroundingEntitiesOrDefault(
+          int key,
+          /* nullable */
+com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance defaultValue) {
+        
+        java.util.Map<java.lang.Integer, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance> map =
+            internalGetSurroundingEntities().getMap();
+        return map.containsKey(key) ? map.get(key) : defaultValue;
       }
       /**
-       * <code>repeated .EntityInfo surrounding_entities = 19;</code>
+       * <code>map&lt;int32, .EntitiesWithinDistance&gt; surrounding_entities = 19;</code>
        */
-      public Builder addSurroundingEntities(
-          int index, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo value) {
-        if (surroundingEntitiesBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureSurroundingEntitiesIsMutable();
-          surroundingEntities_.add(index, value);
-          onChanged();
-        } else {
-          surroundingEntitiesBuilder_.addMessage(index, value);
+      @java.lang.Override
+      public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance getSurroundingEntitiesOrThrow(
+          int key) {
+        
+        java.util.Map<java.lang.Integer, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance> map =
+            internalGetSurroundingEntities().getMap();
+        if (!map.containsKey(key)) {
+          throw new java.lang.IllegalArgumentException();
         }
-        return this;
+        return map.get(key);
       }
-      /**
-       * <code>repeated .EntityInfo surrounding_entities = 19;</code>
-       */
-      public Builder addSurroundingEntities(
-          com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo.Builder builderForValue) {
-        if (surroundingEntitiesBuilder_ == null) {
-          ensureSurroundingEntitiesIsMutable();
-          surroundingEntities_.add(builderForValue.build());
-          onChanged();
-        } else {
-          surroundingEntitiesBuilder_.addMessage(builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .EntityInfo surrounding_entities = 19;</code>
-       */
-      public Builder addSurroundingEntities(
-          int index, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo.Builder builderForValue) {
-        if (surroundingEntitiesBuilder_ == null) {
-          ensureSurroundingEntitiesIsMutable();
-          surroundingEntities_.add(index, builderForValue.build());
-          onChanged();
-        } else {
-          surroundingEntitiesBuilder_.addMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .EntityInfo surrounding_entities = 19;</code>
-       */
-      public Builder addAllSurroundingEntities(
-          java.lang.Iterable<? extends com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo> values) {
-        if (surroundingEntitiesBuilder_ == null) {
-          ensureSurroundingEntitiesIsMutable();
-          com.google.protobuf.AbstractMessageLite.Builder.addAll(
-              values, surroundingEntities_);
-          onChanged();
-        } else {
-          surroundingEntitiesBuilder_.addAllMessages(values);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .EntityInfo surrounding_entities = 19;</code>
-       */
       public Builder clearSurroundingEntities() {
-        if (surroundingEntitiesBuilder_ == null) {
-          surroundingEntities_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00040000);
-          onChanged();
-        } else {
-          surroundingEntitiesBuilder_.clear();
-        }
+        bitField0_ = (bitField0_ & ~0x00040000);
+        internalGetMutableSurroundingEntities().getMutableMap()
+            .clear();
         return this;
       }
       /**
-       * <code>repeated .EntityInfo surrounding_entities = 19;</code>
+       * <code>map&lt;int32, .EntitiesWithinDistance&gt; surrounding_entities = 19;</code>
        */
-      public Builder removeSurroundingEntities(int index) {
-        if (surroundingEntitiesBuilder_ == null) {
-          ensureSurroundingEntitiesIsMutable();
-          surroundingEntities_.remove(index);
-          onChanged();
-        } else {
-          surroundingEntitiesBuilder_.remove(index);
-        }
+      public Builder removeSurroundingEntities(
+          int key) {
+        
+        internalGetMutableSurroundingEntities().getMutableMap()
+            .remove(key);
         return this;
       }
       /**
-       * <code>repeated .EntityInfo surrounding_entities = 19;</code>
+       * Use alternate mutation accessors instead.
        */
-      public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo.Builder getSurroundingEntitiesBuilder(
-          int index) {
-        return getSurroundingEntitiesFieldBuilder().getBuilder(index);
+      @java.lang.Deprecated
+      public java.util.Map<java.lang.Integer, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance>
+          getMutableSurroundingEntities() {
+        bitField0_ |= 0x00040000;
+        return internalGetMutableSurroundingEntities().getMutableMap();
       }
       /**
-       * <code>repeated .EntityInfo surrounding_entities = 19;</code>
+       * <code>map&lt;int32, .EntitiesWithinDistance&gt; surrounding_entities = 19;</code>
        */
-      public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfoOrBuilder getSurroundingEntitiesOrBuilder(
-          int index) {
-        if (surroundingEntitiesBuilder_ == null) {
-          return surroundingEntities_.get(index);  } else {
-          return surroundingEntitiesBuilder_.getMessageOrBuilder(index);
-        }
+      public Builder putSurroundingEntities(
+          int key,
+          com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance value) {
+        
+        if (value == null) { throw new NullPointerException("map value"); }
+        internalGetMutableSurroundingEntities().getMutableMap()
+            .put(key, value);
+        bitField0_ |= 0x00040000;
+        return this;
       }
       /**
-       * <code>repeated .EntityInfo surrounding_entities = 19;</code>
+       * <code>map&lt;int32, .EntitiesWithinDistance&gt; surrounding_entities = 19;</code>
        */
-      public java.util.List<? extends com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfoOrBuilder> 
-           getSurroundingEntitiesOrBuilderList() {
-        if (surroundingEntitiesBuilder_ != null) {
-          return surroundingEntitiesBuilder_.getMessageOrBuilderList();
-        } else {
-          return java.util.Collections.unmodifiableList(surroundingEntities_);
-        }
-      }
-      /**
-       * <code>repeated .EntityInfo surrounding_entities = 19;</code>
-       */
-      public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo.Builder addSurroundingEntitiesBuilder() {
-        return getSurroundingEntitiesFieldBuilder().addBuilder(
-            com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .EntityInfo surrounding_entities = 19;</code>
-       */
-      public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo.Builder addSurroundingEntitiesBuilder(
-          int index) {
-        return getSurroundingEntitiesFieldBuilder().addBuilder(
-            index, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .EntityInfo surrounding_entities = 19;</code>
-       */
-      public java.util.List<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo.Builder> 
-           getSurroundingEntitiesBuilderList() {
-        return getSurroundingEntitiesFieldBuilder().getBuilderList();
-      }
-      private com.google.protobuf.RepeatedFieldBuilderV3<
-          com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo.Builder, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfoOrBuilder> 
-          getSurroundingEntitiesFieldBuilder() {
-        if (surroundingEntitiesBuilder_ == null) {
-          surroundingEntitiesBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-              com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfo.Builder, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntityInfoOrBuilder>(
-                  surroundingEntities_,
-                  ((bitField0_ & 0x00040000) != 0),
-                  getParentForChildren(),
-                  isClean());
-          surroundingEntities_ = null;
-        }
-        return surroundingEntitiesBuilder_;
+      public Builder putAllSurroundingEntities(
+          java.util.Map<java.lang.Integer, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance> values) {
+        internalGetMutableSurroundingEntities().getMutableMap()
+            .putAll(values);
+        bitField0_ |= 0x00040000;
+        return this;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -9456,6 +10152,11 @@ public final class ObservationSpace {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_SoundEntry_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_EntitiesWithinDistance_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_EntitiesWithinDistance_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_ObservationSpaceMessage_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -9475,6 +10176,11 @@ public final class ObservationSpace {
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_ObservationSpaceMessage_MiscStatisticsEntry_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_ObservationSpaceMessage_SurroundingEntitiesEntry_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_ObservationSpaceMessage_SurroundingEntitiesEntry_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -9500,28 +10206,33 @@ public final class ObservationSpace {
       "\027\n\017translation_key\030\001 \001(\t\022\020\n\010duration\030\002 \001" +
       "(\005\022\021\n\tamplifier\030\003 \001(\005\"Q\n\nSoundEntry\022\025\n\rt" +
       "ranslate_key\030\001 \001(\t\022\013\n\003age\030\002 \001(\003\022\t\n\001x\030\003 \001" +
-      "(\001\022\t\n\001y\030\004 \001(\001\022\t\n\001z\030\005 \001(\001\"\231\006\n\027Observation" +
-      "SpaceMessage\022\r\n\005image\030\001 \001(\014\022\t\n\001x\030\002 \001(\001\022\t" +
-      "\n\001y\030\003 \001(\001\022\t\n\001z\030\004 \001(\001\022\013\n\003yaw\030\005 \001(\001\022\r\n\005pit" +
-      "ch\030\006 \001(\001\022\016\n\006health\030\007 \001(\001\022\022\n\nfood_level\030\010" +
-      " \001(\001\022\030\n\020saturation_level\030\t \001(\001\022\017\n\007is_dea" +
-      "d\030\n \001(\010\022\035\n\tinventory\030\013 \003(\0132\n.ItemStack\022\"" +
-      "\n\016raycast_result\030\014 \001(\0132\n.HitResult\022$\n\017so" +
-      "und_subtitles\030\r \003(\0132\013.SoundEntry\022%\n\016stat" +
-      "us_effects\030\016 \003(\0132\r.StatusEffect\022I\n\021kille" +
-      "d_statistics\030\017 \003(\0132..ObservationSpaceMes" +
-      "sage.KilledStatisticsEntry\022G\n\020mined_stat" +
-      "istics\030\020 \003(\0132-.ObservationSpaceMessage.M" +
-      "inedStatisticsEntry\022E\n\017misc_statistics\030\021" +
-      " \003(\0132,.ObservationSpaceMessage.MiscStati" +
-      "sticsEntry\022%\n\020visible_entities\030\022 \003(\0132\013.E" +
-      "ntityInfo\022)\n\024surrounding_entities\030\023 \003(\0132" +
-      "\013.EntityInfo\0327\n\025KilledStatisticsEntry\022\013\n" +
-      "\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\005:\0028\001\0326\n\024MinedSt" +
-      "atisticsEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(" +
-      "\005:\0028\001\0325\n\023MiscStatisticsEntry\022\013\n\003key\030\001 \001(" +
-      "\t\022\r\n\005value\030\002 \001(\005:\0028\001B&\n$com.kyhsgeekcode" +
-      ".minecraft_env.protob\006proto3"
+      "(\001\022\t\n\001y\030\004 \001(\001\022\t\n\001z\030\005 \001(\001\"7\n\026EntitiesWith" +
+      "inDistance\022\035\n\010entities\030\001 \003(\0132\013.EntityInf" +
+      "o\"\224\007\n\027ObservationSpaceMessage\022\r\n\005image\030\001" +
+      " \001(\014\022\t\n\001x\030\002 \001(\001\022\t\n\001y\030\003 \001(\001\022\t\n\001z\030\004 \001(\001\022\013\n" +
+      "\003yaw\030\005 \001(\001\022\r\n\005pitch\030\006 \001(\001\022\016\n\006health\030\007 \001(" +
+      "\001\022\022\n\nfood_level\030\010 \001(\001\022\030\n\020saturation_leve" +
+      "l\030\t \001(\001\022\017\n\007is_dead\030\n \001(\010\022\035\n\tinventory\030\013 " +
+      "\003(\0132\n.ItemStack\022\"\n\016raycast_result\030\014 \001(\0132" +
+      "\n.HitResult\022$\n\017sound_subtitles\030\r \003(\0132\013.S" +
+      "oundEntry\022%\n\016status_effects\030\016 \003(\0132\r.Stat" +
+      "usEffect\022I\n\021killed_statistics\030\017 \003(\0132..Ob" +
+      "servationSpaceMessage.KilledStatisticsEn" +
+      "try\022G\n\020mined_statistics\030\020 \003(\0132-.Observat" +
+      "ionSpaceMessage.MinedStatisticsEntry\022E\n\017" +
+      "misc_statistics\030\021 \003(\0132,.ObservationSpace" +
+      "Message.MiscStatisticsEntry\022%\n\020visible_e" +
+      "ntities\030\022 \003(\0132\013.EntityInfo\022O\n\024surroundin" +
+      "g_entities\030\023 \003(\01321.ObservationSpaceMessa" +
+      "ge.SurroundingEntitiesEntry\0327\n\025KilledSta" +
+      "tisticsEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\005" +
+      ":\0028\001\0326\n\024MinedStatisticsEntry\022\013\n\003key\030\001 \001(" +
+      "\t\022\r\n\005value\030\002 \001(\005:\0028\001\0325\n\023MiscStatisticsEn" +
+      "try\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\005:\0028\001\032S\n\030S" +
+      "urroundingEntitiesEntry\022\013\n\003key\030\001 \001(\005\022&\n\005" +
+      "value\030\002 \001(\0132\027.EntitiesWithinDistance:\0028\001" +
+      "B&\n$com.kyhsgeekcode.minecraft_env.proto" +
+      "b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -9563,8 +10274,14 @@ public final class ObservationSpace {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SoundEntry_descriptor,
         new java.lang.String[] { "TranslateKey", "Age", "X", "Y", "Z", });
-    internal_static_ObservationSpaceMessage_descriptor =
+    internal_static_EntitiesWithinDistance_descriptor =
       getDescriptor().getMessageTypes().get(6);
+    internal_static_EntitiesWithinDistance_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_EntitiesWithinDistance_descriptor,
+        new java.lang.String[] { "Entities", });
+    internal_static_ObservationSpaceMessage_descriptor =
+      getDescriptor().getMessageTypes().get(7);
     internal_static_ObservationSpaceMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ObservationSpaceMessage_descriptor,
@@ -9586,6 +10303,12 @@ public final class ObservationSpace {
     internal_static_ObservationSpaceMessage_MiscStatisticsEntry_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ObservationSpaceMessage_MiscStatisticsEntry_descriptor,
+        new java.lang.String[] { "Key", "Value", });
+    internal_static_ObservationSpaceMessage_SurroundingEntitiesEntry_descriptor =
+      internal_static_ObservationSpaceMessage_descriptor.getNestedTypes().get(3);
+    internal_static_ObservationSpaceMessage_SurroundingEntitiesEntry_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_ObservationSpaceMessage_SurroundingEntitiesEntry_descriptor,
         new java.lang.String[] { "Key", "Value", });
   }
 

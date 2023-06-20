@@ -1081,6 +1081,23 @@ public final class InitialEnvironment {
      */
     com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.BlockStateOrBuilder getInitialBlockStatesOrBuilder(
         int index);
+
+    /**
+     * <code>repeated int32 surroundingEntityDistances = 19;</code>
+     * @return A list containing the surroundingEntityDistances.
+     */
+    java.util.List<java.lang.Integer> getSurroundingEntityDistancesList();
+    /**
+     * <code>repeated int32 surroundingEntityDistances = 19;</code>
+     * @return The count of surroundingEntityDistances.
+     */
+    int getSurroundingEntityDistancesCount();
+    /**
+     * <code>repeated int32 surroundingEntityDistances = 19;</code>
+     * @param index The index of the element to return.
+     * @return The surroundingEntityDistances at the given index.
+     */
+    int getSurroundingEntityDistances(int index);
   }
   /**
    * Protobuf type {@code InitialEnvironmentMessage}
@@ -1104,6 +1121,7 @@ public final class InitialEnvironment {
       minedStatKeys_ = com.google.protobuf.LazyStringArrayList.EMPTY;
       miscStatKeys_ = com.google.protobuf.LazyStringArrayList.EMPTY;
       initialBlockStates_ = java.util.Collections.emptyList();
+      surroundingEntityDistances_ = emptyIntList();
     }
 
     @java.lang.Override
@@ -1555,6 +1573,35 @@ public final class InitialEnvironment {
       return initialBlockStates_.get(index);
     }
 
+    public static final int SURROUNDINGENTITYDISTANCES_FIELD_NUMBER = 19;
+    @SuppressWarnings("serial")
+    private com.google.protobuf.Internal.IntList surroundingEntityDistances_;
+    /**
+     * <code>repeated int32 surroundingEntityDistances = 19;</code>
+     * @return A list containing the surroundingEntityDistances.
+     */
+    @java.lang.Override
+    public java.util.List<java.lang.Integer>
+        getSurroundingEntityDistancesList() {
+      return surroundingEntityDistances_;
+    }
+    /**
+     * <code>repeated int32 surroundingEntityDistances = 19;</code>
+     * @return The count of surroundingEntityDistances.
+     */
+    public int getSurroundingEntityDistancesCount() {
+      return surroundingEntityDistances_.size();
+    }
+    /**
+     * <code>repeated int32 surroundingEntityDistances = 19;</code>
+     * @param index The index of the element to return.
+     * @return The surroundingEntityDistances at the given index.
+     */
+    public int getSurroundingEntityDistances(int index) {
+      return surroundingEntityDistances_.getInt(index);
+    }
+    private int surroundingEntityDistancesMemoizedSerializedSize = -1;
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -1627,6 +1674,13 @@ public final class InitialEnvironment {
       }
       for (int i = 0; i < initialBlockStates_.size(); i++) {
         output.writeMessage(18, initialBlockStates_.get(i));
+      }
+      if (getSurroundingEntityDistancesList().size() > 0) {
+        output.writeUInt32NoTag(154);
+        output.writeUInt32NoTag(surroundingEntityDistancesMemoizedSerializedSize);
+      }
+      for (int i = 0; i < surroundingEntityDistances_.size(); i++) {
+        output.writeInt32NoTag(surroundingEntityDistances_.getInt(i));
       }
       getUnknownFields().writeTo(output);
     }
@@ -1742,6 +1796,20 @@ public final class InitialEnvironment {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(18, initialBlockStates_.get(i));
       }
+      {
+        int dataSize = 0;
+        for (int i = 0; i < surroundingEntityDistances_.size(); i++) {
+          dataSize += com.google.protobuf.CodedOutputStream
+            .computeInt32SizeNoTag(surroundingEntityDistances_.getInt(i));
+        }
+        size += dataSize;
+        if (!getSurroundingEntityDistancesList().isEmpty()) {
+          size += 2;
+          size += com.google.protobuf.CodedOutputStream
+              .computeInt32SizeNoTag(dataSize);
+        }
+        surroundingEntityDistancesMemoizedSerializedSize = dataSize;
+      }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
@@ -1793,6 +1861,8 @@ public final class InitialEnvironment {
           .equals(other.getMiscStatKeysList())) return false;
       if (!getInitialBlockStatesList()
           .equals(other.getInitialBlockStatesList())) return false;
+      if (!getSurroundingEntityDistancesList()
+          .equals(other.getSurroundingEntityDistancesList())) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -1860,6 +1930,10 @@ public final class InitialEnvironment {
       if (getInitialBlockStatesCount() > 0) {
         hash = (37 * hash) + INITIALBLOCKSTATES_FIELD_NUMBER;
         hash = (53 * hash) + getInitialBlockStatesList().hashCode();
+      }
+      if (getSurroundingEntityDistancesCount() > 0) {
+        hash = (37 * hash) + SURROUNDINGENTITYDISTANCES_FIELD_NUMBER;
+        hash = (53 * hash) + getSurroundingEntityDistancesList().hashCode();
       }
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
@@ -2020,6 +2094,7 @@ public final class InitialEnvironment {
           initialBlockStatesBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00020000);
+        surroundingEntityDistances_ = emptyIntList();
         return this;
       }
 
@@ -2097,6 +2172,11 @@ public final class InitialEnvironment {
         } else {
           result.initialBlockStates_ = initialBlockStatesBuilder_.build();
         }
+        if (((bitField0_ & 0x00040000) != 0)) {
+          surroundingEntityDistances_.makeImmutable();
+          bitField0_ = (bitField0_ & ~0x00040000);
+        }
+        result.surroundingEntityDistances_ = surroundingEntityDistances_;
       }
 
       private void buildPartial0(com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage result) {
@@ -2305,6 +2385,16 @@ public final class InitialEnvironment {
             }
           }
         }
+        if (!other.surroundingEntityDistances_.isEmpty()) {
+          if (surroundingEntityDistances_.isEmpty()) {
+            surroundingEntityDistances_ = other.surroundingEntityDistances_;
+            bitField0_ = (bitField0_ & ~0x00040000);
+          } else {
+            ensureSurroundingEntityDistancesIsMutable();
+            surroundingEntityDistances_.addAll(other.surroundingEntityDistances_);
+          }
+          onChanged();
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
@@ -2446,6 +2536,22 @@ public final class InitialEnvironment {
                 }
                 break;
               } // case 146
+              case 152: {
+                int v = input.readInt32();
+                ensureSurroundingEntityDistancesIsMutable();
+                surroundingEntityDistances_.addInt(v);
+                break;
+              } // case 152
+              case 154: {
+                int length = input.readRawVarint32();
+                int limit = input.pushLimit(length);
+                ensureSurroundingEntityDistancesIsMutable();
+                while (input.getBytesUntilLimit() > 0) {
+                  surroundingEntityDistances_.addInt(input.readInt32());
+                }
+                input.popLimit(limit);
+                break;
+              } // case 154
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -3767,6 +3873,87 @@ public final class InitialEnvironment {
         }
         return initialBlockStatesBuilder_;
       }
+
+      private com.google.protobuf.Internal.IntList surroundingEntityDistances_ = emptyIntList();
+      private void ensureSurroundingEntityDistancesIsMutable() {
+        if (!((bitField0_ & 0x00040000) != 0)) {
+          surroundingEntityDistances_ = mutableCopy(surroundingEntityDistances_);
+          bitField0_ |= 0x00040000;
+        }
+      }
+      /**
+       * <code>repeated int32 surroundingEntityDistances = 19;</code>
+       * @return A list containing the surroundingEntityDistances.
+       */
+      public java.util.List<java.lang.Integer>
+          getSurroundingEntityDistancesList() {
+        return ((bitField0_ & 0x00040000) != 0) ?
+                 java.util.Collections.unmodifiableList(surroundingEntityDistances_) : surroundingEntityDistances_;
+      }
+      /**
+       * <code>repeated int32 surroundingEntityDistances = 19;</code>
+       * @return The count of surroundingEntityDistances.
+       */
+      public int getSurroundingEntityDistancesCount() {
+        return surroundingEntityDistances_.size();
+      }
+      /**
+       * <code>repeated int32 surroundingEntityDistances = 19;</code>
+       * @param index The index of the element to return.
+       * @return The surroundingEntityDistances at the given index.
+       */
+      public int getSurroundingEntityDistances(int index) {
+        return surroundingEntityDistances_.getInt(index);
+      }
+      /**
+       * <code>repeated int32 surroundingEntityDistances = 19;</code>
+       * @param index The index to set the value at.
+       * @param value The surroundingEntityDistances to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSurroundingEntityDistances(
+          int index, int value) {
+        
+        ensureSurroundingEntityDistancesIsMutable();
+        surroundingEntityDistances_.setInt(index, value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int32 surroundingEntityDistances = 19;</code>
+       * @param value The surroundingEntityDistances to add.
+       * @return This builder for chaining.
+       */
+      public Builder addSurroundingEntityDistances(int value) {
+        
+        ensureSurroundingEntityDistancesIsMutable();
+        surroundingEntityDistances_.addInt(value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int32 surroundingEntityDistances = 19;</code>
+       * @param values The surroundingEntityDistances to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllSurroundingEntityDistances(
+          java.lang.Iterable<? extends java.lang.Integer> values) {
+        ensureSurroundingEntityDistancesIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, surroundingEntityDistances_);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int32 surroundingEntityDistances = 19;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearSurroundingEntityDistances() {
+        surroundingEntityDistances_ = emptyIntList();
+        bitField0_ = (bitField0_ & ~0x00040000);
+        onChanged();
+        return this;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -3852,7 +4039,7 @@ public final class InitialEnvironment {
     java.lang.String[] descriptorData = {
       "\n\031initial_environment.proto\"B\n\nBlockStat" +
       "e\022\t\n\001x\030\001 \001(\005\022\t\n\001y\030\002 \001(\005\022\t\n\001z\030\003 \001(\005\022\023\n\013bl" +
-      "ock_state\030\004 \001(\t\"\315\003\n\031InitialEnvironmentMe" +
+      "ock_state\030\004 \001(\t\"\361\003\n\031InitialEnvironmentMe" +
       "ssage\022 \n\030initialInventoryCommands\030\001 \003(\t\022" +
       "\027\n\017initialPosition\030\002 \003(\005\022\033\n\023initialMobsC" +
       "ommands\030\003 \003(\t\022\022\n\nimageSizeX\030\004 \001(\005\022\022\n\nima" +
@@ -3863,9 +4050,10 @@ public final class InitialEnvironment {
       "\014visibleSizeY\030\r \001(\005\022\034\n\024initialExtraComma" +
       "nds\030\016 \003(\t\022\026\n\016killedStatKeys\030\017 \003(\t\022\025\n\rmin" +
       "edStatKeys\030\020 \003(\t\022\024\n\014miscStatKeys\030\021 \003(\t\022\'" +
-      "\n\022initialBlockStates\030\022 \003(\0132\013.BlockStateB" +
-      "&\n$com.kyhsgeekcode.minecraft_env.protob" +
-      "\006proto3"
+      "\n\022initialBlockStates\030\022 \003(\0132\013.BlockState\022" +
+      "\"\n\032surroundingEntityDistances\030\023 \003(\005B&\n$c" +
+      "om.kyhsgeekcode.minecraft_env.protob\006pro" +
+      "to3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -3882,7 +4070,7 @@ public final class InitialEnvironment {
     internal_static_InitialEnvironmentMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_InitialEnvironmentMessage_descriptor,
-        new java.lang.String[] { "InitialInventoryCommands", "InitialPosition", "InitialMobsCommands", "ImageSizeX", "ImageSizeY", "Seed", "AllowMobSpawn", "AlwaysNight", "AlwaysDay", "InitialWeather", "IsWorldFlat", "VisibleSizeX", "VisibleSizeY", "InitialExtraCommands", "KilledStatKeys", "MinedStatKeys", "MiscStatKeys", "InitialBlockStates", });
+        new java.lang.String[] { "InitialInventoryCommands", "InitialPosition", "InitialMobsCommands", "ImageSizeX", "ImageSizeY", "Seed", "AllowMobSpawn", "AlwaysNight", "AlwaysDay", "InitialWeather", "IsWorldFlat", "VisibleSizeX", "VisibleSizeY", "InitialExtraCommands", "KilledStatKeys", "MinedStatKeys", "MiscStatKeys", "InitialBlockStates", "SurroundingEntityDistances", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)
