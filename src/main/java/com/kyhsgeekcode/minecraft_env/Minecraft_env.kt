@@ -34,6 +34,7 @@ import java.net.ServerSocket
 import java.net.SocketTimeoutException
 import java.nio.ByteBuffer
 import java.time.format.DateTimeFormatter
+import kotlin.system.exitProcess
 
 enum class ResetPhase {
     WAIT_PLAYER_DEATH,
@@ -234,7 +235,14 @@ class Minecraft_env : ModInitializer, CommandExecutor {
         } catch (e: SocketTimeoutException) {
             println("Timeout")
         } catch (e: IOException) {
-            throw RuntimeException(e)
+            // release lock
+            runPhaseLock.notifyAll()
+            e.printStackTrace()
+            exitProcess(-1)
+        } catch (e: Exception) {
+            runPhaseLock.notifyAll()
+            e.printStackTrace()
+            exitProcess(-2)
         }
     }
 
@@ -293,6 +301,10 @@ class Minecraft_env : ModInitializer, CommandExecutor {
 //                }
 //            )
             return false
+        } else if (command == "exit") {
+            println("Will terminate")
+            runPhaseLock.notifyAll()
+            exitProcess(0)
         } else {
             runCommand(player, command)
             println("Executed command: $command")
@@ -540,7 +552,24 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                 writeObservation(observationSpaceMessage, outputStream)
             }
         } catch (e: IOException) {
-            throw RuntimeException(e)
+            e.printStackTrace()
+            synchronized(runPhaseLock) {
+                runPhaseLock.notifyAll()
+            }
+            client.scheduleStop()
+
+            val threadGroup = Thread.currentThread().threadGroup
+            val threads = arrayOfNulls<Thread>(threadGroup.activeCount())
+            threadGroup.enumerate(threads)
+
+            for (thread in threads) {
+                if (thread == null)
+                    continue
+                if (thread != Thread.currentThread())
+                    thread.interrupt()
+            }
+            println("Will exitprocess -3")
+//            exitProcess(-3)
         }
     }
 
