@@ -1098,6 +1098,12 @@ public final class InitialEnvironment {
      * @return The surroundingEntityDistances at the given index.
      */
     int getSurroundingEntityDistances(int index);
+
+    /**
+     * <code>bool hudHidden = 20;</code>
+     * @return The hudHidden.
+     */
+    boolean getHudHidden();
   }
   /**
    * Protobuf type {@code InitialEnvironmentMessage}
@@ -1602,6 +1608,17 @@ public final class InitialEnvironment {
     }
     private int surroundingEntityDistancesMemoizedSerializedSize = -1;
 
+    public static final int HUDHIDDEN_FIELD_NUMBER = 20;
+    private boolean hudHidden_ = false;
+    /**
+     * <code>bool hudHidden = 20;</code>
+     * @return The hudHidden.
+     */
+    @java.lang.Override
+    public boolean getHudHidden() {
+      return hudHidden_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -1681,6 +1698,9 @@ public final class InitialEnvironment {
       }
       for (int i = 0; i < surroundingEntityDistances_.size(); i++) {
         output.writeInt32NoTag(surroundingEntityDistances_.getInt(i));
+      }
+      if (hudHidden_ != false) {
+        output.writeBool(20, hudHidden_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -1810,6 +1830,10 @@ public final class InitialEnvironment {
         }
         surroundingEntityDistancesMemoizedSerializedSize = dataSize;
       }
+      if (hudHidden_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(20, hudHidden_);
+      }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
@@ -1863,6 +1887,8 @@ public final class InitialEnvironment {
           .equals(other.getInitialBlockStatesList())) return false;
       if (!getSurroundingEntityDistancesList()
           .equals(other.getSurroundingEntityDistancesList())) return false;
+      if (getHudHidden()
+          != other.getHudHidden()) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -1935,6 +1961,9 @@ public final class InitialEnvironment {
         hash = (37 * hash) + SURROUNDINGENTITYDISTANCES_FIELD_NUMBER;
         hash = (53 * hash) + getSurroundingEntityDistancesList().hashCode();
       }
+      hash = (37 * hash) + HUDHIDDEN_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getHudHidden());
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -2095,6 +2124,7 @@ public final class InitialEnvironment {
         }
         bitField0_ = (bitField0_ & ~0x00020000);
         surroundingEntityDistances_ = emptyIntList();
+        hudHidden_ = false;
         return this;
       }
 
@@ -2210,6 +2240,9 @@ public final class InitialEnvironment {
         }
         if (((from_bitField0_ & 0x00001000) != 0)) {
           result.visibleSizeY_ = visibleSizeY_;
+        }
+        if (((from_bitField0_ & 0x00080000) != 0)) {
+          result.hudHidden_ = hudHidden_;
         }
       }
 
@@ -2395,6 +2428,9 @@ public final class InitialEnvironment {
           }
           onChanged();
         }
+        if (other.getHudHidden() != false) {
+          setHudHidden(other.getHudHidden());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
@@ -2552,6 +2588,11 @@ public final class InitialEnvironment {
                 input.popLimit(limit);
                 break;
               } // case 154
+              case 160: {
+                hudHidden_ = input.readBool();
+                bitField0_ |= 0x00080000;
+                break;
+              } // case 160
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -3954,6 +3995,38 @@ public final class InitialEnvironment {
         onChanged();
         return this;
       }
+
+      private boolean hudHidden_ ;
+      /**
+       * <code>bool hudHidden = 20;</code>
+       * @return The hudHidden.
+       */
+      @java.lang.Override
+      public boolean getHudHidden() {
+        return hudHidden_;
+      }
+      /**
+       * <code>bool hudHidden = 20;</code>
+       * @param value The hudHidden to set.
+       * @return This builder for chaining.
+       */
+      public Builder setHudHidden(boolean value) {
+        
+        hudHidden_ = value;
+        bitField0_ |= 0x00080000;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>bool hudHidden = 20;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearHudHidden() {
+        bitField0_ = (bitField0_ & ~0x00080000);
+        hudHidden_ = false;
+        onChanged();
+        return this;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -4039,7 +4112,7 @@ public final class InitialEnvironment {
     java.lang.String[] descriptorData = {
       "\n\031initial_environment.proto\"B\n\nBlockStat" +
       "e\022\t\n\001x\030\001 \001(\005\022\t\n\001y\030\002 \001(\005\022\t\n\001z\030\003 \001(\005\022\023\n\013bl" +
-      "ock_state\030\004 \001(\t\"\361\003\n\031InitialEnvironmentMe" +
+      "ock_state\030\004 \001(\t\"\204\004\n\031InitialEnvironmentMe" +
       "ssage\022 \n\030initialInventoryCommands\030\001 \003(\t\022" +
       "\027\n\017initialPosition\030\002 \003(\005\022\033\n\023initialMobsC" +
       "ommands\030\003 \003(\t\022\022\n\nimageSizeX\030\004 \001(\005\022\022\n\nima" +
@@ -4051,9 +4124,9 @@ public final class InitialEnvironment {
       "nds\030\016 \003(\t\022\026\n\016killedStatKeys\030\017 \003(\t\022\025\n\rmin" +
       "edStatKeys\030\020 \003(\t\022\024\n\014miscStatKeys\030\021 \003(\t\022\'" +
       "\n\022initialBlockStates\030\022 \003(\0132\013.BlockState\022" +
-      "\"\n\032surroundingEntityDistances\030\023 \003(\005B&\n$c" +
-      "om.kyhsgeekcode.minecraft_env.protob\006pro" +
-      "to3"
+      "\"\n\032surroundingEntityDistances\030\023 \003(\005\022\021\n\th" +
+      "udHidden\030\024 \001(\010B&\n$com.kyhsgeekcode.minec" +
+      "raft_env.protob\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -4070,7 +4143,7 @@ public final class InitialEnvironment {
     internal_static_InitialEnvironmentMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_InitialEnvironmentMessage_descriptor,
-        new java.lang.String[] { "InitialInventoryCommands", "InitialPosition", "InitialMobsCommands", "ImageSizeX", "ImageSizeY", "Seed", "AllowMobSpawn", "AlwaysNight", "AlwaysDay", "InitialWeather", "IsWorldFlat", "VisibleSizeX", "VisibleSizeY", "InitialExtraCommands", "KilledStatKeys", "MinedStatKeys", "MiscStatKeys", "InitialBlockStates", "SurroundingEntityDistances", });
+        new java.lang.String[] { "InitialInventoryCommands", "InitialPosition", "InitialMobsCommands", "ImageSizeX", "ImageSizeY", "Seed", "AllowMobSpawn", "AlwaysNight", "AlwaysDay", "InitialWeather", "IsWorldFlat", "VisibleSizeX", "VisibleSizeY", "InitialExtraCommands", "KilledStatKeys", "MinedStatKeys", "MiscStatKeys", "InitialBlockStates", "SurroundingEntityDistances", "HudHidden", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

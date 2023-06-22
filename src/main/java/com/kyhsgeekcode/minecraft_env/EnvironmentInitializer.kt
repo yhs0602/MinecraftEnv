@@ -138,6 +138,7 @@ class EnvironmentInitializer(
         val window = MinecraftClient.getInstance().window
         window.setWindowedSize(initialEnvironment.visibleSizeX, initialEnvironment.visibleSizeY)
         disablePauseOnLostFocus(client)
+        setHudHidden(client, initialEnvironment.hudHidden)
     }
 
     fun reset(chatHud: ChatHud, commandExecutor: CommandExecutor, variableCommandAfterReset: List<String>) {
@@ -285,6 +286,20 @@ class EnvironmentInitializer(
                 println("Disabled pause on lost focus")
                 options.pauseOnLostFocus = false
                 client.options.write()
+            }
+        }
+    }
+
+    private fun setHudHidden(client: MinecraftClient, hudHidden: Boolean) {
+        val options = client.options
+        if (options != null) {
+            if (options.hudHidden != hudHidden) {
+                options.hudHidden = hudHidden
+                client.options.write()
+                if (hudHidden)
+                    println("Hid hud")
+                else
+                    println("Showed hud")
             }
         }
     }

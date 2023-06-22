@@ -813,7 +813,24 @@ public object InitialEnvironmentMessageKt {
     @kotlin.jvm.JvmName("clearSurroundingEntityDistances")
     public fun com.google.protobuf.kotlin.DslList<kotlin.Int, SurroundingEntityDistancesProxy>.clear() {
       _builder.clearSurroundingEntityDistances()
-    }}
+    }
+    /**
+     * <code>bool hudHidden = 20;</code>
+     */
+    public var hudHidden: kotlin.Boolean
+      @JvmName("getHudHidden")
+      get() = _builder.getHudHidden()
+      @JvmName("setHudHidden")
+      set(value) {
+        _builder.setHudHidden(value)
+      }
+    /**
+     * <code>bool hudHidden = 20;</code>
+     */
+    public fun clearHudHidden() {
+      _builder.clearHudHidden()
+    }
+  }
 }
 @kotlin.jvm.JvmSynthetic
 public inline fun com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage.copy(block: com.kyhsgeekcode.minecraft_env.proto.InitialEnvironmentMessageKt.Dsl.() -> kotlin.Unit): com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage =
