@@ -4,6 +4,7 @@
   "package": "com.kyhsgeekcode.minecraft_env.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "DisableRegionalComplianceMixin",
     "MinecraftServer_tickspeedMixin"
   ],
   "client": [
