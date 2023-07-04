@@ -524,7 +524,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                     }
                     for (miscStatKey in initialEnvironment.miscStatKeysList) {
                         val key = Registries.CUSTOM_STAT.get(Identifier.of("minecraft", miscStatKey))
-                        minedStatistics[miscStatKey] = player.statHandler.getStat(Stats.CUSTOM.getOrCreateStat(key))
+                        miscStatistics[miscStatKey] = player.statHandler.getStat(Stats.CUSTOM.getOrCreateStat(key))
                     }
                     entityListener?.run {
                         for (entity in entities) {
