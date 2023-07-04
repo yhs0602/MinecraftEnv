@@ -20,6 +20,7 @@ import net.minecraft.client.util.ScreenshotRecorder
 import net.minecraft.client.world.ClientWorld
 import net.minecraft.entity.EntityType
 import net.minecraft.item.Item
+import net.minecraft.network.packet.c2s.play.ClientStatusC2SPacket
 import net.minecraft.registry.Registries
 import net.minecraft.registry.Registry
 import net.minecraft.server.MinecraftServer
@@ -476,6 +477,9 @@ class Minecraft_env : ModInitializer, CommandExecutor {
             printWithTime("Player is null")
             return
         }
+        // request stats from server
+        // TODO: Use server player stats directly instead of client player stats
+        client.networkHandler?.sendPacket(ClientStatusC2SPacket(ClientStatusC2SPacket.Mode.REQUEST_STATS))
         val buffer = client.framebuffer
         try {
             ScreenshotRecorder.takeScreenshot(buffer).use { screenshot ->
