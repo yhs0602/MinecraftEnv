@@ -332,66 +332,63 @@ class Minecraft_env : ModInitializer, CommandExecutor {
         val argInventory = actionArray[7]
         when (movementFB) {
             0 -> {
-                player.input.pressingForward = false
-                player.input.pressingBack = false
+                (player.input as KeyboardInputWillInterface).setWillPressingForward(false)
+                (player.input as KeyboardInputWillInterface).setWillPressingBack(false)
             }
 
             1 -> {
-                player.input.pressingForward = true
-                player.input.pressingBack = false
+                (player.input as KeyboardInputWillInterface).setWillPressingForward(true)
+                (player.input as KeyboardInputWillInterface).setWillPressingBack(false)
                 //                    player.travel(Vec3d(0.0, 0.0, 1.0)) // sideway, upward, forward
             }
 
             2 -> {
-                player.input.pressingForward = false
-                player.input.pressingBack = true
+                (player.input as KeyboardInputWillInterface).setWillPressingForward(false)
+                (player.input as KeyboardInputWillInterface).setWillPressingBack(true)
             }
         }
         when (movementLR) {
             0 -> {
-                player.input.pressingRight = false
-                player.input.pressingLeft = false
+                (player.input as KeyboardInputWillInterface).setWillPressingRight(false)
+                (player.input as KeyboardInputWillInterface).setWillPressingLeft(false)
             }
 
             1 -> {
-                player.input.pressingRight = true
-                player.input.pressingLeft = false
+                (player.input as KeyboardInputWillInterface).setWillPressingRight(true)
+                (player.input as KeyboardInputWillInterface).setWillPressingLeft(false)
             }
 
             2 -> {
-                player.input.pressingRight = false
-                player.input.pressingLeft = true
+                (player.input as KeyboardInputWillInterface).setWillPressingRight(false)
+                (player.input as KeyboardInputWillInterface).setWillPressingLeft(true)
                 //                    player.travel(Vec3d(-1.0, 0.0, 0.0))
             }
         }
         when (jumpSneakSprint) {
             0 -> {
                 //                    println("Sneaking reset")
-                player.input.jumping = false
-                player.input.sneaking = false
+                (player.input as KeyboardInputWillInterface).setWillJumping(false)
+                (player.input as KeyboardInputWillInterface).setWillSneaking(false)
                 //                    player.isSprinting = false
             }
 
             1 -> {
-                player.input.jumping = true
-                player.input.sneaking = false
-                //                    if (player.isOnGround) {
-                //                        player.jump()
-                //                    }
+                (player.input as KeyboardInputWillInterface).setWillJumping(true)
+                (player.input as KeyboardInputWillInterface).setWillSneaking(false)
             }
 
             2 -> {
-                player.input.jumping = false
-                player.input.sneaking = true
+                (player.input as KeyboardInputWillInterface).setWillJumping(false)
+                (player.input as KeyboardInputWillInterface).setWillSneaking(true)
             }
 
             3 -> {
-                player.input.jumping = false
-                player.input.sneaking = false
-                player.isSprinting = true
+                (player.input as KeyboardInputWillInterface).setWillJumping(false)
+                (player.input as KeyboardInputWillInterface).setWillSneaking(false)
+                (player.input as KeyboardInputWillInterface).setWillSprinting(true)
             }
         }
-        val deltaPitchInDeg = (deltaPitch - 12f) / 12f * 180f
+        val deltaPitchInDeg = (deltaPitch - 12f) / 12f * 90f
         val deltaYawInDeg = (deltaYaw - 12f) / 12f * 180f
         //                System.out.println("Will set pitch to " + player.getPitch() + " + " + deltaPitchInDeg + " = " + (player.getPitch() + deltaPitchInDeg));
         //                System.out.println("Will set yaw to " + player.getYaw() + " + " + deltaYawInDeg + " = " + (player.getYaw() + deltaYawInDeg));
