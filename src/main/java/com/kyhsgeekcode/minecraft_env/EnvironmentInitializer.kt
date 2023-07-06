@@ -275,7 +275,7 @@ class EnvironmentInitializer(
         )
         commandExecutor(
             player,
-            "/time set night"
+            "/time set midnight"
         )
     }
 
