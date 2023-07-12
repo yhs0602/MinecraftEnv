@@ -348,24 +348,24 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                 (player.input as KeyboardInputWillInterface).setWillPressingBack(true)
             }
         }
-        when (movementLR) {
+        when (movementLR) { // 0: noop, 1: move left, 2: move right
             0 -> {
                 (player.input as KeyboardInputWillInterface).setWillPressingRight(false)
                 (player.input as KeyboardInputWillInterface).setWillPressingLeft(false)
             }
 
             1 -> {
-                (player.input as KeyboardInputWillInterface).setWillPressingRight(true)
-                (player.input as KeyboardInputWillInterface).setWillPressingLeft(false)
+                (player.input as KeyboardInputWillInterface).setWillPressingRight(false)
+                (player.input as KeyboardInputWillInterface).setWillPressingLeft(true)
             }
 
             2 -> {
-                (player.input as KeyboardInputWillInterface).setWillPressingRight(false)
-                (player.input as KeyboardInputWillInterface).setWillPressingLeft(true)
+                (player.input as KeyboardInputWillInterface).setWillPressingRight(true)
+                (player.input as KeyboardInputWillInterface).setWillPressingLeft(false)
                 //                    player.travel(Vec3d(-1.0, 0.0, 0.0))
             }
         }
-        when (jumpSneakSprint) {
+        when (jumpSneakSprint) { // 0: noop, 1: jump, 2: sneak, 3:sprint
             0 -> {
                 //                    println("Sneaking reset")
                 (player.input as KeyboardInputWillInterface).setWillJumping(false)
@@ -389,7 +389,9 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                 (player.input as KeyboardInputWillInterface).setWillSprinting(true)
             }
         }
+        // pitch: 0: -90 degree, 24: 90 degree
         val deltaPitchInDeg = (deltaPitch - 12f) / 12f * 90f
+        // yaw: 0: -180 degree, 24: 180 degree
         val deltaYawInDeg = (deltaYaw - 12f) / 12f * 180f
         //                System.out.println("Will set pitch to " + player.getPitch() + " + " + deltaPitchInDeg + " = " + (player.getPitch() + deltaPitchInDeg));
         //                System.out.println("Will set yaw to " + player.getYaw() + " + " + deltaYawInDeg + " = " + (player.getYaw() + deltaYawInDeg));
