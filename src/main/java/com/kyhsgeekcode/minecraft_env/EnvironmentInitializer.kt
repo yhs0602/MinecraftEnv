@@ -138,6 +138,7 @@ class EnvironmentInitializer(
         val window = MinecraftClient.getInstance().window
         window.setWindowedSize(initialEnvironment.visibleSizeX, initialEnvironment.visibleSizeY)
         disablePauseOnLostFocus(client)
+        disableOnboardAccessibility(client)
         setHudHidden(client, initialEnvironment.hudHidden)
     }
 
@@ -285,6 +286,17 @@ class EnvironmentInitializer(
             if (options.pauseOnLostFocus) {
                 println("Disabled pause on lost focus")
                 options.pauseOnLostFocus = false
+                client.options.write()
+            }
+        }
+    }
+
+    private fun disableOnboardAccessibility(client: MinecraftClient) {
+        val options = client.options
+        if (options != null) {
+            if (options.onboardAccessibility) {
+                println("Disabled onboardAccessibility")
+                options.onboardAccessibility = false
                 client.options.write()
             }
         }
