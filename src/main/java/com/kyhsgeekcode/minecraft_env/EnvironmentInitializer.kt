@@ -142,6 +142,18 @@ class EnvironmentInitializer(
         setHudHidden(client, initialEnvironment.hudHidden)
         setRenderDistance(client, initialEnvironment.renderDistance)
         setSimulationDistance(client, initialEnvironment.simulationDistance)
+        disableVSync(client)
+    }
+
+    private fun disableVSync(client: MinecraftClient) {
+        val options = client.options
+        if (options != null) {
+            if (options.enableVsync.value) {
+                options.enableVsync.value = false
+                client.options.write()
+                println("Disabled VSync")
+            }
+        }
     }
 
     private fun setSimulationDistance(client: MinecraftClient, simulationDistance: Int) {
