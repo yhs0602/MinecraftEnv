@@ -36,3 +36,6 @@ Lightweight minecraft RL environment on fabric
 - Arbitrary command (you should hide this for the agents)
 
 Controlled by this reinforcement learning agent: https://github.com/KYHSGeekCode/ControlMinecraft
+
+renderDistance:6
+simulationDistance:6
