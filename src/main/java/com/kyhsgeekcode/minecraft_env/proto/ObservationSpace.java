@@ -6434,6 +6434,12 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
      */
     com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance getSurroundingEntitiesOrThrow(
         int key);
+
+    /**
+     * <code>bool bobber_thrown = 20;</code>
+     * @return The bobberThrown.
+     */
+    boolean getBobberThrown();
   }
   /**
    * Protobuf type {@code ObservationSpaceMessage}
@@ -7108,6 +7114,17 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
       return map.get(key);
     }
 
+    public static final int BOBBER_THROWN_FIELD_NUMBER = 20;
+    private boolean bobberThrown_ = false;
+    /**
+     * <code>bool bobber_thrown = 20;</code>
+     * @return The bobberThrown.
+     */
+    @java.lang.Override
+    public boolean getBobberThrown() {
+      return bobberThrown_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -7191,6 +7208,9 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
           internalGetSurroundingEntities(),
           SurroundingEntitiesDefaultEntryHolder.defaultEntry,
           19);
+      if (bobberThrown_ != false) {
+        output.writeBool(20, bobberThrown_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -7300,6 +7320,10 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
         size += com.google.protobuf.CodedOutputStream
             .computeMessageSize(19, surroundingEntities__);
       }
+      if (bobberThrown_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(20, bobberThrown_);
+      }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
@@ -7364,6 +7388,8 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
           .equals(other.getVisibleEntitiesList())) return false;
       if (!internalGetSurroundingEntities().equals(
           other.internalGetSurroundingEntities())) return false;
+      if (getBobberThrown()
+          != other.getBobberThrown()) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -7440,6 +7466,9 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
         hash = (37 * hash) + SURROUNDING_ENTITIES_FIELD_NUMBER;
         hash = (53 * hash) + internalGetSurroundingEntities().hashCode();
       }
+      hash = (37 * hash) + BOBBER_THROWN_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getBobberThrown());
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -7650,6 +7679,7 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
         }
         bitField0_ = (bitField0_ & ~0x00020000);
         internalGetMutableSurroundingEntities().clear();
+        bobberThrown_ = false;
         return this;
       }
 
@@ -7773,6 +7803,9 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
         if (((from_bitField0_ & 0x00040000) != 0)) {
           result.surroundingEntities_ = internalGetSurroundingEntities();
           result.surroundingEntities_.makeImmutable();
+        }
+        if (((from_bitField0_ & 0x00080000) != 0)) {
+          result.bobberThrown_ = bobberThrown_;
         }
       }
 
@@ -7969,6 +8002,9 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
         internalGetMutableSurroundingEntities().mergeFrom(
             other.internalGetSurroundingEntities());
         bitField0_ |= 0x00040000;
+        if (other.getBobberThrown() != false) {
+          setBobberThrown(other.getBobberThrown());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
@@ -8140,6 +8176,11 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
                 bitField0_ |= 0x00040000;
                 break;
               } // case 154
+              case 160: {
+                bobberThrown_ = input.readBool();
+                bitField0_ |= 0x00080000;
+                break;
+              } // case 160
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -10057,6 +10098,38 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
         bitField0_ |= 0x00040000;
         return this;
       }
+
+      private boolean bobberThrown_ ;
+      /**
+       * <code>bool bobber_thrown = 20;</code>
+       * @return The bobberThrown.
+       */
+      @java.lang.Override
+      public boolean getBobberThrown() {
+        return bobberThrown_;
+      }
+      /**
+       * <code>bool bobber_thrown = 20;</code>
+       * @param value The bobberThrown to set.
+       * @return This builder for chaining.
+       */
+      public Builder setBobberThrown(boolean value) {
+        
+        bobberThrown_ = value;
+        bitField0_ |= 0x00080000;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>bool bobber_thrown = 20;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearBobberThrown() {
+        bitField0_ = (bitField0_ & ~0x00080000);
+        bobberThrown_ = false;
+        onChanged();
+        return this;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -10208,7 +10281,7 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
       "ranslate_key\030\001 \001(\t\022\013\n\003age\030\002 \001(\003\022\t\n\001x\030\003 \001" +
       "(\001\022\t\n\001y\030\004 \001(\001\022\t\n\001z\030\005 \001(\001\"7\n\026EntitiesWith" +
       "inDistance\022\035\n\010entities\030\001 \003(\0132\013.EntityInf" +
-      "o\"\224\007\n\027ObservationSpaceMessage\022\r\n\005image\030\001" +
+      "o\"\253\007\n\027ObservationSpaceMessage\022\r\n\005image\030\001" +
       " \001(\014\022\t\n\001x\030\002 \001(\001\022\t\n\001y\030\003 \001(\001\022\t\n\001z\030\004 \001(\001\022\013\n" +
       "\003yaw\030\005 \001(\001\022\r\n\005pitch\030\006 \001(\001\022\016\n\006health\030\007 \001(" +
       "\001\022\022\n\nfood_level\030\010 \001(\001\022\030\n\020saturation_leve" +
@@ -10224,15 +10297,15 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
       "Message.MiscStatisticsEntry\022%\n\020visible_e" +
       "ntities\030\022 \003(\0132\013.EntityInfo\022O\n\024surroundin" +
       "g_entities\030\023 \003(\01321.ObservationSpaceMessa" +
-      "ge.SurroundingEntitiesEntry\0327\n\025KilledSta" +
-      "tisticsEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\005" +
-      ":\0028\001\0326\n\024MinedStatisticsEntry\022\013\n\003key\030\001 \001(" +
-      "\t\022\r\n\005value\030\002 \001(\005:\0028\001\0325\n\023MiscStatisticsEn" +
-      "try\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\005:\0028\001\032S\n\030S" +
-      "urroundingEntitiesEntry\022\013\n\003key\030\001 \001(\005\022&\n\005" +
-      "value\030\002 \001(\0132\027.EntitiesWithinDistance:\0028\001" +
-      "B&\n$com.kyhsgeekcode.minecraft_env.proto" +
-      "b\006proto3"
+      "ge.SurroundingEntitiesEntry\022\025\n\rbobber_th" +
+      "rown\030\024 \001(\010\0327\n\025KilledStatisticsEntry\022\013\n\003k" +
+      "ey\030\001 \001(\t\022\r\n\005value\030\002 \001(\005:\0028\001\0326\n\024MinedStat" +
+      "isticsEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\005:" +
+      "\0028\001\0325\n\023MiscStatisticsEntry\022\013\n\003key\030\001 \001(\t\022" +
+      "\r\n\005value\030\002 \001(\005:\0028\001\032S\n\030SurroundingEntitie" +
+      "sEntry\022\013\n\003key\030\001 \001(\005\022&\n\005value\030\002 \001(\0132\027.Ent" +
+      "itiesWithinDistance:\0028\001B&\n$com.kyhsgeekc" +
+      "ode.minecraft_env.protob\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -10285,7 +10358,7 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
     internal_static_ObservationSpaceMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ObservationSpaceMessage_descriptor,
-        new java.lang.String[] { "Image", "X", "Y", "Z", "Yaw", "Pitch", "Health", "FoodLevel", "SaturationLevel", "IsDead", "Inventory", "RaycastResult", "SoundSubtitles", "StatusEffects", "KilledStatistics", "MinedStatistics", "MiscStatistics", "VisibleEntities", "SurroundingEntities", });
+        new java.lang.String[] { "Image", "X", "Y", "Z", "Yaw", "Pitch", "Health", "FoodLevel", "SaturationLevel", "IsDead", "Inventory", "RaycastResult", "SoundSubtitles", "StatusEffects", "KilledStatistics", "MinedStatistics", "MiscStatistics", "VisibleEntities", "SurroundingEntities", "BobberThrown", });
     internal_static_ObservationSpaceMessage_KilledStatisticsEntry_descriptor =
       internal_static_ObservationSpaceMessage_descriptor.getNestedTypes().get(0);
     internal_static_ObservationSpaceMessage_KilledStatisticsEntry_fieldAccessorTable = new

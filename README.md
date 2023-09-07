@@ -1,11 +1,14 @@
 # MinecraftEnv
+
 Lightweight minecraft RL environment on fabric
 
 # Features
+
 - Works on minecraft 1.19.4
 - Used fabric mod
 
 # initial environment
+- Inventory commands
 - Entities
 - World seed
 - is world superflat
@@ -16,8 +19,10 @@ Lightweight minecraft RL environment on fabric
 - screen size (visible/observed)
 - Arbitrary commands (e.g. status effects)
 - keys for statistics
+- Hud is visible
 
 # Observation space
+
 - rgb
 - x, y, z
 - pitch, yaw
@@ -29,8 +34,11 @@ Lightweight minecraft RL environment on fabric
 - status effects
 - statistics
 - visible entities
+- surrounding entities
+- is bobber thrown
 
 # Action space
+
 - Similar to https://docs.minedojo.org/sections/core_api/action_space.html
 - No crafting yet
 - Arbitrary command (you should hide this for the agents)

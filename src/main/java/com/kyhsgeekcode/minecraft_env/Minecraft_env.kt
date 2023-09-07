@@ -24,6 +24,7 @@ import net.minecraft.network.packet.c2s.play.ClientStatusC2SPacket
 import net.minecraft.registry.Registries
 import net.minecraft.registry.Registry
 import net.minecraft.server.MinecraftServer
+import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.stat.Stats
 import net.minecraft.util.Identifier
 import net.minecraft.util.math.MathHelper
@@ -61,6 +62,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
     private var nextPhase: RunPhase = RunPhase.SERVER_TICK
     private val runPhaseLock = Object()
     private var skipClientTick = true
+//    private var serverPlayerEntity: ServerPlayerEntity? = null
 
     private val variableCommandsAfterReset = mutableListOf<String>()
 
@@ -167,6 +169,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
         ServerTickEvents.END_SERVER_TICK.register(ServerTickEvents.EndTick { server: MinecraftServer ->
             // allow client to end tick
             synchronized(runPhaseLock) {
+//                serverPlayerEntity = server.playerManager.playerList.first()
                 nextPhase = RunPhase.SEND_OBSERVATION
                 runPhaseLock.notifyAll()
             }
@@ -551,6 +554,8 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                         }
                         surroundingEntities[distance] = EntitiesWithinDistanceMessage
                     }
+//                    bobberThrown = serverPlayerEntity?.fishHook != null
+                    bobberThrown = player.fishHook != null
                 }
                 writeObservation(observationSpaceMessage, outputStream)
             }

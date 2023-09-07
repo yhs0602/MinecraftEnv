@@ -747,6 +747,23 @@ public object ObservationSpaceMessageKt {
       .clear() {
          _builder.clearSurroundingEntities()
        }
+
+    /**
+     * <code>bool bobber_thrown = 20;</code>
+     */
+    public var bobberThrown: kotlin.Boolean
+      @JvmName("getBobberThrown")
+      get() = _builder.getBobberThrown()
+      @JvmName("setBobberThrown")
+      set(value) {
+        _builder.setBobberThrown(value)
+      }
+    /**
+     * <code>bool bobber_thrown = 20;</code>
+     */
+    public fun clearBobberThrown() {
+      _builder.clearBobberThrown()
+    }
   }
 }
 @kotlin.jvm.JvmSynthetic

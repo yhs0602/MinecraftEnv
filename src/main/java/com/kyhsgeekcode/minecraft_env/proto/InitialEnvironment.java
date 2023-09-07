@@ -1104,6 +1104,18 @@ public final class InitialEnvironment {
      * @return The hudHidden.
      */
     boolean getHudHidden();
+
+    /**
+     * <code>int32 render_distance = 21;</code>
+     * @return The renderDistance.
+     */
+    int getRenderDistance();
+
+    /**
+     * <code>int32 simulation_distance = 22;</code>
+     * @return The simulationDistance.
+     */
+    int getSimulationDistance();
   }
   /**
    * Protobuf type {@code InitialEnvironmentMessage}
@@ -1619,6 +1631,28 @@ public final class InitialEnvironment {
       return hudHidden_;
     }
 
+    public static final int RENDER_DISTANCE_FIELD_NUMBER = 21;
+    private int renderDistance_ = 0;
+    /**
+     * <code>int32 render_distance = 21;</code>
+     * @return The renderDistance.
+     */
+    @java.lang.Override
+    public int getRenderDistance() {
+      return renderDistance_;
+    }
+
+    public static final int SIMULATION_DISTANCE_FIELD_NUMBER = 22;
+    private int simulationDistance_ = 0;
+    /**
+     * <code>int32 simulation_distance = 22;</code>
+     * @return The simulationDistance.
+     */
+    @java.lang.Override
+    public int getSimulationDistance() {
+      return simulationDistance_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -1701,6 +1735,12 @@ public final class InitialEnvironment {
       }
       if (hudHidden_ != false) {
         output.writeBool(20, hudHidden_);
+      }
+      if (renderDistance_ != 0) {
+        output.writeInt32(21, renderDistance_);
+      }
+      if (simulationDistance_ != 0) {
+        output.writeInt32(22, simulationDistance_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -1834,6 +1874,14 @@ public final class InitialEnvironment {
         size += com.google.protobuf.CodedOutputStream
           .computeBoolSize(20, hudHidden_);
       }
+      if (renderDistance_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(21, renderDistance_);
+      }
+      if (simulationDistance_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(22, simulationDistance_);
+      }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
@@ -1889,6 +1937,10 @@ public final class InitialEnvironment {
           .equals(other.getSurroundingEntityDistancesList())) return false;
       if (getHudHidden()
           != other.getHudHidden()) return false;
+      if (getRenderDistance()
+          != other.getRenderDistance()) return false;
+      if (getSimulationDistance()
+          != other.getSimulationDistance()) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -1964,6 +2016,10 @@ public final class InitialEnvironment {
       hash = (37 * hash) + HUDHIDDEN_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
           getHudHidden());
+      hash = (37 * hash) + RENDER_DISTANCE_FIELD_NUMBER;
+      hash = (53 * hash) + getRenderDistance();
+      hash = (37 * hash) + SIMULATION_DISTANCE_FIELD_NUMBER;
+      hash = (53 * hash) + getSimulationDistance();
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -2125,6 +2181,8 @@ public final class InitialEnvironment {
         bitField0_ = (bitField0_ & ~0x00020000);
         surroundingEntityDistances_ = emptyIntList();
         hudHidden_ = false;
+        renderDistance_ = 0;
+        simulationDistance_ = 0;
         return this;
       }
 
@@ -2243,6 +2301,12 @@ public final class InitialEnvironment {
         }
         if (((from_bitField0_ & 0x00080000) != 0)) {
           result.hudHidden_ = hudHidden_;
+        }
+        if (((from_bitField0_ & 0x00100000) != 0)) {
+          result.renderDistance_ = renderDistance_;
+        }
+        if (((from_bitField0_ & 0x00200000) != 0)) {
+          result.simulationDistance_ = simulationDistance_;
         }
       }
 
@@ -2431,6 +2495,12 @@ public final class InitialEnvironment {
         if (other.getHudHidden() != false) {
           setHudHidden(other.getHudHidden());
         }
+        if (other.getRenderDistance() != 0) {
+          setRenderDistance(other.getRenderDistance());
+        }
+        if (other.getSimulationDistance() != 0) {
+          setSimulationDistance(other.getSimulationDistance());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
@@ -2593,6 +2663,16 @@ public final class InitialEnvironment {
                 bitField0_ |= 0x00080000;
                 break;
               } // case 160
+              case 168: {
+                renderDistance_ = input.readInt32();
+                bitField0_ |= 0x00100000;
+                break;
+              } // case 168
+              case 176: {
+                simulationDistance_ = input.readInt32();
+                bitField0_ |= 0x00200000;
+                break;
+              } // case 176
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -4027,6 +4107,70 @@ public final class InitialEnvironment {
         onChanged();
         return this;
       }
+
+      private int renderDistance_ ;
+      /**
+       * <code>int32 render_distance = 21;</code>
+       * @return The renderDistance.
+       */
+      @java.lang.Override
+      public int getRenderDistance() {
+        return renderDistance_;
+      }
+      /**
+       * <code>int32 render_distance = 21;</code>
+       * @param value The renderDistance to set.
+       * @return This builder for chaining.
+       */
+      public Builder setRenderDistance(int value) {
+        
+        renderDistance_ = value;
+        bitField0_ |= 0x00100000;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 render_distance = 21;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearRenderDistance() {
+        bitField0_ = (bitField0_ & ~0x00100000);
+        renderDistance_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int simulationDistance_ ;
+      /**
+       * <code>int32 simulation_distance = 22;</code>
+       * @return The simulationDistance.
+       */
+      @java.lang.Override
+      public int getSimulationDistance() {
+        return simulationDistance_;
+      }
+      /**
+       * <code>int32 simulation_distance = 22;</code>
+       * @param value The simulationDistance to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSimulationDistance(int value) {
+        
+        simulationDistance_ = value;
+        bitField0_ |= 0x00200000;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 simulation_distance = 22;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearSimulationDistance() {
+        bitField0_ = (bitField0_ & ~0x00200000);
+        simulationDistance_ = 0;
+        onChanged();
+        return this;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -4112,7 +4256,7 @@ public final class InitialEnvironment {
     java.lang.String[] descriptorData = {
       "\n\031initial_environment.proto\"B\n\nBlockStat" +
       "e\022\t\n\001x\030\001 \001(\005\022\t\n\001y\030\002 \001(\005\022\t\n\001z\030\003 \001(\005\022\023\n\013bl" +
-      "ock_state\030\004 \001(\t\"\204\004\n\031InitialEnvironmentMe" +
+      "ock_state\030\004 \001(\t\"\272\004\n\031InitialEnvironmentMe" +
       "ssage\022 \n\030initialInventoryCommands\030\001 \003(\t\022" +
       "\027\n\017initialPosition\030\002 \003(\005\022\033\n\023initialMobsC" +
       "ommands\030\003 \003(\t\022\022\n\nimageSizeX\030\004 \001(\005\022\022\n\nima" +
@@ -4125,8 +4269,9 @@ public final class InitialEnvironment {
       "edStatKeys\030\020 \003(\t\022\024\n\014miscStatKeys\030\021 \003(\t\022\'" +
       "\n\022initialBlockStates\030\022 \003(\0132\013.BlockState\022" +
       "\"\n\032surroundingEntityDistances\030\023 \003(\005\022\021\n\th" +
-      "udHidden\030\024 \001(\010B&\n$com.kyhsgeekcode.minec" +
-      "raft_env.protob\006proto3"
+      "udHidden\030\024 \001(\010\022\027\n\017render_distance\030\025 \001(\005\022" +
+      "\033\n\023simulation_distance\030\026 \001(\005B&\n$com.kyhs" +
+      "geekcode.minecraft_env.protob\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -4143,7 +4288,7 @@ public final class InitialEnvironment {
     internal_static_InitialEnvironmentMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_InitialEnvironmentMessage_descriptor,
-        new java.lang.String[] { "InitialInventoryCommands", "InitialPosition", "InitialMobsCommands", "ImageSizeX", "ImageSizeY", "Seed", "AllowMobSpawn", "AlwaysNight", "AlwaysDay", "InitialWeather", "IsWorldFlat", "VisibleSizeX", "VisibleSizeY", "InitialExtraCommands", "KilledStatKeys", "MinedStatKeys", "MiscStatKeys", "InitialBlockStates", "SurroundingEntityDistances", "HudHidden", });
+        new java.lang.String[] { "InitialInventoryCommands", "InitialPosition", "InitialMobsCommands", "ImageSizeX", "ImageSizeY", "Seed", "AllowMobSpawn", "AlwaysNight", "AlwaysDay", "InitialWeather", "IsWorldFlat", "VisibleSizeX", "VisibleSizeY", "InitialExtraCommands", "KilledStatKeys", "MinedStatKeys", "MiscStatKeys", "InitialBlockStates", "SurroundingEntityDistances", "HudHidden", "RenderDistance", "SimulationDistance", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

@@ -830,6 +830,40 @@ public object InitialEnvironmentMessageKt {
     public fun clearHudHidden() {
       _builder.clearHudHidden()
     }
+
+    /**
+     * <code>int32 render_distance = 21;</code>
+     */
+    public var renderDistance: kotlin.Int
+      @JvmName("getRenderDistance")
+      get() = _builder.getRenderDistance()
+      @JvmName("setRenderDistance")
+      set(value) {
+        _builder.setRenderDistance(value)
+      }
+    /**
+     * <code>int32 render_distance = 21;</code>
+     */
+    public fun clearRenderDistance() {
+      _builder.clearRenderDistance()
+    }
+
+    /**
+     * <code>int32 simulation_distance = 22;</code>
+     */
+    public var simulationDistance: kotlin.Int
+      @JvmName("getSimulationDistance")
+      get() = _builder.getSimulationDistance()
+      @JvmName("setSimulationDistance")
+      set(value) {
+        _builder.setSimulationDistance(value)
+      }
+    /**
+     * <code>int32 simulation_distance = 22;</code>
+     */
+    public fun clearSimulationDistance() {
+      _builder.clearSimulationDistance()
+    }
   }
 }
 @kotlin.jvm.JvmSynthetic

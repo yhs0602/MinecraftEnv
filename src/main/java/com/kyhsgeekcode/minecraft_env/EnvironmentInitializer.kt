@@ -140,6 +140,30 @@ class EnvironmentInitializer(
         disablePauseOnLostFocus(client)
         disableOnboardAccessibility(client)
         setHudHidden(client, initialEnvironment.hudHidden)
+        setRenderDistance(client, initialEnvironment.renderDistance)
+        setSimulationDistance(client, initialEnvironment.simulationDistance)
+    }
+
+    private fun setSimulationDistance(client: MinecraftClient, simulationDistance: Int) {
+        val options = client.options
+        if (options != null) {
+            if (options.simulationDistance.value != simulationDistance) {
+                options.simulationDistance.value = simulationDistance
+                client.options.write()
+                println("Set simulation distance to $simulationDistance")
+            }
+        }
+    }
+
+    private fun setRenderDistance(client: MinecraftClient, renderDistance: Int) {
+        val options = client.options
+        if (options != null) {
+            if (options.viewDistance.value != renderDistance) {
+                options.simulationDistance.value = renderDistance
+                client.options.write()
+                println("Set simulation distance to $renderDistance")
+            }
+        }
     }
 
     fun reset(chatHud: ChatHud, commandExecutor: CommandExecutor, variableCommandAfterReset: List<String>) {
