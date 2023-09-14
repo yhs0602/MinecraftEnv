@@ -24,7 +24,6 @@ import net.minecraft.network.packet.c2s.play.ClientStatusC2SPacket
 import net.minecraft.registry.Registries
 import net.minecraft.registry.Registry
 import net.minecraft.server.MinecraftServer
-import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.stat.Stats
 import net.minecraft.util.Identifier
 import net.minecraft.util.math.MathHelper
@@ -556,6 +555,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                     }
 //                    bobberThrown = serverPlayerEntity?.fishHook != null
                     bobberThrown = player.fishHook != null
+                    experience = player.totalExperience
                 }
                 writeObservation(observationSpaceMessage, outputStream)
             }

@@ -764,6 +764,23 @@ public object ObservationSpaceMessageKt {
     public fun clearBobberThrown() {
       _builder.clearBobberThrown()
     }
+
+    /**
+     * <code>int32 experience = 21;</code>
+     */
+    public var experience: kotlin.Int
+      @JvmName("getExperience")
+      get() = _builder.getExperience()
+      @JvmName("setExperience")
+      set(value) {
+        _builder.setExperience(value)
+      }
+    /**
+     * <code>int32 experience = 21;</code>
+     */
+    public fun clearExperience() {
+      _builder.clearExperience()
+    }
   }
 }
 @kotlin.jvm.JvmSynthetic
