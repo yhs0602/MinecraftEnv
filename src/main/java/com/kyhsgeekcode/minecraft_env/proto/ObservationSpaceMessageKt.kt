@@ -781,6 +781,23 @@ public object ObservationSpaceMessageKt {
     public fun clearExperience() {
       _builder.clearExperience()
     }
+
+    /**
+     * <code>int64 world_time = 22;</code>
+     */
+    public var worldTime: kotlin.Long
+      @JvmName("getWorldTime")
+      get() = _builder.getWorldTime()
+      @JvmName("setWorldTime")
+      set(value) {
+        _builder.setWorldTime(value)
+      }
+    /**
+     * <code>int64 world_time = 22;</code>
+     */
+    public fun clearWorldTime() {
+      _builder.clearWorldTime()
+    }
   }
 }
 @kotlin.jvm.JvmSynthetic

@@ -556,6 +556,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
 //                    bobberThrown = serverPlayerEntity?.fishHook != null
                     bobberThrown = player.fishHook != null
                     experience = player.totalExperience
+                    worldTime = world.time // world tick, monotonic increasing
                 }
                 writeObservation(observationSpaceMessage, outputStream)
             }

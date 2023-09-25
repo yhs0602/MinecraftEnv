@@ -6446,6 +6446,12 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
      * @return The experience.
      */
     int getExperience();
+
+    /**
+     * <code>int64 world_time = 22;</code>
+     * @return The worldTime.
+     */
+    long getWorldTime();
   }
   /**
    * Protobuf type {@code ObservationSpaceMessage}
@@ -7142,6 +7148,17 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
       return experience_;
     }
 
+    public static final int WORLD_TIME_FIELD_NUMBER = 22;
+    private long worldTime_ = 0L;
+    /**
+     * <code>int64 world_time = 22;</code>
+     * @return The worldTime.
+     */
+    @java.lang.Override
+    public long getWorldTime() {
+      return worldTime_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -7230,6 +7247,9 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
       }
       if (experience_ != 0) {
         output.writeInt32(21, experience_);
+      }
+      if (worldTime_ != 0L) {
+        output.writeInt64(22, worldTime_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -7348,6 +7368,10 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(21, experience_);
       }
+      if (worldTime_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(22, worldTime_);
+      }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
@@ -7416,6 +7440,8 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
           != other.getBobberThrown()) return false;
       if (getExperience()
           != other.getExperience()) return false;
+      if (getWorldTime()
+          != other.getWorldTime()) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -7497,6 +7523,9 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
           getBobberThrown());
       hash = (37 * hash) + EXPERIENCE_FIELD_NUMBER;
       hash = (53 * hash) + getExperience();
+      hash = (37 * hash) + WORLD_TIME_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getWorldTime());
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -7709,6 +7738,7 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
         internalGetMutableSurroundingEntities().clear();
         bobberThrown_ = false;
         experience_ = 0;
+        worldTime_ = 0L;
         return this;
       }
 
@@ -7838,6 +7868,9 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
         }
         if (((from_bitField0_ & 0x00100000) != 0)) {
           result.experience_ = experience_;
+        }
+        if (((from_bitField0_ & 0x00200000) != 0)) {
+          result.worldTime_ = worldTime_;
         }
       }
 
@@ -8040,6 +8073,9 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
         if (other.getExperience() != 0) {
           setExperience(other.getExperience());
         }
+        if (other.getWorldTime() != 0L) {
+          setWorldTime(other.getWorldTime());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
@@ -8221,6 +8257,11 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
                 bitField0_ |= 0x00100000;
                 break;
               } // case 168
+              case 176: {
+                worldTime_ = input.readInt64();
+                bitField0_ |= 0x00200000;
+                break;
+              } // case 176
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -10202,6 +10243,38 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
         onChanged();
         return this;
       }
+
+      private long worldTime_ ;
+      /**
+       * <code>int64 world_time = 22;</code>
+       * @return The worldTime.
+       */
+      @java.lang.Override
+      public long getWorldTime() {
+        return worldTime_;
+      }
+      /**
+       * <code>int64 world_time = 22;</code>
+       * @param value The worldTime to set.
+       * @return This builder for chaining.
+       */
+      public Builder setWorldTime(long value) {
+        
+        worldTime_ = value;
+        bitField0_ |= 0x00200000;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int64 world_time = 22;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearWorldTime() {
+        bitField0_ = (bitField0_ & ~0x00200000);
+        worldTime_ = 0L;
+        onChanged();
+        return this;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -10353,7 +10426,7 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
       "ranslate_key\030\001 \001(\t\022\013\n\003age\030\002 \001(\003\022\t\n\001x\030\003 \001" +
       "(\001\022\t\n\001y\030\004 \001(\001\022\t\n\001z\030\005 \001(\001\"7\n\026EntitiesWith" +
       "inDistance\022\035\n\010entities\030\001 \003(\0132\013.EntityInf" +
-      "o\"\277\007\n\027ObservationSpaceMessage\022\r\n\005image\030\001" +
+      "o\"\323\007\n\027ObservationSpaceMessage\022\r\n\005image\030\001" +
       " \001(\014\022\t\n\001x\030\002 \001(\001\022\t\n\001y\030\003 \001(\001\022\t\n\001z\030\004 \001(\001\022\013\n" +
       "\003yaw\030\005 \001(\001\022\r\n\005pitch\030\006 \001(\001\022\016\n\006health\030\007 \001(" +
       "\001\022\022\n\nfood_level\030\010 \001(\001\022\030\n\020saturation_leve" +
@@ -10370,15 +10443,15 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
       "ntities\030\022 \003(\0132\013.EntityInfo\022O\n\024surroundin" +
       "g_entities\030\023 \003(\01321.ObservationSpaceMessa" +
       "ge.SurroundingEntitiesEntry\022\025\n\rbobber_th" +
-      "rown\030\024 \001(\010\022\022\n\nexperience\030\025 \001(\005\0327\n\025Killed" +
-      "StatisticsEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 " +
-      "\001(\005:\0028\001\0326\n\024MinedStatisticsEntry\022\013\n\003key\030\001" +
-      " \001(\t\022\r\n\005value\030\002 \001(\005:\0028\001\0325\n\023MiscStatistic" +
-      "sEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\005:\0028\001\032S" +
-      "\n\030SurroundingEntitiesEntry\022\013\n\003key\030\001 \001(\005\022" +
-      "&\n\005value\030\002 \001(\0132\027.EntitiesWithinDistance:" +
-      "\0028\001B&\n$com.kyhsgeekcode.minecraft_env.pr" +
-      "otob\006proto3"
+      "rown\030\024 \001(\010\022\022\n\nexperience\030\025 \001(\005\022\022\n\nworld_" +
+      "time\030\026 \001(\003\0327\n\025KilledStatisticsEntry\022\013\n\003k" +
+      "ey\030\001 \001(\t\022\r\n\005value\030\002 \001(\005:\0028\001\0326\n\024MinedStat" +
+      "isticsEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\005:" +
+      "\0028\001\0325\n\023MiscStatisticsEntry\022\013\n\003key\030\001 \001(\t\022" +
+      "\r\n\005value\030\002 \001(\005:\0028\001\032S\n\030SurroundingEntitie" +
+      "sEntry\022\013\n\003key\030\001 \001(\005\022&\n\005value\030\002 \001(\0132\027.Ent" +
+      "itiesWithinDistance:\0028\001B&\n$com.kyhsgeekc" +
+      "ode.minecraft_env.protob\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -10431,7 +10504,7 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
     internal_static_ObservationSpaceMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ObservationSpaceMessage_descriptor,
-        new java.lang.String[] { "Image", "X", "Y", "Z", "Yaw", "Pitch", "Health", "FoodLevel", "SaturationLevel", "IsDead", "Inventory", "RaycastResult", "SoundSubtitles", "StatusEffects", "KilledStatistics", "MinedStatistics", "MiscStatistics", "VisibleEntities", "SurroundingEntities", "BobberThrown", "Experience", });
+        new java.lang.String[] { "Image", "X", "Y", "Z", "Yaw", "Pitch", "Health", "FoodLevel", "SaturationLevel", "IsDead", "Inventory", "RaycastResult", "SoundSubtitles", "StatusEffects", "KilledStatistics", "MinedStatistics", "MiscStatistics", "VisibleEntities", "SurroundingEntities", "BobberThrown", "Experience", "WorldTime", });
     internal_static_ObservationSpaceMessage_KilledStatisticsEntry_descriptor =
       internal_static_ObservationSpaceMessage_descriptor.getNestedTypes().get(0);
     internal_static_ObservationSpaceMessage_KilledStatisticsEntry_fieldAccessorTable = new
