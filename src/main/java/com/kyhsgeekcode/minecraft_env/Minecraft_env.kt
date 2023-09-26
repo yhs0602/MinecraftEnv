@@ -1,10 +1,8 @@
 package com.kyhsgeekcode.minecraft_env
 
-import com.google.common.io.LittleEndianDataOutputStream
 import com.google.protobuf.ByteString
 import com.kyhsgeekcode.minecraft_env.mixin.ClientDoAttackInvoker
 import com.kyhsgeekcode.minecraft_env.mixin.ClientDoItemUseInvoker
-import com.kyhsgeekcode.minecraft_env.proto.ActionSpace.ActionSpaceMessage
 import com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment
 import com.kyhsgeekcode.minecraft_env.proto.entitiesWithinDistance
 import com.kyhsgeekcode.minecraft_env.proto.observationSpaceMessage
@@ -31,9 +29,13 @@ import net.minecraft.world.World
 import java.io.IOException
 import java.io.InputStream
 import java.io.OutputStream
-import java.net.ServerSocket
 import java.net.SocketTimeoutException
-import java.nio.ByteBuffer
+import java.net.StandardProtocolFamily
+import java.net.UnixDomainSocketAddress
+import java.nio.channels.ServerSocketChannel
+import java.nio.channels.SocketChannel
+import java.nio.file.Files
+import java.nio.file.Path
 import java.time.format.DateTimeFormatter
 import kotlin.system.exitProcess
 
@@ -56,7 +58,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
     private var soundListener: MinecraftSoundListener? = null
     private var entityListener: EntityRenderListenerImpl? = null // tracks the entities rendered in the last tick
     private var resetPhase: ResetPhase = ResetPhase.END_RESET
-    private val formatter: DateTimeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss.SSSSSS")
+
 
     private var nextPhase: RunPhase = RunPhase.SERVER_TICK
     private val runPhaseLock = Object()
@@ -65,31 +67,36 @@ class Minecraft_env : ModInitializer, CommandExecutor {
 
     private val variableCommandsAfterReset = mutableListOf<String>()
 
-    private fun printWithTime(msg: String) {
-        if (false)
-            println("${formatter.format(java.time.LocalDateTime.now())} $msg")
-    }
 
     override fun onInitialize() {
         Registry.register(Registries.ITEM, "minecraft_env:custom_item", CUSTOM_ITEM)
         FuelRegistry.INSTANCE.add(CUSTOM_ITEM, 300)
         val inputStream: InputStream
         val outputStream: OutputStream
+        val socket: SocketChannel
+        val messageIO: MessageIO
         try {
             val portStr = System.getenv("PORT")
             val port = portStr?.toInt() ?: 8000
+            val socket_file_path = Path.of("/tmp/minecraftrl_${port}.sock")
+            socket_file_path.toFile().deleteOnExit()
             printWithTime("Connecting to $port")
-            val serverSocket = ServerSocket(port)
-            val socket = serverSocket.accept()
-            socket.soTimeout = 30000
-            inputStream = socket.getInputStream()
-            outputStream = socket.getOutputStream()
+            Files.deleteIfExists(socket_file_path)
+            val serverSocket =
+                ServerSocketChannel.open(StandardProtocolFamily.UNIX).bind(UnixDomainSocketAddress.of(socket_file_path))
+            socket = serverSocket.accept()
+            messageIO = DomainSocketMessageIO(socket)
+//            val serverSocket = ServerSocket(port)
+//            val socket = serverSocket.accept()
+//            socket.soTimeout = 30000
+//            inputStream = socket.getInputStream()
+//            outputStream = socket.getOutputStream()
         } catch (e: IOException) {
             throw RuntimeException(e)
         }
         printWithTime("Hello Fabric world!")
-
-        readInitialEnvironment(inputStream, outputStream)
+        initialEnvironment = messageIO.readInitialEnvironment()
+//        readInitialEnvironment(inputStream, outputStream)
         resetPhase = ResetPhase.WAIT_INIT_ENDS
         val initializer = EnvironmentInitializer(initialEnvironment)
         ClientTickEvents.START_CLIENT_TICK.register(ClientTickEvents.StartTick { client: MinecraftClient ->
@@ -113,7 +120,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                 }
             }
 
-            onStartWorldTick(initializer, world, inputStream)
+            onStartWorldTick(initializer, world, messageIO)
 
             synchronized(runPhaseLock) {
                 nextPhase = RunPhase.CLIENT_TICK
@@ -148,7 +155,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                 }
 
                 ResetPhase.END_RESET -> {
-                    sendObservation(outputStream, world)
+                    sendObservation(messageIO, world)
                 }
             }
             synchronized(runPhaseLock) {
@@ -178,7 +185,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
     private fun onStartWorldTick(
         initializer: EnvironmentInitializer,
         world: ClientWorld,
-        inputStream: InputStream,
+        messageIO: MessageIO
     ) {
         val client = MinecraftClient.getInstance()
         soundListener!!.onTick()
@@ -223,7 +230,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
             }
         }
         try {
-            val action = readAction(inputStream)
+            val action = messageIO.readAction()
             val commands = action.commandsList
 
             if (commands.isNotEmpty()) {
@@ -460,20 +467,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
     }
 
 
-    private fun readAction(inputStream: InputStream): ActionSpaceMessage {
-        printWithTime("Reading action space")
-        // read action from inputStream using protobuf
-        val buffer = ByteBuffer.allocate(Integer.BYTES) // 4 bytes
-        inputStream.read(buffer.array())
-        val len = buffer.order(java.nio.ByteOrder.LITTLE_ENDIAN).int
-        val bytes = inputStream.readNBytes(len)
-//        println("Read action space bytes $len")
-        val actionSpace = ActionSpaceMessage.parseFrom(bytes)
-        printWithTime("Read action space")
-        return actionSpace
-    }
-
-    private fun sendObservation(outputStream: OutputStream, world: World) {
+    private fun sendObservation(messageIO: MessageIO, world: World) {
         printWithTime("send Observation")
         val client = MinecraftClient.getInstance()
         val player = client.player
@@ -558,7 +552,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                     experience = player.totalExperience
                     worldTime = world.time // world tick, monotonic increasing
                 }
-                writeObservation(observationSpaceMessage, outputStream)
+                messageIO.writeObservation(observationSpaceMessage)
             }
         } catch (e: IOException) {
             e.printStackTrace()
@@ -582,43 +576,6 @@ class Minecraft_env : ModInitializer, CommandExecutor {
         }
     }
 
-    private fun writeObservation(
-        observationSpace: com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ObservationSpaceMessage,
-        outputStream: OutputStream
-    ) {
-        printWithTime("Writing observation with size ${observationSpace.serializedSize}")
-        val dataOutputStream = LittleEndianDataOutputStream(outputStream)
-        dataOutputStream.writeInt(observationSpace.serializedSize)
-//        println("Wrote observation size ${observationSpace.serializedSize}")
-        observationSpace.writeTo(outputStream)
-//        println("Wrote observation ${observationSpace.serializedSize}")
-        outputStream.flush()
-        printWithTime("Flushed")
-    }
-
-    private fun readInitialEnvironment(inputStream: InputStream, outputStream: OutputStream) {
-        // read client environment settings
-        while (true) {
-            try {
-                printWithTime("Reading initial environment")
-                // read a single int from input stream
-                val buffer = ByteBuffer.allocate(Integer.BYTES) // 4 bytes
-                inputStream.read(buffer.array())
-                val len = buffer.order(java.nio.ByteOrder.LITTLE_ENDIAN).int
-                printWithTime("$len")
-                val bytes = inputStream.readNBytes(len.toInt())
-                initialEnvironment = InitialEnvironment.InitialEnvironmentMessage.parseFrom(bytes)
-                printWithTime("Read initial environment ${initialEnvironment!!.imageSizeX} ${initialEnvironment!!.imageSizeY}")
-                break
-            } catch (e: SocketTimeoutException) {
-                println("Socket timeout")
-                // wait and try again
-            } catch (e: IOException) {
-                e.printStackTrace()
-                throw RuntimeException(e)
-            }
-        }
-    }
 
     override fun runCommand(player: ClientPlayerEntity, command: String) {
         var command = command
@@ -635,3 +592,8 @@ class Minecraft_env : ModInitializer, CommandExecutor {
     }
 }
 
+private val formatter: DateTimeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss.SSSSSS")
+fun printWithTime(msg: String) {
+    if (false)
+        println("${formatter.format(java.time.LocalDateTime.now())} $msg")
+}
