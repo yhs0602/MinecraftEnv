@@ -12,6 +12,7 @@
     "ClientDoAttackInvoker",
     "ClientDoItemUseInvoker",
     "ClientEntityRenderDispatcherAccessor",
+    "ClientPlayNetworkHandlerMixin",
     "ClientWorldMixin",
     "KeyboardInputFieldMixin",
     "KeyboardInputMixin",

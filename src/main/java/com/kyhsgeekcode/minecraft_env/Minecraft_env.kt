@@ -58,7 +58,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
     private var soundListener: MinecraftSoundListener? = null
     private var entityListener: EntityRenderListenerImpl? = null // tracks the entities rendered in the last tick
     private var resetPhase: ResetPhase = ResetPhase.END_RESET
-
+    private var deathMessageCollector: GetMessagesInterface? = null
 
     private var nextPhase: RunPhase = RunPhase.SERVER_TICK
     private val runPhaseLock = Object()
@@ -104,6 +104,8 @@ class Minecraft_env : ModInitializer, CommandExecutor {
             if (soundListener == null) soundListener = MinecraftSoundListener(client.soundManager)
             if (entityListener == null) entityListener =
                 EntityRenderListenerImpl(client.worldRenderer as AddListenerInterface)
+            if (deathMessageCollector == null) deathMessageCollector =
+                client.networkHandler as GetMessagesInterface?
         })
         ClientTickEvents.START_WORLD_TICK.register(ClientTickEvents.StartWorldTick { world: ClientWorld ->
             synchronized(runPhaseLock) {
@@ -551,6 +553,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                     bobberThrown = player.fishHook != null
                     experience = player.totalExperience
                     worldTime = world.time // world tick, monotonic increasing
+                    lastDeathMessage = deathMessageCollector?.lastDeathMessage?.firstOrNull() ?: ""
                 }
                 messageIO.writeObservation(observationSpaceMessage)
             }

@@ -798,6 +798,23 @@ public object ObservationSpaceMessageKt {
     public fun clearWorldTime() {
       _builder.clearWorldTime()
     }
+
+    /**
+     * <code>string last_death_message = 23;</code>
+     */
+    public var lastDeathMessage: kotlin.String
+      @JvmName("getLastDeathMessage")
+      get() = _builder.getLastDeathMessage()
+      @JvmName("setLastDeathMessage")
+      set(value) {
+        _builder.setLastDeathMessage(value)
+      }
+    /**
+     * <code>string last_death_message = 23;</code>
+     */
+    public fun clearLastDeathMessage() {
+      _builder.clearLastDeathMessage()
+    }
   }
 }
 @kotlin.jvm.JvmSynthetic

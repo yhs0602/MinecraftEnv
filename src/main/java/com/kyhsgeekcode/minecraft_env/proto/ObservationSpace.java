@@ -6452,6 +6452,18 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
      * @return The worldTime.
      */
     long getWorldTime();
+
+    /**
+     * <code>string last_death_message = 23;</code>
+     * @return The lastDeathMessage.
+     */
+    java.lang.String getLastDeathMessage();
+    /**
+     * <code>string last_death_message = 23;</code>
+     * @return The bytes for lastDeathMessage.
+     */
+    com.google.protobuf.ByteString
+        getLastDeathMessageBytes();
   }
   /**
    * Protobuf type {@code ObservationSpaceMessage}
@@ -6471,6 +6483,7 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
       soundSubtitles_ = java.util.Collections.emptyList();
       statusEffects_ = java.util.Collections.emptyList();
       visibleEntities_ = java.util.Collections.emptyList();
+      lastDeathMessage_ = "";
     }
 
     @java.lang.Override
@@ -7159,6 +7172,45 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
       return worldTime_;
     }
 
+    public static final int LAST_DEATH_MESSAGE_FIELD_NUMBER = 23;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object lastDeathMessage_ = "";
+    /**
+     * <code>string last_death_message = 23;</code>
+     * @return The lastDeathMessage.
+     */
+    @java.lang.Override
+    public java.lang.String getLastDeathMessage() {
+      java.lang.Object ref = lastDeathMessage_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        lastDeathMessage_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string last_death_message = 23;</code>
+     * @return The bytes for lastDeathMessage.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getLastDeathMessageBytes() {
+      java.lang.Object ref = lastDeathMessage_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        lastDeathMessage_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -7250,6 +7302,9 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
       }
       if (worldTime_ != 0L) {
         output.writeInt64(22, worldTime_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(lastDeathMessage_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 23, lastDeathMessage_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -7372,6 +7427,9 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
         size += com.google.protobuf.CodedOutputStream
           .computeInt64Size(22, worldTime_);
       }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(lastDeathMessage_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(23, lastDeathMessage_);
+      }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
@@ -7442,6 +7500,8 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
           != other.getExperience()) return false;
       if (getWorldTime()
           != other.getWorldTime()) return false;
+      if (!getLastDeathMessage()
+          .equals(other.getLastDeathMessage())) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -7526,6 +7586,8 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
       hash = (37 * hash) + WORLD_TIME_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           getWorldTime());
+      hash = (37 * hash) + LAST_DEATH_MESSAGE_FIELD_NUMBER;
+      hash = (53 * hash) + getLastDeathMessage().hashCode();
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -7739,6 +7801,7 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
         bobberThrown_ = false;
         experience_ = 0;
         worldTime_ = 0L;
+        lastDeathMessage_ = "";
         return this;
       }
 
@@ -7871,6 +7934,9 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
         }
         if (((from_bitField0_ & 0x00200000) != 0)) {
           result.worldTime_ = worldTime_;
+        }
+        if (((from_bitField0_ & 0x00400000) != 0)) {
+          result.lastDeathMessage_ = lastDeathMessage_;
         }
       }
 
@@ -8076,6 +8142,11 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
         if (other.getWorldTime() != 0L) {
           setWorldTime(other.getWorldTime());
         }
+        if (!other.getLastDeathMessage().isEmpty()) {
+          lastDeathMessage_ = other.lastDeathMessage_;
+          bitField0_ |= 0x00400000;
+          onChanged();
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
@@ -8262,6 +8333,11 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
                 bitField0_ |= 0x00200000;
                 break;
               } // case 176
+              case 186: {
+                lastDeathMessage_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00400000;
+                break;
+              } // case 186
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -10275,6 +10351,78 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
         onChanged();
         return this;
       }
+
+      private java.lang.Object lastDeathMessage_ = "";
+      /**
+       * <code>string last_death_message = 23;</code>
+       * @return The lastDeathMessage.
+       */
+      public java.lang.String getLastDeathMessage() {
+        java.lang.Object ref = lastDeathMessage_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          lastDeathMessage_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string last_death_message = 23;</code>
+       * @return The bytes for lastDeathMessage.
+       */
+      public com.google.protobuf.ByteString
+          getLastDeathMessageBytes() {
+        java.lang.Object ref = lastDeathMessage_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          lastDeathMessage_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string last_death_message = 23;</code>
+       * @param value The lastDeathMessage to set.
+       * @return This builder for chaining.
+       */
+      public Builder setLastDeathMessage(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        lastDeathMessage_ = value;
+        bitField0_ |= 0x00400000;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string last_death_message = 23;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearLastDeathMessage() {
+        lastDeathMessage_ = getDefaultInstance().getLastDeathMessage();
+        bitField0_ = (bitField0_ & ~0x00400000);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string last_death_message = 23;</code>
+       * @param value The bytes for lastDeathMessage to set.
+       * @return This builder for chaining.
+       */
+      public Builder setLastDeathMessageBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        lastDeathMessage_ = value;
+        bitField0_ |= 0x00400000;
+        onChanged();
+        return this;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -10426,7 +10574,7 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
       "ranslate_key\030\001 \001(\t\022\013\n\003age\030\002 \001(\003\022\t\n\001x\030\003 \001" +
       "(\001\022\t\n\001y\030\004 \001(\001\022\t\n\001z\030\005 \001(\001\"7\n\026EntitiesWith" +
       "inDistance\022\035\n\010entities\030\001 \003(\0132\013.EntityInf" +
-      "o\"\323\007\n\027ObservationSpaceMessage\022\r\n\005image\030\001" +
+      "o\"\357\007\n\027ObservationSpaceMessage\022\r\n\005image\030\001" +
       " \001(\014\022\t\n\001x\030\002 \001(\001\022\t\n\001y\030\003 \001(\001\022\t\n\001z\030\004 \001(\001\022\013\n" +
       "\003yaw\030\005 \001(\001\022\r\n\005pitch\030\006 \001(\001\022\016\n\006health\030\007 \001(" +
       "\001\022\022\n\nfood_level\030\010 \001(\001\022\030\n\020saturation_leve" +
@@ -10444,14 +10592,15 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
       "g_entities\030\023 \003(\01321.ObservationSpaceMessa" +
       "ge.SurroundingEntitiesEntry\022\025\n\rbobber_th" +
       "rown\030\024 \001(\010\022\022\n\nexperience\030\025 \001(\005\022\022\n\nworld_" +
-      "time\030\026 \001(\003\0327\n\025KilledStatisticsEntry\022\013\n\003k" +
-      "ey\030\001 \001(\t\022\r\n\005value\030\002 \001(\005:\0028\001\0326\n\024MinedStat" +
-      "isticsEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\005:" +
-      "\0028\001\0325\n\023MiscStatisticsEntry\022\013\n\003key\030\001 \001(\t\022" +
-      "\r\n\005value\030\002 \001(\005:\0028\001\032S\n\030SurroundingEntitie" +
-      "sEntry\022\013\n\003key\030\001 \001(\005\022&\n\005value\030\002 \001(\0132\027.Ent" +
-      "itiesWithinDistance:\0028\001B&\n$com.kyhsgeekc" +
-      "ode.minecraft_env.protob\006proto3"
+      "time\030\026 \001(\003\022\032\n\022last_death_message\030\027 \001(\t\0327" +
+      "\n\025KilledStatisticsEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005" +
+      "value\030\002 \001(\005:\0028\001\0326\n\024MinedStatisticsEntry\022" +
+      "\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\005:\0028\001\0325\n\023MiscS" +
+      "tatisticsEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001" +
+      "(\005:\0028\001\032S\n\030SurroundingEntitiesEntry\022\013\n\003ke" +
+      "y\030\001 \001(\005\022&\n\005value\030\002 \001(\0132\027.EntitiesWithinD" +
+      "istance:\0028\001B&\n$com.kyhsgeekcode.minecraf" +
+      "t_env.protob\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -10504,7 +10653,7 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
     internal_static_ObservationSpaceMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ObservationSpaceMessage_descriptor,
-        new java.lang.String[] { "Image", "X", "Y", "Z", "Yaw", "Pitch", "Health", "FoodLevel", "SaturationLevel", "IsDead", "Inventory", "RaycastResult", "SoundSubtitles", "StatusEffects", "KilledStatistics", "MinedStatistics", "MiscStatistics", "VisibleEntities", "SurroundingEntities", "BobberThrown", "Experience", "WorldTime", });
+        new java.lang.String[] { "Image", "X", "Y", "Z", "Yaw", "Pitch", "Health", "FoodLevel", "SaturationLevel", "IsDead", "Inventory", "RaycastResult", "SoundSubtitles", "StatusEffects", "KilledStatistics", "MinedStatistics", "MiscStatistics", "VisibleEntities", "SurroundingEntities", "BobberThrown", "Experience", "WorldTime", "LastDeathMessage", });
     internal_static_ObservationSpaceMessage_KilledStatisticsEntry_descriptor =
       internal_static_ObservationSpaceMessage_descriptor.getNestedTypes().get(0);
     internal_static_ObservationSpaceMessage_KilledStatisticsEntry_fieldAccessorTable = new
