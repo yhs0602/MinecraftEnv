@@ -11,7 +11,9 @@ import net.minecraft.client.gui.screen.world.SelectWorldScreen
 import net.minecraft.client.gui.screen.world.WorldListWidget
 import net.minecraft.client.gui.widget.*
 import net.minecraft.client.network.ClientPlayerEntity
+import net.minecraft.client.option.NarratorMode
 import net.minecraft.server.MinecraftServer
+import net.minecraft.sound.SoundCategory
 import net.minecraft.world.GameMode
 
 
@@ -143,6 +145,23 @@ class EnvironmentInitializer(
         setRenderDistance(client, initialEnvironment.renderDistance)
         setSimulationDistance(client, initialEnvironment.simulationDistance)
         disableVSync(client)
+        disableSound(client)
+        disableNarrator(client)
+    }
+
+    private fun disableSound(client: MinecraftClient) {
+        client.options?.let {
+            it.getSoundVolumeOption(SoundCategory.MASTER).value = 0.0
+        }
+    }
+
+    private fun disableNarrator(client: MinecraftClient) {
+        val options = client.options
+        if (options != null) {
+            options.narrator.value = NarratorMode.OFF
+            options.write()
+            println("Disabled narrator")
+        }
     }
 
     private fun disableVSync(client: MinecraftClient) {
