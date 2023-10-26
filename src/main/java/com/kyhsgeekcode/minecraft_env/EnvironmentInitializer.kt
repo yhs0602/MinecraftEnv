@@ -12,6 +12,7 @@ import net.minecraft.client.gui.screen.world.WorldListWidget
 import net.minecraft.client.gui.widget.*
 import net.minecraft.client.network.ClientPlayerEntity
 import net.minecraft.client.option.NarratorMode
+import net.minecraft.client.tutorial.TutorialStep
 import net.minecraft.server.MinecraftServer
 import net.minecraft.sound.SoundCategory
 import net.minecraft.world.GameMode
@@ -147,6 +148,7 @@ class EnvironmentInitializer(
         disableVSync(client)
         disableSound(client)
         disableNarrator(client)
+        disableTutorial(client)
     }
 
     private fun disableSound(client: MinecraftClient) {
@@ -162,6 +164,11 @@ class EnvironmentInitializer(
             options.write()
             println("Disabled narrator")
         }
+    }
+
+    private fun disableTutorial(client: MinecraftClient) {
+        client.tutorialManager?.setStep(TutorialStep.NONE)
+        println("Disabled tutorial")
     }
 
     private fun disableVSync(client: MinecraftClient) {
