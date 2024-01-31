@@ -1,6 +1,7 @@
 package com.kyhsgeekcode.minecraft_env
 
 import com.google.protobuf.ByteString
+import com.kyhsgeekcode.minecraft_env.entities.DroneEntity
 import com.kyhsgeekcode.minecraft_env.mixin.ClientDoAttackInvoker
 import com.kyhsgeekcode.minecraft_env.mixin.ClientDoItemUseInvoker
 import com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment
@@ -10,13 +11,16 @@ import net.fabricmc.api.ModInitializer
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings
+import net.fabricmc.fabric.api.`object`.builder.v1.entity.FabricEntityTypeBuilder
 import net.fabricmc.fabric.api.registry.FuelRegistry
 import net.minecraft.client.MinecraftClient
 import net.minecraft.client.gui.screen.DeathScreen
 import net.minecraft.client.network.ClientPlayerEntity
 import net.minecraft.client.util.ScreenshotRecorder
 import net.minecraft.client.world.ClientWorld
+import net.minecraft.entity.EntityDimensions
 import net.minecraft.entity.EntityType
+import net.minecraft.entity.SpawnGroup
 import net.minecraft.item.Item
 import net.minecraft.network.packet.c2s.play.ClientStatusC2SPacket
 import net.minecraft.registry.Registries
@@ -66,7 +70,6 @@ class Minecraft_env : ModInitializer, CommandExecutor {
 //    private var serverPlayerEntity: ServerPlayerEntity? = null
 
     private val variableCommandsAfterReset = mutableListOf<String>()
-
 
     override fun onInitialize() {
         Registry.register(Registries.ITEM, "minecraft_env:custom_item", CUSTOM_ITEM)
@@ -592,6 +595,13 @@ class Minecraft_env : ModInitializer, CommandExecutor {
 
     companion object {
         val CUSTOM_ITEM = Item(FabricItemSettings().fireproof())
+        val DRONE_ENTITY: EntityType<DroneEntity> = Registry.register(
+            Registries.ENTITY_TYPE,
+            Identifier("minecraft_env", "drone"),
+            FabricEntityTypeBuilder.create(SpawnGroup.MISC, ::DroneEntity).dimensions(
+                EntityDimensions.fixed(0.75f, 0.75f)
+            ).build()
+        )
     }
 }
 
