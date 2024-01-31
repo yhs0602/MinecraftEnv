@@ -864,6 +864,23 @@ public object InitialEnvironmentMessageKt {
     public fun clearSimulationDistance() {
       _builder.clearSimulationDistance()
     }
+
+    /**
+     * <code>bool biocular = 23;</code>
+     */
+    public var biocular: kotlin.Boolean
+      @JvmName("getBiocular")
+      get() = _builder.getBiocular()
+      @JvmName("setBiocular")
+      set(value) {
+        _builder.setBiocular(value)
+      }
+    /**
+     * <code>bool biocular = 23;</code>
+     */
+    public fun clearBiocular() {
+      _builder.clearBiocular()
+    }
   }
 }
 @kotlin.jvm.JvmSynthetic

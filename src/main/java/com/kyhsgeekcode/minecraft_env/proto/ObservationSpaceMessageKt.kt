@@ -815,6 +815,23 @@ public object ObservationSpaceMessageKt {
     public fun clearLastDeathMessage() {
       _builder.clearLastDeathMessage()
     }
+
+    /**
+     * <code>bytes image_2 = 24;</code>
+     */
+    public var image2: com.google.protobuf.ByteString
+      @JvmName("getImage2")
+      get() = _builder.getImage2()
+      @JvmName("setImage2")
+      set(value) {
+        _builder.setImage2(value)
+      }
+    /**
+     * <code>bytes image_2 = 24;</code>
+     */
+    public fun clearImage2() {
+      _builder.clearImage2()
+    }
   }
 }
 @kotlin.jvm.JvmSynthetic
