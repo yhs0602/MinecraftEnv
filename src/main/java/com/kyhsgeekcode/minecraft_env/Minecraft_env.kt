@@ -493,7 +493,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                 val center = player.eyePos
                 // calculate left direction based on yaw
                 // go to the left by eyeWidth block
-                val eyeWidth = 0.1
+                val eyeWidth = initialEnvironment.eyeDistance
                 val left = center.add(
                     eyeWidth * -sin(Math.toRadians(player.yaw.toDouble())),
                     0.0,

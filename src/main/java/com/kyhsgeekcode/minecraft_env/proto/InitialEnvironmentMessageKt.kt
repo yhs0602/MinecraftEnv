@@ -881,6 +881,23 @@ public object InitialEnvironmentMessageKt {
     public fun clearBiocular() {
       _builder.clearBiocular()
     }
+
+    /**
+     * <code>float eye_distance = 24;</code>
+     */
+    public var eyeDistance: kotlin.Float
+      @JvmName("getEyeDistance")
+      get() = _builder.getEyeDistance()
+      @JvmName("setEyeDistance")
+      set(value) {
+        _builder.setEyeDistance(value)
+      }
+    /**
+     * <code>float eye_distance = 24;</code>
+     */
+    public fun clearEyeDistance() {
+      _builder.clearEyeDistance()
+    }
   }
 }
 @kotlin.jvm.JvmSynthetic
