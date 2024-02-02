@@ -8,5 +8,5 @@ import org.spongepowered.asm.mixin.gen.Invoker;
 @Mixin(MinecraftClient.class)
 public interface ClientRenderInvoker {
     @Invoker("render")
-    void render();
+    void render(boolean tick);
 }
