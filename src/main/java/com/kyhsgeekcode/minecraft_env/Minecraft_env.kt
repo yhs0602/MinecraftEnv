@@ -3,6 +3,7 @@ package com.kyhsgeekcode.minecraft_env
 import com.google.protobuf.ByteString
 import com.kyhsgeekcode.minecraft_env.mixin.ClientDoAttackInvoker
 import com.kyhsgeekcode.minecraft_env.mixin.ClientDoItemUseInvoker
+import com.kyhsgeekcode.minecraft_env.mixin.ClientRenderInvoker
 import com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment
 import com.kyhsgeekcode.minecraft_env.proto.entitiesWithinDistance
 import com.kyhsgeekcode.minecraft_env.proto.observationSpaceMessage
@@ -37,6 +38,8 @@ import java.nio.channels.SocketChannel
 import java.nio.file.Files
 import java.nio.file.Path
 import java.time.format.DateTimeFormatter
+import kotlin.math.cos
+import kotlin.math.sin
 import kotlin.system.exitProcess
 
 enum class ResetPhase {
@@ -482,8 +485,28 @@ class Minecraft_env : ModInitializer, CommandExecutor {
         client.networkHandler?.sendPacket(ClientStatusC2SPacket(ClientStatusC2SPacket.Mode.REQUEST_STATS))
         val buffer = client.framebuffer
         try {
-            ScreenshotRecorder.takeScreenshot(buffer).use { screenshot ->
-                val byteArray =
+            val image_1: ByteString
+            val image_2: ByteString
+            val pos = player.pos
+            if (initialEnvironment.biocular) {
+                // translate the player position to the left and right
+                val center = player.eyePos
+                // calculate left direction based on yaw
+                val left = center.add(
+                    -sin(Math.toRadians(player.yaw.toDouble())),
+                    0.0,
+                    cos(Math.toRadians(player.yaw.toDouble()))
+                )
+                // calculate right direction based on yaw
+                val right = center.add(
+                    sin(Math.toRadians(player.yaw.toDouble())),
+                    0.0,
+                    -cos(Math.toRadians(player.yaw.toDouble()))
+                )
+                // go to left and render, take screenshot
+                player.setPos(left.x, left.y, left.z)
+                (client as ClientRenderInvoker).render()
+                val image1ByteArray = ScreenshotRecorder.takeScreenshot(buffer).use { screenshot ->
                     encodeImageToBytes(
                         screenshot,
                         initialEnvironment.visibleSizeX,
@@ -491,72 +514,99 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                         initialEnvironment.imageSizeX,
                         initialEnvironment.imageSizeY
                     )
-                val pos = player.pos
-
-                val observationSpaceMessage = observationSpaceMessage {
-                    image = ByteString.copyFrom(byteArray)
-                    x = pos.x
-                    y = pos.y
-                    z = pos.z
-                    pitch = player.pitch.toDouble()
-                    yaw = player.yaw.toDouble()
-                    health = player.health.toDouble()
-                    foodLevel = player.hungerManager.foodLevel.toDouble()
-                    saturationLevel = player.hungerManager.saturationLevel.toDouble()
-                    isDead = player.isDead
-                    inventory.addAll((player.inventory.main + player.inventory.armor + player.inventory.offHand).map {
-                        it.toMessage()
-                    })
-                    raycastResult = player.raycast(100.0, 1.0f, false).toMessage(world)
-                    soundSubtitles.addAll(
-                        soundListener!!.entries.map {
-                            it.toMessage()
-                        }
-                    )
-                    statusEffects.addAll(player.statusEffects.map {
-                        it.toMessage()
-                    })
-                    for (killStatKey in initialEnvironment.killedStatKeysList) {
-                        val key = EntityType.get(killStatKey).get()
-                        val stat = player.statHandler.getStat(Stats.KILLED.getOrCreateStat(key))
-                        killedStatistics[killStatKey] = stat
-                    }
-                    for (mineStatKey in initialEnvironment.minedStatKeysList) {
-                        val key = Registries.BLOCK.get(Identifier.of("minecraft", mineStatKey))
-                        val stat = player.statHandler.getStat(Stats.MINED.getOrCreateStat(key))
-                        minedStatistics[mineStatKey] = stat
-                    }
-                    for (miscStatKey in initialEnvironment.miscStatKeysList) {
-                        val key = Registries.CUSTOM_STAT.get(Identifier.of("minecraft", miscStatKey))
-                        miscStatistics[miscStatKey] = player.statHandler.getStat(Stats.CUSTOM.getOrCreateStat(key))
-                    }
-                    entityListener?.run {
-                        for (entity in entities) {
-                            // notify where entity is, what it is (supervised)
-                            visibleEntities.add(entity.toMessage())
-                        }
-                    }
-                    for (distance in initialEnvironment.surroundingEntityDistancesList) {
-                        val distanceDouble = distance.toDouble()
-                        val EntitiesWithinDistanceMessage = entitiesWithinDistance {
-                            world.getOtherEntities(
-                                player,
-                                player.boundingBox.expand(distanceDouble, distanceDouble, distanceDouble)
-                            )
-                                .forEach {
-                                    entities.add(it.toMessage())
-                                }
-                        }
-                        surroundingEntities[distance] = EntitiesWithinDistanceMessage
-                    }
-//                    bobberThrown = serverPlayerEntity?.fishHook != null
-                    bobberThrown = player.fishHook != null
-                    experience = player.totalExperience
-                    worldTime = world.time // world tick, monotonic increasing
-                    lastDeathMessage = deathMessageCollector?.lastDeathMessage?.firstOrNull() ?: ""
                 }
-                messageIO.writeObservation(observationSpaceMessage)
+                image_1 = ByteString.copyFrom(image1ByteArray)
+                player.setPos(right.x, right.y, right.z)
+                (client as ClientRenderInvoker).render()
+                val image2ByteArray = ScreenshotRecorder.takeScreenshot(buffer).use { screenshot ->
+                    encodeImageToBytes(
+                        screenshot,
+                        initialEnvironment.visibleSizeX,
+                        initialEnvironment.visibleSizeY,
+                        initialEnvironment.imageSizeX,
+                        initialEnvironment.imageSizeY
+                    )
+                }
+                image_2 = ByteString.copyFrom(image2ByteArray)
+                player.setPos(center.x, center.y, center.z)
+            } else {
+                val image1ByteArray = ScreenshotRecorder.takeScreenshot(buffer).use { screenshot ->
+                    encodeImageToBytes(
+                        screenshot,
+                        initialEnvironment.visibleSizeX,
+                        initialEnvironment.visibleSizeY,
+                        initialEnvironment.imageSizeX,
+                        initialEnvironment.imageSizeY
+                    )
+                }
+                image_1 = ByteString.copyFrom(image1ByteArray)
+                image_2 = ByteString.copyFrom(image1ByteArray)
             }
+
+            val observationSpaceMessage = observationSpaceMessage {
+                image = image_1
+                x = pos.x
+                y = pos.y
+                z = pos.z
+                pitch = player.pitch.toDouble()
+                yaw = player.yaw.toDouble()
+                health = player.health.toDouble()
+                foodLevel = player.hungerManager.foodLevel.toDouble()
+                saturationLevel = player.hungerManager.saturationLevel.toDouble()
+                isDead = player.isDead
+                inventory.addAll((player.inventory.main + player.inventory.armor + player.inventory.offHand).map {
+                    it.toMessage()
+                })
+                raycastResult = player.raycast(100.0, 1.0f, false).toMessage(world)
+                soundSubtitles.addAll(
+                    soundListener!!.entries.map {
+                        it.toMessage()
+                    }
+                )
+                statusEffects.addAll(player.statusEffects.map {
+                    it.toMessage()
+                })
+                for (killStatKey in initialEnvironment.killedStatKeysList) {
+                    val key = EntityType.get(killStatKey).get()
+                    val stat = player.statHandler.getStat(Stats.KILLED.getOrCreateStat(key))
+                    killedStatistics[killStatKey] = stat
+                }
+                for (mineStatKey in initialEnvironment.minedStatKeysList) {
+                    val key = Registries.BLOCK.get(Identifier.of("minecraft", mineStatKey))
+                    val stat = player.statHandler.getStat(Stats.MINED.getOrCreateStat(key))
+                    minedStatistics[mineStatKey] = stat
+                }
+                for (miscStatKey in initialEnvironment.miscStatKeysList) {
+                    val key = Registries.CUSTOM_STAT.get(Identifier.of("minecraft", miscStatKey))
+                    miscStatistics[miscStatKey] = player.statHandler.getStat(Stats.CUSTOM.getOrCreateStat(key))
+                }
+                entityListener?.run {
+                    for (entity in entities) {
+                        // notify where entity is, what it is (supervised)
+                        visibleEntities.add(entity.toMessage())
+                    }
+                }
+                for (distance in initialEnvironment.surroundingEntityDistancesList) {
+                    val distanceDouble = distance.toDouble()
+                    val EntitiesWithinDistanceMessage = entitiesWithinDistance {
+                        world.getOtherEntities(
+                            player,
+                            player.boundingBox.expand(distanceDouble, distanceDouble, distanceDouble)
+                        )
+                            .forEach {
+                                entities.add(it.toMessage())
+                            }
+                    }
+                    surroundingEntities[distance] = EntitiesWithinDistanceMessage
+                }
+//                    bobberThrown = serverPlayerEntity?.fishHook != null
+                bobberThrown = player.fishHook != null
+                experience = player.totalExperience
+                worldTime = world.time // world tick, monotonic increasing
+                lastDeathMessage = deathMessageCollector?.lastDeathMessage?.firstOrNull() ?: ""
+                image2 = image_2
+            }
+            messageIO.writeObservation(observationSpaceMessage)
         } catch (e: IOException) {
             e.printStackTrace()
             synchronized(runPhaseLock) {
