@@ -30,6 +30,7 @@ import net.minecraft.stat.Stats
 import net.minecraft.util.Identifier
 import net.minecraft.util.Util
 import net.minecraft.util.math.MathHelper
+import net.minecraft.util.math.Vec3d
 import net.minecraft.world.World
 import java.io.IOException
 import java.io.InputStream
@@ -492,7 +493,13 @@ class Minecraft_env : ModInitializer, CommandExecutor {
         try {
             val image_1: ByteString
             val image_2: ByteString
-            val pos = player.pos
+            val oldX = player.pos.x
+            val oldY = player.pos.y
+            val oldZ = player.pos.z
+            val oldPrevX = player.prevX
+            val oldPrevY = player.prevY
+            val oldPrevZ = player.prevZ
+            val pos = Vec3d(oldX, oldY, oldZ)
             if (initialEnvironment.biocular) {
                 // translate the player position to the left and right
                 val center = player.eyePos
@@ -511,9 +518,6 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                     0.0,
                     eyeWidth * -cos(Math.toRadians(player.yaw.toDouble()))
                 )
-                val oldPrevX = player.prevX
-                val oldPrevY = player.prevY
-                val oldPrevZ = player.prevZ
                 // go to left and render, take screenshot
                 player.prevX = left.x
                 player.prevY = left.y
@@ -553,7 +557,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                 player.prevX = oldPrevX
                 player.prevY = oldPrevY
                 player.prevZ = oldPrevZ
-                player.setPos(pos.x, pos.y, pos.z)
+                player.setPos(oldX, oldY, oldZ)
             } else {
                 val image1ByteArray = ScreenshotRecorder.takeScreenshot(buffer).use { screenshot ->
                     encodeImageToBytes(
