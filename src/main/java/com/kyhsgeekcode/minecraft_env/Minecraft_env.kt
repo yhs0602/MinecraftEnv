@@ -492,16 +492,19 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                 // translate the player position to the left and right
                 val center = player.eyePos
                 // calculate left direction based on yaw
+                // go to the left by eyeWidth block
+                val eyeWidth = 0.1
                 val left = center.add(
-                    -sin(Math.toRadians(player.yaw.toDouble())),
+                    eyeWidth * -sin(Math.toRadians(player.yaw.toDouble())),
                     0.0,
-                    cos(Math.toRadians(player.yaw.toDouble()))
+                    eyeWidth * cos(Math.toRadians(player.yaw.toDouble()))
                 )
                 // calculate right direction based on yaw
+                // go to the right by eyeWidth block
                 val right = center.add(
-                    sin(Math.toRadians(player.yaw.toDouble())),
+                    eyeWidth * sin(Math.toRadians(player.yaw.toDouble())),
                     0.0,
-                    -cos(Math.toRadians(player.yaw.toDouble()))
+                    eyeWidth * -cos(Math.toRadians(player.yaw.toDouble()))
                 )
                 // go to left and render, take screenshot
                 player.setPos(left.x, left.y, left.z)
@@ -528,7 +531,8 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                     )
                 }
                 image_2 = ByteString.copyFrom(image2ByteArray)
-                player.setPos(center.x, center.y, center.z)
+                // return to the original position
+                player.setPos(pos.x, pos.y, pos.z)
             } else {
                 val image1ByteArray = ScreenshotRecorder.takeScreenshot(buffer).use { screenshot ->
                     encodeImageToBytes(
