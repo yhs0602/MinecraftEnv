@@ -3,18 +3,21 @@ package com.kyhsgeekcode.minecraft_env
 import com.google.protobuf.ByteString
 import com.kyhsgeekcode.minecraft_env.mixin.ClientDoAttackInvoker
 import com.kyhsgeekcode.minecraft_env.mixin.ClientDoItemUseInvoker
-import com.kyhsgeekcode.minecraft_env.mixin.ClientRenderInvoker
 import com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment
 import com.kyhsgeekcode.minecraft_env.proto.entitiesWithinDistance
 import com.kyhsgeekcode.minecraft_env.proto.observationSpaceMessage
+import com.mojang.blaze3d.platform.GlConst
+import com.mojang.blaze3d.systems.RenderSystem
 import net.fabricmc.api.ModInitializer
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings
 import net.fabricmc.fabric.api.registry.FuelRegistry
 import net.minecraft.client.MinecraftClient
+import net.minecraft.client.MinecraftClient.IS_SYSTEM_MAC
 import net.minecraft.client.gui.screen.DeathScreen
 import net.minecraft.client.network.ClientPlayerEntity
+import net.minecraft.client.render.BackgroundRenderer
 import net.minecraft.client.util.ScreenshotRecorder
 import net.minecraft.client.world.ClientWorld
 import net.minecraft.entity.EntityType
@@ -25,6 +28,7 @@ import net.minecraft.registry.Registry
 import net.minecraft.server.MinecraftServer
 import net.minecraft.stat.Stats
 import net.minecraft.util.Identifier
+import net.minecraft.util.Util
 import net.minecraft.util.math.MathHelper
 import net.minecraft.world.World
 import java.io.IOException
@@ -41,6 +45,7 @@ import java.time.format.DateTimeFormatter
 import kotlin.math.cos
 import kotlin.math.sin
 import kotlin.system.exitProcess
+
 
 enum class ResetPhase {
     WAIT_PLAYER_DEATH,
@@ -515,7 +520,8 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                 player.prevZ = left.z
                 player.setPos(left.x, left.y, left.z)
                 println("New left position: ${left.x}, ${left.y}, ${left.z} ${player.prevX}, ${player.prevY}, ${player.prevZ}")
-                (client as ClientRenderInvoker).invokeRender(true)
+                // (client as ClientRenderInvoker).invokeRender(true)
+                render(client)
                 val image1ByteArray = ScreenshotRecorder.takeScreenshot(buffer).use { screenshot ->
                     encodeImageToBytes(
                         screenshot,
@@ -531,7 +537,8 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                 player.prevZ = right.z
                 player.setPosition(right.x, right.y, right.z)
                 println("New right position: ${right.x}, ${right.y}, ${right.z} ${player.prevX}, ${player.prevY}, ${player.prevZ}")
-                (client as ClientRenderInvoker).invokeRender(true)
+//                (client as ClientRenderInvoker).invokeRender(true)
+                render(client)
                 val image2ByteArray = ScreenshotRecorder.takeScreenshot(buffer).use { screenshot ->
                     encodeImageToBytes(
                         screenshot,
@@ -667,4 +674,19 @@ private val formatter: DateTimeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss
 fun printWithTime(msg: String) {
     if (false)
         println("${formatter.format(java.time.LocalDateTime.now())} $msg")
+}
+
+fun render(client: MinecraftClient) {
+    RenderSystem.clear(GlConst.GL_DEPTH_BUFFER_BIT or GlConst.GL_COLOR_BUFFER_BIT, IS_SYSTEM_MAC)
+    client.framebuffer.beginWrite(true)
+    BackgroundRenderer.clearFog()
+    RenderSystem.enableCull()
+    val l = Util.getMeasuringTimeNano()
+    client.gameRenderer.render(
+        0.0f,// client.renderTickCounter.tickDelta,
+        l,
+        true // tick
+    )
+    client.framebuffer.endWrite()
+    client.framebuffer.draw(client.window.framebufferWidth, client.window.framebufferHeight)
 }
