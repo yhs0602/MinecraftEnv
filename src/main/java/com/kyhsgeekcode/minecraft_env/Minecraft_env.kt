@@ -505,7 +505,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                 )
                 // go to left and render, take screenshot
                 player.setPos(left.x, left.y, left.z)
-                (client as ClientRenderInvoker).render(false)
+                (client as ClientRenderInvoker).invokeRender(false)
                 val image1ByteArray = ScreenshotRecorder.takeScreenshot(buffer).use { screenshot ->
                     encodeImageToBytes(
                         screenshot,
@@ -517,7 +517,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                 }
                 image_1 = ByteString.copyFrom(image1ByteArray)
                 player.setPos(right.x, right.y, right.z)
-                (client as ClientRenderInvoker).render(false)
+                (client as ClientRenderInvoker).invokeRender(false)
                 val image2ByteArray = ScreenshotRecorder.takeScreenshot(buffer).use { screenshot ->
                     encodeImageToBytes(
                         screenshot,
