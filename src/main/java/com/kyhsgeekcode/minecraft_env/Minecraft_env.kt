@@ -514,8 +514,8 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                 player.prevY = left.y
                 player.prevZ = left.z
                 player.setPos(left.x, left.y, left.z)
-                println("New left position: ${right.x}, ${right.y}, ${right.z} ${player.prevX}, ${player.prevY}, ${player.prevZ}")
-                (client as ClientRenderInvoker).invokeRender(false)
+                println("New left position: ${left.x}, ${left.y}, ${left.z} ${player.prevX}, ${player.prevY}, ${player.prevZ}")
+                (client as ClientRenderInvoker).invokeRender(true)
                 val image1ByteArray = ScreenshotRecorder.takeScreenshot(buffer).use { screenshot ->
                     encodeImageToBytes(
                         screenshot,
@@ -529,9 +529,9 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                 player.prevX = right.x
                 player.prevY = right.y
                 player.prevZ = right.z
-                player.setPos(right.x, right.y, right.z)
+                player.setPosition(right.x, right.y, right.z)
                 println("New right position: ${right.x}, ${right.y}, ${right.z} ${player.prevX}, ${player.prevY}, ${player.prevZ}")
-                (client as ClientRenderInvoker).invokeRender(false)
+                (client as ClientRenderInvoker).invokeRender(true)
                 val image2ByteArray = ScreenshotRecorder.takeScreenshot(buffer).use { screenshot ->
                     encodeImageToBytes(
                         screenshot,
