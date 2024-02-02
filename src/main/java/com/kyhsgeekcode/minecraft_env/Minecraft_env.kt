@@ -506,8 +506,13 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                     0.0,
                     eyeWidth * -cos(Math.toRadians(player.yaw.toDouble()))
                 )
+                val oldPrevX = player.prevX
+                val oldPrevY = player.prevY
+                val oldPrevZ = player.prevZ
                 // go to left and render, take screenshot
-                player.setPos(left.x, left.y, left.z)
+                player.prevX = left.x
+                player.prevY = left.y
+                player.prevZ = left.z
                 (client as ClientRenderInvoker).invokeRender(false)
                 val image1ByteArray = ScreenshotRecorder.takeScreenshot(buffer).use { screenshot ->
                     encodeImageToBytes(
@@ -519,7 +524,9 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                     )
                 }
                 image_1 = ByteString.copyFrom(image1ByteArray)
-                player.setPos(right.x, right.y, right.z)
+                player.prevX = right.x
+                player.prevY = right.y
+                player.prevZ = right.z
                 (client as ClientRenderInvoker).invokeRender(false)
                 val image2ByteArray = ScreenshotRecorder.takeScreenshot(buffer).use { screenshot ->
                     encodeImageToBytes(
@@ -532,6 +539,9 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                 }
                 image_2 = ByteString.copyFrom(image2ByteArray)
                 // return to the original position
+                player.prevX = oldPrevX
+                player.prevY = oldPrevY
+                player.prevZ = oldPrevZ
                 player.setPos(pos.x, pos.y, pos.z)
             } else {
                 val image1ByteArray = ScreenshotRecorder.takeScreenshot(buffer).use { screenshot ->
