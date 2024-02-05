@@ -502,7 +502,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
             val pos = Vec3d(oldX, oldY, oldZ)
             if (initialEnvironment.biocular) {
                 // translate the player position to the left and right
-                val center = player.eyePos
+                val center = player.pos
                 // calculate left direction based on yaw
                 // go to the left by eyeWidth block
                 val eyeWidth = initialEnvironment.eyeDistance
