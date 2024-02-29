@@ -257,11 +257,19 @@ class Minecraft_env : ModInitializer, CommandExecutor {
             println("Timeout")
         } catch (e: IOException) {
             // release lock
-            runPhaseLock.notifyAll()
+            try {
+                runPhaseLock.notifyAll()
+            } catch (e: IllegalMonitorStateException) {
+                e.printStackTrace()
+            }
             e.printStackTrace()
             exitProcess(-1)
         } catch (e: Exception) {
-            runPhaseLock.notifyAll()
+            try {
+                runPhaseLock.notifyAll()
+            } catch (e: IllegalMonitorStateException) {
+                e.printStackTrace()
+            }
             e.printStackTrace()
             exitProcess(-2)
         }
