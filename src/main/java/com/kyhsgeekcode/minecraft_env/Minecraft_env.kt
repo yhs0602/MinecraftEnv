@@ -33,8 +33,6 @@ import net.minecraft.util.math.MathHelper
 import net.minecraft.util.math.Vec3d
 import net.minecraft.world.World
 import java.io.IOException
-import java.io.InputStream
-import java.io.OutputStream
 import java.net.SocketTimeoutException
 import java.net.StandardProtocolFamily
 import java.net.UnixDomainSocketAddress
@@ -55,13 +53,6 @@ enum class ResetPhase {
     END_RESET,
 }
 
-enum class RunPhase {
-    READ_ACTION,
-    CLIENT_TICK,
-    SERVER_TICK,
-    SEND_OBSERVATION,
-}
-
 class Minecraft_env : ModInitializer, CommandExecutor {
     private lateinit var initialEnvironment: InitialEnvironment.InitialEnvironmentMessage
     private var soundListener: MinecraftSoundListener? = null
@@ -69,9 +60,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
     private var resetPhase: ResetPhase = ResetPhase.END_RESET
     private var deathMessageCollector: GetMessagesInterface? = null
 
-    private var nextPhase: RunPhase = RunPhase.SERVER_TICK
-    private val runPhaseLock = Object()
-    private var skipClientTick = true
+    private val tickSynchronizer = TickSynchronizer()
 //    private var serverPlayerEntity: ServerPlayerEntity? = null
 
     private val variableCommandsAfterReset = mutableListOf<String>()
@@ -109,78 +98,26 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                 client.networkHandler as GetMessagesInterface?
         })
         ClientTickEvents.START_WORLD_TICK.register(ClientTickEvents.StartWorldTick { world: ClientWorld ->
-            synchronized(runPhaseLock) {
-                printWithTime("Skip client tick set to false")
-                skipClientTick = false
-                nextPhase = RunPhase.READ_ACTION
-                runPhaseLock.notifyAll()
-            }
             // read input
-            synchronized(runPhaseLock) {
-                printWithTime("Waiting for state to be read action")
-                while (nextPhase != RunPhase.READ_ACTION) {
-                    runPhaseLock.wait()
-                }
-            }
             onStartWorldTick(initializer, world, messageIO)
-
-            synchronized(runPhaseLock) {
-                nextPhase = RunPhase.CLIENT_TICK
-                runPhaseLock.notifyAll()
-            }
         })
         ClientTickEvents.END_WORLD_TICK.register(ClientTickEvents.EndWorldTick { world: ClientWorld ->
             // allow server to start tick
-            synchronized(runPhaseLock) {
-                nextPhase = RunPhase.SERVER_TICK
-                runPhaseLock.notifyAll()
-            }
+            tickSynchronizer.notifyServerTickStart()
             // wait until server tick ends
             printWithTime("Wait server world tick ends")
-            synchronized(runPhaseLock) {
-                while (nextPhase != RunPhase.SEND_OBSERVATION) {
-                    runPhaseLock.wait()
-                }
-            }
-            // send observation
-            when (resetPhase) {
-                ResetPhase.WAIT_PLAYER_DEATH -> {
-
-                }
-
-                ResetPhase.WAIT_PLAYER_RESPAWN -> {
-
-                }
-
-                ResetPhase.WAIT_INIT_ENDS -> {
-
-                }
-
-                ResetPhase.END_RESET -> {
-                    sendObservation(messageIO, world)
-                }
-            }
-            synchronized(runPhaseLock) {
-                nextPhase = RunPhase.READ_ACTION
-                runPhaseLock.notifyAll()
-            }
+            tickSynchronizer.waitForServerTickCompletion()
+            sendObservation(messageIO, world)
         })
         ServerTickEvents.START_SERVER_TICK.register(ServerTickEvents.StartTick { server: MinecraftServer ->
             // wait until client tick ends
             printWithTime("Wait client world tick ends")
-            synchronized(runPhaseLock) {
-                while (nextPhase != RunPhase.SERVER_TICK && !skipClientTick) {
-                    runPhaseLock.wait()
-                }
-            }
+            tickSynchronizer.waitForClientAction()
         })
         ServerTickEvents.END_SERVER_TICK.register(ServerTickEvents.EndTick { server: MinecraftServer ->
             // allow client to end tick
-            synchronized(runPhaseLock) {
-//                serverPlayerEntity = server.playerManager.playerList.first()
-                nextPhase = RunPhase.SEND_OBSERVATION
-                runPhaseLock.notifyAll()
-            }
+            printWithTime("Notify server tick completion")
+            tickSynchronizer.notifyClientSendObservation()
         })
     }
 
@@ -248,19 +185,9 @@ class Minecraft_env : ModInitializer, CommandExecutor {
             println("Timeout")
         } catch (e: IOException) {
             // release lock
-            try {
-                runPhaseLock.notifyAll()
-            } catch (e: IllegalMonitorStateException) {
-                e.printStackTrace()
-            }
             e.printStackTrace()
             exitProcess(-1)
         } catch (e: Exception) {
-            try {
-                runPhaseLock.notifyAll()
-            } catch (e: IllegalMonitorStateException) {
-                e.printStackTrace()
-            }
             e.printStackTrace()
             exitProcess(-2)
         }
@@ -307,7 +234,6 @@ class Minecraft_env : ModInitializer, CommandExecutor {
             return false
         } else if (command == "exit") {
             println("Will terminate")
-            runPhaseLock.notifyAll()
             exitProcess(0)
         } else {
             runCommand(player, command)
@@ -621,9 +547,6 @@ class Minecraft_env : ModInitializer, CommandExecutor {
             messageIO.writeObservation(observationSpaceMessage)
         } catch (e: IOException) {
             e.printStackTrace()
-            synchronized(runPhaseLock) {
-                runPhaseLock.notifyAll()
-            }
             client.scheduleStop()
 
             val threadGroup = Thread.currentThread().threadGroup
