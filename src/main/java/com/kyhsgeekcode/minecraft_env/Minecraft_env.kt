@@ -184,10 +184,12 @@ class Minecraft_env : ModInitializer, CommandExecutor {
         } catch (e: SocketTimeoutException) {
             println("Timeout")
         } catch (e: IOException) {
+            tickSynchronizer.terminate()
             // release lock
             e.printStackTrace()
             exitProcess(-1)
         } catch (e: Exception) {
+            tickSynchronizer.terminate()
             e.printStackTrace()
             exitProcess(-2)
         }
@@ -234,6 +236,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
             return false
         } else if (command == "exit") {
             println("Will terminate")
+            tickSynchronizer.terminate()
             exitProcess(0)
         } else {
             runCommand(player, command)
@@ -547,6 +550,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
             messageIO.writeObservation(observationSpaceMessage)
         } catch (e: IOException) {
             e.printStackTrace()
+            tickSynchronizer.terminate()
             client.scheduleStop()
 
             val threadGroup = Thread.currentThread().threadGroup
@@ -560,7 +564,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                     thread.interrupt()
             }
             println("Will exitprocess -3")
-//            exitProcess(-3)
+            exitProcess(-3)
         }
     }
 

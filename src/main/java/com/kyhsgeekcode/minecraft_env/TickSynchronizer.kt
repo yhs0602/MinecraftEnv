@@ -3,15 +3,13 @@ package com.kyhsgeekcode.minecraft_env
 import java.util.concurrent.locks.Condition
 import java.util.concurrent.locks.ReentrantLock
 
-
-class TickSynchronizer {
+internal class TickSynchronizer {
     private val lock = ReentrantLock()
-
-    // 클라이언트가 액션 적용을 완료했음을 나타내는 조건
     private val clientActionApplied: Condition = lock.newCondition()
-
-    // 서버 틱이 완료되어 클라이언트가 관찰을 보낼 준비가 됨을 나타내는 조건
     private val serverTickCompleted: Condition = lock.newCondition()
+
+    @Volatile
+    private var terminating = false // 종료 상태 추적
 
     // 클라이언트에서 액션 적용 후 호출
     fun notifyServerTickStart() {
@@ -27,7 +25,12 @@ class TickSynchronizer {
     fun waitForClientAction() {
         lock.lock()
         try {
-            clientActionApplied.await()
+            while (!terminating) {
+                clientActionApplied.await()
+                if (terminating) { // 깨어난 후 종료 상태 검사
+                    break
+                }
+            }
         } catch (e: InterruptedException) {
             Thread.currentThread().interrupt()
         } finally {
@@ -49,9 +52,26 @@ class TickSynchronizer {
     fun waitForServerTickCompletion() {
         lock.lock()
         try {
-            serverTickCompleted.await()
+            while (!terminating) {
+                serverTickCompleted.await()
+                if (terminating) { // 깨어난 후 종료 상태 검사
+                    break
+                }
+            }
         } catch (e: InterruptedException) {
             Thread.currentThread().interrupt()
+        } finally {
+            lock.unlock()
+        }
+    }
+
+    // 종료 메소드
+    fun terminate() {
+        lock.lock()
+        try {
+            terminating = true
+            clientActionApplied.signalAll() // 모든 대기 중인 스레드 깨우기
+            serverTickCompleted.signalAll()
         } finally {
             lock.unlock()
         }
