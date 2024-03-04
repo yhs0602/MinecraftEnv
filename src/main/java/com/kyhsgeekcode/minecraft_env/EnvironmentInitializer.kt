@@ -33,6 +33,7 @@ class EnvironmentInitializer(
     private lateinit var minecraftServer: MinecraftServer
     private lateinit var player: ClientPlayerEntity
     fun onClientTick(client: MinecraftClient) {
+        disableNarrator(client)
         when (val screen = client.currentScreen) {
             is TitleScreen -> {
                 screen.children().find {
@@ -147,7 +148,6 @@ class EnvironmentInitializer(
         setSimulationDistance(client, initialEnvironment.simulationDistance)
         disableVSync(client)
         disableSound(client)
-        disableNarrator(client)
         disableTutorial(client)
     }
 
@@ -160,9 +160,11 @@ class EnvironmentInitializer(
     private fun disableNarrator(client: MinecraftClient) {
         val options = client.options
         if (options != null) {
-            options.narrator.value = NarratorMode.OFF
-            options.write()
-            println("Disabled narrator")
+            if (options.narrator.value != NarratorMode.OFF) {
+                options.narrator.value = NarratorMode.OFF
+                options.write()
+                println("Disabled narrator")
+            }
         }
     }
 

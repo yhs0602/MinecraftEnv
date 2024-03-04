@@ -80,8 +80,6 @@ class Minecraft_env : ModInitializer, CommandExecutor {
     override fun onInitialize() {
         Registry.register(Registries.ITEM, "minecraft_env:custom_item", CUSTOM_ITEM)
         FuelRegistry.INSTANCE.add(CUSTOM_ITEM, 300)
-        val inputStream: InputStream
-        val outputStream: OutputStream
         val socket: SocketChannel
         val messageIO: MessageIO
         try {
@@ -95,17 +93,11 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                 ServerSocketChannel.open(StandardProtocolFamily.UNIX).bind(UnixDomainSocketAddress.of(socket_file_path))
             socket = serverSocket.accept()
             messageIO = DomainSocketMessageIO(socket)
-//            val serverSocket = ServerSocket(port)
-//            val socket = serverSocket.accept()
-//            socket.soTimeout = 30000
-//            inputStream = socket.getInputStream()
-//            outputStream = socket.getOutputStream()
         } catch (e: IOException) {
             throw RuntimeException(e)
         }
         printWithTime("Hello Fabric world!")
         initialEnvironment = messageIO.readInitialEnvironment()
-//        readInitialEnvironment(inputStream, outputStream)
         resetPhase = ResetPhase.WAIT_INIT_ENDS
         val initializer = EnvironmentInitializer(initialEnvironment)
         ClientTickEvents.START_CLIENT_TICK.register(ClientTickEvents.StartTick { client: MinecraftClient ->
@@ -130,7 +122,6 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                     runPhaseLock.wait()
                 }
             }
-
             onStartWorldTick(initializer, world, messageIO)
 
             synchronized(runPhaseLock) {
@@ -313,22 +304,6 @@ class Minecraft_env : ModInitializer, CommandExecutor {
             val x = argumentsList[1].toInt()
             val y = argumentsList[2].toInt()
             val z = argumentsList[3].toInt()
-//            val entityType = EntityType.get(entityName).getOrNull() as? MobEntity ?: return false
-//            LargeEntitySpawnHelper.trySpawnAt(
-//                entityType.type,
-//                SpawnReason.COMMAND,
-//                world,
-//                BlockPos(x, y, z),
-//                20,
-//                20,
-//                20,
-//                LargeEntitySpawnHelper.Requirements { world, pos, state, abovePos, aboveState ->
-//                    aboveState.getCollisionShape(
-//                        world,
-//                        abovePos
-//                    ).isEmpty && Block.isFaceFullSquare(state.getCollisionShape(world, pos), Direction.UP
-//                }
-//            )
             return false
         } else if (command == "exit") {
             println("Will terminate")
