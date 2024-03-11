@@ -40,7 +40,6 @@ import java.nio.channels.ServerSocketChannel
 import java.nio.channels.SocketChannel
 import java.nio.file.Files
 import java.nio.file.Path
-import java.time.format.DateTimeFormatter
 import kotlin.math.cos
 import kotlin.math.sin
 import kotlin.system.exitProcess
@@ -61,6 +60,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
     private var deathMessageCollector: GetMessagesInterface? = null
 
     private val tickSynchronizer = TickSynchronizer()
+    private val csvLogger = CsvLogger("log.csv")
 //    private var serverPlayerEntity: ServerPlayerEntity? = null
 
     private val variableCommandsAfterReset = mutableListOf<String>()
@@ -76,6 +76,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
             val port = portStr?.toInt() ?: 8000
             val socket_file_path = Path.of("/tmp/minecraftrl_${port}.sock")
             socket_file_path.toFile().deleteOnExit()
+            csvLogger.log("Connecting to $port")
             printWithTime("Connecting to $port")
             Files.deleteIfExists(socket_file_path)
             val serverSocket =
@@ -87,6 +88,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
         }
         skipSync = true
         printWithTime("Hello Fabric world!")
+        csvLogger.log("Hello Fabric world!")
         initialEnvironment = messageIO.readInitialEnvironment()
         resetPhase = ResetPhase.WAIT_INIT_ENDS
         val initializer = EnvironmentInitializer(initialEnvironment)
@@ -102,6 +104,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
         ClientTickEvents.START_WORLD_TICK.register(ClientTickEvents.StartWorldTick { world: ClientWorld ->
             // read input
             println("Start World tick")
+            csvLogger.log("Start World tick")
             onStartWorldTick(initializer, world, messageIO)
         })
         ClientTickEvents.END_WORLD_TICK.register(ClientTickEvents.EndWorldTick { world: ClientWorld ->
@@ -109,6 +112,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
             tickSynchronizer.notifyServerTickStart()
             // wait until server tick ends
             printWithTime("Wait server world tick ends")
+            csvLogger.log("Wait server world tick ends")
             if (skipSync) {
 
             } else {
@@ -119,15 +123,18 @@ class Minecraft_env : ModInitializer, CommandExecutor {
         ServerTickEvents.START_SERVER_TICK.register(ServerTickEvents.StartTick { server: MinecraftServer ->
             // wait until client tick ends
             printWithTime("Wait client world tick ends")
+            csvLogger.log("Wait client world tick ends")
             if (skipSync) {
 
             } else {
+                csvLogger.log("Real Wait client world tick ends")
                 tickSynchronizer.waitForClientAction()
             }
         })
         ServerTickEvents.END_SERVER_TICK.register(ServerTickEvents.EndTick { server: MinecraftServer ->
             // allow client to end tick
             printWithTime("Notify server tick completion")
+            csvLogger.log("Notify server tick completion")
             tickSynchronizer.notifyClientSendObservation()
         })
     }
@@ -149,6 +156,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
         when (resetPhase) {
             ResetPhase.WAIT_PLAYER_DEATH -> {
                 printWithTime("Waiting for player death")
+                csvLogger.log("Waiting for player death")
                 if (player.isDead) {
                     player.requestRespawn()
                     resetPhase = ResetPhase.WAIT_PLAYER_RESPAWN
@@ -158,6 +166,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
 
             ResetPhase.WAIT_PLAYER_RESPAWN -> {
                 println("Waiting for player respawn")
+                csvLogger.log("Waiting for player respawn")
                 if (!player.isDead) {
                     initializer.reset(client.inGameHud.chatHud, this, variableCommandsAfterReset)
                     variableCommandsAfterReset.clear()
@@ -168,6 +177,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
 
             ResetPhase.WAIT_INIT_ENDS -> {
                 println("Waiting for the initialization ends")
+                csvLogger.log("Waiting for the initialization ends")
                 if (initializer.initWorldFinished) {
                     sendSetScreenNull(client) // clear death screen
                     resetPhase = ResetPhase.END_RESET
@@ -177,6 +187,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
 
             ResetPhase.END_RESET -> {
                 printWithTime("Reset end")
+                csvLogger.log("Reset end")
             }
         }
         try {
@@ -194,6 +205,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
             if (applyAction(actionArray, player, client)) return
         } catch (e: SocketTimeoutException) {
             println("Timeout")
+            csvLogger.log("Timeout")
         } catch (e: IOException) {
             tickSynchronizer.terminate()
             // release lock
@@ -225,6 +237,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
             return true
         } else if (command.startsWith("fastreset")) {
             printWithTime("Fast resetting")
+            csvLogger.log("Fast resetting")
             val extraCommand = command.substringAfter("fastreset ").trim()
             if (extraCommand.isNotEmpty()) {
                 val commands = extraCommand.split(";")
@@ -238,6 +251,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
             return true
         } else if (command.startsWith("random-summon")) {
             printWithTime("Random summon")
+            csvLogger.log("Random summon")
             val arguments = command.substringAfter("random-summon ").trim()
             val argumentsList = arguments.split(" ")
             val entityName = argumentsList[0]
@@ -247,11 +261,13 @@ class Minecraft_env : ModInitializer, CommandExecutor {
             return false
         } else if (command == "exit") {
             println("Will terminate")
+            csvLogger.log("Will terminate")
             tickSynchronizer.terminate()
             exitProcess(0)
         } else {
             runCommand(player, command)
             println("Executed command: $command")
+            csvLogger.log("Executed command: $command")
             return false
         }
     }
@@ -263,6 +279,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
     ): Boolean {
         if (actionArray.isEmpty()) {
             println("actionArray is empty")
+            csvLogger.log("actionArray is empty")
             return true
         }
         val movementFB = actionArray[0]
@@ -403,10 +420,12 @@ class Minecraft_env : ModInitializer, CommandExecutor {
 
     private fun sendObservation(messageIO: MessageIO, world: World) {
         printWithTime("send Observation")
+        csvLogger.log("send Observation")
         val client = MinecraftClient.getInstance()
         val player = client.player
         if (player == null) {
             printWithTime("Player is null")
+            csvLogger.log("Player is null")
             return
         }
         // request stats from server
@@ -584,11 +603,13 @@ class Minecraft_env : ModInitializer, CommandExecutor {
     override fun runCommand(player: ClientPlayerEntity, command: String) {
         var command = command
         println("Running command: $command")
+        csvLogger.log("Running command: $command")
         if (command.startsWith("/")) {
             command = command.substring(1)
         }
         player.networkHandler.sendChatCommand(command)
         printWithTime("End send command: $command")
+        csvLogger.log("End send command: $command")
     }
 
     companion object {
@@ -596,11 +617,6 @@ class Minecraft_env : ModInitializer, CommandExecutor {
     }
 }
 
-private val formatter: DateTimeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss.SSSSSS")
-fun printWithTime(msg: String) {
-    if (true)
-        println("${formatter.format(java.time.LocalDateTime.now())} $msg")
-}
 
 fun render(client: MinecraftClient) {
     RenderSystem.clear(GlConst.GL_DEPTH_BUFFER_BIT or GlConst.GL_COLOR_BUFFER_BIT, IS_SYSTEM_MAC)
