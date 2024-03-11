@@ -90,6 +90,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
         resetPhase = ResetPhase.WAIT_INIT_ENDS
         val initializer = EnvironmentInitializer(initialEnvironment)
         ClientTickEvents.START_CLIENT_TICK.register(ClientTickEvents.StartTick { client: MinecraftClient ->
+            println("Start Client tick")
             initializer.onClientTick(client)
             if (soundListener == null) soundListener = MinecraftSoundListener(client.soundManager)
             if (entityListener == null) entityListener =
@@ -99,6 +100,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
         })
         ClientTickEvents.START_WORLD_TICK.register(ClientTickEvents.StartWorldTick { world: ClientWorld ->
             // read input
+            println("Start World tick")
             onStartWorldTick(initializer, world, messageIO)
         })
         ClientTickEvents.END_WORLD_TICK.register(ClientTickEvents.EndWorldTick { world: ClientWorld ->
@@ -586,7 +588,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
 
 private val formatter: DateTimeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss.SSSSSS")
 fun printWithTime(msg: String) {
-    if (false)
+    if (true)
         println("${formatter.format(java.time.LocalDateTime.now())} $msg")
 }
 

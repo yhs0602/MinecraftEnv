@@ -13,6 +13,7 @@ internal class TickSynchronizer {
 
     // 클라이언트에서 액션 적용 후 호출
     fun notifyServerTickStart() {
+        println("notifyServerTickStart")
         lock.lock()
         try {
             clientActionApplied.signal()
@@ -23,6 +24,7 @@ internal class TickSynchronizer {
 
     // 서버에서 틱 시작 전 대기
     fun waitForClientAction() {
+        println("waitForClientAction")
         lock.lock()
         try {
             while (!terminating) {
@@ -40,6 +42,7 @@ internal class TickSynchronizer {
 
     // 서버 틱 완료 후 클라이언트 관찰 시작을 알림
     fun notifyClientSendObservation() {
+        println("notifyClientSendObservation")
         lock.lock()
         try {
             serverTickCompleted.signal()
@@ -50,6 +53,7 @@ internal class TickSynchronizer {
 
     // 클라이언트에서 서버 틱 완료 후 관찰 전송 대기
     fun waitForServerTickCompletion() {
+        println("waitForServerTickCompletion")
         lock.lock()
         try {
             while (!terminating) {
@@ -67,6 +71,7 @@ internal class TickSynchronizer {
 
     // 종료 메소드
     fun terminate() {
+        println("terminate")
         lock.lock()
         try {
             terminating = true
