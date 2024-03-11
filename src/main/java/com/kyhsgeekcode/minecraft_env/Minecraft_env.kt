@@ -124,10 +124,10 @@ class Minecraft_env : ModInitializer, CommandExecutor {
             tickSynchronizer.notifyServerTickStart()
             // wait until server tick ends
             printWithTime("Wait server world tick ends")
-            csvLogger.log("Wait server world tick ends")
             if (skipSync) {
-
+                csvLogger.log("Skip waiting server world tick ends")
             } else {
+                csvLogger.log("Wait server world tick ends")
                 tickSynchronizer.waitForServerTickCompletion()
             }
             if (
@@ -144,9 +144,8 @@ class Minecraft_env : ModInitializer, CommandExecutor {
         ServerTickEvents.START_SERVER_TICK.register(ServerTickEvents.StartTick { server: MinecraftServer ->
             // wait until client tick ends
             printWithTime("Wait client world tick ends")
-            csvLogger.log("Server tick start")
             if (skipSync) {
-
+                csvLogger.log("Server tick start; skip waiting client world tick ends")
             } else {
                 csvLogger.log("Real Wait client world tick ends")
                 tickSynchronizer.waitForClientAction()
@@ -212,7 +211,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
             }
         }
         try {
-            csvLogger.log("Read action")
+            csvLogger.log("Will Read action")
             val action = messageIO.readAction()
             ioPhase = IOPhase.READ_ACTION_SHOULD_SEND_OBSERVATION
             csvLogger.log("Read action done; $ioPhase")
