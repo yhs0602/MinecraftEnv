@@ -13,6 +13,7 @@ class CsvLogger(
         val timestamp = printWithTimeFormatter.format(java.time.LocalDateTime.now())
         writer.write("$timestamp,$message")
         writer.newLine()
+        writer.flush()
     }
 
     fun close() {
