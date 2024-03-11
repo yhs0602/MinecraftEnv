@@ -52,6 +52,12 @@ enum class ResetPhase {
     END_RESET,
 }
 
+enum class IOPhase {
+    WILL_SEND_OBSERVATION,
+    WILL_READ_ACTION,
+    WILL_READ_INIT,
+}
+
 class Minecraft_env : ModInitializer, CommandExecutor {
     private lateinit var initialEnvironment: InitialEnvironment.InitialEnvironmentMessage
     private var soundListener: MinecraftSoundListener? = null
@@ -103,7 +109,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
         })
         ClientTickEvents.START_WORLD_TICK.register(ClientTickEvents.StartWorldTick { world: ClientWorld ->
             // read input
-            println("Start World tick")
+            println("Start client World tick")
             csvLogger.log("Start World tick")
             onStartWorldTick(initializer, world, messageIO)
         })
@@ -191,7 +197,9 @@ class Minecraft_env : ModInitializer, CommandExecutor {
             }
         }
         try {
+            csvLogger.log("Read action")
             val action = messageIO.readAction()
+            skipSync = false
             val commands = action.commandsList
 
             if (commands.isNotEmpty()) {
@@ -578,7 +586,6 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                 image2 = image_2
             }
             messageIO.writeObservation(observationSpaceMessage)
-            skipSync = false
         } catch (e: IOException) {
             e.printStackTrace()
             tickSynchronizer.terminate()
