@@ -101,6 +101,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
         initialEnvironment = messageIO.readInitialEnvironment()
         ioPhase = IOPhase.GOT_INITIAL_ENVIRONMENT_SHOULD_SEND_OBSERVATION
         resetPhase = ResetPhase.WAIT_INIT_ENDS
+        csvLogger.log("Initial environment read; $ioPhase $resetPhase")
         val initializer = EnvironmentInitializer(initialEnvironment)
         ClientTickEvents.START_CLIENT_TICK.register(ClientTickEvents.StartTick { client: MinecraftClient ->
             println("Start Client tick")
@@ -134,7 +135,9 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                 ioPhase == IOPhase.SENT_OBSERVATION_SHOULD_READ_ACTION
             ) {
                 // pass
+                csvLogger.log("Skip send observation; $ioPhase")
             } else {
+                csvLogger.log("Real send observation; $ioPhase")
                 sendObservation(messageIO, world)
             }
         })
@@ -212,7 +215,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
             csvLogger.log("Read action")
             val action = messageIO.readAction()
             ioPhase = IOPhase.READ_ACTION_SHOULD_SEND_OBSERVATION
-            csvLogger.log("Read action done")
+            csvLogger.log("Read action done; $ioPhase")
             skipSync = false
             val commands = action.commandsList
 
@@ -600,10 +603,15 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                 image2 = image_2
             }
             if (ioPhase == IOPhase.GOT_INITIAL_ENVIRONMENT_SHOULD_SEND_OBSERVATION) {
+                csvLogger.log("Sent observation; $ioPhase")
                 ioPhase = IOPhase.GOT_INITIAL_ENVIRONMENT_SENT_OBSERVATION_SKIP_SEND_OBSERVATION
-            }
-            if (ioPhase == IOPhase.READ_ACTION_SHOULD_SEND_OBSERVATION) {
+                csvLogger.log("Sent observation; now $ioPhase")
+            } else if (ioPhase == IOPhase.READ_ACTION_SHOULD_SEND_OBSERVATION) {
+                csvLogger.log("Sent observation; $ioPhase")
                 ioPhase = IOPhase.SENT_OBSERVATION_SHOULD_READ_ACTION
+                csvLogger.log("Sent observation; now $ioPhase")
+            } else {
+                csvLogger.log("Sent observation; $ioPhase good.")
             }
             messageIO.writeObservation(observationSpaceMessage)
         } catch (e: IOException) {
