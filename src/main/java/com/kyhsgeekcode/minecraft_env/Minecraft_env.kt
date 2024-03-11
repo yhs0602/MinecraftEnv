@@ -64,7 +64,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
 //    private var serverPlayerEntity: ServerPlayerEntity? = null
 
     private val variableCommandsAfterReset = mutableListOf<String>()
-
+    private var skipSync = false
 
     override fun onInitialize() {
         Registry.register(Registries.ITEM, "minecraft_env:custom_item", CUSTOM_ITEM)
@@ -85,6 +85,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
         } catch (e: IOException) {
             throw RuntimeException(e)
         }
+        skipSync = true
         printWithTime("Hello Fabric world!")
         initialEnvironment = messageIO.readInitialEnvironment()
         resetPhase = ResetPhase.WAIT_INIT_ENDS
@@ -108,13 +109,21 @@ class Minecraft_env : ModInitializer, CommandExecutor {
             tickSynchronizer.notifyServerTickStart()
             // wait until server tick ends
             printWithTime("Wait server world tick ends")
-            tickSynchronizer.waitForServerTickCompletion()
+            if (skipSync) {
+
+            } else {
+                tickSynchronizer.waitForServerTickCompletion()
+            }
             sendObservation(messageIO, world)
         })
         ServerTickEvents.START_SERVER_TICK.register(ServerTickEvents.StartTick { server: MinecraftServer ->
             // wait until client tick ends
             printWithTime("Wait client world tick ends")
-            tickSynchronizer.waitForClientAction()
+            if (skipSync) {
+
+            } else {
+                tickSynchronizer.waitForClientAction()
+            }
         })
         ServerTickEvents.END_SERVER_TICK.register(ServerTickEvents.EndTick { server: MinecraftServer ->
             // allow client to end tick
@@ -550,6 +559,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                 image2 = image_2
             }
             messageIO.writeObservation(observationSpaceMessage)
+            skipSync = false
         } catch (e: IOException) {
             e.printStackTrace()
             tickSynchronizer.terminate()
