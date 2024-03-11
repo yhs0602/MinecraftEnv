@@ -53,9 +53,11 @@ enum class ResetPhase {
 }
 
 enum class IOPhase {
-    WILL_SEND_OBSERVATION,
-    WILL_READ_ACTION,
-    WILL_READ_INIT,
+    BEGINNING,
+    GOT_INITIAL_ENVIRONMENT_SHOULD_SEND_OBSERVATION,
+    GOT_INITIAL_ENVIRONMENT_SENT_OBSERVATION_SKIP_SEND_OBSERVATION,
+    READ_ACTION_SHOULD_SEND_OBSERVATION,
+    SENT_OBSERVATION_SHOULD_READ_ACTION,
 }
 
 class Minecraft_env : ModInitializer, CommandExecutor {
@@ -71,6 +73,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
 
     private val variableCommandsAfterReset = mutableListOf<String>()
     private var skipSync = false
+    private var ioPhase = IOPhase.BEGINNING
 
     override fun onInitialize() {
         Registry.register(Registries.ITEM, "minecraft_env:custom_item", CUSTOM_ITEM)
@@ -96,6 +99,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
         printWithTime("Hello Fabric world!")
         csvLogger.log("Hello Fabric world!")
         initialEnvironment = messageIO.readInitialEnvironment()
+        ioPhase = IOPhase.GOT_INITIAL_ENVIRONMENT_SHOULD_SEND_OBSERVATION
         resetPhase = ResetPhase.WAIT_INIT_ENDS
         val initializer = EnvironmentInitializer(initialEnvironment)
         ClientTickEvents.START_CLIENT_TICK.register(ClientTickEvents.StartTick { client: MinecraftClient ->
@@ -112,6 +116,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
             println("Start client World tick")
             csvLogger.log("Start World tick")
             onStartWorldTick(initializer, world, messageIO)
+            csvLogger.log("End World tick")
         })
         ClientTickEvents.END_WORLD_TICK.register(ClientTickEvents.EndWorldTick { world: ClientWorld ->
             // allow server to start tick
@@ -124,12 +129,19 @@ class Minecraft_env : ModInitializer, CommandExecutor {
             } else {
                 tickSynchronizer.waitForServerTickCompletion()
             }
-            sendObservation(messageIO, world)
+            if (
+                ioPhase == IOPhase.GOT_INITIAL_ENVIRONMENT_SENT_OBSERVATION_SKIP_SEND_OBSERVATION ||
+                ioPhase == IOPhase.SENT_OBSERVATION_SHOULD_READ_ACTION
+            ) {
+                // pass
+            } else {
+                sendObservation(messageIO, world)
+            }
         })
         ServerTickEvents.START_SERVER_TICK.register(ServerTickEvents.StartTick { server: MinecraftServer ->
             // wait until client tick ends
             printWithTime("Wait client world tick ends")
-            csvLogger.log("Wait client world tick ends")
+            csvLogger.log("Server tick start")
             if (skipSync) {
 
             } else {
@@ -199,6 +211,8 @@ class Minecraft_env : ModInitializer, CommandExecutor {
         try {
             csvLogger.log("Read action")
             val action = messageIO.readAction()
+            ioPhase = IOPhase.READ_ACTION_SHOULD_SEND_OBSERVATION
+            csvLogger.log("Read action done")
             skipSync = false
             val commands = action.commandsList
 
@@ -584,6 +598,12 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                 worldTime = world.time // world tick, monotonic increasing
                 lastDeathMessage = deathMessageCollector?.lastDeathMessage?.firstOrNull() ?: ""
                 image2 = image_2
+            }
+            if (ioPhase == IOPhase.GOT_INITIAL_ENVIRONMENT_SHOULD_SEND_OBSERVATION) {
+                ioPhase = IOPhase.GOT_INITIAL_ENVIRONMENT_SENT_OBSERVATION_SKIP_SEND_OBSERVATION
+            }
+            if (ioPhase == IOPhase.READ_ACTION_SHOULD_SEND_OBSERVATION) {
+                ioPhase = IOPhase.SENT_OBSERVATION_SHOULD_READ_ACTION
             }
             messageIO.writeObservation(observationSpaceMessage)
         } catch (e: IOException) {
