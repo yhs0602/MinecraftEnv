@@ -17,6 +17,7 @@ import net.minecraft.server.MinecraftServer
 import net.minecraft.sound.SoundCategory
 import net.minecraft.util.WorldSavePath
 import net.minecraft.world.GameMode
+import java.nio.file.Files
 import kotlin.io.path.Path
 import kotlin.io.path.copyTo
 
@@ -246,6 +247,9 @@ class EnvironmentInitializer(
             println("World path: $path")
             // path / minecraft / structures / name.nbt
             val structuresPath = path.resolve("minecraft").resolve("structures")
+            if (!Files.exists(structuresPath)) {
+                Files.createDirectories(structuresPath)
+            }
             for (structure in initialEnvironment.structurePathsList) {
                 val structureName = structure.substringAfterLast('/')
                 val targetPath = structuresPath.resolve(structureName)
