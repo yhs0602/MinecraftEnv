@@ -17,6 +17,8 @@ import net.minecraft.server.MinecraftServer
 import net.minecraft.sound.SoundCategory
 import net.minecraft.util.WorldSavePath
 import net.minecraft.world.GameMode
+import kotlin.io.path.Path
+import kotlin.io.path.copyTo
 
 
 interface CommandExecutor {
@@ -237,17 +239,24 @@ class EnvironmentInitializer(
         initWorldFinished = (initWorldFinished || hasInitFinishMessage)
 //        println("has init finish message: $hasInitFinishMessage, has run init world: $hasRunInitWorld, init world finished: $initWorldFinished")
         chatHud.clear(true)
+        if (hasRunInitWorld)
+            return
         // copy the path to world file
         minecraftServer?.getSavePath(WorldSavePath.GENERATED)?.let { path ->
             println("World path: $path")
+            // path / minecraft / structures / name.nbt
+            val structuresPath = path.resolve("minecraft").resolve("structures")
             for (structure in initialEnvironment.structurePathsList) {
-                println("Copying structure file: $structure to $path")
+                val structureName = structure.substringAfterLast('/')
+                val targetPath = structuresPath.resolve(structureName)
+                val sourcePath = Path(structure)
+                // copy
+                println("Copying structure file: $sourcePath to $targetPath")
+                sourcePath.copyTo(targetPath, true)
             }
         } ?: run {
             println("World path not found; server: $minecraftServer")
         }
-        if (hasRunInitWorld)
-            return
         // NOTE: should be called only once when initial environment is set
         val myCommandExecutor = { player: ClientPlayerEntity, c: String ->
             commandExecutor.runCommand(player, c)

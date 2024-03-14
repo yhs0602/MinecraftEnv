@@ -29,6 +29,7 @@ import net.minecraft.server.MinecraftServer
 import net.minecraft.stat.Stats
 import net.minecraft.util.Identifier
 import net.minecraft.util.Util
+import net.minecraft.util.WorldSavePath
 import net.minecraft.util.math.MathHelper
 import net.minecraft.util.math.Vec3d
 import net.minecraft.world.World
@@ -287,6 +288,18 @@ class Minecraft_env : ModInitializer, CommandExecutor {
             println("Will terminate")
             csvLogger.log("Will terminate")
             tickSynchronizer.terminate()
+            // remove the world file
+            client.server?.getSavePath(WorldSavePath.ROOT)?.let {
+                try {
+                    Files.walk(it)
+                        .sorted(Comparator.reverseOrder())
+                        .forEach(Files::delete)
+                    println("Successfully deleted the world $it")
+                } catch (e: IOException) {
+                    println("Failed to delete the world $it")
+                    e.printStackTrace()
+                }
+            }
             exitProcess(0)
         } else {
             runCommand(player, command)
