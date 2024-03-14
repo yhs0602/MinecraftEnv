@@ -171,7 +171,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
         if (!player.isDead) {
             sendSetScreenNull(client)
         }
-        initializer.onWorldTick(world.server, client.inGameHud.chatHud, this, emptyList())
+        initializer.onWorldTick(client.server, client.inGameHud.chatHud, this, emptyList())
 
         when (resetPhase) {
             ResetPhase.WAIT_PLAYER_DEATH -> {
