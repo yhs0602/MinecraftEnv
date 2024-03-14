@@ -240,11 +240,13 @@ class EnvironmentInitializer(
         if (hasRunInitWorld)
             return
         // copy the path to world file
-        minecraftServer?.getSavePath(WorldSavePath.GENERATED)?.let {
-            println("World path: $it")
+        minecraftServer?.getSavePath(WorldSavePath.GENERATED)?.let { path ->
+            println("World path: $path")
             for (structure in initialEnvironment.structurePathsList) {
-                println("Copying structure file: $structure to $it")
+                println("Copying structure file: $structure to $path")
             }
+        } ?: run {
+            println("World path not found; server: $minecraftServer")
         }
 
         // NOTE: should be called only once when initial environment is set
