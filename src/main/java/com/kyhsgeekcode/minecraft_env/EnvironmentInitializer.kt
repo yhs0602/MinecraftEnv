@@ -15,6 +15,7 @@ import net.minecraft.client.option.NarratorMode
 import net.minecraft.client.tutorial.TutorialStep
 import net.minecraft.server.MinecraftServer
 import net.minecraft.sound.SoundCategory
+import net.minecraft.util.WorldSavePath
 import net.minecraft.world.GameMode
 
 
@@ -138,11 +139,6 @@ class EnvironmentInitializer(
                 }
                 createButton?.onPress()
             }
-            else -> {
-                println(screen.toString())
-                // TODO: Copy structure file in to the world
-
-            }
         }
         val window = MinecraftClient.getInstance().window
         window.setWindowedSize(initialEnvironment.visibleSizeX, initialEnvironment.visibleSizeY)
@@ -243,6 +239,14 @@ class EnvironmentInitializer(
         chatHud.clear(true)
         if (hasRunInitWorld)
             return
+        // copy the path to world file
+        minecraftServer?.getSavePath(WorldSavePath.GENERATED)?.let {
+            println("World path: $it")
+            for (structure in initialEnvironment.structurePathsList) {
+                println("Copying structure file: $structure to $it")
+            }
+        }
+
         // NOTE: should be called only once when initial environment is set
         val myCommandExecutor = { player: ClientPlayerEntity, c: String ->
             commandExecutor.runCommand(player, c)
