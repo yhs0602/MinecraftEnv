@@ -4,6 +4,6 @@ import java.time.format.DateTimeFormatter
 
 val printWithTimeFormatter: DateTimeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss.SSSSSS")
 fun printWithTime(msg: String) {
-    if (true)
+    if (false)
         println("${printWithTimeFormatter.format(java.time.LocalDateTime.now())} $msg")
 }
