@@ -898,7 +898,77 @@ public object InitialEnvironmentMessageKt {
     public fun clearEyeDistance() {
       _builder.clearEyeDistance()
     }
-  }
+
+    /**
+     * An uninstantiable, behaviorless type to represent the field in
+     * generics.
+     */
+    @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
+    public class StructurePathsProxy private constructor() : com.google.protobuf.kotlin.DslProxy()
+    /**
+     * <code>repeated string structurePaths = 25;</code>
+     * @return A list containing the structurePaths.
+     */
+    public val structurePaths: com.google.protobuf.kotlin.DslList<kotlin.String, StructurePathsProxy>
+      @kotlin.jvm.JvmSynthetic
+      get() = com.google.protobuf.kotlin.DslList(
+        _builder.getStructurePathsList()
+      )
+    /**
+     * <code>repeated string structurePaths = 25;</code>
+     * @param value The structurePaths to add.
+     */
+    @kotlin.jvm.JvmSynthetic
+    @kotlin.jvm.JvmName("addStructurePaths")
+    public fun com.google.protobuf.kotlin.DslList<kotlin.String, StructurePathsProxy>.add(value: kotlin.String) {
+      _builder.addStructurePaths(value)
+    }
+    /**
+     * <code>repeated string structurePaths = 25;</code>
+     * @param value The structurePaths to add.
+     */
+    @kotlin.jvm.JvmSynthetic
+    @kotlin.jvm.JvmName("plusAssignStructurePaths")
+    @Suppress("NOTHING_TO_INLINE")
+    public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, StructurePathsProxy>.plusAssign(value: kotlin.String) {
+      add(value)
+    }
+    /**
+     * <code>repeated string structurePaths = 25;</code>
+     * @param values The structurePaths to add.
+     */
+    @kotlin.jvm.JvmSynthetic
+    @kotlin.jvm.JvmName("addAllStructurePaths")
+    public fun com.google.protobuf.kotlin.DslList<kotlin.String, StructurePathsProxy>.addAll(values: kotlin.collections.Iterable<kotlin.String>) {
+      _builder.addAllStructurePaths(values)
+    }
+    /**
+     * <code>repeated string structurePaths = 25;</code>
+     * @param values The structurePaths to add.
+     */
+    @kotlin.jvm.JvmSynthetic
+    @kotlin.jvm.JvmName("plusAssignAllStructurePaths")
+    @Suppress("NOTHING_TO_INLINE")
+    public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, StructurePathsProxy>.plusAssign(values: kotlin.collections.Iterable<kotlin.String>) {
+      addAll(values)
+    }
+    /**
+     * <code>repeated string structurePaths = 25;</code>
+     * @param index The index to set the value at.
+     * @param value The structurePaths to set.
+     */
+    @kotlin.jvm.JvmSynthetic
+    @kotlin.jvm.JvmName("setStructurePaths")
+    public operator fun com.google.protobuf.kotlin.DslList<kotlin.String, StructurePathsProxy>.set(index: kotlin.Int, value: kotlin.String) {
+      _builder.setStructurePaths(index, value)
+    }/**
+     * <code>repeated string structurePaths = 25;</code>
+     */
+    @kotlin.jvm.JvmSynthetic
+    @kotlin.jvm.JvmName("clearStructurePaths")
+    public fun com.google.protobuf.kotlin.DslList<kotlin.String, StructurePathsProxy>.clear() {
+      _builder.clearStructurePaths()
+    }}
 }
 @kotlin.jvm.JvmSynthetic
 public inline fun com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage.copy(block: com.kyhsgeekcode.minecraft_env.proto.InitialEnvironmentMessageKt.Dsl.() -> kotlin.Unit): com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage =

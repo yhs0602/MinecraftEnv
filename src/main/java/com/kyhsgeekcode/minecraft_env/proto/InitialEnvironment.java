@@ -1128,6 +1128,31 @@ public final class InitialEnvironment {
      * @return The eyeDistance.
      */
     float getEyeDistance();
+
+    /**
+     * <code>repeated string structurePaths = 25;</code>
+     * @return A list containing the structurePaths.
+     */
+    java.util.List<java.lang.String>
+        getStructurePathsList();
+    /**
+     * <code>repeated string structurePaths = 25;</code>
+     * @return The count of structurePaths.
+     */
+    int getStructurePathsCount();
+    /**
+     * <code>repeated string structurePaths = 25;</code>
+     * @param index The index of the element to return.
+     * @return The structurePaths at the given index.
+     */
+    java.lang.String getStructurePaths(int index);
+    /**
+     * <code>repeated string structurePaths = 25;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the structurePaths at the given index.
+     */
+    com.google.protobuf.ByteString
+        getStructurePathsBytes(int index);
   }
   /**
    * Protobuf type {@code InitialEnvironmentMessage}
@@ -1152,6 +1177,7 @@ public final class InitialEnvironment {
       miscStatKeys_ = com.google.protobuf.LazyStringArrayList.EMPTY;
       initialBlockStates_ = java.util.Collections.emptyList();
       surroundingEntityDistances_ = emptyIntList();
+      structurePaths_ = com.google.protobuf.LazyStringArrayList.EMPTY;
     }
 
     @java.lang.Override
@@ -1687,6 +1713,42 @@ public final class InitialEnvironment {
       return eyeDistance_;
     }
 
+    public static final int STRUCTUREPATHS_FIELD_NUMBER = 25;
+    @SuppressWarnings("serial")
+    private com.google.protobuf.LazyStringList structurePaths_;
+    /**
+     * <code>repeated string structurePaths = 25;</code>
+     * @return A list containing the structurePaths.
+     */
+    public com.google.protobuf.ProtocolStringList
+        getStructurePathsList() {
+      return structurePaths_;
+    }
+    /**
+     * <code>repeated string structurePaths = 25;</code>
+     * @return The count of structurePaths.
+     */
+    public int getStructurePathsCount() {
+      return structurePaths_.size();
+    }
+    /**
+     * <code>repeated string structurePaths = 25;</code>
+     * @param index The index of the element to return.
+     * @return The structurePaths at the given index.
+     */
+    public java.lang.String getStructurePaths(int index) {
+      return structurePaths_.get(index);
+    }
+    /**
+     * <code>repeated string structurePaths = 25;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the structurePaths at the given index.
+     */
+    public com.google.protobuf.ByteString
+        getStructurePathsBytes(int index) {
+      return structurePaths_.getByteString(index);
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -1781,6 +1843,9 @@ public final class InitialEnvironment {
       }
       if (java.lang.Float.floatToRawIntBits(eyeDistance_) != 0) {
         output.writeFloat(24, eyeDistance_);
+      }
+      for (int i = 0; i < structurePaths_.size(); i++) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 25, structurePaths_.getRaw(i));
       }
       getUnknownFields().writeTo(output);
     }
@@ -1930,6 +1995,14 @@ public final class InitialEnvironment {
         size += com.google.protobuf.CodedOutputStream
           .computeFloatSize(24, eyeDistance_);
       }
+      {
+        int dataSize = 0;
+        for (int i = 0; i < structurePaths_.size(); i++) {
+          dataSize += computeStringSizeNoTag(structurePaths_.getRaw(i));
+        }
+        size += dataSize;
+        size += 2 * getStructurePathsList().size();
+      }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
@@ -1994,6 +2067,8 @@ public final class InitialEnvironment {
       if (java.lang.Float.floatToIntBits(getEyeDistance())
           != java.lang.Float.floatToIntBits(
               other.getEyeDistance())) return false;
+      if (!getStructurePathsList()
+          .equals(other.getStructurePathsList())) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -2079,6 +2154,10 @@ public final class InitialEnvironment {
       hash = (37 * hash) + EYE_DISTANCE_FIELD_NUMBER;
       hash = (53 * hash) + java.lang.Float.floatToIntBits(
           getEyeDistance());
+      if (getStructurePathsCount() > 0) {
+        hash = (37 * hash) + STRUCTUREPATHS_FIELD_NUMBER;
+        hash = (53 * hash) + getStructurePathsList().hashCode();
+      }
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -2244,6 +2323,8 @@ public final class InitialEnvironment {
         simulationDistance_ = 0;
         biocular_ = false;
         eyeDistance_ = 0F;
+        structurePaths_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x01000000);
         return this;
       }
 
@@ -2326,6 +2407,11 @@ public final class InitialEnvironment {
           bitField0_ = (bitField0_ & ~0x00040000);
         }
         result.surroundingEntityDistances_ = surroundingEntityDistances_;
+        if (((bitField0_ & 0x01000000) != 0)) {
+          structurePaths_ = structurePaths_.getUnmodifiableView();
+          bitField0_ = (bitField0_ & ~0x01000000);
+        }
+        result.structurePaths_ = structurePaths_;
       }
 
       private void buildPartial0(com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage result) {
@@ -2574,6 +2660,16 @@ public final class InitialEnvironment {
         if (other.getEyeDistance() != 0F) {
           setEyeDistance(other.getEyeDistance());
         }
+        if (!other.structurePaths_.isEmpty()) {
+          if (structurePaths_.isEmpty()) {
+            structurePaths_ = other.structurePaths_;
+            bitField0_ = (bitField0_ & ~0x01000000);
+          } else {
+            ensureStructurePathsIsMutable();
+            structurePaths_.addAll(other.structurePaths_);
+          }
+          onChanged();
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
@@ -2756,6 +2852,12 @@ public final class InitialEnvironment {
                 bitField0_ |= 0x00800000;
                 break;
               } // case 197
+              case 202: {
+                java.lang.String s = input.readStringRequireUtf8();
+                ensureStructurePathsIsMutable();
+                structurePaths_.add(s);
+                break;
+              } // case 202
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -4318,6 +4420,110 @@ public final class InitialEnvironment {
         onChanged();
         return this;
       }
+
+      private com.google.protobuf.LazyStringList structurePaths_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      private void ensureStructurePathsIsMutable() {
+        if (!((bitField0_ & 0x01000000) != 0)) {
+          structurePaths_ = new com.google.protobuf.LazyStringArrayList(structurePaths_);
+          bitField0_ |= 0x01000000;
+         }
+      }
+      /**
+       * <code>repeated string structurePaths = 25;</code>
+       * @return A list containing the structurePaths.
+       */
+      public com.google.protobuf.ProtocolStringList
+          getStructurePathsList() {
+        return structurePaths_.getUnmodifiableView();
+      }
+      /**
+       * <code>repeated string structurePaths = 25;</code>
+       * @return The count of structurePaths.
+       */
+      public int getStructurePathsCount() {
+        return structurePaths_.size();
+      }
+      /**
+       * <code>repeated string structurePaths = 25;</code>
+       * @param index The index of the element to return.
+       * @return The structurePaths at the given index.
+       */
+      public java.lang.String getStructurePaths(int index) {
+        return structurePaths_.get(index);
+      }
+      /**
+       * <code>repeated string structurePaths = 25;</code>
+       * @param index The index of the value to return.
+       * @return The bytes of the structurePaths at the given index.
+       */
+      public com.google.protobuf.ByteString
+          getStructurePathsBytes(int index) {
+        return structurePaths_.getByteString(index);
+      }
+      /**
+       * <code>repeated string structurePaths = 25;</code>
+       * @param index The index to set the value at.
+       * @param value The structurePaths to set.
+       * @return This builder for chaining.
+       */
+      public Builder setStructurePaths(
+          int index, java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        ensureStructurePathsIsMutable();
+        structurePaths_.set(index, value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string structurePaths = 25;</code>
+       * @param value The structurePaths to add.
+       * @return This builder for chaining.
+       */
+      public Builder addStructurePaths(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        ensureStructurePathsIsMutable();
+        structurePaths_.add(value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string structurePaths = 25;</code>
+       * @param values The structurePaths to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllStructurePaths(
+          java.lang.Iterable<java.lang.String> values) {
+        ensureStructurePathsIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, structurePaths_);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string structurePaths = 25;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearStructurePaths() {
+        structurePaths_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x01000000);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string structurePaths = 25;</code>
+       * @param value The bytes of the structurePaths to add.
+       * @return This builder for chaining.
+       */
+      public Builder addStructurePathsBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        ensureStructurePathsIsMutable();
+        structurePaths_.add(value);
+        onChanged();
+        return this;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -4403,7 +4609,7 @@ public final class InitialEnvironment {
     java.lang.String[] descriptorData = {
       "\n\031initial_environment.proto\"B\n\nBlockStat" +
       "e\022\t\n\001x\030\001 \001(\005\022\t\n\001y\030\002 \001(\005\022\t\n\001z\030\003 \001(\005\022\023\n\013bl" +
-      "ock_state\030\004 \001(\t\"\342\004\n\031InitialEnvironmentMe" +
+      "ock_state\030\004 \001(\t\"\372\004\n\031InitialEnvironmentMe" +
       "ssage\022 \n\030initialInventoryCommands\030\001 \003(\t\022" +
       "\027\n\017initialPosition\030\002 \003(\005\022\033\n\023initialMobsC" +
       "ommands\030\003 \003(\t\022\022\n\nimageSizeX\030\004 \001(\005\022\022\n\nima" +
@@ -4418,8 +4624,9 @@ public final class InitialEnvironment {
       "\"\n\032surroundingEntityDistances\030\023 \003(\005\022\021\n\th" +
       "udHidden\030\024 \001(\010\022\027\n\017render_distance\030\025 \001(\005\022" +
       "\033\n\023simulation_distance\030\026 \001(\005\022\020\n\010biocular" +
-      "\030\027 \001(\010\022\024\n\014eye_distance\030\030 \001(\002B&\n$com.kyhs" +
-      "geekcode.minecraft_env.protob\006proto3"
+      "\030\027 \001(\010\022\024\n\014eye_distance\030\030 \001(\002\022\026\n\016structur" +
+      "ePaths\030\031 \003(\tB&\n$com.kyhsgeekcode.minecra" +
+      "ft_env.protob\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -4436,7 +4643,7 @@ public final class InitialEnvironment {
     internal_static_InitialEnvironmentMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_InitialEnvironmentMessage_descriptor,
-        new java.lang.String[] { "InitialInventoryCommands", "InitialPosition", "InitialMobsCommands", "ImageSizeX", "ImageSizeY", "Seed", "AllowMobSpawn", "AlwaysNight", "AlwaysDay", "InitialWeather", "IsWorldFlat", "VisibleSizeX", "VisibleSizeY", "InitialExtraCommands", "KilledStatKeys", "MinedStatKeys", "MiscStatKeys", "InitialBlockStates", "SurroundingEntityDistances", "HudHidden", "RenderDistance", "SimulationDistance", "Biocular", "EyeDistance", });
+        new java.lang.String[] { "InitialInventoryCommands", "InitialPosition", "InitialMobsCommands", "ImageSizeX", "ImageSizeY", "Seed", "AllowMobSpawn", "AlwaysNight", "AlwaysDay", "InitialWeather", "IsWorldFlat", "VisibleSizeX", "VisibleSizeY", "InitialExtraCommands", "KilledStatKeys", "MinedStatKeys", "MiscStatKeys", "InitialBlockStates", "SurroundingEntityDistances", "HudHidden", "RenderDistance", "SimulationDistance", "Biocular", "EyeDistance", "StructurePaths", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

@@ -138,6 +138,11 @@ class EnvironmentInitializer(
                 }
                 createButton?.onPress()
             }
+            else -> {
+                println(screen.toString())
+                // TODO: Copy structure file in to the world
+
+            }
         }
         val window = MinecraftClient.getInstance().window
         window.setWindowedSize(initialEnvironment.visibleSizeX, initialEnvironment.visibleSizeY)
