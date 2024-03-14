@@ -237,8 +237,6 @@ class EnvironmentInitializer(
         initWorldFinished = (initWorldFinished || hasInitFinishMessage)
 //        println("has init finish message: $hasInitFinishMessage, has run init world: $hasRunInitWorld, init world finished: $initWorldFinished")
         chatHud.clear(true)
-        if (hasRunInitWorld)
-            return
         // copy the path to world file
         minecraftServer?.getSavePath(WorldSavePath.GENERATED)?.let { path ->
             println("World path: $path")
@@ -248,7 +246,8 @@ class EnvironmentInitializer(
         } ?: run {
             println("World path not found; server: $minecraftServer")
         }
-
+        if (hasRunInitWorld)
+            return
         // NOTE: should be called only once when initial environment is set
         val myCommandExecutor = { player: ClientPlayerEntity, c: String ->
             commandExecutor.runCommand(player, c)
