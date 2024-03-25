@@ -84,6 +84,12 @@ class Minecraft_env : ModInitializer, CommandExecutor {
         try {
             val portStr = System.getenv("PORT")
             val port = portStr?.toInt() ?: 8000
+            val verbose = when(val verboseStr = System.getenv("VERBOSE")) {
+                "1" -> true
+                "0" -> false
+                else -> verboseStr?.toBoolean() ?: false
+            }
+            doPrintWithTime = verbose
             val socket_file_path = Path.of("/tmp/minecraftrl_${port}.sock")
             socket_file_path.toFile().deleteOnExit()
             csvLogger.log("Connecting to $port")
@@ -105,7 +111,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
         csvLogger.log("Initial environment read; $ioPhase $resetPhase")
         val initializer = EnvironmentInitializer(initialEnvironment)
         ClientTickEvents.START_CLIENT_TICK.register(ClientTickEvents.StartTick { client: MinecraftClient ->
-            println("Start Client tick")
+            printWithTime("Start Client tick")
             initializer.onClientTick(client)
             if (soundListener == null) soundListener = MinecraftSoundListener(client.soundManager)
             if (entityListener == null) entityListener =
@@ -115,7 +121,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
         })
         ClientTickEvents.START_WORLD_TICK.register(ClientTickEvents.StartWorldTick { world: ClientWorld ->
             // read input
-            println("Start client World tick")
+            printWithTime("Start client World tick")
             csvLogger.log("Start World tick")
             onStartWorldTick(initializer, world, messageIO)
             csvLogger.log("End World tick")
@@ -186,7 +192,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
             }
 
             ResetPhase.WAIT_PLAYER_RESPAWN -> {
-                println("Waiting for player respawn")
+                printWithTime("Waiting for player respawn")
                 csvLogger.log("Waiting for player respawn")
                 if (!player.isDead) {
                     initializer.reset(client.inGameHud.chatHud, this, variableCommandsAfterReset)
@@ -197,7 +203,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
             }
 
             ResetPhase.WAIT_INIT_ENDS -> {
-                println("Waiting for the initialization ends")
+                printWithTime("Waiting for the initialization ends")
                 csvLogger.log("Waiting for the initialization ends")
                 if (initializer.initWorldFinished) {
                     sendSetScreenNull(client) // clear death screen
@@ -229,7 +235,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
             val actionArray = action.actionList
             if (applyAction(actionArray, player, client)) return
         } catch (e: SocketTimeoutException) {
-            println("Timeout")
+            printWithTime("Timeout")
             csvLogger.log("Timeout")
         } catch (e: IOException) {
             tickSynchronizer.terminate()
@@ -266,7 +272,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
             val extraCommand = command.substringAfter("fastreset ").trim()
             if (extraCommand.isNotEmpty()) {
                 val commands = extraCommand.split(";")
-                println("Extra commands: $commands")
+                printWithTime("Extra commands: $commands")
                 variableCommandsAfterReset.addAll(commands)
             }
             resetPhase = ResetPhase.WAIT_PLAYER_DEATH
@@ -285,7 +291,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
             val z = argumentsList[3].toInt()
             return false
         } else if (command == "exit") {
-            println("Will terminate")
+            printWithTime("Will terminate")
             csvLogger.log("Will terminate")
             tickSynchronizer.terminate()
             // remove the world file
@@ -294,16 +300,16 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                     Files.walk(it)
                         .sorted(Comparator.reverseOrder())
                         .forEach(Files::delete)
-                    println("Successfully deleted the world $it")
+                    printWithTime("Successfully deleted the world $it")
                 } catch (e: IOException) {
-                    println("Failed to delete the world $it")
+                    printWithTime("Failed to delete the world $it")
                     e.printStackTrace()
                 }
             }
             exitProcess(0)
         } else {
             runCommand(player, command)
-            println("Executed command: $command")
+            printWithTime("Executed command: $command")
             csvLogger.log("Executed command: $command")
             return false
         }
@@ -315,7 +321,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
         client: MinecraftClient?
     ): Boolean {
         if (actionArray.isEmpty()) {
-            println("actionArray is empty")
+            printWithTime("actionArray is empty")
             csvLogger.log("actionArray is empty")
             return true
         }
@@ -364,7 +370,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
         }
         when (jumpSneakSprint) { // 0: noop, 1: jump, 2: sneak, 3:sprint
             0 -> {
-                //                    println("Sneaking reset")
+                //                    printWithTime("Sneaking reset")
                 (player.input as KeyboardInputWillInterface).setWillJumping(false)
                 (player.input as KeyboardInputWillInterface).setWillSneaking(false)
                 //                    player.isSprinting = false
@@ -390,8 +396,8 @@ class Minecraft_env : ModInitializer, CommandExecutor {
         val deltaPitchInDeg = (deltaPitch - 12f) / 12f * 90f
         // yaw: 0: -180 degree, 24: 180 degree
         val deltaYawInDeg = (deltaYaw - 12f) / 12f * 180f
-        //                System.out.println("Will set pitch to " + player.getPitch() + " + " + deltaPitchInDeg + " = " + (player.getPitch() + deltaPitchInDeg));
-        //                System.out.println("Will set yaw to " + player.getYaw() + " + " + deltaYawInDeg + " = " + (player.getYaw() + deltaYawInDeg));
+        //                System.out.printWithTime("Will set pitch to " + player.getPitch() + " + " + deltaPitchInDeg + " = " + (player.getPitch() + deltaPitchInDeg));
+        //                System.out.printWithTime("Will set yaw to " + player.getYaw() + " + " + deltaYawInDeg + " = " + (player.getYaw() + deltaYawInDeg));
         player.pitch = player.pitch + deltaPitchInDeg
         player.yaw = player.yaw + deltaYawInDeg
         player.pitch = MathHelper.clamp(player.pitch, -90.0f, 90.0f)
@@ -502,7 +508,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                 player.prevY = left.y
                 player.prevZ = left.z
 //                player.setPos(left.x, left.y, left.z)
-                println("New left position: ${left.x}, ${left.y}, ${left.z} ${player.prevX}, ${player.prevY}, ${player.prevZ}")
+                printWithTime("New left position: ${left.x}, ${left.y}, ${left.z} ${player.prevX}, ${player.prevY}, ${player.prevZ}")
                 // (client as ClientRenderInvoker).invokeRender(true)
                 render(client)
                 val image1ByteArray = ScreenshotRecorder.takeScreenshot(buffer).use { screenshot ->
@@ -519,7 +525,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                 player.prevY = right.y
                 player.prevZ = right.z
 //                player.setPos(right.x, right.y, right.z)
-                println("New right position: ${right.x}, ${right.y}, ${right.z} ${player.prevX}, ${player.prevY}, ${player.prevZ}")
+                printWithTime("New right position: ${right.x}, ${right.y}, ${right.z} ${player.prevX}, ${player.prevY}, ${player.prevZ}")
 //                (client as ClientRenderInvoker).invokeRender(true)
                 render(client)
                 val image2ByteArray = ScreenshotRecorder.takeScreenshot(buffer).use { screenshot ->
@@ -641,7 +647,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                 if (thread != Thread.currentThread())
                     thread.interrupt()
             }
-            println("Will exitprocess -3")
+            printWithTime("Will exitprocess -3")
             exitProcess(-3)
         }
     }
@@ -649,7 +655,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
 
     override fun runCommand(player: ClientPlayerEntity, command: String) {
         var command = command
-        println("Running command: $command")
+        printWithTime("Running command: $command")
         csvLogger.log("Running command: $command")
         if (command.startsWith("/")) {
             command = command.substring(1)
