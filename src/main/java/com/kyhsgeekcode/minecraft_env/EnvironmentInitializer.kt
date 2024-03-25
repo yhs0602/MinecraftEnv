@@ -203,9 +203,9 @@ class EnvironmentInitializer(
         val options = client.options
         if (options != null) {
             if (options.viewDistance.value != renderDistance) {
-                options.simulationDistance.value = renderDistance
+                options.viewDistance.value = renderDistance
                 client.options.write()
-                println("Set simulation distance to $renderDistance")
+                println("Set render distance to $renderDistance")
             }
         }
     }
