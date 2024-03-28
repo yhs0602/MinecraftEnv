@@ -968,7 +968,24 @@ public object InitialEnvironmentMessageKt {
     @kotlin.jvm.JvmName("clearStructurePaths")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, StructurePathsProxy>.clear() {
       _builder.clearStructurePaths()
-    }}
+    }
+    /**
+     * <code>bool noWeatherCycle = 26;</code>
+     */
+    public var noWeatherCycle: kotlin.Boolean
+      @JvmName("getNoWeatherCycle")
+      get() = _builder.getNoWeatherCycle()
+      @JvmName("setNoWeatherCycle")
+      set(value) {
+        _builder.setNoWeatherCycle(value)
+      }
+    /**
+     * <code>bool noWeatherCycle = 26;</code>
+     */
+    public fun clearNoWeatherCycle() {
+      _builder.clearNoWeatherCycle()
+    }
+  }
 }
 @kotlin.jvm.JvmSynthetic
 public inline fun com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage.copy(block: com.kyhsgeekcode.minecraft_env.proto.InitialEnvironmentMessageKt.Dsl.() -> kotlin.Unit): com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage =

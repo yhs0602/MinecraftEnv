@@ -274,6 +274,8 @@ class EnvironmentInitializer(
             setupAlwaysDay(myCommandExecutor)
         if (initialEnvironment.alwaysNight)
             setupAlwaysNight(myCommandExecutor)
+        if (initialEnvironment.noWeatherCycle)
+            setupNoWeatherCycle(myCommandExecutor)
         for (command in initialEnvironment.initialExtraCommandsList)
             commandExecutor.runCommand(this.player, "/$command")
         for (command in variableCommandsAfterReset)
@@ -353,6 +355,13 @@ class EnvironmentInitializer(
         commandExecutor(
             player,
             "/time set day"
+        )
+    }
+
+    private fun setupNoWeatherCycle(commandExecutor: (ClientPlayerEntity, String) -> Unit) {
+        commandExecutor(
+            player,
+            "/gamerule doWeatherCycle false"
         )
     }
 

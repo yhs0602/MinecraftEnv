@@ -1153,6 +1153,12 @@ public final class InitialEnvironment {
      */
     com.google.protobuf.ByteString
         getStructurePathsBytes(int index);
+
+    /**
+     * <code>bool noWeatherCycle = 26;</code>
+     * @return The noWeatherCycle.
+     */
+    boolean getNoWeatherCycle();
   }
   /**
    * Protobuf type {@code InitialEnvironmentMessage}
@@ -1749,6 +1755,17 @@ public final class InitialEnvironment {
       return structurePaths_.getByteString(index);
     }
 
+    public static final int NOWEATHERCYCLE_FIELD_NUMBER = 26;
+    private boolean noWeatherCycle_ = false;
+    /**
+     * <code>bool noWeatherCycle = 26;</code>
+     * @return The noWeatherCycle.
+     */
+    @java.lang.Override
+    public boolean getNoWeatherCycle() {
+      return noWeatherCycle_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -1846,6 +1863,9 @@ public final class InitialEnvironment {
       }
       for (int i = 0; i < structurePaths_.size(); i++) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 25, structurePaths_.getRaw(i));
+      }
+      if (noWeatherCycle_ != false) {
+        output.writeBool(26, noWeatherCycle_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -2003,6 +2023,10 @@ public final class InitialEnvironment {
         size += dataSize;
         size += 2 * getStructurePathsList().size();
       }
+      if (noWeatherCycle_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(26, noWeatherCycle_);
+      }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
@@ -2069,6 +2093,8 @@ public final class InitialEnvironment {
               other.getEyeDistance())) return false;
       if (!getStructurePathsList()
           .equals(other.getStructurePathsList())) return false;
+      if (getNoWeatherCycle()
+          != other.getNoWeatherCycle()) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -2158,6 +2184,9 @@ public final class InitialEnvironment {
         hash = (37 * hash) + STRUCTUREPATHS_FIELD_NUMBER;
         hash = (53 * hash) + getStructurePathsList().hashCode();
       }
+      hash = (37 * hash) + NOWEATHERCYCLE_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getNoWeatherCycle());
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -2325,6 +2354,7 @@ public final class InitialEnvironment {
         eyeDistance_ = 0F;
         structurePaths_ = com.google.protobuf.LazyStringArrayList.EMPTY;
         bitField0_ = (bitField0_ & ~0x01000000);
+        noWeatherCycle_ = false;
         return this;
       }
 
@@ -2460,6 +2490,9 @@ public final class InitialEnvironment {
         }
         if (((from_bitField0_ & 0x00800000) != 0)) {
           result.eyeDistance_ = eyeDistance_;
+        }
+        if (((from_bitField0_ & 0x02000000) != 0)) {
+          result.noWeatherCycle_ = noWeatherCycle_;
         }
       }
 
@@ -2670,6 +2703,9 @@ public final class InitialEnvironment {
           }
           onChanged();
         }
+        if (other.getNoWeatherCycle() != false) {
+          setNoWeatherCycle(other.getNoWeatherCycle());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
@@ -2858,6 +2894,11 @@ public final class InitialEnvironment {
                 structurePaths_.add(s);
                 break;
               } // case 202
+              case 208: {
+                noWeatherCycle_ = input.readBool();
+                bitField0_ |= 0x02000000;
+                break;
+              } // case 208
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -4524,6 +4565,38 @@ public final class InitialEnvironment {
         onChanged();
         return this;
       }
+
+      private boolean noWeatherCycle_ ;
+      /**
+       * <code>bool noWeatherCycle = 26;</code>
+       * @return The noWeatherCycle.
+       */
+      @java.lang.Override
+      public boolean getNoWeatherCycle() {
+        return noWeatherCycle_;
+      }
+      /**
+       * <code>bool noWeatherCycle = 26;</code>
+       * @param value The noWeatherCycle to set.
+       * @return This builder for chaining.
+       */
+      public Builder setNoWeatherCycle(boolean value) {
+        
+        noWeatherCycle_ = value;
+        bitField0_ |= 0x02000000;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>bool noWeatherCycle = 26;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearNoWeatherCycle() {
+        bitField0_ = (bitField0_ & ~0x02000000);
+        noWeatherCycle_ = false;
+        onChanged();
+        return this;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -4609,7 +4682,7 @@ public final class InitialEnvironment {
     java.lang.String[] descriptorData = {
       "\n\031initial_environment.proto\"B\n\nBlockStat" +
       "e\022\t\n\001x\030\001 \001(\005\022\t\n\001y\030\002 \001(\005\022\t\n\001z\030\003 \001(\005\022\023\n\013bl" +
-      "ock_state\030\004 \001(\t\"\372\004\n\031InitialEnvironmentMe" +
+      "ock_state\030\004 \001(\t\"\222\005\n\031InitialEnvironmentMe" +
       "ssage\022 \n\030initialInventoryCommands\030\001 \003(\t\022" +
       "\027\n\017initialPosition\030\002 \003(\005\022\033\n\023initialMobsC" +
       "ommands\030\003 \003(\t\022\022\n\nimageSizeX\030\004 \001(\005\022\022\n\nima" +
@@ -4625,8 +4698,9 @@ public final class InitialEnvironment {
       "udHidden\030\024 \001(\010\022\027\n\017render_distance\030\025 \001(\005\022" +
       "\033\n\023simulation_distance\030\026 \001(\005\022\020\n\010biocular" +
       "\030\027 \001(\010\022\024\n\014eye_distance\030\030 \001(\002\022\026\n\016structur" +
-      "ePaths\030\031 \003(\tB&\n$com.kyhsgeekcode.minecra" +
-      "ft_env.protob\006proto3"
+      "ePaths\030\031 \003(\t\022\026\n\016noWeatherCycle\030\032 \001(\010B&\n$" +
+      "com.kyhsgeekcode.minecraft_env.protob\006pr" +
+      "oto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -4643,7 +4717,7 @@ public final class InitialEnvironment {
     internal_static_InitialEnvironmentMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_InitialEnvironmentMessage_descriptor,
-        new java.lang.String[] { "InitialInventoryCommands", "InitialPosition", "InitialMobsCommands", "ImageSizeX", "ImageSizeY", "Seed", "AllowMobSpawn", "AlwaysNight", "AlwaysDay", "InitialWeather", "IsWorldFlat", "VisibleSizeX", "VisibleSizeY", "InitialExtraCommands", "KilledStatKeys", "MinedStatKeys", "MiscStatKeys", "InitialBlockStates", "SurroundingEntityDistances", "HudHidden", "RenderDistance", "SimulationDistance", "Biocular", "EyeDistance", "StructurePaths", });
+        new java.lang.String[] { "InitialInventoryCommands", "InitialPosition", "InitialMobsCommands", "ImageSizeX", "ImageSizeY", "Seed", "AllowMobSpawn", "AlwaysNight", "AlwaysDay", "InitialWeather", "IsWorldFlat", "VisibleSizeX", "VisibleSizeY", "InitialExtraCommands", "KilledStatKeys", "MinedStatKeys", "MiscStatKeys", "InitialBlockStates", "SurroundingEntityDistances", "HudHidden", "RenderDistance", "SimulationDistance", "Biocular", "EyeDistance", "StructurePaths", "NoWeatherCycle", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)
