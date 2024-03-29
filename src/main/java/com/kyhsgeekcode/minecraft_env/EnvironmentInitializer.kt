@@ -153,6 +153,7 @@ class EnvironmentInitializer(
         disableVSync(client)
         disableSound(client)
         disableTutorial(client)
+        setMaxFPSTo300(client)
     }
 
     private fun disableSound(client: MinecraftClient) {
@@ -408,6 +409,17 @@ class EnvironmentInitializer(
                     println("Hid hud")
                 else
                     println("Showed hud")
+            }
+        }
+    }
+
+    private fun setMaxFPSTo300(client: MinecraftClient) {
+        val options = client.options
+        if (options != null) {
+            if (options.maxFps.value < 300) {
+                options.maxFps.value = 300
+                client.options.write()
+                println("Set max fps to 300")
             }
         }
     }
