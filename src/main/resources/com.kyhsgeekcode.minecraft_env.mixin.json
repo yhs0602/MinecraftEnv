@@ -10,11 +10,12 @@
   "client": [
     "ChatVisibleMessageAccessor",
     "ClientDoAttackInvoker",
-    "ClientRenderInvoker",
     "ClientDoItemUseInvoker",
     "ClientEntityRenderDispatcherAccessor",
     "ClientPlayNetworkHandlerMixin",
+    "ClientRenderInvoker",
     "ClientWorldMixin",
+    "GLBindFrameBufferHookMixin",
     "KeyboardInputFieldMixin",
     "KeyboardInputMixin",
     "RenderTickCounterAccessor",
