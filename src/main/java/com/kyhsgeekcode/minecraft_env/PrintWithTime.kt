@@ -8,3 +8,13 @@ fun printWithTime(msg: String) {
     if (doPrintWithTime)
         println("${printWithTimeFormatter.format(java.time.LocalDateTime.now())} $msg")
 }
+
+fun profileStartPrint(tag: String) {
+    if (doPrintWithTime)
+        println("${printWithTimeFormatter.format(java.time.LocalDateTime.now())} start $tag")
+}
+
+fun profileEndPrint(tag: String) {
+    if (doPrintWithTime)
+        println("${printWithTimeFormatter.format(java.time.LocalDateTime.now())} end $tag")
+}

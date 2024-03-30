@@ -69,7 +69,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
     private var deathMessageCollector: GetMessagesInterface? = null
 
     private val tickSynchronizer = TickSynchronizer()
-    private val csvLogger = CsvLogger("log.csv", enabled = false)
+    private val csvLogger = CsvLogger("java_log.csv", enabled = false, profile=true)
 //    private var serverPlayerEntity: ServerPlayerEntity? = null
 
     private val variableCommandsAfterReset = mutableListOf<String>()
@@ -97,33 +97,40 @@ class Minecraft_env : ModInitializer, CommandExecutor {
             Files.deleteIfExists(socket_file_path)
             val serverSocket =
                 ServerSocketChannel.open(StandardProtocolFamily.UNIX).bind(UnixDomainSocketAddress.of(socket_file_path))
+            csvLogger.profileStartPrint("Minecraft_env/onInitialize/Accept")
             socket = serverSocket.accept()
+            csvLogger.profileEndPrint("Minecraft_env/onInitialize/Accept")
             messageIO = DomainSocketMessageIO(socket)
         } catch (e: IOException) {
             throw RuntimeException(e)
         }
         skipSync = true
-        printWithTime("Hello Fabric world!")
         csvLogger.log("Hello Fabric world!")
+        csvLogger.profileStartPrint("Minecraft_env/onInitialize/readInitialEnvironment")
         initialEnvironment = messageIO.readInitialEnvironment()
+        csvLogger.profileEndPrint("Minecraft_env/onInitialize/readInitialEnvironment")
         ioPhase = IOPhase.GOT_INITIAL_ENVIRONMENT_SHOULD_SEND_OBSERVATION
         resetPhase = ResetPhase.WAIT_INIT_ENDS
         csvLogger.log("Initial environment read; $ioPhase $resetPhase")
-        val initializer = EnvironmentInitializer(initialEnvironment)
+        val initializer = EnvironmentInitializer(initialEnvironment, csvLogger)
         ClientTickEvents.START_CLIENT_TICK.register(ClientTickEvents.StartTick { client: MinecraftClient ->
             printWithTime("Start Client tick")
+            csvLogger.profileStartPrint("Minecraft_env/onInitialize/ClientTick")
             initializer.onClientTick(client)
             if (soundListener == null) soundListener = MinecraftSoundListener(client.soundManager)
             if (entityListener == null) entityListener =
                 EntityRenderListenerImpl(client.worldRenderer as AddListenerInterface)
             if (deathMessageCollector == null) deathMessageCollector =
                 client.networkHandler as GetMessagesInterface?
+            csvLogger.profileEndPrint("Minecraft_env/onInitialize/ClientTick")
         })
         ClientTickEvents.START_WORLD_TICK.register(ClientTickEvents.StartWorldTick { world: ClientWorld ->
             // read input
             printWithTime("Start client World tick")
             csvLogger.log("Start World tick")
+            csvLogger.profileStartPrint("Minecraft_env/onInitialize/ClientWorldTick")
             onStartWorldTick(initializer, world, messageIO)
+            csvLogger.profileEndPrint("Minecraft_env/onInitialize/ClientWorldTick")
             csvLogger.log("End World tick")
         })
         ClientTickEvents.END_WORLD_TICK.register(ClientTickEvents.EndWorldTick { world: ClientWorld ->
@@ -131,12 +138,15 @@ class Minecraft_env : ModInitializer, CommandExecutor {
             tickSynchronizer.notifyServerTickStart()
             // wait until server tick ends
             printWithTime("Wait server world tick ends")
+            csvLogger.profileStartPrint("Minecraft_env/onInitialize/EndWorldTick/WaitServerTickEnds")
             if (skipSync) {
                 csvLogger.log("Skip waiting server world tick ends")
             } else {
                 csvLogger.log("Wait server world tick ends")
                 tickSynchronizer.waitForServerTickCompletion()
             }
+            csvLogger.profileEndPrint("Minecraft_env/onInitialize/EndWorldTick/WaitServerTickEnds")
+            csvLogger.profileStartPrint("Minecraft_env/onInitialize/EndWorldTick/SendObservation")
             if (
                 ioPhase == IOPhase.GOT_INITIAL_ENVIRONMENT_SENT_OBSERVATION_SKIP_SEND_OBSERVATION ||
                 ioPhase == IOPhase.SENT_OBSERVATION_SHOULD_READ_ACTION
@@ -147,22 +157,27 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                 csvLogger.log("Real send observation; $ioPhase")
                 sendObservation(messageIO, world)
             }
+            csvLogger.profileEndPrint("Minecraft_env/onInitialize/EndWorldTick/SendObservation")
         })
         ServerTickEvents.START_SERVER_TICK.register(ServerTickEvents.StartTick { server: MinecraftServer ->
             // wait until client tick ends
             printWithTime("Wait client world tick ends")
+            csvLogger.profileStartPrint("Minecraft_env/onInitialize/StartServerTick/WaitClientAction")
             if (skipSync) {
                 csvLogger.log("Server tick start; skip waiting client world tick ends")
             } else {
                 csvLogger.log("Real Wait client world tick ends")
                 tickSynchronizer.waitForClientAction()
             }
+            csvLogger.profileEndPrint("Minecraft_env/onInitialize/StartServerTick/WaitClientAction")
         })
         ServerTickEvents.END_SERVER_TICK.register(ServerTickEvents.EndTick { server: MinecraftServer ->
             // allow client to end tick
             printWithTime("Notify server tick completion")
             csvLogger.log("Notify server tick completion")
+            csvLogger.profileStartPrint("Minecraft_env/onInitialize/EndServerTick/NotifyClientSendObservation")
             tickSynchronizer.notifyClientSendObservation()
+            csvLogger.profileEndPrint("Minecraft_env/onInitialize/EndServerTick/NotifyClientSendObservation")
         })
     }
 
@@ -219,7 +234,9 @@ class Minecraft_env : ModInitializer, CommandExecutor {
         }
         try {
             csvLogger.log("Will Read action")
+            csvLogger.profileStartPrint("Minecraft_env/onInitialize/ClientWorldTick/ReadAction")
             val action = messageIO.readAction()
+            csvLogger.profileEndPrint("Minecraft_env/onInitialize/ClientWorldTick/ReadAction")
             ioPhase = IOPhase.READ_ACTION_SHOULD_SEND_OBSERVATION
             csvLogger.log("Read action done; $ioPhase")
             skipSync = false
@@ -325,6 +342,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
             csvLogger.log("actionArray is empty")
             return true
         }
+        csvLogger.profileStartPrint("Minecraft_env/onInitialize/ClientWorldTick/ReadAction/ApplyAction")
         val movementFB = actionArray[0]
         val movementLR = actionArray[1]
         val jumpSneakSprint = actionArray[2]
@@ -457,6 +475,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                 (client as ClientDoAttackInvoker).invokeDoAttack()
             }
         }
+        csvLogger.profileEndPrint("Minecraft_env/onInitialize/ClientWorldTick/ReadAction/ApplyAction")
         return false
     }
 
@@ -473,6 +492,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
         }
         // request stats from server
         // TODO: Use server player stats directly instead of client player stats
+        csvLogger.profileStartPrint("Minecraft_env/onInitialize/EndWorldTick/SendObservation/Prepare")
         client.networkHandler?.sendPacket(ClientStatusC2SPacket(ClientStatusC2SPacket.Mode.REQUEST_STATS))
         val buffer = client.framebuffer
         try {
@@ -544,6 +564,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                 player.prevZ = oldPrevZ
 //                player.setPos(oldX, oldY, oldZ)
             } else {
+                csvLogger.profileStartPrint("Minecraft_env/onInitialize/EndWorldTick/SendObservation/Prepare/SingleEye/Screenshot")
                 val image1ByteArray = ScreenshotRecorder.takeScreenshot(buffer).use { screenshot ->
                     encodeImageToBytes(
                         screenshot,
@@ -553,10 +574,14 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                         initialEnvironment.imageSizeY
                     )
                 }
+                csvLogger.profileEndPrint("Minecraft_env/onInitialize/EndWorldTick/SendObservation/Prepare/SingleEye/Screenshot")
+                csvLogger.profileStartPrint("Minecraft_env/onInitialize/EndWorldTick/SendObservation/Prepare/SingleEye/ByteString")
                 image_1 = ByteString.copyFrom(image1ByteArray)
                 image_2 = ByteString.copyFrom(image1ByteArray)
+                csvLogger.profileEndPrint("Minecraft_env/onInitialize/EndWorldTick/SendObservation/Prepare/SingleEye/ByteString")
             }
 
+            csvLogger.profileStartPrint("Minecraft_env/onInitialize/EndWorldTick/SendObservation/Prepare/Message")
             val observationSpaceMessage = observationSpaceMessage {
                 image = image_1
                 x = pos.x
@@ -631,7 +656,10 @@ class Minecraft_env : ModInitializer, CommandExecutor {
             } else {
                 csvLogger.log("Sent observation; $ioPhase good.")
             }
+            csvLogger.profileEndPrint("Minecraft_env/onInitialize/EndWorldTick/SendObservation/Prepare/Message")
+            csvLogger.profileStartPrint("Minecraft_env/onInitialize/EndWorldTick/SendObservation/Write")
             messageIO.writeObservation(observationSpaceMessage)
+            csvLogger.profileEndPrint("Minecraft_env/onInitialize/EndWorldTick/SendObservation/Write")
         } catch (e: IOException) {
             e.printStackTrace()
             tickSynchronizer.terminate()

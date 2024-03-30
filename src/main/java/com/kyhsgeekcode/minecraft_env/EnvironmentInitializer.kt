@@ -28,6 +28,7 @@ interface CommandExecutor {
 
 class EnvironmentInitializer(
     private val initialEnvironment: InitialEnvironmentMessage,
+    private val csvLogger: CsvLogger
 ) {
     var hasRunInitWorld: Boolean = false
         private set
@@ -37,6 +38,7 @@ class EnvironmentInitializer(
     private lateinit var minecraftServer: MinecraftServer
     private lateinit var player: ClientPlayerEntity
     fun onClientTick(client: MinecraftClient) {
+        csvLogger.profileStartPrint("Minecraft_env/onInitialize/ClientTick/EnvironmentInitializer/onClientTick")
         disableNarrator(client)
         when (val screen = client.currentScreen) {
             is TitleScreen -> {
@@ -154,6 +156,7 @@ class EnvironmentInitializer(
         disableSound(client)
         disableTutorial(client)
         setMaxFPSToUnlimited(client)
+        csvLogger.profileEndPrint("Minecraft_env/onInitialize/ClientTick/EnvironmentInitializer/onClientTick")
     }
 
     private fun disableSound(client: MinecraftClient) {
@@ -175,7 +178,6 @@ class EnvironmentInitializer(
 
     private fun disableTutorial(client: MinecraftClient) {
         client.tutorialManager?.setStep(TutorialStep.NONE)
-        println("Disabled tutorial")
     }
 
     private fun disableVSync(client: MinecraftClient) {
