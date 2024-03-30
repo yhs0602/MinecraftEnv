@@ -12,7 +12,7 @@ class CsvLogger(
     private val writer = file.bufferedWriter()
 
     fun log(message: String) {
-        if (!enabled && !profile)
+        if(!enabled)
             return
         val timestamp = printWithTimeFormatter.format(java.time.LocalDateTime.now())
         writer.write("$timestamp,$message")
@@ -22,16 +22,14 @@ class CsvLogger(
 
     fun profileStartPrint(tag: String) {
         if (profile) {
-            writer.write("${printWithTimeFormatter.format(java.time.LocalDateTime.now())}, start, $tag")
-            writer.newLine()
+            writer.write("${printWithTimeFormatter.format(java.time.LocalDateTime.now())}, start, $tag\n")
             writer.flush()
         }
     }
 
     fun profileEndPrint(tag: String) {
         if (profile) {
-            writer.write("${printWithTimeFormatter.format(java.time.LocalDateTime.now())}, end, $tag")
-            writer.newLine()
+            writer.write("${printWithTimeFormatter.format(java.time.LocalDateTime.now())}, end, $tag\n")
             writer.flush()
         }
     }
