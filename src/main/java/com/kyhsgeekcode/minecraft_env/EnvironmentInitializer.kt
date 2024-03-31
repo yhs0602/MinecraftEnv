@@ -1,6 +1,7 @@
 package com.kyhsgeekcode.minecraft_env
 
 import com.kyhsgeekcode.minecraft_env.mixin.ChatVisibleMessageAccessor
+import com.kyhsgeekcode.minecraft_env.mixin.WindowSizeAccessor
 import com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage
 import net.minecraft.client.MinecraftClient
 import net.minecraft.client.gui.Element
@@ -146,7 +147,9 @@ class EnvironmentInitializer(
             }
         }
         val window = MinecraftClient.getInstance().window
-        window.setWindowedSize(initialEnvironment.visibleSizeX, initialEnvironment.visibleSizeY)
+        val windowSizeGetter = (window as WindowSizeAccessor)
+        if(windowSizeGetter.windowedWidth != initialEnvironment.visibleSizeX || windowSizeGetter.windowedHeight != initialEnvironment.visibleSizeY)
+            window.setWindowedSize(initialEnvironment.visibleSizeX, initialEnvironment.visibleSizeY)
         disablePauseOnLostFocus(client)
         disableOnboardAccessibility(client)
         setHudHidden(client, initialEnvironment.hudHidden)

@@ -10,16 +10,17 @@
   "client": [
     "ChatVisibleMessageAccessor",
     "ClientDoAttackInvoker",
-    "ClientRenderInvoker",
     "ClientDoItemUseInvoker",
     "ClientEntityRenderDispatcherAccessor",
     "ClientPlayNetworkHandlerMixin",
+    "ClientRenderInvoker",
     "ClientWorldMixin",
     "KeyboardInputFieldMixin",
     "KeyboardInputMixin",
     "RenderTickCounterAccessor",
     "TickSpeedMixin",
     "WindowOffScreenMixin",
+    "WindowSizeAccessor",
     "WorldRendererCallEntityRenderMixin"
   ],
   "server": [],
