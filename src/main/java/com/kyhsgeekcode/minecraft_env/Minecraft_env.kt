@@ -69,7 +69,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
     private var deathMessageCollector: GetMessagesInterface? = null
 
     private val tickSynchronizer = TickSynchronizer()
-    private val csvLogger = CsvLogger("java_log.csv", enabled = false, profile=true)
+    private val csvLogger = CsvLogger("java_log.csv", enabled = false, profile=false)
 //    private var serverPlayerEntity: ServerPlayerEntity? = null
 
     private val variableCommandsAfterReset = mutableListOf<String>()
