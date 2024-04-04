@@ -985,6 +985,40 @@ public object InitialEnvironmentMessageKt {
     public fun clearNoWeatherCycle() {
       _builder.clearNoWeatherCycle()
     }
+
+    /**
+     * <code>bool no_pov_effect = 27;</code>
+     */
+    public var noPovEffect: kotlin.Boolean
+      @JvmName("getNoPovEffect")
+      get() = _builder.getNoPovEffect()
+      @JvmName("setNoPovEffect")
+      set(value) {
+        _builder.setNoPovEffect(value)
+      }
+    /**
+     * <code>bool no_pov_effect = 27;</code>
+     */
+    public fun clearNoPovEffect() {
+      _builder.clearNoPovEffect()
+    }
+
+    /**
+     * <code>bool noTimeCycle = 28;</code>
+     */
+    public var noTimeCycle: kotlin.Boolean
+      @JvmName("getNoTimeCycle")
+      get() = _builder.getNoTimeCycle()
+      @JvmName("setNoTimeCycle")
+      set(value) {
+        _builder.setNoTimeCycle(value)
+      }
+    /**
+     * <code>bool noTimeCycle = 28;</code>
+     */
+    public fun clearNoTimeCycle() {
+      _builder.clearNoTimeCycle()
+    }
   }
 }
 @kotlin.jvm.JvmSynthetic

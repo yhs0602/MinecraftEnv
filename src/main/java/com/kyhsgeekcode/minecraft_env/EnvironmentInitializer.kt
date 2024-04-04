@@ -148,7 +148,7 @@ class EnvironmentInitializer(
         }
         val window = MinecraftClient.getInstance().window
         val windowSizeGetter = (window as WindowSizeAccessor)
-        if(windowSizeGetter.windowedWidth != initialEnvironment.visibleSizeX || windowSizeGetter.windowedHeight != initialEnvironment.visibleSizeY)
+        if (windowSizeGetter.windowedWidth != initialEnvironment.visibleSizeX || windowSizeGetter.windowedHeight != initialEnvironment.visibleSizeY)
             window.setWindowedSize(initialEnvironment.visibleSizeX, initialEnvironment.visibleSizeY)
         disablePauseOnLostFocus(client)
         disableOnboardAccessibility(client)
@@ -159,6 +159,9 @@ class EnvironmentInitializer(
         disableSound(client)
         disableTutorial(client)
         setMaxFPSToUnlimited(client)
+        if (initialEnvironment.noPovEffect) {
+            setFovEffectDisabled(client)
+        }
         csvLogger.profileEndPrint("Minecraft_env/onInitialize/ClientTick/EnvironmentInitializer/onClientTick")
     }
 
@@ -282,6 +285,7 @@ class EnvironmentInitializer(
             setupAlwaysNight(myCommandExecutor)
         if (initialEnvironment.noWeatherCycle)
             setupNoWeatherCycle(myCommandExecutor)
+        setupDaylightCycle(myCommandExecutor, !initialEnvironment.noTimeCycle)
         for (command in initialEnvironment.initialExtraCommandsList)
             commandExecutor.runCommand(this.player, "/$command")
         for (command in variableCommandsAfterReset)
@@ -318,7 +322,6 @@ class EnvironmentInitializer(
     }
 
     private fun setupInitialInventory(
-
         commandExecutor: (ClientPlayerEntity, String) -> Unit
     ) {
         for (command in initialEnvironment.initialInventoryCommandsList) {
@@ -351,6 +354,10 @@ class EnvironmentInitializer(
             player,
             "/gamerule doMobSpawning false"
         )
+    }
+
+    private fun setupDaylightCycle(commandExecutor: (ClientPlayerEntity, String) -> Unit, enable: Boolean) {
+        commandExecutor(player, "/gamerule doDaylightCycle $enable")
     }
 
     private fun setupAlwaysDay(commandExecutor: (ClientPlayerEntity, String) -> Unit) {
@@ -425,6 +432,17 @@ class EnvironmentInitializer(
                 options.maxFps.value = 260
                 client.options.write()
                 println("Set max fps to 260")
+            }
+        }
+    }
+
+    private fun setFovEffectDisabled(client: MinecraftClient) {
+        val options = client.options
+        if (options != null) {
+            if (options.fovEffectScale.value != 0.0) {
+                options.fovEffectScale.value = 0.0
+                client.options.write()
+                println("Disabled fov effect")
             }
         }
     }
