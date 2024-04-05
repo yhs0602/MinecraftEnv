@@ -50,7 +50,7 @@ void WritePngToMemory(size_t w, size_t h, const ui8 *dataRGBA, std::vector<ui8> 
 }
 
 extern "C" JNIEXPORT jobject JNICALL Java_com_kyhsgeekcode_minecraft_env_FramebufferCapturer_captureFramebuffer
-  (JNIEnv *env, jobject, jint textureId, jint textureWidth, jint textureHeight, jint targetSizeX, jint targetSizeY) {
+  (JNIEnv *env, jclass clazz, jint textureId, jint textureWidth, jint textureHeight, jint targetSizeX, jint targetSizeY) {
     // 텍스처 바인딩
     glBindTexture(GL_TEXTURE_2D, textureId);
     glPixelStorei(GL_PACK_ALIGNMENT, 3); // 픽셀 데이터 정렬 설정
