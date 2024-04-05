@@ -4,6 +4,8 @@ project(framebuffer_capturer)
 # Set the C++ standard
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
+# Hacky: Set the CMAKE_FIND_FRAMEWORK to LAST to avoid finding mismatching libs/headers
+set(CMAKE_FIND_FRAMEWORK LAST)
 
 # Find JNI
 # set(JAVA_AWT_LIBRARY NotNeeded)
