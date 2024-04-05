@@ -4,7 +4,7 @@ import com.google.protobuf.ByteString
 
 object FramebufferCapturer {
     init {
-        System.loadLibrary("framebuffer_capturer")
+        System.loadLibrary("native-lib")
     }
 
     external fun captureFramebuffer(
