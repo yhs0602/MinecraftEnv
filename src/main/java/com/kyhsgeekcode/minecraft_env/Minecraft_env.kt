@@ -576,7 +576,14 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                 }
                 csvLogger.profileEndPrint("Minecraft_env/onInitialize/EndWorldTick/SendObservation/Prepare/SingleEye/Screenshot")
                 csvLogger.profileStartPrint("Minecraft_env/onInitialize/EndWorldTick/SendObservation/Prepare/SingleEye/ByteString")
-                image_1 = ByteString.copyFrom(image1ByteArray)
+                image_1 = FramebufferCapturer.captureFramebuffer(
+                    buffer.colorAttachment,
+                    buffer.textureWidth,
+                    buffer.textureHeight,
+                    initialEnvironment.imageSizeX,
+                    initialEnvironment.imageSizeY
+                )
+                // ByteString.copyFrom(image1ByteArray)
                 image_2 = ByteString.empty() // ByteString.copyFrom(image1ByteArray)
                 csvLogger.profileEndPrint("Minecraft_env/onInitialize/EndWorldTick/SendObservation/Prepare/SingleEye/ByteString")
             }
