@@ -4,6 +4,8 @@ project(framebuffer_capturer)
 # Set the C++ standard
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
+SET(CMAKE_FIND_PACKAGE_SORT_ORDER NATURAL)
+SET(CMAKE_FIND_PACKAGE_SORT_DIRECTION DEC)
 
 # Find JNI
 # set(JAVA_AWT_LIBRARY NotNeeded)
@@ -19,6 +21,7 @@ include_directories(${OPENGL_INCLUDE_DIR})
 # Find png
 if (APPLE)
   set(CMAKE_FIND_FRAMEWORK NEVER)
+  message("CMAKE_FIND_FRAMEWORK=${CMAKE_FIND_FRAMEWORK}")
 endif()
 # Hacky: Set the CMAKE_FIND_FRAMEWORK to LAST to avoid finding mismatching libs/headers
 set(CMAKE_FIND_FRAMEWORK LAST)
