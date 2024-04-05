@@ -53,7 +53,7 @@ extern "C" JNIEXPORT jobject JNICALL Java_com_kyhsgeekcode_minecraft_1env_Frameb
   (JNIEnv *env, jclass clazz, jint textureId, jint textureWidth, jint textureHeight, jint targetSizeX, jint targetSizeY) {
     // 텍스처 바인딩
     glBindTexture(GL_TEXTURE_2D, textureId);
-    glPixelStorei(GL_PACK_ALIGNMENT, 3); // 픽셀 데이터 정렬 설정
+    glPixelStorei(GL_PACK_ALIGNMENT, 1); // 픽셀 데이터 정렬 설정
     // 텍스처 데이터를 저장할 메모리 할당
     auto* pixels = new GLubyte[textureWidth * textureHeight * 3]; // RGB 포맷 가정
 
