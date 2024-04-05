@@ -23,7 +23,7 @@ endif()
 # Hacky: Set the CMAKE_FIND_FRAMEWORK to LAST to avoid finding mismatching libs/headers
 set(CMAKE_FIND_FRAMEWORK LAST)
 set(PNG_STATIC ON)
-find_package(PNG REQUIRED)
+find_package(PNG 1.6 REQUIRED)
 include_directories(${PNG_INCLUDE_DIRS})
 message(PNG_INCLUDE_DIRS="${PNG_INCLUDE_DIRS}")
 message(PNG_LIBRARIES="${PNG_LIBRARIES}")
