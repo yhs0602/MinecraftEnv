@@ -19,8 +19,13 @@ find_package(OpenGL REQUIRED)
 include_directories(${OPENGL_INCLUDE_DIR})
 
 # Find png
+if (APPLE)
+  set(CMAKE_FIND_FRAMEWORK NEVER)
+endif()
 find_package(PNG REQUIRED)
 include_directories(${PNG_INCLUDE_DIRS})
+message(PNG_INCLUDE_DIRS="${PNG_INCLUDE_DIRS}")
+message(PNG_LIBRARIES="${PNG_LIBRARIES}")
 
 # Add your source files here
 set(SOURCE_FILES
