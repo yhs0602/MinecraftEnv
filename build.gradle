@@ -4,7 +4,6 @@ plugins {
     id 'org.jetbrains.kotlin.jvm' version '1.8.20'
 //    id "com.google.protobuf" version "0.9.2"
     id 'com.github.johnrengelman.shadow' version '7.0.0'
-    id 'c'
 }
 
 shadowJar {
@@ -25,6 +24,10 @@ tasks.register('compileCpp', Exec) {
 
 tasks.named('compileJava').configure {
     dependsOn compileCpp
+}
+
+tasks.named('runClient').configure {
+    jvmArgs += "-Djava.library.path=${projectDir}"
 }
 
 version = project.mod_version
