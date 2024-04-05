@@ -4,8 +4,6 @@ project(framebuffer_capturer)
 # Set the C++ standard
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
-# Hacky: Set the CMAKE_FIND_FRAMEWORK to LAST to avoid finding mismatching libs/headers
-set(CMAKE_FIND_FRAMEWORK LAST)
 
 # Find JNI
 # set(JAVA_AWT_LIBRARY NotNeeded)
@@ -22,10 +20,22 @@ include_directories(${OPENGL_INCLUDE_DIR})
 if (APPLE)
   set(CMAKE_FIND_FRAMEWORK NEVER)
 endif()
+# Hacky: Set the CMAKE_FIND_FRAMEWORK to LAST to avoid finding mismatching libs/headers
+set(CMAKE_FIND_FRAMEWORK LAST)
+set(PNG_STATIC ON)
 find_package(PNG REQUIRED)
 include_directories(${PNG_INCLUDE_DIRS})
 message(PNG_INCLUDE_DIRS="${PNG_INCLUDE_DIRS}")
 message(PNG_LIBRARIES="${PNG_LIBRARIES}")
+find_library(LIBPNG_STATIC libpng16.a)
+if(NOT LIBPNG_STATIC)
+  message(FATAL_ERROR "libpng static library not found")
+else()
+  message(LIBPNG_STATIC="${LIBPNG_STATIC}")
+endif()
+# Find zlib
+find_package(ZLIB REQUIRED)
+include_directories(${ZLIB_INCLUDE_DIRS})
 
 # Add your source files here
 set(SOURCE_FILES
@@ -37,7 +47,7 @@ set(SOURCE_FILES
 add_library(native-lib SHARED ${SOURCE_FILES})
 
 # Link with JNI and OpenGL libraries
-target_link_libraries(native-lib ${JNI_LIBRARIES} ${OPENGL_LIBRARIES} ${PNG_LIBRARIES})
+target_link_libraries(native-lib ${JNI_LIBRARIES} ${OPENGL_LIBRARIES} ${LIBPNG_STATIC} ${ZLIB_LIBRARIES})
 
 # If you are using additional libraries, like GLFW for OpenGL context creation,
 # you can find and link them here as well.
