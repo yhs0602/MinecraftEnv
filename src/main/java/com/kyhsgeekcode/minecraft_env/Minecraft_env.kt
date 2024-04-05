@@ -565,15 +565,15 @@ class Minecraft_env : ModInitializer, CommandExecutor {
 //                player.setPos(oldX, oldY, oldZ)
             } else {
                 csvLogger.profileStartPrint("Minecraft_env/onInitialize/EndWorldTick/SendObservation/Prepare/SingleEye/Screenshot")
-                val image1ByteArray = ScreenshotRecorder.takeScreenshot(buffer).use { screenshot ->
-                    encodeImageToBytes(
-                        screenshot,
-                        initialEnvironment.visibleSizeX,
-                        initialEnvironment.visibleSizeY,
-                        initialEnvironment.imageSizeX,
-                        initialEnvironment.imageSizeY
-                    )
-                }
+//                val image1ByteArray = ScreenshotRecorder.takeScreenshot(buffer).use { screenshot ->
+//                    encodeImageToBytes(
+//                        screenshot,
+//                        initialEnvironment.visibleSizeX,
+//                        initialEnvironment.visibleSizeY,
+//                        initialEnvironment.imageSizeX,
+//                        initialEnvironment.imageSizeY
+//                    )
+//                }
                 csvLogger.profileEndPrint("Minecraft_env/onInitialize/EndWorldTick/SendObservation/Prepare/SingleEye/Screenshot")
                 csvLogger.profileStartPrint("Minecraft_env/onInitialize/EndWorldTick/SendObservation/Prepare/SingleEye/ByteString")
                 image_1 = FramebufferCapturer.captureFramebuffer(

@@ -8,8 +8,6 @@ SET(CMAKE_FIND_PACKAGE_SORT_ORDER NATURAL)
 SET(CMAKE_FIND_PACKAGE_SORT_DIRECTION DEC)
 
 # Find JNI
-# set(JAVA_AWT_LIBRARY NotNeeded)
-# set(JAVA_JVM_LIBRARY NotNeeded)
 find_package(Java COMPONENTS Development)
 find_package(JNI REQUIRED)
 include_directories(${JNI_INCLUDE_DIRS})
