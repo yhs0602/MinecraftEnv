@@ -69,7 +69,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
     private var deathMessageCollector: GetMessagesInterface? = null
 
     private val tickSynchronizer = TickSynchronizer()
-    private val csvLogger = CsvLogger("java_log.csv", enabled = false, profile=false)
+    private val csvLogger = CsvLogger("java_log.csv", enabled = false, profile = false)
 //    private var serverPlayerEntity: ServerPlayerEntity? = null
 
     private val variableCommandsAfterReset = mutableListOf<String>()
@@ -84,7 +84,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
         try {
             val portStr = System.getenv("PORT")
             val port = portStr?.toInt() ?: 8000
-            val verbose = when(val verboseStr = System.getenv("VERBOSE")) {
+            val verbose = when (val verboseStr = System.getenv("VERBOSE")) {
                 "1" -> true
                 "0" -> false
                 else -> verboseStr?.toBoolean() ?: false
@@ -577,7 +577,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                 csvLogger.profileEndPrint("Minecraft_env/onInitialize/EndWorldTick/SendObservation/Prepare/SingleEye/Screenshot")
                 csvLogger.profileStartPrint("Minecraft_env/onInitialize/EndWorldTick/SendObservation/Prepare/SingleEye/ByteString")
                 image_1 = ByteString.copyFrom(image1ByteArray)
-                image_2 = ByteString.copyFrom(image1ByteArray)
+                image_2 = ByteString.empty() // ByteString.copyFrom(image1ByteArray)
                 csvLogger.profileEndPrint("Minecraft_env/onInitialize/EndWorldTick/SendObservation/Prepare/SingleEye/ByteString")
             }
 

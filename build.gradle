@@ -4,10 +4,27 @@ plugins {
     id 'org.jetbrains.kotlin.jvm' version '1.8.20'
 //    id "com.google.protobuf" version "0.9.2"
     id 'com.github.johnrengelman.shadow' version '7.0.0'
+    id 'c'
 }
 
 shadowJar {
     archiveClassifier.set('')
+}
+
+tasks.register('configureCppProject', Exec) {
+    // CMake로 C++ 프로젝트 구성
+    commandLine 'cmake', 'src/main/cpp'
+}
+
+tasks.register('compileCpp', Exec) {
+    // 구성된 C++ 프로젝트 빌드
+    commandLine 'cmake', '--build', '.'
+    // 'configureCppProject' 태스크가 먼저 실행되도록 의존성 설정
+    dependsOn 'configureCppProject'
+}
+
+tasks.named('compileJava').configure {
+    dependsOn compileCpp
 }
 
 version = project.mod_version
