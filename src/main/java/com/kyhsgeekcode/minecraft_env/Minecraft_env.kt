@@ -107,12 +107,6 @@ class Minecraft_env : ModInitializer, CommandExecutor {
         }
         skipSync = true
         csvLogger.log("Hello Fabric world!")
-        val rendererName = GL11.glGetString(GL11.GL_RENDERER)
-        val vendorName = GL11.glGetString(GL11.GL_VENDOR)
-        val version = GL11.glGetString(GL11.GL_VERSION)
-        csvLogger.log("Renderer: $rendererName")
-        csvLogger.log("Vendor: $vendorName")
-        csvLogger.log("Version: $version")
         csvLogger.profileStartPrint("Minecraft_env/onInitialize/readInitialEnvironment")
         initialEnvironment = messageIO.readInitialEnvironment()
         csvLogger.profileEndPrint("Minecraft_env/onInitialize/readInitialEnvironment")
