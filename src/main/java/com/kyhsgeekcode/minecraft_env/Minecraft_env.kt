@@ -3,9 +3,8 @@ package com.kyhsgeekcode.minecraft_env
 import com.google.protobuf.ByteString
 import com.kyhsgeekcode.minecraft_env.mixin.ClientDoAttackInvoker
 import com.kyhsgeekcode.minecraft_env.mixin.ClientDoItemUseInvoker
-import com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment
-import com.kyhsgeekcode.minecraft_env.proto.entitiesWithinDistance
-import com.kyhsgeekcode.minecraft_env.proto.observationSpaceMessage
+import com.kyhsgeekcode.minecraft_env.proto.*
+import com.kyhsgeekcode.minecraft_env.proto.ObservationSpace
 import com.mojang.blaze3d.platform.GlConst
 import com.mojang.blaze3d.systems.RenderSystem
 import net.fabricmc.api.ModInitializer
@@ -33,7 +32,6 @@ import net.minecraft.util.WorldSavePath
 import net.minecraft.util.math.MathHelper
 import net.minecraft.util.math.Vec3d
 import net.minecraft.world.World
-import org.lwjgl.opengl.GL11
 import java.io.IOException
 import java.net.SocketTimeoutException
 import java.net.StandardProtocolFamily
@@ -601,10 +599,23 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                 foodLevel = player.hungerManager.foodLevel.toDouble()
                 saturationLevel = player.hungerManager.saturationLevel.toDouble()
                 isDead = player.isDead
-                inventory.addAll((player.inventory.main + player.inventory.armor + player.inventory.offHand).map {
+                val allItems = sequenceOf(
+                    player.inventory.main,
+                    player.inventory.armor,
+                    player.inventory.offHand
+                ).flatten()
+                inventory.addAll(allItems.map {
                     it.toMessage()
-                })
-                raycastResult = player.raycast(100.0, 1.0f, false).toMessage(world)
+                }.asIterable())
+
+                if (initialEnvironment.requestRaycast) {
+                    raycastResult = player.raycast(100.0, 1.0f, false).toMessage(world)
+                } else {
+                    // Optimized: dummy hit result
+                    raycastResult = hitResult {
+                        type = ObservationSpace.HitResult.Type.MISS
+                    }
+                }
                 soundSubtitles.addAll(
                     soundListener!!.entries.map {
                         it.toMessage()

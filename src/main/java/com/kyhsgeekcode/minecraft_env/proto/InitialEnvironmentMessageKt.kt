@@ -1019,6 +1019,23 @@ public object InitialEnvironmentMessageKt {
     public fun clearNoTimeCycle() {
       _builder.clearNoTimeCycle()
     }
+
+    /**
+     * <code>bool request_raycast = 29;</code>
+     */
+    public var requestRaycast: kotlin.Boolean
+      @JvmName("getRequestRaycast")
+      get() = _builder.getRequestRaycast()
+      @JvmName("setRequestRaycast")
+      set(value) {
+        _builder.setRequestRaycast(value)
+      }
+    /**
+     * <code>bool request_raycast = 29;</code>
+     */
+    public fun clearRequestRaycast() {
+      _builder.clearRequestRaycast()
+    }
   }
 }
 @kotlin.jvm.JvmSynthetic

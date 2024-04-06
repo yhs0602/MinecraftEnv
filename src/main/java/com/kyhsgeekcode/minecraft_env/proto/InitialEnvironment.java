@@ -1171,6 +1171,12 @@ public final class InitialEnvironment {
      * @return The noTimeCycle.
      */
     boolean getNoTimeCycle();
+
+    /**
+     * <code>bool request_raycast = 29;</code>
+     * @return The requestRaycast.
+     */
+    boolean getRequestRaycast();
   }
   /**
    * Protobuf type {@code InitialEnvironmentMessage}
@@ -1800,6 +1806,17 @@ public final class InitialEnvironment {
       return noTimeCycle_;
     }
 
+    public static final int REQUEST_RAYCAST_FIELD_NUMBER = 29;
+    private boolean requestRaycast_ = false;
+    /**
+     * <code>bool request_raycast = 29;</code>
+     * @return The requestRaycast.
+     */
+    @java.lang.Override
+    public boolean getRequestRaycast() {
+      return requestRaycast_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -1906,6 +1923,9 @@ public final class InitialEnvironment {
       }
       if (noTimeCycle_ != false) {
         output.writeBool(28, noTimeCycle_);
+      }
+      if (requestRaycast_ != false) {
+        output.writeBool(29, requestRaycast_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -2075,6 +2095,10 @@ public final class InitialEnvironment {
         size += com.google.protobuf.CodedOutputStream
           .computeBoolSize(28, noTimeCycle_);
       }
+      if (requestRaycast_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(29, requestRaycast_);
+      }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
@@ -2147,6 +2171,8 @@ public final class InitialEnvironment {
           != other.getNoPovEffect()) return false;
       if (getNoTimeCycle()
           != other.getNoTimeCycle()) return false;
+      if (getRequestRaycast()
+          != other.getRequestRaycast()) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -2245,6 +2271,9 @@ public final class InitialEnvironment {
       hash = (37 * hash) + NOTIMECYCLE_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
           getNoTimeCycle());
+      hash = (37 * hash) + REQUEST_RAYCAST_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getRequestRaycast());
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -2415,6 +2444,7 @@ public final class InitialEnvironment {
         noWeatherCycle_ = false;
         noPovEffect_ = false;
         noTimeCycle_ = false;
+        requestRaycast_ = false;
         return this;
       }
 
@@ -2559,6 +2589,9 @@ public final class InitialEnvironment {
         }
         if (((from_bitField0_ & 0x08000000) != 0)) {
           result.noTimeCycle_ = noTimeCycle_;
+        }
+        if (((from_bitField0_ & 0x10000000) != 0)) {
+          result.requestRaycast_ = requestRaycast_;
         }
       }
 
@@ -2778,6 +2811,9 @@ public final class InitialEnvironment {
         if (other.getNoTimeCycle() != false) {
           setNoTimeCycle(other.getNoTimeCycle());
         }
+        if (other.getRequestRaycast() != false) {
+          setRequestRaycast(other.getRequestRaycast());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
@@ -2981,6 +3017,11 @@ public final class InitialEnvironment {
                 bitField0_ |= 0x08000000;
                 break;
               } // case 224
+              case 232: {
+                requestRaycast_ = input.readBool();
+                bitField0_ |= 0x10000000;
+                break;
+              } // case 232
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -4743,6 +4784,38 @@ public final class InitialEnvironment {
         onChanged();
         return this;
       }
+
+      private boolean requestRaycast_ ;
+      /**
+       * <code>bool request_raycast = 29;</code>
+       * @return The requestRaycast.
+       */
+      @java.lang.Override
+      public boolean getRequestRaycast() {
+        return requestRaycast_;
+      }
+      /**
+       * <code>bool request_raycast = 29;</code>
+       * @param value The requestRaycast to set.
+       * @return This builder for chaining.
+       */
+      public Builder setRequestRaycast(boolean value) {
+        
+        requestRaycast_ = value;
+        bitField0_ |= 0x10000000;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>bool request_raycast = 29;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearRequestRaycast() {
+        bitField0_ = (bitField0_ & ~0x10000000);
+        requestRaycast_ = false;
+        onChanged();
+        return this;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -4828,7 +4901,7 @@ public final class InitialEnvironment {
     java.lang.String[] descriptorData = {
       "\n\031initial_environment.proto\"B\n\nBlockStat" +
       "e\022\t\n\001x\030\001 \001(\005\022\t\n\001y\030\002 \001(\005\022\t\n\001z\030\003 \001(\005\022\023\n\013bl" +
-      "ock_state\030\004 \001(\t\"\276\005\n\031InitialEnvironmentMe" +
+      "ock_state\030\004 \001(\t\"\327\005\n\031InitialEnvironmentMe" +
       "ssage\022 \n\030initialInventoryCommands\030\001 \003(\t\022" +
       "\027\n\017initialPosition\030\002 \003(\005\022\033\n\023initialMobsC" +
       "ommands\030\003 \003(\t\022\022\n\nimageSizeX\030\004 \001(\005\022\022\n\nima" +
@@ -4846,8 +4919,8 @@ public final class InitialEnvironment {
       "\030\027 \001(\010\022\024\n\014eye_distance\030\030 \001(\002\022\026\n\016structur" +
       "ePaths\030\031 \003(\t\022\026\n\016noWeatherCycle\030\032 \001(\010\022\025\n\r" +
       "no_pov_effect\030\033 \001(\010\022\023\n\013noTimeCycle\030\034 \001(\010" +
-      "B&\n$com.kyhsgeekcode.minecraft_env.proto" +
-      "b\006proto3"
+      "\022\027\n\017request_raycast\030\035 \001(\010B&\n$com.kyhsgee" +
+      "kcode.minecraft_env.protob\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -4864,7 +4937,7 @@ public final class InitialEnvironment {
     internal_static_InitialEnvironmentMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_InitialEnvironmentMessage_descriptor,
-        new java.lang.String[] { "InitialInventoryCommands", "InitialPosition", "InitialMobsCommands", "ImageSizeX", "ImageSizeY", "Seed", "AllowMobSpawn", "AlwaysNight", "AlwaysDay", "InitialWeather", "IsWorldFlat", "VisibleSizeX", "VisibleSizeY", "InitialExtraCommands", "KilledStatKeys", "MinedStatKeys", "MiscStatKeys", "InitialBlockStates", "SurroundingEntityDistances", "HudHidden", "RenderDistance", "SimulationDistance", "Biocular", "EyeDistance", "StructurePaths", "NoWeatherCycle", "NoPovEffect", "NoTimeCycle", });
+        new java.lang.String[] { "InitialInventoryCommands", "InitialPosition", "InitialMobsCommands", "ImageSizeX", "ImageSizeY", "Seed", "AllowMobSpawn", "AlwaysNight", "AlwaysDay", "InitialWeather", "IsWorldFlat", "VisibleSizeX", "VisibleSizeY", "InitialExtraCommands", "KilledStatKeys", "MinedStatKeys", "MiscStatKeys", "InitialBlockStates", "SurroundingEntityDistances", "HudHidden", "RenderDistance", "SimulationDistance", "Biocular", "EyeDistance", "StructurePaths", "NoWeatherCycle", "NoPovEffect", "NoTimeCycle", "RequestRaycast", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)
