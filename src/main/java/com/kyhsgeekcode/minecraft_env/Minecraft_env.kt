@@ -33,6 +33,7 @@ import net.minecraft.util.WorldSavePath
 import net.minecraft.util.math.MathHelper
 import net.minecraft.util.math.Vec3d
 import net.minecraft.world.World
+import org.lwjgl.opengl.GL11
 import java.io.IOException
 import java.net.SocketTimeoutException
 import java.net.StandardProtocolFamily
@@ -106,6 +107,12 @@ class Minecraft_env : ModInitializer, CommandExecutor {
         }
         skipSync = true
         csvLogger.log("Hello Fabric world!")
+        val rendererName = GL11.glGetString(GL11.GL_RENDERER)
+        val vendorName = GL11.glGetString(GL11.GL_VENDOR)
+        val version = GL11.glGetString(GL11.GL_VERSION)
+        csvLogger.log("Renderer: $rendererName")
+        csvLogger.log("Vendor: $vendorName")
+        csvLogger.log("Version: $version")
         csvLogger.profileStartPrint("Minecraft_env/onInitialize/readInitialEnvironment")
         initialEnvironment = messageIO.readInitialEnvironment()
         csvLogger.profileEndPrint("Minecraft_env/onInitialize/readInitialEnvironment")
