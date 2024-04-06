@@ -5,7 +5,8 @@
   "compatibilityLevel": "JAVA_17",
   "mixins": [
     "DisableRegionalComplianceMixin",
-    "MinecraftServer_tickspeedMixin"
+    "MinecraftServer_tickspeedMixin",
+    "RenderMixin"
   ],
   "client": [
     "ChatVisibleMessageAccessor",
