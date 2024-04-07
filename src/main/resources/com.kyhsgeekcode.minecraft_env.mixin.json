@@ -6,7 +6,8 @@
   "mixins": [
     "DisableRegionalComplianceMixin",
     "MinecraftServer_tickspeedMixin",
-    "RenderMixin"
+    "RenderMixin",
+    "SaveWorldMixin"
   ],
   "client": [
     "ChatVisibleMessageAccessor",
