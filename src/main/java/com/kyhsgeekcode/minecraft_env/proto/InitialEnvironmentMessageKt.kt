@@ -1036,6 +1036,23 @@ public object InitialEnvironmentMessageKt {
     public fun clearRequestRaycast() {
       _builder.clearRequestRaycast()
     }
+
+    /**
+     * <code>int32 screen_encoding_mode = 30;</code>
+     */
+    public var screenEncodingMode: kotlin.Int
+      @JvmName("getScreenEncodingMode")
+      get() = _builder.getScreenEncodingMode()
+      @JvmName("setScreenEncodingMode")
+      set(value) {
+        _builder.setScreenEncodingMode(value)
+      }
+    /**
+     * <code>int32 screen_encoding_mode = 30;</code>
+     */
+    public fun clearScreenEncodingMode() {
+      _builder.clearScreenEncodingMode()
+    }
   }
 }
 @kotlin.jvm.JvmSynthetic

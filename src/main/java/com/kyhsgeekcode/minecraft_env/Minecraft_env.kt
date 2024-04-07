@@ -580,7 +580,8 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                     buffer.textureWidth,
                     buffer.textureHeight,
                     initialEnvironment.imageSizeX,
-                    initialEnvironment.imageSizeY
+                    initialEnvironment.imageSizeY,
+                    initialEnvironment.screenEncodingMode
                 )
                 // ByteString.copyFrom(image1ByteArray)
                 image_2 = ByteString.empty() // ByteString.copyFrom(image1ByteArray)

@@ -12,6 +12,10 @@ object FramebufferCapturer {
         textureWidth: Int,
         textureHeight: Int,
         targetSizeX: Int,
-        targetSizeY: Int
+        targetSizeY: Int,
+        encodingMode: Int
     ): ByteString
+
+    const val RAW = 0
+    const val PNG = 1
 }

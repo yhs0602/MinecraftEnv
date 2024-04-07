@@ -50,8 +50,13 @@ void WritePngToMemory(size_t w, size_t h, const ui8 *dataRGB, std::vector<ui8> &
     png_write_png(p, info_ptr, PNG_TRANSFORM_IDENTITY, NULL);
 }
 
+enum EncodingMode {
+    RAW = 0,
+    PNG = 1
+};
+
 extern "C" JNIEXPORT jobject JNICALL Java_com_kyhsgeekcode_minecraft_1env_FramebufferCapturer_captureFramebuffer
-  (JNIEnv *env, jclass clazz, jint textureId, jint textureWidth, jint textureHeight, jint targetSizeX, jint targetSizeY) {
+  (JNIEnv *env, jclass clazz, jint textureId, jint textureWidth, jint textureHeight, jint targetSizeX, jint targetSizeY, jint encodingMode) {
     // 텍스처 바인딩
     glBindTexture(GL_TEXTURE_2D, textureId);
     glPixelStorei(GL_PACK_ALIGNMENT, 1); // 픽셀 데이터 정렬 설정
@@ -91,19 +96,25 @@ extern "C" JNIEXPORT jobject JNICALL Java_com_kyhsgeekcode_minecraft_1env_Frameb
             }
         }
     }
-    // make png bytes from the pixels
-    // 이미지 데이터를 바이트 배열로 변환
-    std::vector<ui8> imageBytes;
-    WritePngToMemory((size_t) targetSizeX, (size_t) targetSizeY, pixels, imageBytes);
     // ByteString 클래스를 찾습니다.
     jclass byteStringClass = env->FindClass("com/google/protobuf/ByteString");
-
     // copyFrom 정적 메서드의 메서드 ID를 얻습니다.
     jmethodID copyFromMethod = env->GetStaticMethodID(byteStringClass, "copyFrom", "([B)Lcom/google/protobuf/ByteString;");
 
-    // 호출하려는 바이트 배열을 생성합니다.
-    jbyteArray byteArray = env->NewByteArray(imageBytes.size());
-    env->SetByteArrayRegion(byteArray, 0, imageBytes.size(), reinterpret_cast<jbyte*>(imageBytes.data()));
+    // make png bytes from the pixels
+    // 이미지 데이터를 바이트 배열로 변환
+    jbyteArray byteArray;
+    if (encodingMode == PNG) {
+        std::vector<ui8> imageBytes;
+        WritePngToMemory((size_t) targetSizeX, (size_t) targetSizeY, pixels, imageBytes);
+        // 호출하려는 바이트 배열을 생성합니다.
+        byteArray = env->NewByteArray(imageBytes.size());
+        env->SetByteArrayRegion(byteArray, 0, imageBytes.size(), reinterpret_cast<jbyte*>(imageBytes.data()));
+    } else if (encodingMode == RAW) {
+        // 호출하려는 바이트 배열을 생성합니다.
+        byteArray = env->NewByteArray(targetSizeX * targetSizeY * 3);
+        env->SetByteArrayRegion(byteArray, 0, targetSizeX * targetSizeY * 3, reinterpret_cast<jbyte*>(pixels));
+    }
 
     // 정적 메서드를 호출하여 ByteString 객체를 얻습니다.
     jobject byteStringObject = env->CallStaticObjectMethod(byteStringClass, copyFromMethod, byteArray);
