@@ -28,6 +28,7 @@ tasks.named('compileJava').configure {
 
 tasks.named('runClient').configure {
     jvmArgs += "-Djava.library.path=${projectDir}"
+    jvmArgs += "-XX:+UnlockExperimentalVMOptions"
     jvmArgs += "-XX:G1NewSizePercent=40"
     jvmArgs += "-XX:G1MaxNewSizePercent=50"
     jvmArgs += "-XX:G1ReservePercent=20"
