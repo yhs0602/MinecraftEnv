@@ -18,6 +18,7 @@ import net.minecraft.server.MinecraftServer
 import net.minecraft.sound.SoundCategory
 import net.minecraft.util.WorldSavePath
 import net.minecraft.world.GameMode
+import org.lwjgl.glfw.GLFW
 import java.nio.file.Files
 import kotlin.io.path.Path
 import kotlin.io.path.copyTo
@@ -38,6 +39,8 @@ class EnvironmentInitializer(
 
     private lateinit var minecraftServer: MinecraftServer
     private lateinit var player: ClientPlayerEntity
+    var hasMinimizedWindow: Boolean = false
+
     fun onClientTick(client: MinecraftClient) {
         csvLogger.profileStartPrint("Minecraft_env/onInitialize/ClientTick/EnvironmentInitializer/onClientTick")
         disableNarrator(client)
@@ -150,6 +153,10 @@ class EnvironmentInitializer(
         val windowSizeGetter = (window as WindowSizeAccessor)
         if (windowSizeGetter.windowedWidth != initialEnvironment.visibleSizeX || windowSizeGetter.windowedHeight != initialEnvironment.visibleSizeY)
             window.setWindowedSize(initialEnvironment.visibleSizeX, initialEnvironment.visibleSizeY)
+        if (!hasMinimizedWindow) {
+            GLFW.glfwIconifyWindow(window.handle)
+            hasMinimizedWindow = true
+        }
         disablePauseOnLostFocus(client)
         disableOnboardAccessibility(client)
         setHudHidden(client, initialEnvironment.hudHidden)
