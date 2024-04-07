@@ -28,6 +28,12 @@ tasks.named('compileJava').configure {
 
 tasks.named('runClient').configure {
     jvmArgs += "-Djava.library.path=${projectDir}"
+    jvmArgs += "-XX:G1NewSizePercent=40"
+    jvmArgs += "-XX:G1MaxNewSizePercent=50"
+    jvmArgs += "-XX:G1ReservePercent=20"
+    jvmArgs += "-XX:MaxTenuringThreshold=1"
+    jvmArgs += "-XX:SurvivorRatio=32"
+    jvmArgs += "-XX:+AlwaysPreTouch"
 }
 
 version = project.mod_version
