@@ -105,7 +105,6 @@ class Minecraft_env : ModInitializer, CommandExecutor {
         }
         skipSync = true
         csvLogger.log("Hello Fabric world!")
-        FramebufferCapturer.checkExtensionJVM()
         csvLogger.profileStartPrint("Minecraft_env/onInitialize/readInitialEnvironment")
         initialEnvironment = messageIO.readInitialEnvironment()
         csvLogger.profileEndPrint("Minecraft_env/onInitialize/readInitialEnvironment")
@@ -481,6 +480,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
 
 
     private fun sendObservation(messageIO: MessageIO, world: World) {
+        FramebufferCapturer.checkExtensionJVM()
         printWithTime("send Observation")
         csvLogger.log("send Observation")
         val client = MinecraftClient.getInstance()
