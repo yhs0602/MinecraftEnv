@@ -54,10 +54,11 @@ void WritePngToMemory(size_t w, size_t h, const ui8 *dataRGB, std::vector<ui8> &
     png_write_png(p, info_ptr, PNG_TRANSFORM_IDENTITY, NULL);
 }
 
+// FIXME: Use glGetIntegerv(GL_NUM_EXTENSIONS) then use glGetStringi for OpenGL 3.0+
 bool isExtensionSupported(const char* extName) {
     // Get the list of supported extensions
     const char* extensions = reinterpret_cast<const char*>(glGetString(GL_EXTENSIONS));
-
+    // FIXME: It returns nullptr after OpenGL 3.0+, even if there are extensions
     // Check for NULL pointer (just in case no OpenGL context is active)
     if (extensions == nullptr) {
         std::cerr << "Could not get OpenGL extensions list. Make sure an OpenGL context is active." << std::endl;
@@ -117,27 +118,20 @@ extern "C" JNIEXPORT jobject JNICALL Java_com_kyhsgeekcode_minecraft_1env_Frameb
 //
 //    // 현재 바인딩된 텍스처로부터 이미지 데이터 읽기
 //    glGetTexImage(GL_TEXTURE_2D, 0, GL_RGB, GL_UNSIGNED_BYTE, pixels);
+    // ByteString 클래스를 찾습니다.
+    jclass byteStringClass = env->FindClass("com/google/protobuf/ByteString");
+    // copyFrom 정적 메서드의 메서드 ID를 얻습니다.
+    jmethodID copyFromMethod = env->GetStaticMethodID(byteStringClass, "copyFrom", "([B)Lcom/google/protobuf/ByteString;");
+    jbyteArray byteArray;
+    if (encodingMode == RAW) {
+        // 호출하려는 바이트 배열을 생성합니다.
+        byteArray = env->NewByteArray(targetSizeX * targetSizeY * 3);
+    }
     // **Note**: Flipping should be done in python side.
     glBindFramebuffer(GL_READ_FRAMEBUFFER, frameBufferId);
     auto* pixels = new GLubyte[textureWidth * textureHeight * 3];
     glPixelStorei(GL_PACK_ALIGNMENT, 1);
-    if (isExtensionAvailable) {
-//        glPixelStorei(GL_PACK_REVERSE_ROW_ORDER_ANGLE, GL_TRUE);
-        glReadPixels(0, 0, textureWidth, textureHeight, GL_RGB, GL_UNSIGNED_BYTE, pixels);
-//        glPixelStorei(GL_PACK_REVERSE_ROW_ORDER_ANGLE, GL_FALSE);
-    } else {
-        // read and flip the image
-        glReadPixels(0, 0, textureWidth, textureHeight, GL_RGB, GL_UNSIGNED_BYTE, pixels);
-//        for (int y = 0; y < textureHeight / 2; y++) {
-//            for (int x = 0; x < textureWidth; x++) {
-//                int topIndex = (y * textureWidth + x) * 3;
-//                int bottomIndex = ((textureHeight - 1 - y) * textureWidth + x) * 3;
-//                std::swap(pixels[topIndex], pixels[bottomIndex]);
-//                std::swap(pixels[topIndex + 1], pixels[bottomIndex + 1]);
-//                std::swap(pixels[topIndex + 2], pixels[bottomIndex + 2]);
-//            }
-//        }
-    }
+    glReadPixels(0, 0, textureWidth, textureHeight, GL_RGB, GL_UNSIGNED_BYTE, pixels);
 
     // resize if needed
     if (textureWidth != targetSizeX || textureHeight != targetSizeY) {
@@ -145,8 +139,6 @@ extern "C" JNIEXPORT jobject JNICALL Java_com_kyhsgeekcode_minecraft_1env_Frameb
         for (int y = 0; y < targetSizeY; y++) {
             for (int x = 0; x < targetSizeX; x++) {
                 int srcX = x * textureWidth / targetSizeX;
-////                 srcY를 계산할 때 이미지를 상하 반전시킵니다.
-//                int srcY = (textureHeight - 1) - (y * textureHeight / targetSizeY);
                 int srcY = y * textureHeight / targetSizeY;
                 int dstIndex = (y * targetSizeX + x) * 3;
                 int srcIndex = (srcY * textureWidth + srcX) * 3;
@@ -158,26 +150,9 @@ extern "C" JNIEXPORT jobject JNICALL Java_com_kyhsgeekcode_minecraft_1env_Frameb
         delete[] pixels;
         pixels = resizedPixels;
     }
-//     else {
-//        // 이미지를 상하 반전시킵니다.
-//        for (int y = 0; y < textureHeight / 2; y++) {
-//            for (int x = 0; x < textureWidth; x++) {
-//                int topIndex = (y * textureWidth + x) * 3;
-//                int bottomIndex = ((textureHeight - 1 - y) * textureWidth + x) * 3;
-//                std::swap(pixels[topIndex], pixels[bottomIndex]);
-//                std::swap(pixels[topIndex + 1], pixels[bottomIndex + 1]);
-//                std::swap(pixels[topIndex + 2], pixels[bottomIndex + 2]);
-//            }
-//        }
-//    }
-    // ByteString 클래스를 찾습니다.
-    jclass byteStringClass = env->FindClass("com/google/protobuf/ByteString");
-    // copyFrom 정적 메서드의 메서드 ID를 얻습니다.
-    jmethodID copyFromMethod = env->GetStaticMethodID(byteStringClass, "copyFrom", "([B)Lcom/google/protobuf/ByteString;");
 
     // make png bytes from the pixels
     // 이미지 데이터를 바이트 배열로 변환
-    jbyteArray byteArray;
     if (encodingMode == PNG) {
         std::vector<ui8> imageBytes;
         WritePngToMemory((size_t) targetSizeX, (size_t) targetSizeY, pixels, imageBytes);
@@ -185,18 +160,12 @@ extern "C" JNIEXPORT jobject JNICALL Java_com_kyhsgeekcode_minecraft_1env_Frameb
         byteArray = env->NewByteArray(imageBytes.size());
         env->SetByteArrayRegion(byteArray, 0, imageBytes.size(), reinterpret_cast<jbyte*>(imageBytes.data()));
     } else if (encodingMode == RAW) {
-        // 호출하려는 바이트 배열을 생성합니다.
-        byteArray = env->NewByteArray(targetSizeX * targetSizeY * 3);
         env->SetByteArrayRegion(byteArray, 0, targetSizeX * targetSizeY * 3, reinterpret_cast<jbyte*>(pixels));
     }
-
     // 정적 메서드를 호출하여 ByteString 객체를 얻습니다.
     jobject byteStringObject = env->CallStaticObjectMethod(byteStringClass, copyFromMethod, byteArray);
-
     // 메모리 정리
     env->DeleteLocalRef(byteArray);
-    // byteStringObject를 사용한 후에는 DeleteLocalRef를 호출하여 메모리를 정리합니다.
-//    free(pngBytes);
     delete[] pixels;
     return byteStringObject;
 }
