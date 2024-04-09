@@ -577,11 +577,13 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                 csvLogger.profileStartPrint("Minecraft_env/onInitialize/EndWorldTick/SendObservation/Prepare/SingleEye/ByteString")
                 image_1 = FramebufferCapturer.captureFramebuffer(
                     buffer.colorAttachment,
+                    buffer.fbo,
                     buffer.textureWidth,
                     buffer.textureHeight,
                     initialEnvironment.imageSizeX,
                     initialEnvironment.imageSizeY,
-                    initialEnvironment.screenEncodingMode
+                    initialEnvironment.screenEncodingMode,
+                    FramebufferCapturer.isExtensionAvailable
                 )
                 // ByteString.copyFrom(image1ByteArray)
                 image_2 = ByteString.empty() // ByteString.copyFrom(image1ByteArray)

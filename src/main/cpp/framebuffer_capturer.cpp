@@ -1,5 +1,6 @@
 #include <jni.h>
 #ifdef __APPLE__
+    #define GL_SILENCE_DEPRECATION
     #include <OpenGL/OpenGL.h>
     #include <OpenGL/gl.h>
 #else
@@ -11,6 +12,9 @@
 #include <stdlib.h>
 #include <vector>
 #include <iostream>
+#include <cstring> // For strcmp
+
+#define GL_PACK_REVERSE_ROW_ORDER_ANGLE 0x93A4 // extension
 
 // https://gist.github.com/dobrokot/10486786
 typedef unsigned char ui8;
@@ -50,23 +54,91 @@ void WritePngToMemory(size_t w, size_t h, const ui8 *dataRGB, std::vector<ui8> &
     png_write_png(p, info_ptr, PNG_TRANSFORM_IDENTITY, NULL);
 }
 
+bool isExtensionSupported(const char* extName) {
+    // Get the list of supported extensions
+    const char* extensions = reinterpret_cast<const char*>(glGetString(GL_EXTENSIONS));
+
+    // Check for NULL pointer (just in case no OpenGL context is active)
+    if (extensions == nullptr) {
+        std::cerr << "Could not get OpenGL extensions list. Make sure an OpenGL context is active." << std::endl;
+        return false;
+    }
+
+    // Search for the extension in the list
+    const char* start = extensions;
+    const char* where;
+    const char* terminator;
+
+    // Extension names should not have spaces
+    while ((where = strchr(start, ' ')) || (where = strchr(start, '\0'))) {
+        terminator = where;
+        if ((terminator - start) == strlen(extName) && strncmp(start, extName, terminator - start) == 0) {
+            // Found the extension
+            return true;
+        }
+        if (*where == '\0') {
+            break; // Reached the end of the list
+        }
+        start = where + 1; // Move past the space
+    }
+
+    // Extension not found
+    return false;
+}
+
+extern "C" JNIEXPORT jboolean JNICALL Java_com_kyhsgeekcode_minecraft_1env_FramebufferCapturer_checkExtension
+    (JNIEnv *env, jclass clazz) {
+    // Check for the GL_ARB_pixel_buffer_object extension
+    return (jboolean) isExtensionSupported("GL_ANGLE_pack_reverse_row_order");
+}
+
 enum EncodingMode {
     RAW = 0,
     PNG = 1
 };
 
-extern "C" JNIEXPORT jobject JNICALL Java_com_kyhsgeekcode_minecraft_1env_FramebufferCapturer_captureFramebuffer
-  (JNIEnv *env, jclass clazz, jint textureId, jint textureWidth, jint textureHeight, jint targetSizeX, jint targetSizeY, jint encodingMode) {
-    // 텍스처 바인딩
-    glBindTexture(GL_TEXTURE_2D, textureId);
-    glPixelStorei(GL_PACK_ALIGNMENT, 1); // 픽셀 데이터 정렬 설정
-    // 텍스처 데이터를 저장할 메모리 할당
-    auto* pixels = new GLubyte[textureWidth * textureHeight * 3]; // RGB 포맷 가정
+extern "C" JNIEXPORT jobject JNICALL Java_com_kyhsgeekcode_minecraft_1env_FramebufferCapturer_captureFramebuffer(
+    JNIEnv *env,
+    jclass clazz,
+    jint textureId,
+    jint frameBufferId,
+    jint textureWidth,
+    jint textureHeight,
+    jint targetSizeX,
+    jint targetSizeY,
+    jint encodingMode,
+    jboolean isExtensionAvailable
+) {
+//    // 텍스처 바인딩
+//    glBindTexture(GL_TEXTURE_2D, textureId);
+//    glPixelStorei(GL_PACK_ALIGNMENT, 1); // 픽셀 데이터 정렬 설정
+//    // 텍스처 데이터를 저장할 메모리 할당
+//    auto* pixels = new GLubyte[textureWidth * textureHeight * 3]; // RGB 포맷 가정
+//
+//    // 현재 바인딩된 텍스처로부터 이미지 데이터 읽기
+//    glGetTexImage(GL_TEXTURE_2D, 0, GL_RGB, GL_UNSIGNED_BYTE, pixels);
+    glBindFramebuffer(GL_READ_FRAMEBUFFER, frameBufferId);
+    auto* pixels = new GLubyte[textureWidth * textureHeight * 3];
+    glPixelStorei(GL_PACK_ALIGNMENT, 1);
+    if (isExtensionAvailable) {
+        glPixelStorei(GL_PACK_REVERSE_ROW_ORDER_ANGLE, GL_TRUE);
+        glReadPixels(0, 0, textureWidth, textureHeight, GL_RGB, GL_UNSIGNED_BYTE, pixels);
+        glPixelStorei(GL_PACK_REVERSE_ROW_ORDER_ANGLE, GL_FALSE);
+    } else {
+        // read and flip the image
+        glReadPixels(0, 0, textureWidth, textureHeight, GL_RGB, GL_UNSIGNED_BYTE, pixels);
+        for (int y = 0; y < textureHeight / 2; y++) {
+            for (int x = 0; x < textureWidth; x++) {
+                int topIndex = (y * textureWidth + x) * 3;
+                int bottomIndex = ((textureHeight - 1 - y) * textureWidth + x) * 3;
+                std::swap(pixels[topIndex], pixels[bottomIndex]);
+                std::swap(pixels[topIndex + 1], pixels[bottomIndex + 1]);
+                std::swap(pixels[topIndex + 2], pixels[bottomIndex + 2]);
+            }
+        }
+    }
 
-    // 현재 바인딩된 텍스처로부터 이미지 데이터 읽기
-    glGetTexImage(GL_TEXTURE_2D, 0, GL_RGB, GL_UNSIGNED_BYTE, pixels);
-
-    // resize if needed and flip vertically
+    // resize if needed
     if (textureWidth != targetSizeX || textureHeight != targetSizeY) {
         auto* resizedPixels = new GLubyte[targetSizeX * targetSizeY * 3];
         for (int y = 0; y < targetSizeY; y++) {
@@ -84,18 +156,19 @@ extern "C" JNIEXPORT jobject JNICALL Java_com_kyhsgeekcode_minecraft_1env_Frameb
         }
         delete[] pixels;
         pixels = resizedPixels;
-    } else {
-        // 이미지를 상하 반전시킵니다.
-        for (int y = 0; y < textureHeight / 2; y++) {
-            for (int x = 0; x < textureWidth; x++) {
-                int topIndex = (y * textureWidth + x) * 3;
-                int bottomIndex = ((textureHeight - 1 - y) * textureWidth + x) * 3;
-                std::swap(pixels[topIndex], pixels[bottomIndex]);
-                std::swap(pixels[topIndex + 1], pixels[bottomIndex + 1]);
-                std::swap(pixels[topIndex + 2], pixels[bottomIndex + 2]);
-            }
-        }
     }
+//     else {
+//        // 이미지를 상하 반전시킵니다.
+//        for (int y = 0; y < textureHeight / 2; y++) {
+//            for (int x = 0; x < textureWidth; x++) {
+//                int topIndex = (y * textureWidth + x) * 3;
+//                int bottomIndex = ((textureHeight - 1 - y) * textureWidth + x) * 3;
+//                std::swap(pixels[topIndex], pixels[bottomIndex]);
+//                std::swap(pixels[topIndex + 1], pixels[bottomIndex + 1]);
+//                std::swap(pixels[topIndex + 2], pixels[bottomIndex + 2]);
+//            }
+//        }
+//    }
     // ByteString 클래스를 찾습니다.
     jclass byteStringClass = env->FindClass("com/google/protobuf/ByteString");
     // copyFrom 정적 메서드의 메서드 ID를 얻습니다.
