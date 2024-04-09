@@ -31,16 +31,14 @@ object FramebufferCapturer {
             println("FramebufferCapturer: Vendor: $vendor")
         }
         val num_extensions = GL30.glGetInteger(GL30.GL_NUM_EXTENSIONS)
-        val extensions = (0 until num_extensions).map { GL30.glGetStringi(GL30.GL_EXTENSIONS, it) }
-        if (extensions.isEmpty())
-            println("FramebufferCapturer: Extensions is empty")
-        else {
-            println("FramebufferCapturer: Extensions: $extensions")
-            if (extensions.contains("GL_ANGLE_pack_reverse_row_order")) {
+        for (i in 0 until num_extensions) {
+            val extension = GL30.glGetStringi(GL30.GL_EXTENSIONS, i)
+            println("FramebufferCapturer: Extension $i: $extension")
+            if (extension == null) {
+                println("FramebufferCapturer: Extension is null")
+            } else if (extension.contains("GL_ANGLE_pack_reverse_row_order")) {
                 println("FramebufferCapturer: Extension available")
                 isExtensionAvailable = true
-            } else {
-                println("FramebufferCapturer: Extension not available")
             }
         }
         hasCheckedExtension = true
