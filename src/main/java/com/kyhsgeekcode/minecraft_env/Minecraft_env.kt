@@ -489,7 +489,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
             csvLogger.log("Player is null")
             return
         }
-        FramebufferCapturer.checkExtensionJVM()
+//        FramebufferCapturer.checkExtensionJVM()
         // request stats from server
         // TODO: Use server player stats directly instead of client player stats
         csvLogger.profileStartPrint("Minecraft_env/onInitialize/EndWorldTick/SendObservation/Prepare")
@@ -584,7 +584,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                     initialEnvironment.imageSizeX,
                     initialEnvironment.imageSizeY,
                     initialEnvironment.screenEncodingMode,
-                    FramebufferCapturer.isExtensionAvailable
+                    false // FramebufferCapturer.isExtensionAvailable
                 )
                 // ByteString.copyFrom(image1ByteArray)
                 image_2 = ByteString.empty() // ByteString.copyFrom(image1ByteArray)

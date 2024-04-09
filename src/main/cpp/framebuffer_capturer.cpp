@@ -117,25 +117,26 @@ extern "C" JNIEXPORT jobject JNICALL Java_com_kyhsgeekcode_minecraft_1env_Frameb
 //
 //    // 현재 바인딩된 텍스처로부터 이미지 데이터 읽기
 //    glGetTexImage(GL_TEXTURE_2D, 0, GL_RGB, GL_UNSIGNED_BYTE, pixels);
+    // **Note**: Flipping should be done in python side.
     glBindFramebuffer(GL_READ_FRAMEBUFFER, frameBufferId);
     auto* pixels = new GLubyte[textureWidth * textureHeight * 3];
     glPixelStorei(GL_PACK_ALIGNMENT, 1);
     if (isExtensionAvailable) {
-        glPixelStorei(GL_PACK_REVERSE_ROW_ORDER_ANGLE, GL_TRUE);
+//        glPixelStorei(GL_PACK_REVERSE_ROW_ORDER_ANGLE, GL_TRUE);
         glReadPixels(0, 0, textureWidth, textureHeight, GL_RGB, GL_UNSIGNED_BYTE, pixels);
-        glPixelStorei(GL_PACK_REVERSE_ROW_ORDER_ANGLE, GL_FALSE);
+//        glPixelStorei(GL_PACK_REVERSE_ROW_ORDER_ANGLE, GL_FALSE);
     } else {
         // read and flip the image
         glReadPixels(0, 0, textureWidth, textureHeight, GL_RGB, GL_UNSIGNED_BYTE, pixels);
-        for (int y = 0; y < textureHeight / 2; y++) {
-            for (int x = 0; x < textureWidth; x++) {
-                int topIndex = (y * textureWidth + x) * 3;
-                int bottomIndex = ((textureHeight - 1 - y) * textureWidth + x) * 3;
-                std::swap(pixels[topIndex], pixels[bottomIndex]);
-                std::swap(pixels[topIndex + 1], pixels[bottomIndex + 1]);
-                std::swap(pixels[topIndex + 2], pixels[bottomIndex + 2]);
-            }
-        }
+//        for (int y = 0; y < textureHeight / 2; y++) {
+//            for (int x = 0; x < textureWidth; x++) {
+//                int topIndex = (y * textureWidth + x) * 3;
+//                int bottomIndex = ((textureHeight - 1 - y) * textureWidth + x) * 3;
+//                std::swap(pixels[topIndex], pixels[bottomIndex]);
+//                std::swap(pixels[topIndex + 1], pixels[bottomIndex + 1]);
+//                std::swap(pixels[topIndex + 2], pixels[bottomIndex + 2]);
+//            }
+//        }
     }
 
     // resize if needed
@@ -144,9 +145,9 @@ extern "C" JNIEXPORT jobject JNICALL Java_com_kyhsgeekcode_minecraft_1env_Frameb
         for (int y = 0; y < targetSizeY; y++) {
             for (int x = 0; x < targetSizeX; x++) {
                 int srcX = x * textureWidth / targetSizeX;
-                // srcY를 계산할 때 이미지를 상하 반전시킵니다.
-                int srcY = (textureHeight - 1) - (y * textureHeight / targetSizeY);
-//                int srcY = y * textureHeight / targetSizeY;
+////                 srcY를 계산할 때 이미지를 상하 반전시킵니다.
+//                int srcY = (textureHeight - 1) - (y * textureHeight / targetSizeY);
+                int srcY = y * textureHeight / targetSizeY;
                 int dstIndex = (y * targetSizeX + x) * 3;
                 int srcIndex = (srcY * textureWidth + srcX) * 3;
                 resizedPixels[dstIndex] = pixels[srcIndex];
