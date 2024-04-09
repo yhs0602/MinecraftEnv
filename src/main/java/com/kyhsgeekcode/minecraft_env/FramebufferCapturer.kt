@@ -2,6 +2,7 @@ package com.kyhsgeekcode.minecraft_env
 
 import com.google.protobuf.ByteString
 import org.lwjgl.opengl.GL11
+import org.lwjgl.opengl.GL30
 
 object FramebufferCapturer {
     init {
@@ -29,18 +30,18 @@ object FramebufferCapturer {
         } else {
             println("FramebufferCapturer: Vendor: $vendor")
         }
-        val extensions = GL11.glGetString(GL11.GL_EXTENSIONS)
-        if (extensions == null) {
-            println("FramebufferCapturer: Extensions is null")
-            hasCheckedExtension = true
-            isExtensionAvailable = false
-            return
-        }
-        isExtensionAvailable = extensions.contains("GL_ANGLE_pack_reverse_row_order")
-        if (!isExtensionAvailable) {
-            println("FramebufferCapturer: Extension not available: Availables: $extensions")
-        } else {
-            println("FramebufferCapturer: Extension available")
+        val num_extensions = GL30.glGetInteger(GL30.GL_NUM_EXTENSIONS)
+        val extensions = (0 until num_extensions).map { GL30.glGetStringi(GL30.GL_EXTENSIONS, it) }
+        if (extensions.isEmpty())
+            println("FramebufferCapturer: Extensions is empty")
+        else {
+            println("FramebufferCapturer: Extensions: $extensions")
+            if (extensions.contains("GL_ANGLE_pack_reverse_row_order")) {
+                println("FramebufferCapturer: Extension available")
+                isExtensionAvailable = true
+            } else {
+                println("FramebufferCapturer: Extension not available")
+            }
         }
         hasCheckedExtension = true
     }
