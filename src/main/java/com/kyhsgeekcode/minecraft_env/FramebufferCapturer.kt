@@ -23,6 +23,12 @@ object FramebufferCapturer {
     fun checkExtensionJVM() {
         if (hasCheckedExtension)
             return
+        val vendor = GL11.glGetString(GL11.GL_VENDOR)
+        if (vendor == null) {
+            println("FramebufferCapturer: Vendor is null")
+        } else {
+            println("FramebufferCapturer: Vendor: $vendor")
+        }
         val extensions = GL11.glGetString(GL11.GL_EXTENSIONS)
         if (extensions == null) {
             println("FramebufferCapturer: Extensions is null")

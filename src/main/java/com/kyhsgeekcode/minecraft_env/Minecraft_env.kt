@@ -480,7 +480,6 @@ class Minecraft_env : ModInitializer, CommandExecutor {
 
 
     private fun sendObservation(messageIO: MessageIO, world: World) {
-        FramebufferCapturer.checkExtensionJVM()
         printWithTime("send Observation")
         csvLogger.log("send Observation")
         val client = MinecraftClient.getInstance()
@@ -490,6 +489,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
             csvLogger.log("Player is null")
             return
         }
+        FramebufferCapturer.checkExtensionJVM()
         // request stats from server
         // TODO: Use server player stats directly instead of client player stats
         csvLogger.profileStartPrint("Minecraft_env/onInitialize/EndWorldTick/SendObservation/Prepare")
