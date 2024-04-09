@@ -26,6 +26,8 @@ object FramebufferCapturer {
         isExtensionAvailable = checkExtension()
         if (!isExtensionAvailable) {
             println("FramebufferCapturer: Extension not available")
+        } else {
+            println("FramebufferCapturer: Extension available")
         }
         hasCheckedExtension = true
     }
