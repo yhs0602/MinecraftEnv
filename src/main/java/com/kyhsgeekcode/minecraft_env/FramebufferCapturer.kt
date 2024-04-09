@@ -1,6 +1,7 @@
 package com.kyhsgeekcode.minecraft_env
 
 import com.google.protobuf.ByteString
+import org.lwjgl.opengl.GL11
 
 object FramebufferCapturer {
     init {
@@ -18,14 +19,20 @@ object FramebufferCapturer {
         isExtensionAvailable: Boolean,
     ): ByteString
 
-    private external fun checkExtension(): Boolean
-
+    //    private external fun checkExtension(): Boolean
     fun checkExtensionJVM() {
         if (hasCheckedExtension)
             return
-        isExtensionAvailable = checkExtension()
+        val extensions = GL11.glGetString(GL11.GL_EXTENSIONS)
+        if (extensions == null) {
+            println("FramebufferCapturer: Extensions is null")
+            hasCheckedExtension = true
+            isExtensionAvailable = false
+            return
+        }
+        isExtensionAvailable = extensions.contains("GL_ANGLE_pack_reverse_row_order")
         if (!isExtensionAvailable) {
-            println("FramebufferCapturer: Extension not available")
+            println("FramebufferCapturer: Extension not available: Availables: $extensions")
         } else {
             println("FramebufferCapturer: Extension available")
         }
