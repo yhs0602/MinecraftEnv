@@ -105,6 +105,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
         }
         skipSync = true
         csvLogger.log("Hello Fabric world!")
+        FramebufferCapturer.checkExtensionJVM()
         csvLogger.profileStartPrint("Minecraft_env/onInitialize/readInitialEnvironment")
         initialEnvironment = messageIO.readInitialEnvironment()
         csvLogger.profileEndPrint("Minecraft_env/onInitialize/readInitialEnvironment")
