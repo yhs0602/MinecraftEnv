@@ -489,6 +489,12 @@ class Minecraft_env : ModInitializer, CommandExecutor {
             csvLogger.log("Player is null")
             return
         }
+        if (FramebufferCapturer.checkGLEW()) {
+            printWithTime("GLEW initialized")
+        } else {
+            printWithTime("GLEW not initialized")
+            throw RuntimeException("GLEW not initialized")
+        }
 //        FramebufferCapturer.checkExtensionJVM()
         // request stats from server
         // TODO: Use server player stats directly instead of client player stats

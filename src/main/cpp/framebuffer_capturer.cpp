@@ -94,6 +94,20 @@ extern "C" JNIEXPORT jboolean JNICALL Java_com_kyhsgeekcode_minecraft_1env_Frame
     return (jboolean) isExtensionSupported("GL_ANGLE_pack_reverse_row_order");
 }
 
+extern "C" JNIEXPORT jboolean JNICALL Java_com_kyhsgeekcode_minecraft_1env_FramebufferCapturer_initializeGLEW
+    (JNIEnv *env, jclass clazz) {
+    #ifdef __APPLE__
+        return true;
+    #else
+        glewExperimental = GL_TRUE;
+        GLenum err = glewInit();
+        if (err != GLEW_OK) {
+            std::cerr << "GLEW initialization failed: " << glewGetErrorString(err) << std::endl;
+        }
+        return err == GLEW_OK;
+    #endif
+}
+
 enum EncodingMode {
     RAW = 0,
     PNG = 1
@@ -121,12 +135,24 @@ extern "C" JNIEXPORT jobject JNICALL Java_com_kyhsgeekcode_minecraft_1env_Frameb
 //    glGetTexImage(GL_TEXTURE_2D, 0, GL_RGB, GL_UNSIGNED_BYTE, pixels);
     // ByteString 클래스를 찾습니다.
     jclass byteStringClass = env->FindClass("com/google/protobuf/ByteString");
+    if (byteStringClass == nullptr || env->ExceptionCheck()) {
+        // Handle error
+        return nullptr;
+    }
     // copyFrom 정적 메서드의 메서드 ID를 얻습니다.
     jmethodID copyFromMethod = env->GetStaticMethodID(byteStringClass, "copyFrom", "([B)Lcom/google/protobuf/ByteString;");
+    if (copyFromMethod == nullptr || env->ExceptionCheck()) {
+        // Handle error
+        return nullptr;
+    }
     jbyteArray byteArray;
     if (encodingMode == RAW) {
         // 호출하려는 바이트 배열을 생성합니다.
         byteArray = env->NewByteArray(targetSizeX * targetSizeY * 3);
+        if (byteArray == nullptr || env->ExceptionCheck()) {
+            // Handle error
+            return nullptr;
+        }
     }
     // **Note**: Flipping should be done in python side.
     glBindFramebuffer(GL_READ_FRAMEBUFFER, frameBufferId);
@@ -165,6 +191,10 @@ extern "C" JNIEXPORT jobject JNICALL Java_com_kyhsgeekcode_minecraft_1env_Frameb
     }
     // 정적 메서드를 호출하여 ByteString 객체를 얻습니다.
     jobject byteStringObject = env->CallStaticObjectMethod(byteStringClass, copyFromMethod, byteArray);
+    if (byteStringObject == nullptr || env->ExceptionCheck()) {
+        // Handle error
+        return nullptr;
+    }
     // 메모리 정리
     env->DeleteLocalRef(byteArray);
     delete[] pixels;

@@ -20,6 +20,17 @@ object FramebufferCapturer {
         isExtensionAvailable: Boolean,
     ): ByteString
 
+    external fun initializeGLEW(): Boolean
+
+    fun checkGLEW(): Boolean {
+        if (hasInitializedGLEW)
+            return true
+        val result = initializeGLEW()
+        hasInitializedGLEW = result
+        println("FramebufferCapturer: GLEW initialized: $result")
+        return result
+    }
+
     //    private external fun checkExtension(): Boolean
     fun checkExtensionJVM() {
         if (hasCheckedExtension)
@@ -47,8 +58,10 @@ object FramebufferCapturer {
         hasCheckedExtension = true
     }
 
+
     const val RAW = 0
     const val PNG = 1
     var isExtensionAvailable: Boolean = false
     private var hasCheckedExtension: Boolean = false
+    private var hasInitializedGLEW: Boolean = false
 }
