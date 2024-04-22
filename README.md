@@ -43,7 +43,7 @@ Lightweight minecraft RL environment on fabric
 - No crafting yet
 - Arbitrary command (you should hide this for the agents)
 
-Controlled by this reinforcement learning agent: https://github.com/KYHSGeekCode/ControlMinecraft
+Controlled by this reinforcement learning agent: https://github.com/yhs0602/CraftGround
 
 renderDistance:6
 simulationDistance:6
