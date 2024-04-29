@@ -27,6 +27,8 @@ tasks.named('compileJava').configure {
 }
 
 tasks.named('runClient').configure {
+    def maxMemory = System.getenv("CRAFTGROUND_JVM_MAX_MEMORY") ?: "8G"
+    def enabledJmx = System.getenv("CRAFTGROUND_JVM_JMX_ENABLED") ?: "false"
     jvmArgs += "-Djava.library.path=${projectDir}"
     jvmArgs += "-XX:+UnlockExperimentalVMOptions"
     jvmArgs += "-XX:G1NewSizePercent=40"
@@ -35,6 +37,16 @@ tasks.named('runClient').configure {
     jvmArgs += "-XX:MaxTenuringThreshold=1"
     jvmArgs += "-XX:SurvivorRatio=32"
     jvmArgs += "-XX:+AlwaysPreTouch"
+    jvmArgs += "-Xmx${maxMemory}" // Max memory from environment variable
+    if (enabledJmx.toBoolean()) {
+        def jmxPort = System.getenv("CRAFTGROUND_JVM_JMX_PORT") ?: "9010"
+        def jmxHost = System.getenv("CRAFTGROUND_JVM_JMX_HOST") ?: "localhost"
+        jvmArgs += "-Dcom.sun.management.jmxremote"
+        jvmArgs += "-Dcom.sun.management.jmxremote.port=${jmxPort}"
+        jvmArgs += "-Dcom.sun.management.jmxremote.ssl=false"
+        jvmArgs += "-Dcom.sun.management.jmxremote.authenticate=false"
+        jvmArgs += "-Djava.rmi.server.hostname=${jmxHost}"
+    }
 }
 
 version = project.mod_version
