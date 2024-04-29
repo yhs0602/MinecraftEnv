@@ -145,7 +145,7 @@ extern "C" JNIEXPORT jobject JNICALL Java_com_kyhsgeekcode_minecraft_1env_Frameb
         // Handle error
         return nullptr;
     }
-    jbyteArray byteArray;
+    jbyteArray byteArray = nullptr;
     if (encodingMode == RAW) {
         // 호출하려는 바이트 배열을 생성합니다.
         byteArray = env->NewByteArray(targetSizeX * targetSizeY * 3);
@@ -193,6 +193,12 @@ extern "C" JNIEXPORT jobject JNICALL Java_com_kyhsgeekcode_minecraft_1env_Frameb
     jobject byteStringObject = env->CallStaticObjectMethod(byteStringClass, copyFromMethod, byteArray);
     if (byteStringObject == nullptr || env->ExceptionCheck()) {
         // Handle error
+        if (byteArray != nullptr) {
+            env->DeleteLocalRef(byteArray);
+        }
+        if (pixels != nullptr) {
+            delete[] pixels;
+        }
         return nullptr;
     }
     // 메모리 정리
