@@ -27,7 +27,7 @@ tasks.named('compileJava').configure {
 }
 
 tasks.named('runClient').configure {
-    def maxMemory = System.getenv("CRAFTGROUND_JVM_MAX_MEMORY") ?: "8G"
+    def maxMemory = System.getenv("CRAFTGROUND_JVM_MAX_MEMORY") ?: "4G"
     def enabledJmx = System.getenv("CRAFTGROUND_JVM_JMX_ENABLED") ?: "false"
     jvmArgs += "-Djava.library.path=${projectDir}"
     jvmArgs += "-XX:+UnlockExperimentalVMOptions"
