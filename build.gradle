@@ -26,28 +26,30 @@ tasks.named('compileJava').configure {
     dependsOn compileCpp
 }
 
-tasks.named('runClient').configure {
-    def maxMemory = System.getenv("CRAFTGROUND_JVM_MAX_MEMORY") ?: "4G"
-    def enabledJmx = System.getenv("CRAFTGROUND_JVM_JMX_ENABLED") ?: "false"
-    def nativeMemoryTracking = System.getenv("CRAFTGROUND_JVM_NATIVE_TRACKING") ?: "summary"
-    jvmArgs += "-Djava.library.path=${projectDir}"
-    jvmArgs += "-XX:+UnlockExperimentalVMOptions"
-    jvmArgs += "-XX:G1NewSizePercent=40"
-    jvmArgs += "-XX:G1MaxNewSizePercent=50"
-    jvmArgs += "-XX:G1ReservePercent=20"
-    jvmArgs += "-XX:MaxTenuringThreshold=1"
-    jvmArgs += "-XX:SurvivorRatio=32"
-    jvmArgs += "-XX:+AlwaysPreTouch"
-    jvmArgs += "-Xmx${maxMemory}" // Max memory from environment variable
-    jvmArgs += "-XX:NativeMemoryTracking=${nativeMemoryTracking}"
-    if (enabledJmx.toBoolean()) {
-        def jmxPort = System.getenv("CRAFTGROUND_JVM_JMX_PORT") ?: "9010"
-        def jmxHost = System.getenv("CRAFTGROUND_JVM_JMX_HOST") ?: "localhost"
-        jvmArgs += "-Dcom.sun.management.jmxremote"
-        jvmArgs += "-Dcom.sun.management.jmxremote.port=${jmxPort}"
-        jvmArgs += "-Dcom.sun.management.jmxremote.ssl=false"
-        jvmArgs += "-Dcom.sun.management.jmxremote.authenticate=false"
-        jvmArgs += "-Djava.rmi.server.hostname=${jmxHost}"
+tasks.named('runClient') {
+    doFirst {
+        def maxMemory = System.getenv("CRAFTGROUND_JVM_MAX_MEMORY") ?: "4G"
+        def enabledJmx = System.getenv("CRAFTGROUND_JVM_JMX_ENABLED") ?: "false"
+        def nativeMemoryTracking = System.getenv("CRAFTGROUND_JVM_NATIVE_TRACKING") ?: "summary"
+        jvmArgs += "-Djava.library.path=${projectDir}"
+        jvmArgs += "-XX:+UnlockExperimentalVMOptions"
+        jvmArgs += "-XX:G1NewSizePercent=40"
+        jvmArgs += "-XX:G1MaxNewSizePercent=50"
+        jvmArgs += "-XX:G1ReservePercent=20"
+        jvmArgs += "-XX:MaxTenuringThreshold=1"
+        jvmArgs += "-XX:SurvivorRatio=32"
+        jvmArgs += "-XX:+AlwaysPreTouch"
+        jvmArgs += "-Xmx${maxMemory}" // Max memory from environment variable
+        jvmArgs += "-XX:NativeMemoryTracking=${nativeMemoryTracking}"
+        if (enabledJmx.toBoolean()) {
+            def jmxPort = System.getenv("CRAFTGROUND_JVM_JMX_PORT") ?: "9010"
+            def jmxHost = System.getenv("CRAFTGROUND_JVM_JMX_HOST") ?: "localhost"
+            jvmArgs += "-Dcom.sun.management.jmxremote"
+            jvmArgs += "-Dcom.sun.management.jmxremote.port=${jmxPort}"
+            jvmArgs += "-Dcom.sun.management.jmxremote.ssl=false"
+            jvmArgs += "-Dcom.sun.management.jmxremote.authenticate=false"
+            jvmArgs += "-Djava.rmi.server.hostname=${jmxHost}"
+        }
     }
 }
 
