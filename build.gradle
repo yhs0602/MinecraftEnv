@@ -38,6 +38,7 @@ tasks.named('runClient').configure {
     jvmArgs += "-XX:SurvivorRatio=32"
     jvmArgs += "-XX:+AlwaysPreTouch"
     jvmArgs += "-Xmx${maxMemory}" // Max memory from environment variable
+    jvmArgs += "-XX:NativeMemoryTracking=summary"
     if (enabledJmx.toBoolean()) {
         def jmxPort = System.getenv("CRAFTGROUND_JVM_JMX_PORT") ?: "9010"
         def jmxHost = System.getenv("CRAFTGROUND_JVM_JMX_HOST") ?: "localhost"
