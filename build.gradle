@@ -29,6 +29,7 @@ tasks.named('compileJava').configure {
 tasks.named('runClient').configure {
     def maxMemory = System.getenv("CRAFTGROUND_JVM_MAX_MEMORY") ?: "4G"
     def enabledJmx = System.getenv("CRAFTGROUND_JVM_JMX_ENABLED") ?: "false"
+    def nativeMemoryTracking = System.getenv("CRAFTGROUND_JVM_NATIVE_TRACKING") ?: "summary"
     jvmArgs += "-Djava.library.path=${projectDir}"
     jvmArgs += "-XX:+UnlockExperimentalVMOptions"
     jvmArgs += "-XX:G1NewSizePercent=40"
@@ -38,7 +39,7 @@ tasks.named('runClient').configure {
     jvmArgs += "-XX:SurvivorRatio=32"
     jvmArgs += "-XX:+AlwaysPreTouch"
     jvmArgs += "-Xmx${maxMemory}" // Max memory from environment variable
-    jvmArgs += "-XX:NativeMemoryTracking=summary"
+    jvmArgs += "-XX:NativeMemoryTracking=${nativeMemoryTracking}"
     if (enabledJmx.toBoolean()) {
         def jmxPort = System.getenv("CRAFTGROUND_JVM_JMX_PORT") ?: "9010"
         def jmxHost = System.getenv("CRAFTGROUND_JVM_JMX_HOST") ?: "localhost"
