@@ -23,10 +23,10 @@ public class RenderMixin {
 
     @Redirect(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/util/Window;swapBuffers()V"))
     private void windowSwapBuffers(Window instance) {
-//        RenderSystem.pollEvents();
+        RenderSystemPollEventsInvoker.pollEvents();
         RenderSystem.replayQueue();
         Tessellator.getInstance().getBuffer().clear();
 //        GLFW.glfwSwapBuffers(window);
-//        RenderSystem.pollEvents();
+        RenderSystemPollEventsInvoker.pollEvents();
     }
 }

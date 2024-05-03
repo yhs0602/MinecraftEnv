@@ -19,6 +19,7 @@
     "ClientWorldMixin",
     "KeyboardInputFieldMixin",
     "KeyboardInputMixin",
+    "RenderSystemPollEventsInvoker",
     "RenderTickCounterAccessor",
     "TickSpeedMixin",
     "WindowOffScreenMixin",
