@@ -43,6 +43,7 @@ tasks.named('runClient') {
         jvmArgs += "-XX:NativeMemoryTracking=${nativeMemoryTracking}"
         jvmArgs += "-XX:MaxDirectMemorySize=512m"
         jvmArgs += "-XX:MaxMetaspaceSize=1024m" // 1G
+        jvmArgs += "-XX:MaxRAM=10G"
         if (enabledJmx.toBoolean()) {
             def jmxPort = System.getenv("CRAFTGROUND_JVM_JMX_PORT") ?: "9010"
             def jmxHost = System.getenv("CRAFTGROUND_JVM_JMX_HOST") ?: "localhost"
