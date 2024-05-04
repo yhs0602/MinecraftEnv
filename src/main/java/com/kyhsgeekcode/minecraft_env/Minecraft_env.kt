@@ -78,6 +78,12 @@ class Minecraft_env : ModInitializer, CommandExecutor {
     override fun onInitialize() {
         Registry.register(Registries.ITEM, "minecraft_env:custom_item", CUSTOM_ITEM)
         FuelRegistry.INSTANCE.add(CUSTOM_ITEM, 300)
+        val ld_preload = System.getenv("LD_PRELOAD")
+        if (ld_preload != null) {
+            println("LD_PRELOAD is set: $ld_preload")
+        } else {
+            println("LD_PRELOAD is not set")
+        }
         val socket: SocketChannel
         val messageIO: MessageIO
         try {

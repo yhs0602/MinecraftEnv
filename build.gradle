@@ -53,6 +53,7 @@ tasks.named('runClient') {
             jvmArgs += "-Dcom.sun.management.jmxremote.authenticate=false"
             jvmArgs += "-Djava.rmi.server.hostname=${jmxHost}"
         }
+//        environment.put("LD_PRELOAD", "libjemalloc.so")
     }
 }
 
