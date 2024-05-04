@@ -7,6 +7,15 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 SET(CMAKE_FIND_PACKAGE_SORT_ORDER NATURAL)
 SET(CMAKE_FIND_PACKAGE_SORT_DIRECTION DEC)
 
+set(CRAFGROUND_NATIVE_DEBUG $ENV{CRAFGROUND_NATIVE_DEBUG})
+if (CRAFGROUND_NATIVE_DEBUG)
+    message("CRAFGROUND_NATIVE_DEBUG=${CRAFGROUND_NATIVE_DEBUG}")
+    set(CMAKE_BUILD_TYPE Debug) # Set default build type to Debug
+else()
+    message("CRAFGROUND_NATIVE_DEBUG not set")
+endif()
+
+
 # Find JNI
 find_package(Java COMPONENTS Development)
 find_package(JNI REQUIRED)
@@ -52,6 +61,11 @@ set(SOURCE_FILES
 
 # Add a library target for your native library
 add_library(native-lib SHARED ${SOURCE_FILES})
+
+if (CRAFGROUND_NATIVE_DEBUG)
+    message("CRAFGROUND_NATIVE_DEBUG=${CRAFGROUND_NATIVE_DEBUG}")
+    target_compile_options(native-lib PRIVATE -g) # Add debug symbols
+endif()
 
 # Link with JNI and OpenGL libraries
 target_link_libraries(native-lib ${JNI_LIBRARIES} ${OPENGL_LIBRARIES} ${PNG_LIBRARIES} ${ZLIB_LIBRARIES})
