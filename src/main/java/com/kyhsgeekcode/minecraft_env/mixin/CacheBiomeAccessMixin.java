@@ -47,9 +47,26 @@ public class CacheBiomeAccessMixin {
             method = "getBiome",
             at = @At(value = "INVOKE",
                     target = "Lnet/minecraft/world/biome/source/BiomeAccess$Storage;getBiomeForNoiseGen(III)Lnet/minecraft/registry/entry/RegistryEntry;"),
-            locals = LocalCapture.PRINT
+            locals = LocalCapture.CAPTURE_FAILHARD
     )
-    private void getBiome(BlockPos pos, CallbackInfoReturnable<RegistryEntry<Biome>> cir, int p, int w, int x) {
+    private void getBiome(
+            BlockPos pos,
+            CallbackInfoReturnable<RegistryEntry<Biome>> cir,
+            int i,
+            int j,
+            int k,
+            int l,
+            int m,
+            int n,
+            double d,
+            double e,
+            double f,
+            int o,
+            double g,
+            int p,
+            int w,
+            int x
+    ) {
         coordsCache.put(new Point3D(pos.getX(), pos.getY(), pos.getZ()), new Point3D(p, w, x));
     }
 }
