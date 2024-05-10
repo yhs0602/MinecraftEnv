@@ -19,7 +19,7 @@ import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 public class CacheBiomeAccessMixin {
     // Thread safe LRU cache
     @Unique
-    private final Cache<BlockPos, int[]> coordsCache = Caffeine.newBuilder()
+    private final Cache<int[], int[]> coordsCache = Caffeine.newBuilder()
             .maximumSize(16384)  // Max cache size
             .build();
 
@@ -33,7 +33,9 @@ public class CacheBiomeAccessMixin {
             cancellable = true
     )
     private void getBiomeHead(BlockPos pos, CallbackInfoReturnable<RegistryEntry<Biome>> cir) {
-        int[] coords = coordsCache.getIfPresent(pos);
+        // BlockPos is mutable
+        var key = new int[]{pos.getX(), pos.getY(), pos.getZ()};
+        int[] coords = coordsCache.getIfPresent(key);
         if (coords != null) {
             cir.setReturnValue(storage.getBiomeForNoiseGen(coords[0], coords[1], coords[2]));
             cir.cancel();
@@ -47,6 +49,7 @@ public class CacheBiomeAccessMixin {
             locals = LocalCapture.CAPTURE_FAILHARD
     )
     private void getBiome(BlockPos pos, CallbackInfoReturnable<RegistryEntry<Biome>> cir, int p, int w, int x) {
-        coordsCache.put(pos, new int[]{p, w, x});
+        var key = new int[]{pos.getX(), pos.getY(), pos.getZ()};
+        coordsCache.put(key, new int[]{p, w, x});
     }
 }
