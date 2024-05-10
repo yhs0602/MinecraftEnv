@@ -35,10 +35,10 @@ public class CacheBiomeAccessMixin {
     )
     private void getBiomeHead(BlockPos pos, CallbackInfoReturnable<RegistryEntry<Biome>> cir) {
         // BlockPos is mutable
-        var key = new Point3D(pos.getX(), pos.getY(), pos.getZ());
-        var coords = coordsCache.getIfPresent(key);
-        if (coords != null) {
-            cir.setReturnValue(storage.getBiomeForNoiseGen(coords.x(), coords.y(), coords.z()));
+        var blockPos = new Point3D(pos.getX(), pos.getY(), pos.getZ());
+        var pwx = coordsCache.getIfPresent(blockPos);
+        if (pwx != null) {
+            cir.setReturnValue(storage.getBiomeForNoiseGen(pwx.x(), pwx.y(), pwx.z()));
             cir.cancel();
         }
     }
@@ -47,7 +47,7 @@ public class CacheBiomeAccessMixin {
             method = "getBiome",
             at = @At(value = "INVOKE",
                     target = "Lnet/minecraft/world/biome/source/BiomeAccess$Storage;getBiomeForNoiseGen(III)Lnet/minecraft/registry/entry/RegistryEntry;"),
-            locals = LocalCapture.CAPTURE_FAILHARD
+            locals = LocalCapture.PRINT
     )
     private void getBiome(BlockPos pos, CallbackInfoReturnable<RegistryEntry<Biome>> cir, int p, int w, int x) {
         coordsCache.put(new Point3D(pos.getX(), pos.getY(), pos.getZ()), new Point3D(p, w, x));
