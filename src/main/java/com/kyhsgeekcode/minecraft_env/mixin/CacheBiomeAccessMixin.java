@@ -2,6 +2,7 @@ package com.kyhsgeekcode.minecraft_env.mixin;
 
 import com.github.benmanes.caffeine.cache.Cache;
 import com.github.benmanes.caffeine.cache.Caffeine;
+import com.kyhsgeekcode.minecraft_env.Point3D;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.biome.Biome;
@@ -19,8 +20,8 @@ import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 public class CacheBiomeAccessMixin {
     // Thread safe LRU cache
     @Unique
-    private final Cache<int[], int[]> coordsCache = Caffeine.newBuilder()
-            .maximumSize(16384)  // Max cache size
+    private final Cache<Point3D, Point3D> coordsCache = Caffeine.newBuilder()
+            .maximumSize(8192)  // Max cache size
             .build();
 
     @Final
@@ -34,10 +35,10 @@ public class CacheBiomeAccessMixin {
     )
     private void getBiomeHead(BlockPos pos, CallbackInfoReturnable<RegistryEntry<Biome>> cir) {
         // BlockPos is mutable
-        var key = new int[]{pos.getX(), pos.getY(), pos.getZ()};
-        int[] coords = coordsCache.getIfPresent(key);
+        var key = new Point3D(pos.getX(), pos.getY(), pos.getZ());
+        var coords = coordsCache.getIfPresent(key);
         if (coords != null) {
-            cir.setReturnValue(storage.getBiomeForNoiseGen(coords[0], coords[1], coords[2]));
+            cir.setReturnValue(storage.getBiomeForNoiseGen(coords.x(), coords.y(), coords.z()));
             cir.cancel();
         }
     }
@@ -49,7 +50,6 @@ public class CacheBiomeAccessMixin {
             locals = LocalCapture.CAPTURE_FAILHARD
     )
     private void getBiome(BlockPos pos, CallbackInfoReturnable<RegistryEntry<Biome>> cir, int p, int w, int x) {
-        var key = new int[]{pos.getX(), pos.getY(), pos.getZ()};
-        coordsCache.put(key, new int[]{p, w, x});
+        coordsCache.put(new Point3D(pos.getX(), pos.getY(), pos.getZ()), new Point3D(p, w, x));
     }
 }
