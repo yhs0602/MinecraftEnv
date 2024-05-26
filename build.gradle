@@ -13,16 +13,27 @@ shadowJar {
 tasks.register('configureCppProject', Exec) {
     // CMake로 C++ 프로젝트 구성
     commandLine 'cmake', 'src/main/cpp'
+    inputs.dir("src/main/cpp")
+    outputs.files("CMakeFiles", "MakeFile", "CMakeCache.txt", "cmake_install.cmake")
 }
 
 tasks.register('compileCpp', Exec) {
     // 구성된 C++ 프로젝트 빌드
     commandLine 'cmake', '--build', '.'
+    inputs.dir("src/main/cpp")
+    def os = org.gradle.internal.os.OperatingSystem.current()
+    if (os.isLinux()) {
+        outputs.file("libnative-lib.so")
+    } else if (os.isMacOsX()) {
+        outputs.file("libnative-lib.dylib")
+    } else if (os.isWindows()) {
+        outputs.file("native-lib.dll")
+    }
     // 'configureCppProject' 태스크가 먼저 실행되도록 의존성 설정
     dependsOn 'configureCppProject'
 }
 
-tasks.named('compileJava').configure {
+tasks.named('runClient').configure {
     dependsOn compileCpp
 }
 
@@ -192,5 +203,11 @@ compileKotlin {
 compileTestKotlin {
     kotlinOptions {
         jvmTarget = "1.8"
+    }
+}
+
+tasks.named('clean') {
+    doLast {
+        delete "CMakeFiles", "MakeFile", "CMakeCache.txt", "cmake_install.cmake", "libnative-lib.so", "libnative-lib.dylib", "native-lib.dll"
     }
 }
