@@ -281,6 +281,7 @@ class EnvironmentInitializer(
         val myCommandExecutor = { player: ClientPlayerEntity, c: String ->
             commandExecutor.runCommand(player, c)
         }
+        setUnlimitedTPS(myCommandExecutor)
         setupInitialPosition(myCommandExecutor)
         setupInitialWeather(myCommandExecutor)
         setupAllowMobSpawn(myCommandExecutor)
@@ -300,6 +301,11 @@ class EnvironmentInitializer(
         commandExecutor.runCommand(this.player, "/say Initialization Done")
         initWorldFinished = false
         hasRunInitWorld = true
+    }
+
+    // Set the TPS to virtually unlimited
+    private fun setUnlimitedTPS(commandExecutor: (ClientPlayerEntity, String) -> Unit) {
+        commandExecutor(player, "/tick rate 10000")
     }
 
     private fun setupAllowCheats(
