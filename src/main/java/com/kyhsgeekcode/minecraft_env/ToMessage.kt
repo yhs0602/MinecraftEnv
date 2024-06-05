@@ -14,7 +14,7 @@ import net.minecraft.util.math.BlockPos
 import net.minecraft.world.World
 
 fun Entity.toMessage() = entityInfo {
-    uniqueName = this@toMessage.entityName
+    uniqueName = this@toMessage.uuidAsString
     translationKey = type.translationKey
     x = this@toMessage.x
     y = this@toMessage.y

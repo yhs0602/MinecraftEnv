@@ -21,7 +21,7 @@ public class CacheBiomeAccessMixin {
     // Thread safe LRU cache
     @Unique
     private final Cache<Point3D, Point3D> coordsCache = Caffeine.newBuilder()
-            .maximumSize(8192)  // Max cache size
+            .maximumSize(4096)  // Max cache size
             .build();
 
     @Final

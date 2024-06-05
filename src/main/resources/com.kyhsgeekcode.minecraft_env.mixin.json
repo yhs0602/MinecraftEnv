@@ -6,12 +6,12 @@
   "mixins": [
     "CacheBiomeAccessMixin",
     "DisableRegionalComplianceMixin",
-    "MinecraftServer_tickspeedMixin",
     "RenderMixin",
     "SaveWorldMixin"
   ],
   "client": [
     "ChatVisibleMessageAccessor",
+    "ClientCommonNetworkHandlerClientAccessor",
     "ClientDoAttackInvoker",
     "ClientDoItemUseInvoker",
     "ClientEntityRenderDispatcherAccessor",

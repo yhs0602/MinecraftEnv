@@ -31,7 +31,7 @@ class MinecraftSoundListener(soundManager: SoundManager) : SoundInstanceListener
 
     private val _entries: MutableList<SoundEntry> = mutableListOf()
     val entries = _entries as List<SoundEntry>
-    override fun onSoundPlayed(sound: SoundInstance?, soundSet: WeightedSoundSet?) {
+    override fun onSoundPlayed(sound: SoundInstance?, soundSet: WeightedSoundSet?, range: Float) {
         if (sound == null) return
         if (soundSet == null) return
         val subtitle = soundSet.subtitle ?: return

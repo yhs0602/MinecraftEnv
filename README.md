@@ -4,8 +4,9 @@ Lightweight minecraft RL environment on fabric
 
 # Features
 
-- Works on minecraft 1.19.4
+- Works on minecraft 1.20.6
 - Used fabric mod
+- JDK: 21
 
 # initial environment
 - Inventory commands

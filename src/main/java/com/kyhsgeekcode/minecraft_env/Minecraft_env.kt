@@ -10,8 +10,6 @@ import com.mojang.blaze3d.systems.RenderSystem
 import net.fabricmc.api.ModInitializer
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents
-import net.fabricmc.fabric.api.item.v1.FabricItemSettings
-import net.fabricmc.fabric.api.registry.FuelRegistry
 import net.minecraft.client.MinecraftClient
 import net.minecraft.client.MinecraftClient.IS_SYSTEM_MAC
 import net.minecraft.client.gui.screen.DeathScreen
@@ -20,10 +18,8 @@ import net.minecraft.client.render.BackgroundRenderer
 import net.minecraft.client.util.ScreenshotRecorder
 import net.minecraft.client.world.ClientWorld
 import net.minecraft.entity.EntityType
-import net.minecraft.item.Item
 import net.minecraft.network.packet.c2s.play.ClientStatusC2SPacket
 import net.minecraft.registry.Registries
-import net.minecraft.registry.Registry
 import net.minecraft.server.MinecraftServer
 import net.minecraft.stat.Stats
 import net.minecraft.util.Identifier
@@ -76,8 +72,6 @@ class Minecraft_env : ModInitializer, CommandExecutor {
     private var ioPhase = IOPhase.BEGINNING
 
     override fun onInitialize() {
-        Registry.register(Registries.ITEM, "minecraft_env:custom_item", CUSTOM_ITEM)
-        FuelRegistry.INSTANCE.add(CUSTOM_ITEM, 300)
         val ld_preload = System.getenv("LD_PRELOAD")
         if (ld_preload != null) {
             println("LD_PRELOAD is set: $ld_preload")
@@ -728,9 +722,6 @@ class Minecraft_env : ModInitializer, CommandExecutor {
         csvLogger.log("End send command: $command")
     }
 
-    companion object {
-        val CUSTOM_ITEM = Item(FabricItemSettings().fireproof())
-    }
 }
 
 
