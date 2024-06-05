@@ -164,8 +164,10 @@ class Minecraft_env : ModInitializer, CommandExecutor {
             csvLogger.profileStartPrint("Minecraft_env/onInitialize/StartServerTick/WaitClientAction")
             if (skipSync) {
                 csvLogger.log("Server tick start; skip waiting client world tick ends")
+                printWithTime("Server tick start; skip waiting client world tick ends")
             } else {
                 csvLogger.log("Real Wait client world tick ends")
+                printWithTime("Real Wait client world tick ends")
                 tickSynchronizer.waitForClientAction()
             }
             csvLogger.profileEndPrint("Minecraft_env/onInitialize/StartServerTick/WaitClientAction")
