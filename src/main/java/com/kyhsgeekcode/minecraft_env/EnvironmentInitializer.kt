@@ -109,7 +109,7 @@ class EnvironmentInitializer(
                     }
                     // search for cheat button
                     if (cheatButton == null && child is CyclingButtonWidget<*>) {
-                        if (child.message.string.startsWith("Allow Cheats")) {
+                        if (child.message.string.startsWith("Allow Commands")) {
                             cheatButton = child
                         } else {
                             println("Cheat button is not found, and the text is ${child.message.string}")
