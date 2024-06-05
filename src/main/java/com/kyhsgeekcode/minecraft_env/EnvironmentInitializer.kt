@@ -72,11 +72,11 @@ class EnvironmentInitializer(
                         }
                     }
                 }
-                if (widget != null && deleteButton != null) {
-                    widget.setSelected(widget.children()[0])
-                    deleteButton.onPress()
-                    return
-                }
+//                if (widget != null && deleteButton != null) {
+//                    widget.setSelected(widget.children()[0])
+//                    deleteButton.onPress()
+//                    return
+//                }
                 createButton?.onPress()
             }
 
@@ -111,14 +111,18 @@ class EnvironmentInitializer(
                     if (cheatButton == null && child is CyclingButtonWidget<*>) {
                         if (child.message.string.startsWith("Allow Cheats")) {
                             cheatButton = child
+                        } else {
+                            println("Cheat button is not found, and the text is ${child.message.string}")
                         }
                     }
                 }
                 // Set allow cheats to requested
                 if (cheatButton != null)
                     setupAllowCheats(cheatButton, cheatRequested)
-                else
+                else {
                     println("Cheat button not found")
+                    throw Exception("Cheat button not found")
+                }
                 // Select world settings tab
                 settingTabWidget!!.selectTab(indexOfWorldSettingTab, false)
                 // Search for seed input
