@@ -734,8 +734,7 @@ fun render(client: MinecraftClient) {
     RenderSystem.enableCull()
     val l = Util.getMeasuringTimeNano()
     client.gameRenderer.render(
-        0.0f,// client.renderTickCounter.tickDelta,
-        l,
+        client.renderTickCounter,// client.renderTickCounter.tickDelta,
         true // tick
     )
     client.framebuffer.endWrite()
