@@ -1,19 +1,25 @@
 package com.kyhsgeekcode.minecraft_env.mixin;
 
+import net.minecraft.client.render.RenderTickCounter;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
 
-@Mixin(net.minecraft.client.MinecraftClient.class)
+@Mixin(RenderTickCounter.Dynamic.class)
 public class TickSpeedMixin {
-    @Redirect(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/RenderTickCounter;beginRenderTick(J)I"))
-    private int beginRenderTick(net.minecraft.client.render.RenderTickCounter renderTickCounter, long timeMillis) {
-        renderTickCounter.lastFrameDuration = 1;// (float)(timeMillis - this.prevTimeMillis) / this.tickTime;
+    @Redirect(
+            method = "beginRenderTick(JZ)I",
+            at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/RenderTickCounter$Dynamic;beginRenderTick(J)I")
+    )
+    private int beginRenderTick(RenderTickCounter.Dynamic renderTickCounter, long timeMillis) {
+        ((RenderTickCounterAccessor) renderTickCounter).setLastFrameDuration(1);// (float)(timeMillis - this.prevTimeMillis) / this.tickTime;
         ((RenderTickCounterAccessor) renderTickCounter).setPrevTimeMillis(timeMillis);
-        renderTickCounter.tickDelta += renderTickCounter.lastFrameDuration;
-        int i = (int) renderTickCounter.tickDelta;
-        renderTickCounter.tickDelta -= (float) i;
+        ((RenderTickCounterAccessor) renderTickCounter).setTickDelta(
+                renderTickCounter.getTickDelta(true) + renderTickCounter.getLastFrameDuration()
+        );
+        int i = (int) renderTickCounter.getTickDelta(true);
+        ((RenderTickCounterAccessor) renderTickCounter).setTickDelta((renderTickCounter.getTickDelta(true) - (float) i));
         return i;
     }
 }

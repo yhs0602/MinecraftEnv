@@ -25,7 +25,7 @@ public class RenderMixin {
     private void windowSwapBuffers(Window instance) {
         RenderSystemPollEventsInvoker.pollEvents();
         RenderSystem.replayQueue();
-        Tessellator.getInstance().getBuffer().clear();
+        Tessellator.getInstance().clear();
 //        GLFW.glfwSwapBuffers(window);
         RenderSystemPollEventsInvoker.pollEvents();
     }

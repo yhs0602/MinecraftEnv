@@ -12,7 +12,7 @@ shadowJar {
 
 tasks.register('configureCppProject', Exec) {
     // CMake로 C++ 프로젝트 구성
-    commandLine 'cmake', 'src/main/cpp'
+    commandLine 'cmake', '--version' // , 'src/main/cpp'
     inputs.dir("src/main/cpp")
     outputs.files("MakeFile", "CMakeCache.txt", "cmake_install.cmake")
     outputs.dir("CMakeFiles")
