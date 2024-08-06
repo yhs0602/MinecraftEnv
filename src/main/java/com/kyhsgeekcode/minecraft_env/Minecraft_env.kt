@@ -25,6 +25,7 @@ import net.minecraft.stat.Stats
 import net.minecraft.util.Identifier
 import net.minecraft.util.Util
 import net.minecraft.util.WorldSavePath
+import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.MathHelper
 import net.minecraft.util.math.Vec3d
 import net.minecraft.world.World
@@ -675,6 +676,25 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                 worldTime = world.time // world tick, monotonic increasing
                 lastDeathMessage = deathMessageCollector?.lastDeathMessage?.firstOrNull() ?: ""
                 image2 = image_2
+
+                if (initialEnvironment.requiresSurroundingBlocks){
+                    val blocks = mutableListOf<ObservationSpace.BlockInfo>()
+                    for (i in (player.blockX - 1)..(player.blockX + 1)) {
+                        for (j in player.blockY - 1..player.blockY + 1) {
+                            for (k in player.blockZ - 1..player.blockZ + 1) {
+                                val block = world.getBlockState(BlockPos(i, j, k))
+                                blocks.add(
+                                    blockInfo {
+                                        x = i
+                                        y = j
+                                        z = k
+                                        translationKey = block.block.translationKey
+                                    }
+                                )
+                            }
+                        }
+                    }
+                }
             }
             if (ioPhase == IOPhase.GOT_INITIAL_ENVIRONMENT_SHOULD_SEND_OBSERVATION) {
                 csvLogger.log("Sent observation; $ioPhase")
