@@ -694,6 +694,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                             }
                         }
                     }
+                    surroundingBlocks.addAll(blocks)
                 }
             }
             if (ioPhase == IOPhase.GOT_INITIAL_ENVIRONMENT_SHOULD_SEND_OBSERVATION) {
