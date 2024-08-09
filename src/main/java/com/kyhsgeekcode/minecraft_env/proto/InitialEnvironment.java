@@ -1155,6 +1155,18 @@ public final class InitialEnvironment {
      * @return The requiresSurroundingBlocks.
      */
     boolean getRequiresSurroundingBlocks();
+
+    /**
+     * <code>string level_display_name_to_play = 32;</code>
+     * @return The levelDisplayNameToPlay.
+     */
+    java.lang.String getLevelDisplayNameToPlay();
+    /**
+     * <code>string level_display_name_to_play = 32;</code>
+     * @return The bytes for levelDisplayNameToPlay.
+     */
+    com.google.protobuf.ByteString
+        getLevelDisplayNameToPlayBytes();
   }
   /**
    * Protobuf type {@code InitialEnvironmentMessage}
@@ -1196,6 +1208,7 @@ public final class InitialEnvironment {
       surroundingEntityDistances_ = emptyIntList();
       structurePaths_ =
           com.google.protobuf.LazyStringArrayList.emptyList();
+      levelDisplayNameToPlay_ = "";
     }
 
     public static final com.google.protobuf.Descriptors.Descriptor
@@ -1830,6 +1843,45 @@ public final class InitialEnvironment {
       return requiresSurroundingBlocks_;
     }
 
+    public static final int LEVEL_DISPLAY_NAME_TO_PLAY_FIELD_NUMBER = 32;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object levelDisplayNameToPlay_ = "";
+    /**
+     * <code>string level_display_name_to_play = 32;</code>
+     * @return The levelDisplayNameToPlay.
+     */
+    @java.lang.Override
+    public java.lang.String getLevelDisplayNameToPlay() {
+      java.lang.Object ref = levelDisplayNameToPlay_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        levelDisplayNameToPlay_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string level_display_name_to_play = 32;</code>
+     * @return The bytes for levelDisplayNameToPlay.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getLevelDisplayNameToPlayBytes() {
+      java.lang.Object ref = levelDisplayNameToPlay_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        levelDisplayNameToPlay_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -1945,6 +1997,9 @@ public final class InitialEnvironment {
       }
       if (requiresSurroundingBlocks_ != false) {
         output.writeBool(31, requiresSurroundingBlocks_);
+      }
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(levelDisplayNameToPlay_)) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 32, levelDisplayNameToPlay_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -2126,6 +2181,9 @@ public final class InitialEnvironment {
         size += com.google.protobuf.CodedOutputStream
           .computeBoolSize(31, requiresSurroundingBlocks_);
       }
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(levelDisplayNameToPlay_)) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(32, levelDisplayNameToPlay_);
+      }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
@@ -2204,6 +2262,8 @@ public final class InitialEnvironment {
           != other.getScreenEncodingMode()) return false;
       if (getRequiresSurroundingBlocks()
           != other.getRequiresSurroundingBlocks()) return false;
+      if (!getLevelDisplayNameToPlay()
+          .equals(other.getLevelDisplayNameToPlay())) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -2310,6 +2370,8 @@ public final class InitialEnvironment {
       hash = (37 * hash) + REQUIRESSURROUNDINGBLOCKS_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
           getRequiresSurroundingBlocks());
+      hash = (37 * hash) + LEVEL_DISPLAY_NAME_TO_PLAY_FIELD_NUMBER;
+      hash = (53 * hash) + getLevelDisplayNameToPlay().hashCode();
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -2485,6 +2547,7 @@ public final class InitialEnvironment {
         requestRaycast_ = false;
         screenEncodingMode_ = 0;
         requiresSurroundingBlocks_ = false;
+        levelDisplayNameToPlay_ = "";
         return this;
       }
 
@@ -2629,6 +2692,9 @@ public final class InitialEnvironment {
         }
         if (((from_bitField0_ & 0x40000000) != 0)) {
           result.requiresSurroundingBlocks_ = requiresSurroundingBlocks_;
+        }
+        if (((from_bitField0_ & 0x80000000) != 0)) {
+          result.levelDisplayNameToPlay_ = levelDisplayNameToPlay_;
         }
       }
 
@@ -2826,6 +2892,11 @@ public final class InitialEnvironment {
         }
         if (other.getRequiresSurroundingBlocks() != false) {
           setRequiresSurroundingBlocks(other.getRequiresSurroundingBlocks());
+        }
+        if (!other.getLevelDisplayNameToPlay().isEmpty()) {
+          levelDisplayNameToPlay_ = other.levelDisplayNameToPlay_;
+          bitField0_ |= 0x80000000;
+          onChanged();
         }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
@@ -3045,6 +3116,11 @@ public final class InitialEnvironment {
                 bitField0_ |= 0x40000000;
                 break;
               } // case 248
+              case 258: {
+                levelDisplayNameToPlay_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x80000000;
+                break;
+              } // case 258
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -4959,6 +5035,78 @@ public final class InitialEnvironment {
         return this;
       }
 
+      private java.lang.Object levelDisplayNameToPlay_ = "";
+      /**
+       * <code>string level_display_name_to_play = 32;</code>
+       * @return The levelDisplayNameToPlay.
+       */
+      public java.lang.String getLevelDisplayNameToPlay() {
+        java.lang.Object ref = levelDisplayNameToPlay_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          levelDisplayNameToPlay_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string level_display_name_to_play = 32;</code>
+       * @return The bytes for levelDisplayNameToPlay.
+       */
+      public com.google.protobuf.ByteString
+          getLevelDisplayNameToPlayBytes() {
+        java.lang.Object ref = levelDisplayNameToPlay_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          levelDisplayNameToPlay_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string level_display_name_to_play = 32;</code>
+       * @param value The levelDisplayNameToPlay to set.
+       * @return This builder for chaining.
+       */
+      public Builder setLevelDisplayNameToPlay(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        levelDisplayNameToPlay_ = value;
+        bitField0_ |= 0x80000000;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string level_display_name_to_play = 32;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearLevelDisplayNameToPlay() {
+        levelDisplayNameToPlay_ = getDefaultInstance().getLevelDisplayNameToPlay();
+        bitField0_ = (bitField0_ & ~0x80000000);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string level_display_name_to_play = 32;</code>
+       * @param value The bytes for levelDisplayNameToPlay to set.
+       * @return This builder for chaining.
+       */
+      public Builder setLevelDisplayNameToPlayBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        levelDisplayNameToPlay_ = value;
+        bitField0_ |= 0x80000000;
+        onChanged();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:InitialEnvironmentMessage)
     }
 
@@ -5031,7 +5179,7 @@ public final class InitialEnvironment {
     java.lang.String[] descriptorData = {
       "\n\031initial_environment.proto\"B\n\nBlockStat" +
       "e\022\t\n\001x\030\001 \001(\005\022\t\n\001y\030\002 \001(\005\022\t\n\001z\030\003 \001(\005\022\023\n\013bl" +
-      "ock_state\030\004 \001(\t\"\230\006\n\031InitialEnvironmentMe" +
+      "ock_state\030\004 \001(\t\"\274\006\n\031InitialEnvironmentMe" +
       "ssage\022 \n\030initialInventoryCommands\030\001 \003(\t\022" +
       "\027\n\017initialPosition\030\002 \003(\005\022\033\n\023initialMobsC" +
       "ommands\030\003 \003(\t\022\022\n\nimageSizeX\030\004 \001(\005\022\022\n\nima" +
@@ -5051,8 +5199,9 @@ public final class InitialEnvironment {
       "no_pov_effect\030\033 \001(\010\022\023\n\013noTimeCycle\030\034 \001(\010" +
       "\022\027\n\017request_raycast\030\035 \001(\010\022\034\n\024screen_enco" +
       "ding_mode\030\036 \001(\005\022!\n\031requiresSurroundingBl" +
-      "ocks\030\037 \001(\010B&\n$com.kyhsgeekcode.minecraft" +
-      "_env.protob\006proto3"
+      "ocks\030\037 \001(\010\022\"\n\032level_display_name_to_play" +
+      "\030  \001(\tB&\n$com.kyhsgeekcode.minecraft_env" +
+      ".protob\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -5069,7 +5218,7 @@ public final class InitialEnvironment {
     internal_static_InitialEnvironmentMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_InitialEnvironmentMessage_descriptor,
-        new java.lang.String[] { "InitialInventoryCommands", "InitialPosition", "InitialMobsCommands", "ImageSizeX", "ImageSizeY", "Seed", "AllowMobSpawn", "AlwaysNight", "AlwaysDay", "InitialWeather", "IsWorldFlat", "VisibleSizeX", "VisibleSizeY", "InitialExtraCommands", "KilledStatKeys", "MinedStatKeys", "MiscStatKeys", "InitialBlockStates", "SurroundingEntityDistances", "HudHidden", "RenderDistance", "SimulationDistance", "Biocular", "EyeDistance", "StructurePaths", "NoWeatherCycle", "NoPovEffect", "NoTimeCycle", "RequestRaycast", "ScreenEncodingMode", "RequiresSurroundingBlocks", });
+        new java.lang.String[] { "InitialInventoryCommands", "InitialPosition", "InitialMobsCommands", "ImageSizeX", "ImageSizeY", "Seed", "AllowMobSpawn", "AlwaysNight", "AlwaysDay", "InitialWeather", "IsWorldFlat", "VisibleSizeX", "VisibleSizeY", "InitialExtraCommands", "KilledStatKeys", "MinedStatKeys", "MiscStatKeys", "InitialBlockStates", "SurroundingEntityDistances", "HudHidden", "RenderDistance", "SimulationDistance", "Biocular", "EyeDistance", "StructurePaths", "NoWeatherCycle", "NoPovEffect", "NoTimeCycle", "RequestRaycast", "ScreenEncodingMode", "RequiresSurroundingBlocks", "LevelDisplayNameToPlay", });
     descriptor.resolveAllFeaturesImmutable();
   }
 

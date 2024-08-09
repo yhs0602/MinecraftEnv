@@ -44,6 +44,35 @@ class EnvironmentInitializer(
     fun onClientTick(client: MinecraftClient) {
         csvLogger.profileStartPrint("Minecraft_env/onInitialize/ClientTick/EnvironmentInitializer/onClientTick")
         disableNarrator(client)
+        if (!initialEnvironment.levelDisplayNameToPlay.isNullOrEmpty()) {
+            enterExistingWorldUsingGUI(client, initialEnvironment.levelDisplayNameToPlay)
+        } else {
+            createNewWorldAndEnterUsingGUI(client)
+        }
+        val window = MinecraftClient.getInstance().window
+        val windowSizeGetter = (window as WindowSizeAccessor)
+        if (windowSizeGetter.windowedWidth != initialEnvironment.visibleSizeX || windowSizeGetter.windowedHeight != initialEnvironment.visibleSizeY)
+            window.setWindowedSize(initialEnvironment.visibleSizeX, initialEnvironment.visibleSizeY)
+        if (!hasMinimizedWindow) {
+            GLFW.glfwIconifyWindow(window.handle)
+            hasMinimizedWindow = true
+        }
+        disablePauseOnLostFocus(client)
+        disableOnboardAccessibility(client)
+        setHudHidden(client, initialEnvironment.hudHidden)
+        setRenderDistance(client, initialEnvironment.renderDistance)
+        setSimulationDistance(client, initialEnvironment.simulationDistance)
+        disableVSync(client)
+        disableSound(client)
+        disableTutorial(client)
+        setMaxFPSToUnlimited(client)
+        if (initialEnvironment.noPovEffect) {
+            setFovEffectDisabled(client)
+        }
+        csvLogger.profileEndPrint("Minecraft_env/onInitialize/ClientTick/EnvironmentInitializer/onClientTick")
+    }
+
+    private fun enterExistingWorldUsingGUI(client: MinecraftClient, levelDisplayName: String) {
         when (val screen = client.currentScreen) {
             is TitleScreen -> {
                 screen.children().find {
@@ -56,12 +85,53 @@ class EnvironmentInitializer(
             }
 
             is SelectWorldScreen -> {
-//                println("Select world screen1")
+                // search for the world to open
+                var levelList: WorldListWidget? = null
+                for (child in screen.children()) {
+                    if (child is WorldListWidget) {
+                        levelList = child
+                        break
+                    }
+                }
+                if (levelList != null) {
+                    for (child in levelList.children()) {
+                        if (child is WorldListWidget.LoadingEntry) {
+                            return
+                        }
+                        if (child is WorldListWidget.WorldEntry) {
+                            if (!child.isLevelSelectable) {
+                                continue
+                            }
+                            if (child.levelDisplayName == levelDisplayName) {
+                                child.play()
+                                return
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private fun createNewWorldAndEnterUsingGUI(client: MinecraftClient) {
+        when (val screen = client.currentScreen) {
+            is TitleScreen -> {
+                screen.children().find {
+                    it is ButtonWidget && it.message.string == "Singleplayer"
+                }?.let {
+                    it as ButtonWidget
+                    it.onPress()
+                    return
+                }
+            }
+
+            is SelectWorldScreen -> {
+                //                println("Select world screen1")
                 var widget: WorldListWidget? = null
                 var deleteButton: ButtonWidget? = null
                 var createButton: ButtonWidget? = null
                 for (child in screen.children()) {
-//                    println(child)
+                    //                    println(child)
                     if (child is WorldListWidget) {
                         widget = child
                     } else if (child is ButtonWidget) {
@@ -72,16 +142,16 @@ class EnvironmentInitializer(
                         }
                     }
                 }
-//                if (widget != null && deleteButton != null) {
-//                    widget.setSelected(widget.children()[0])
-//                    deleteButton.onPress()
-//                    return
-//                }
+                //                if (widget != null && deleteButton != null) {
+                //                    widget.setSelected(widget.children()[0])
+                //                    deleteButton.onPress()
+                //                    return
+                //                }
                 createButton?.onPress()
             }
 
             is CreateWorldScreen -> {
-//                println("Create world screen")
+                //                println("Create world screen")
                 var createButton: ButtonWidget? = null
                 val cheatRequested = true
                 var indexOfWorldSettingTab = -1
@@ -128,16 +198,16 @@ class EnvironmentInitializer(
                 // Search for seed input
                 if (initialEnvironment.seed != null) {
                     for (child in screen.children()) {
-//                        println(child)
+                        //                        println(child)
                         if (child is TextFieldWidget) {
-//                            println("Found text field")
+                            //                            println("Found text field")
                             child.text = initialEnvironment.seed.toString()
                         }
                     }
                 }
                 if (initialEnvironment.isWorldFlat) {
                     for (child in screen.children()) {
-//                        println(child)
+                        //                        println(child)
                         if (worldTypeButton == null && child is CyclingButtonWidget<*>) {
                             if (child.message.string.startsWith("World Type")) {
                                 worldTypeButton = child
@@ -153,27 +223,6 @@ class EnvironmentInitializer(
                 createButton?.onPress()
             }
         }
-        val window = MinecraftClient.getInstance().window
-        val windowSizeGetter = (window as WindowSizeAccessor)
-        if (windowSizeGetter.windowedWidth != initialEnvironment.visibleSizeX || windowSizeGetter.windowedHeight != initialEnvironment.visibleSizeY)
-            window.setWindowedSize(initialEnvironment.visibleSizeX, initialEnvironment.visibleSizeY)
-        if (!hasMinimizedWindow) {
-            GLFW.glfwIconifyWindow(window.handle)
-            hasMinimizedWindow = true
-        }
-        disablePauseOnLostFocus(client)
-        disableOnboardAccessibility(client)
-        setHudHidden(client, initialEnvironment.hudHidden)
-        setRenderDistance(client, initialEnvironment.renderDistance)
-        setSimulationDistance(client, initialEnvironment.simulationDistance)
-        disableVSync(client)
-        disableSound(client)
-        disableTutorial(client)
-        setMaxFPSToUnlimited(client)
-        if (initialEnvironment.noPovEffect) {
-            setFovEffectDisabled(client)
-        }
-        csvLogger.profileEndPrint("Minecraft_env/onInitialize/ClientTick/EnvironmentInitializer/onClientTick")
     }
 
     private fun disableSound(client: MinecraftClient) {

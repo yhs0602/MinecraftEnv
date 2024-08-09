@@ -1076,6 +1076,23 @@ public object InitialEnvironmentMessageKt {
     public fun clearRequiresSurroundingBlocks() {
       _builder.clearRequiresSurroundingBlocks()
     }
+
+    /**
+     * `string level_display_name_to_play = 32;`
+     */
+    public var levelDisplayNameToPlay: kotlin.String
+      @JvmName("getLevelDisplayNameToPlay")
+      get() = _builder.getLevelDisplayNameToPlay()
+      @JvmName("setLevelDisplayNameToPlay")
+      set(value) {
+        _builder.setLevelDisplayNameToPlay(value)
+      }
+    /**
+     * `string level_display_name_to_play = 32;`
+     */
+    public fun clearLevelDisplayNameToPlay() {
+      _builder.clearLevelDisplayNameToPlay()
+    }
   }
 }
 @kotlin.jvm.JvmSynthetic

@@ -4,7 +4,7 @@ Lightweight minecraft RL environment on fabric
 
 # Features
 
-- Works on minecraft 1.20.6
+- Works on minecraft 1.21
 - Used fabric mod
 - JDK: 21
 
