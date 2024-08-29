@@ -1,3 +1,5 @@
+@file:OptIn(ExperimentalPathApi::class)
+
 package com.kyhsgeekcode.minecraft_env
 
 import com.google.protobuf.ByteString
@@ -37,6 +39,8 @@ import java.nio.channels.ServerSocketChannel
 import java.nio.channels.SocketChannel
 import java.nio.file.Files
 import java.nio.file.Path
+import kotlin.io.path.ExperimentalPathApi
+import kotlin.io.path.deleteRecursively
 import kotlin.math.cos
 import kotlin.math.sin
 import kotlin.system.exitProcess
@@ -316,9 +320,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
             // remove the world file
             client.server?.getSavePath(WorldSavePath.ROOT)?.let {
                 try {
-                    Files.walk(it)
-                        .sorted(Comparator.reverseOrder())
-                        .forEach(Files::delete)
+                    it.deleteRecursively()
                     printWithTime("Successfully deleted the world $it")
                 } catch (e: IOException) {
                     printWithTime("Failed to delete the world $it")
@@ -677,7 +679,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                 lastDeathMessage = deathMessageCollector?.lastDeathMessage?.firstOrNull() ?: ""
                 image2 = image_2
 
-                if (initialEnvironment.requiresSurroundingBlocks){
+                if (initialEnvironment.requiresSurroundingBlocks) {
                     val blocks = mutableListOf<ObservationSpace.BlockInfo>()
                     for (i in (player.blockX - 1)..(player.blockX + 1)) {
                         for (j in player.blockY - 1..player.blockY + 1) {
