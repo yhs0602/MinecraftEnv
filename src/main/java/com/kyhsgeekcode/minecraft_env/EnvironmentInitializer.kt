@@ -74,6 +74,7 @@ class EnvironmentInitializer(
     }
 
     private fun enterExistingWorldUsingGUI(client: MinecraftClient, levelDisplayName: String) {
+        println("Entering existing world: $levelDisplayName")
         when (val screen = client.currentScreen) {
             is TitleScreen -> {
                 screen.children().find {
@@ -115,10 +116,14 @@ class EnvironmentInitializer(
                     println("Level list not found")
                 }
             }
+            else -> {
+                println("Unknown screen: $screen")
+            }
         }
     }
 
     private fun createNewWorldAndEnterUsingGUI(client: MinecraftClient) {
+        println("Creating new world")
         when (val screen = client.currentScreen) {
             is TitleScreen -> {
                 screen.children().find {
