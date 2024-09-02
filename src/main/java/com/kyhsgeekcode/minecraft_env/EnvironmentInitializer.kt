@@ -6,6 +6,7 @@ import com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmen
 import net.minecraft.client.MinecraftClient
 import net.minecraft.client.gui.Element
 import net.minecraft.client.gui.hud.ChatHud
+import net.minecraft.client.gui.screen.MessageScreen
 import net.minecraft.client.gui.screen.TitleScreen
 import net.minecraft.client.gui.screen.world.CreateWorldScreen
 import net.minecraft.client.gui.screen.world.CustomizeFlatLevelScreen
@@ -116,6 +117,16 @@ class EnvironmentInitializer(
                     println("Level list not found")
                 }
             }
+
+            is MessageScreen -> {
+                for (child in screen.children()) {
+                    println("Message screen child: $child")
+                    if (child is ButtonWidget) {
+                        println("Button widget: ${child.message.string}")
+                    }
+                }
+            }
+
             else -> {
                 println("Unknown screen: $screen")
             }
