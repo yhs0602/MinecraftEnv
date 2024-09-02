@@ -106,9 +106,13 @@ class EnvironmentInitializer(
                             if (child.levelDisplayName == levelDisplayName) {
                                 child.play()
                                 return
+                            } else {
+                                println("Level display name: ${child.levelDisplayName}!= $levelDisplayName")
                             }
                         }
                     }
+                } else {
+                    println("Level list not found")
                 }
             }
         }
