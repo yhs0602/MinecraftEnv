@@ -12,6 +12,7 @@ import com.mojang.blaze3d.systems.RenderSystem
 import net.fabricmc.api.ModInitializer
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents
+import net.minecraft.block.BlockState
 import net.minecraft.client.MinecraftClient
 import net.minecraft.client.MinecraftClient.IS_SYSTEM_MAC
 import net.minecraft.client.gui.screen.DeathScreen
@@ -27,9 +28,12 @@ import net.minecraft.stat.Stats
 import net.minecraft.util.Identifier
 import net.minecraft.util.Util
 import net.minecraft.util.WorldSavePath
+import net.minecraft.util.function.BooleanBiFunction
 import net.minecraft.util.math.BlockPos
+import net.minecraft.util.math.Box
 import net.minecraft.util.math.MathHelper
 import net.minecraft.util.math.Vec3d
+import net.minecraft.util.shape.VoxelShapes
 import net.minecraft.world.World
 import java.io.IOException
 import java.net.SocketTimeoutException
@@ -698,6 +702,8 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                     }
                     surroundingBlocks.addAll(blocks)
                 }
+                suffocating = player.isInsideWall
+                eyeInBlock = player.checkIfCameraBlocked()
             }
             if (ioPhase == IOPhase.GOT_INITIAL_ENVIRONMENT_SHOULD_SEND_OBSERVATION) {
                 csvLogger.log("Sent observation; $ioPhase")
@@ -747,6 +753,21 @@ class Minecraft_env : ModInitializer, CommandExecutor {
         csvLogger.log("End send command: $command")
     }
 
+}
+
+fun ClientPlayerEntity.checkIfCameraBlocked(): Boolean {
+    val f: Float = EntityType.PLAYER.dimensions.width() * 0.8f
+    val box = Box.of(this.eyePos, f.toDouble(), 1.0E-6, f.toDouble())
+    return BlockPos.stream(box).anyMatch { pos: BlockPos ->
+        val blockState: BlockState = this.world.getBlockState(pos)
+        !blockState.isAir && VoxelShapes.matchesAnywhere(
+            blockState.getCollisionShape(
+                this.world, pos
+            ).offset(pos.x.toDouble(), pos.y.toDouble(), pos.z.toDouble()),
+            VoxelShapes.cuboid(box),
+            BooleanBiFunction.AND
+        )
+    }
 }
 
 

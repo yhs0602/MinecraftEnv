@@ -940,6 +940,40 @@ public object ObservationSpaceMessageKt {
       _builder.clearSurroundingBlocks()
     }
 
+
+    /**
+     * `bool eye_in_block = 26;`
+     */
+    public var eyeInBlock: kotlin.Boolean
+      @JvmName("getEyeInBlock")
+      get() = _builder.getEyeInBlock()
+      @JvmName("setEyeInBlock")
+      set(value) {
+        _builder.setEyeInBlock(value)
+      }
+    /**
+     * `bool eye_in_block = 26;`
+     */
+    public fun clearEyeInBlock() {
+      _builder.clearEyeInBlock()
+    }
+
+    /**
+     * `bool suffocating = 27;`
+     */
+    public var suffocating: kotlin.Boolean
+      @JvmName("getSuffocating")
+      get() = _builder.getSuffocating()
+      @JvmName("setSuffocating")
+      set(value) {
+        _builder.setSuffocating(value)
+      }
+    /**
+     * `bool suffocating = 27;`
+     */
+    public fun clearSuffocating() {
+      _builder.clearSuffocating()
+    }
   }
 }
 @kotlin.jvm.JvmSynthetic

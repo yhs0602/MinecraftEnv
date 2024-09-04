@@ -6235,6 +6235,18 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
      */
     com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BlockInfoOrBuilder getSurroundingBlocksOrBuilder(
         int index);
+
+    /**
+     * <code>bool eye_in_block = 26;</code>
+     * @return The eyeInBlock.
+     */
+    boolean getEyeInBlock();
+
+    /**
+     * <code>bool suffocating = 27;</code>
+     * @return The suffocating.
+     */
+    boolean getSuffocating();
   }
   /**
    * Protobuf type {@code ObservationSpaceMessage}
@@ -7054,6 +7066,28 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
       return surroundingBlocks_.get(index);
     }
 
+    public static final int EYE_IN_BLOCK_FIELD_NUMBER = 26;
+    private boolean eyeInBlock_ = false;
+    /**
+     * <code>bool eye_in_block = 26;</code>
+     * @return The eyeInBlock.
+     */
+    @java.lang.Override
+    public boolean getEyeInBlock() {
+      return eyeInBlock_;
+    }
+
+    public static final int SUFFOCATING_FIELD_NUMBER = 27;
+    private boolean suffocating_ = false;
+    /**
+     * <code>bool suffocating = 27;</code>
+     * @return The suffocating.
+     */
+    @java.lang.Override
+    public boolean getSuffocating() {
+      return suffocating_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -7154,6 +7188,12 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
       }
       for (int i = 0; i < surroundingBlocks_.size(); i++) {
         output.writeMessage(25, surroundingBlocks_.get(i));
+      }
+      if (eyeInBlock_ != false) {
+        output.writeBool(26, eyeInBlock_);
+      }
+      if (suffocating_ != false) {
+        output.writeBool(27, suffocating_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -7287,6 +7327,14 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(25, surroundingBlocks_.get(i));
       }
+      if (eyeInBlock_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(26, eyeInBlock_);
+      }
+      if (suffocating_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(27, suffocating_);
+      }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
@@ -7363,6 +7411,10 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
           .equals(other.getImage2())) return false;
       if (!getSurroundingBlocksList()
           .equals(other.getSurroundingBlocksList())) return false;
+      if (getEyeInBlock()
+          != other.getEyeInBlock()) return false;
+      if (getSuffocating()
+          != other.getSuffocating()) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -7455,6 +7507,12 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
         hash = (37 * hash) + SURROUNDING_BLOCKS_FIELD_NUMBER;
         hash = (53 * hash) + getSurroundingBlocksList().hashCode();
       }
+      hash = (37 * hash) + EYE_IN_BLOCK_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getEyeInBlock());
+      hash = (37 * hash) + SUFFOCATING_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getSuffocating());
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -7690,6 +7748,8 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
           surroundingBlocksBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x01000000);
+        eyeInBlock_ = false;
+        suffocating_ = false;
         return this;
       }
 
@@ -7838,6 +7898,12 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
         }
         if (((from_bitField0_ & 0x00800000) != 0)) {
           result.image2_ = image2_;
+        }
+        if (((from_bitField0_ & 0x02000000) != 0)) {
+          result.eyeInBlock_ = eyeInBlock_;
+        }
+        if (((from_bitField0_ & 0x04000000) != 0)) {
+          result.suffocating_ = suffocating_;
         }
         result.bitField0_ |= to_bitField0_;
       }
@@ -8045,6 +8111,12 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
               surroundingBlocksBuilder_.addAllMessages(other.surroundingBlocks_);
             }
           }
+        }
+        if (other.getEyeInBlock() != false) {
+          setEyeInBlock(other.getEyeInBlock());
+        }
+        if (other.getSuffocating() != false) {
+          setSuffocating(other.getSuffocating());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
@@ -8255,6 +8327,16 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
                 }
                 break;
               } // case 202
+              case 208: {
+                eyeInBlock_ = input.readBool();
+                bitField0_ |= 0x02000000;
+                break;
+              } // case 208
+              case 216: {
+                suffocating_ = input.readBool();
+                bitField0_ |= 0x04000000;
+                break;
+              } // case 216
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -10715,6 +10797,70 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
         return surroundingBlocksBuilder_;
       }
 
+      private boolean eyeInBlock_ ;
+      /**
+       * <code>bool eye_in_block = 26;</code>
+       * @return The eyeInBlock.
+       */
+      @java.lang.Override
+      public boolean getEyeInBlock() {
+        return eyeInBlock_;
+      }
+      /**
+       * <code>bool eye_in_block = 26;</code>
+       * @param value The eyeInBlock to set.
+       * @return This builder for chaining.
+       */
+      public Builder setEyeInBlock(boolean value) {
+
+        eyeInBlock_ = value;
+        bitField0_ |= 0x02000000;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>bool eye_in_block = 26;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearEyeInBlock() {
+        bitField0_ = (bitField0_ & ~0x02000000);
+        eyeInBlock_ = false;
+        onChanged();
+        return this;
+      }
+
+      private boolean suffocating_ ;
+      /**
+       * <code>bool suffocating = 27;</code>
+       * @return The suffocating.
+       */
+      @java.lang.Override
+      public boolean getSuffocating() {
+        return suffocating_;
+      }
+      /**
+       * <code>bool suffocating = 27;</code>
+       * @param value The suffocating to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSuffocating(boolean value) {
+
+        suffocating_ = value;
+        bitField0_ |= 0x04000000;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>bool suffocating = 27;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearSuffocating() {
+        bitField0_ = (bitField0_ & ~0x04000000);
+        suffocating_ = false;
+        onChanged();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:ObservationSpaceMessage)
     }
 
@@ -10853,7 +10999,7 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
       "ranslate_key\030\001 \001(\t\022\013\n\003age\030\002 \001(\003\022\t\n\001x\030\003 \001" +
       "(\001\022\t\n\001y\030\004 \001(\001\022\t\n\001z\030\005 \001(\001\"7\n\026EntitiesWith" +
       "inDistance\022\035\n\010entities\030\001 \003(\0132\013.EntityInf" +
-      "o\"\250\010\n\027ObservationSpaceMessage\022\r\n\005image\030\001" +
+      "o\"\323\010\n\027ObservationSpaceMessage\022\r\n\005image\030\001" +
       " \001(\014\022\t\n\001x\030\002 \001(\001\022\t\n\001y\030\003 \001(\001\022\t\n\001z\030\004 \001(\001\022\013\n" +
       "\003yaw\030\005 \001(\001\022\r\n\005pitch\030\006 \001(\001\022\016\n\006health\030\007 \001(" +
       "\001\022\022\n\nfood_level\030\010 \001(\001\022\030\n\020saturation_leve" +
@@ -10873,14 +11019,15 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
       "rown\030\024 \001(\010\022\022\n\nexperience\030\025 \001(\005\022\022\n\nworld_" +
       "time\030\026 \001(\003\022\032\n\022last_death_message\030\027 \001(\t\022\017" +
       "\n\007image_2\030\030 \001(\014\022&\n\022surrounding_blocks\030\031 " +
-      "\003(\0132\n.BlockInfo\0327\n\025KilledStatisticsEntry" +
-      "\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\005:\0028\001\0326\n\024Mine" +
-      "dStatisticsEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002" +
-      " \001(\005:\0028\001\0325\n\023MiscStatisticsEntry\022\013\n\003key\030\001" +
-      " \001(\t\022\r\n\005value\030\002 \001(\005:\0028\001\032S\n\030SurroundingEn" +
-      "titiesEntry\022\013\n\003key\030\001 \001(\005\022&\n\005value\030\002 \001(\0132" +
-      "\027.EntitiesWithinDistance:\0028\001B&\n$com.kyhs" +
-      "geekcode.minecraft_env.protob\006proto3"
+      "\003(\0132\n.BlockInfo\022\024\n\014eye_in_block\030\032 \001(\010\022\023\n" +
+      "\013suffocating\030\033 \001(\010\0327\n\025KilledStatisticsEn" +
+      "try\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\005:\0028\001\0326\n\024M" +
+      "inedStatisticsEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005valu" +
+      "e\030\002 \001(\005:\0028\001\0325\n\023MiscStatisticsEntry\022\013\n\003ke" +
+      "y\030\001 \001(\t\022\r\n\005value\030\002 \001(\005:\0028\001\032S\n\030Surroundin" +
+      "gEntitiesEntry\022\013\n\003key\030\001 \001(\005\022&\n\005value\030\002 \001" +
+      "(\0132\027.EntitiesWithinDistance:\0028\001B&\n$com.k" +
+      "yhsgeekcode.minecraft_env.protob\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -10933,7 +11080,7 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
     internal_static_ObservationSpaceMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_ObservationSpaceMessage_descriptor,
-        new java.lang.String[] { "Image", "X", "Y", "Z", "Yaw", "Pitch", "Health", "FoodLevel", "SaturationLevel", "IsDead", "Inventory", "RaycastResult", "SoundSubtitles", "StatusEffects", "KilledStatistics", "MinedStatistics", "MiscStatistics", "VisibleEntities", "SurroundingEntities", "BobberThrown", "Experience", "WorldTime", "LastDeathMessage", "Image2", "SurroundingBlocks", });
+        new java.lang.String[] { "Image", "X", "Y", "Z", "Yaw", "Pitch", "Health", "FoodLevel", "SaturationLevel", "IsDead", "Inventory", "RaycastResult", "SoundSubtitles", "StatusEffects", "KilledStatistics", "MinedStatistics", "MiscStatistics", "VisibleEntities", "SurroundingEntities", "BobberThrown", "Experience", "WorldTime", "LastDeathMessage", "Image2", "SurroundingBlocks", "EyeInBlock", "Suffocating", });
     internal_static_ObservationSpaceMessage_KilledStatisticsEntry_descriptor =
       internal_static_ObservationSpaceMessage_descriptor.getNestedTypes().get(0);
     internal_static_ObservationSpaceMessage_KilledStatisticsEntry_fieldAccessorTable = new

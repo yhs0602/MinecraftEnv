@@ -121,10 +121,14 @@ class EnvironmentInitializer(
             is MessageScreen -> {
                 for (child in screen.children()) {
                     println("Message screen child: $child")
-                    if (child is ButtonWidget) {
+                    if (child is NarratedMultilineTextWidget) {
                         println("Button widget: ${child.message.string}")
                     }
                 }
+            }
+
+            is CreateWorldScreen -> {
+
             }
 
             else -> {
