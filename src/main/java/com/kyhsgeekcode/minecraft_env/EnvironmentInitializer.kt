@@ -2,6 +2,7 @@ package com.kyhsgeekcode.minecraft_env
 
 import com.kyhsgeekcode.minecraft_env.mixin.ChatVisibleMessageAccessor
 import com.kyhsgeekcode.minecraft_env.mixin.WindowSizeAccessor
+import com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment
 import com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage
 import net.minecraft.client.MinecraftClient
 import net.minecraft.client.gui.Element
@@ -53,8 +54,8 @@ class EnvironmentInitializer(
         }
         val window = MinecraftClient.getInstance().window
         val windowSizeGetter = (window as WindowSizeAccessor)
-        if (windowSizeGetter.windowedWidth != initialEnvironment.visibleSizeX || windowSizeGetter.windowedHeight != initialEnvironment.visibleSizeY)
-            window.setWindowedSize(initialEnvironment.visibleSizeX, initialEnvironment.visibleSizeY)
+        if (windowSizeGetter.windowedWidth != initialEnvironment.imageSizeX || windowSizeGetter.windowedHeight != initialEnvironment.imageSizeX)
+            window.setWindowedSize(initialEnvironment.imageSizeX, initialEnvironment.imageSizeX)
         if (!hasMinimizedWindow) {
             GLFW.glfwIconifyWindow(window.handle)
             hasMinimizedWindow = true
@@ -68,7 +69,7 @@ class EnvironmentInitializer(
         disableSound(client)
         disableTutorial(client)
         setMaxFPSToUnlimited(client)
-        if (initialEnvironment.noPovEffect) {
+        if (initialEnvironment.noFovEffect) {
             setFovEffectDisabled(client)
         }
         csvLogger.profileEndPrint("Minecraft_env/onInitialize/ClientTick/EnvironmentInitializer/onClientTick")
@@ -216,7 +217,7 @@ class EnvironmentInitializer(
                 // Select world settings tab
                 settingTabWidget!!.selectTab(indexOfWorldSettingTab, false)
                 // Search for seed input
-                if (initialEnvironment.seed != null) {
+                if (initialEnvironment.seed.isNotEmpty()) {
                     for (child in screen.children()) {
                         //                        println(child)
                         if (child is TextFieldWidget) {
@@ -225,7 +226,7 @@ class EnvironmentInitializer(
                         }
                     }
                 }
-                if (initialEnvironment.isWorldFlat) {
+                if (initialEnvironment.worldType == InitialEnvironment.WorldType.SUPERFLAT) {
                     for (child in screen.children()) {
                         //                        println(child)
                         if (worldTypeButton == null && child is CyclingButtonWidget<*>) {
@@ -333,7 +334,7 @@ class EnvironmentInitializer(
                         }
                     }
                 }
-                if (initialEnvironment.isWorldFlat) {
+                if (initialEnvironment.worldType == InitialEnvironment.WorldType.SUPERFLAT) {
                     for (child in screen.children()) {
                         //                        println(child)
                         if (worldTypeButton == null && child is CyclingButtonWidget<*>
@@ -473,18 +474,6 @@ class EnvironmentInitializer(
             commandExecutor.runCommand(player, c)
         }
         setUnlimitedTPS(myCommandExecutor)
-        setupInitialPosition(myCommandExecutor)
-        setupInitialWeather(myCommandExecutor)
-        setupAllowMobSpawn(myCommandExecutor)
-        setupInitialInventory(myCommandExecutor)
-        summonInitialMobs(myCommandExecutor)
-        if (initialEnvironment.alwaysDay)
-            setupAlwaysDay(myCommandExecutor)
-        if (initialEnvironment.alwaysNight)
-            setupAlwaysNight(myCommandExecutor)
-        if (initialEnvironment.noWeatherCycle)
-            setupNoWeatherCycle(myCommandExecutor)
-        setupDaylightCycle(myCommandExecutor, !initialEnvironment.noTimeCycle)
         for (command in initialEnvironment.initialExtraCommandsList)
             commandExecutor.runCommand(this.player, "/$command")
         for (command in variableCommandsAfterReset)
@@ -519,61 +508,6 @@ class EnvironmentInitializer(
         }
     }
 
-    private fun summonInitialMobs(commandExecutor: (ClientPlayerEntity, String) -> Unit) {
-        for (command in initialEnvironment.initialMobsCommandsList) {
-            commandExecutor(player, "/summon $command")
-        }
-    }
-
-    private fun setupInitialInventory(
-        commandExecutor: (ClientPlayerEntity, String) -> Unit
-    ) {
-        for (command in initialEnvironment.initialInventoryCommandsList) {
-            commandExecutor(player, "/give @p $command")
-        }
-    }
-
-    private fun setupInitialPosition(
-        commandExecutor: (ClientPlayerEntity, String) -> Unit
-    ) {
-        if (initialEnvironment.initialPositionList.isEmpty())
-            return
-        commandExecutor(
-            player,
-            "/tp @p ${initialEnvironment.initialPositionList[0]} ${initialEnvironment.initialPositionList[1]} ${initialEnvironment.initialPositionList[2]}"
-        )
-    }
-
-    private fun setupInitialWeather(commandExecutor: (ClientPlayerEntity, String) -> Unit) {
-        commandExecutor(
-            player,
-            "/weather ${initialEnvironment.initialWeather}"
-        )
-    }
-
-    private fun setupAllowMobSpawn(commandExecutor: (ClientPlayerEntity, String) -> Unit) {
-        if (initialEnvironment.allowMobSpawn)
-            return
-        commandExecutor(
-            player,
-            "/gamerule doMobSpawning false"
-        )
-    }
-
-    private fun setupDaylightCycle(commandExecutor: (ClientPlayerEntity, String) -> Unit, enable: Boolean) {
-        commandExecutor(player, "/gamerule doDaylightCycle $enable")
-    }
-
-    private fun setupAlwaysDay(commandExecutor: (ClientPlayerEntity, String) -> Unit) {
-        commandExecutor(
-            player,
-            "/gamerule doDaylightCycle false"
-        )
-        commandExecutor(
-            player,
-            "/time set day"
-        )
-    }
 
     private fun setupNoWeatherCycle(commandExecutor: (ClientPlayerEntity, String) -> Unit) {
         commandExecutor(
@@ -582,16 +516,6 @@ class EnvironmentInitializer(
         )
     }
 
-    private fun setupAlwaysNight(commandExecutor: (ClientPlayerEntity, String) -> Unit) {
-        commandExecutor(
-            player,
-            "/gamerule doDaylightCycle false"
-        )
-        commandExecutor(
-            player,
-            "/time set midnight"
-        )
-    }
 
     private fun disablePauseOnLostFocus(client: MinecraftClient) {
         val options = client.options

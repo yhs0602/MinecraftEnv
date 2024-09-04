@@ -25,56 +25,26 @@ public final class InitialEnvironment {
     registerAllExtensions(
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
-  public interface BlockStateOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:BlockState)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>int32 x = 1;</code>
-     * @return The x.
-     */
-    int getX();
-
-    /**
-     * <code>int32 y = 2;</code>
-     * @return The y.
-     */
-    int getY();
-
-    /**
-     * <code>int32 z = 3;</code>
-     * @return The z.
-     */
-    int getZ();
-
-    /**
-     * <pre>
-     * minecraft:andesite_stairs[facing=east,half=bottom,shape=straight,waterlogged=false]
-     * </pre>
-     *
-     * <code>string block_state = 4;</code>
-     * @return The blockState.
-     */
-    java.lang.String getBlockState();
-    /**
-     * <pre>
-     * minecraft:andesite_stairs[facing=east,half=bottom,shape=straight,waterlogged=false]
-     * </pre>
-     *
-     * <code>string block_state = 4;</code>
-     * @return The bytes for blockState.
-     */
-    com.google.protobuf.ByteString
-        getBlockStateBytes();
-  }
   /**
-   * Protobuf type {@code BlockState}
+   * Protobuf enum {@code GameMode}
    */
-  public static final class BlockState extends
-      com.google.protobuf.GeneratedMessage implements
-      // @@protoc_insertion_point(message_implements:BlockState)
-      BlockStateOrBuilder {
-  private static final long serialVersionUID = 0L;
+  public enum GameMode
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>SURVIVAL = 0;</code>
+     */
+    SURVIVAL(0),
+    /**
+     * <code>HARDCORE = 1;</code>
+     */
+    HARDCORE(1),
+    /**
+     * <code>CREATIVE = 2;</code>
+     */
+    CREATIVE(2),
+    UNRECOGNIZED(-1),
+    ;
+
     static {
       com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
         com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
@@ -82,709 +52,382 @@ public final class InitialEnvironment {
         /* minor= */ 27,
         /* patch= */ 3,
         /* suffix= */ "",
-        BlockState.class.getName());
+        GameMode.class.getName());
     }
-    // Use BlockState.newBuilder() to construct.
-    private BlockState(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
-      super(builder);
-    }
-    private BlockState() {
-      blockState_ = "";
+    /**
+     * <code>SURVIVAL = 0;</code>
+     */
+    public static final int SURVIVAL_VALUE = 0;
+    /**
+     * <code>HARDCORE = 1;</code>
+     */
+    public static final int HARDCORE_VALUE = 1;
+    /**
+     * <code>CREATIVE = 2;</code>
+     */
+    public static final int CREATIVE_VALUE = 2;
+
+
+    public final int getNumber() {
+      if (this == UNRECOGNIZED) {
+        throw new java.lang.IllegalArgumentException(
+            "Can't get the number of an unknown enum value.");
+      }
+      return value;
     }
 
-    public static final com.google.protobuf.Descriptors.Descriptor
+    /**
+     * @param value The numeric wire value of the corresponding enum entry.
+     * @return The enum associated with the given numeric wire value.
+     * @deprecated Use {@link #forNumber(int)} instead.
+     */
+    @java.lang.Deprecated
+    public static GameMode valueOf(int value) {
+      return forNumber(value);
+    }
+
+    /**
+     * @param value The numeric wire value of the corresponding enum entry.
+     * @return The enum associated with the given numeric wire value.
+     */
+    public static GameMode forNumber(int value) {
+      switch (value) {
+        case 0: return SURVIVAL;
+        case 1: return HARDCORE;
+        case 2: return CREATIVE;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<GameMode>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static final com.google.protobuf.Internal.EnumLiteMap<
+        GameMode> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<GameMode>() {
+            public GameMode findValueByNumber(int number) {
+              return GameMode.forNumber(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      if (this == UNRECOGNIZED) {
+        throw new java.lang.IllegalStateException(
+            "Can't get the descriptor of an unrecognized enum value.");
+      }
+      return getDescriptor().getValues().get(ordinal());
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.internal_static_BlockState_descriptor;
+      return com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.getDescriptor().getEnumTypes().get(0);
     }
 
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.internal_static_BlockState_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.BlockState.class, com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.BlockState.Builder.class);
+    private static final GameMode[] VALUES = values();
+
+    public static GameMode valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      if (desc.getIndex() == -1) {
+        return UNRECOGNIZED;
+      }
+      return VALUES[desc.getIndex()];
     }
 
-    public static final int X_FIELD_NUMBER = 1;
-    private int x_ = 0;
+    private final int value;
+
+    private GameMode(int value) {
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:GameMode)
+  }
+
+  /**
+   * Protobuf enum {@code Difficulty}
+   */
+  public enum Difficulty
+      implements com.google.protobuf.ProtocolMessageEnum {
     /**
-     * <code>int32 x = 1;</code>
-     * @return The x.
+     * <code>PEACEFUL = 0;</code>
      */
-    @java.lang.Override
-    public int getX() {
-      return x_;
-    }
-
-    public static final int Y_FIELD_NUMBER = 2;
-    private int y_ = 0;
+    PEACEFUL(0),
     /**
-     * <code>int32 y = 2;</code>
-     * @return The y.
+     * <code>EASY = 1;</code>
      */
-    @java.lang.Override
-    public int getY() {
-      return y_;
-    }
-
-    public static final int Z_FIELD_NUMBER = 3;
-    private int z_ = 0;
+    EASY(1),
     /**
-     * <code>int32 z = 3;</code>
-     * @return The z.
+     * <code>NORMAL = 2;</code>
      */
-    @java.lang.Override
-    public int getZ() {
-      return z_;
-    }
-
-    public static final int BLOCK_STATE_FIELD_NUMBER = 4;
-    @SuppressWarnings("serial")
-    private volatile java.lang.Object blockState_ = "";
+    NORMAL(2),
     /**
-     * <pre>
-     * minecraft:andesite_stairs[facing=east,half=bottom,shape=straight,waterlogged=false]
-     * </pre>
-     *
-     * <code>string block_state = 4;</code>
-     * @return The blockState.
+     * <code>HARD = 3;</code>
      */
-    @java.lang.Override
-    public java.lang.String getBlockState() {
-      java.lang.Object ref = blockState_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        blockState_ = s;
-        return s;
-      }
-    }
-    /**
-     * <pre>
-     * minecraft:andesite_stairs[facing=east,half=bottom,shape=straight,waterlogged=false]
-     * </pre>
-     *
-     * <code>string block_state = 4;</code>
-     * @return The bytes for blockState.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString
-        getBlockStateBytes() {
-      java.lang.Object ref = blockState_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        blockState_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
+    HARD(3),
+    UNRECOGNIZED(-1),
+    ;
 
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (x_ != 0) {
-        output.writeInt32(1, x_);
-      }
-      if (y_ != 0) {
-        output.writeInt32(2, y_);
-      }
-      if (z_ != 0) {
-        output.writeInt32(3, z_);
-      }
-      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(blockState_)) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 4, blockState_);
-      }
-      getUnknownFields().writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (x_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, x_);
-      }
-      if (y_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, y_);
-      }
-      if (z_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(3, z_);
-      }
-      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(blockState_)) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(4, blockState_);
-      }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.BlockState)) {
-        return super.equals(obj);
-      }
-      com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.BlockState other = (com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.BlockState) obj;
-
-      if (getX()
-          != other.getX()) return false;
-      if (getY()
-          != other.getY()) return false;
-      if (getZ()
-          != other.getZ()) return false;
-      if (!getBlockState()
-          .equals(other.getBlockState())) return false;
-      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
-      return true;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + X_FIELD_NUMBER;
-      hash = (53 * hash) + getX();
-      hash = (37 * hash) + Y_FIELD_NUMBER;
-      hash = (53 * hash) + getY();
-      hash = (37 * hash) + Z_FIELD_NUMBER;
-      hash = (53 * hash) + getZ();
-      hash = (37 * hash) + BLOCK_STATE_FIELD_NUMBER;
-      hash = (53 * hash) + getBlockState().hashCode();
-      hash = (29 * hash) + getUnknownFields().hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.BlockState parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.BlockState parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.BlockState parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.BlockState parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.BlockState parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.BlockState parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.BlockState parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
-          .parseWithIOException(PARSER, input);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.BlockState parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    public static com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.BlockState parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-
-    public static com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.BlockState parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.BlockState parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
-          .parseWithIOException(PARSER, input);
-    }
-    public static com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.BlockState parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.BlockState prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code BlockState}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:BlockState)
-        com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.BlockStateOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.internal_static_BlockState_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.internal_static_BlockState_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.BlockState.class, com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.BlockState.Builder.class);
-      }
-
-      // Construct using com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.BlockState.newBuilder()
-      private Builder() {
-
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-        super(parent);
-
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        bitField0_ = 0;
-        x_ = 0;
-        y_ = 0;
-        z_ = 0;
-        blockState_ = "";
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.internal_static_BlockState_descriptor;
-      }
-
-      @java.lang.Override
-      public com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.BlockState getDefaultInstanceForType() {
-        return com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.BlockState.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.BlockState build() {
-        com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.BlockState result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.BlockState buildPartial() {
-        com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.BlockState result = new com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.BlockState(this);
-        if (bitField0_ != 0) { buildPartial0(result); }
-        onBuilt();
-        return result;
-      }
-
-      private void buildPartial0(com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.BlockState result) {
-        int from_bitField0_ = bitField0_;
-        if (((from_bitField0_ & 0x00000001) != 0)) {
-          result.x_ = x_;
-        }
-        if (((from_bitField0_ & 0x00000002) != 0)) {
-          result.y_ = y_;
-        }
-        if (((from_bitField0_ & 0x00000004) != 0)) {
-          result.z_ = z_;
-        }
-        if (((from_bitField0_ & 0x00000008) != 0)) {
-          result.blockState_ = blockState_;
-        }
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.BlockState) {
-          return mergeFrom((com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.BlockState)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.BlockState other) {
-        if (other == com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.BlockState.getDefaultInstance()) return this;
-        if (other.getX() != 0) {
-          setX(other.getX());
-        }
-        if (other.getY() != 0) {
-          setY(other.getY());
-        }
-        if (other.getZ() != 0) {
-          setZ(other.getZ());
-        }
-        if (!other.getBlockState().isEmpty()) {
-          blockState_ = other.blockState_;
-          bitField0_ |= 0x00000008;
-          onChanged();
-        }
-        this.mergeUnknownFields(other.getUnknownFields());
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        if (extensionRegistry == null) {
-          throw new java.lang.NullPointerException();
-        }
-        try {
-          boolean done = false;
-          while (!done) {
-            int tag = input.readTag();
-            switch (tag) {
-              case 0:
-                done = true;
-                break;
-              case 8: {
-                x_ = input.readInt32();
-                bitField0_ |= 0x00000001;
-                break;
-              } // case 8
-              case 16: {
-                y_ = input.readInt32();
-                bitField0_ |= 0x00000002;
-                break;
-              } // case 16
-              case 24: {
-                z_ = input.readInt32();
-                bitField0_ |= 0x00000004;
-                break;
-              } // case 24
-              case 34: {
-                blockState_ = input.readStringRequireUtf8();
-                bitField0_ |= 0x00000008;
-                break;
-              } // case 34
-              default: {
-                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                  done = true; // was an endgroup tag
-                }
-                break;
-              } // default:
-            } // switch (tag)
-          } // while (!done)
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          throw e.unwrapIOException();
-        } finally {
-          onChanged();
-        } // finally
-        return this;
-      }
-      private int bitField0_;
-
-      private int x_ ;
-      /**
-       * <code>int32 x = 1;</code>
-       * @return The x.
-       */
-      @java.lang.Override
-      public int getX() {
-        return x_;
-      }
-      /**
-       * <code>int32 x = 1;</code>
-       * @param value The x to set.
-       * @return This builder for chaining.
-       */
-      public Builder setX(int value) {
-
-        x_ = value;
-        bitField0_ |= 0x00000001;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>int32 x = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearX() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        x_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private int y_ ;
-      /**
-       * <code>int32 y = 2;</code>
-       * @return The y.
-       */
-      @java.lang.Override
-      public int getY() {
-        return y_;
-      }
-      /**
-       * <code>int32 y = 2;</code>
-       * @param value The y to set.
-       * @return This builder for chaining.
-       */
-      public Builder setY(int value) {
-
-        y_ = value;
-        bitField0_ |= 0x00000002;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>int32 y = 2;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearY() {
-        bitField0_ = (bitField0_ & ~0x00000002);
-        y_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private int z_ ;
-      /**
-       * <code>int32 z = 3;</code>
-       * @return The z.
-       */
-      @java.lang.Override
-      public int getZ() {
-        return z_;
-      }
-      /**
-       * <code>int32 z = 3;</code>
-       * @param value The z to set.
-       * @return This builder for chaining.
-       */
-      public Builder setZ(int value) {
-
-        z_ = value;
-        bitField0_ |= 0x00000004;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>int32 z = 3;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearZ() {
-        bitField0_ = (bitField0_ & ~0x00000004);
-        z_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private java.lang.Object blockState_ = "";
-      /**
-       * <pre>
-       * minecraft:andesite_stairs[facing=east,half=bottom,shape=straight,waterlogged=false]
-       * </pre>
-       *
-       * <code>string block_state = 4;</code>
-       * @return The blockState.
-       */
-      public java.lang.String getBlockState() {
-        java.lang.Object ref = blockState_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          blockState_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <pre>
-       * minecraft:andesite_stairs[facing=east,half=bottom,shape=straight,waterlogged=false]
-       * </pre>
-       *
-       * <code>string block_state = 4;</code>
-       * @return The bytes for blockState.
-       */
-      public com.google.protobuf.ByteString
-          getBlockStateBytes() {
-        java.lang.Object ref = blockState_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          blockState_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <pre>
-       * minecraft:andesite_stairs[facing=east,half=bottom,shape=straight,waterlogged=false]
-       * </pre>
-       *
-       * <code>string block_state = 4;</code>
-       * @param value The blockState to set.
-       * @return This builder for chaining.
-       */
-      public Builder setBlockState(
-          java.lang.String value) {
-        if (value == null) { throw new NullPointerException(); }
-        blockState_ = value;
-        bitField0_ |= 0x00000008;
-        onChanged();
-        return this;
-      }
-      /**
-       * <pre>
-       * minecraft:andesite_stairs[facing=east,half=bottom,shape=straight,waterlogged=false]
-       * </pre>
-       *
-       * <code>string block_state = 4;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearBlockState() {
-        blockState_ = getDefaultInstance().getBlockState();
-        bitField0_ = (bitField0_ & ~0x00000008);
-        onChanged();
-        return this;
-      }
-      /**
-       * <pre>
-       * minecraft:andesite_stairs[facing=east,half=bottom,shape=straight,waterlogged=false]
-       * </pre>
-       *
-       * <code>string block_state = 4;</code>
-       * @param value The bytes for blockState to set.
-       * @return This builder for chaining.
-       */
-      public Builder setBlockStateBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) { throw new NullPointerException(); }
-        checkByteStringIsUtf8(value);
-        blockState_ = value;
-        bitField0_ |= 0x00000008;
-        onChanged();
-        return this;
-      }
-
-      // @@protoc_insertion_point(builder_scope:BlockState)
-    }
-
-    // @@protoc_insertion_point(class_scope:BlockState)
-    private static final com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.BlockState DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.BlockState();
+      com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+        /* major= */ 4,
+        /* minor= */ 27,
+        /* patch= */ 3,
+        /* suffix= */ "",
+        Difficulty.class.getName());
     }
+    /**
+     * <code>PEACEFUL = 0;</code>
+     */
+    public static final int PEACEFUL_VALUE = 0;
+    /**
+     * <code>EASY = 1;</code>
+     */
+    public static final int EASY_VALUE = 1;
+    /**
+     * <code>NORMAL = 2;</code>
+     */
+    public static final int NORMAL_VALUE = 2;
+    /**
+     * <code>HARD = 3;</code>
+     */
+    public static final int HARD_VALUE = 3;
 
-    public static com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.BlockState getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
 
-    private static final com.google.protobuf.Parser<BlockState>
-        PARSER = new com.google.protobuf.AbstractParser<BlockState>() {
-      @java.lang.Override
-      public BlockState parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        Builder builder = newBuilder();
-        try {
-          builder.mergeFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          throw e.setUnfinishedMessage(builder.buildPartial());
-        } catch (com.google.protobuf.UninitializedMessageException e) {
-          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
-        } catch (java.io.IOException e) {
-          throw new com.google.protobuf.InvalidProtocolBufferException(e)
-              .setUnfinishedMessage(builder.buildPartial());
-        }
-        return builder.buildPartial();
+    public final int getNumber() {
+      if (this == UNRECOGNIZED) {
+        throw new java.lang.IllegalArgumentException(
+            "Can't get the number of an unknown enum value.");
       }
-    };
-
-    public static com.google.protobuf.Parser<BlockState> parser() {
-      return PARSER;
+      return value;
     }
 
-    @java.lang.Override
-    public com.google.protobuf.Parser<BlockState> getParserForType() {
-      return PARSER;
+    /**
+     * @param value The numeric wire value of the corresponding enum entry.
+     * @return The enum associated with the given numeric wire value.
+     * @deprecated Use {@link #forNumber(int)} instead.
+     */
+    @java.lang.Deprecated
+    public static Difficulty valueOf(int value) {
+      return forNumber(value);
     }
 
-    @java.lang.Override
-    public com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.BlockState getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
+    /**
+     * @param value The numeric wire value of the corresponding enum entry.
+     * @return The enum associated with the given numeric wire value.
+     */
+    public static Difficulty forNumber(int value) {
+      switch (value) {
+        case 0: return PEACEFUL;
+        case 1: return EASY;
+        case 2: return NORMAL;
+        case 3: return HARD;
+        default: return null;
+      }
     }
 
+    public static com.google.protobuf.Internal.EnumLiteMap<Difficulty>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static final com.google.protobuf.Internal.EnumLiteMap<
+        Difficulty> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<Difficulty>() {
+            public Difficulty findValueByNumber(int number) {
+              return Difficulty.forNumber(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      if (this == UNRECOGNIZED) {
+        throw new java.lang.IllegalStateException(
+            "Can't get the descriptor of an unrecognized enum value.");
+      }
+      return getDescriptor().getValues().get(ordinal());
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.getDescriptor().getEnumTypes().get(1);
+    }
+
+    private static final Difficulty[] VALUES = values();
+
+    public static Difficulty valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      if (desc.getIndex() == -1) {
+        return UNRECOGNIZED;
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int value;
+
+    private Difficulty(int value) {
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:Difficulty)
+  }
+
+  /**
+   * Protobuf enum {@code WorldType}
+   */
+  public enum WorldType
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>DEFAULT = 0;</code>
+     */
+    DEFAULT(0),
+    /**
+     * <code>SUPERFLAT = 1;</code>
+     */
+    SUPERFLAT(1),
+    /**
+     * <code>LARGE_BIOMES = 2;</code>
+     */
+    LARGE_BIOMES(2),
+    /**
+     * <code>AMPLIFIED = 3;</code>
+     */
+    AMPLIFIED(3),
+    /**
+     * <code>SINGLE_BIOME = 4;</code>
+     */
+    SINGLE_BIOME(4),
+    UNRECOGNIZED(-1),
+    ;
+
+    static {
+      com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+        /* major= */ 4,
+        /* minor= */ 27,
+        /* patch= */ 3,
+        /* suffix= */ "",
+        WorldType.class.getName());
+    }
+    /**
+     * <code>DEFAULT = 0;</code>
+     */
+    public static final int DEFAULT_VALUE = 0;
+    /**
+     * <code>SUPERFLAT = 1;</code>
+     */
+    public static final int SUPERFLAT_VALUE = 1;
+    /**
+     * <code>LARGE_BIOMES = 2;</code>
+     */
+    public static final int LARGE_BIOMES_VALUE = 2;
+    /**
+     * <code>AMPLIFIED = 3;</code>
+     */
+    public static final int AMPLIFIED_VALUE = 3;
+    /**
+     * <code>SINGLE_BIOME = 4;</code>
+     */
+    public static final int SINGLE_BIOME_VALUE = 4;
+
+
+    public final int getNumber() {
+      if (this == UNRECOGNIZED) {
+        throw new java.lang.IllegalArgumentException(
+            "Can't get the number of an unknown enum value.");
+      }
+      return value;
+    }
+
+    /**
+     * @param value The numeric wire value of the corresponding enum entry.
+     * @return The enum associated with the given numeric wire value.
+     * @deprecated Use {@link #forNumber(int)} instead.
+     */
+    @java.lang.Deprecated
+    public static WorldType valueOf(int value) {
+      return forNumber(value);
+    }
+
+    /**
+     * @param value The numeric wire value of the corresponding enum entry.
+     * @return The enum associated with the given numeric wire value.
+     */
+    public static WorldType forNumber(int value) {
+      switch (value) {
+        case 0: return DEFAULT;
+        case 1: return SUPERFLAT;
+        case 2: return LARGE_BIOMES;
+        case 3: return AMPLIFIED;
+        case 4: return SINGLE_BIOME;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<WorldType>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static final com.google.protobuf.Internal.EnumLiteMap<
+        WorldType> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<WorldType>() {
+            public WorldType findValueByNumber(int number) {
+              return WorldType.forNumber(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      if (this == UNRECOGNIZED) {
+        throw new java.lang.IllegalStateException(
+            "Can't get the descriptor of an unrecognized enum value.");
+      }
+      return getDescriptor().getValues().get(ordinal());
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.getDescriptor().getEnumTypes().get(2);
+    }
+
+    private static final WorldType[] VALUES = values();
+
+    public static WorldType valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      if (desc.getIndex() == -1) {
+        return UNRECOGNIZED;
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int value;
+
+    private WorldType(int value) {
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:WorldType)
   }
 
   public interface InitialEnvironmentMessageOrBuilder extends
@@ -792,157 +435,186 @@ public final class InitialEnvironment {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>repeated string initialInventoryCommands = 1;</code>
-     * @return A list containing the initialInventoryCommands.
-     */
-    java.util.List<java.lang.String>
-        getInitialInventoryCommandsList();
-    /**
-     * <code>repeated string initialInventoryCommands = 1;</code>
-     * @return The count of initialInventoryCommands.
-     */
-    int getInitialInventoryCommandsCount();
-    /**
-     * <code>repeated string initialInventoryCommands = 1;</code>
-     * @param index The index of the element to return.
-     * @return The initialInventoryCommands at the given index.
-     */
-    java.lang.String getInitialInventoryCommands(int index);
-    /**
-     * <code>repeated string initialInventoryCommands = 1;</code>
-     * @param index The index of the value to return.
-     * @return The bytes of the initialInventoryCommands at the given index.
-     */
-    com.google.protobuf.ByteString
-        getInitialInventoryCommandsBytes(int index);
-
-    /**
-     * <code>repeated int32 initialPosition = 2;</code>
-     * @return A list containing the initialPosition.
-     */
-    java.util.List<java.lang.Integer> getInitialPositionList();
-    /**
-     * <code>repeated int32 initialPosition = 2;</code>
-     * @return The count of initialPosition.
-     */
-    int getInitialPositionCount();
-    /**
-     * <code>repeated int32 initialPosition = 2;</code>
-     * @param index The index of the element to return.
-     * @return The initialPosition at the given index.
-     */
-    int getInitialPosition(int index);
-
-    /**
-     * <code>repeated string initialMobsCommands = 3;</code>
-     * @return A list containing the initialMobsCommands.
-     */
-    java.util.List<java.lang.String>
-        getInitialMobsCommandsList();
-    /**
-     * <code>repeated string initialMobsCommands = 3;</code>
-     * @return The count of initialMobsCommands.
-     */
-    int getInitialMobsCommandsCount();
-    /**
-     * <code>repeated string initialMobsCommands = 3;</code>
-     * @param index The index of the element to return.
-     * @return The initialMobsCommands at the given index.
-     */
-    java.lang.String getInitialMobsCommands(int index);
-    /**
-     * <code>repeated string initialMobsCommands = 3;</code>
-     * @param index The index of the value to return.
-     * @return The bytes of the initialMobsCommands at the given index.
-     */
-    com.google.protobuf.ByteString
-        getInitialMobsCommandsBytes(int index);
-
-    /**
-     * <code>int32 imageSizeX = 4;</code>
+     * <pre>
+     * Required. The width of the image.
+     * </pre>
+     *
+     * <code>int32 imageSizeX = 1;</code>
      * @return The imageSizeX.
      */
     int getImageSizeX();
 
     /**
-     * <code>int32 imageSizeY = 5;</code>
+     * <pre>
+     * Required. The height of the image.
+     * </pre>
+     *
+     * <code>int32 imageSizeY = 2;</code>
      * @return The imageSizeY.
      */
     int getImageSizeY();
 
     /**
-     * <code>int64 seed = 6;</code>
-     * @return The seed.
+     * <pre>
+     * Default = SURVIVAL
+     * </pre>
+     *
+     * <code>.GameMode gamemode = 3;</code>
+     * @return The enum numeric value on the wire for gamemode.
      */
-    long getSeed();
+    int getGamemodeValue();
+    /**
+     * <pre>
+     * Default = SURVIVAL
+     * </pre>
+     *
+     * <code>.GameMode gamemode = 3;</code>
+     * @return The gamemode.
+     */
+    com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.GameMode getGamemode();
 
     /**
-     * <code>bool allowMobSpawn = 7;</code>
-     * @return The allowMobSpawn.
+     * <pre>
+     * Default = NORMAL
+     * </pre>
+     *
+     * <code>.Difficulty difficulty = 4;</code>
+     * @return The enum numeric value on the wire for difficulty.
      */
-    boolean getAllowMobSpawn();
+    int getDifficultyValue();
+    /**
+     * <pre>
+     * Default = NORMAL
+     * </pre>
+     *
+     * <code>.Difficulty difficulty = 4;</code>
+     * @return The difficulty.
+     */
+    com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.Difficulty getDifficulty();
 
     /**
-     * <code>bool alwaysNight = 8;</code>
-     * @return The alwaysNight.
+     * <pre>
+     * Default = DEFAULT
+     * </pre>
+     *
+     * <code>.WorldType worldType = 5;</code>
+     * @return The enum numeric value on the wire for worldType.
      */
-    boolean getAlwaysNight();
+    int getWorldTypeValue();
+    /**
+     * <pre>
+     * Default = DEFAULT
+     * </pre>
+     *
+     * <code>.WorldType worldType = 5;</code>
+     * @return The worldType.
+     */
+    com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.WorldType getWorldType();
 
     /**
-     * <code>bool alwaysDay = 9;</code>
-     * @return The alwaysDay.
+     * <pre>
+     * Empty for no value
+     * </pre>
+     *
+     * <code>string worldTypeArgs = 6;</code>
+     * @return The worldTypeArgs.
      */
-    boolean getAlwaysDay();
-
+    java.lang.String getWorldTypeArgs();
     /**
-     * <code>string initialWeather = 10;</code>
-     * @return The initialWeather.
-     */
-    java.lang.String getInitialWeather();
-    /**
-     * <code>string initialWeather = 10;</code>
-     * @return The bytes for initialWeather.
+     * <pre>
+     * Empty for no value
+     * </pre>
+     *
+     * <code>string worldTypeArgs = 6;</code>
+     * @return The bytes for worldTypeArgs.
      */
     com.google.protobuf.ByteString
-        getInitialWeatherBytes();
+        getWorldTypeArgsBytes();
 
     /**
-     * <code>bool isWorldFlat = 11;</code>
-     * @return The isWorldFlat.
+     * <pre>
+     * Empty for no value
+     * </pre>
+     *
+     * <code>string seed = 7;</code>
+     * @return The seed.
      */
-    boolean getIsWorldFlat();
-
+    java.lang.String getSeed();
     /**
-     * <code>int32 visibleSizeX = 12;</code>
-     * @return The visibleSizeX.
+     * <pre>
+     * Empty for no value
+     * </pre>
+     *
+     * <code>string seed = 7;</code>
+     * @return The bytes for seed.
      */
-    int getVisibleSizeX();
+    com.google.protobuf.ByteString
+        getSeedBytes();
 
     /**
-     * <code>int32 visibleSizeY = 13;</code>
-     * @return The visibleSizeY.
+     * <pre>
+     * Default = true
+     * </pre>
+     *
+     * <code>bool generate_structures = 8;</code>
+     * @return The generateStructures.
      */
-    int getVisibleSizeY();
+    boolean getGenerateStructures();
 
     /**
-     * <code>repeated string initialExtraCommands = 14;</code>
+     * <pre>
+     * Default = false
+     * </pre>
+     *
+     * <code>bool bonus_chest = 9;</code>
+     * @return The bonusChest.
+     */
+    boolean getBonusChest();
+
+    /**
+     * <code>repeated string datapackPaths = 10;</code>
+     * @return A list containing the datapackPaths.
+     */
+    java.util.List<java.lang.String>
+        getDatapackPathsList();
+    /**
+     * <code>repeated string datapackPaths = 10;</code>
+     * @return The count of datapackPaths.
+     */
+    int getDatapackPathsCount();
+    /**
+     * <code>repeated string datapackPaths = 10;</code>
+     * @param index The index of the element to return.
+     * @return The datapackPaths at the given index.
+     */
+    java.lang.String getDatapackPaths(int index);
+    /**
+     * <code>repeated string datapackPaths = 10;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the datapackPaths at the given index.
+     */
+    com.google.protobuf.ByteString
+        getDatapackPathsBytes(int index);
+
+    /**
+     * <code>repeated string initialExtraCommands = 11;</code>
      * @return A list containing the initialExtraCommands.
      */
     java.util.List<java.lang.String>
         getInitialExtraCommandsList();
     /**
-     * <code>repeated string initialExtraCommands = 14;</code>
+     * <code>repeated string initialExtraCommands = 11;</code>
      * @return The count of initialExtraCommands.
      */
     int getInitialExtraCommandsCount();
     /**
-     * <code>repeated string initialExtraCommands = 14;</code>
+     * <code>repeated string initialExtraCommands = 11;</code>
      * @param index The index of the element to return.
      * @return The initialExtraCommands at the given index.
      */
     java.lang.String getInitialExtraCommands(int index);
     /**
-     * <code>repeated string initialExtraCommands = 14;</code>
+     * <code>repeated string initialExtraCommands = 11;</code>
      * @param index The index of the value to return.
      * @return The bytes of the initialExtraCommands at the given index.
      */
@@ -950,24 +622,24 @@ public final class InitialEnvironment {
         getInitialExtraCommandsBytes(int index);
 
     /**
-     * <code>repeated string killedStatKeys = 15;</code>
+     * <code>repeated string killedStatKeys = 12;</code>
      * @return A list containing the killedStatKeys.
      */
     java.util.List<java.lang.String>
         getKilledStatKeysList();
     /**
-     * <code>repeated string killedStatKeys = 15;</code>
+     * <code>repeated string killedStatKeys = 12;</code>
      * @return The count of killedStatKeys.
      */
     int getKilledStatKeysCount();
     /**
-     * <code>repeated string killedStatKeys = 15;</code>
+     * <code>repeated string killedStatKeys = 12;</code>
      * @param index The index of the element to return.
      * @return The killedStatKeys at the given index.
      */
     java.lang.String getKilledStatKeys(int index);
     /**
-     * <code>repeated string killedStatKeys = 15;</code>
+     * <code>repeated string killedStatKeys = 12;</code>
      * @param index The index of the value to return.
      * @return The bytes of the killedStatKeys at the given index.
      */
@@ -975,24 +647,24 @@ public final class InitialEnvironment {
         getKilledStatKeysBytes(int index);
 
     /**
-     * <code>repeated string minedStatKeys = 16;</code>
+     * <code>repeated string minedStatKeys = 13;</code>
      * @return A list containing the minedStatKeys.
      */
     java.util.List<java.lang.String>
         getMinedStatKeysList();
     /**
-     * <code>repeated string minedStatKeys = 16;</code>
+     * <code>repeated string minedStatKeys = 13;</code>
      * @return The count of minedStatKeys.
      */
     int getMinedStatKeysCount();
     /**
-     * <code>repeated string minedStatKeys = 16;</code>
+     * <code>repeated string minedStatKeys = 13;</code>
      * @param index The index of the element to return.
      * @return The minedStatKeys at the given index.
      */
     java.lang.String getMinedStatKeys(int index);
     /**
-     * <code>repeated string minedStatKeys = 16;</code>
+     * <code>repeated string minedStatKeys = 13;</code>
      * @param index The index of the value to return.
      * @return The bytes of the minedStatKeys at the given index.
      */
@@ -1000,24 +672,24 @@ public final class InitialEnvironment {
         getMinedStatKeysBytes(int index);
 
     /**
-     * <code>repeated string miscStatKeys = 17;</code>
+     * <code>repeated string miscStatKeys = 14;</code>
      * @return A list containing the miscStatKeys.
      */
     java.util.List<java.lang.String>
         getMiscStatKeysList();
     /**
-     * <code>repeated string miscStatKeys = 17;</code>
+     * <code>repeated string miscStatKeys = 14;</code>
      * @return The count of miscStatKeys.
      */
     int getMiscStatKeysCount();
     /**
-     * <code>repeated string miscStatKeys = 17;</code>
+     * <code>repeated string miscStatKeys = 14;</code>
      * @param index The index of the element to return.
      * @return The miscStatKeys at the given index.
      */
     java.lang.String getMiscStatKeys(int index);
     /**
-     * <code>repeated string miscStatKeys = 17;</code>
+     * <code>repeated string miscStatKeys = 14;</code>
      * @param index The index of the value to return.
      * @return The bytes of the miscStatKeys at the given index.
      */
@@ -1025,95 +697,69 @@ public final class InitialEnvironment {
         getMiscStatKeysBytes(int index);
 
     /**
-     * <code>repeated .BlockState initialBlockStates = 18;</code>
-     */
-    java.util.List<com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.BlockState> 
-        getInitialBlockStatesList();
-    /**
-     * <code>repeated .BlockState initialBlockStates = 18;</code>
-     */
-    com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.BlockState getInitialBlockStates(int index);
-    /**
-     * <code>repeated .BlockState initialBlockStates = 18;</code>
-     */
-    int getInitialBlockStatesCount();
-    /**
-     * <code>repeated .BlockState initialBlockStates = 18;</code>
-     */
-    java.util.List<? extends com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.BlockStateOrBuilder> 
-        getInitialBlockStatesOrBuilderList();
-    /**
-     * <code>repeated .BlockState initialBlockStates = 18;</code>
-     */
-    com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.BlockStateOrBuilder getInitialBlockStatesOrBuilder(
-        int index);
-
-    /**
-     * <code>repeated int32 surroundingEntityDistances = 19;</code>
+     * <code>repeated int32 surroundingEntityDistances = 15;</code>
      * @return A list containing the surroundingEntityDistances.
      */
     java.util.List<java.lang.Integer> getSurroundingEntityDistancesList();
     /**
-     * <code>repeated int32 surroundingEntityDistances = 19;</code>
+     * <code>repeated int32 surroundingEntityDistances = 15;</code>
      * @return The count of surroundingEntityDistances.
      */
     int getSurroundingEntityDistancesCount();
     /**
-     * <code>repeated int32 surroundingEntityDistances = 19;</code>
+     * <code>repeated int32 surroundingEntityDistances = 15;</code>
      * @param index The index of the element to return.
      * @return The surroundingEntityDistances at the given index.
      */
     int getSurroundingEntityDistances(int index);
 
     /**
-     * <code>bool hudHidden = 20;</code>
+     * <code>bool hudHidden = 16;</code>
      * @return The hudHidden.
      */
     boolean getHudHidden();
 
     /**
-     * <code>int32 render_distance = 21;</code>
+     * <code>int32 render_distance = 17;</code>
      * @return The renderDistance.
      */
     int getRenderDistance();
 
     /**
-     * <code>int32 simulation_distance = 22;</code>
+     * <code>int32 simulation_distance = 18;</code>
      * @return The simulationDistance.
      */
     int getSimulationDistance();
 
     /**
-     * <code>bool biocular = 23;</code>
-     * @return The biocular.
-     */
-    boolean getBiocular();
-
-    /**
-     * <code>float eye_distance = 24;</code>
+     * <pre>
+     * If &gt; 0, binocular mode
+     * </pre>
+     *
+     * <code>float eye_distance = 19;</code>
      * @return The eyeDistance.
      */
     float getEyeDistance();
 
     /**
-     * <code>repeated string structurePaths = 25;</code>
+     * <code>repeated string structurePaths = 20;</code>
      * @return A list containing the structurePaths.
      */
     java.util.List<java.lang.String>
         getStructurePathsList();
     /**
-     * <code>repeated string structurePaths = 25;</code>
+     * <code>repeated string structurePaths = 20;</code>
      * @return The count of structurePaths.
      */
     int getStructurePathsCount();
     /**
-     * <code>repeated string structurePaths = 25;</code>
+     * <code>repeated string structurePaths = 20;</code>
      * @param index The index of the element to return.
      * @return The structurePaths at the given index.
      */
     java.lang.String getStructurePaths(int index);
     /**
-     * <code>repeated string structurePaths = 25;</code>
+     * <code>repeated string structurePaths = 20;</code>
      * @param index The index of the value to return.
      * @return The bytes of the structurePaths at the given index.
      */
@@ -1121,52 +767,50 @@ public final class InitialEnvironment {
         getStructurePathsBytes(int index);
 
     /**
-     * <code>bool noWeatherCycle = 26;</code>
-     * @return The noWeatherCycle.
+     * <code>bool no_fov_effect = 21;</code>
+     * @return The noFovEffect.
      */
-    boolean getNoWeatherCycle();
+    boolean getNoFovEffect();
 
     /**
-     * <code>bool no_pov_effect = 27;</code>
-     * @return The noPovEffect.
-     */
-    boolean getNoPovEffect();
-
-    /**
-     * <code>bool noTimeCycle = 28;</code>
-     * @return The noTimeCycle.
-     */
-    boolean getNoTimeCycle();
-
-    /**
-     * <code>bool request_raycast = 29;</code>
+     * <code>bool request_raycast = 22;</code>
      * @return The requestRaycast.
      */
     boolean getRequestRaycast();
 
     /**
-     * <code>int32 screen_encoding_mode = 30;</code>
+     * <code>int32 screen_encoding_mode = 23;</code>
      * @return The screenEncodingMode.
      */
     int getScreenEncodingMode();
 
     /**
-     * <code>bool requiresSurroundingBlocks = 31;</code>
+     * <code>bool requiresSurroundingBlocks = 24;</code>
      * @return The requiresSurroundingBlocks.
      */
     boolean getRequiresSurroundingBlocks();
 
     /**
-     * <code>string level_display_name_to_play = 32;</code>
+     * <code>string level_display_name_to_play = 25;</code>
      * @return The levelDisplayNameToPlay.
      */
     java.lang.String getLevelDisplayNameToPlay();
     /**
-     * <code>string level_display_name_to_play = 32;</code>
+     * <code>string level_display_name_to_play = 25;</code>
      * @return The bytes for levelDisplayNameToPlay.
      */
     com.google.protobuf.ByteString
         getLevelDisplayNameToPlayBytes();
+
+    /**
+     * <pre>
+     * Default = 70
+     * </pre>
+     *
+     * <code>float fov = 26;</code>
+     * @return The fov.
+     */
+    float getFov();
   }
   /**
    * Protobuf type {@code InitialEnvironmentMessage}
@@ -1190,12 +834,13 @@ public final class InitialEnvironment {
       super(builder);
     }
     private InitialEnvironmentMessage() {
-      initialInventoryCommands_ =
+      gamemode_ = 0;
+      difficulty_ = 0;
+      worldType_ = 0;
+      worldTypeArgs_ = "";
+      seed_ = "";
+      datapackPaths_ =
           com.google.protobuf.LazyStringArrayList.emptyList();
-      initialPosition_ = emptyIntList();
-      initialMobsCommands_ =
-          com.google.protobuf.LazyStringArrayList.emptyList();
-      initialWeather_ = "";
       initialExtraCommands_ =
           com.google.protobuf.LazyStringArrayList.emptyList();
       killedStatKeys_ =
@@ -1204,7 +849,6 @@ public final class InitialEnvironment {
           com.google.protobuf.LazyStringArrayList.emptyList();
       miscStatKeys_ =
           com.google.protobuf.LazyStringArrayList.emptyList();
-      initialBlockStates_ = java.util.Collections.emptyList();
       surroundingEntityDistances_ = emptyIntList();
       structurePaths_ =
           com.google.protobuf.LazyStringArrayList.emptyList();
@@ -1224,114 +868,14 @@ public final class InitialEnvironment {
               com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage.class, com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage.Builder.class);
     }
 
-    public static final int INITIALINVENTORYCOMMANDS_FIELD_NUMBER = 1;
-    @SuppressWarnings("serial")
-    private com.google.protobuf.LazyStringArrayList initialInventoryCommands_ =
-        com.google.protobuf.LazyStringArrayList.emptyList();
-    /**
-     * <code>repeated string initialInventoryCommands = 1;</code>
-     * @return A list containing the initialInventoryCommands.
-     */
-    public com.google.protobuf.ProtocolStringList
-        getInitialInventoryCommandsList() {
-      return initialInventoryCommands_;
-    }
-    /**
-     * <code>repeated string initialInventoryCommands = 1;</code>
-     * @return The count of initialInventoryCommands.
-     */
-    public int getInitialInventoryCommandsCount() {
-      return initialInventoryCommands_.size();
-    }
-    /**
-     * <code>repeated string initialInventoryCommands = 1;</code>
-     * @param index The index of the element to return.
-     * @return The initialInventoryCommands at the given index.
-     */
-    public java.lang.String getInitialInventoryCommands(int index) {
-      return initialInventoryCommands_.get(index);
-    }
-    /**
-     * <code>repeated string initialInventoryCommands = 1;</code>
-     * @param index The index of the value to return.
-     * @return The bytes of the initialInventoryCommands at the given index.
-     */
-    public com.google.protobuf.ByteString
-        getInitialInventoryCommandsBytes(int index) {
-      return initialInventoryCommands_.getByteString(index);
-    }
-
-    public static final int INITIALPOSITION_FIELD_NUMBER = 2;
-    @SuppressWarnings("serial")
-    private com.google.protobuf.Internal.IntList initialPosition_ =
-        emptyIntList();
-    /**
-     * <code>repeated int32 initialPosition = 2;</code>
-     * @return A list containing the initialPosition.
-     */
-    @java.lang.Override
-    public java.util.List<java.lang.Integer>
-        getInitialPositionList() {
-      return initialPosition_;
-    }
-    /**
-     * <code>repeated int32 initialPosition = 2;</code>
-     * @return The count of initialPosition.
-     */
-    public int getInitialPositionCount() {
-      return initialPosition_.size();
-    }
-    /**
-     * <code>repeated int32 initialPosition = 2;</code>
-     * @param index The index of the element to return.
-     * @return The initialPosition at the given index.
-     */
-    public int getInitialPosition(int index) {
-      return initialPosition_.getInt(index);
-    }
-    private int initialPositionMemoizedSerializedSize = -1;
-
-    public static final int INITIALMOBSCOMMANDS_FIELD_NUMBER = 3;
-    @SuppressWarnings("serial")
-    private com.google.protobuf.LazyStringArrayList initialMobsCommands_ =
-        com.google.protobuf.LazyStringArrayList.emptyList();
-    /**
-     * <code>repeated string initialMobsCommands = 3;</code>
-     * @return A list containing the initialMobsCommands.
-     */
-    public com.google.protobuf.ProtocolStringList
-        getInitialMobsCommandsList() {
-      return initialMobsCommands_;
-    }
-    /**
-     * <code>repeated string initialMobsCommands = 3;</code>
-     * @return The count of initialMobsCommands.
-     */
-    public int getInitialMobsCommandsCount() {
-      return initialMobsCommands_.size();
-    }
-    /**
-     * <code>repeated string initialMobsCommands = 3;</code>
-     * @param index The index of the element to return.
-     * @return The initialMobsCommands at the given index.
-     */
-    public java.lang.String getInitialMobsCommands(int index) {
-      return initialMobsCommands_.get(index);
-    }
-    /**
-     * <code>repeated string initialMobsCommands = 3;</code>
-     * @param index The index of the value to return.
-     * @return The bytes of the initialMobsCommands at the given index.
-     */
-    public com.google.protobuf.ByteString
-        getInitialMobsCommandsBytes(int index) {
-      return initialMobsCommands_.getByteString(index);
-    }
-
-    public static final int IMAGESIZEX_FIELD_NUMBER = 4;
+    public static final int IMAGESIZEX_FIELD_NUMBER = 1;
     private int imageSizeX_ = 0;
     /**
-     * <code>int32 imageSizeX = 4;</code>
+     * <pre>
+     * Required. The width of the image.
+     * </pre>
+     *
+     * <code>int32 imageSizeX = 1;</code>
      * @return The imageSizeX.
      */
     @java.lang.Override
@@ -1339,10 +883,14 @@ public final class InitialEnvironment {
       return imageSizeX_;
     }
 
-    public static final int IMAGESIZEY_FIELD_NUMBER = 5;
+    public static final int IMAGESIZEY_FIELD_NUMBER = 2;
     private int imageSizeY_ = 0;
     /**
-     * <code>int32 imageSizeY = 5;</code>
+     * <pre>
+     * Required. The height of the image.
+     * </pre>
+     *
+     * <code>int32 imageSizeY = 2;</code>
      * @return The imageSizeY.
      */
     @java.lang.Override
@@ -1350,128 +898,251 @@ public final class InitialEnvironment {
       return imageSizeY_;
     }
 
-    public static final int SEED_FIELD_NUMBER = 6;
-    private long seed_ = 0L;
+    public static final int GAMEMODE_FIELD_NUMBER = 3;
+    private int gamemode_ = 0;
     /**
-     * <code>int64 seed = 6;</code>
-     * @return The seed.
+     * <pre>
+     * Default = SURVIVAL
+     * </pre>
+     *
+     * <code>.GameMode gamemode = 3;</code>
+     * @return The enum numeric value on the wire for gamemode.
      */
-    @java.lang.Override
-    public long getSeed() {
-      return seed_;
+    @java.lang.Override public int getGamemodeValue() {
+      return gamemode_;
+    }
+    /**
+     * <pre>
+     * Default = SURVIVAL
+     * </pre>
+     *
+     * <code>.GameMode gamemode = 3;</code>
+     * @return The gamemode.
+     */
+    @java.lang.Override public com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.GameMode getGamemode() {
+      com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.GameMode result = com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.GameMode.forNumber(gamemode_);
+      return result == null ? com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.GameMode.UNRECOGNIZED : result;
     }
 
-    public static final int ALLOWMOBSPAWN_FIELD_NUMBER = 7;
-    private boolean allowMobSpawn_ = false;
+    public static final int DIFFICULTY_FIELD_NUMBER = 4;
+    private int difficulty_ = 0;
     /**
-     * <code>bool allowMobSpawn = 7;</code>
-     * @return The allowMobSpawn.
+     * <pre>
+     * Default = NORMAL
+     * </pre>
+     *
+     * <code>.Difficulty difficulty = 4;</code>
+     * @return The enum numeric value on the wire for difficulty.
      */
-    @java.lang.Override
-    public boolean getAllowMobSpawn() {
-      return allowMobSpawn_;
+    @java.lang.Override public int getDifficultyValue() {
+      return difficulty_;
+    }
+    /**
+     * <pre>
+     * Default = NORMAL
+     * </pre>
+     *
+     * <code>.Difficulty difficulty = 4;</code>
+     * @return The difficulty.
+     */
+    @java.lang.Override public com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.Difficulty getDifficulty() {
+      com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.Difficulty result = com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.Difficulty.forNumber(difficulty_);
+      return result == null ? com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.Difficulty.UNRECOGNIZED : result;
     }
 
-    public static final int ALWAYSNIGHT_FIELD_NUMBER = 8;
-    private boolean alwaysNight_ = false;
+    public static final int WORLDTYPE_FIELD_NUMBER = 5;
+    private int worldType_ = 0;
     /**
-     * <code>bool alwaysNight = 8;</code>
-     * @return The alwaysNight.
+     * <pre>
+     * Default = DEFAULT
+     * </pre>
+     *
+     * <code>.WorldType worldType = 5;</code>
+     * @return The enum numeric value on the wire for worldType.
      */
-    @java.lang.Override
-    public boolean getAlwaysNight() {
-      return alwaysNight_;
+    @java.lang.Override public int getWorldTypeValue() {
+      return worldType_;
+    }
+    /**
+     * <pre>
+     * Default = DEFAULT
+     * </pre>
+     *
+     * <code>.WorldType worldType = 5;</code>
+     * @return The worldType.
+     */
+    @java.lang.Override public com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.WorldType getWorldType() {
+      com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.WorldType result = com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.WorldType.forNumber(worldType_);
+      return result == null ? com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.WorldType.UNRECOGNIZED : result;
     }
 
-    public static final int ALWAYSDAY_FIELD_NUMBER = 9;
-    private boolean alwaysDay_ = false;
-    /**
-     * <code>bool alwaysDay = 9;</code>
-     * @return The alwaysDay.
-     */
-    @java.lang.Override
-    public boolean getAlwaysDay() {
-      return alwaysDay_;
-    }
-
-    public static final int INITIALWEATHER_FIELD_NUMBER = 10;
+    public static final int WORLDTYPEARGS_FIELD_NUMBER = 6;
     @SuppressWarnings("serial")
-    private volatile java.lang.Object initialWeather_ = "";
+    private volatile java.lang.Object worldTypeArgs_ = "";
     /**
-     * <code>string initialWeather = 10;</code>
-     * @return The initialWeather.
+     * <pre>
+     * Empty for no value
+     * </pre>
+     *
+     * <code>string worldTypeArgs = 6;</code>
+     * @return The worldTypeArgs.
      */
     @java.lang.Override
-    public java.lang.String getInitialWeather() {
-      java.lang.Object ref = initialWeather_;
+    public java.lang.String getWorldTypeArgs() {
+      java.lang.Object ref = worldTypeArgs_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        initialWeather_ = s;
+        worldTypeArgs_ = s;
         return s;
       }
     }
     /**
-     * <code>string initialWeather = 10;</code>
-     * @return The bytes for initialWeather.
+     * <pre>
+     * Empty for no value
+     * </pre>
+     *
+     * <code>string worldTypeArgs = 6;</code>
+     * @return The bytes for worldTypeArgs.
      */
     @java.lang.Override
     public com.google.protobuf.ByteString
-        getInitialWeatherBytes() {
-      java.lang.Object ref = initialWeather_;
+        getWorldTypeArgsBytes() {
+      java.lang.Object ref = worldTypeArgs_;
       if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        initialWeather_ = b;
+        worldTypeArgs_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
 
-    public static final int ISWORLDFLAT_FIELD_NUMBER = 11;
-    private boolean isWorldFlat_ = false;
+    public static final int SEED_FIELD_NUMBER = 7;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object seed_ = "";
     /**
-     * <code>bool isWorldFlat = 11;</code>
-     * @return The isWorldFlat.
+     * <pre>
+     * Empty for no value
+     * </pre>
+     *
+     * <code>string seed = 7;</code>
+     * @return The seed.
      */
     @java.lang.Override
-    public boolean getIsWorldFlat() {
-      return isWorldFlat_;
+    public java.lang.String getSeed() {
+      java.lang.Object ref = seed_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        seed_ = s;
+        return s;
+      }
     }
-
-    public static final int VISIBLESIZEX_FIELD_NUMBER = 12;
-    private int visibleSizeX_ = 0;
     /**
-     * <code>int32 visibleSizeX = 12;</code>
-     * @return The visibleSizeX.
+     * <pre>
+     * Empty for no value
+     * </pre>
+     *
+     * <code>string seed = 7;</code>
+     * @return The bytes for seed.
      */
     @java.lang.Override
-    public int getVisibleSizeX() {
-      return visibleSizeX_;
+    public com.google.protobuf.ByteString
+        getSeedBytes() {
+      java.lang.Object ref = seed_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        seed_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
 
-    public static final int VISIBLESIZEY_FIELD_NUMBER = 13;
-    private int visibleSizeY_ = 0;
+    public static final int GENERATE_STRUCTURES_FIELD_NUMBER = 8;
+    private boolean generateStructures_ = false;
     /**
-     * <code>int32 visibleSizeY = 13;</code>
-     * @return The visibleSizeY.
+     * <pre>
+     * Default = true
+     * </pre>
+     *
+     * <code>bool generate_structures = 8;</code>
+     * @return The generateStructures.
      */
     @java.lang.Override
-    public int getVisibleSizeY() {
-      return visibleSizeY_;
+    public boolean getGenerateStructures() {
+      return generateStructures_;
     }
 
-    public static final int INITIALEXTRACOMMANDS_FIELD_NUMBER = 14;
+    public static final int BONUS_CHEST_FIELD_NUMBER = 9;
+    private boolean bonusChest_ = false;
+    /**
+     * <pre>
+     * Default = false
+     * </pre>
+     *
+     * <code>bool bonus_chest = 9;</code>
+     * @return The bonusChest.
+     */
+    @java.lang.Override
+    public boolean getBonusChest() {
+      return bonusChest_;
+    }
+
+    public static final int DATAPACKPATHS_FIELD_NUMBER = 10;
+    @SuppressWarnings("serial")
+    private com.google.protobuf.LazyStringArrayList datapackPaths_ =
+        com.google.protobuf.LazyStringArrayList.emptyList();
+    /**
+     * <code>repeated string datapackPaths = 10;</code>
+     * @return A list containing the datapackPaths.
+     */
+    public com.google.protobuf.ProtocolStringList
+        getDatapackPathsList() {
+      return datapackPaths_;
+    }
+    /**
+     * <code>repeated string datapackPaths = 10;</code>
+     * @return The count of datapackPaths.
+     */
+    public int getDatapackPathsCount() {
+      return datapackPaths_.size();
+    }
+    /**
+     * <code>repeated string datapackPaths = 10;</code>
+     * @param index The index of the element to return.
+     * @return The datapackPaths at the given index.
+     */
+    public java.lang.String getDatapackPaths(int index) {
+      return datapackPaths_.get(index);
+    }
+    /**
+     * <code>repeated string datapackPaths = 10;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the datapackPaths at the given index.
+     */
+    public com.google.protobuf.ByteString
+        getDatapackPathsBytes(int index) {
+      return datapackPaths_.getByteString(index);
+    }
+
+    public static final int INITIALEXTRACOMMANDS_FIELD_NUMBER = 11;
     @SuppressWarnings("serial")
     private com.google.protobuf.LazyStringArrayList initialExtraCommands_ =
         com.google.protobuf.LazyStringArrayList.emptyList();
     /**
-     * <code>repeated string initialExtraCommands = 14;</code>
+     * <code>repeated string initialExtraCommands = 11;</code>
      * @return A list containing the initialExtraCommands.
      */
     public com.google.protobuf.ProtocolStringList
@@ -1479,14 +1150,14 @@ public final class InitialEnvironment {
       return initialExtraCommands_;
     }
     /**
-     * <code>repeated string initialExtraCommands = 14;</code>
+     * <code>repeated string initialExtraCommands = 11;</code>
      * @return The count of initialExtraCommands.
      */
     public int getInitialExtraCommandsCount() {
       return initialExtraCommands_.size();
     }
     /**
-     * <code>repeated string initialExtraCommands = 14;</code>
+     * <code>repeated string initialExtraCommands = 11;</code>
      * @param index The index of the element to return.
      * @return The initialExtraCommands at the given index.
      */
@@ -1494,7 +1165,7 @@ public final class InitialEnvironment {
       return initialExtraCommands_.get(index);
     }
     /**
-     * <code>repeated string initialExtraCommands = 14;</code>
+     * <code>repeated string initialExtraCommands = 11;</code>
      * @param index The index of the value to return.
      * @return The bytes of the initialExtraCommands at the given index.
      */
@@ -1503,12 +1174,12 @@ public final class InitialEnvironment {
       return initialExtraCommands_.getByteString(index);
     }
 
-    public static final int KILLEDSTATKEYS_FIELD_NUMBER = 15;
+    public static final int KILLEDSTATKEYS_FIELD_NUMBER = 12;
     @SuppressWarnings("serial")
     private com.google.protobuf.LazyStringArrayList killedStatKeys_ =
         com.google.protobuf.LazyStringArrayList.emptyList();
     /**
-     * <code>repeated string killedStatKeys = 15;</code>
+     * <code>repeated string killedStatKeys = 12;</code>
      * @return A list containing the killedStatKeys.
      */
     public com.google.protobuf.ProtocolStringList
@@ -1516,14 +1187,14 @@ public final class InitialEnvironment {
       return killedStatKeys_;
     }
     /**
-     * <code>repeated string killedStatKeys = 15;</code>
+     * <code>repeated string killedStatKeys = 12;</code>
      * @return The count of killedStatKeys.
      */
     public int getKilledStatKeysCount() {
       return killedStatKeys_.size();
     }
     /**
-     * <code>repeated string killedStatKeys = 15;</code>
+     * <code>repeated string killedStatKeys = 12;</code>
      * @param index The index of the element to return.
      * @return The killedStatKeys at the given index.
      */
@@ -1531,7 +1202,7 @@ public final class InitialEnvironment {
       return killedStatKeys_.get(index);
     }
     /**
-     * <code>repeated string killedStatKeys = 15;</code>
+     * <code>repeated string killedStatKeys = 12;</code>
      * @param index The index of the value to return.
      * @return The bytes of the killedStatKeys at the given index.
      */
@@ -1540,12 +1211,12 @@ public final class InitialEnvironment {
       return killedStatKeys_.getByteString(index);
     }
 
-    public static final int MINEDSTATKEYS_FIELD_NUMBER = 16;
+    public static final int MINEDSTATKEYS_FIELD_NUMBER = 13;
     @SuppressWarnings("serial")
     private com.google.protobuf.LazyStringArrayList minedStatKeys_ =
         com.google.protobuf.LazyStringArrayList.emptyList();
     /**
-     * <code>repeated string minedStatKeys = 16;</code>
+     * <code>repeated string minedStatKeys = 13;</code>
      * @return A list containing the minedStatKeys.
      */
     public com.google.protobuf.ProtocolStringList
@@ -1553,14 +1224,14 @@ public final class InitialEnvironment {
       return minedStatKeys_;
     }
     /**
-     * <code>repeated string minedStatKeys = 16;</code>
+     * <code>repeated string minedStatKeys = 13;</code>
      * @return The count of minedStatKeys.
      */
     public int getMinedStatKeysCount() {
       return minedStatKeys_.size();
     }
     /**
-     * <code>repeated string minedStatKeys = 16;</code>
+     * <code>repeated string minedStatKeys = 13;</code>
      * @param index The index of the element to return.
      * @return The minedStatKeys at the given index.
      */
@@ -1568,7 +1239,7 @@ public final class InitialEnvironment {
       return minedStatKeys_.get(index);
     }
     /**
-     * <code>repeated string minedStatKeys = 16;</code>
+     * <code>repeated string minedStatKeys = 13;</code>
      * @param index The index of the value to return.
      * @return The bytes of the minedStatKeys at the given index.
      */
@@ -1577,12 +1248,12 @@ public final class InitialEnvironment {
       return minedStatKeys_.getByteString(index);
     }
 
-    public static final int MISCSTATKEYS_FIELD_NUMBER = 17;
+    public static final int MISCSTATKEYS_FIELD_NUMBER = 14;
     @SuppressWarnings("serial")
     private com.google.protobuf.LazyStringArrayList miscStatKeys_ =
         com.google.protobuf.LazyStringArrayList.emptyList();
     /**
-     * <code>repeated string miscStatKeys = 17;</code>
+     * <code>repeated string miscStatKeys = 14;</code>
      * @return A list containing the miscStatKeys.
      */
     public com.google.protobuf.ProtocolStringList
@@ -1590,14 +1261,14 @@ public final class InitialEnvironment {
       return miscStatKeys_;
     }
     /**
-     * <code>repeated string miscStatKeys = 17;</code>
+     * <code>repeated string miscStatKeys = 14;</code>
      * @return The count of miscStatKeys.
      */
     public int getMiscStatKeysCount() {
       return miscStatKeys_.size();
     }
     /**
-     * <code>repeated string miscStatKeys = 17;</code>
+     * <code>repeated string miscStatKeys = 14;</code>
      * @param index The index of the element to return.
      * @return The miscStatKeys at the given index.
      */
@@ -1605,7 +1276,7 @@ public final class InitialEnvironment {
       return miscStatKeys_.get(index);
     }
     /**
-     * <code>repeated string miscStatKeys = 17;</code>
+     * <code>repeated string miscStatKeys = 14;</code>
      * @param index The index of the value to return.
      * @return The bytes of the miscStatKeys at the given index.
      */
@@ -1614,53 +1285,12 @@ public final class InitialEnvironment {
       return miscStatKeys_.getByteString(index);
     }
 
-    public static final int INITIALBLOCKSTATES_FIELD_NUMBER = 18;
-    @SuppressWarnings("serial")
-    private java.util.List<com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.BlockState> initialBlockStates_;
-    /**
-     * <code>repeated .BlockState initialBlockStates = 18;</code>
-     */
-    @java.lang.Override
-    public java.util.List<com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.BlockState> getInitialBlockStatesList() {
-      return initialBlockStates_;
-    }
-    /**
-     * <code>repeated .BlockState initialBlockStates = 18;</code>
-     */
-    @java.lang.Override
-    public java.util.List<? extends com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.BlockStateOrBuilder> 
-        getInitialBlockStatesOrBuilderList() {
-      return initialBlockStates_;
-    }
-    /**
-     * <code>repeated .BlockState initialBlockStates = 18;</code>
-     */
-    @java.lang.Override
-    public int getInitialBlockStatesCount() {
-      return initialBlockStates_.size();
-    }
-    /**
-     * <code>repeated .BlockState initialBlockStates = 18;</code>
-     */
-    @java.lang.Override
-    public com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.BlockState getInitialBlockStates(int index) {
-      return initialBlockStates_.get(index);
-    }
-    /**
-     * <code>repeated .BlockState initialBlockStates = 18;</code>
-     */
-    @java.lang.Override
-    public com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.BlockStateOrBuilder getInitialBlockStatesOrBuilder(
-        int index) {
-      return initialBlockStates_.get(index);
-    }
-
-    public static final int SURROUNDINGENTITYDISTANCES_FIELD_NUMBER = 19;
+    public static final int SURROUNDINGENTITYDISTANCES_FIELD_NUMBER = 15;
     @SuppressWarnings("serial")
     private com.google.protobuf.Internal.IntList surroundingEntityDistances_ =
         emptyIntList();
     /**
-     * <code>repeated int32 surroundingEntityDistances = 19;</code>
+     * <code>repeated int32 surroundingEntityDistances = 15;</code>
      * @return A list containing the surroundingEntityDistances.
      */
     @java.lang.Override
@@ -1669,14 +1299,14 @@ public final class InitialEnvironment {
       return surroundingEntityDistances_;
     }
     /**
-     * <code>repeated int32 surroundingEntityDistances = 19;</code>
+     * <code>repeated int32 surroundingEntityDistances = 15;</code>
      * @return The count of surroundingEntityDistances.
      */
     public int getSurroundingEntityDistancesCount() {
       return surroundingEntityDistances_.size();
     }
     /**
-     * <code>repeated int32 surroundingEntityDistances = 19;</code>
+     * <code>repeated int32 surroundingEntityDistances = 15;</code>
      * @param index The index of the element to return.
      * @return The surroundingEntityDistances at the given index.
      */
@@ -1685,10 +1315,10 @@ public final class InitialEnvironment {
     }
     private int surroundingEntityDistancesMemoizedSerializedSize = -1;
 
-    public static final int HUDHIDDEN_FIELD_NUMBER = 20;
+    public static final int HUDHIDDEN_FIELD_NUMBER = 16;
     private boolean hudHidden_ = false;
     /**
-     * <code>bool hudHidden = 20;</code>
+     * <code>bool hudHidden = 16;</code>
      * @return The hudHidden.
      */
     @java.lang.Override
@@ -1696,10 +1326,10 @@ public final class InitialEnvironment {
       return hudHidden_;
     }
 
-    public static final int RENDER_DISTANCE_FIELD_NUMBER = 21;
+    public static final int RENDER_DISTANCE_FIELD_NUMBER = 17;
     private int renderDistance_ = 0;
     /**
-     * <code>int32 render_distance = 21;</code>
+     * <code>int32 render_distance = 17;</code>
      * @return The renderDistance.
      */
     @java.lang.Override
@@ -1707,10 +1337,10 @@ public final class InitialEnvironment {
       return renderDistance_;
     }
 
-    public static final int SIMULATION_DISTANCE_FIELD_NUMBER = 22;
+    public static final int SIMULATION_DISTANCE_FIELD_NUMBER = 18;
     private int simulationDistance_ = 0;
     /**
-     * <code>int32 simulation_distance = 22;</code>
+     * <code>int32 simulation_distance = 18;</code>
      * @return The simulationDistance.
      */
     @java.lang.Override
@@ -1718,21 +1348,14 @@ public final class InitialEnvironment {
       return simulationDistance_;
     }
 
-    public static final int BIOCULAR_FIELD_NUMBER = 23;
-    private boolean biocular_ = false;
-    /**
-     * <code>bool biocular = 23;</code>
-     * @return The biocular.
-     */
-    @java.lang.Override
-    public boolean getBiocular() {
-      return biocular_;
-    }
-
-    public static final int EYE_DISTANCE_FIELD_NUMBER = 24;
+    public static final int EYE_DISTANCE_FIELD_NUMBER = 19;
     private float eyeDistance_ = 0F;
     /**
-     * <code>float eye_distance = 24;</code>
+     * <pre>
+     * If &gt; 0, binocular mode
+     * </pre>
+     *
+     * <code>float eye_distance = 19;</code>
      * @return The eyeDistance.
      */
     @java.lang.Override
@@ -1740,12 +1363,12 @@ public final class InitialEnvironment {
       return eyeDistance_;
     }
 
-    public static final int STRUCTUREPATHS_FIELD_NUMBER = 25;
+    public static final int STRUCTUREPATHS_FIELD_NUMBER = 20;
     @SuppressWarnings("serial")
     private com.google.protobuf.LazyStringArrayList structurePaths_ =
         com.google.protobuf.LazyStringArrayList.emptyList();
     /**
-     * <code>repeated string structurePaths = 25;</code>
+     * <code>repeated string structurePaths = 20;</code>
      * @return A list containing the structurePaths.
      */
     public com.google.protobuf.ProtocolStringList
@@ -1753,14 +1376,14 @@ public final class InitialEnvironment {
       return structurePaths_;
     }
     /**
-     * <code>repeated string structurePaths = 25;</code>
+     * <code>repeated string structurePaths = 20;</code>
      * @return The count of structurePaths.
      */
     public int getStructurePathsCount() {
       return structurePaths_.size();
     }
     /**
-     * <code>repeated string structurePaths = 25;</code>
+     * <code>repeated string structurePaths = 20;</code>
      * @param index The index of the element to return.
      * @return The structurePaths at the given index.
      */
@@ -1768,7 +1391,7 @@ public final class InitialEnvironment {
       return structurePaths_.get(index);
     }
     /**
-     * <code>repeated string structurePaths = 25;</code>
+     * <code>repeated string structurePaths = 20;</code>
      * @param index The index of the value to return.
      * @return The bytes of the structurePaths at the given index.
      */
@@ -1777,43 +1400,21 @@ public final class InitialEnvironment {
       return structurePaths_.getByteString(index);
     }
 
-    public static final int NOWEATHERCYCLE_FIELD_NUMBER = 26;
-    private boolean noWeatherCycle_ = false;
+    public static final int NO_FOV_EFFECT_FIELD_NUMBER = 21;
+    private boolean noFovEffect_ = false;
     /**
-     * <code>bool noWeatherCycle = 26;</code>
-     * @return The noWeatherCycle.
+     * <code>bool no_fov_effect = 21;</code>
+     * @return The noFovEffect.
      */
     @java.lang.Override
-    public boolean getNoWeatherCycle() {
-      return noWeatherCycle_;
+    public boolean getNoFovEffect() {
+      return noFovEffect_;
     }
 
-    public static final int NO_POV_EFFECT_FIELD_NUMBER = 27;
-    private boolean noPovEffect_ = false;
-    /**
-     * <code>bool no_pov_effect = 27;</code>
-     * @return The noPovEffect.
-     */
-    @java.lang.Override
-    public boolean getNoPovEffect() {
-      return noPovEffect_;
-    }
-
-    public static final int NOTIMECYCLE_FIELD_NUMBER = 28;
-    private boolean noTimeCycle_ = false;
-    /**
-     * <code>bool noTimeCycle = 28;</code>
-     * @return The noTimeCycle.
-     */
-    @java.lang.Override
-    public boolean getNoTimeCycle() {
-      return noTimeCycle_;
-    }
-
-    public static final int REQUEST_RAYCAST_FIELD_NUMBER = 29;
+    public static final int REQUEST_RAYCAST_FIELD_NUMBER = 22;
     private boolean requestRaycast_ = false;
     /**
-     * <code>bool request_raycast = 29;</code>
+     * <code>bool request_raycast = 22;</code>
      * @return The requestRaycast.
      */
     @java.lang.Override
@@ -1821,10 +1422,10 @@ public final class InitialEnvironment {
       return requestRaycast_;
     }
 
-    public static final int SCREEN_ENCODING_MODE_FIELD_NUMBER = 30;
+    public static final int SCREEN_ENCODING_MODE_FIELD_NUMBER = 23;
     private int screenEncodingMode_ = 0;
     /**
-     * <code>int32 screen_encoding_mode = 30;</code>
+     * <code>int32 screen_encoding_mode = 23;</code>
      * @return The screenEncodingMode.
      */
     @java.lang.Override
@@ -1832,10 +1433,10 @@ public final class InitialEnvironment {
       return screenEncodingMode_;
     }
 
-    public static final int REQUIRESSURROUNDINGBLOCKS_FIELD_NUMBER = 31;
+    public static final int REQUIRESSURROUNDINGBLOCKS_FIELD_NUMBER = 24;
     private boolean requiresSurroundingBlocks_ = false;
     /**
-     * <code>bool requiresSurroundingBlocks = 31;</code>
+     * <code>bool requiresSurroundingBlocks = 24;</code>
      * @return The requiresSurroundingBlocks.
      */
     @java.lang.Override
@@ -1843,11 +1444,11 @@ public final class InitialEnvironment {
       return requiresSurroundingBlocks_;
     }
 
-    public static final int LEVEL_DISPLAY_NAME_TO_PLAY_FIELD_NUMBER = 32;
+    public static final int LEVEL_DISPLAY_NAME_TO_PLAY_FIELD_NUMBER = 25;
     @SuppressWarnings("serial")
     private volatile java.lang.Object levelDisplayNameToPlay_ = "";
     /**
-     * <code>string level_display_name_to_play = 32;</code>
+     * <code>string level_display_name_to_play = 25;</code>
      * @return The levelDisplayNameToPlay.
      */
     @java.lang.Override
@@ -1864,7 +1465,7 @@ public final class InitialEnvironment {
       }
     }
     /**
-     * <code>string level_display_name_to_play = 32;</code>
+     * <code>string level_display_name_to_play = 25;</code>
      * @return The bytes for levelDisplayNameToPlay.
      */
     @java.lang.Override
@@ -1882,6 +1483,21 @@ public final class InitialEnvironment {
       }
     }
 
+    public static final int FOV_FIELD_NUMBER = 26;
+    private float fov_ = 0F;
+    /**
+     * <pre>
+     * Default = 70
+     * </pre>
+     *
+     * <code>float fov = 26;</code>
+     * @return The fov.
+     */
+    @java.lang.Override
+    public float getFov() {
+      return fov_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -1897,109 +1513,87 @@ public final class InitialEnvironment {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
-      for (int i = 0; i < initialInventoryCommands_.size(); i++) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 1, initialInventoryCommands_.getRaw(i));
-      }
-      if (getInitialPositionList().size() > 0) {
-        output.writeUInt32NoTag(18);
-        output.writeUInt32NoTag(initialPositionMemoizedSerializedSize);
-      }
-      for (int i = 0; i < initialPosition_.size(); i++) {
-        output.writeInt32NoTag(initialPosition_.getInt(i));
-      }
-      for (int i = 0; i < initialMobsCommands_.size(); i++) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 3, initialMobsCommands_.getRaw(i));
-      }
       if (imageSizeX_ != 0) {
-        output.writeInt32(4, imageSizeX_);
+        output.writeInt32(1, imageSizeX_);
       }
       if (imageSizeY_ != 0) {
-        output.writeInt32(5, imageSizeY_);
+        output.writeInt32(2, imageSizeY_);
       }
-      if (seed_ != 0L) {
-        output.writeInt64(6, seed_);
+      if (gamemode_ != com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.GameMode.SURVIVAL.getNumber()) {
+        output.writeEnum(3, gamemode_);
       }
-      if (allowMobSpawn_ != false) {
-        output.writeBool(7, allowMobSpawn_);
+      if (difficulty_ != com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.Difficulty.PEACEFUL.getNumber()) {
+        output.writeEnum(4, difficulty_);
       }
-      if (alwaysNight_ != false) {
-        output.writeBool(8, alwaysNight_);
+      if (worldType_ != com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.WorldType.DEFAULT.getNumber()) {
+        output.writeEnum(5, worldType_);
       }
-      if (alwaysDay_ != false) {
-        output.writeBool(9, alwaysDay_);
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(worldTypeArgs_)) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 6, worldTypeArgs_);
       }
-      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(initialWeather_)) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 10, initialWeather_);
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(seed_)) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 7, seed_);
       }
-      if (isWorldFlat_ != false) {
-        output.writeBool(11, isWorldFlat_);
+      if (generateStructures_ != false) {
+        output.writeBool(8, generateStructures_);
       }
-      if (visibleSizeX_ != 0) {
-        output.writeInt32(12, visibleSizeX_);
+      if (bonusChest_ != false) {
+        output.writeBool(9, bonusChest_);
       }
-      if (visibleSizeY_ != 0) {
-        output.writeInt32(13, visibleSizeY_);
+      for (int i = 0; i < datapackPaths_.size(); i++) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 10, datapackPaths_.getRaw(i));
       }
       for (int i = 0; i < initialExtraCommands_.size(); i++) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 14, initialExtraCommands_.getRaw(i));
+        com.google.protobuf.GeneratedMessage.writeString(output, 11, initialExtraCommands_.getRaw(i));
       }
       for (int i = 0; i < killedStatKeys_.size(); i++) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 15, killedStatKeys_.getRaw(i));
+        com.google.protobuf.GeneratedMessage.writeString(output, 12, killedStatKeys_.getRaw(i));
       }
       for (int i = 0; i < minedStatKeys_.size(); i++) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 16, minedStatKeys_.getRaw(i));
+        com.google.protobuf.GeneratedMessage.writeString(output, 13, minedStatKeys_.getRaw(i));
       }
       for (int i = 0; i < miscStatKeys_.size(); i++) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 17, miscStatKeys_.getRaw(i));
-      }
-      for (int i = 0; i < initialBlockStates_.size(); i++) {
-        output.writeMessage(18, initialBlockStates_.get(i));
+        com.google.protobuf.GeneratedMessage.writeString(output, 14, miscStatKeys_.getRaw(i));
       }
       if (getSurroundingEntityDistancesList().size() > 0) {
-        output.writeUInt32NoTag(154);
+        output.writeUInt32NoTag(122);
         output.writeUInt32NoTag(surroundingEntityDistancesMemoizedSerializedSize);
       }
       for (int i = 0; i < surroundingEntityDistances_.size(); i++) {
         output.writeInt32NoTag(surroundingEntityDistances_.getInt(i));
       }
       if (hudHidden_ != false) {
-        output.writeBool(20, hudHidden_);
+        output.writeBool(16, hudHidden_);
       }
       if (renderDistance_ != 0) {
-        output.writeInt32(21, renderDistance_);
+        output.writeInt32(17, renderDistance_);
       }
       if (simulationDistance_ != 0) {
-        output.writeInt32(22, simulationDistance_);
-      }
-      if (biocular_ != false) {
-        output.writeBool(23, biocular_);
+        output.writeInt32(18, simulationDistance_);
       }
       if (java.lang.Float.floatToRawIntBits(eyeDistance_) != 0) {
-        output.writeFloat(24, eyeDistance_);
+        output.writeFloat(19, eyeDistance_);
       }
       for (int i = 0; i < structurePaths_.size(); i++) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 25, structurePaths_.getRaw(i));
+        com.google.protobuf.GeneratedMessage.writeString(output, 20, structurePaths_.getRaw(i));
       }
-      if (noWeatherCycle_ != false) {
-        output.writeBool(26, noWeatherCycle_);
-      }
-      if (noPovEffect_ != false) {
-        output.writeBool(27, noPovEffect_);
-      }
-      if (noTimeCycle_ != false) {
-        output.writeBool(28, noTimeCycle_);
+      if (noFovEffect_ != false) {
+        output.writeBool(21, noFovEffect_);
       }
       if (requestRaycast_ != false) {
-        output.writeBool(29, requestRaycast_);
+        output.writeBool(22, requestRaycast_);
       }
       if (screenEncodingMode_ != 0) {
-        output.writeInt32(30, screenEncodingMode_);
+        output.writeInt32(23, screenEncodingMode_);
       }
       if (requiresSurroundingBlocks_ != false) {
-        output.writeBool(31, requiresSurroundingBlocks_);
+        output.writeBool(24, requiresSurroundingBlocks_);
       }
       if (!com.google.protobuf.GeneratedMessage.isStringEmpty(levelDisplayNameToPlay_)) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 32, levelDisplayNameToPlay_);
+        com.google.protobuf.GeneratedMessage.writeString(output, 25, levelDisplayNameToPlay_);
+      }
+      if (java.lang.Float.floatToRawIntBits(fov_) != 0) {
+        output.writeFloat(26, fov_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -2010,74 +1604,47 @@ public final class InitialEnvironment {
       if (size != -1) return size;
 
       size = 0;
-      {
-        int dataSize = 0;
-        for (int i = 0; i < initialInventoryCommands_.size(); i++) {
-          dataSize += computeStringSizeNoTag(initialInventoryCommands_.getRaw(i));
-        }
-        size += dataSize;
-        size += 1 * getInitialInventoryCommandsList().size();
-      }
-      {
-        int dataSize = 0;
-        for (int i = 0; i < initialPosition_.size(); i++) {
-          dataSize += com.google.protobuf.CodedOutputStream
-            .computeInt32SizeNoTag(initialPosition_.getInt(i));
-        }
-        size += dataSize;
-        if (!getInitialPositionList().isEmpty()) {
-          size += 1;
-          size += com.google.protobuf.CodedOutputStream
-              .computeInt32SizeNoTag(dataSize);
-        }
-        initialPositionMemoizedSerializedSize = dataSize;
-      }
-      {
-        int dataSize = 0;
-        for (int i = 0; i < initialMobsCommands_.size(); i++) {
-          dataSize += computeStringSizeNoTag(initialMobsCommands_.getRaw(i));
-        }
-        size += dataSize;
-        size += 1 * getInitialMobsCommandsList().size();
-      }
       if (imageSizeX_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(4, imageSizeX_);
+          .computeInt32Size(1, imageSizeX_);
       }
       if (imageSizeY_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(5, imageSizeY_);
+          .computeInt32Size(2, imageSizeY_);
       }
-      if (seed_ != 0L) {
+      if (gamemode_ != com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.GameMode.SURVIVAL.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt64Size(6, seed_);
+          .computeEnumSize(3, gamemode_);
       }
-      if (allowMobSpawn_ != false) {
+      if (difficulty_ != com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.Difficulty.PEACEFUL.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(7, allowMobSpawn_);
+          .computeEnumSize(4, difficulty_);
       }
-      if (alwaysNight_ != false) {
+      if (worldType_ != com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.WorldType.DEFAULT.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(8, alwaysNight_);
+          .computeEnumSize(5, worldType_);
       }
-      if (alwaysDay_ != false) {
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(worldTypeArgs_)) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(6, worldTypeArgs_);
+      }
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(seed_)) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(7, seed_);
+      }
+      if (generateStructures_ != false) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(9, alwaysDay_);
+          .computeBoolSize(8, generateStructures_);
       }
-      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(initialWeather_)) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(10, initialWeather_);
-      }
-      if (isWorldFlat_ != false) {
+      if (bonusChest_ != false) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(11, isWorldFlat_);
+          .computeBoolSize(9, bonusChest_);
       }
-      if (visibleSizeX_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(12, visibleSizeX_);
-      }
-      if (visibleSizeY_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(13, visibleSizeY_);
+      {
+        int dataSize = 0;
+        for (int i = 0; i < datapackPaths_.size(); i++) {
+          dataSize += computeStringSizeNoTag(datapackPaths_.getRaw(i));
+        }
+        size += dataSize;
+        size += 1 * getDatapackPathsList().size();
       }
       {
         int dataSize = 0;
@@ -2101,7 +1668,7 @@ public final class InitialEnvironment {
           dataSize += computeStringSizeNoTag(minedStatKeys_.getRaw(i));
         }
         size += dataSize;
-        size += 2 * getMinedStatKeysList().size();
+        size += 1 * getMinedStatKeysList().size();
       }
       {
         int dataSize = 0;
@@ -2109,11 +1676,7 @@ public final class InitialEnvironment {
           dataSize += computeStringSizeNoTag(miscStatKeys_.getRaw(i));
         }
         size += dataSize;
-        size += 2 * getMiscStatKeysList().size();
-      }
-      for (int i = 0; i < initialBlockStates_.size(); i++) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(18, initialBlockStates_.get(i));
+        size += 1 * getMiscStatKeysList().size();
       }
       {
         int dataSize = 0;
@@ -2123,7 +1686,7 @@ public final class InitialEnvironment {
         }
         size += dataSize;
         if (!getSurroundingEntityDistancesList().isEmpty()) {
-          size += 2;
+          size += 1;
           size += com.google.protobuf.CodedOutputStream
               .computeInt32SizeNoTag(dataSize);
         }
@@ -2131,23 +1694,19 @@ public final class InitialEnvironment {
       }
       if (hudHidden_ != false) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(20, hudHidden_);
+          .computeBoolSize(16, hudHidden_);
       }
       if (renderDistance_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(21, renderDistance_);
+          .computeInt32Size(17, renderDistance_);
       }
       if (simulationDistance_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(22, simulationDistance_);
-      }
-      if (biocular_ != false) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(23, biocular_);
+          .computeInt32Size(18, simulationDistance_);
       }
       if (java.lang.Float.floatToRawIntBits(eyeDistance_) != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeFloatSize(24, eyeDistance_);
+          .computeFloatSize(19, eyeDistance_);
       }
       {
         int dataSize = 0;
@@ -2157,32 +1716,28 @@ public final class InitialEnvironment {
         size += dataSize;
         size += 2 * getStructurePathsList().size();
       }
-      if (noWeatherCycle_ != false) {
+      if (noFovEffect_ != false) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(26, noWeatherCycle_);
-      }
-      if (noPovEffect_ != false) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(27, noPovEffect_);
-      }
-      if (noTimeCycle_ != false) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(28, noTimeCycle_);
+          .computeBoolSize(21, noFovEffect_);
       }
       if (requestRaycast_ != false) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(29, requestRaycast_);
+          .computeBoolSize(22, requestRaycast_);
       }
       if (screenEncodingMode_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(30, screenEncodingMode_);
+          .computeInt32Size(23, screenEncodingMode_);
       }
       if (requiresSurroundingBlocks_ != false) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(31, requiresSurroundingBlocks_);
+          .computeBoolSize(24, requiresSurroundingBlocks_);
       }
       if (!com.google.protobuf.GeneratedMessage.isStringEmpty(levelDisplayNameToPlay_)) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(32, levelDisplayNameToPlay_);
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(25, levelDisplayNameToPlay_);
+      }
+      if (java.lang.Float.floatToRawIntBits(fov_) != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeFloatSize(26, fov_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
@@ -2199,32 +1754,23 @@ public final class InitialEnvironment {
       }
       com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage other = (com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage) obj;
 
-      if (!getInitialInventoryCommandsList()
-          .equals(other.getInitialInventoryCommandsList())) return false;
-      if (!getInitialPositionList()
-          .equals(other.getInitialPositionList())) return false;
-      if (!getInitialMobsCommandsList()
-          .equals(other.getInitialMobsCommandsList())) return false;
       if (getImageSizeX()
           != other.getImageSizeX()) return false;
       if (getImageSizeY()
           != other.getImageSizeY()) return false;
-      if (getSeed()
-          != other.getSeed()) return false;
-      if (getAllowMobSpawn()
-          != other.getAllowMobSpawn()) return false;
-      if (getAlwaysNight()
-          != other.getAlwaysNight()) return false;
-      if (getAlwaysDay()
-          != other.getAlwaysDay()) return false;
-      if (!getInitialWeather()
-          .equals(other.getInitialWeather())) return false;
-      if (getIsWorldFlat()
-          != other.getIsWorldFlat()) return false;
-      if (getVisibleSizeX()
-          != other.getVisibleSizeX()) return false;
-      if (getVisibleSizeY()
-          != other.getVisibleSizeY()) return false;
+      if (gamemode_ != other.gamemode_) return false;
+      if (difficulty_ != other.difficulty_) return false;
+      if (worldType_ != other.worldType_) return false;
+      if (!getWorldTypeArgs()
+          .equals(other.getWorldTypeArgs())) return false;
+      if (!getSeed()
+          .equals(other.getSeed())) return false;
+      if (getGenerateStructures()
+          != other.getGenerateStructures()) return false;
+      if (getBonusChest()
+          != other.getBonusChest()) return false;
+      if (!getDatapackPathsList()
+          .equals(other.getDatapackPathsList())) return false;
       if (!getInitialExtraCommandsList()
           .equals(other.getInitialExtraCommandsList())) return false;
       if (!getKilledStatKeysList()
@@ -2233,8 +1779,6 @@ public final class InitialEnvironment {
           .equals(other.getMinedStatKeysList())) return false;
       if (!getMiscStatKeysList()
           .equals(other.getMiscStatKeysList())) return false;
-      if (!getInitialBlockStatesList()
-          .equals(other.getInitialBlockStatesList())) return false;
       if (!getSurroundingEntityDistancesList()
           .equals(other.getSurroundingEntityDistancesList())) return false;
       if (getHudHidden()
@@ -2243,19 +1787,13 @@ public final class InitialEnvironment {
           != other.getRenderDistance()) return false;
       if (getSimulationDistance()
           != other.getSimulationDistance()) return false;
-      if (getBiocular()
-          != other.getBiocular()) return false;
       if (java.lang.Float.floatToIntBits(getEyeDistance())
           != java.lang.Float.floatToIntBits(
               other.getEyeDistance())) return false;
       if (!getStructurePathsList()
           .equals(other.getStructurePathsList())) return false;
-      if (getNoWeatherCycle()
-          != other.getNoWeatherCycle()) return false;
-      if (getNoPovEffect()
-          != other.getNoPovEffect()) return false;
-      if (getNoTimeCycle()
-          != other.getNoTimeCycle()) return false;
+      if (getNoFovEffect()
+          != other.getNoFovEffect()) return false;
       if (getRequestRaycast()
           != other.getRequestRaycast()) return false;
       if (getScreenEncodingMode()
@@ -2264,6 +1802,9 @@ public final class InitialEnvironment {
           != other.getRequiresSurroundingBlocks()) return false;
       if (!getLevelDisplayNameToPlay()
           .equals(other.getLevelDisplayNameToPlay())) return false;
+      if (java.lang.Float.floatToIntBits(getFov())
+          != java.lang.Float.floatToIntBits(
+              other.getFov())) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -2275,43 +1816,30 @@ public final class InitialEnvironment {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      if (getInitialInventoryCommandsCount() > 0) {
-        hash = (37 * hash) + INITIALINVENTORYCOMMANDS_FIELD_NUMBER;
-        hash = (53 * hash) + getInitialInventoryCommandsList().hashCode();
-      }
-      if (getInitialPositionCount() > 0) {
-        hash = (37 * hash) + INITIALPOSITION_FIELD_NUMBER;
-        hash = (53 * hash) + getInitialPositionList().hashCode();
-      }
-      if (getInitialMobsCommandsCount() > 0) {
-        hash = (37 * hash) + INITIALMOBSCOMMANDS_FIELD_NUMBER;
-        hash = (53 * hash) + getInitialMobsCommandsList().hashCode();
-      }
       hash = (37 * hash) + IMAGESIZEX_FIELD_NUMBER;
       hash = (53 * hash) + getImageSizeX();
       hash = (37 * hash) + IMAGESIZEY_FIELD_NUMBER;
       hash = (53 * hash) + getImageSizeY();
+      hash = (37 * hash) + GAMEMODE_FIELD_NUMBER;
+      hash = (53 * hash) + gamemode_;
+      hash = (37 * hash) + DIFFICULTY_FIELD_NUMBER;
+      hash = (53 * hash) + difficulty_;
+      hash = (37 * hash) + WORLDTYPE_FIELD_NUMBER;
+      hash = (53 * hash) + worldType_;
+      hash = (37 * hash) + WORLDTYPEARGS_FIELD_NUMBER;
+      hash = (53 * hash) + getWorldTypeArgs().hashCode();
       hash = (37 * hash) + SEED_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          getSeed());
-      hash = (37 * hash) + ALLOWMOBSPAWN_FIELD_NUMBER;
+      hash = (53 * hash) + getSeed().hashCode();
+      hash = (37 * hash) + GENERATE_STRUCTURES_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
-          getAllowMobSpawn());
-      hash = (37 * hash) + ALWAYSNIGHT_FIELD_NUMBER;
+          getGenerateStructures());
+      hash = (37 * hash) + BONUS_CHEST_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
-          getAlwaysNight());
-      hash = (37 * hash) + ALWAYSDAY_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
-          getAlwaysDay());
-      hash = (37 * hash) + INITIALWEATHER_FIELD_NUMBER;
-      hash = (53 * hash) + getInitialWeather().hashCode();
-      hash = (37 * hash) + ISWORLDFLAT_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
-          getIsWorldFlat());
-      hash = (37 * hash) + VISIBLESIZEX_FIELD_NUMBER;
-      hash = (53 * hash) + getVisibleSizeX();
-      hash = (37 * hash) + VISIBLESIZEY_FIELD_NUMBER;
-      hash = (53 * hash) + getVisibleSizeY();
+          getBonusChest());
+      if (getDatapackPathsCount() > 0) {
+        hash = (37 * hash) + DATAPACKPATHS_FIELD_NUMBER;
+        hash = (53 * hash) + getDatapackPathsList().hashCode();
+      }
       if (getInitialExtraCommandsCount() > 0) {
         hash = (37 * hash) + INITIALEXTRACOMMANDS_FIELD_NUMBER;
         hash = (53 * hash) + getInitialExtraCommandsList().hashCode();
@@ -2328,10 +1856,6 @@ public final class InitialEnvironment {
         hash = (37 * hash) + MISCSTATKEYS_FIELD_NUMBER;
         hash = (53 * hash) + getMiscStatKeysList().hashCode();
       }
-      if (getInitialBlockStatesCount() > 0) {
-        hash = (37 * hash) + INITIALBLOCKSTATES_FIELD_NUMBER;
-        hash = (53 * hash) + getInitialBlockStatesList().hashCode();
-      }
       if (getSurroundingEntityDistancesCount() > 0) {
         hash = (37 * hash) + SURROUNDINGENTITYDISTANCES_FIELD_NUMBER;
         hash = (53 * hash) + getSurroundingEntityDistancesList().hashCode();
@@ -2343,9 +1867,6 @@ public final class InitialEnvironment {
       hash = (53 * hash) + getRenderDistance();
       hash = (37 * hash) + SIMULATION_DISTANCE_FIELD_NUMBER;
       hash = (53 * hash) + getSimulationDistance();
-      hash = (37 * hash) + BIOCULAR_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
-          getBiocular());
       hash = (37 * hash) + EYE_DISTANCE_FIELD_NUMBER;
       hash = (53 * hash) + java.lang.Float.floatToIntBits(
           getEyeDistance());
@@ -2353,15 +1874,9 @@ public final class InitialEnvironment {
         hash = (37 * hash) + STRUCTUREPATHS_FIELD_NUMBER;
         hash = (53 * hash) + getStructurePathsList().hashCode();
       }
-      hash = (37 * hash) + NOWEATHERCYCLE_FIELD_NUMBER;
+      hash = (37 * hash) + NO_FOV_EFFECT_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
-          getNoWeatherCycle());
-      hash = (37 * hash) + NO_POV_EFFECT_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
-          getNoPovEffect());
-      hash = (37 * hash) + NOTIMECYCLE_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
-          getNoTimeCycle());
+          getNoFovEffect());
       hash = (37 * hash) + REQUEST_RAYCAST_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
           getRequestRaycast());
@@ -2372,6 +1887,9 @@ public final class InitialEnvironment {
           getRequiresSurroundingBlocks());
       hash = (37 * hash) + LEVEL_DISPLAY_NAME_TO_PLAY_FIELD_NUMBER;
       hash = (53 * hash) + getLevelDisplayNameToPlay().hashCode();
+      hash = (37 * hash) + FOV_FIELD_NUMBER;
+      hash = (53 * hash) + java.lang.Float.floatToIntBits(
+          getFov());
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -2503,21 +2021,17 @@ public final class InitialEnvironment {
       public Builder clear() {
         super.clear();
         bitField0_ = 0;
-        initialInventoryCommands_ =
-            com.google.protobuf.LazyStringArrayList.emptyList();
-        initialPosition_ = emptyIntList();
-        initialMobsCommands_ =
-            com.google.protobuf.LazyStringArrayList.emptyList();
         imageSizeX_ = 0;
         imageSizeY_ = 0;
-        seed_ = 0L;
-        allowMobSpawn_ = false;
-        alwaysNight_ = false;
-        alwaysDay_ = false;
-        initialWeather_ = "";
-        isWorldFlat_ = false;
-        visibleSizeX_ = 0;
-        visibleSizeY_ = 0;
+        gamemode_ = 0;
+        difficulty_ = 0;
+        worldType_ = 0;
+        worldTypeArgs_ = "";
+        seed_ = "";
+        generateStructures_ = false;
+        bonusChest_ = false;
+        datapackPaths_ =
+            com.google.protobuf.LazyStringArrayList.emptyList();
         initialExtraCommands_ =
             com.google.protobuf.LazyStringArrayList.emptyList();
         killedStatKeys_ =
@@ -2526,28 +2040,19 @@ public final class InitialEnvironment {
             com.google.protobuf.LazyStringArrayList.emptyList();
         miscStatKeys_ =
             com.google.protobuf.LazyStringArrayList.emptyList();
-        if (initialBlockStatesBuilder_ == null) {
-          initialBlockStates_ = java.util.Collections.emptyList();
-        } else {
-          initialBlockStates_ = null;
-          initialBlockStatesBuilder_.clear();
-        }
-        bitField0_ = (bitField0_ & ~0x00020000);
         surroundingEntityDistances_ = emptyIntList();
         hudHidden_ = false;
         renderDistance_ = 0;
         simulationDistance_ = 0;
-        biocular_ = false;
         eyeDistance_ = 0F;
         structurePaths_ =
             com.google.protobuf.LazyStringArrayList.emptyList();
-        noWeatherCycle_ = false;
-        noPovEffect_ = false;
-        noTimeCycle_ = false;
+        noFovEffect_ = false;
         requestRaycast_ = false;
         screenEncodingMode_ = 0;
         requiresSurroundingBlocks_ = false;
         levelDisplayNameToPlay_ = "";
+        fov_ = 0F;
         return this;
       }
 
@@ -2574,127 +2079,97 @@ public final class InitialEnvironment {
       @java.lang.Override
       public com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage buildPartial() {
         com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage result = new com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage(this);
-        buildPartialRepeatedFields(result);
         if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
       }
 
-      private void buildPartialRepeatedFields(com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage result) {
-        if (initialBlockStatesBuilder_ == null) {
-          if (((bitField0_ & 0x00020000) != 0)) {
-            initialBlockStates_ = java.util.Collections.unmodifiableList(initialBlockStates_);
-            bitField0_ = (bitField0_ & ~0x00020000);
-          }
-          result.initialBlockStates_ = initialBlockStates_;
-        } else {
-          result.initialBlockStates_ = initialBlockStatesBuilder_.build();
-        }
-      }
-
       private void buildPartial0(com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage result) {
         int from_bitField0_ = bitField0_;
         if (((from_bitField0_ & 0x00000001) != 0)) {
-          initialInventoryCommands_.makeImmutable();
-          result.initialInventoryCommands_ = initialInventoryCommands_;
-        }
-        if (((from_bitField0_ & 0x00000002) != 0)) {
-          initialPosition_.makeImmutable();
-          result.initialPosition_ = initialPosition_;
-        }
-        if (((from_bitField0_ & 0x00000004) != 0)) {
-          initialMobsCommands_.makeImmutable();
-          result.initialMobsCommands_ = initialMobsCommands_;
-        }
-        if (((from_bitField0_ & 0x00000008) != 0)) {
           result.imageSizeX_ = imageSizeX_;
         }
-        if (((from_bitField0_ & 0x00000010) != 0)) {
+        if (((from_bitField0_ & 0x00000002) != 0)) {
           result.imageSizeY_ = imageSizeY_;
         }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.gamemode_ = gamemode_;
+        }
+        if (((from_bitField0_ & 0x00000008) != 0)) {
+          result.difficulty_ = difficulty_;
+        }
+        if (((from_bitField0_ & 0x00000010) != 0)) {
+          result.worldType_ = worldType_;
+        }
         if (((from_bitField0_ & 0x00000020) != 0)) {
-          result.seed_ = seed_;
+          result.worldTypeArgs_ = worldTypeArgs_;
         }
         if (((from_bitField0_ & 0x00000040) != 0)) {
-          result.allowMobSpawn_ = allowMobSpawn_;
+          result.seed_ = seed_;
         }
         if (((from_bitField0_ & 0x00000080) != 0)) {
-          result.alwaysNight_ = alwaysNight_;
+          result.generateStructures_ = generateStructures_;
         }
         if (((from_bitField0_ & 0x00000100) != 0)) {
-          result.alwaysDay_ = alwaysDay_;
+          result.bonusChest_ = bonusChest_;
         }
         if (((from_bitField0_ & 0x00000200) != 0)) {
-          result.initialWeather_ = initialWeather_;
+          datapackPaths_.makeImmutable();
+          result.datapackPaths_ = datapackPaths_;
         }
         if (((from_bitField0_ & 0x00000400) != 0)) {
-          result.isWorldFlat_ = isWorldFlat_;
-        }
-        if (((from_bitField0_ & 0x00000800) != 0)) {
-          result.visibleSizeX_ = visibleSizeX_;
-        }
-        if (((from_bitField0_ & 0x00001000) != 0)) {
-          result.visibleSizeY_ = visibleSizeY_;
-        }
-        if (((from_bitField0_ & 0x00002000) != 0)) {
           initialExtraCommands_.makeImmutable();
           result.initialExtraCommands_ = initialExtraCommands_;
         }
-        if (((from_bitField0_ & 0x00004000) != 0)) {
+        if (((from_bitField0_ & 0x00000800) != 0)) {
           killedStatKeys_.makeImmutable();
           result.killedStatKeys_ = killedStatKeys_;
         }
-        if (((from_bitField0_ & 0x00008000) != 0)) {
+        if (((from_bitField0_ & 0x00001000) != 0)) {
           minedStatKeys_.makeImmutable();
           result.minedStatKeys_ = minedStatKeys_;
         }
-        if (((from_bitField0_ & 0x00010000) != 0)) {
+        if (((from_bitField0_ & 0x00002000) != 0)) {
           miscStatKeys_.makeImmutable();
           result.miscStatKeys_ = miscStatKeys_;
         }
-        if (((from_bitField0_ & 0x00040000) != 0)) {
+        if (((from_bitField0_ & 0x00004000) != 0)) {
           surroundingEntityDistances_.makeImmutable();
           result.surroundingEntityDistances_ = surroundingEntityDistances_;
         }
-        if (((from_bitField0_ & 0x00080000) != 0)) {
+        if (((from_bitField0_ & 0x00008000) != 0)) {
           result.hudHidden_ = hudHidden_;
         }
-        if (((from_bitField0_ & 0x00100000) != 0)) {
+        if (((from_bitField0_ & 0x00010000) != 0)) {
           result.renderDistance_ = renderDistance_;
         }
-        if (((from_bitField0_ & 0x00200000) != 0)) {
+        if (((from_bitField0_ & 0x00020000) != 0)) {
           result.simulationDistance_ = simulationDistance_;
         }
-        if (((from_bitField0_ & 0x00400000) != 0)) {
-          result.biocular_ = biocular_;
-        }
-        if (((from_bitField0_ & 0x00800000) != 0)) {
+        if (((from_bitField0_ & 0x00040000) != 0)) {
           result.eyeDistance_ = eyeDistance_;
         }
-        if (((from_bitField0_ & 0x01000000) != 0)) {
+        if (((from_bitField0_ & 0x00080000) != 0)) {
           structurePaths_.makeImmutable();
           result.structurePaths_ = structurePaths_;
         }
-        if (((from_bitField0_ & 0x02000000) != 0)) {
-          result.noWeatherCycle_ = noWeatherCycle_;
+        if (((from_bitField0_ & 0x00100000) != 0)) {
+          result.noFovEffect_ = noFovEffect_;
         }
-        if (((from_bitField0_ & 0x04000000) != 0)) {
-          result.noPovEffect_ = noPovEffect_;
-        }
-        if (((from_bitField0_ & 0x08000000) != 0)) {
-          result.noTimeCycle_ = noTimeCycle_;
-        }
-        if (((from_bitField0_ & 0x10000000) != 0)) {
+        if (((from_bitField0_ & 0x00200000) != 0)) {
           result.requestRaycast_ = requestRaycast_;
         }
-        if (((from_bitField0_ & 0x20000000) != 0)) {
+        if (((from_bitField0_ & 0x00400000) != 0)) {
           result.screenEncodingMode_ = screenEncodingMode_;
         }
-        if (((from_bitField0_ & 0x40000000) != 0)) {
+        if (((from_bitField0_ & 0x00800000) != 0)) {
           result.requiresSurroundingBlocks_ = requiresSurroundingBlocks_;
         }
-        if (((from_bitField0_ & 0x80000000) != 0)) {
+        if (((from_bitField0_ & 0x01000000) != 0)) {
           result.levelDisplayNameToPlay_ = levelDisplayNameToPlay_;
+        }
+        if (((from_bitField0_ & 0x02000000) != 0)) {
+          result.fov_ = fov_;
         }
       }
 
@@ -2710,73 +2185,51 @@ public final class InitialEnvironment {
 
       public Builder mergeFrom(com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage other) {
         if (other == com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage.getDefaultInstance()) return this;
-        if (!other.initialInventoryCommands_.isEmpty()) {
-          if (initialInventoryCommands_.isEmpty()) {
-            initialInventoryCommands_ = other.initialInventoryCommands_;
-            bitField0_ |= 0x00000001;
-          } else {
-            ensureInitialInventoryCommandsIsMutable();
-            initialInventoryCommands_.addAll(other.initialInventoryCommands_);
-          }
-          onChanged();
-        }
-        if (!other.initialPosition_.isEmpty()) {
-          if (initialPosition_.isEmpty()) {
-            initialPosition_ = other.initialPosition_;
-            initialPosition_.makeImmutable();
-            bitField0_ |= 0x00000002;
-          } else {
-            ensureInitialPositionIsMutable();
-            initialPosition_.addAll(other.initialPosition_);
-          }
-          onChanged();
-        }
-        if (!other.initialMobsCommands_.isEmpty()) {
-          if (initialMobsCommands_.isEmpty()) {
-            initialMobsCommands_ = other.initialMobsCommands_;
-            bitField0_ |= 0x00000004;
-          } else {
-            ensureInitialMobsCommandsIsMutable();
-            initialMobsCommands_.addAll(other.initialMobsCommands_);
-          }
-          onChanged();
-        }
         if (other.getImageSizeX() != 0) {
           setImageSizeX(other.getImageSizeX());
         }
         if (other.getImageSizeY() != 0) {
           setImageSizeY(other.getImageSizeY());
         }
-        if (other.getSeed() != 0L) {
-          setSeed(other.getSeed());
+        if (other.gamemode_ != 0) {
+          setGamemodeValue(other.getGamemodeValue());
         }
-        if (other.getAllowMobSpawn() != false) {
-          setAllowMobSpawn(other.getAllowMobSpawn());
+        if (other.difficulty_ != 0) {
+          setDifficultyValue(other.getDifficultyValue());
         }
-        if (other.getAlwaysNight() != false) {
-          setAlwaysNight(other.getAlwaysNight());
+        if (other.worldType_ != 0) {
+          setWorldTypeValue(other.getWorldTypeValue());
         }
-        if (other.getAlwaysDay() != false) {
-          setAlwaysDay(other.getAlwaysDay());
-        }
-        if (!other.getInitialWeather().isEmpty()) {
-          initialWeather_ = other.initialWeather_;
-          bitField0_ |= 0x00000200;
+        if (!other.getWorldTypeArgs().isEmpty()) {
+          worldTypeArgs_ = other.worldTypeArgs_;
+          bitField0_ |= 0x00000020;
           onChanged();
         }
-        if (other.getIsWorldFlat() != false) {
-          setIsWorldFlat(other.getIsWorldFlat());
+        if (!other.getSeed().isEmpty()) {
+          seed_ = other.seed_;
+          bitField0_ |= 0x00000040;
+          onChanged();
         }
-        if (other.getVisibleSizeX() != 0) {
-          setVisibleSizeX(other.getVisibleSizeX());
+        if (other.getGenerateStructures() != false) {
+          setGenerateStructures(other.getGenerateStructures());
         }
-        if (other.getVisibleSizeY() != 0) {
-          setVisibleSizeY(other.getVisibleSizeY());
+        if (other.getBonusChest() != false) {
+          setBonusChest(other.getBonusChest());
+        }
+        if (!other.datapackPaths_.isEmpty()) {
+          if (datapackPaths_.isEmpty()) {
+            datapackPaths_ = other.datapackPaths_;
+            bitField0_ |= 0x00000200;
+          } else {
+            ensureDatapackPathsIsMutable();
+            datapackPaths_.addAll(other.datapackPaths_);
+          }
+          onChanged();
         }
         if (!other.initialExtraCommands_.isEmpty()) {
           if (initialExtraCommands_.isEmpty()) {
             initialExtraCommands_ = other.initialExtraCommands_;
-            bitField0_ |= 0x00002000;
+            bitField0_ |= 0x00000400;
           } else {
             ensureInitialExtraCommandsIsMutable();
             initialExtraCommands_.addAll(other.initialExtraCommands_);
@@ -2786,7 +2239,7 @@ public final class InitialEnvironment {
         if (!other.killedStatKeys_.isEmpty()) {
           if (killedStatKeys_.isEmpty()) {
             killedStatKeys_ = other.killedStatKeys_;
-            bitField0_ |= 0x00004000;
+            bitField0_ |= 0x00000800;
           } else {
             ensureKilledStatKeysIsMutable();
             killedStatKeys_.addAll(other.killedStatKeys_);
@@ -2796,7 +2249,7 @@ public final class InitialEnvironment {
         if (!other.minedStatKeys_.isEmpty()) {
           if (minedStatKeys_.isEmpty()) {
             minedStatKeys_ = other.minedStatKeys_;
-            bitField0_ |= 0x00008000;
+            bitField0_ |= 0x00001000;
           } else {
             ensureMinedStatKeysIsMutable();
             minedStatKeys_.addAll(other.minedStatKeys_);
@@ -2806,44 +2259,18 @@ public final class InitialEnvironment {
         if (!other.miscStatKeys_.isEmpty()) {
           if (miscStatKeys_.isEmpty()) {
             miscStatKeys_ = other.miscStatKeys_;
-            bitField0_ |= 0x00010000;
+            bitField0_ |= 0x00002000;
           } else {
             ensureMiscStatKeysIsMutable();
             miscStatKeys_.addAll(other.miscStatKeys_);
           }
           onChanged();
         }
-        if (initialBlockStatesBuilder_ == null) {
-          if (!other.initialBlockStates_.isEmpty()) {
-            if (initialBlockStates_.isEmpty()) {
-              initialBlockStates_ = other.initialBlockStates_;
-              bitField0_ = (bitField0_ & ~0x00020000);
-            } else {
-              ensureInitialBlockStatesIsMutable();
-              initialBlockStates_.addAll(other.initialBlockStates_);
-            }
-            onChanged();
-          }
-        } else {
-          if (!other.initialBlockStates_.isEmpty()) {
-            if (initialBlockStatesBuilder_.isEmpty()) {
-              initialBlockStatesBuilder_.dispose();
-              initialBlockStatesBuilder_ = null;
-              initialBlockStates_ = other.initialBlockStates_;
-              bitField0_ = (bitField0_ & ~0x00020000);
-              initialBlockStatesBuilder_ = 
-                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
-                   getInitialBlockStatesFieldBuilder() : null;
-            } else {
-              initialBlockStatesBuilder_.addAllMessages(other.initialBlockStates_);
-            }
-          }
-        }
         if (!other.surroundingEntityDistances_.isEmpty()) {
           if (surroundingEntityDistances_.isEmpty()) {
             surroundingEntityDistances_ = other.surroundingEntityDistances_;
             surroundingEntityDistances_.makeImmutable();
-            bitField0_ |= 0x00040000;
+            bitField0_ |= 0x00004000;
           } else {
             ensureSurroundingEntityDistancesIsMutable();
             surroundingEntityDistances_.addAll(other.surroundingEntityDistances_);
@@ -2859,30 +2286,21 @@ public final class InitialEnvironment {
         if (other.getSimulationDistance() != 0) {
           setSimulationDistance(other.getSimulationDistance());
         }
-        if (other.getBiocular() != false) {
-          setBiocular(other.getBiocular());
-        }
         if (other.getEyeDistance() != 0F) {
           setEyeDistance(other.getEyeDistance());
         }
         if (!other.structurePaths_.isEmpty()) {
           if (structurePaths_.isEmpty()) {
             structurePaths_ = other.structurePaths_;
-            bitField0_ |= 0x01000000;
+            bitField0_ |= 0x00080000;
           } else {
             ensureStructurePathsIsMutable();
             structurePaths_.addAll(other.structurePaths_);
           }
           onChanged();
         }
-        if (other.getNoWeatherCycle() != false) {
-          setNoWeatherCycle(other.getNoWeatherCycle());
-        }
-        if (other.getNoPovEffect() != false) {
-          setNoPovEffect(other.getNoPovEffect());
-        }
-        if (other.getNoTimeCycle() != false) {
-          setNoTimeCycle(other.getNoTimeCycle());
+        if (other.getNoFovEffect() != false) {
+          setNoFovEffect(other.getNoFovEffect());
         }
         if (other.getRequestRaycast() != false) {
           setRequestRaycast(other.getRequestRaycast());
@@ -2895,8 +2313,11 @@ public final class InitialEnvironment {
         }
         if (!other.getLevelDisplayNameToPlay().isEmpty()) {
           levelDisplayNameToPlay_ = other.levelDisplayNameToPlay_;
-          bitField0_ |= 0x80000000;
+          bitField0_ |= 0x01000000;
           onChanged();
+        }
+        if (other.getFov() != 0F) {
+          setFov(other.getFov());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
@@ -2924,128 +2345,88 @@ public final class InitialEnvironment {
               case 0:
                 done = true;
                 break;
-              case 10: {
-                java.lang.String s = input.readStringRequireUtf8();
-                ensureInitialInventoryCommandsIsMutable();
-                initialInventoryCommands_.add(s);
+              case 8: {
+                imageSizeX_ = input.readInt32();
+                bitField0_ |= 0x00000001;
                 break;
-              } // case 10
+              } // case 8
               case 16: {
-                int v = input.readInt32();
-                ensureInitialPositionIsMutable();
-                initialPosition_.addInt(v);
+                imageSizeY_ = input.readInt32();
+                bitField0_ |= 0x00000002;
                 break;
               } // case 16
-              case 18: {
-                int length = input.readRawVarint32();
-                int limit = input.pushLimit(length);
-                ensureInitialPositionIsMutable();
-                while (input.getBytesUntilLimit() > 0) {
-                  initialPosition_.addInt(input.readInt32());
-                }
-                input.popLimit(limit);
+              case 24: {
+                gamemode_ = input.readEnum();
+                bitField0_ |= 0x00000004;
                 break;
-              } // case 18
-              case 26: {
-                java.lang.String s = input.readStringRequireUtf8();
-                ensureInitialMobsCommandsIsMutable();
-                initialMobsCommands_.add(s);
-                break;
-              } // case 26
+              } // case 24
               case 32: {
-                imageSizeX_ = input.readInt32();
+                difficulty_ = input.readEnum();
                 bitField0_ |= 0x00000008;
                 break;
               } // case 32
               case 40: {
-                imageSizeY_ = input.readInt32();
+                worldType_ = input.readEnum();
                 bitField0_ |= 0x00000010;
                 break;
               } // case 40
-              case 48: {
-                seed_ = input.readInt64();
+              case 50: {
+                worldTypeArgs_ = input.readStringRequireUtf8();
                 bitField0_ |= 0x00000020;
                 break;
-              } // case 48
-              case 56: {
-                allowMobSpawn_ = input.readBool();
+              } // case 50
+              case 58: {
+                seed_ = input.readStringRequireUtf8();
                 bitField0_ |= 0x00000040;
                 break;
-              } // case 56
+              } // case 58
               case 64: {
-                alwaysNight_ = input.readBool();
+                generateStructures_ = input.readBool();
                 bitField0_ |= 0x00000080;
                 break;
               } // case 64
               case 72: {
-                alwaysDay_ = input.readBool();
+                bonusChest_ = input.readBool();
                 bitField0_ |= 0x00000100;
                 break;
               } // case 72
               case 82: {
-                initialWeather_ = input.readStringRequireUtf8();
-                bitField0_ |= 0x00000200;
+                java.lang.String s = input.readStringRequireUtf8();
+                ensureDatapackPathsIsMutable();
+                datapackPaths_.add(s);
                 break;
               } // case 82
-              case 88: {
-                isWorldFlat_ = input.readBool();
-                bitField0_ |= 0x00000400;
-                break;
-              } // case 88
-              case 96: {
-                visibleSizeX_ = input.readInt32();
-                bitField0_ |= 0x00000800;
-                break;
-              } // case 96
-              case 104: {
-                visibleSizeY_ = input.readInt32();
-                bitField0_ |= 0x00001000;
-                break;
-              } // case 104
-              case 114: {
+              case 90: {
                 java.lang.String s = input.readStringRequireUtf8();
                 ensureInitialExtraCommandsIsMutable();
                 initialExtraCommands_.add(s);
                 break;
-              } // case 114
-              case 122: {
+              } // case 90
+              case 98: {
                 java.lang.String s = input.readStringRequireUtf8();
                 ensureKilledStatKeysIsMutable();
                 killedStatKeys_.add(s);
                 break;
-              } // case 122
-              case 130: {
+              } // case 98
+              case 106: {
                 java.lang.String s = input.readStringRequireUtf8();
                 ensureMinedStatKeysIsMutable();
                 minedStatKeys_.add(s);
                 break;
-              } // case 130
-              case 138: {
+              } // case 106
+              case 114: {
                 java.lang.String s = input.readStringRequireUtf8();
                 ensureMiscStatKeysIsMutable();
                 miscStatKeys_.add(s);
                 break;
-              } // case 138
-              case 146: {
-                com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.BlockState m =
-                    input.readMessage(
-                        com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.BlockState.parser(),
-                        extensionRegistry);
-                if (initialBlockStatesBuilder_ == null) {
-                  ensureInitialBlockStatesIsMutable();
-                  initialBlockStates_.add(m);
-                } else {
-                  initialBlockStatesBuilder_.addMessage(m);
-                }
-                break;
-              } // case 146
-              case 152: {
+              } // case 114
+              case 120: {
                 int v = input.readInt32();
                 ensureSurroundingEntityDistancesIsMutable();
                 surroundingEntityDistances_.addInt(v);
                 break;
-              } // case 152
-              case 154: {
+              } // case 120
+              case 122: {
                 int length = input.readRawVarint32();
                 int limit = input.pushLimit(length);
                 ensureSurroundingEntityDistancesIsMutable();
@@ -3054,73 +2435,63 @@ public final class InitialEnvironment {
                 }
                 input.popLimit(limit);
                 break;
-              } // case 154
-              case 160: {
+              } // case 122
+              case 128: {
                 hudHidden_ = input.readBool();
-                bitField0_ |= 0x00080000;
+                bitField0_ |= 0x00008000;
                 break;
-              } // case 160
-              case 168: {
+              } // case 128
+              case 136: {
                 renderDistance_ = input.readInt32();
-                bitField0_ |= 0x00100000;
+                bitField0_ |= 0x00010000;
                 break;
-              } // case 168
-              case 176: {
+              } // case 136
+              case 144: {
                 simulationDistance_ = input.readInt32();
-                bitField0_ |= 0x00200000;
+                bitField0_ |= 0x00020000;
                 break;
-              } // case 176
-              case 184: {
-                biocular_ = input.readBool();
-                bitField0_ |= 0x00400000;
-                break;
-              } // case 184
-              case 197: {
+              } // case 144
+              case 157: {
                 eyeDistance_ = input.readFloat();
-                bitField0_ |= 0x00800000;
+                bitField0_ |= 0x00040000;
                 break;
-              } // case 197
-              case 202: {
+              } // case 157
+              case 162: {
                 java.lang.String s = input.readStringRequireUtf8();
                 ensureStructurePathsIsMutable();
                 structurePaths_.add(s);
                 break;
+              } // case 162
+              case 168: {
+                noFovEffect_ = input.readBool();
+                bitField0_ |= 0x00100000;
+                break;
+              } // case 168
+              case 176: {
+                requestRaycast_ = input.readBool();
+                bitField0_ |= 0x00200000;
+                break;
+              } // case 176
+              case 184: {
+                screenEncodingMode_ = input.readInt32();
+                bitField0_ |= 0x00400000;
+                break;
+              } // case 184
+              case 192: {
+                requiresSurroundingBlocks_ = input.readBool();
+                bitField0_ |= 0x00800000;
+                break;
+              } // case 192
+              case 202: {
+                levelDisplayNameToPlay_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x01000000;
+                break;
               } // case 202
-              case 208: {
-                noWeatherCycle_ = input.readBool();
+              case 213: {
+                fov_ = input.readFloat();
                 bitField0_ |= 0x02000000;
                 break;
-              } // case 208
-              case 216: {
-                noPovEffect_ = input.readBool();
-                bitField0_ |= 0x04000000;
-                break;
-              } // case 216
-              case 224: {
-                noTimeCycle_ = input.readBool();
-                bitField0_ |= 0x08000000;
-                break;
-              } // case 224
-              case 232: {
-                requestRaycast_ = input.readBool();
-                bitField0_ |= 0x10000000;
-                break;
-              } // case 232
-              case 240: {
-                screenEncodingMode_ = input.readInt32();
-                bitField0_ |= 0x20000000;
-                break;
-              } // case 240
-              case 248: {
-                requiresSurroundingBlocks_ = input.readBool();
-                bitField0_ |= 0x40000000;
-                break;
-              } // case 248
-              case 258: {
-                levelDisplayNameToPlay_ = input.readStringRequireUtf8();
-                bitField0_ |= 0x80000000;
-                break;
-              } // case 258
+              } // case 213
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -3138,315 +2509,13 @@ public final class InitialEnvironment {
       }
       private int bitField0_;
 
-      private com.google.protobuf.LazyStringArrayList initialInventoryCommands_ =
-          com.google.protobuf.LazyStringArrayList.emptyList();
-      private void ensureInitialInventoryCommandsIsMutable() {
-        if (!initialInventoryCommands_.isModifiable()) {
-          initialInventoryCommands_ = new com.google.protobuf.LazyStringArrayList(initialInventoryCommands_);
-        }
-        bitField0_ |= 0x00000001;
-      }
-      /**
-       * <code>repeated string initialInventoryCommands = 1;</code>
-       * @return A list containing the initialInventoryCommands.
-       */
-      public com.google.protobuf.ProtocolStringList
-          getInitialInventoryCommandsList() {
-        initialInventoryCommands_.makeImmutable();
-        return initialInventoryCommands_;
-      }
-      /**
-       * <code>repeated string initialInventoryCommands = 1;</code>
-       * @return The count of initialInventoryCommands.
-       */
-      public int getInitialInventoryCommandsCount() {
-        return initialInventoryCommands_.size();
-      }
-      /**
-       * <code>repeated string initialInventoryCommands = 1;</code>
-       * @param index The index of the element to return.
-       * @return The initialInventoryCommands at the given index.
-       */
-      public java.lang.String getInitialInventoryCommands(int index) {
-        return initialInventoryCommands_.get(index);
-      }
-      /**
-       * <code>repeated string initialInventoryCommands = 1;</code>
-       * @param index The index of the value to return.
-       * @return The bytes of the initialInventoryCommands at the given index.
-       */
-      public com.google.protobuf.ByteString
-          getInitialInventoryCommandsBytes(int index) {
-        return initialInventoryCommands_.getByteString(index);
-      }
-      /**
-       * <code>repeated string initialInventoryCommands = 1;</code>
-       * @param index The index to set the value at.
-       * @param value The initialInventoryCommands to set.
-       * @return This builder for chaining.
-       */
-      public Builder setInitialInventoryCommands(
-          int index, java.lang.String value) {
-        if (value == null) { throw new NullPointerException(); }
-        ensureInitialInventoryCommandsIsMutable();
-        initialInventoryCommands_.set(index, value);
-        bitField0_ |= 0x00000001;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated string initialInventoryCommands = 1;</code>
-       * @param value The initialInventoryCommands to add.
-       * @return This builder for chaining.
-       */
-      public Builder addInitialInventoryCommands(
-          java.lang.String value) {
-        if (value == null) { throw new NullPointerException(); }
-        ensureInitialInventoryCommandsIsMutable();
-        initialInventoryCommands_.add(value);
-        bitField0_ |= 0x00000001;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated string initialInventoryCommands = 1;</code>
-       * @param values The initialInventoryCommands to add.
-       * @return This builder for chaining.
-       */
-      public Builder addAllInitialInventoryCommands(
-          java.lang.Iterable<java.lang.String> values) {
-        ensureInitialInventoryCommandsIsMutable();
-        com.google.protobuf.AbstractMessageLite.Builder.addAll(
-            values, initialInventoryCommands_);
-        bitField0_ |= 0x00000001;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated string initialInventoryCommands = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearInitialInventoryCommands() {
-        initialInventoryCommands_ =
-          com.google.protobuf.LazyStringArrayList.emptyList();
-        bitField0_ = (bitField0_ & ~0x00000001);;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated string initialInventoryCommands = 1;</code>
-       * @param value The bytes of the initialInventoryCommands to add.
-       * @return This builder for chaining.
-       */
-      public Builder addInitialInventoryCommandsBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) { throw new NullPointerException(); }
-        checkByteStringIsUtf8(value);
-        ensureInitialInventoryCommandsIsMutable();
-        initialInventoryCommands_.add(value);
-        bitField0_ |= 0x00000001;
-        onChanged();
-        return this;
-      }
-
-      private com.google.protobuf.Internal.IntList initialPosition_ = emptyIntList();
-      private void ensureInitialPositionIsMutable() {
-        if (!initialPosition_.isModifiable()) {
-          initialPosition_ = makeMutableCopy(initialPosition_);
-        }
-        bitField0_ |= 0x00000002;
-      }
-      /**
-       * <code>repeated int32 initialPosition = 2;</code>
-       * @return A list containing the initialPosition.
-       */
-      public java.util.List<java.lang.Integer>
-          getInitialPositionList() {
-        initialPosition_.makeImmutable();
-        return initialPosition_;
-      }
-      /**
-       * <code>repeated int32 initialPosition = 2;</code>
-       * @return The count of initialPosition.
-       */
-      public int getInitialPositionCount() {
-        return initialPosition_.size();
-      }
-      /**
-       * <code>repeated int32 initialPosition = 2;</code>
-       * @param index The index of the element to return.
-       * @return The initialPosition at the given index.
-       */
-      public int getInitialPosition(int index) {
-        return initialPosition_.getInt(index);
-      }
-      /**
-       * <code>repeated int32 initialPosition = 2;</code>
-       * @param index The index to set the value at.
-       * @param value The initialPosition to set.
-       * @return This builder for chaining.
-       */
-      public Builder setInitialPosition(
-          int index, int value) {
-
-        ensureInitialPositionIsMutable();
-        initialPosition_.setInt(index, value);
-        bitField0_ |= 0x00000002;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated int32 initialPosition = 2;</code>
-       * @param value The initialPosition to add.
-       * @return This builder for chaining.
-       */
-      public Builder addInitialPosition(int value) {
-
-        ensureInitialPositionIsMutable();
-        initialPosition_.addInt(value);
-        bitField0_ |= 0x00000002;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated int32 initialPosition = 2;</code>
-       * @param values The initialPosition to add.
-       * @return This builder for chaining.
-       */
-      public Builder addAllInitialPosition(
-          java.lang.Iterable<? extends java.lang.Integer> values) {
-        ensureInitialPositionIsMutable();
-        com.google.protobuf.AbstractMessageLite.Builder.addAll(
-            values, initialPosition_);
-        bitField0_ |= 0x00000002;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated int32 initialPosition = 2;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearInitialPosition() {
-        initialPosition_ = emptyIntList();
-        bitField0_ = (bitField0_ & ~0x00000002);
-        onChanged();
-        return this;
-      }
-
-      private com.google.protobuf.LazyStringArrayList initialMobsCommands_ =
-          com.google.protobuf.LazyStringArrayList.emptyList();
-      private void ensureInitialMobsCommandsIsMutable() {
-        if (!initialMobsCommands_.isModifiable()) {
-          initialMobsCommands_ = new com.google.protobuf.LazyStringArrayList(initialMobsCommands_);
-        }
-        bitField0_ |= 0x00000004;
-      }
-      /**
-       * <code>repeated string initialMobsCommands = 3;</code>
-       * @return A list containing the initialMobsCommands.
-       */
-      public com.google.protobuf.ProtocolStringList
-          getInitialMobsCommandsList() {
-        initialMobsCommands_.makeImmutable();
-        return initialMobsCommands_;
-      }
-      /**
-       * <code>repeated string initialMobsCommands = 3;</code>
-       * @return The count of initialMobsCommands.
-       */
-      public int getInitialMobsCommandsCount() {
-        return initialMobsCommands_.size();
-      }
-      /**
-       * <code>repeated string initialMobsCommands = 3;</code>
-       * @param index The index of the element to return.
-       * @return The initialMobsCommands at the given index.
-       */
-      public java.lang.String getInitialMobsCommands(int index) {
-        return initialMobsCommands_.get(index);
-      }
-      /**
-       * <code>repeated string initialMobsCommands = 3;</code>
-       * @param index The index of the value to return.
-       * @return The bytes of the initialMobsCommands at the given index.
-       */
-      public com.google.protobuf.ByteString
-          getInitialMobsCommandsBytes(int index) {
-        return initialMobsCommands_.getByteString(index);
-      }
-      /**
-       * <code>repeated string initialMobsCommands = 3;</code>
-       * @param index The index to set the value at.
-       * @param value The initialMobsCommands to set.
-       * @return This builder for chaining.
-       */
-      public Builder setInitialMobsCommands(
-          int index, java.lang.String value) {
-        if (value == null) { throw new NullPointerException(); }
-        ensureInitialMobsCommandsIsMutable();
-        initialMobsCommands_.set(index, value);
-        bitField0_ |= 0x00000004;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated string initialMobsCommands = 3;</code>
-       * @param value The initialMobsCommands to add.
-       * @return This builder for chaining.
-       */
-      public Builder addInitialMobsCommands(
-          java.lang.String value) {
-        if (value == null) { throw new NullPointerException(); }
-        ensureInitialMobsCommandsIsMutable();
-        initialMobsCommands_.add(value);
-        bitField0_ |= 0x00000004;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated string initialMobsCommands = 3;</code>
-       * @param values The initialMobsCommands to add.
-       * @return This builder for chaining.
-       */
-      public Builder addAllInitialMobsCommands(
-          java.lang.Iterable<java.lang.String> values) {
-        ensureInitialMobsCommandsIsMutable();
-        com.google.protobuf.AbstractMessageLite.Builder.addAll(
-            values, initialMobsCommands_);
-        bitField0_ |= 0x00000004;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated string initialMobsCommands = 3;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearInitialMobsCommands() {
-        initialMobsCommands_ =
-          com.google.protobuf.LazyStringArrayList.emptyList();
-        bitField0_ = (bitField0_ & ~0x00000004);;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated string initialMobsCommands = 3;</code>
-       * @param value The bytes of the initialMobsCommands to add.
-       * @return This builder for chaining.
-       */
-      public Builder addInitialMobsCommandsBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) { throw new NullPointerException(); }
-        checkByteStringIsUtf8(value);
-        ensureInitialMobsCommandsIsMutable();
-        initialMobsCommands_.add(value);
-        bitField0_ |= 0x00000004;
-        onChanged();
-        return this;
-      }
-
       private int imageSizeX_ ;
       /**
-       * <code>int32 imageSizeX = 4;</code>
+       * <pre>
+       * Required. The width of the image.
+       * </pre>
+       *
+       * <code>int32 imageSizeX = 1;</code>
        * @return The imageSizeX.
        */
       @java.lang.Override
@@ -3454,23 +2523,31 @@ public final class InitialEnvironment {
         return imageSizeX_;
       }
       /**
-       * <code>int32 imageSizeX = 4;</code>
+       * <pre>
+       * Required. The width of the image.
+       * </pre>
+       *
+       * <code>int32 imageSizeX = 1;</code>
        * @param value The imageSizeX to set.
        * @return This builder for chaining.
        */
       public Builder setImageSizeX(int value) {
 
         imageSizeX_ = value;
-        bitField0_ |= 0x00000008;
+        bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
       /**
-       * <code>int32 imageSizeX = 4;</code>
+       * <pre>
+       * Required. The width of the image.
+       * </pre>
+       *
+       * <code>int32 imageSizeX = 1;</code>
        * @return This builder for chaining.
        */
       public Builder clearImageSizeX() {
-        bitField0_ = (bitField0_ & ~0x00000008);
+        bitField0_ = (bitField0_ & ~0x00000001);
         imageSizeX_ = 0;
         onChanged();
         return this;
@@ -3478,7 +2555,11 @@ public final class InitialEnvironment {
 
       private int imageSizeY_ ;
       /**
-       * <code>int32 imageSizeY = 5;</code>
+       * <pre>
+       * Required. The height of the image.
+       * </pre>
+       *
+       * <code>int32 imageSizeY = 2;</code>
        * @return The imageSizeY.
        */
       @java.lang.Override
@@ -3486,320 +2567,634 @@ public final class InitialEnvironment {
         return imageSizeY_;
       }
       /**
-       * <code>int32 imageSizeY = 5;</code>
+       * <pre>
+       * Required. The height of the image.
+       * </pre>
+       *
+       * <code>int32 imageSizeY = 2;</code>
        * @param value The imageSizeY to set.
        * @return This builder for chaining.
        */
       public Builder setImageSizeY(int value) {
 
         imageSizeY_ = value;
-        bitField0_ |= 0x00000010;
+        bitField0_ |= 0x00000002;
         onChanged();
         return this;
       }
       /**
-       * <code>int32 imageSizeY = 5;</code>
+       * <pre>
+       * Required. The height of the image.
+       * </pre>
+       *
+       * <code>int32 imageSizeY = 2;</code>
        * @return This builder for chaining.
        */
       public Builder clearImageSizeY() {
-        bitField0_ = (bitField0_ & ~0x00000010);
+        bitField0_ = (bitField0_ & ~0x00000002);
         imageSizeY_ = 0;
         onChanged();
         return this;
       }
 
-      private long seed_ ;
+      private int gamemode_ = 0;
       /**
-       * <code>int64 seed = 6;</code>
-       * @return The seed.
+       * <pre>
+       * Default = SURVIVAL
+       * </pre>
+       *
+       * <code>.GameMode gamemode = 3;</code>
+       * @return The enum numeric value on the wire for gamemode.
+       */
+      @java.lang.Override public int getGamemodeValue() {
+        return gamemode_;
+      }
+      /**
+       * <pre>
+       * Default = SURVIVAL
+       * </pre>
+       *
+       * <code>.GameMode gamemode = 3;</code>
+       * @param value The enum numeric value on the wire for gamemode to set.
+       * @return This builder for chaining.
+       */
+      public Builder setGamemodeValue(int value) {
+        gamemode_ = value;
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Default = SURVIVAL
+       * </pre>
+       *
+       * <code>.GameMode gamemode = 3;</code>
+       * @return The gamemode.
        */
       @java.lang.Override
-      public long getSeed() {
-        return seed_;
+      public com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.GameMode getGamemode() {
+        com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.GameMode result = com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.GameMode.forNumber(gamemode_);
+        return result == null ? com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.GameMode.UNRECOGNIZED : result;
       }
       /**
-       * <code>int64 seed = 6;</code>
-       * @param value The seed to set.
+       * <pre>
+       * Default = SURVIVAL
+       * </pre>
+       *
+       * <code>.GameMode gamemode = 3;</code>
+       * @param value The gamemode to set.
        * @return This builder for chaining.
        */
-      public Builder setSeed(long value) {
-
-        seed_ = value;
-        bitField0_ |= 0x00000020;
+      public Builder setGamemode(com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.GameMode value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        bitField0_ |= 0x00000004;
+        gamemode_ = value.getNumber();
         onChanged();
         return this;
       }
       /**
-       * <code>int64 seed = 6;</code>
+       * <pre>
+       * Default = SURVIVAL
+       * </pre>
+       *
+       * <code>.GameMode gamemode = 3;</code>
        * @return This builder for chaining.
        */
-      public Builder clearSeed() {
-        bitField0_ = (bitField0_ & ~0x00000020);
-        seed_ = 0L;
+      public Builder clearGamemode() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        gamemode_ = 0;
         onChanged();
         return this;
       }
 
-      private boolean allowMobSpawn_ ;
+      private int difficulty_ = 0;
       /**
-       * <code>bool allowMobSpawn = 7;</code>
-       * @return The allowMobSpawn.
+       * <pre>
+       * Default = NORMAL
+       * </pre>
+       *
+       * <code>.Difficulty difficulty = 4;</code>
+       * @return The enum numeric value on the wire for difficulty.
+       */
+      @java.lang.Override public int getDifficultyValue() {
+        return difficulty_;
+      }
+      /**
+       * <pre>
+       * Default = NORMAL
+       * </pre>
+       *
+       * <code>.Difficulty difficulty = 4;</code>
+       * @param value The enum numeric value on the wire for difficulty to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDifficultyValue(int value) {
+        difficulty_ = value;
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Default = NORMAL
+       * </pre>
+       *
+       * <code>.Difficulty difficulty = 4;</code>
+       * @return The difficulty.
        */
       @java.lang.Override
-      public boolean getAllowMobSpawn() {
-        return allowMobSpawn_;
+      public com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.Difficulty getDifficulty() {
+        com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.Difficulty result = com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.Difficulty.forNumber(difficulty_);
+        return result == null ? com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.Difficulty.UNRECOGNIZED : result;
       }
       /**
-       * <code>bool allowMobSpawn = 7;</code>
-       * @param value The allowMobSpawn to set.
+       * <pre>
+       * Default = NORMAL
+       * </pre>
+       *
+       * <code>.Difficulty difficulty = 4;</code>
+       * @param value The difficulty to set.
        * @return This builder for chaining.
        */
-      public Builder setAllowMobSpawn(boolean value) {
-
-        allowMobSpawn_ = value;
-        bitField0_ |= 0x00000040;
+      public Builder setDifficulty(com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.Difficulty value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        bitField0_ |= 0x00000008;
+        difficulty_ = value.getNumber();
         onChanged();
         return this;
       }
       /**
-       * <code>bool allowMobSpawn = 7;</code>
+       * <pre>
+       * Default = NORMAL
+       * </pre>
+       *
+       * <code>.Difficulty difficulty = 4;</code>
        * @return This builder for chaining.
        */
-      public Builder clearAllowMobSpawn() {
-        bitField0_ = (bitField0_ & ~0x00000040);
-        allowMobSpawn_ = false;
+      public Builder clearDifficulty() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        difficulty_ = 0;
         onChanged();
         return this;
       }
 
-      private boolean alwaysNight_ ;
+      private int worldType_ = 0;
       /**
-       * <code>bool alwaysNight = 8;</code>
-       * @return The alwaysNight.
+       * <pre>
+       * Default = DEFAULT
+       * </pre>
+       *
+       * <code>.WorldType worldType = 5;</code>
+       * @return The enum numeric value on the wire for worldType.
+       */
+      @java.lang.Override public int getWorldTypeValue() {
+        return worldType_;
+      }
+      /**
+       * <pre>
+       * Default = DEFAULT
+       * </pre>
+       *
+       * <code>.WorldType worldType = 5;</code>
+       * @param value The enum numeric value on the wire for worldType to set.
+       * @return This builder for chaining.
+       */
+      public Builder setWorldTypeValue(int value) {
+        worldType_ = value;
+        bitField0_ |= 0x00000010;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Default = DEFAULT
+       * </pre>
+       *
+       * <code>.WorldType worldType = 5;</code>
+       * @return The worldType.
        */
       @java.lang.Override
-      public boolean getAlwaysNight() {
-        return alwaysNight_;
+      public com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.WorldType getWorldType() {
+        com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.WorldType result = com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.WorldType.forNumber(worldType_);
+        return result == null ? com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.WorldType.UNRECOGNIZED : result;
       }
       /**
-       * <code>bool alwaysNight = 8;</code>
-       * @param value The alwaysNight to set.
+       * <pre>
+       * Default = DEFAULT
+       * </pre>
+       *
+       * <code>.WorldType worldType = 5;</code>
+       * @param value The worldType to set.
        * @return This builder for chaining.
        */
-      public Builder setAlwaysNight(boolean value) {
-
-        alwaysNight_ = value;
-        bitField0_ |= 0x00000080;
+      public Builder setWorldType(com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.WorldType value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        bitField0_ |= 0x00000010;
+        worldType_ = value.getNumber();
         onChanged();
         return this;
       }
       /**
-       * <code>bool alwaysNight = 8;</code>
+       * <pre>
+       * Default = DEFAULT
+       * </pre>
+       *
+       * <code>.WorldType worldType = 5;</code>
        * @return This builder for chaining.
        */
-      public Builder clearAlwaysNight() {
-        bitField0_ = (bitField0_ & ~0x00000080);
-        alwaysNight_ = false;
+      public Builder clearWorldType() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        worldType_ = 0;
         onChanged();
         return this;
       }
 
-      private boolean alwaysDay_ ;
+      private java.lang.Object worldTypeArgs_ = "";
       /**
-       * <code>bool alwaysDay = 9;</code>
-       * @return The alwaysDay.
+       * <pre>
+       * Empty for no value
+       * </pre>
+       *
+       * <code>string worldTypeArgs = 6;</code>
+       * @return The worldTypeArgs.
        */
-      @java.lang.Override
-      public boolean getAlwaysDay() {
-        return alwaysDay_;
-      }
-      /**
-       * <code>bool alwaysDay = 9;</code>
-       * @param value The alwaysDay to set.
-       * @return This builder for chaining.
-       */
-      public Builder setAlwaysDay(boolean value) {
-
-        alwaysDay_ = value;
-        bitField0_ |= 0x00000100;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>bool alwaysDay = 9;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearAlwaysDay() {
-        bitField0_ = (bitField0_ & ~0x00000100);
-        alwaysDay_ = false;
-        onChanged();
-        return this;
-      }
-
-      private java.lang.Object initialWeather_ = "";
-      /**
-       * <code>string initialWeather = 10;</code>
-       * @return The initialWeather.
-       */
-      public java.lang.String getInitialWeather() {
-        java.lang.Object ref = initialWeather_;
+      public java.lang.String getWorldTypeArgs() {
+        java.lang.Object ref = worldTypeArgs_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          initialWeather_ = s;
+          worldTypeArgs_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>string initialWeather = 10;</code>
-       * @return The bytes for initialWeather.
+       * <pre>
+       * Empty for no value
+       * </pre>
+       *
+       * <code>string worldTypeArgs = 6;</code>
+       * @return The bytes for worldTypeArgs.
        */
       public com.google.protobuf.ByteString
-          getInitialWeatherBytes() {
-        java.lang.Object ref = initialWeather_;
+          getWorldTypeArgsBytes() {
+        java.lang.Object ref = worldTypeArgs_;
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
-          initialWeather_ = b;
+          worldTypeArgs_ = b;
           return b;
         } else {
           return (com.google.protobuf.ByteString) ref;
         }
       }
       /**
-       * <code>string initialWeather = 10;</code>
-       * @param value The initialWeather to set.
+       * <pre>
+       * Empty for no value
+       * </pre>
+       *
+       * <code>string worldTypeArgs = 6;</code>
+       * @param value The worldTypeArgs to set.
        * @return This builder for chaining.
        */
-      public Builder setInitialWeather(
+      public Builder setWorldTypeArgs(
           java.lang.String value) {
         if (value == null) { throw new NullPointerException(); }
-        initialWeather_ = value;
-        bitField0_ |= 0x00000200;
+        worldTypeArgs_ = value;
+        bitField0_ |= 0x00000020;
         onChanged();
         return this;
       }
       /**
-       * <code>string initialWeather = 10;</code>
+       * <pre>
+       * Empty for no value
+       * </pre>
+       *
+       * <code>string worldTypeArgs = 6;</code>
        * @return This builder for chaining.
        */
-      public Builder clearInitialWeather() {
-        initialWeather_ = getDefaultInstance().getInitialWeather();
-        bitField0_ = (bitField0_ & ~0x00000200);
+      public Builder clearWorldTypeArgs() {
+        worldTypeArgs_ = getDefaultInstance().getWorldTypeArgs();
+        bitField0_ = (bitField0_ & ~0x00000020);
         onChanged();
         return this;
       }
       /**
-       * <code>string initialWeather = 10;</code>
-       * @param value The bytes for initialWeather to set.
+       * <pre>
+       * Empty for no value
+       * </pre>
+       *
+       * <code>string worldTypeArgs = 6;</code>
+       * @param value The bytes for worldTypeArgs to set.
        * @return This builder for chaining.
        */
-      public Builder setInitialWeatherBytes(
+      public Builder setWorldTypeArgsBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) { throw new NullPointerException(); }
         checkByteStringIsUtf8(value);
-        initialWeather_ = value;
+        worldTypeArgs_ = value;
+        bitField0_ |= 0x00000020;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object seed_ = "";
+      /**
+       * <pre>
+       * Empty for no value
+       * </pre>
+       *
+       * <code>string seed = 7;</code>
+       * @return The seed.
+       */
+      public java.lang.String getSeed() {
+        java.lang.Object ref = seed_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          seed_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * Empty for no value
+       * </pre>
+       *
+       * <code>string seed = 7;</code>
+       * @return The bytes for seed.
+       */
+      public com.google.protobuf.ByteString
+          getSeedBytes() {
+        java.lang.Object ref = seed_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          seed_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * Empty for no value
+       * </pre>
+       *
+       * <code>string seed = 7;</code>
+       * @param value The seed to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSeed(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        seed_ = value;
+        bitField0_ |= 0x00000040;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Empty for no value
+       * </pre>
+       *
+       * <code>string seed = 7;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearSeed() {
+        seed_ = getDefaultInstance().getSeed();
+        bitField0_ = (bitField0_ & ~0x00000040);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Empty for no value
+       * </pre>
+       *
+       * <code>string seed = 7;</code>
+       * @param value The bytes for seed to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSeedBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        seed_ = value;
+        bitField0_ |= 0x00000040;
+        onChanged();
+        return this;
+      }
+
+      private boolean generateStructures_ ;
+      /**
+       * <pre>
+       * Default = true
+       * </pre>
+       *
+       * <code>bool generate_structures = 8;</code>
+       * @return The generateStructures.
+       */
+      @java.lang.Override
+      public boolean getGenerateStructures() {
+        return generateStructures_;
+      }
+      /**
+       * <pre>
+       * Default = true
+       * </pre>
+       *
+       * <code>bool generate_structures = 8;</code>
+       * @param value The generateStructures to set.
+       * @return This builder for chaining.
+       */
+      public Builder setGenerateStructures(boolean value) {
+
+        generateStructures_ = value;
+        bitField0_ |= 0x00000080;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Default = true
+       * </pre>
+       *
+       * <code>bool generate_structures = 8;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearGenerateStructures() {
+        bitField0_ = (bitField0_ & ~0x00000080);
+        generateStructures_ = false;
+        onChanged();
+        return this;
+      }
+
+      private boolean bonusChest_ ;
+      /**
+       * <pre>
+       * Default = false
+       * </pre>
+       *
+       * <code>bool bonus_chest = 9;</code>
+       * @return The bonusChest.
+       */
+      @java.lang.Override
+      public boolean getBonusChest() {
+        return bonusChest_;
+      }
+      /**
+       * <pre>
+       * Default = false
+       * </pre>
+       *
+       * <code>bool bonus_chest = 9;</code>
+       * @param value The bonusChest to set.
+       * @return This builder for chaining.
+       */
+      public Builder setBonusChest(boolean value) {
+
+        bonusChest_ = value;
+        bitField0_ |= 0x00000100;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Default = false
+       * </pre>
+       *
+       * <code>bool bonus_chest = 9;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearBonusChest() {
+        bitField0_ = (bitField0_ & ~0x00000100);
+        bonusChest_ = false;
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.LazyStringArrayList datapackPaths_ =
+          com.google.protobuf.LazyStringArrayList.emptyList();
+      private void ensureDatapackPathsIsMutable() {
+        if (!datapackPaths_.isModifiable()) {
+          datapackPaths_ = new com.google.protobuf.LazyStringArrayList(datapackPaths_);
+        }
+        bitField0_ |= 0x00000200;
+      }
+      /**
+       * <code>repeated string datapackPaths = 10;</code>
+       * @return A list containing the datapackPaths.
+       */
+      public com.google.protobuf.ProtocolStringList
+          getDatapackPathsList() {
+        datapackPaths_.makeImmutable();
+        return datapackPaths_;
+      }
+      /**
+       * <code>repeated string datapackPaths = 10;</code>
+       * @return The count of datapackPaths.
+       */
+      public int getDatapackPathsCount() {
+        return datapackPaths_.size();
+      }
+      /**
+       * <code>repeated string datapackPaths = 10;</code>
+       * @param index The index of the element to return.
+       * @return The datapackPaths at the given index.
+       */
+      public java.lang.String getDatapackPaths(int index) {
+        return datapackPaths_.get(index);
+      }
+      /**
+       * <code>repeated string datapackPaths = 10;</code>
+       * @param index The index of the value to return.
+       * @return The bytes of the datapackPaths at the given index.
+       */
+      public com.google.protobuf.ByteString
+          getDatapackPathsBytes(int index) {
+        return datapackPaths_.getByteString(index);
+      }
+      /**
+       * <code>repeated string datapackPaths = 10;</code>
+       * @param index The index to set the value at.
+       * @param value The datapackPaths to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDatapackPaths(
+          int index, java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        ensureDatapackPathsIsMutable();
+        datapackPaths_.set(index, value);
         bitField0_ |= 0x00000200;
         onChanged();
         return this;
       }
-
-      private boolean isWorldFlat_ ;
       /**
-       * <code>bool isWorldFlat = 11;</code>
-       * @return The isWorldFlat.
-       */
-      @java.lang.Override
-      public boolean getIsWorldFlat() {
-        return isWorldFlat_;
-      }
-      /**
-       * <code>bool isWorldFlat = 11;</code>
-       * @param value The isWorldFlat to set.
+       * <code>repeated string datapackPaths = 10;</code>
+       * @param value The datapackPaths to add.
        * @return This builder for chaining.
        */
-      public Builder setIsWorldFlat(boolean value) {
-
-        isWorldFlat_ = value;
-        bitField0_ |= 0x00000400;
+      public Builder addDatapackPaths(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        ensureDatapackPathsIsMutable();
+        datapackPaths_.add(value);
+        bitField0_ |= 0x00000200;
         onChanged();
         return this;
       }
       /**
-       * <code>bool isWorldFlat = 11;</code>
+       * <code>repeated string datapackPaths = 10;</code>
+       * @param values The datapackPaths to add.
        * @return This builder for chaining.
        */
-      public Builder clearIsWorldFlat() {
-        bitField0_ = (bitField0_ & ~0x00000400);
-        isWorldFlat_ = false;
-        onChanged();
-        return this;
-      }
-
-      private int visibleSizeX_ ;
-      /**
-       * <code>int32 visibleSizeX = 12;</code>
-       * @return The visibleSizeX.
-       */
-      @java.lang.Override
-      public int getVisibleSizeX() {
-        return visibleSizeX_;
-      }
-      /**
-       * <code>int32 visibleSizeX = 12;</code>
-       * @param value The visibleSizeX to set.
-       * @return This builder for chaining.
-       */
-      public Builder setVisibleSizeX(int value) {
-
-        visibleSizeX_ = value;
-        bitField0_ |= 0x00000800;
+      public Builder addAllDatapackPaths(
+          java.lang.Iterable<java.lang.String> values) {
+        ensureDatapackPathsIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, datapackPaths_);
+        bitField0_ |= 0x00000200;
         onChanged();
         return this;
       }
       /**
-       * <code>int32 visibleSizeX = 12;</code>
+       * <code>repeated string datapackPaths = 10;</code>
        * @return This builder for chaining.
        */
-      public Builder clearVisibleSizeX() {
-        bitField0_ = (bitField0_ & ~0x00000800);
-        visibleSizeX_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private int visibleSizeY_ ;
-      /**
-       * <code>int32 visibleSizeY = 13;</code>
-       * @return The visibleSizeY.
-       */
-      @java.lang.Override
-      public int getVisibleSizeY() {
-        return visibleSizeY_;
-      }
-      /**
-       * <code>int32 visibleSizeY = 13;</code>
-       * @param value The visibleSizeY to set.
-       * @return This builder for chaining.
-       */
-      public Builder setVisibleSizeY(int value) {
-
-        visibleSizeY_ = value;
-        bitField0_ |= 0x00001000;
+      public Builder clearDatapackPaths() {
+        datapackPaths_ =
+          com.google.protobuf.LazyStringArrayList.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000200);;
         onChanged();
         return this;
       }
       /**
-       * <code>int32 visibleSizeY = 13;</code>
+       * <code>repeated string datapackPaths = 10;</code>
+       * @param value The bytes of the datapackPaths to add.
        * @return This builder for chaining.
        */
-      public Builder clearVisibleSizeY() {
-        bitField0_ = (bitField0_ & ~0x00001000);
-        visibleSizeY_ = 0;
+      public Builder addDatapackPathsBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        ensureDatapackPathsIsMutable();
+        datapackPaths_.add(value);
+        bitField0_ |= 0x00000200;
         onChanged();
         return this;
       }
@@ -3810,10 +3205,10 @@ public final class InitialEnvironment {
         if (!initialExtraCommands_.isModifiable()) {
           initialExtraCommands_ = new com.google.protobuf.LazyStringArrayList(initialExtraCommands_);
         }
-        bitField0_ |= 0x00002000;
+        bitField0_ |= 0x00000400;
       }
       /**
-       * <code>repeated string initialExtraCommands = 14;</code>
+       * <code>repeated string initialExtraCommands = 11;</code>
        * @return A list containing the initialExtraCommands.
        */
       public com.google.protobuf.ProtocolStringList
@@ -3822,14 +3217,14 @@ public final class InitialEnvironment {
         return initialExtraCommands_;
       }
       /**
-       * <code>repeated string initialExtraCommands = 14;</code>
+       * <code>repeated string initialExtraCommands = 11;</code>
        * @return The count of initialExtraCommands.
        */
       public int getInitialExtraCommandsCount() {
         return initialExtraCommands_.size();
       }
       /**
-       * <code>repeated string initialExtraCommands = 14;</code>
+       * <code>repeated string initialExtraCommands = 11;</code>
        * @param index The index of the element to return.
        * @return The initialExtraCommands at the given index.
        */
@@ -3837,7 +3232,7 @@ public final class InitialEnvironment {
         return initialExtraCommands_.get(index);
       }
       /**
-       * <code>repeated string initialExtraCommands = 14;</code>
+       * <code>repeated string initialExtraCommands = 11;</code>
        * @param index The index of the value to return.
        * @return The bytes of the initialExtraCommands at the given index.
        */
@@ -3846,7 +3241,7 @@ public final class InitialEnvironment {
         return initialExtraCommands_.getByteString(index);
       }
       /**
-       * <code>repeated string initialExtraCommands = 14;</code>
+       * <code>repeated string initialExtraCommands = 11;</code>
        * @param index The index to set the value at.
        * @param value The initialExtraCommands to set.
        * @return This builder for chaining.
@@ -3856,12 +3251,12 @@ public final class InitialEnvironment {
         if (value == null) { throw new NullPointerException(); }
         ensureInitialExtraCommandsIsMutable();
         initialExtraCommands_.set(index, value);
-        bitField0_ |= 0x00002000;
+        bitField0_ |= 0x00000400;
         onChanged();
         return this;
       }
       /**
-       * <code>repeated string initialExtraCommands = 14;</code>
+       * <code>repeated string initialExtraCommands = 11;</code>
        * @param value The initialExtraCommands to add.
        * @return This builder for chaining.
        */
@@ -3870,12 +3265,12 @@ public final class InitialEnvironment {
         if (value == null) { throw new NullPointerException(); }
         ensureInitialExtraCommandsIsMutable();
         initialExtraCommands_.add(value);
-        bitField0_ |= 0x00002000;
+        bitField0_ |= 0x00000400;
         onChanged();
         return this;
       }
       /**
-       * <code>repeated string initialExtraCommands = 14;</code>
+       * <code>repeated string initialExtraCommands = 11;</code>
        * @param values The initialExtraCommands to add.
        * @return This builder for chaining.
        */
@@ -3884,23 +3279,23 @@ public final class InitialEnvironment {
         ensureInitialExtraCommandsIsMutable();
         com.google.protobuf.AbstractMessageLite.Builder.addAll(
             values, initialExtraCommands_);
-        bitField0_ |= 0x00002000;
+        bitField0_ |= 0x00000400;
         onChanged();
         return this;
       }
       /**
-       * <code>repeated string initialExtraCommands = 14;</code>
+       * <code>repeated string initialExtraCommands = 11;</code>
        * @return This builder for chaining.
        */
       public Builder clearInitialExtraCommands() {
         initialExtraCommands_ =
           com.google.protobuf.LazyStringArrayList.emptyList();
-        bitField0_ = (bitField0_ & ~0x00002000);;
+        bitField0_ = (bitField0_ & ~0x00000400);;
         onChanged();
         return this;
       }
       /**
-       * <code>repeated string initialExtraCommands = 14;</code>
+       * <code>repeated string initialExtraCommands = 11;</code>
        * @param value The bytes of the initialExtraCommands to add.
        * @return This builder for chaining.
        */
@@ -3910,7 +3305,7 @@ public final class InitialEnvironment {
         checkByteStringIsUtf8(value);
         ensureInitialExtraCommandsIsMutable();
         initialExtraCommands_.add(value);
-        bitField0_ |= 0x00002000;
+        bitField0_ |= 0x00000400;
         onChanged();
         return this;
       }
@@ -3921,10 +3316,10 @@ public final class InitialEnvironment {
         if (!killedStatKeys_.isModifiable()) {
           killedStatKeys_ = new com.google.protobuf.LazyStringArrayList(killedStatKeys_);
         }
-        bitField0_ |= 0x00004000;
+        bitField0_ |= 0x00000800;
       }
       /**
-       * <code>repeated string killedStatKeys = 15;</code>
+       * <code>repeated string killedStatKeys = 12;</code>
        * @return A list containing the killedStatKeys.
        */
       public com.google.protobuf.ProtocolStringList
@@ -3933,14 +3328,14 @@ public final class InitialEnvironment {
         return killedStatKeys_;
       }
       /**
-       * <code>repeated string killedStatKeys = 15;</code>
+       * <code>repeated string killedStatKeys = 12;</code>
        * @return The count of killedStatKeys.
        */
       public int getKilledStatKeysCount() {
         return killedStatKeys_.size();
       }
       /**
-       * <code>repeated string killedStatKeys = 15;</code>
+       * <code>repeated string killedStatKeys = 12;</code>
        * @param index The index of the element to return.
        * @return The killedStatKeys at the given index.
        */
@@ -3948,7 +3343,7 @@ public final class InitialEnvironment {
         return killedStatKeys_.get(index);
       }
       /**
-       * <code>repeated string killedStatKeys = 15;</code>
+       * <code>repeated string killedStatKeys = 12;</code>
        * @param index The index of the value to return.
        * @return The bytes of the killedStatKeys at the given index.
        */
@@ -3957,7 +3352,7 @@ public final class InitialEnvironment {
         return killedStatKeys_.getByteString(index);
       }
       /**
-       * <code>repeated string killedStatKeys = 15;</code>
+       * <code>repeated string killedStatKeys = 12;</code>
        * @param index The index to set the value at.
        * @param value The killedStatKeys to set.
        * @return This builder for chaining.
@@ -3967,12 +3362,12 @@ public final class InitialEnvironment {
         if (value == null) { throw new NullPointerException(); }
         ensureKilledStatKeysIsMutable();
         killedStatKeys_.set(index, value);
-        bitField0_ |= 0x00004000;
+        bitField0_ |= 0x00000800;
         onChanged();
         return this;
       }
       /**
-       * <code>repeated string killedStatKeys = 15;</code>
+       * <code>repeated string killedStatKeys = 12;</code>
        * @param value The killedStatKeys to add.
        * @return This builder for chaining.
        */
@@ -3981,12 +3376,12 @@ public final class InitialEnvironment {
         if (value == null) { throw new NullPointerException(); }
         ensureKilledStatKeysIsMutable();
         killedStatKeys_.add(value);
-        bitField0_ |= 0x00004000;
+        bitField0_ |= 0x00000800;
         onChanged();
         return this;
       }
       /**
-       * <code>repeated string killedStatKeys = 15;</code>
+       * <code>repeated string killedStatKeys = 12;</code>
        * @param values The killedStatKeys to add.
        * @return This builder for chaining.
        */
@@ -3995,23 +3390,23 @@ public final class InitialEnvironment {
         ensureKilledStatKeysIsMutable();
         com.google.protobuf.AbstractMessageLite.Builder.addAll(
             values, killedStatKeys_);
-        bitField0_ |= 0x00004000;
+        bitField0_ |= 0x00000800;
         onChanged();
         return this;
       }
       /**
-       * <code>repeated string killedStatKeys = 15;</code>
+       * <code>repeated string killedStatKeys = 12;</code>
        * @return This builder for chaining.
        */
       public Builder clearKilledStatKeys() {
         killedStatKeys_ =
           com.google.protobuf.LazyStringArrayList.emptyList();
-        bitField0_ = (bitField0_ & ~0x00004000);;
+        bitField0_ = (bitField0_ & ~0x00000800);;
         onChanged();
         return this;
       }
       /**
-       * <code>repeated string killedStatKeys = 15;</code>
+       * <code>repeated string killedStatKeys = 12;</code>
        * @param value The bytes of the killedStatKeys to add.
        * @return This builder for chaining.
        */
@@ -4021,7 +3416,7 @@ public final class InitialEnvironment {
         checkByteStringIsUtf8(value);
         ensureKilledStatKeysIsMutable();
         killedStatKeys_.add(value);
-        bitField0_ |= 0x00004000;
+        bitField0_ |= 0x00000800;
         onChanged();
         return this;
       }
@@ -4032,10 +3427,10 @@ public final class InitialEnvironment {
         if (!minedStatKeys_.isModifiable()) {
           minedStatKeys_ = new com.google.protobuf.LazyStringArrayList(minedStatKeys_);
         }
-        bitField0_ |= 0x00008000;
+        bitField0_ |= 0x00001000;
       }
       /**
-       * <code>repeated string minedStatKeys = 16;</code>
+       * <code>repeated string minedStatKeys = 13;</code>
        * @return A list containing the minedStatKeys.
        */
       public com.google.protobuf.ProtocolStringList
@@ -4044,14 +3439,14 @@ public final class InitialEnvironment {
         return minedStatKeys_;
       }
       /**
-       * <code>repeated string minedStatKeys = 16;</code>
+       * <code>repeated string minedStatKeys = 13;</code>
        * @return The count of minedStatKeys.
        */
       public int getMinedStatKeysCount() {
         return minedStatKeys_.size();
       }
       /**
-       * <code>repeated string minedStatKeys = 16;</code>
+       * <code>repeated string minedStatKeys = 13;</code>
        * @param index The index of the element to return.
        * @return The minedStatKeys at the given index.
        */
@@ -4059,7 +3454,7 @@ public final class InitialEnvironment {
         return minedStatKeys_.get(index);
       }
       /**
-       * <code>repeated string minedStatKeys = 16;</code>
+       * <code>repeated string minedStatKeys = 13;</code>
        * @param index The index of the value to return.
        * @return The bytes of the minedStatKeys at the given index.
        */
@@ -4068,7 +3463,7 @@ public final class InitialEnvironment {
         return minedStatKeys_.getByteString(index);
       }
       /**
-       * <code>repeated string minedStatKeys = 16;</code>
+       * <code>repeated string minedStatKeys = 13;</code>
        * @param index The index to set the value at.
        * @param value The minedStatKeys to set.
        * @return This builder for chaining.
@@ -4078,12 +3473,12 @@ public final class InitialEnvironment {
         if (value == null) { throw new NullPointerException(); }
         ensureMinedStatKeysIsMutable();
         minedStatKeys_.set(index, value);
-        bitField0_ |= 0x00008000;
+        bitField0_ |= 0x00001000;
         onChanged();
         return this;
       }
       /**
-       * <code>repeated string minedStatKeys = 16;</code>
+       * <code>repeated string minedStatKeys = 13;</code>
        * @param value The minedStatKeys to add.
        * @return This builder for chaining.
        */
@@ -4092,12 +3487,12 @@ public final class InitialEnvironment {
         if (value == null) { throw new NullPointerException(); }
         ensureMinedStatKeysIsMutable();
         minedStatKeys_.add(value);
-        bitField0_ |= 0x00008000;
+        bitField0_ |= 0x00001000;
         onChanged();
         return this;
       }
       /**
-       * <code>repeated string minedStatKeys = 16;</code>
+       * <code>repeated string minedStatKeys = 13;</code>
        * @param values The minedStatKeys to add.
        * @return This builder for chaining.
        */
@@ -4106,23 +3501,23 @@ public final class InitialEnvironment {
         ensureMinedStatKeysIsMutable();
         com.google.protobuf.AbstractMessageLite.Builder.addAll(
             values, minedStatKeys_);
-        bitField0_ |= 0x00008000;
+        bitField0_ |= 0x00001000;
         onChanged();
         return this;
       }
       /**
-       * <code>repeated string minedStatKeys = 16;</code>
+       * <code>repeated string minedStatKeys = 13;</code>
        * @return This builder for chaining.
        */
       public Builder clearMinedStatKeys() {
         minedStatKeys_ =
           com.google.protobuf.LazyStringArrayList.emptyList();
-        bitField0_ = (bitField0_ & ~0x00008000);;
+        bitField0_ = (bitField0_ & ~0x00001000);;
         onChanged();
         return this;
       }
       /**
-       * <code>repeated string minedStatKeys = 16;</code>
+       * <code>repeated string minedStatKeys = 13;</code>
        * @param value The bytes of the minedStatKeys to add.
        * @return This builder for chaining.
        */
@@ -4132,7 +3527,7 @@ public final class InitialEnvironment {
         checkByteStringIsUtf8(value);
         ensureMinedStatKeysIsMutable();
         minedStatKeys_.add(value);
-        bitField0_ |= 0x00008000;
+        bitField0_ |= 0x00001000;
         onChanged();
         return this;
       }
@@ -4143,10 +3538,10 @@ public final class InitialEnvironment {
         if (!miscStatKeys_.isModifiable()) {
           miscStatKeys_ = new com.google.protobuf.LazyStringArrayList(miscStatKeys_);
         }
-        bitField0_ |= 0x00010000;
+        bitField0_ |= 0x00002000;
       }
       /**
-       * <code>repeated string miscStatKeys = 17;</code>
+       * <code>repeated string miscStatKeys = 14;</code>
        * @return A list containing the miscStatKeys.
        */
       public com.google.protobuf.ProtocolStringList
@@ -4155,14 +3550,14 @@ public final class InitialEnvironment {
         return miscStatKeys_;
       }
       /**
-       * <code>repeated string miscStatKeys = 17;</code>
+       * <code>repeated string miscStatKeys = 14;</code>
        * @return The count of miscStatKeys.
        */
       public int getMiscStatKeysCount() {
         return miscStatKeys_.size();
       }
       /**
-       * <code>repeated string miscStatKeys = 17;</code>
+       * <code>repeated string miscStatKeys = 14;</code>
        * @param index The index of the element to return.
        * @return The miscStatKeys at the given index.
        */
@@ -4170,7 +3565,7 @@ public final class InitialEnvironment {
         return miscStatKeys_.get(index);
       }
       /**
-       * <code>repeated string miscStatKeys = 17;</code>
+       * <code>repeated string miscStatKeys = 14;</code>
        * @param index The index of the value to return.
        * @return The bytes of the miscStatKeys at the given index.
        */
@@ -4179,7 +3574,7 @@ public final class InitialEnvironment {
         return miscStatKeys_.getByteString(index);
       }
       /**
-       * <code>repeated string miscStatKeys = 17;</code>
+       * <code>repeated string miscStatKeys = 14;</code>
        * @param index The index to set the value at.
        * @param value The miscStatKeys to set.
        * @return This builder for chaining.
@@ -4189,12 +3584,12 @@ public final class InitialEnvironment {
         if (value == null) { throw new NullPointerException(); }
         ensureMiscStatKeysIsMutable();
         miscStatKeys_.set(index, value);
-        bitField0_ |= 0x00010000;
+        bitField0_ |= 0x00002000;
         onChanged();
         return this;
       }
       /**
-       * <code>repeated string miscStatKeys = 17;</code>
+       * <code>repeated string miscStatKeys = 14;</code>
        * @param value The miscStatKeys to add.
        * @return This builder for chaining.
        */
@@ -4203,12 +3598,12 @@ public final class InitialEnvironment {
         if (value == null) { throw new NullPointerException(); }
         ensureMiscStatKeysIsMutable();
         miscStatKeys_.add(value);
-        bitField0_ |= 0x00010000;
+        bitField0_ |= 0x00002000;
         onChanged();
         return this;
       }
       /**
-       * <code>repeated string miscStatKeys = 17;</code>
+       * <code>repeated string miscStatKeys = 14;</code>
        * @param values The miscStatKeys to add.
        * @return This builder for chaining.
        */
@@ -4217,23 +3612,23 @@ public final class InitialEnvironment {
         ensureMiscStatKeysIsMutable();
         com.google.protobuf.AbstractMessageLite.Builder.addAll(
             values, miscStatKeys_);
-        bitField0_ |= 0x00010000;
+        bitField0_ |= 0x00002000;
         onChanged();
         return this;
       }
       /**
-       * <code>repeated string miscStatKeys = 17;</code>
+       * <code>repeated string miscStatKeys = 14;</code>
        * @return This builder for chaining.
        */
       public Builder clearMiscStatKeys() {
         miscStatKeys_ =
           com.google.protobuf.LazyStringArrayList.emptyList();
-        bitField0_ = (bitField0_ & ~0x00010000);;
+        bitField0_ = (bitField0_ & ~0x00002000);;
         onChanged();
         return this;
       }
       /**
-       * <code>repeated string miscStatKeys = 17;</code>
+       * <code>repeated string miscStatKeys = 14;</code>
        * @param value The bytes of the miscStatKeys to add.
        * @return This builder for chaining.
        */
@@ -4243,249 +3638,9 @@ public final class InitialEnvironment {
         checkByteStringIsUtf8(value);
         ensureMiscStatKeysIsMutable();
         miscStatKeys_.add(value);
-        bitField0_ |= 0x00010000;
+        bitField0_ |= 0x00002000;
         onChanged();
         return this;
-      }
-
-      private java.util.List<com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.BlockState> initialBlockStates_ =
-        java.util.Collections.emptyList();
-      private void ensureInitialBlockStatesIsMutable() {
-        if (!((bitField0_ & 0x00020000) != 0)) {
-          initialBlockStates_ = new java.util.ArrayList<com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.BlockState>(initialBlockStates_);
-          bitField0_ |= 0x00020000;
-         }
-      }
-
-      private com.google.protobuf.RepeatedFieldBuilder<
-          com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.BlockState, com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.BlockState.Builder, com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.BlockStateOrBuilder> initialBlockStatesBuilder_;
-
-      /**
-       * <code>repeated .BlockState initialBlockStates = 18;</code>
-       */
-      public java.util.List<com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.BlockState> getInitialBlockStatesList() {
-        if (initialBlockStatesBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(initialBlockStates_);
-        } else {
-          return initialBlockStatesBuilder_.getMessageList();
-        }
-      }
-      /**
-       * <code>repeated .BlockState initialBlockStates = 18;</code>
-       */
-      public int getInitialBlockStatesCount() {
-        if (initialBlockStatesBuilder_ == null) {
-          return initialBlockStates_.size();
-        } else {
-          return initialBlockStatesBuilder_.getCount();
-        }
-      }
-      /**
-       * <code>repeated .BlockState initialBlockStates = 18;</code>
-       */
-      public com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.BlockState getInitialBlockStates(int index) {
-        if (initialBlockStatesBuilder_ == null) {
-          return initialBlockStates_.get(index);
-        } else {
-          return initialBlockStatesBuilder_.getMessage(index);
-        }
-      }
-      /**
-       * <code>repeated .BlockState initialBlockStates = 18;</code>
-       */
-      public Builder setInitialBlockStates(
-          int index, com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.BlockState value) {
-        if (initialBlockStatesBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureInitialBlockStatesIsMutable();
-          initialBlockStates_.set(index, value);
-          onChanged();
-        } else {
-          initialBlockStatesBuilder_.setMessage(index, value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .BlockState initialBlockStates = 18;</code>
-       */
-      public Builder setInitialBlockStates(
-          int index, com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.BlockState.Builder builderForValue) {
-        if (initialBlockStatesBuilder_ == null) {
-          ensureInitialBlockStatesIsMutable();
-          initialBlockStates_.set(index, builderForValue.build());
-          onChanged();
-        } else {
-          initialBlockStatesBuilder_.setMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .BlockState initialBlockStates = 18;</code>
-       */
-      public Builder addInitialBlockStates(com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.BlockState value) {
-        if (initialBlockStatesBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureInitialBlockStatesIsMutable();
-          initialBlockStates_.add(value);
-          onChanged();
-        } else {
-          initialBlockStatesBuilder_.addMessage(value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .BlockState initialBlockStates = 18;</code>
-       */
-      public Builder addInitialBlockStates(
-          int index, com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.BlockState value) {
-        if (initialBlockStatesBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureInitialBlockStatesIsMutable();
-          initialBlockStates_.add(index, value);
-          onChanged();
-        } else {
-          initialBlockStatesBuilder_.addMessage(index, value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .BlockState initialBlockStates = 18;</code>
-       */
-      public Builder addInitialBlockStates(
-          com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.BlockState.Builder builderForValue) {
-        if (initialBlockStatesBuilder_ == null) {
-          ensureInitialBlockStatesIsMutable();
-          initialBlockStates_.add(builderForValue.build());
-          onChanged();
-        } else {
-          initialBlockStatesBuilder_.addMessage(builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .BlockState initialBlockStates = 18;</code>
-       */
-      public Builder addInitialBlockStates(
-          int index, com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.BlockState.Builder builderForValue) {
-        if (initialBlockStatesBuilder_ == null) {
-          ensureInitialBlockStatesIsMutable();
-          initialBlockStates_.add(index, builderForValue.build());
-          onChanged();
-        } else {
-          initialBlockStatesBuilder_.addMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .BlockState initialBlockStates = 18;</code>
-       */
-      public Builder addAllInitialBlockStates(
-          java.lang.Iterable<? extends com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.BlockState> values) {
-        if (initialBlockStatesBuilder_ == null) {
-          ensureInitialBlockStatesIsMutable();
-          com.google.protobuf.AbstractMessageLite.Builder.addAll(
-              values, initialBlockStates_);
-          onChanged();
-        } else {
-          initialBlockStatesBuilder_.addAllMessages(values);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .BlockState initialBlockStates = 18;</code>
-       */
-      public Builder clearInitialBlockStates() {
-        if (initialBlockStatesBuilder_ == null) {
-          initialBlockStates_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00020000);
-          onChanged();
-        } else {
-          initialBlockStatesBuilder_.clear();
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .BlockState initialBlockStates = 18;</code>
-       */
-      public Builder removeInitialBlockStates(int index) {
-        if (initialBlockStatesBuilder_ == null) {
-          ensureInitialBlockStatesIsMutable();
-          initialBlockStates_.remove(index);
-          onChanged();
-        } else {
-          initialBlockStatesBuilder_.remove(index);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .BlockState initialBlockStates = 18;</code>
-       */
-      public com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.BlockState.Builder getInitialBlockStatesBuilder(
-          int index) {
-        return getInitialBlockStatesFieldBuilder().getBuilder(index);
-      }
-      /**
-       * <code>repeated .BlockState initialBlockStates = 18;</code>
-       */
-      public com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.BlockStateOrBuilder getInitialBlockStatesOrBuilder(
-          int index) {
-        if (initialBlockStatesBuilder_ == null) {
-          return initialBlockStates_.get(index);  } else {
-          return initialBlockStatesBuilder_.getMessageOrBuilder(index);
-        }
-      }
-      /**
-       * <code>repeated .BlockState initialBlockStates = 18;</code>
-       */
-      public java.util.List<? extends com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.BlockStateOrBuilder> 
-           getInitialBlockStatesOrBuilderList() {
-        if (initialBlockStatesBuilder_ != null) {
-          return initialBlockStatesBuilder_.getMessageOrBuilderList();
-        } else {
-          return java.util.Collections.unmodifiableList(initialBlockStates_);
-        }
-      }
-      /**
-       * <code>repeated .BlockState initialBlockStates = 18;</code>
-       */
-      public com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.BlockState.Builder addInitialBlockStatesBuilder() {
-        return getInitialBlockStatesFieldBuilder().addBuilder(
-            com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.BlockState.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .BlockState initialBlockStates = 18;</code>
-       */
-      public com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.BlockState.Builder addInitialBlockStatesBuilder(
-          int index) {
-        return getInitialBlockStatesFieldBuilder().addBuilder(
-            index, com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.BlockState.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .BlockState initialBlockStates = 18;</code>
-       */
-      public java.util.List<com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.BlockState.Builder> 
-           getInitialBlockStatesBuilderList() {
-        return getInitialBlockStatesFieldBuilder().getBuilderList();
-      }
-      private com.google.protobuf.RepeatedFieldBuilder<
-          com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.BlockState, com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.BlockState.Builder, com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.BlockStateOrBuilder> 
-          getInitialBlockStatesFieldBuilder() {
-        if (initialBlockStatesBuilder_ == null) {
-          initialBlockStatesBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
-              com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.BlockState, com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.BlockState.Builder, com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.BlockStateOrBuilder>(
-                  initialBlockStates_,
-                  ((bitField0_ & 0x00020000) != 0),
-                  getParentForChildren(),
-                  isClean());
-          initialBlockStates_ = null;
-        }
-        return initialBlockStatesBuilder_;
       }
 
       private com.google.protobuf.Internal.IntList surroundingEntityDistances_ = emptyIntList();
@@ -4493,10 +3648,10 @@ public final class InitialEnvironment {
         if (!surroundingEntityDistances_.isModifiable()) {
           surroundingEntityDistances_ = makeMutableCopy(surroundingEntityDistances_);
         }
-        bitField0_ |= 0x00040000;
+        bitField0_ |= 0x00004000;
       }
       /**
-       * <code>repeated int32 surroundingEntityDistances = 19;</code>
+       * <code>repeated int32 surroundingEntityDistances = 15;</code>
        * @return A list containing the surroundingEntityDistances.
        */
       public java.util.List<java.lang.Integer>
@@ -4505,14 +3660,14 @@ public final class InitialEnvironment {
         return surroundingEntityDistances_;
       }
       /**
-       * <code>repeated int32 surroundingEntityDistances = 19;</code>
+       * <code>repeated int32 surroundingEntityDistances = 15;</code>
        * @return The count of surroundingEntityDistances.
        */
       public int getSurroundingEntityDistancesCount() {
         return surroundingEntityDistances_.size();
       }
       /**
-       * <code>repeated int32 surroundingEntityDistances = 19;</code>
+       * <code>repeated int32 surroundingEntityDistances = 15;</code>
        * @param index The index of the element to return.
        * @return The surroundingEntityDistances at the given index.
        */
@@ -4520,7 +3675,7 @@ public final class InitialEnvironment {
         return surroundingEntityDistances_.getInt(index);
       }
       /**
-       * <code>repeated int32 surroundingEntityDistances = 19;</code>
+       * <code>repeated int32 surroundingEntityDistances = 15;</code>
        * @param index The index to set the value at.
        * @param value The surroundingEntityDistances to set.
        * @return This builder for chaining.
@@ -4530,12 +3685,12 @@ public final class InitialEnvironment {
 
         ensureSurroundingEntityDistancesIsMutable();
         surroundingEntityDistances_.setInt(index, value);
-        bitField0_ |= 0x00040000;
+        bitField0_ |= 0x00004000;
         onChanged();
         return this;
       }
       /**
-       * <code>repeated int32 surroundingEntityDistances = 19;</code>
+       * <code>repeated int32 surroundingEntityDistances = 15;</code>
        * @param value The surroundingEntityDistances to add.
        * @return This builder for chaining.
        */
@@ -4543,12 +3698,12 @@ public final class InitialEnvironment {
 
         ensureSurroundingEntityDistancesIsMutable();
         surroundingEntityDistances_.addInt(value);
-        bitField0_ |= 0x00040000;
+        bitField0_ |= 0x00004000;
         onChanged();
         return this;
       }
       /**
-       * <code>repeated int32 surroundingEntityDistances = 19;</code>
+       * <code>repeated int32 surroundingEntityDistances = 15;</code>
        * @param values The surroundingEntityDistances to add.
        * @return This builder for chaining.
        */
@@ -4557,24 +3712,24 @@ public final class InitialEnvironment {
         ensureSurroundingEntityDistancesIsMutable();
         com.google.protobuf.AbstractMessageLite.Builder.addAll(
             values, surroundingEntityDistances_);
-        bitField0_ |= 0x00040000;
+        bitField0_ |= 0x00004000;
         onChanged();
         return this;
       }
       /**
-       * <code>repeated int32 surroundingEntityDistances = 19;</code>
+       * <code>repeated int32 surroundingEntityDistances = 15;</code>
        * @return This builder for chaining.
        */
       public Builder clearSurroundingEntityDistances() {
         surroundingEntityDistances_ = emptyIntList();
-        bitField0_ = (bitField0_ & ~0x00040000);
+        bitField0_ = (bitField0_ & ~0x00004000);
         onChanged();
         return this;
       }
 
       private boolean hudHidden_ ;
       /**
-       * <code>bool hudHidden = 20;</code>
+       * <code>bool hudHidden = 16;</code>
        * @return The hudHidden.
        */
       @java.lang.Override
@@ -4582,23 +3737,23 @@ public final class InitialEnvironment {
         return hudHidden_;
       }
       /**
-       * <code>bool hudHidden = 20;</code>
+       * <code>bool hudHidden = 16;</code>
        * @param value The hudHidden to set.
        * @return This builder for chaining.
        */
       public Builder setHudHidden(boolean value) {
 
         hudHidden_ = value;
-        bitField0_ |= 0x00080000;
+        bitField0_ |= 0x00008000;
         onChanged();
         return this;
       }
       /**
-       * <code>bool hudHidden = 20;</code>
+       * <code>bool hudHidden = 16;</code>
        * @return This builder for chaining.
        */
       public Builder clearHudHidden() {
-        bitField0_ = (bitField0_ & ~0x00080000);
+        bitField0_ = (bitField0_ & ~0x00008000);
         hudHidden_ = false;
         onChanged();
         return this;
@@ -4606,7 +3761,7 @@ public final class InitialEnvironment {
 
       private int renderDistance_ ;
       /**
-       * <code>int32 render_distance = 21;</code>
+       * <code>int32 render_distance = 17;</code>
        * @return The renderDistance.
        */
       @java.lang.Override
@@ -4614,23 +3769,23 @@ public final class InitialEnvironment {
         return renderDistance_;
       }
       /**
-       * <code>int32 render_distance = 21;</code>
+       * <code>int32 render_distance = 17;</code>
        * @param value The renderDistance to set.
        * @return This builder for chaining.
        */
       public Builder setRenderDistance(int value) {
 
         renderDistance_ = value;
-        bitField0_ |= 0x00100000;
+        bitField0_ |= 0x00010000;
         onChanged();
         return this;
       }
       /**
-       * <code>int32 render_distance = 21;</code>
+       * <code>int32 render_distance = 17;</code>
        * @return This builder for chaining.
        */
       public Builder clearRenderDistance() {
-        bitField0_ = (bitField0_ & ~0x00100000);
+        bitField0_ = (bitField0_ & ~0x00010000);
         renderDistance_ = 0;
         onChanged();
         return this;
@@ -4638,7 +3793,7 @@ public final class InitialEnvironment {
 
       private int simulationDistance_ ;
       /**
-       * <code>int32 simulation_distance = 22;</code>
+       * <code>int32 simulation_distance = 18;</code>
        * @return The simulationDistance.
        */
       @java.lang.Override
@@ -4646,63 +3801,35 @@ public final class InitialEnvironment {
         return simulationDistance_;
       }
       /**
-       * <code>int32 simulation_distance = 22;</code>
+       * <code>int32 simulation_distance = 18;</code>
        * @param value The simulationDistance to set.
        * @return This builder for chaining.
        */
       public Builder setSimulationDistance(int value) {
 
         simulationDistance_ = value;
-        bitField0_ |= 0x00200000;
+        bitField0_ |= 0x00020000;
         onChanged();
         return this;
       }
       /**
-       * <code>int32 simulation_distance = 22;</code>
+       * <code>int32 simulation_distance = 18;</code>
        * @return This builder for chaining.
        */
       public Builder clearSimulationDistance() {
-        bitField0_ = (bitField0_ & ~0x00200000);
+        bitField0_ = (bitField0_ & ~0x00020000);
         simulationDistance_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private boolean biocular_ ;
-      /**
-       * <code>bool biocular = 23;</code>
-       * @return The biocular.
-       */
-      @java.lang.Override
-      public boolean getBiocular() {
-        return biocular_;
-      }
-      /**
-       * <code>bool biocular = 23;</code>
-       * @param value The biocular to set.
-       * @return This builder for chaining.
-       */
-      public Builder setBiocular(boolean value) {
-
-        biocular_ = value;
-        bitField0_ |= 0x00400000;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>bool biocular = 23;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearBiocular() {
-        bitField0_ = (bitField0_ & ~0x00400000);
-        biocular_ = false;
         onChanged();
         return this;
       }
 
       private float eyeDistance_ ;
       /**
-       * <code>float eye_distance = 24;</code>
+       * <pre>
+       * If &gt; 0, binocular mode
+       * </pre>
+       *
+       * <code>float eye_distance = 19;</code>
        * @return The eyeDistance.
        */
       @java.lang.Override
@@ -4710,23 +3837,31 @@ public final class InitialEnvironment {
         return eyeDistance_;
       }
       /**
-       * <code>float eye_distance = 24;</code>
+       * <pre>
+       * If &gt; 0, binocular mode
+       * </pre>
+       *
+       * <code>float eye_distance = 19;</code>
        * @param value The eyeDistance to set.
        * @return This builder for chaining.
        */
       public Builder setEyeDistance(float value) {
 
         eyeDistance_ = value;
-        bitField0_ |= 0x00800000;
+        bitField0_ |= 0x00040000;
         onChanged();
         return this;
       }
       /**
-       * <code>float eye_distance = 24;</code>
+       * <pre>
+       * If &gt; 0, binocular mode
+       * </pre>
+       *
+       * <code>float eye_distance = 19;</code>
        * @return This builder for chaining.
        */
       public Builder clearEyeDistance() {
-        bitField0_ = (bitField0_ & ~0x00800000);
+        bitField0_ = (bitField0_ & ~0x00040000);
         eyeDistance_ = 0F;
         onChanged();
         return this;
@@ -4738,10 +3873,10 @@ public final class InitialEnvironment {
         if (!structurePaths_.isModifiable()) {
           structurePaths_ = new com.google.protobuf.LazyStringArrayList(structurePaths_);
         }
-        bitField0_ |= 0x01000000;
+        bitField0_ |= 0x00080000;
       }
       /**
-       * <code>repeated string structurePaths = 25;</code>
+       * <code>repeated string structurePaths = 20;</code>
        * @return A list containing the structurePaths.
        */
       public com.google.protobuf.ProtocolStringList
@@ -4750,14 +3885,14 @@ public final class InitialEnvironment {
         return structurePaths_;
       }
       /**
-       * <code>repeated string structurePaths = 25;</code>
+       * <code>repeated string structurePaths = 20;</code>
        * @return The count of structurePaths.
        */
       public int getStructurePathsCount() {
         return structurePaths_.size();
       }
       /**
-       * <code>repeated string structurePaths = 25;</code>
+       * <code>repeated string structurePaths = 20;</code>
        * @param index The index of the element to return.
        * @return The structurePaths at the given index.
        */
@@ -4765,7 +3900,7 @@ public final class InitialEnvironment {
         return structurePaths_.get(index);
       }
       /**
-       * <code>repeated string structurePaths = 25;</code>
+       * <code>repeated string structurePaths = 20;</code>
        * @param index The index of the value to return.
        * @return The bytes of the structurePaths at the given index.
        */
@@ -4774,7 +3909,7 @@ public final class InitialEnvironment {
         return structurePaths_.getByteString(index);
       }
       /**
-       * <code>repeated string structurePaths = 25;</code>
+       * <code>repeated string structurePaths = 20;</code>
        * @param index The index to set the value at.
        * @param value The structurePaths to set.
        * @return This builder for chaining.
@@ -4784,12 +3919,12 @@ public final class InitialEnvironment {
         if (value == null) { throw new NullPointerException(); }
         ensureStructurePathsIsMutable();
         structurePaths_.set(index, value);
-        bitField0_ |= 0x01000000;
+        bitField0_ |= 0x00080000;
         onChanged();
         return this;
       }
       /**
-       * <code>repeated string structurePaths = 25;</code>
+       * <code>repeated string structurePaths = 20;</code>
        * @param value The structurePaths to add.
        * @return This builder for chaining.
        */
@@ -4798,12 +3933,12 @@ public final class InitialEnvironment {
         if (value == null) { throw new NullPointerException(); }
         ensureStructurePathsIsMutable();
         structurePaths_.add(value);
-        bitField0_ |= 0x01000000;
+        bitField0_ |= 0x00080000;
         onChanged();
         return this;
       }
       /**
-       * <code>repeated string structurePaths = 25;</code>
+       * <code>repeated string structurePaths = 20;</code>
        * @param values The structurePaths to add.
        * @return This builder for chaining.
        */
@@ -4812,23 +3947,23 @@ public final class InitialEnvironment {
         ensureStructurePathsIsMutable();
         com.google.protobuf.AbstractMessageLite.Builder.addAll(
             values, structurePaths_);
-        bitField0_ |= 0x01000000;
+        bitField0_ |= 0x00080000;
         onChanged();
         return this;
       }
       /**
-       * <code>repeated string structurePaths = 25;</code>
+       * <code>repeated string structurePaths = 20;</code>
        * @return This builder for chaining.
        */
       public Builder clearStructurePaths() {
         structurePaths_ =
           com.google.protobuf.LazyStringArrayList.emptyList();
-        bitField0_ = (bitField0_ & ~0x01000000);;
+        bitField0_ = (bitField0_ & ~0x00080000);;
         onChanged();
         return this;
       }
       /**
-       * <code>repeated string structurePaths = 25;</code>
+       * <code>repeated string structurePaths = 20;</code>
        * @param value The bytes of the structurePaths to add.
        * @return This builder for chaining.
        */
@@ -4838,110 +3973,46 @@ public final class InitialEnvironment {
         checkByteStringIsUtf8(value);
         ensureStructurePathsIsMutable();
         structurePaths_.add(value);
-        bitField0_ |= 0x01000000;
+        bitField0_ |= 0x00080000;
         onChanged();
         return this;
       }
 
-      private boolean noWeatherCycle_ ;
+      private boolean noFovEffect_ ;
       /**
-       * <code>bool noWeatherCycle = 26;</code>
-       * @return The noWeatherCycle.
+       * <code>bool no_fov_effect = 21;</code>
+       * @return The noFovEffect.
        */
       @java.lang.Override
-      public boolean getNoWeatherCycle() {
-        return noWeatherCycle_;
+      public boolean getNoFovEffect() {
+        return noFovEffect_;
       }
       /**
-       * <code>bool noWeatherCycle = 26;</code>
-       * @param value The noWeatherCycle to set.
+       * <code>bool no_fov_effect = 21;</code>
+       * @param value The noFovEffect to set.
        * @return This builder for chaining.
        */
-      public Builder setNoWeatherCycle(boolean value) {
+      public Builder setNoFovEffect(boolean value) {
 
-        noWeatherCycle_ = value;
-        bitField0_ |= 0x02000000;
+        noFovEffect_ = value;
+        bitField0_ |= 0x00100000;
         onChanged();
         return this;
       }
       /**
-       * <code>bool noWeatherCycle = 26;</code>
+       * <code>bool no_fov_effect = 21;</code>
        * @return This builder for chaining.
        */
-      public Builder clearNoWeatherCycle() {
-        bitField0_ = (bitField0_ & ~0x02000000);
-        noWeatherCycle_ = false;
-        onChanged();
-        return this;
-      }
-
-      private boolean noPovEffect_ ;
-      /**
-       * <code>bool no_pov_effect = 27;</code>
-       * @return The noPovEffect.
-       */
-      @java.lang.Override
-      public boolean getNoPovEffect() {
-        return noPovEffect_;
-      }
-      /**
-       * <code>bool no_pov_effect = 27;</code>
-       * @param value The noPovEffect to set.
-       * @return This builder for chaining.
-       */
-      public Builder setNoPovEffect(boolean value) {
-
-        noPovEffect_ = value;
-        bitField0_ |= 0x04000000;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>bool no_pov_effect = 27;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearNoPovEffect() {
-        bitField0_ = (bitField0_ & ~0x04000000);
-        noPovEffect_ = false;
-        onChanged();
-        return this;
-      }
-
-      private boolean noTimeCycle_ ;
-      /**
-       * <code>bool noTimeCycle = 28;</code>
-       * @return The noTimeCycle.
-       */
-      @java.lang.Override
-      public boolean getNoTimeCycle() {
-        return noTimeCycle_;
-      }
-      /**
-       * <code>bool noTimeCycle = 28;</code>
-       * @param value The noTimeCycle to set.
-       * @return This builder for chaining.
-       */
-      public Builder setNoTimeCycle(boolean value) {
-
-        noTimeCycle_ = value;
-        bitField0_ |= 0x08000000;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>bool noTimeCycle = 28;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearNoTimeCycle() {
-        bitField0_ = (bitField0_ & ~0x08000000);
-        noTimeCycle_ = false;
+      public Builder clearNoFovEffect() {
+        bitField0_ = (bitField0_ & ~0x00100000);
+        noFovEffect_ = false;
         onChanged();
         return this;
       }
 
       private boolean requestRaycast_ ;
       /**
-       * <code>bool request_raycast = 29;</code>
+       * <code>bool request_raycast = 22;</code>
        * @return The requestRaycast.
        */
       @java.lang.Override
@@ -4949,23 +4020,23 @@ public final class InitialEnvironment {
         return requestRaycast_;
       }
       /**
-       * <code>bool request_raycast = 29;</code>
+       * <code>bool request_raycast = 22;</code>
        * @param value The requestRaycast to set.
        * @return This builder for chaining.
        */
       public Builder setRequestRaycast(boolean value) {
 
         requestRaycast_ = value;
-        bitField0_ |= 0x10000000;
+        bitField0_ |= 0x00200000;
         onChanged();
         return this;
       }
       /**
-       * <code>bool request_raycast = 29;</code>
+       * <code>bool request_raycast = 22;</code>
        * @return This builder for chaining.
        */
       public Builder clearRequestRaycast() {
-        bitField0_ = (bitField0_ & ~0x10000000);
+        bitField0_ = (bitField0_ & ~0x00200000);
         requestRaycast_ = false;
         onChanged();
         return this;
@@ -4973,7 +4044,7 @@ public final class InitialEnvironment {
 
       private int screenEncodingMode_ ;
       /**
-       * <code>int32 screen_encoding_mode = 30;</code>
+       * <code>int32 screen_encoding_mode = 23;</code>
        * @return The screenEncodingMode.
        */
       @java.lang.Override
@@ -4981,23 +4052,23 @@ public final class InitialEnvironment {
         return screenEncodingMode_;
       }
       /**
-       * <code>int32 screen_encoding_mode = 30;</code>
+       * <code>int32 screen_encoding_mode = 23;</code>
        * @param value The screenEncodingMode to set.
        * @return This builder for chaining.
        */
       public Builder setScreenEncodingMode(int value) {
 
         screenEncodingMode_ = value;
-        bitField0_ |= 0x20000000;
+        bitField0_ |= 0x00400000;
         onChanged();
         return this;
       }
       /**
-       * <code>int32 screen_encoding_mode = 30;</code>
+       * <code>int32 screen_encoding_mode = 23;</code>
        * @return This builder for chaining.
        */
       public Builder clearScreenEncodingMode() {
-        bitField0_ = (bitField0_ & ~0x20000000);
+        bitField0_ = (bitField0_ & ~0x00400000);
         screenEncodingMode_ = 0;
         onChanged();
         return this;
@@ -5005,7 +4076,7 @@ public final class InitialEnvironment {
 
       private boolean requiresSurroundingBlocks_ ;
       /**
-       * <code>bool requiresSurroundingBlocks = 31;</code>
+       * <code>bool requiresSurroundingBlocks = 24;</code>
        * @return The requiresSurroundingBlocks.
        */
       @java.lang.Override
@@ -5013,23 +4084,23 @@ public final class InitialEnvironment {
         return requiresSurroundingBlocks_;
       }
       /**
-       * <code>bool requiresSurroundingBlocks = 31;</code>
+       * <code>bool requiresSurroundingBlocks = 24;</code>
        * @param value The requiresSurroundingBlocks to set.
        * @return This builder for chaining.
        */
       public Builder setRequiresSurroundingBlocks(boolean value) {
 
         requiresSurroundingBlocks_ = value;
-        bitField0_ |= 0x40000000;
+        bitField0_ |= 0x00800000;
         onChanged();
         return this;
       }
       /**
-       * <code>bool requiresSurroundingBlocks = 31;</code>
+       * <code>bool requiresSurroundingBlocks = 24;</code>
        * @return This builder for chaining.
        */
       public Builder clearRequiresSurroundingBlocks() {
-        bitField0_ = (bitField0_ & ~0x40000000);
+        bitField0_ = (bitField0_ & ~0x00800000);
         requiresSurroundingBlocks_ = false;
         onChanged();
         return this;
@@ -5037,7 +4108,7 @@ public final class InitialEnvironment {
 
       private java.lang.Object levelDisplayNameToPlay_ = "";
       /**
-       * <code>string level_display_name_to_play = 32;</code>
+       * <code>string level_display_name_to_play = 25;</code>
        * @return The levelDisplayNameToPlay.
        */
       public java.lang.String getLevelDisplayNameToPlay() {
@@ -5053,7 +4124,7 @@ public final class InitialEnvironment {
         }
       }
       /**
-       * <code>string level_display_name_to_play = 32;</code>
+       * <code>string level_display_name_to_play = 25;</code>
        * @return The bytes for levelDisplayNameToPlay.
        */
       public com.google.protobuf.ByteString
@@ -5070,7 +4141,7 @@ public final class InitialEnvironment {
         }
       }
       /**
-       * <code>string level_display_name_to_play = 32;</code>
+       * <code>string level_display_name_to_play = 25;</code>
        * @param value The levelDisplayNameToPlay to set.
        * @return This builder for chaining.
        */
@@ -5078,22 +4149,22 @@ public final class InitialEnvironment {
           java.lang.String value) {
         if (value == null) { throw new NullPointerException(); }
         levelDisplayNameToPlay_ = value;
-        bitField0_ |= 0x80000000;
+        bitField0_ |= 0x01000000;
         onChanged();
         return this;
       }
       /**
-       * <code>string level_display_name_to_play = 32;</code>
+       * <code>string level_display_name_to_play = 25;</code>
        * @return This builder for chaining.
        */
       public Builder clearLevelDisplayNameToPlay() {
         levelDisplayNameToPlay_ = getDefaultInstance().getLevelDisplayNameToPlay();
-        bitField0_ = (bitField0_ & ~0x80000000);
+        bitField0_ = (bitField0_ & ~0x01000000);
         onChanged();
         return this;
       }
       /**
-       * <code>string level_display_name_to_play = 32;</code>
+       * <code>string level_display_name_to_play = 25;</code>
        * @param value The bytes for levelDisplayNameToPlay to set.
        * @return This builder for chaining.
        */
@@ -5102,7 +4173,51 @@ public final class InitialEnvironment {
         if (value == null) { throw new NullPointerException(); }
         checkByteStringIsUtf8(value);
         levelDisplayNameToPlay_ = value;
-        bitField0_ |= 0x80000000;
+        bitField0_ |= 0x01000000;
+        onChanged();
+        return this;
+      }
+
+      private float fov_ ;
+      /**
+       * <pre>
+       * Default = 70
+       * </pre>
+       *
+       * <code>float fov = 26;</code>
+       * @return The fov.
+       */
+      @java.lang.Override
+      public float getFov() {
+        return fov_;
+      }
+      /**
+       * <pre>
+       * Default = 70
+       * </pre>
+       *
+       * <code>float fov = 26;</code>
+       * @param value The fov to set.
+       * @return This builder for chaining.
+       */
+      public Builder setFov(float value) {
+
+        fov_ = value;
+        bitField0_ |= 0x02000000;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Default = 70
+       * </pre>
+       *
+       * <code>float fov = 26;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearFov() {
+        bitField0_ = (bitField0_ & ~0x02000000);
+        fov_ = 0F;
         onChanged();
         return this;
       }
@@ -5159,11 +4274,6 @@ public final class InitialEnvironment {
   }
 
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_BlockState_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_BlockState_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_InitialEnvironmentMessage_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -5177,48 +4287,42 @@ public final class InitialEnvironment {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\031initial_environment.proto\"B\n\nBlockStat" +
-      "e\022\t\n\001x\030\001 \001(\005\022\t\n\001y\030\002 \001(\005\022\t\n\001z\030\003 \001(\005\022\023\n\013bl" +
-      "ock_state\030\004 \001(\t\"\274\006\n\031InitialEnvironmentMe" +
-      "ssage\022 \n\030initialInventoryCommands\030\001 \003(\t\022" +
-      "\027\n\017initialPosition\030\002 \003(\005\022\033\n\023initialMobsC" +
-      "ommands\030\003 \003(\t\022\022\n\nimageSizeX\030\004 \001(\005\022\022\n\nima" +
-      "geSizeY\030\005 \001(\005\022\014\n\004seed\030\006 \001(\003\022\025\n\rallowMobS" +
-      "pawn\030\007 \001(\010\022\023\n\013alwaysNight\030\010 \001(\010\022\021\n\talway" +
-      "sDay\030\t \001(\010\022\026\n\016initialWeather\030\n \001(\t\022\023\n\013is" +
-      "WorldFlat\030\013 \001(\010\022\024\n\014visibleSizeX\030\014 \001(\005\022\024\n" +
-      "\014visibleSizeY\030\r \001(\005\022\034\n\024initialExtraComma" +
-      "nds\030\016 \003(\t\022\026\n\016killedStatKeys\030\017 \003(\t\022\025\n\rmin" +
-      "edStatKeys\030\020 \003(\t\022\024\n\014miscStatKeys\030\021 \003(\t\022\'" +
-      "\n\022initialBlockStates\030\022 \003(\0132\013.BlockState\022" +
-      "\"\n\032surroundingEntityDistances\030\023 \003(\005\022\021\n\th" +
-      "udHidden\030\024 \001(\010\022\027\n\017render_distance\030\025 \001(\005\022" +
-      "\033\n\023simulation_distance\030\026 \001(\005\022\020\n\010biocular" +
-      "\030\027 \001(\010\022\024\n\014eye_distance\030\030 \001(\002\022\026\n\016structur" +
-      "ePaths\030\031 \003(\t\022\026\n\016noWeatherCycle\030\032 \001(\010\022\025\n\r" +
-      "no_pov_effect\030\033 \001(\010\022\023\n\013noTimeCycle\030\034 \001(\010" +
-      "\022\027\n\017request_raycast\030\035 \001(\010\022\034\n\024screen_enco" +
-      "ding_mode\030\036 \001(\005\022!\n\031requiresSurroundingBl" +
-      "ocks\030\037 \001(\010\022\"\n\032level_display_name_to_play" +
-      "\030  \001(\tB&\n$com.kyhsgeekcode.minecraft_env" +
-      ".protob\006proto3"
+      "\n\031initial_environment.proto\"\256\005\n\031InitialE" +
+      "nvironmentMessage\022\022\n\nimageSizeX\030\001 \001(\005\022\022\n" +
+      "\nimageSizeY\030\002 \001(\005\022\033\n\010gamemode\030\003 \001(\0162\t.Ga" +
+      "meMode\022\037\n\ndifficulty\030\004 \001(\0162\013.Difficulty\022" +
+      "\035\n\tworldType\030\005 \001(\0162\n.WorldType\022\025\n\rworldT" +
+      "ypeArgs\030\006 \001(\t\022\014\n\004seed\030\007 \001(\t\022\033\n\023generate_" +
+      "structures\030\010 \001(\010\022\023\n\013bonus_chest\030\t \001(\010\022\025\n" +
+      "\rdatapackPaths\030\n \003(\t\022\034\n\024initialExtraComm" +
+      "ands\030\013 \003(\t\022\026\n\016killedStatKeys\030\014 \003(\t\022\025\n\rmi" +
+      "nedStatKeys\030\r \003(\t\022\024\n\014miscStatKeys\030\016 \003(\t\022" +
+      "\"\n\032surroundingEntityDistances\030\017 \003(\005\022\021\n\th" +
+      "udHidden\030\020 \001(\010\022\027\n\017render_distance\030\021 \001(\005\022" +
+      "\033\n\023simulation_distance\030\022 \001(\005\022\024\n\014eye_dist" +
+      "ance\030\023 \001(\002\022\026\n\016structurePaths\030\024 \003(\t\022\025\n\rno" +
+      "_fov_effect\030\025 \001(\010\022\027\n\017request_raycast\030\026 \001" +
+      "(\010\022\034\n\024screen_encoding_mode\030\027 \001(\005\022!\n\031requ" +
+      "iresSurroundingBlocks\030\030 \001(\010\022\"\n\032level_dis" +
+      "play_name_to_play\030\031 \001(\t\022\013\n\003fov\030\032 \001(\002*4\n\010" +
+      "GameMode\022\014\n\010SURVIVAL\020\000\022\014\n\010HARDCORE\020\001\022\014\n\010" +
+      "CREATIVE\020\002*:\n\nDifficulty\022\014\n\010PEACEFUL\020\000\022\010" +
+      "\n\004EASY\020\001\022\n\n\006NORMAL\020\002\022\010\n\004HARD\020\003*Z\n\tWorldT" +
+      "ype\022\013\n\007DEFAULT\020\000\022\r\n\tSUPERFLAT\020\001\022\020\n\014LARGE" +
+      "_BIOMES\020\002\022\r\n\tAMPLIFIED\020\003\022\020\n\014SINGLE_BIOME" +
+      "\020\004B&\n$com.kyhsgeekcode.minecraft_env.pro" +
+      "tob\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
         });
-    internal_static_BlockState_descriptor =
-      getDescriptor().getMessageTypes().get(0);
-    internal_static_BlockState_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-        internal_static_BlockState_descriptor,
-        new java.lang.String[] { "X", "Y", "Z", "BlockState", });
     internal_static_InitialEnvironmentMessage_descriptor =
-      getDescriptor().getMessageTypes().get(1);
+      getDescriptor().getMessageTypes().get(0);
     internal_static_InitialEnvironmentMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_InitialEnvironmentMessage_descriptor,
-        new java.lang.String[] { "InitialInventoryCommands", "InitialPosition", "InitialMobsCommands", "ImageSizeX", "ImageSizeY", "Seed", "AllowMobSpawn", "AlwaysNight", "AlwaysDay", "InitialWeather", "IsWorldFlat", "VisibleSizeX", "VisibleSizeY", "InitialExtraCommands", "KilledStatKeys", "MinedStatKeys", "MiscStatKeys", "InitialBlockStates", "SurroundingEntityDistances", "HudHidden", "RenderDistance", "SimulationDistance", "Biocular", "EyeDistance", "StructurePaths", "NoWeatherCycle", "NoPovEffect", "NoTimeCycle", "RequestRaycast", "ScreenEncodingMode", "RequiresSurroundingBlocks", "LevelDisplayNameToPlay", });
+        new java.lang.String[] { "ImageSizeX", "ImageSizeY", "Gamemode", "Difficulty", "WorldType", "WorldTypeArgs", "Seed", "GenerateStructures", "BonusChest", "DatapackPaths", "InitialExtraCommands", "KilledStatKeys", "MinedStatKeys", "MiscStatKeys", "SurroundingEntityDistances", "HudHidden", "RenderDistance", "SimulationDistance", "EyeDistance", "StructurePaths", "NoFovEffect", "RequestRaycast", "ScreenEncodingMode", "RequiresSurroundingBlocks", "LevelDisplayNameToPlay", "Fov", });
     descriptor.resolveAllFeaturesImmutable();
   }
 

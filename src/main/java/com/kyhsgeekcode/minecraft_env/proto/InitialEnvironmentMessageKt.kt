@@ -29,212 +29,11 @@ public object InitialEnvironmentMessageKt {
     internal fun _build(): com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage = _builder.build()
 
     /**
-     * An uninstantiable, behaviorless type to represent the field in
-     * generics.
-     */
-    @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
-    public class InitialInventoryCommandsProxy private constructor() : com.google.protobuf.kotlin.DslProxy()
-    /**
-     * `repeated string initialInventoryCommands = 1;`
-     * @return A list containing the initialInventoryCommands.
-     */
-    public val initialInventoryCommands: com.google.protobuf.kotlin.DslList<kotlin.String, InitialInventoryCommandsProxy>
-      @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
-        _builder.getInitialInventoryCommandsList()
-      )
-    /**
-     * `repeated string initialInventoryCommands = 1;`
-     * @param value The initialInventoryCommands to add.
-     */
-    @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addInitialInventoryCommands")
-    public fun com.google.protobuf.kotlin.DslList<kotlin.String, InitialInventoryCommandsProxy>.add(value: kotlin.String) {
-      _builder.addInitialInventoryCommands(value)
-    }
-    /**
-     * `repeated string initialInventoryCommands = 1;`
-     * @param value The initialInventoryCommands to add.
-     */
-    @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignInitialInventoryCommands")
-    @Suppress("NOTHING_TO_INLINE")
-    public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, InitialInventoryCommandsProxy>.plusAssign(value: kotlin.String) {
-      add(value)
-    }
-    /**
-     * `repeated string initialInventoryCommands = 1;`
-     * @param values The initialInventoryCommands to add.
-     */
-    @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllInitialInventoryCommands")
-    public fun com.google.protobuf.kotlin.DslList<kotlin.String, InitialInventoryCommandsProxy>.addAll(values: kotlin.collections.Iterable<kotlin.String>) {
-      _builder.addAllInitialInventoryCommands(values)
-    }
-    /**
-     * `repeated string initialInventoryCommands = 1;`
-     * @param values The initialInventoryCommands to add.
-     */
-    @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllInitialInventoryCommands")
-    @Suppress("NOTHING_TO_INLINE")
-    public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, InitialInventoryCommandsProxy>.plusAssign(values: kotlin.collections.Iterable<kotlin.String>) {
-      addAll(values)
-    }
-    /**
-     * `repeated string initialInventoryCommands = 1;`
-     * @param index The index to set the value at.
-     * @param value The initialInventoryCommands to set.
-     */
-    @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setInitialInventoryCommands")
-    public operator fun com.google.protobuf.kotlin.DslList<kotlin.String, InitialInventoryCommandsProxy>.set(index: kotlin.Int, value: kotlin.String) {
-      _builder.setInitialInventoryCommands(index, value)
-    }/**
-     * `repeated string initialInventoryCommands = 1;`
-     */
-    @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearInitialInventoryCommands")
-    public fun com.google.protobuf.kotlin.DslList<kotlin.String, InitialInventoryCommandsProxy>.clear() {
-      _builder.clearInitialInventoryCommands()
-    }
-    /**
-     * An uninstantiable, behaviorless type to represent the field in
-     * generics.
-     */
-    @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
-    public class InitialPositionProxy private constructor() : com.google.protobuf.kotlin.DslProxy()
-    /**
-     * `repeated int32 initialPosition = 2;`
-     */
-     public val initialPosition: com.google.protobuf.kotlin.DslList<kotlin.Int, InitialPositionProxy>
-      @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
-        _builder.getInitialPositionList()
-      )
-    /**
-     * `repeated int32 initialPosition = 2;`
-     * @param value The initialPosition to add.
-     */
-    @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addInitialPosition")
-    public fun com.google.protobuf.kotlin.DslList<kotlin.Int, InitialPositionProxy>.add(value: kotlin.Int) {
-      _builder.addInitialPosition(value)
-    }/**
-     * `repeated int32 initialPosition = 2;`
-     * @param value The initialPosition to add.
-     */
-    @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignInitialPosition")
-    @Suppress("NOTHING_TO_INLINE")
-    public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.Int, InitialPositionProxy>.plusAssign(value: kotlin.Int) {
-      add(value)
-    }/**
-     * `repeated int32 initialPosition = 2;`
-     * @param values The initialPosition to add.
-     */
-    @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllInitialPosition")
-    public fun com.google.protobuf.kotlin.DslList<kotlin.Int, InitialPositionProxy>.addAll(values: kotlin.collections.Iterable<kotlin.Int>) {
-      _builder.addAllInitialPosition(values)
-    }/**
-     * `repeated int32 initialPosition = 2;`
-     * @param values The initialPosition to add.
-     */
-    @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllInitialPosition")
-    @Suppress("NOTHING_TO_INLINE")
-    public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.Int, InitialPositionProxy>.plusAssign(values: kotlin.collections.Iterable<kotlin.Int>) {
-      addAll(values)
-    }/**
-     * `repeated int32 initialPosition = 2;`
-     * @param index The index to set the value at.
-     * @param value The initialPosition to set.
-     */
-    @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setInitialPosition")
-    public operator fun com.google.protobuf.kotlin.DslList<kotlin.Int, InitialPositionProxy>.set(index: kotlin.Int, value: kotlin.Int) {
-      _builder.setInitialPosition(index, value)
-    }/**
-     * `repeated int32 initialPosition = 2;`
-     */
-    @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearInitialPosition")
-    public fun com.google.protobuf.kotlin.DslList<kotlin.Int, InitialPositionProxy>.clear() {
-      _builder.clearInitialPosition()
-    }
-    /**
-     * An uninstantiable, behaviorless type to represent the field in
-     * generics.
-     */
-    @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
-    public class InitialMobsCommandsProxy private constructor() : com.google.protobuf.kotlin.DslProxy()
-    /**
-     * `repeated string initialMobsCommands = 3;`
-     * @return A list containing the initialMobsCommands.
-     */
-    public val initialMobsCommands: com.google.protobuf.kotlin.DslList<kotlin.String, InitialMobsCommandsProxy>
-      @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
-        _builder.getInitialMobsCommandsList()
-      )
-    /**
-     * `repeated string initialMobsCommands = 3;`
-     * @param value The initialMobsCommands to add.
-     */
-    @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addInitialMobsCommands")
-    public fun com.google.protobuf.kotlin.DslList<kotlin.String, InitialMobsCommandsProxy>.add(value: kotlin.String) {
-      _builder.addInitialMobsCommands(value)
-    }
-    /**
-     * `repeated string initialMobsCommands = 3;`
-     * @param value The initialMobsCommands to add.
-     */
-    @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignInitialMobsCommands")
-    @Suppress("NOTHING_TO_INLINE")
-    public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, InitialMobsCommandsProxy>.plusAssign(value: kotlin.String) {
-      add(value)
-    }
-    /**
-     * `repeated string initialMobsCommands = 3;`
-     * @param values The initialMobsCommands to add.
-     */
-    @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllInitialMobsCommands")
-    public fun com.google.protobuf.kotlin.DslList<kotlin.String, InitialMobsCommandsProxy>.addAll(values: kotlin.collections.Iterable<kotlin.String>) {
-      _builder.addAllInitialMobsCommands(values)
-    }
-    /**
-     * `repeated string initialMobsCommands = 3;`
-     * @param values The initialMobsCommands to add.
-     */
-    @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllInitialMobsCommands")
-    @Suppress("NOTHING_TO_INLINE")
-    public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, InitialMobsCommandsProxy>.plusAssign(values: kotlin.collections.Iterable<kotlin.String>) {
-      addAll(values)
-    }
-    /**
-     * `repeated string initialMobsCommands = 3;`
-     * @param index The index to set the value at.
-     * @param value The initialMobsCommands to set.
-     */
-    @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setInitialMobsCommands")
-    public operator fun com.google.protobuf.kotlin.DslList<kotlin.String, InitialMobsCommandsProxy>.set(index: kotlin.Int, value: kotlin.String) {
-      _builder.setInitialMobsCommands(index, value)
-    }/**
-     * `repeated string initialMobsCommands = 3;`
-     */
-    @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearInitialMobsCommands")
-    public fun com.google.protobuf.kotlin.DslList<kotlin.String, InitialMobsCommandsProxy>.clear() {
-      _builder.clearInitialMobsCommands()
-    }
-    /**
-     * `int32 imageSizeX = 4;`
+     * ```
+     * Required. The width of the image.
+     * ```
+     *
+     * `int32 imageSizeX = 1;`
      */
     public var imageSizeX: kotlin.Int
       @JvmName("getImageSizeX")
@@ -244,14 +43,22 @@ public object InitialEnvironmentMessageKt {
         _builder.setImageSizeX(value)
       }
     /**
-     * `int32 imageSizeX = 4;`
+     * ```
+     * Required. The width of the image.
+     * ```
+     *
+     * `int32 imageSizeX = 1;`
      */
     public fun clearImageSizeX() {
       _builder.clearImageSizeX()
     }
 
     /**
-     * `int32 imageSizeY = 5;`
+     * ```
+     * Required. The height of the image.
+     * ```
+     *
+     * `int32 imageSizeY = 2;`
      */
     public var imageSizeY: kotlin.Int
       @JvmName("getImageSizeY")
@@ -261,16 +68,145 @@ public object InitialEnvironmentMessageKt {
         _builder.setImageSizeY(value)
       }
     /**
-     * `int32 imageSizeY = 5;`
+     * ```
+     * Required. The height of the image.
+     * ```
+     *
+     * `int32 imageSizeY = 2;`
      */
     public fun clearImageSizeY() {
       _builder.clearImageSizeY()
     }
 
     /**
-     * `int64 seed = 6;`
+     * ```
+     * Default = SURVIVAL
+     * ```
+     *
+     * `.GameMode gamemode = 3;`
      */
-    public var seed: kotlin.Long
+    public var gamemode: com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.GameMode
+      @JvmName("getGamemode")
+      get() = _builder.getGamemode()
+      @JvmName("setGamemode")
+      set(value) {
+        _builder.setGamemode(value)
+      }
+    public var gamemodeValue: kotlin.Int
+      @JvmName("getGamemodeValue")
+      get() = _builder.getGamemodeValue()
+      @JvmName("setGamemodeValue")
+      set(value) {
+        _builder.setGamemodeValue(value)
+      }
+    /**
+     * ```
+     * Default = SURVIVAL
+     * ```
+     *
+     * `.GameMode gamemode = 3;`
+     */
+    public fun clearGamemode() {
+      _builder.clearGamemode()
+    }
+
+    /**
+     * ```
+     * Default = NORMAL
+     * ```
+     *
+     * `.Difficulty difficulty = 4;`
+     */
+    public var difficulty: com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.Difficulty
+      @JvmName("getDifficulty")
+      get() = _builder.getDifficulty()
+      @JvmName("setDifficulty")
+      set(value) {
+        _builder.setDifficulty(value)
+      }
+    public var difficultyValue: kotlin.Int
+      @JvmName("getDifficultyValue")
+      get() = _builder.getDifficultyValue()
+      @JvmName("setDifficultyValue")
+      set(value) {
+        _builder.setDifficultyValue(value)
+      }
+    /**
+     * ```
+     * Default = NORMAL
+     * ```
+     *
+     * `.Difficulty difficulty = 4;`
+     */
+    public fun clearDifficulty() {
+      _builder.clearDifficulty()
+    }
+
+    /**
+     * ```
+     * Default = DEFAULT
+     * ```
+     *
+     * `.WorldType worldType = 5;`
+     */
+    public var worldType: com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.WorldType
+      @JvmName("getWorldType")
+      get() = _builder.getWorldType()
+      @JvmName("setWorldType")
+      set(value) {
+        _builder.setWorldType(value)
+      }
+    public var worldTypeValue: kotlin.Int
+      @JvmName("getWorldTypeValue")
+      get() = _builder.getWorldTypeValue()
+      @JvmName("setWorldTypeValue")
+      set(value) {
+        _builder.setWorldTypeValue(value)
+      }
+    /**
+     * ```
+     * Default = DEFAULT
+     * ```
+     *
+     * `.WorldType worldType = 5;`
+     */
+    public fun clearWorldType() {
+      _builder.clearWorldType()
+    }
+
+    /**
+     * ```
+     * Empty for no value
+     * ```
+     *
+     * `string worldTypeArgs = 6;`
+     */
+    public var worldTypeArgs: kotlin.String
+      @JvmName("getWorldTypeArgs")
+      get() = _builder.getWorldTypeArgs()
+      @JvmName("setWorldTypeArgs")
+      set(value) {
+        _builder.setWorldTypeArgs(value)
+      }
+    /**
+     * ```
+     * Empty for no value
+     * ```
+     *
+     * `string worldTypeArgs = 6;`
+     */
+    public fun clearWorldTypeArgs() {
+      _builder.clearWorldTypeArgs()
+    }
+
+    /**
+     * ```
+     * Empty for no value
+     * ```
+     *
+     * `string seed = 7;`
+     */
+    public var seed: kotlin.String
       @JvmName("getSeed")
       get() = _builder.getSeed()
       @JvmName("setSeed")
@@ -278,129 +214,64 @@ public object InitialEnvironmentMessageKt {
         _builder.setSeed(value)
       }
     /**
-     * `int64 seed = 6;`
+     * ```
+     * Empty for no value
+     * ```
+     *
+     * `string seed = 7;`
      */
     public fun clearSeed() {
       _builder.clearSeed()
     }
 
     /**
-     * `bool allowMobSpawn = 7;`
+     * ```
+     * Default = true
+     * ```
+     *
+     * `bool generate_structures = 8;`
      */
-    public var allowMobSpawn: kotlin.Boolean
-      @JvmName("getAllowMobSpawn")
-      get() = _builder.getAllowMobSpawn()
-      @JvmName("setAllowMobSpawn")
+    public var generateStructures: kotlin.Boolean
+      @JvmName("getGenerateStructures")
+      get() = _builder.getGenerateStructures()
+      @JvmName("setGenerateStructures")
       set(value) {
-        _builder.setAllowMobSpawn(value)
+        _builder.setGenerateStructures(value)
       }
     /**
-     * `bool allowMobSpawn = 7;`
+     * ```
+     * Default = true
+     * ```
+     *
+     * `bool generate_structures = 8;`
      */
-    public fun clearAllowMobSpawn() {
-      _builder.clearAllowMobSpawn()
+    public fun clearGenerateStructures() {
+      _builder.clearGenerateStructures()
     }
 
     /**
-     * `bool alwaysNight = 8;`
+     * ```
+     * Default = false
+     * ```
+     *
+     * `bool bonus_chest = 9;`
      */
-    public var alwaysNight: kotlin.Boolean
-      @JvmName("getAlwaysNight")
-      get() = _builder.getAlwaysNight()
-      @JvmName("setAlwaysNight")
+    public var bonusChest: kotlin.Boolean
+      @JvmName("getBonusChest")
+      get() = _builder.getBonusChest()
+      @JvmName("setBonusChest")
       set(value) {
-        _builder.setAlwaysNight(value)
+        _builder.setBonusChest(value)
       }
     /**
-     * `bool alwaysNight = 8;`
+     * ```
+     * Default = false
+     * ```
+     *
+     * `bool bonus_chest = 9;`
      */
-    public fun clearAlwaysNight() {
-      _builder.clearAlwaysNight()
-    }
-
-    /**
-     * `bool alwaysDay = 9;`
-     */
-    public var alwaysDay: kotlin.Boolean
-      @JvmName("getAlwaysDay")
-      get() = _builder.getAlwaysDay()
-      @JvmName("setAlwaysDay")
-      set(value) {
-        _builder.setAlwaysDay(value)
-      }
-    /**
-     * `bool alwaysDay = 9;`
-     */
-    public fun clearAlwaysDay() {
-      _builder.clearAlwaysDay()
-    }
-
-    /**
-     * `string initialWeather = 10;`
-     */
-    public var initialWeather: kotlin.String
-      @JvmName("getInitialWeather")
-      get() = _builder.getInitialWeather()
-      @JvmName("setInitialWeather")
-      set(value) {
-        _builder.setInitialWeather(value)
-      }
-    /**
-     * `string initialWeather = 10;`
-     */
-    public fun clearInitialWeather() {
-      _builder.clearInitialWeather()
-    }
-
-    /**
-     * `bool isWorldFlat = 11;`
-     */
-    public var isWorldFlat: kotlin.Boolean
-      @JvmName("getIsWorldFlat")
-      get() = _builder.getIsWorldFlat()
-      @JvmName("setIsWorldFlat")
-      set(value) {
-        _builder.setIsWorldFlat(value)
-      }
-    /**
-     * `bool isWorldFlat = 11;`
-     */
-    public fun clearIsWorldFlat() {
-      _builder.clearIsWorldFlat()
-    }
-
-    /**
-     * `int32 visibleSizeX = 12;`
-     */
-    public var visibleSizeX: kotlin.Int
-      @JvmName("getVisibleSizeX")
-      get() = _builder.getVisibleSizeX()
-      @JvmName("setVisibleSizeX")
-      set(value) {
-        _builder.setVisibleSizeX(value)
-      }
-    /**
-     * `int32 visibleSizeX = 12;`
-     */
-    public fun clearVisibleSizeX() {
-      _builder.clearVisibleSizeX()
-    }
-
-    /**
-     * `int32 visibleSizeY = 13;`
-     */
-    public var visibleSizeY: kotlin.Int
-      @JvmName("getVisibleSizeY")
-      get() = _builder.getVisibleSizeY()
-      @JvmName("setVisibleSizeY")
-      set(value) {
-        _builder.setVisibleSizeY(value)
-      }
-    /**
-     * `int32 visibleSizeY = 13;`
-     */
-    public fun clearVisibleSizeY() {
-      _builder.clearVisibleSizeY()
+    public fun clearBonusChest() {
+      _builder.clearBonusChest()
     }
 
     /**
@@ -408,9 +279,79 @@ public object InitialEnvironmentMessageKt {
      * generics.
      */
     @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
+    public class DatapackPathsProxy private constructor() : com.google.protobuf.kotlin.DslProxy()
+    /**
+     * `repeated string datapackPaths = 10;`
+     * @return A list containing the datapackPaths.
+     */
+    public val datapackPaths: com.google.protobuf.kotlin.DslList<kotlin.String, DatapackPathsProxy>
+      @kotlin.jvm.JvmSynthetic
+      get() = com.google.protobuf.kotlin.DslList(
+        _builder.getDatapackPathsList()
+      )
+    /**
+     * `repeated string datapackPaths = 10;`
+     * @param value The datapackPaths to add.
+     */
+    @kotlin.jvm.JvmSynthetic
+    @kotlin.jvm.JvmName("addDatapackPaths")
+    public fun com.google.protobuf.kotlin.DslList<kotlin.String, DatapackPathsProxy>.add(value: kotlin.String) {
+      _builder.addDatapackPaths(value)
+    }
+    /**
+     * `repeated string datapackPaths = 10;`
+     * @param value The datapackPaths to add.
+     */
+    @kotlin.jvm.JvmSynthetic
+    @kotlin.jvm.JvmName("plusAssignDatapackPaths")
+    @Suppress("NOTHING_TO_INLINE")
+    public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, DatapackPathsProxy>.plusAssign(value: kotlin.String) {
+      add(value)
+    }
+    /**
+     * `repeated string datapackPaths = 10;`
+     * @param values The datapackPaths to add.
+     */
+    @kotlin.jvm.JvmSynthetic
+    @kotlin.jvm.JvmName("addAllDatapackPaths")
+    public fun com.google.protobuf.kotlin.DslList<kotlin.String, DatapackPathsProxy>.addAll(values: kotlin.collections.Iterable<kotlin.String>) {
+      _builder.addAllDatapackPaths(values)
+    }
+    /**
+     * `repeated string datapackPaths = 10;`
+     * @param values The datapackPaths to add.
+     */
+    @kotlin.jvm.JvmSynthetic
+    @kotlin.jvm.JvmName("plusAssignAllDatapackPaths")
+    @Suppress("NOTHING_TO_INLINE")
+    public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, DatapackPathsProxy>.plusAssign(values: kotlin.collections.Iterable<kotlin.String>) {
+      addAll(values)
+    }
+    /**
+     * `repeated string datapackPaths = 10;`
+     * @param index The index to set the value at.
+     * @param value The datapackPaths to set.
+     */
+    @kotlin.jvm.JvmSynthetic
+    @kotlin.jvm.JvmName("setDatapackPaths")
+    public operator fun com.google.protobuf.kotlin.DslList<kotlin.String, DatapackPathsProxy>.set(index: kotlin.Int, value: kotlin.String) {
+      _builder.setDatapackPaths(index, value)
+    }/**
+     * `repeated string datapackPaths = 10;`
+     */
+    @kotlin.jvm.JvmSynthetic
+    @kotlin.jvm.JvmName("clearDatapackPaths")
+    public fun com.google.protobuf.kotlin.DslList<kotlin.String, DatapackPathsProxy>.clear() {
+      _builder.clearDatapackPaths()
+    }
+    /**
+     * An uninstantiable, behaviorless type to represent the field in
+     * generics.
+     */
+    @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
     public class InitialExtraCommandsProxy private constructor() : com.google.protobuf.kotlin.DslProxy()
     /**
-     * `repeated string initialExtraCommands = 14;`
+     * `repeated string initialExtraCommands = 11;`
      * @return A list containing the initialExtraCommands.
      */
     public val initialExtraCommands: com.google.protobuf.kotlin.DslList<kotlin.String, InitialExtraCommandsProxy>
@@ -419,7 +360,7 @@ public object InitialEnvironmentMessageKt {
         _builder.getInitialExtraCommandsList()
       )
     /**
-     * `repeated string initialExtraCommands = 14;`
+     * `repeated string initialExtraCommands = 11;`
      * @param value The initialExtraCommands to add.
      */
     @kotlin.jvm.JvmSynthetic
@@ -428,7 +369,7 @@ public object InitialEnvironmentMessageKt {
       _builder.addInitialExtraCommands(value)
     }
     /**
-     * `repeated string initialExtraCommands = 14;`
+     * `repeated string initialExtraCommands = 11;`
      * @param value The initialExtraCommands to add.
      */
     @kotlin.jvm.JvmSynthetic
@@ -438,7 +379,7 @@ public object InitialEnvironmentMessageKt {
       add(value)
     }
     /**
-     * `repeated string initialExtraCommands = 14;`
+     * `repeated string initialExtraCommands = 11;`
      * @param values The initialExtraCommands to add.
      */
     @kotlin.jvm.JvmSynthetic
@@ -447,7 +388,7 @@ public object InitialEnvironmentMessageKt {
       _builder.addAllInitialExtraCommands(values)
     }
     /**
-     * `repeated string initialExtraCommands = 14;`
+     * `repeated string initialExtraCommands = 11;`
      * @param values The initialExtraCommands to add.
      */
     @kotlin.jvm.JvmSynthetic
@@ -457,7 +398,7 @@ public object InitialEnvironmentMessageKt {
       addAll(values)
     }
     /**
-     * `repeated string initialExtraCommands = 14;`
+     * `repeated string initialExtraCommands = 11;`
      * @param index The index to set the value at.
      * @param value The initialExtraCommands to set.
      */
@@ -466,7 +407,7 @@ public object InitialEnvironmentMessageKt {
     public operator fun com.google.protobuf.kotlin.DslList<kotlin.String, InitialExtraCommandsProxy>.set(index: kotlin.Int, value: kotlin.String) {
       _builder.setInitialExtraCommands(index, value)
     }/**
-     * `repeated string initialExtraCommands = 14;`
+     * `repeated string initialExtraCommands = 11;`
      */
     @kotlin.jvm.JvmSynthetic
     @kotlin.jvm.JvmName("clearInitialExtraCommands")
@@ -480,7 +421,7 @@ public object InitialEnvironmentMessageKt {
     @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
     public class KilledStatKeysProxy private constructor() : com.google.protobuf.kotlin.DslProxy()
     /**
-     * `repeated string killedStatKeys = 15;`
+     * `repeated string killedStatKeys = 12;`
      * @return A list containing the killedStatKeys.
      */
     public val killedStatKeys: com.google.protobuf.kotlin.DslList<kotlin.String, KilledStatKeysProxy>
@@ -489,7 +430,7 @@ public object InitialEnvironmentMessageKt {
         _builder.getKilledStatKeysList()
       )
     /**
-     * `repeated string killedStatKeys = 15;`
+     * `repeated string killedStatKeys = 12;`
      * @param value The killedStatKeys to add.
      */
     @kotlin.jvm.JvmSynthetic
@@ -498,7 +439,7 @@ public object InitialEnvironmentMessageKt {
       _builder.addKilledStatKeys(value)
     }
     /**
-     * `repeated string killedStatKeys = 15;`
+     * `repeated string killedStatKeys = 12;`
      * @param value The killedStatKeys to add.
      */
     @kotlin.jvm.JvmSynthetic
@@ -508,7 +449,7 @@ public object InitialEnvironmentMessageKt {
       add(value)
     }
     /**
-     * `repeated string killedStatKeys = 15;`
+     * `repeated string killedStatKeys = 12;`
      * @param values The killedStatKeys to add.
      */
     @kotlin.jvm.JvmSynthetic
@@ -517,7 +458,7 @@ public object InitialEnvironmentMessageKt {
       _builder.addAllKilledStatKeys(values)
     }
     /**
-     * `repeated string killedStatKeys = 15;`
+     * `repeated string killedStatKeys = 12;`
      * @param values The killedStatKeys to add.
      */
     @kotlin.jvm.JvmSynthetic
@@ -527,7 +468,7 @@ public object InitialEnvironmentMessageKt {
       addAll(values)
     }
     /**
-     * `repeated string killedStatKeys = 15;`
+     * `repeated string killedStatKeys = 12;`
      * @param index The index to set the value at.
      * @param value The killedStatKeys to set.
      */
@@ -536,7 +477,7 @@ public object InitialEnvironmentMessageKt {
     public operator fun com.google.protobuf.kotlin.DslList<kotlin.String, KilledStatKeysProxy>.set(index: kotlin.Int, value: kotlin.String) {
       _builder.setKilledStatKeys(index, value)
     }/**
-     * `repeated string killedStatKeys = 15;`
+     * `repeated string killedStatKeys = 12;`
      */
     @kotlin.jvm.JvmSynthetic
     @kotlin.jvm.JvmName("clearKilledStatKeys")
@@ -550,7 +491,7 @@ public object InitialEnvironmentMessageKt {
     @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
     public class MinedStatKeysProxy private constructor() : com.google.protobuf.kotlin.DslProxy()
     /**
-     * `repeated string minedStatKeys = 16;`
+     * `repeated string minedStatKeys = 13;`
      * @return A list containing the minedStatKeys.
      */
     public val minedStatKeys: com.google.protobuf.kotlin.DslList<kotlin.String, MinedStatKeysProxy>
@@ -559,7 +500,7 @@ public object InitialEnvironmentMessageKt {
         _builder.getMinedStatKeysList()
       )
     /**
-     * `repeated string minedStatKeys = 16;`
+     * `repeated string minedStatKeys = 13;`
      * @param value The minedStatKeys to add.
      */
     @kotlin.jvm.JvmSynthetic
@@ -568,7 +509,7 @@ public object InitialEnvironmentMessageKt {
       _builder.addMinedStatKeys(value)
     }
     /**
-     * `repeated string minedStatKeys = 16;`
+     * `repeated string minedStatKeys = 13;`
      * @param value The minedStatKeys to add.
      */
     @kotlin.jvm.JvmSynthetic
@@ -578,7 +519,7 @@ public object InitialEnvironmentMessageKt {
       add(value)
     }
     /**
-     * `repeated string minedStatKeys = 16;`
+     * `repeated string minedStatKeys = 13;`
      * @param values The minedStatKeys to add.
      */
     @kotlin.jvm.JvmSynthetic
@@ -587,7 +528,7 @@ public object InitialEnvironmentMessageKt {
       _builder.addAllMinedStatKeys(values)
     }
     /**
-     * `repeated string minedStatKeys = 16;`
+     * `repeated string minedStatKeys = 13;`
      * @param values The minedStatKeys to add.
      */
     @kotlin.jvm.JvmSynthetic
@@ -597,7 +538,7 @@ public object InitialEnvironmentMessageKt {
       addAll(values)
     }
     /**
-     * `repeated string minedStatKeys = 16;`
+     * `repeated string minedStatKeys = 13;`
      * @param index The index to set the value at.
      * @param value The minedStatKeys to set.
      */
@@ -606,7 +547,7 @@ public object InitialEnvironmentMessageKt {
     public operator fun com.google.protobuf.kotlin.DslList<kotlin.String, MinedStatKeysProxy>.set(index: kotlin.Int, value: kotlin.String) {
       _builder.setMinedStatKeys(index, value)
     }/**
-     * `repeated string minedStatKeys = 16;`
+     * `repeated string minedStatKeys = 13;`
      */
     @kotlin.jvm.JvmSynthetic
     @kotlin.jvm.JvmName("clearMinedStatKeys")
@@ -620,7 +561,7 @@ public object InitialEnvironmentMessageKt {
     @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
     public class MiscStatKeysProxy private constructor() : com.google.protobuf.kotlin.DslProxy()
     /**
-     * `repeated string miscStatKeys = 17;`
+     * `repeated string miscStatKeys = 14;`
      * @return A list containing the miscStatKeys.
      */
     public val miscStatKeys: com.google.protobuf.kotlin.DslList<kotlin.String, MiscStatKeysProxy>
@@ -629,7 +570,7 @@ public object InitialEnvironmentMessageKt {
         _builder.getMiscStatKeysList()
       )
     /**
-     * `repeated string miscStatKeys = 17;`
+     * `repeated string miscStatKeys = 14;`
      * @param value The miscStatKeys to add.
      */
     @kotlin.jvm.JvmSynthetic
@@ -638,7 +579,7 @@ public object InitialEnvironmentMessageKt {
       _builder.addMiscStatKeys(value)
     }
     /**
-     * `repeated string miscStatKeys = 17;`
+     * `repeated string miscStatKeys = 14;`
      * @param value The miscStatKeys to add.
      */
     @kotlin.jvm.JvmSynthetic
@@ -648,7 +589,7 @@ public object InitialEnvironmentMessageKt {
       add(value)
     }
     /**
-     * `repeated string miscStatKeys = 17;`
+     * `repeated string miscStatKeys = 14;`
      * @param values The miscStatKeys to add.
      */
     @kotlin.jvm.JvmSynthetic
@@ -657,7 +598,7 @@ public object InitialEnvironmentMessageKt {
       _builder.addAllMiscStatKeys(values)
     }
     /**
-     * `repeated string miscStatKeys = 17;`
+     * `repeated string miscStatKeys = 14;`
      * @param values The miscStatKeys to add.
      */
     @kotlin.jvm.JvmSynthetic
@@ -667,7 +608,7 @@ public object InitialEnvironmentMessageKt {
       addAll(values)
     }
     /**
-     * `repeated string miscStatKeys = 17;`
+     * `repeated string miscStatKeys = 14;`
      * @param index The index to set the value at.
      * @param value The miscStatKeys to set.
      */
@@ -676,7 +617,7 @@ public object InitialEnvironmentMessageKt {
     public operator fun com.google.protobuf.kotlin.DslList<kotlin.String, MiscStatKeysProxy>.set(index: kotlin.Int, value: kotlin.String) {
       _builder.setMiscStatKeys(index, value)
     }/**
-     * `repeated string miscStatKeys = 17;`
+     * `repeated string miscStatKeys = 14;`
      */
     @kotlin.jvm.JvmSynthetic
     @kotlin.jvm.JvmName("clearMiscStatKeys")
@@ -688,81 +629,9 @@ public object InitialEnvironmentMessageKt {
      * generics.
      */
     @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
-    public class InitialBlockStatesProxy private constructor() : com.google.protobuf.kotlin.DslProxy()
-    /**
-     * `repeated .BlockState initialBlockStates = 18;`
-     */
-     public val initialBlockStates: com.google.protobuf.kotlin.DslList<com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.BlockState, InitialBlockStatesProxy>
-      @kotlin.jvm.JvmSynthetic
-      get() = com.google.protobuf.kotlin.DslList(
-        _builder.getInitialBlockStatesList()
-      )
-    /**
-     * `repeated .BlockState initialBlockStates = 18;`
-     * @param value The initialBlockStates to add.
-     */
-    @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addInitialBlockStates")
-    public fun com.google.protobuf.kotlin.DslList<com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.BlockState, InitialBlockStatesProxy>.add(value: com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.BlockState) {
-      _builder.addInitialBlockStates(value)
-    }
-    /**
-     * `repeated .BlockState initialBlockStates = 18;`
-     * @param value The initialBlockStates to add.
-     */
-    @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignInitialBlockStates")
-    @Suppress("NOTHING_TO_INLINE")
-    public inline operator fun com.google.protobuf.kotlin.DslList<com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.BlockState, InitialBlockStatesProxy>.plusAssign(value: com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.BlockState) {
-      add(value)
-    }
-    /**
-     * `repeated .BlockState initialBlockStates = 18;`
-     * @param values The initialBlockStates to add.
-     */
-    @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("addAllInitialBlockStates")
-    public fun com.google.protobuf.kotlin.DslList<com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.BlockState, InitialBlockStatesProxy>.addAll(values: kotlin.collections.Iterable<com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.BlockState>) {
-      _builder.addAllInitialBlockStates(values)
-    }
-    /**
-     * `repeated .BlockState initialBlockStates = 18;`
-     * @param values The initialBlockStates to add.
-     */
-    @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("plusAssignAllInitialBlockStates")
-    @Suppress("NOTHING_TO_INLINE")
-    public inline operator fun com.google.protobuf.kotlin.DslList<com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.BlockState, InitialBlockStatesProxy>.plusAssign(values: kotlin.collections.Iterable<com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.BlockState>) {
-      addAll(values)
-    }
-    /**
-     * `repeated .BlockState initialBlockStates = 18;`
-     * @param index The index to set the value at.
-     * @param value The initialBlockStates to set.
-     */
-    @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("setInitialBlockStates")
-    public operator fun com.google.protobuf.kotlin.DslList<com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.BlockState, InitialBlockStatesProxy>.set(index: kotlin.Int, value: com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.BlockState) {
-      _builder.setInitialBlockStates(index, value)
-    }
-    /**
-     * `repeated .BlockState initialBlockStates = 18;`
-     */
-    @kotlin.jvm.JvmSynthetic
-    @kotlin.jvm.JvmName("clearInitialBlockStates")
-    public fun com.google.protobuf.kotlin.DslList<com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.BlockState, InitialBlockStatesProxy>.clear() {
-      _builder.clearInitialBlockStates()
-    }
-
-
-    /**
-     * An uninstantiable, behaviorless type to represent the field in
-     * generics.
-     */
-    @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
     public class SurroundingEntityDistancesProxy private constructor() : com.google.protobuf.kotlin.DslProxy()
     /**
-     * `repeated int32 surroundingEntityDistances = 19;`
+     * `repeated int32 surroundingEntityDistances = 15;`
      */
      public val surroundingEntityDistances: com.google.protobuf.kotlin.DslList<kotlin.Int, SurroundingEntityDistancesProxy>
       @kotlin.jvm.JvmSynthetic
@@ -770,7 +639,7 @@ public object InitialEnvironmentMessageKt {
         _builder.getSurroundingEntityDistancesList()
       )
     /**
-     * `repeated int32 surroundingEntityDistances = 19;`
+     * `repeated int32 surroundingEntityDistances = 15;`
      * @param value The surroundingEntityDistances to add.
      */
     @kotlin.jvm.JvmSynthetic
@@ -778,7 +647,7 @@ public object InitialEnvironmentMessageKt {
     public fun com.google.protobuf.kotlin.DslList<kotlin.Int, SurroundingEntityDistancesProxy>.add(value: kotlin.Int) {
       _builder.addSurroundingEntityDistances(value)
     }/**
-     * `repeated int32 surroundingEntityDistances = 19;`
+     * `repeated int32 surroundingEntityDistances = 15;`
      * @param value The surroundingEntityDistances to add.
      */
     @kotlin.jvm.JvmSynthetic
@@ -787,7 +656,7 @@ public object InitialEnvironmentMessageKt {
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.Int, SurroundingEntityDistancesProxy>.plusAssign(value: kotlin.Int) {
       add(value)
     }/**
-     * `repeated int32 surroundingEntityDistances = 19;`
+     * `repeated int32 surroundingEntityDistances = 15;`
      * @param values The surroundingEntityDistances to add.
      */
     @kotlin.jvm.JvmSynthetic
@@ -795,7 +664,7 @@ public object InitialEnvironmentMessageKt {
     public fun com.google.protobuf.kotlin.DslList<kotlin.Int, SurroundingEntityDistancesProxy>.addAll(values: kotlin.collections.Iterable<kotlin.Int>) {
       _builder.addAllSurroundingEntityDistances(values)
     }/**
-     * `repeated int32 surroundingEntityDistances = 19;`
+     * `repeated int32 surroundingEntityDistances = 15;`
      * @param values The surroundingEntityDistances to add.
      */
     @kotlin.jvm.JvmSynthetic
@@ -804,7 +673,7 @@ public object InitialEnvironmentMessageKt {
     public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.Int, SurroundingEntityDistancesProxy>.plusAssign(values: kotlin.collections.Iterable<kotlin.Int>) {
       addAll(values)
     }/**
-     * `repeated int32 surroundingEntityDistances = 19;`
+     * `repeated int32 surroundingEntityDistances = 15;`
      * @param index The index to set the value at.
      * @param value The surroundingEntityDistances to set.
      */
@@ -813,7 +682,7 @@ public object InitialEnvironmentMessageKt {
     public operator fun com.google.protobuf.kotlin.DslList<kotlin.Int, SurroundingEntityDistancesProxy>.set(index: kotlin.Int, value: kotlin.Int) {
       _builder.setSurroundingEntityDistances(index, value)
     }/**
-     * `repeated int32 surroundingEntityDistances = 19;`
+     * `repeated int32 surroundingEntityDistances = 15;`
      */
     @kotlin.jvm.JvmSynthetic
     @kotlin.jvm.JvmName("clearSurroundingEntityDistances")
@@ -821,7 +690,7 @@ public object InitialEnvironmentMessageKt {
       _builder.clearSurroundingEntityDistances()
     }
     /**
-     * `bool hudHidden = 20;`
+     * `bool hudHidden = 16;`
      */
     public var hudHidden: kotlin.Boolean
       @JvmName("getHudHidden")
@@ -831,14 +700,14 @@ public object InitialEnvironmentMessageKt {
         _builder.setHudHidden(value)
       }
     /**
-     * `bool hudHidden = 20;`
+     * `bool hudHidden = 16;`
      */
     public fun clearHudHidden() {
       _builder.clearHudHidden()
     }
 
     /**
-     * `int32 render_distance = 21;`
+     * `int32 render_distance = 17;`
      */
     public var renderDistance: kotlin.Int
       @JvmName("getRenderDistance")
@@ -848,14 +717,14 @@ public object InitialEnvironmentMessageKt {
         _builder.setRenderDistance(value)
       }
     /**
-     * `int32 render_distance = 21;`
+     * `int32 render_distance = 17;`
      */
     public fun clearRenderDistance() {
       _builder.clearRenderDistance()
     }
 
     /**
-     * `int32 simulation_distance = 22;`
+     * `int32 simulation_distance = 18;`
      */
     public var simulationDistance: kotlin.Int
       @JvmName("getSimulationDistance")
@@ -865,31 +734,18 @@ public object InitialEnvironmentMessageKt {
         _builder.setSimulationDistance(value)
       }
     /**
-     * `int32 simulation_distance = 22;`
+     * `int32 simulation_distance = 18;`
      */
     public fun clearSimulationDistance() {
       _builder.clearSimulationDistance()
     }
 
     /**
-     * `bool biocular = 23;`
-     */
-    public var biocular: kotlin.Boolean
-      @JvmName("getBiocular")
-      get() = _builder.getBiocular()
-      @JvmName("setBiocular")
-      set(value) {
-        _builder.setBiocular(value)
-      }
-    /**
-     * `bool biocular = 23;`
-     */
-    public fun clearBiocular() {
-      _builder.clearBiocular()
-    }
-
-    /**
-     * `float eye_distance = 24;`
+     * ```
+     * If > 0, binocular mode
+     * ```
+     *
+     * `float eye_distance = 19;`
      */
     public var eyeDistance: kotlin.Float
       @JvmName("getEyeDistance")
@@ -899,7 +755,11 @@ public object InitialEnvironmentMessageKt {
         _builder.setEyeDistance(value)
       }
     /**
-     * `float eye_distance = 24;`
+     * ```
+     * If > 0, binocular mode
+     * ```
+     *
+     * `float eye_distance = 19;`
      */
     public fun clearEyeDistance() {
       _builder.clearEyeDistance()
@@ -912,7 +772,7 @@ public object InitialEnvironmentMessageKt {
     @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
     public class StructurePathsProxy private constructor() : com.google.protobuf.kotlin.DslProxy()
     /**
-     * `repeated string structurePaths = 25;`
+     * `repeated string structurePaths = 20;`
      * @return A list containing the structurePaths.
      */
     public val structurePaths: com.google.protobuf.kotlin.DslList<kotlin.String, StructurePathsProxy>
@@ -921,7 +781,7 @@ public object InitialEnvironmentMessageKt {
         _builder.getStructurePathsList()
       )
     /**
-     * `repeated string structurePaths = 25;`
+     * `repeated string structurePaths = 20;`
      * @param value The structurePaths to add.
      */
     @kotlin.jvm.JvmSynthetic
@@ -930,7 +790,7 @@ public object InitialEnvironmentMessageKt {
       _builder.addStructurePaths(value)
     }
     /**
-     * `repeated string structurePaths = 25;`
+     * `repeated string structurePaths = 20;`
      * @param value The structurePaths to add.
      */
     @kotlin.jvm.JvmSynthetic
@@ -940,7 +800,7 @@ public object InitialEnvironmentMessageKt {
       add(value)
     }
     /**
-     * `repeated string structurePaths = 25;`
+     * `repeated string structurePaths = 20;`
      * @param values The structurePaths to add.
      */
     @kotlin.jvm.JvmSynthetic
@@ -949,7 +809,7 @@ public object InitialEnvironmentMessageKt {
       _builder.addAllStructurePaths(values)
     }
     /**
-     * `repeated string structurePaths = 25;`
+     * `repeated string structurePaths = 20;`
      * @param values The structurePaths to add.
      */
     @kotlin.jvm.JvmSynthetic
@@ -959,7 +819,7 @@ public object InitialEnvironmentMessageKt {
       addAll(values)
     }
     /**
-     * `repeated string structurePaths = 25;`
+     * `repeated string structurePaths = 20;`
      * @param index The index to set the value at.
      * @param value The structurePaths to set.
      */
@@ -968,7 +828,7 @@ public object InitialEnvironmentMessageKt {
     public operator fun com.google.protobuf.kotlin.DslList<kotlin.String, StructurePathsProxy>.set(index: kotlin.Int, value: kotlin.String) {
       _builder.setStructurePaths(index, value)
     }/**
-     * `repeated string structurePaths = 25;`
+     * `repeated string structurePaths = 20;`
      */
     @kotlin.jvm.JvmSynthetic
     @kotlin.jvm.JvmName("clearStructurePaths")
@@ -976,58 +836,24 @@ public object InitialEnvironmentMessageKt {
       _builder.clearStructurePaths()
     }
     /**
-     * `bool noWeatherCycle = 26;`
+     * `bool no_fov_effect = 21;`
      */
-    public var noWeatherCycle: kotlin.Boolean
-      @JvmName("getNoWeatherCycle")
-      get() = _builder.getNoWeatherCycle()
-      @JvmName("setNoWeatherCycle")
+    public var noFovEffect: kotlin.Boolean
+      @JvmName("getNoFovEffect")
+      get() = _builder.getNoFovEffect()
+      @JvmName("setNoFovEffect")
       set(value) {
-        _builder.setNoWeatherCycle(value)
+        _builder.setNoFovEffect(value)
       }
     /**
-     * `bool noWeatherCycle = 26;`
+     * `bool no_fov_effect = 21;`
      */
-    public fun clearNoWeatherCycle() {
-      _builder.clearNoWeatherCycle()
+    public fun clearNoFovEffect() {
+      _builder.clearNoFovEffect()
     }
 
     /**
-     * `bool no_pov_effect = 27;`
-     */
-    public var noPovEffect: kotlin.Boolean
-      @JvmName("getNoPovEffect")
-      get() = _builder.getNoPovEffect()
-      @JvmName("setNoPovEffect")
-      set(value) {
-        _builder.setNoPovEffect(value)
-      }
-    /**
-     * `bool no_pov_effect = 27;`
-     */
-    public fun clearNoPovEffect() {
-      _builder.clearNoPovEffect()
-    }
-
-    /**
-     * `bool noTimeCycle = 28;`
-     */
-    public var noTimeCycle: kotlin.Boolean
-      @JvmName("getNoTimeCycle")
-      get() = _builder.getNoTimeCycle()
-      @JvmName("setNoTimeCycle")
-      set(value) {
-        _builder.setNoTimeCycle(value)
-      }
-    /**
-     * `bool noTimeCycle = 28;`
-     */
-    public fun clearNoTimeCycle() {
-      _builder.clearNoTimeCycle()
-    }
-
-    /**
-     * `bool request_raycast = 29;`
+     * `bool request_raycast = 22;`
      */
     public var requestRaycast: kotlin.Boolean
       @JvmName("getRequestRaycast")
@@ -1037,14 +863,14 @@ public object InitialEnvironmentMessageKt {
         _builder.setRequestRaycast(value)
       }
     /**
-     * `bool request_raycast = 29;`
+     * `bool request_raycast = 22;`
      */
     public fun clearRequestRaycast() {
       _builder.clearRequestRaycast()
     }
 
     /**
-     * `int32 screen_encoding_mode = 30;`
+     * `int32 screen_encoding_mode = 23;`
      */
     public var screenEncodingMode: kotlin.Int
       @JvmName("getScreenEncodingMode")
@@ -1054,14 +880,14 @@ public object InitialEnvironmentMessageKt {
         _builder.setScreenEncodingMode(value)
       }
     /**
-     * `int32 screen_encoding_mode = 30;`
+     * `int32 screen_encoding_mode = 23;`
      */
     public fun clearScreenEncodingMode() {
       _builder.clearScreenEncodingMode()
     }
 
     /**
-     * `bool requiresSurroundingBlocks = 31;`
+     * `bool requiresSurroundingBlocks = 24;`
      */
     public var requiresSurroundingBlocks: kotlin.Boolean
       @JvmName("getRequiresSurroundingBlocks")
@@ -1071,14 +897,14 @@ public object InitialEnvironmentMessageKt {
         _builder.setRequiresSurroundingBlocks(value)
       }
     /**
-     * `bool requiresSurroundingBlocks = 31;`
+     * `bool requiresSurroundingBlocks = 24;`
      */
     public fun clearRequiresSurroundingBlocks() {
       _builder.clearRequiresSurroundingBlocks()
     }
 
     /**
-     * `string level_display_name_to_play = 32;`
+     * `string level_display_name_to_play = 25;`
      */
     public var levelDisplayNameToPlay: kotlin.String
       @JvmName("getLevelDisplayNameToPlay")
@@ -1088,10 +914,35 @@ public object InitialEnvironmentMessageKt {
         _builder.setLevelDisplayNameToPlay(value)
       }
     /**
-     * `string level_display_name_to_play = 32;`
+     * `string level_display_name_to_play = 25;`
      */
     public fun clearLevelDisplayNameToPlay() {
       _builder.clearLevelDisplayNameToPlay()
+    }
+
+    /**
+     * ```
+     * Default = 70
+     * ```
+     *
+     * `float fov = 26;`
+     */
+    public var fov: kotlin.Float
+      @JvmName("getFov")
+      get() = _builder.getFov()
+      @JvmName("setFov")
+      set(value) {
+        _builder.setFov(value)
+      }
+    /**
+     * ```
+     * Default = 70
+     * ```
+     *
+     * `float fov = 26;`
+     */
+    public fun clearFov() {
+      _builder.clearFov()
     }
   }
 }
