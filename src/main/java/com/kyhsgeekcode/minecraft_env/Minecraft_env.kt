@@ -520,7 +520,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
             val oldPrevY = player.prevY
             val oldPrevZ = player.prevZ
             val pos = Vec3d(oldX, oldY, oldZ)
-            if (initialEnvironment.biocular) {
+            if (initialEnvironment.eyeDistance > 0) {
                 // translate the player position to the left and right
                 val center = player.pos
                 // calculate left direction based on yaw
@@ -549,8 +549,8 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                 val image1ByteArray = ScreenshotRecorder.takeScreenshot(buffer).use { screenshot ->
                     encodeImageToBytes(
                         screenshot,
-                        initialEnvironment.visibleSizeX,
-                        initialEnvironment.visibleSizeY,
+                        initialEnvironment.imageSizeX,
+                        initialEnvironment.imageSizeY,
                         initialEnvironment.imageSizeX,
                         initialEnvironment.imageSizeY
                     )
@@ -566,8 +566,8 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                 val image2ByteArray = ScreenshotRecorder.takeScreenshot(buffer).use { screenshot ->
                     encodeImageToBytes(
                         screenshot,
-                        initialEnvironment.visibleSizeX,
-                        initialEnvironment.visibleSizeY,
+                        initialEnvironment.imageSizeX,
+                        initialEnvironment.imageSizeY,
                         initialEnvironment.imageSizeX,
                         initialEnvironment.imageSizeY
                     )
