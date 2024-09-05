@@ -81,12 +81,15 @@ fun handleKeyPress(
 
     // 키가 눌린 상태인지 확인
     if (currentState) {
+        KeyBinding.setKeyPressed(key, true)
+        keyMap[keyCode] = true
         if (!wasPressing) {
             KeyBinding.onKeyPressed(key)
         }
-        KeyBinding.setKeyPressed(key, true)
-        keyMap[keyCode] = true
     } else {
+        if (mouse) {
+            println("Releasing $key")
+        }
         KeyBinding.setKeyPressed(key, false)
         keyMap[keyCode] = false
     }

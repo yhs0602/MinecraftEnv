@@ -21,6 +21,7 @@
     "ClientWorldMixin",
     "InputUtilMixin",
     "KeyboardMixin",
+    "MouseMixin",
     "RenderSystemPollEventsInvoker",
     "RenderTickCounterAccessor",
     "TickSpeedMixin",
