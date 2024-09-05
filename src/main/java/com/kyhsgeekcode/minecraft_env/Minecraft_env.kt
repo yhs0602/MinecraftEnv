@@ -249,7 +249,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
         soundListener!!.onTick()
         if (client.isPaused) return
         val player = client.player ?: return
-        if (!player.isDead) {
+        if (!player.isDead && client.currentScreen is DeathScreen) {
             sendSetScreenNull(client)
         }
         initializer.onWorldTick(client.server, client.inGameHud.chatHud, this, emptyList())
@@ -307,7 +307,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                         return
                 }
             }
-            if (player.isDead) return else sendSetScreenNull(client)
+            if (player.isDead) return else if (client.currentScreen is DeathScreen) sendSetScreenNull(client)
             if (applyAction(action, player, client)) return
         } catch (e: SocketTimeoutException) {
             printWithTime("Timeout")
