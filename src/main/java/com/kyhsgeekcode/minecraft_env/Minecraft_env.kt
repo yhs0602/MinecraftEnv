@@ -70,9 +70,14 @@ enum class IOPhase {
 fun handleKeyPress(
     currentState: Boolean,
     wasPressing: Boolean,
-    keyCode: Int
+    keyCode: Int,
+    mouse: Boolean = false
 ): Boolean {
-    val key = InputUtil.fromKeyCode(keyCode, 0)
+    val key = if (!mouse) {
+        InputUtil.fromKeyCode(keyCode, 0)
+    } else {
+        InputUtil.Type.MOUSE.createFromCode(keyCode)
+    }
 
     // 키가 눌린 상태인지 확인
     if (currentState) {
