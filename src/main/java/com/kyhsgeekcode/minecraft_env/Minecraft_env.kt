@@ -80,14 +80,18 @@ fun handleKeyPress(
             KeyBinding.onKeyPressed(key)
         }
         KeyBinding.setKeyPressed(key, true)
+        keyMap[keyCode] = true
     } else {
         KeyBinding.setKeyPressed(key, false)
+        keyMap[keyCode] = false
     }
 
     // 이전 상태를 업데이트하여 반환
     return currentState
 }
 
+
+val keyMap = java.util.HashMap<Int, Boolean>()
 
 class Minecraft_env : ModInitializer, CommandExecutor {
     private lateinit var initialEnvironment: InitialEnvironment.InitialEnvironmentMessage
