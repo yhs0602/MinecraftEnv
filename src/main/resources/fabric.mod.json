@@ -32,9 +32,6 @@
       "net/minecraft/class_761": [
         "com/kyhsgeekcode/minecraft_env/AddListenerInterface"
       ],
-      "net/minecraft/class_743": [
-        "com/kyhsgeekcode/minecraft_env/KeyboardInputWillInterface"
-      ]
     }
   }
 }
