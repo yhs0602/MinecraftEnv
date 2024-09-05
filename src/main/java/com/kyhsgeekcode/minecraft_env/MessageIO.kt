@@ -11,7 +11,7 @@ import java.nio.ByteOrder
 import java.nio.channels.SocketChannel
 
 interface MessageIO {
-    fun readAction(): ActionSpace.ActionSpaceMessage
+    fun readAction(): ActionSpace.ActionSpaceMessageV2
     fun readInitialEnvironment(): InitialEnvironment.InitialEnvironmentMessage
 
     fun writeObservation(observation: com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ObservationSpaceMessage)
@@ -22,7 +22,7 @@ class TCPSocketMessageIO(
 ) : MessageIO {
     private val outputStream = socket.getOutputStream()
     private val inputStream = socket.getInputStream()
-    override fun readAction(): ActionSpace.ActionSpaceMessage {
+    override fun readAction(): ActionSpace.ActionSpaceMessageV2 {
         printWithTime("Reading action space")
         // read action from inputStream using protobuf
         val buffer = ByteBuffer.allocate(Integer.BYTES) // 4 bytes
@@ -30,7 +30,7 @@ class TCPSocketMessageIO(
         val len = buffer.order(ByteOrder.LITTLE_ENDIAN).int
         val bytes = inputStream.readNBytes(len)
 //        println("Read action space bytes $len")
-        val actionSpace = ActionSpace.ActionSpaceMessage.parseFrom(bytes)
+        val actionSpace = ActionSpace.ActionSpaceMessageV2.parseFrom(bytes)
         printWithTime("Read action space")
         return actionSpace
     }
@@ -73,7 +73,7 @@ class TCPSocketMessageIO(
 class DomainSocketMessageIO(
     private val socketChannel: SocketChannel
 ) : MessageIO {
-    override fun readAction(): ActionSpace.ActionSpaceMessage {
+    override fun readAction(): ActionSpace.ActionSpaceMessageV2 {
         printWithTime("Reading action space")
         // read action from inputStream using protobuf
         val buffer = ByteBuffer.allocate(Integer.BYTES) // 4 bytes
@@ -82,9 +82,9 @@ class DomainSocketMessageIO(
         val len = buffer.order(ByteOrder.LITTLE_ENDIAN).int
         val bytes = socketChannel.readNBytes(len)
 //        println("Read action space bytes $len")
-        val actionSpace = ActionSpace.ActionSpaceMessage.parseFrom(bytes)
+        val actionSpaceMessageV2 = ActionSpace.ActionSpaceMessageV2.parseFrom(bytes)
         printWithTime("Read action space")
-        return actionSpace
+        return actionSpaceMessageV2
     }
 
     override fun readInitialEnvironment(): InitialEnvironment.InitialEnvironmentMessage {
@@ -154,12 +154,12 @@ class NamedPipeMessageIO(
     private val writePipePath: String
 ) : MessageIO {
 
-    override fun readAction(): ActionSpace.ActionSpaceMessage {
+    override fun readAction(): ActionSpace.ActionSpaceMessageV2 {
         FileInputStream(readPipePath).use { fis ->
             DataInputStream(fis).use { dis ->
                 val len = dis.readInt()
                 val bytes = dis.readNBytes(len)
-                return ActionSpace.ActionSpaceMessage.parseFrom(bytes)
+                return ActionSpace.ActionSpaceMessageV2.parseFrom(bytes)
             }
         }
     }

@@ -3,9 +3,8 @@
 package com.kyhsgeekcode.minecraft_env
 
 import com.google.protobuf.ByteString
-import com.kyhsgeekcode.minecraft_env.mixin.ClientDoAttackInvoker
-import com.kyhsgeekcode.minecraft_env.mixin.ClientDoItemUseInvoker
 import com.kyhsgeekcode.minecraft_env.proto.*
+import com.kyhsgeekcode.minecraft_env.proto.ActionSpace.ActionSpaceMessageV2
 import com.kyhsgeekcode.minecraft_env.proto.ObservationSpace
 import com.mojang.blaze3d.platform.GlConst
 import com.mojang.blaze3d.systems.RenderSystem
@@ -17,7 +16,9 @@ import net.minecraft.client.MinecraftClient
 import net.minecraft.client.MinecraftClient.IS_SYSTEM_MAC
 import net.minecraft.client.gui.screen.DeathScreen
 import net.minecraft.client.network.ClientPlayerEntity
+import net.minecraft.client.option.KeyBinding
 import net.minecraft.client.render.BackgroundRenderer
+import net.minecraft.client.util.InputUtil
 import net.minecraft.client.util.ScreenshotRecorder
 import net.minecraft.client.world.ClientWorld
 import net.minecraft.entity.EntityType
@@ -35,6 +36,7 @@ import net.minecraft.util.math.MathHelper
 import net.minecraft.util.math.Vec3d
 import net.minecraft.util.shape.VoxelShapes
 import net.minecraft.world.World
+import org.lwjgl.glfw.GLFW
 import java.io.IOException
 import java.net.SocketTimeoutException
 import java.net.StandardProtocolFamily
@@ -65,6 +67,28 @@ enum class IOPhase {
     SENT_OBSERVATION_SHOULD_READ_ACTION,
 }
 
+fun handleKeyPress(
+    currentState: Boolean,
+    wasPressing: Boolean,
+    keyCode: Int
+): Boolean {
+    val key = InputUtil.fromKeyCode(keyCode, 0)
+
+    // 키가 눌린 상태인지 확인
+    if (currentState) {
+        if (!wasPressing) {
+            KeyBinding.onKeyPressed(key)
+        }
+        KeyBinding.setKeyPressed(key, true)
+    } else {
+        KeyBinding.setKeyPressed(key, false)
+    }
+
+    // 이전 상태를 업데이트하여 반환
+    return currentState
+}
+
+
 class Minecraft_env : ModInitializer, CommandExecutor {
     private lateinit var initialEnvironment: InitialEnvironment.InitialEnvironmentMessage
     private var soundListener: MinecraftSoundListener? = null
@@ -79,6 +103,17 @@ class Minecraft_env : ModInitializer, CommandExecutor {
     private val variableCommandsAfterReset = mutableListOf<String>()
     private var skipSync = false
     private var ioPhase = IOPhase.BEGINNING
+
+    // Difference matters
+    private var wasPressingForward = false
+    private var wasPressingBack = false
+    private var wasPressingLeft = false
+    private var wasPressingRight = false
+    private var wasJumping = false
+    private var wasSneaking = false
+    private var wasSprinting = false
+    private var wasUsing = false
+    private var wasAttacking = false
 
     override fun onInitialize() {
         val ld_preload = System.getenv("LD_PRELOAD")
@@ -259,8 +294,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                 }
             }
             if (player.isDead) return else sendSetScreenNull(client)
-            val actionArray = action.actionList
-            if (applyAction(actionArray, player, client)) return
+            if (applyAction(action, player, client)) return
         } catch (e: SocketTimeoutException) {
             printWithTime("Timeout")
             csvLogger.log("Timeout")
@@ -341,148 +375,42 @@ class Minecraft_env : ModInitializer, CommandExecutor {
     }
 
     private fun applyAction(
-        actionArray: MutableList<Int>,
+        actionDict: ActionSpaceMessageV2,
         player: ClientPlayerEntity,
-        client: MinecraftClient?
+        client: MinecraftClient
     ): Boolean {
-        if (actionArray.isEmpty()) {
-            printWithTime("actionArray is empty")
-            csvLogger.log("actionArray is empty")
-            return true
-        }
         csvLogger.profileStartPrint("Minecraft_env/onInitialize/ClientWorldTick/ReadAction/ApplyAction")
-        val movementFB = actionArray[0]
-        val movementLR = actionArray[1]
-        val jumpSneakSprint = actionArray[2]
-        val deltaPitch = actionArray[3]
-        val deltaYaw = actionArray[4]
-        val functionalActions =
-            actionArray[5] // 0: noop, 1: use, 2: drop, 3: attack, 4: craft, 5: equip, 6: place, 7: destroy
-        val argCraft = actionArray[6]
-        val argInventory = actionArray[7]
-        when (movementFB) {
-            0 -> {
-                (player.input as KeyboardInputWillInterface).setWillPressingForward(false)
-                (player.input as KeyboardInputWillInterface).setWillPressingBack(false)
-            }
+        wasPressingForward = handleKeyPress(actionDict.forward, wasPressingForward, GLFW.GLFW_KEY_W)
+        wasPressingBack = handleKeyPress(actionDict.back, wasPressingBack, GLFW.GLFW_KEY_S)
+        wasPressingLeft = handleKeyPress(actionDict.left, wasPressingLeft, GLFW.GLFW_KEY_A)
+        wasPressingRight = handleKeyPress(actionDict.right, wasPressingRight, GLFW.GLFW_KEY_D)
+        wasJumping = handleKeyPress(actionDict.jump, wasJumping, GLFW.GLFW_KEY_SPACE)
+        wasSneaking = handleKeyPress(actionDict.sneak, wasSneaking, GLFW.GLFW_KEY_LEFT_SHIFT)
+        wasSprinting = handleKeyPress(actionDict.sprint, wasSprinting, GLFW.GLFW_KEY_LEFT_CONTROL)
+        wasUsing = handleKeyPress(actionDict.use, wasUsing, GLFW.GLFW_MOUSE_BUTTON_RIGHT)
+        wasAttacking = handleKeyPress(actionDict.attack, wasAttacking, GLFW.GLFW_MOUSE_BUTTON_LEFT)
 
-            1 -> {
-                (player.input as KeyboardInputWillInterface).setWillPressingForward(true)
-                (player.input as KeyboardInputWillInterface).setWillPressingBack(false)
-                //                    player.travel(Vec3d(0.0, 0.0, 1.0)) // sideway, upward, forward
-            }
+        // TODO: Handle drop, swap, hotbar, inventory
+        handleKeyPress(actionDict.drop, false, GLFW.GLFW_KEY_Q)
+//        handleKeyPress(actionDict.swap, false, GLFW.GLFW_KEY_F)
+        handleKeyPress(actionDict.inventory, false, GLFW.GLFW_KEY_E)
+        handleKeyPress(actionDict.hotbar1, false, GLFW.GLFW_KEY_1)
+        handleKeyPress(actionDict.hotbar2, false, GLFW.GLFW_KEY_2)
+        handleKeyPress(actionDict.hotbar3, false, GLFW.GLFW_KEY_3)
+        handleKeyPress(actionDict.hotbar4, false, GLFW.GLFW_KEY_4)
+        handleKeyPress(actionDict.hotbar5, false, GLFW.GLFW_KEY_5)
+        handleKeyPress(actionDict.hotbar6, false, GLFW.GLFW_KEY_6)
+        handleKeyPress(actionDict.hotbar7, false, GLFW.GLFW_KEY_7)
+        handleKeyPress(actionDict.hotbar8, false, GLFW.GLFW_KEY_8)
+        handleKeyPress(actionDict.hotbar9, false, GLFW.GLFW_KEY_9)
 
-            2 -> {
-                (player.input as KeyboardInputWillInterface).setWillPressingForward(false)
-                (player.input as KeyboardInputWillInterface).setWillPressingBack(true)
-            }
-        }
-        when (movementLR) { // 0: noop, 1: move left, 2: move right
-            0 -> {
-                (player.input as KeyboardInputWillInterface).setWillPressingRight(false)
-                (player.input as KeyboardInputWillInterface).setWillPressingLeft(false)
-            }
-
-            1 -> {
-                (player.input as KeyboardInputWillInterface).setWillPressingRight(false)
-                (player.input as KeyboardInputWillInterface).setWillPressingLeft(true)
-            }
-
-            2 -> {
-                (player.input as KeyboardInputWillInterface).setWillPressingRight(true)
-                (player.input as KeyboardInputWillInterface).setWillPressingLeft(false)
-                //                    player.travel(Vec3d(-1.0, 0.0, 0.0))
-            }
-        }
-        when (jumpSneakSprint) { // 0: noop, 1: jump, 2: sneak, 3:sprint
-            0 -> {
-                //                    printWithTime("Sneaking reset")
-                (player.input as KeyboardInputWillInterface).setWillJumping(false)
-                (player.input as KeyboardInputWillInterface).setWillSneaking(false)
-                //                    player.isSprinting = false
-            }
-
-            1 -> {
-                (player.input as KeyboardInputWillInterface).setWillJumping(true)
-                (player.input as KeyboardInputWillInterface).setWillSneaking(false)
-            }
-
-            2 -> {
-                (player.input as KeyboardInputWillInterface).setWillJumping(false)
-                (player.input as KeyboardInputWillInterface).setWillSneaking(true)
-            }
-
-            3 -> {
-                (player.input as KeyboardInputWillInterface).setWillJumping(false)
-                (player.input as KeyboardInputWillInterface).setWillSneaking(false)
-                (player.input as KeyboardInputWillInterface).setWillSprinting(true)
-            }
-        }
         // pitch: 0: -90 degree, 24: 90 degree
-        val deltaPitchInDeg = (deltaPitch - 12f) / 12f * 90f
+        val deltaPitchInDeg = actionDict.cameraPitch
         // yaw: 0: -180 degree, 24: 180 degree
-        val deltaYawInDeg = (deltaYaw - 12f) / 12f * 180f
-        //                System.out.printWithTime("Will set pitch to " + player.getPitch() + " + " + deltaPitchInDeg + " = " + (player.getPitch() + deltaPitchInDeg));
-        //                System.out.printWithTime("Will set yaw to " + player.getYaw() + " + " + deltaYawInDeg + " = " + (player.getYaw() + deltaYawInDeg));
-        player.pitch = player.pitch + deltaPitchInDeg
-        player.yaw = player.yaw + deltaYawInDeg
+        val deltaYawInDeg = actionDict.cameraYaw
+        player.pitch += deltaPitchInDeg
+        player.yaw += deltaYawInDeg
         player.pitch = MathHelper.clamp(player.pitch, -90.0f, 90.0f)
-        when (functionalActions) {
-            1 -> {
-                (client as ClientDoItemUseInvoker).invokeDoItemUse()
-            }
-
-            2 -> {
-                // slot = argInventory;
-                player.inventory.selectedSlot = argInventory
-                player.dropSelectedItem(false)
-            }
-
-            3 -> {
-                // attack
-                (client as ClientDoAttackInvoker).invokeDoAttack()
-            }
-
-            4 -> {
-                // craft
-                // unimplemented
-                // currently gives items with argCraft as raw id
-                // or use string
-                // to get the integer from string, use api
-                //                    val targetItem = Item.byRawId(argCraft)
-                //                    val id = Registries.ITEM.getId(targetItem)
-                //                    val itemStack = net.minecraft.item.ItemStack(targetItem, 1)
-                //                    val inventory = player.inventory
-                //                    val recipeMatcher = RecipeMatcher()
-                //                    inventory.populateRecipeFinder(recipeMatcher)
-                //                    player.playerScreenHandler.populateRecipeFinder(recipeMatcher)
-                //                    val input = CraftingInventory(player.playerScreenHandler, 2, 2)
-                //                    //                        manager.get(id).ifPresent(recipe -> {
-                //                    //                            player.playerScreenHandler.matches()
-                //                    //                            if (recipeMatcher.match(recipe, null)) {
-                //                    //                                recipe.getIngredients();
-                //                    //                            }
-                //                    //
-                //                    //                        });
-                //                    inventory.insertStack(itemStack)
-            }
-
-            5 -> {
-                // equip
-                player.inventory.selectedSlot = argInventory
-                (client as ClientDoItemUseInvoker).invokeDoItemUse()
-            }
-
-            6 -> {
-                // place
-                (client as ClientDoItemUseInvoker).invokeDoItemUse()
-            }
-
-            7 -> {
-                // destroy
-                (client as ClientDoAttackInvoker).invokeDoAttack()
-            }
-        }
         csvLogger.profileEndPrint("Minecraft_env/onInitialize/ClientWorldTick/ReadAction/ApplyAction")
         return false
     }
