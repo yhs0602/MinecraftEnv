@@ -126,6 +126,8 @@ class Minecraft_env : ModInitializer, CommandExecutor {
     private var wasSprinting = false
     private var wasUsing = false
     private var wasAttacking = false
+    private var wasPressingInventory = false
+    private var wasPressingDrop = false
 
     override fun onInitialize() {
         val ld_preload = System.getenv("LD_PRELOAD")
@@ -402,10 +404,10 @@ class Minecraft_env : ModInitializer, CommandExecutor {
         wasUsing = handleKeyPress(actionDict.use, wasUsing, GLFW.GLFW_MOUSE_BUTTON_RIGHT, mouse = true)
         wasAttacking = handleKeyPress(actionDict.attack, wasAttacking, GLFW.GLFW_MOUSE_BUTTON_LEFT, mouse = true)
 
-        // TODO: Handle drop, swap, hotbar, inventory
-        handleKeyPress(actionDict.drop, false, GLFW.GLFW_KEY_Q)
+        // TODO: Handle swap
+        wasPressingDrop = handleKeyPress(actionDict.drop, wasPressingDrop, GLFW.GLFW_KEY_Q)
 //        handleKeyPress(actionDict.swap, false, GLFW.GLFW_KEY_F)
-        handleKeyPress(actionDict.inventory, false, GLFW.GLFW_KEY_E)
+        wasPressingInventory = handleKeyPress(actionDict.inventory, wasPressingInventory, GLFW.GLFW_KEY_E)
         handleKeyPress(actionDict.hotbar1, false, GLFW.GLFW_KEY_1)
         handleKeyPress(actionDict.hotbar2, false, GLFW.GLFW_KEY_2)
         handleKeyPress(actionDict.hotbar3, false, GLFW.GLFW_KEY_3)
@@ -416,6 +418,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
         handleKeyPress(actionDict.hotbar8, false, GLFW.GLFW_KEY_8)
         handleKeyPress(actionDict.hotbar9, false, GLFW.GLFW_KEY_9)
 
+        // TODO: Translate delta camera to mouse movement
         // pitch: 0: -90 degree, 24: 90 degree
         val deltaPitchInDeg = actionDict.cameraPitch
         // yaw: 0: -180 degree, 24: 180 degree
