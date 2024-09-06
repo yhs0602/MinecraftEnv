@@ -18,6 +18,9 @@ object FramebufferCapturer {
         targetSizeY: Int,
         encodingMode: Int,
         isExtensionAvailable: Boolean,
+        drawCursor: Boolean,
+        xPos: Int,
+        yPos: Int,
     ): ByteString
 
     external fun initializeGLEW(): Boolean

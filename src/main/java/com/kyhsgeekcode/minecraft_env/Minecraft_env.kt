@@ -451,8 +451,33 @@ class Minecraft_env : ModInitializer, CommandExecutor {
         wasJumping = handleKeyPress(actionDict.jump, wasJumping, GLFW.GLFW_KEY_SPACE)
         wasSneaking = handleKeyPress(actionDict.sneak, wasSneaking, GLFW.GLFW_KEY_LEFT_SHIFT)
         wasSprinting = handleKeyPress(actionDict.sprint, wasSprinting, GLFW.GLFW_KEY_LEFT_CONTROL)
-        wasUsing = handleKeyPress(actionDict.use, wasUsing, GLFW.GLFW_MOUSE_BUTTON_RIGHT, mouse = true)
-        wasAttacking = handleKeyPress(actionDict.attack, wasAttacking, GLFW.GLFW_MOUSE_BUTTON_LEFT, mouse = true)
+
+        if (currentScreen != null) {
+            if (actionDict.use) {
+                if (!wasUsing)
+                    MouseInfo.clickRightButton()
+                wasUsing = true
+            } else {
+                if (wasUsing)
+                    MouseInfo.releaseRightButton()
+                wasUsing = false
+            }
+            if (actionDict.attack) {
+                if (!wasAttacking)
+                    MouseInfo.clickLeftButton()
+                wasAttacking = true
+            } else {
+                if (wasAttacking)
+                    MouseInfo.releaseLeftButton()
+                wasUsing = false
+            }
+
+//            wasUsing = false
+//            wasAttacking = false
+        } else {
+            wasUsing = handleKeyPress(actionDict.use, wasUsing, GLFW.GLFW_MOUSE_BUTTON_RIGHT, mouse = true)
+            wasAttacking = handleKeyPress(actionDict.attack, wasAttacking, GLFW.GLFW_MOUSE_BUTTON_LEFT, mouse = true)
+        }
 
         // Should handle screen keys for inventory, drop, hotbars
         // TODO: Handle swap
@@ -470,13 +495,20 @@ class Minecraft_env : ModInitializer, CommandExecutor {
         handleKeyPress(actionDict.hotbar9, false, GLFW.GLFW_KEY_9)
 
         // TODO: Translate delta camera to mouse movement
-        // pitch: 0: -90 degree, 24: 90 degree
-        val deltaPitchInDeg = actionDict.cameraPitch
-        // yaw: 0: -180 degree, 24: 180 degree
-        val deltaYawInDeg = actionDict.cameraYaw
-        player.pitch += deltaPitchInDeg
-        player.yaw += deltaYawInDeg
-        player.pitch = MathHelper.clamp(player.pitch, -90.0f, 90.0f)
+
+        if (currentScreen != null) {
+            val dx = actionDict.cameraPitch
+            val dy = actionDict.cameraYaw
+            MouseInfo.moveMouseBy(dx.toDouble(), -dy.toDouble()) // Invert y axis
+        } else {
+            // pitch: 0: -90 degree, 24: 90 degree
+            val deltaPitchInDeg = actionDict.cameraPitch
+            // yaw: 0: -180 degree, 24: 180 degree
+            val deltaYawInDeg = actionDict.cameraYaw
+            player.pitch += deltaPitchInDeg
+            player.yaw += deltaYawInDeg
+            player.pitch = MathHelper.clamp(player.pitch, -90.0f, 90.0f)
+        }
         csvLogger.profileEndPrint("Minecraft_env/onInitialize/ClientWorldTick/ReadAction/ApplyAction")
         return false
     }
@@ -593,7 +625,10 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                     initialEnvironment.imageSizeX,
                     initialEnvironment.imageSizeY,
                     initialEnvironment.screenEncodingMode,
-                    false // FramebufferCapturer.isExtensionAvailable
+                    false,
+                    client.currentScreen != null, // FramebufferCapturer.isExtensionAvailable
+                    MouseInfo.mouseX.toInt(),
+                    MouseInfo.mouseY.toInt()
                 )
                 // ByteString.copyFrom(image1ByteArray)
                 image_2 = ByteString.empty() // ByteString.copyFrom(image1ByteArray)
