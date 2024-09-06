@@ -617,6 +617,10 @@ class Minecraft_env : ModInitializer, CommandExecutor {
 //                }
                 csvLogger.profileEndPrint("Minecraft_env/onInitialize/EndWorldTick/SendObservation/Prepare/SingleEye/Screenshot")
                 csvLogger.profileStartPrint("Minecraft_env/onInitialize/EndWorldTick/SendObservation/Prepare/SingleEye/ByteString")
+                val i: Int =
+                    (MouseInfo.mouseX * client.window.scaledWidth.toDouble() / client.window.width.toDouble()).toInt()
+                val j: Int =
+                    (MouseInfo.mouseY * client.window.scaledHeight.toDouble() / client.window.height.toDouble()).toInt()
                 image_1 = FramebufferCapturer.captureFramebuffer(
                     buffer.colorAttachment,
                     buffer.fbo,
@@ -627,8 +631,8 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                     initialEnvironment.screenEncodingMode,
                     false,
                     client.currentScreen != null, // FramebufferCapturer.isExtensionAvailable
-                    MouseInfo.mouseX.toInt(),
-                    MouseInfo.mouseY.toInt()
+                    i,
+                    j,
                 )
                 // ByteString.copyFrom(image1ByteArray)
                 image_2 = ByteString.empty() // ByteString.copyFrom(image1ByteArray)

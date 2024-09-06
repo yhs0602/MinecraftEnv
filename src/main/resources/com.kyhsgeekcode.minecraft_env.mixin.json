@@ -16,6 +16,7 @@
     "ClientDoAttackInvoker",
     "ClientDoItemUseInvoker",
     "ClientEntityRenderDispatcherAccessor",
+    "ClientIsWindowFocusedMixin",
     "ClientPlayNetworkHandlerMixin",
     "ClientRenderInvoker",
     "ClientWorldMixin",
