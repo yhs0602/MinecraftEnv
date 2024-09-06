@@ -407,7 +407,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
         // TODO: Handle swap
         wasPressingDrop = handleKeyPress(actionDict.drop, wasPressingDrop, GLFW.GLFW_KEY_Q)
 //        handleKeyPress(actionDict.swap, false, GLFW.GLFW_KEY_F)
-        wasPressingInventory = handleKeyPress(actionDict.inventory, wasPressingInventory, GLFW.GLFW_KEY_E)
+        handleKeyPress(actionDict.inventory, false, GLFW.GLFW_KEY_E)
         handleKeyPress(actionDict.hotbar1, false, GLFW.GLFW_KEY_1)
         handleKeyPress(actionDict.hotbar2, false, GLFW.GLFW_KEY_2)
         handleKeyPress(actionDict.hotbar3, false, GLFW.GLFW_KEY_3)
