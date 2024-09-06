@@ -630,7 +630,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                     initialEnvironment.imageSizeY,
                     initialEnvironment.screenEncodingMode,
                     false,
-                    client.currentScreen != null, // FramebufferCapturer.isExtensionAvailable
+                    MouseInfo.showCursor, // FramebufferCapturer.isExtensionAvailable
                     i,
                     j,
                 )
