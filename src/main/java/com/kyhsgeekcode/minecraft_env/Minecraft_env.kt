@@ -15,6 +15,7 @@ import net.minecraft.block.BlockState
 import net.minecraft.client.MinecraftClient
 import net.minecraft.client.MinecraftClient.IS_SYSTEM_MAC
 import net.minecraft.client.gui.screen.DeathScreen
+import net.minecraft.client.gui.screen.Screen
 import net.minecraft.client.network.ClientPlayerEntity
 import net.minecraft.client.option.KeyBinding
 import net.minecraft.client.render.BackgroundRenderer
@@ -94,8 +95,25 @@ fun handleKeyPress(
         keyMap[keyCode] = false
     }
 
-    // 이전 상태를 업데이트하여 반환
     return currentState
+}
+
+fun handleScreenKeyPress(
+    currentState: Boolean,
+    wasPressing: Boolean,
+    keyCode: Int,
+    scanCode: Int,
+    modifiers: Int,
+    screen: Screen
+): Boolean {
+    if (currentState) {
+        if (!wasPressing) {
+            return screen.keyPressed(keyCode, scanCode, modifiers)
+        }
+    } else if (wasPressing) {
+        return screen.keyReleased(keyCode, scanCode, modifiers)
+    }
+    return false
 }
 
 
@@ -394,6 +412,38 @@ class Minecraft_env : ModInitializer, CommandExecutor {
         client: MinecraftClient
     ): Boolean {
         csvLogger.profileStartPrint("Minecraft_env/onInitialize/ClientWorldTick/ReadAction/ApplyAction")
+        val currentScreen = client.currentScreen
+        if (currentScreen != null) {
+            val keys = listOf(
+                Triple(actionDict.inventory, wasPressingInventory, GLFW.GLFW_KEY_E),
+                Triple(actionDict.drop, wasPressingDrop, GLFW.GLFW_KEY_Q),
+                Triple(actionDict.hotbar1, false, GLFW.GLFW_KEY_1),
+                Triple(actionDict.hotbar2, false, GLFW.GLFW_KEY_2),
+                Triple(actionDict.hotbar3, false, GLFW.GLFW_KEY_3),
+                Triple(actionDict.hotbar4, false, GLFW.GLFW_KEY_4),
+                Triple(actionDict.hotbar5, false, GLFW.GLFW_KEY_5),
+                Triple(actionDict.hotbar6, false, GLFW.GLFW_KEY_6),
+                Triple(actionDict.hotbar7, false, GLFW.GLFW_KEY_7),
+                Triple(actionDict.hotbar8, false, GLFW.GLFW_KEY_8),
+                Triple(actionDict.hotbar9, false, GLFW.GLFW_KEY_9),
+            )
+            for ((action, wasPressing, keyCode) in keys) {
+                val handled = handleScreenKeyPress(
+                    action,
+                    wasPressing,
+                    keyCode,
+                    0,
+                    0,
+                    currentScreen
+                )
+                wasPressingInventory = actionDict.inventory
+                wasPressingDrop = actionDict.drop
+                if (handled) {
+                    return false
+                }
+            }
+        }
+
         wasPressingForward = handleKeyPress(actionDict.forward, wasPressingForward, GLFW.GLFW_KEY_W)
         wasPressingBack = handleKeyPress(actionDict.back, wasPressingBack, GLFW.GLFW_KEY_S)
         wasPressingLeft = handleKeyPress(actionDict.left, wasPressingLeft, GLFW.GLFW_KEY_A)
@@ -404,9 +454,10 @@ class Minecraft_env : ModInitializer, CommandExecutor {
         wasUsing = handleKeyPress(actionDict.use, wasUsing, GLFW.GLFW_MOUSE_BUTTON_RIGHT, mouse = true)
         wasAttacking = handleKeyPress(actionDict.attack, wasAttacking, GLFW.GLFW_MOUSE_BUTTON_LEFT, mouse = true)
 
+        // Should handle screen keys for inventory, drop, hotbars
         // TODO: Handle swap
+        //        handleKeyPress(actionDict.swap, false, GLFW.GLFW_KEY_F)
         wasPressingDrop = handleKeyPress(actionDict.drop, wasPressingDrop, GLFW.GLFW_KEY_Q)
-//        handleKeyPress(actionDict.swap, false, GLFW.GLFW_KEY_F)
         handleKeyPress(actionDict.inventory, false, GLFW.GLFW_KEY_E)
         handleKeyPress(actionDict.hotbar1, false, GLFW.GLFW_KEY_1)
         handleKeyPress(actionDict.hotbar2, false, GLFW.GLFW_KEY_2)
