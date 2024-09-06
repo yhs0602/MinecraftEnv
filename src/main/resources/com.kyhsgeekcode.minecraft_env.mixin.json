@@ -23,6 +23,7 @@
     "InputUtilMixin",
     "KeyboardMixin",
     "MouseMixin",
+    "MouseXYAccessor",
     "RenderSystemPollEventsInvoker",
     "RenderTickCounterAccessor",
     "TickSpeedMixin",

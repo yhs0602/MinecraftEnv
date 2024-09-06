@@ -1,6 +1,7 @@
 package com.kyhsgeekcode.minecraft_env
 
 import com.kyhsgeekcode.minecraft_env.mixin.MouseMixin
+import com.kyhsgeekcode.minecraft_env.mixin.MouseXYAccessor
 import net.minecraft.client.MinecraftClient
 import org.lwjgl.glfw.GLFW
 import org.lwjgl.glfw.GLFWCursorPosCallbackI
@@ -25,8 +26,8 @@ object MouseInfo {
         mouseY = y
         // Do not call the callback
         val client = MinecraftClient.getInstance()
-        (client?.mouse as? MouseMixin)?.setX(x)
-        (client?.mouse as? MouseMixin)?.setY(y)
+        (client?.mouse as? MouseXYAccessor)?.setX(x)
+        (client?.mouse as? MouseXYAccessor)?.setY(y)
     }
 
     fun setCursorShown(show: Boolean) {
