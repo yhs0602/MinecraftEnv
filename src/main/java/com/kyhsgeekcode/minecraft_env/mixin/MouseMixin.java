@@ -9,19 +9,15 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 
 @Mixin(Mouse.class)
-public class MouseMixin {
+abstract public class MouseMixin {
     @Inject(method = "isCursorLocked", at = @At("HEAD"), cancellable = true)
     private void isCursorLocked(CallbackInfoReturnable<Boolean> cir) {
         cir.setReturnValue(true);
     }
 
     @Accessor("x")
-    public void setX(double x) {
-        throw new UnsupportedOperationException();
-    }
+    abstract void setX(double x);
 
     @Accessor("y")
-    public void setY(double y) {
-        throw new UnsupportedOperationException();
-    }
+    abstract void setY(double y);
 }
