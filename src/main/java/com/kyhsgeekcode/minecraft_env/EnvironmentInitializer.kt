@@ -54,8 +54,8 @@ class EnvironmentInitializer(
         }
         val window = MinecraftClient.getInstance().window
         val windowSizeGetter = (window as WindowSizeAccessor)
-        if (windowSizeGetter.windowedWidth != initialEnvironment.imageSizeX || windowSizeGetter.windowedHeight != initialEnvironment.imageSizeX)
-            window.setWindowedSize(initialEnvironment.imageSizeX, initialEnvironment.imageSizeX)
+        if (windowSizeGetter.windowedWidth != initialEnvironment.imageSizeX || windowSizeGetter.windowedHeight != initialEnvironment.imageSizeY)
+            window.setWindowedSize(initialEnvironment.imageSizeX, initialEnvironment.imageSizeY)
         if (!hasMinimizedWindow) {
             GLFW.glfwIconifyWindow(window.handle)
             hasMinimizedWindow = true
