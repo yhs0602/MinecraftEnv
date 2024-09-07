@@ -21,6 +21,7 @@
     "ClientRenderInvoker",
     "ClientWorldMixin",
     "InputUtilMixin",
+    "InventoryScreenDrawBackgroundLoggingMixin",
     "KeyboardMixin",
     "MouseMixin",
     "MouseXYAccessor",
