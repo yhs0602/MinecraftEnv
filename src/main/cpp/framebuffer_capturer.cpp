@@ -204,28 +204,30 @@ extern "C" JNIEXPORT jobject JNICALL Java_com_kyhsgeekcode_minecraft_1env_Frameb
     int cursorWidth = 8;
 
     // 비트맵의 각 픽셀을 원본 이미지에 그리기
-    for (int dy = 0; dy < cursorHeight; ++dy) {
-        for (int dx = 0; dx < cursorWidth; ++dx) {
-            int pixelX = xPos + dx;
-            int pixelY = yPos + dy;
+    if (drawCursor && xPos >= 0 && xPos < targetSizeX && yPos >= 0 && yPos < targetSizeY) {
+        for (int dy = 0; dy < cursorHeight; ++dy) {
+            for (int dx = 0; dx < cursorWidth; ++dx) {
+                int pixelX = xPos + dx;
+                int pixelY = yPos + dy;
 
-            // 이미지 경계 내에 있는지 확인
-            if (pixelX >= 0 && pixelX < textureWidth && pixelY >= 0 && pixelY < textureHeight) {
-                int index = (pixelY * textureWidth + pixelX) * 3; // 픽셀 인덱스 계산
+                // 이미지 경계 내에 있는지 확인
+                if (pixelX >= 0 && pixelX < targetSizeX && pixelY >= 0 && pixelY < targetSizeY) {
+                    int index = (pixelY * targetSizeX + pixelX) * 3; // 픽셀 인덱스 계산
 
-                // 비트맵 값이 2면 검은색(테두리)로 그립니다.
-                if (cursor[dy][dx] == 2) {
-                    pixels[index] = 0;      // Red
-                    pixels[index + 1] = 0;  // Green
-                    pixels[index + 2] = 0;  // Blue
+                    // 비트맵 값이 2면 검은색(테두리)로 그립니다.
+                    if (cursor[dy][dx] == 2) {
+                        pixels[index] = 0;      // Red
+                        pixels[index + 1] = 0;  // Green
+                        pixels[index + 2] = 0;  // Blue
+                    }
+                    // 비트맵 값이 1이면 흰색(내부)로 그립니다.
+                    else if (cursor[dy][dx] == 1) {
+                        pixels[index] = 255;    // Red
+                        pixels[index + 1] = 255;  // Green
+                        pixels[index + 2] = 255;  // Blue
+                    }
+                    // 비트맵 값이 0이면 투명, 기존 픽셀을 유지합니다.
                 }
-                // 비트맵 값이 1이면 흰색(내부)로 그립니다.
-                else if (cursor[dy][dx] == 1) {
-                    pixels[index] = 255;    // Red
-                    pixels[index + 1] = 255;  // Green
-                    pixels[index + 2] = 255;  // Blue
-                }
-                // 비트맵 값이 0이면 투명, 기존 픽셀을 유지합니다.
             }
         }
     }
