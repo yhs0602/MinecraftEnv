@@ -139,7 +139,7 @@ class EnvironmentInitializer(
     }
 
     private fun createNewWorldAndEnterUsingGUI(client: MinecraftClient) {
-        println("Creating new world")
+//        println("Creating new world")
         when (val screen = client.currentScreen) {
             is TitleScreen -> {
                 screen.children().find {
