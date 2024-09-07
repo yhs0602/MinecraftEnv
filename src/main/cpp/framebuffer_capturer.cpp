@@ -113,7 +113,7 @@ enum EncodingMode {
     PNG = 1
 };
 
-const GLubyte cursor[32][16] = {
+const GLubyte cursor[28][16] = {
     {2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
     {2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
 
@@ -152,12 +152,7 @@ const GLubyte cursor[32][16] = {
     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 1, 1, 2, 0, 0},
     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 1, 1, 2, 0, 0},
     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 1, 1, 2, 0, 0},
-    {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 1, 1, 2, 0, 0},
-
-    {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 1, 1, 2},
-    {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 1, 1, 2},
-    {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 1, 1, 2},
-    {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 1, 1, 2},
+    {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 0, 0},
 };
 
 extern "C" JNIEXPORT jobject JNICALL Java_com_kyhsgeekcode_minecraft_1env_FramebufferCapturer_captureFramebuffer(
@@ -228,7 +223,7 @@ extern "C" JNIEXPORT jobject JNICALL Java_com_kyhsgeekcode_minecraft_1env_Frameb
         pixels = resizedPixels;
     }
 
-    int cursorHeight = 32;
+    int cursorHeight = 28;
     int cursorWidth = 16;
 
     // 비트맵의 각 픽셀을 원본 이미지에 그리기
