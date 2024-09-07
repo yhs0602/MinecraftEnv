@@ -1,6 +1,5 @@
 package com.kyhsgeekcode.minecraft_env
 
-import com.kyhsgeekcode.minecraft_env.mixin.MouseMixin
 import com.kyhsgeekcode.minecraft_env.mixin.MouseXYAccessor
 import net.minecraft.client.MinecraftClient
 import org.lwjgl.glfw.GLFW
@@ -28,6 +27,7 @@ object MouseInfo {
         val client = MinecraftClient.getInstance()
         (client?.mouse as? MouseXYAccessor)?.setX(x)
         (client?.mouse as? MouseXYAccessor)?.setY(y)
+        println("Set mouse pos to $x, $y")
     }
 
     fun setCursorShown(show: Boolean) {
@@ -38,6 +38,7 @@ object MouseInfo {
         mouseX += dx
         mouseY += dy
         cursorPosCallback?.invoke(handle, mouseX, mouseY)
+        println("Called callback with $mouseX, $mouseY, by $dx, $dy")
     }
 
     // TODO: Mods (shift click, etc)

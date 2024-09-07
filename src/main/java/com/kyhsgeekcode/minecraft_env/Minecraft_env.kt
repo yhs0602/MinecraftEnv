@@ -212,7 +212,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
             // allow server to start tick
             tickSynchronizer.notifyServerTickStart()
             // wait until server tick ends
-            printWithTime("Wait server world tick ends")
+//            printWithTime("Wait server world tick ends")
             csvLogger.profileStartPrint("Minecraft_env/onInitialize/EndWorldTick/WaitServerTickEnds")
             if (skipSync) {
                 csvLogger.log("Skip waiting server world tick ends")
@@ -496,19 +496,19 @@ class Minecraft_env : ModInitializer, CommandExecutor {
 
         // TODO: Translate delta camera to mouse movement
 
-        if (currentScreen != null) {
-            val dx = actionDict.cameraPitch
-            val dy = actionDict.cameraYaw
-            MouseInfo.moveMouseBy(dx.toDouble(), -dy.toDouble()) // Invert y axis
-        } else {
-            // pitch: 0: -90 degree, 24: 90 degree
-            val deltaPitchInDeg = actionDict.cameraPitch
-            // yaw: 0: -180 degree, 24: 180 degree
-            val deltaYawInDeg = actionDict.cameraYaw
-            player.pitch += deltaPitchInDeg
-            player.yaw += deltaYawInDeg
-            player.pitch = MathHelper.clamp(player.pitch, -90.0f, 90.0f)
-        }
+//        if (currentScreen != null) {
+        val dx = actionDict.cameraPitch
+        val dy = actionDict.cameraYaw
+        MouseInfo.moveMouseBy(dx.toDouble(), -dy.toDouble()) // Invert y axis
+//        } else {
+//            // pitch: 0: -90 degree, 24: 90 degree
+//            val deltaPitchInDeg = actionDict.cameraPitch
+//            // yaw: 0: -180 degree, 24: 180 degree
+//            val deltaYawInDeg = actionDict.cameraYaw
+//            player.pitch += deltaPitchInDeg
+//            player.yaw += deltaYawInDeg
+//            player.pitch = MathHelper.clamp(player.pitch, -90.0f, 90.0f)
+//        }
         csvLogger.profileEndPrint("Minecraft_env/onInitialize/ClientWorldTick/ReadAction/ApplyAction")
         return false
     }
@@ -739,15 +739,15 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                 eyeInBlock = player.checkIfCameraBlocked()
             }
             if (ioPhase == IOPhase.GOT_INITIAL_ENVIRONMENT_SHOULD_SEND_OBSERVATION) {
-                csvLogger.log("Sent observation; $ioPhase")
+//                csvLogger.log("Sent observation; $ioPhase")
                 ioPhase = IOPhase.GOT_INITIAL_ENVIRONMENT_SENT_OBSERVATION_SKIP_SEND_OBSERVATION
-                csvLogger.log("Sent observation; now $ioPhase")
+//                csvLogger.log("Sent observation; now $ioPhase")
             } else if (ioPhase == IOPhase.READ_ACTION_SHOULD_SEND_OBSERVATION) {
-                csvLogger.log("Sent observation; $ioPhase")
+//                csvLogger.log("Sent observation; $ioPhase")
                 ioPhase = IOPhase.SENT_OBSERVATION_SHOULD_READ_ACTION
-                csvLogger.log("Sent observation; now $ioPhase")
+//                csvLogger.log("Sent observation; now $ioPhase")
             } else {
-                csvLogger.log("Sent observation; $ioPhase good.")
+//                csvLogger.log("Sent observation; $ioPhase good.")
             }
             csvLogger.profileEndPrint("Minecraft_env/onInitialize/EndWorldTick/SendObservation/Prepare/Message")
             csvLogger.profileStartPrint("Minecraft_env/onInitialize/EndWorldTick/SendObservation/Write")

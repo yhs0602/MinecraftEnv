@@ -5,6 +5,7 @@ import java.time.format.DateTimeFormatter
 val printWithTimeFormatter: DateTimeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss.SSSSSS")
 var doPrintWithTime = false
 fun printWithTime(msg: String) {
+    return
     if (doPrintWithTime)
         println("${printWithTimeFormatter.format(java.time.LocalDateTime.now())} $msg")
 }
