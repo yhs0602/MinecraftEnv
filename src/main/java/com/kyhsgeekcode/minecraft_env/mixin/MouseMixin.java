@@ -12,6 +12,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 abstract public class MouseMixin {
     @Inject(method = "isCursorLocked", at = @At("HEAD"), cancellable = true)
     private void isCursorLocked(CallbackInfoReturnable<Boolean> cir) {
-        cir.setReturnValue(!MouseInfo.INSTANCE.getShowCursor());
+//        cir.setReturnValue(!MouseInfo.INSTANCE.getShowCursor());
     }
 }
