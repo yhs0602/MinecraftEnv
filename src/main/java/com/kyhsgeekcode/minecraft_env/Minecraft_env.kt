@@ -500,8 +500,8 @@ class Minecraft_env : ModInitializer, CommandExecutor {
         // TODO: Translate delta camera to mouse movement
 
 //        if (currentScreen != null) {
-        val dy = actionDict.cameraPitch * 5
-        val dx = actionDict.cameraYaw * 5
+        val dy = actionDict.cameraPitch * 3
+        val dx = actionDict.cameraYaw * 3
         MouseInfo.moveMouseBy(dx.toDouble(), dy.toDouble()) // Invert y axis
 //        } else {
 //            // pitch: 0: -90 degree, 24: 90 degree
