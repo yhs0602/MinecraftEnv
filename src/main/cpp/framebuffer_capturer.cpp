@@ -182,15 +182,15 @@ extern "C" JNIEXPORT jobject JNICALL Java_com_kyhsgeekcode_minecraft_1env_Frameb
     }
 
     if (drawCursor && xPos >= 0 && xPos < targetSizeX && yPos >= 0 && yPos < targetSizeY) {
-        int cursorSize = 4;
+        int cursorSize = 10; // Cursor size
         for (int dy = 0; dy < cursorSize; ++dy) {
             for (int dx = 0; dx < cursorSize; ++dx) {
-                // 현재 픽셀이 이미지 범위 안에 있는지 확인합니다.
+                // Check if the cursor is in the bounds of the image
                 int pixelX = xPos + dx;
                 int pixelY = yPos + dy;
 
                 if (pixelX >= 0 && pixelX < targetSizeX && pixelY >= 0 && pixelY < targetSizeY) {
-                    int index = (pixelY * targetSizeX + pixelX) * 3; // 해당 좌표의 픽셀 인덱스
+                    int index = (pixelX * targetSizeY + pixelY) * 3; // 해당 좌표의 픽셀 인덱스
                     pixels[index] = 255;      // Red
                     pixels[index + 1] = 0;    // Green
                     pixels[index + 2] = 0;    // Blue
