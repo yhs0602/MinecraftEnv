@@ -414,6 +414,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
         client: MinecraftClient
     ): Boolean {
         csvLogger.profileStartPrint("Minecraft_env/onInitialize/ClientWorldTick/ReadAction/ApplyAction")
+        MouseInfo.handle = client.window.handle
         val currentScreen = client.currentScreen
         if (currentScreen != null) {
             val keys = listOf(
