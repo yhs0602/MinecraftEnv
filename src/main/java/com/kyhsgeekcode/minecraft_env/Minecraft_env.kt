@@ -634,8 +634,8 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                     initialEnvironment.screenEncodingMode,
                     false,
                     MouseInfo.showCursor, // FramebufferCapturer.isExtensionAvailable
-                    j, // Swap x and y
-                    i,
+                    MouseInfo.mouseX,
+                    MouseInfo.mouseY,
                 )
                 // ByteString.copyFrom(image1ByteArray)
                 image_2 = ByteString.empty() // ByteString.copyFrom(image1ByteArray)
