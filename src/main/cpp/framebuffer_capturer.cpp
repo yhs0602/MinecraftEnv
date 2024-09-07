@@ -113,6 +113,25 @@ enum EncodingMode {
     PNG = 1
 };
 
+const GLubyte cursor[16][8] = {
+    {2, 0, 0, 0, 0, 0, 0, 0},
+    {2, 2, 0, 0, 0, 0, 0, 0},
+    {2, 1, 2, 0, 0, 0, 0, 0},
+    {2, 1, 1, 2, 0, 0, 0, 0},
+    {2, 1, 1, 1, 2, 0, 0, 0},
+    {2, 1, 1, 1, 1, 2, 0, 0},
+    {2, 1, 1, 1, 1, 1, 2, 0},
+    {2, 1, 2, 2, 0, 0, 0, 0},
+    {2, 2, 0, 2, 2, 0, 0, 0},
+    {2, 0, 0, 2, 2, 0, 0, 0},
+    {0, 0, 0, 0, 2, 2, 0, 0},
+    {0, 0, 0, 0, 2, 2, 0, 0},
+    {0, 0, 0, 0, 0, 2, 2, 0},
+    {0, 0, 0, 0, 0, 2, 2, 0},
+    {0, 0, 0, 0, 0, 0, 2, 2},
+    {0, 0, 0, 0, 0, 0, 2, 2}
+};
+
 extern "C" JNIEXPORT jobject JNICALL Java_com_kyhsgeekcode_minecraft_1env_FramebufferCapturer_captureFramebuffer(
     JNIEnv *env,
     jclass clazz,
@@ -181,82 +200,84 @@ extern "C" JNIEXPORT jobject JNICALL Java_com_kyhsgeekcode_minecraft_1env_Frameb
         pixels = resizedPixels;
     }
 
-    if (drawCursor && xPos >= 0 && xPos < targetSizeX && yPos >= 0 && yPos < targetSizeY) {
-        int cursorSize = 12; // Cursor size, adjusting for a triangular pointer
+    int cursorHeight = 16;
+    int cursorWidth = 8;
 
-        for (int dy = 0; dy < cursorSize; ++dy) {
-            for (int dx = 0; dx <= dy; ++dx) { // Create a triangle shape (right-angled)
-                int pixelX = xPos + dx;
-                int pixelY = yPos + dy;
-
-                if (pixelX >= 0 && pixelX < targetSizeX && pixelY >= 0 && pixelY < targetSizeY) {
-                    int index = (pixelY * targetSizeX + pixelX) * 3; // 해당 좌표의 픽셀 인덱스
-
-                    // Create a black border (outline)
-                    if (dx == 0 || dy == 0 || dx == dy || dy == cursorSize - 1) {
-                        pixels[index] = 0;      // Black
-                        pixels[index + 1] = 0;
-                        pixels[index + 2] = 0;
-                    }
-                    // Fill the inside with white
-                    else {
-                        pixels[index] = 255;    // White
-                        pixels[index + 1] = 255;
-                        pixels[index + 2] = 255;
-                    }
-                }
-            }
-        }
-    }
-
-    if (drawCursor && xPos >= 0 && xPos < targetSizeX && yPos >= 0 && yPos < targetSizeY) {
-        int cursorSizeX = 12; // Size of the crosshair X
-        int cursorSizeY = 48; // Size of the crosshair Y
-
-        // Draw vertical line (centered at cursor position)
-        for (int dy = -cursorSizeY; dy <= cursorSizeY; ++dy) {
-            int pixelX = xPos;
+    // 비트맵의 각 픽셀을 원본 이미지에 그리기
+    for (int dy = 0; dy < cursorHeight; ++dy) {
+        for (int dx = 0; dx < cursorWidth; ++dx) {
+            int pixelX = xPos + dx;
             int pixelY = yPos + dy;
 
-            if (pixelX >= 0 && pixelX < targetSizeX && pixelY >= 0 && pixelY < targetSizeY) {
-                int index = (pixelY * targetSizeX + pixelX) * 3;
+            // 이미지 경계 내에 있는지 확인
+            if (pixelX >= 0 && pixelX < textureWidth && pixelY >= 0 && pixelY < textureHeight) {
+                int index = (pixelY * textureWidth + pixelX) * 3; // 픽셀 인덱스 계산
 
-                if (dy < 0) {
-                    // Negative Y direction (yellow)
-                    pixels[index] = 255;      // Red
+                // 비트맵 값이 2면 검은색(테두리)로 그립니다.
+                if (cursor[dy][dx] == 2) {
+                    pixels[index] = 0;      // Red
+                    pixels[index + 1] = 0;  // Green
+                    pixels[index + 2] = 0;  // Blue
+                }
+                // 비트맵 값이 1이면 흰색(내부)로 그립니다.
+                else if (cursor[dy][dx] == 1) {
+                    pixels[index] = 255;    // Red
                     pixels[index + 1] = 255;  // Green
-                    pixels[index + 2] = 0;    // Blue
-                } else if (dy > 0) {
-                    // Positive Y direction (blue)
-                    pixels[index] = 0;        // Red
-                    pixels[index + 1] = 0;    // Green
                     pixels[index + 2] = 255;  // Blue
                 }
-            }
-        }
-
-        // Draw horizontal line (centered at cursor position)
-        for (int dx = -cursorSizeX; dx <= cursorSizeX; ++dx) {
-            int pixelX = xPos + dx;
-            int pixelY = yPos;
-
-            if (pixelX >= 0 && pixelX < targetSizeX && pixelY >= 0 && pixelY < targetSizeY) {
-                int index = (pixelY * targetSizeX + pixelX) * 3;
-
-                if (dx < 0) {
-                    // Negative X direction (green)
-                    pixels[index] = 0;        // Red
-                    pixels[index + 1] = 255;  // Green
-                    pixels[index + 2] = 0;    // Blue
-                } else if (dx > 0) {
-                    // Positive X direction (red)
-                    pixels[index] = 255;      // Red
-                    pixels[index + 1] = 0;    // Green
-                    pixels[index + 2] = 0;    // Blue
-                }
+                // 비트맵 값이 0이면 투명, 기존 픽셀을 유지합니다.
             }
         }
     }
+
+//    if (drawCursor && xPos >= 0 && xPos < targetSizeX && yPos >= 0 && yPos < targetSizeY) {
+//        int cursorSizeX = 12; // Size of the crosshair X
+//        int cursorSizeY = 48; // Size of the crosshair Y
+//
+//        // Draw vertical line (centered at cursor position)
+//        for (int dy = -cursorSizeY; dy <= cursorSizeY; ++dy) {
+//            int pixelX = xPos;
+//            int pixelY = yPos + dy;
+//
+//            if (pixelX >= 0 && pixelX < targetSizeX && pixelY >= 0 && pixelY < targetSizeY) {
+//                int index = (pixelY * targetSizeX + pixelX) * 3;
+//
+//                if (dy < 0) {
+//                    // Negative Y direction (yellow)
+//                    pixels[index] = 255;      // Red
+//                    pixels[index + 1] = 255;  // Green
+//                    pixels[index + 2] = 0;    // Blue
+//                } else if (dy > 0) {
+//                    // Positive Y direction (blue)
+//                    pixels[index] = 0;        // Red
+//                    pixels[index + 1] = 0;    // Green
+//                    pixels[index + 2] = 255;  // Blue
+//                }
+//            }
+//        }
+//
+//        // Draw horizontal line (centered at cursor position)
+//        for (int dx = -cursorSizeX; dx <= cursorSizeX; ++dx) {
+//            int pixelX = xPos + dx;
+//            int pixelY = yPos;
+//
+//            if (pixelX >= 0 && pixelX < targetSizeX && pixelY >= 0 && pixelY < targetSizeY) {
+//                int index = (pixelY * targetSizeX + pixelX) * 3;
+//
+//                if (dx < 0) {
+//                    // Negative X direction (green)
+//                    pixels[index] = 0;        // Red
+//                    pixels[index + 1] = 255;  // Green
+//                    pixels[index + 2] = 0;    // Blue
+//                } else if (dx > 0) {
+//                    // Positive X direction (red)
+//                    pixels[index] = 255;      // Red
+//                    pixels[index + 1] = 0;    // Green
+//                    pixels[index + 2] = 0;    // Blue
+//                }
+//            }
+//        }
+//    }
 
 
 

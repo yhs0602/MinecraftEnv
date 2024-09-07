@@ -27,7 +27,7 @@ object MouseInfo {
         val client = MinecraftClient.getInstance()
         (client?.mouse as? MouseXYAccessor)?.setX(x)
         (client?.mouse as? MouseXYAccessor)?.setY(y)
-        println("Set mouse pos to $x, $y")
+//        println("Set mouse pos to $x, $y")
     }
 
     fun setCursorShown(show: Boolean) {
