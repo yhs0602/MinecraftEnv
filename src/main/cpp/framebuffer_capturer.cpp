@@ -125,8 +125,8 @@ extern "C" JNIEXPORT jobject JNICALL Java_com_kyhsgeekcode_minecraft_1env_Frameb
     jint encodingMode,
     jboolean isExtensionAvailable,
     jboolean drawCursor,
-    jint xPos,   // 추가: 커서의 X 좌표
-    jint yPos    // 추가: 커서의 Y 좌표
+    jint xPos,
+    jint yPos
 ) {
 //    // 텍스처 바인딩
 //    glBindTexture(GL_TEXTURE_2D, textureId);
@@ -182,12 +182,12 @@ extern "C" JNIEXPORT jobject JNICALL Java_com_kyhsgeekcode_minecraft_1env_Frameb
     }
 
     if (drawCursor && xPos >= 0 && xPos < targetSizeX && yPos >= 0 && yPos < targetSizeY) {
-        int cursorSize = 10; // Cursor size, adjusting for a triangular pointer
+        int cursorSize = 12; // Cursor size, adjusting for a triangular pointer
 
         for (int dy = 0; dy < cursorSize; ++dy) {
             for (int dx = 0; dx <= dy; ++dx) { // Create a triangle shape (right-angled)
-                int pixelX = yPos + dx;
-                int pixelY = xPos + dy;
+                int pixelX = xPos + dx;
+                int pixelY = yPos + dy;
 
                 if (pixelX >= 0 && pixelX < targetSizeX && pixelY >= 0 && pixelY < targetSizeY) {
                     int index = (pixelY * targetSizeX + pixelX) * 3; // 해당 좌표의 픽셀 인덱스
