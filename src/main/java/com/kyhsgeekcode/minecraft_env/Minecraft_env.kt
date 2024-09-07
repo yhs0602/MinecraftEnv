@@ -499,19 +499,19 @@ class Minecraft_env : ModInitializer, CommandExecutor {
 
         // TODO: Translate delta camera to mouse movement
 
-//        if (currentScreen != null) {
-        val dx = actionDict.cameraPitch * 5
-        val dy = actionDict.cameraYaw * 5
-        MouseInfo.moveMouseBy(dx.toDouble(), -dy.toDouble()) // Invert y axis
-//        } else {
-//            // pitch: 0: -90 degree, 24: 90 degree
-//            val deltaPitchInDeg = actionDict.cameraPitch
-//            // yaw: 0: -180 degree, 24: 180 degree
-//            val deltaYawInDeg = actionDict.cameraYaw
-//            player.pitch += deltaPitchInDeg
-//            player.yaw += deltaYawInDeg
-//            player.pitch = MathHelper.clamp(player.pitch, -90.0f, 90.0f)
-//        }
+        if (currentScreen != null) {
+            val dx = actionDict.cameraPitch
+            val dy = actionDict.cameraYaw
+            MouseInfo.moveMouseBy(dx.toDouble(), -dy.toDouble()) // Invert y axis
+        } else {
+            // pitch: 0: -90 degree, 24: 90 degree
+            val deltaPitchInDeg = actionDict.cameraPitch
+            // yaw: 0: -180 degree, 24: 180 degree
+            val deltaYawInDeg = actionDict.cameraYaw
+            player.pitch += deltaPitchInDeg
+            player.yaw += deltaYawInDeg
+            player.pitch = MathHelper.clamp(player.pitch, -90.0f, 90.0f)
+        }
         csvLogger.profileEndPrint("Minecraft_env/onInitialize/ClientWorldTick/ReadAction/ApplyAction")
         return false
     }
