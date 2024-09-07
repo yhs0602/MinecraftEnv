@@ -89,9 +89,9 @@ fun handleKeyPress(
         }
     } else {
         if (mouse) {
-            if (wasPressing) {
-                println("Releasing $key")
-            }
+//            if (wasPressing) {
+////                println("Releasing $key")
+//            }
         }
         KeyBinding.setKeyPressed(key, false)
         keyMap[keyCode] = false

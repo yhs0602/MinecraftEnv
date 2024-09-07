@@ -186,11 +186,11 @@ extern "C" JNIEXPORT jobject JNICALL Java_com_kyhsgeekcode_minecraft_1env_Frameb
         for (int dy = 0; dy < cursorSize; ++dy) {
             for (int dx = 0; dx < cursorSize; ++dx) {
                 // Check if the cursor is in the bounds of the image
-                int pixelX = xPos + dx;
-                int pixelY = yPos + dy;
+                int pixelX = yPos + dy;
+                int pixelY = xPos + dx;
 
                 if (pixelX >= 0 && pixelX < targetSizeX && pixelY >= 0 && pixelY < targetSizeY) {
-                    int index = (pixelX * targetSizeY + pixelY) * 3; // 해당 좌표의 픽셀 인덱스
+                    int index = (pixelY * targetSizeX + pixelX) * 3; // 해당 좌표의 픽셀 인덱스
                     pixels[index] = 255;      // Red
                     pixels[index + 1] = 0;    // Green
                     pixels[index + 2] = 0;    // Blue
