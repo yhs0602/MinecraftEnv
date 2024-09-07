@@ -502,7 +502,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
 //        if (currentScreen != null) {
         val dy = actionDict.cameraPitch * 5
         val dx = actionDict.cameraYaw * 5
-        MouseInfo.moveMouseBy(dx.toDouble(), -dy.toDouble()) // Invert y axis
+        MouseInfo.moveMouseBy(dx.toDouble(), dy.toDouble()) // Invert y axis
 //        } else {
 //            // pitch: 0: -90 degree, 24: 90 degree
 //            val deltaPitchInDeg = actionDict.cameraPitch
