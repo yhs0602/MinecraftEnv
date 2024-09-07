@@ -17,6 +17,6 @@ public class InventoryScreenDrawBackgroundLoggingMixin {
 
     @Inject(at = @At("TAIL"), method = "drawBackground", locals = LocalCapture.CAPTURE_FAILSOFT)
     private void drawBackground(DrawContext context, float delta, int mouseX, int mouseY, CallbackInfo ci, int i, int j) {
-        System.out.println("drawBackground: " + mouseX + "," + mouseY + ", " + delta + ", " + mouseX + ", " + mouseY + "," + i + ", " + j);
+        System.out.println("drawBackground: " + this.mouseX + "," + this.mouseY + ", " + delta + ", " + mouseX + ", " + mouseY + "," + i + ", " + j);
     }
 }
