@@ -35,11 +35,17 @@ object MouseInfo {
     }
 
     fun moveMouseBy(dx: Double, dy: Double) {
-        mouseX += dx
-        mouseY += dy
-        cursorPosCallback?.invoke(handle, mouseX, mouseY)
-        println("Called callback with $mouseX, $mouseY, by $dx, $dy")
+        if (showCursor) {
+            mouseX += dx
+            mouseY += dy
+            cursorPosCallback?.invoke(handle, mouseX, mouseY)
+            println("Called callback with absolute position $mouseX, $mouseY, by $dx, $dy")
+        } else {
+            cursorPosCallback?.invoke(handle, dx, dy)
+            println("Called callback with relative movement by $dx, $dy")
+        }
     }
+
 
     // TODO: Mods (shift click, etc)
     fun clickLeftButton() {
