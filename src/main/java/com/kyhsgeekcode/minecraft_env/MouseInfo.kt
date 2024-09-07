@@ -35,15 +35,9 @@ object MouseInfo {
     }
 
     fun moveMouseBy(dx: Double, dy: Double) {
-        if (showCursor) {
-            mouseX += dx
-            mouseY += dy
-            cursorPosCallback?.invoke(handle, mouseX, mouseY)
-            println("Called callback with absolute position $mouseX, $mouseY, by $dx, $dy, cursorPosCallback: $cursorPosCallback")
-        } else {
-            cursorPosCallback?.invoke(handle, dx, dy)
-            println("Called callback with relative movement by $dx, $dy, cursorPosCallback: $cursorPosCallback")
-        }
+        mouseX += dx
+        mouseY += dy
+        cursorPosCallback?.invoke(handle, mouseX, mouseY)
     }
 
 
