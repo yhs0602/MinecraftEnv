@@ -182,22 +182,33 @@ extern "C" JNIEXPORT jobject JNICALL Java_com_kyhsgeekcode_minecraft_1env_Frameb
     }
 
     if (drawCursor && xPos >= 0 && xPos < targetSizeX && yPos >= 0 && yPos < targetSizeY) {
-        int cursorSize = 10; // Cursor size
+        int cursorSize = 10; // Cursor size, adjusting for a triangular pointer
+
         for (int dy = 0; dy < cursorSize; ++dy) {
-            for (int dx = 0; dx < cursorSize; ++dx) {
-                // Check if the cursor is in the bounds of the image
-                int pixelX = yPos + dy;
-                int pixelY = xPos + dx;
+            for (int dx = 0; dx <= dy; ++dx) { // Create a triangle shape (right-angled)
+                int pixelX = yPos + dx;
+                int pixelY = xPos + dy;
 
                 if (pixelX >= 0 && pixelX < targetSizeX && pixelY >= 0 && pixelY < targetSizeY) {
                     int index = (pixelY * targetSizeX + pixelX) * 3; // 해당 좌표의 픽셀 인덱스
-                    pixels[index] = 255;      // Red
-                    pixels[index + 1] = 0;    // Green
-                    pixels[index + 2] = 0;    // Blue
+
+                    // Create a black border (outline)
+                    if (dx == 0 || dy == 0 || dx == dy || dy == cursorSize - 1) {
+                        pixels[index] = 0;      // Black
+                        pixels[index + 1] = 0;
+                        pixels[index + 2] = 0;
+                    }
+                    // Fill the inside with white
+                    else {
+                        pixels[index] = 255;    // White
+                        pixels[index + 1] = 255;
+                        pixels[index + 2] = 255;
+                    }
                 }
             }
         }
     }
+
 
     // make png bytes from the pixels
     // 이미지 데이터를 바이트 배열로 변환
