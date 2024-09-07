@@ -113,6 +113,7 @@ enum EncodingMode {
     PNG = 1
 };
 
+// https://codegolf.stackexchange.com/q/211641/83049
 const GLubyte cursor[28][16] = {
     {2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
     {2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
