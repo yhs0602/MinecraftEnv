@@ -209,6 +209,56 @@ extern "C" JNIEXPORT jobject JNICALL Java_com_kyhsgeekcode_minecraft_1env_Frameb
         }
     }
 
+    if (drawCursor && xPos >= 0 && xPos < targetSizeX && yPos >= 0 && yPos < targetSizeY) {
+        int cursorSizeX = 12; // Size of the crosshair X
+        int cursorSizeY = 48; // Size of the crosshair Y
+
+        // Draw vertical line (centered at cursor position)
+        for (int dy = -cursorSizeY; dy <= cursorSizeY; ++dy) {
+            int pixelX = xPos;
+            int pixelY = yPos + dy;
+
+            if (pixelX >= 0 && pixelX < targetSizeX && pixelY >= 0 && pixelY < targetSizeY) {
+                int index = (pixelY * targetSizeX + pixelX) * 3;
+
+                if (dy < 0) {
+                    // Negative Y direction (yellow)
+                    pixels[index] = 255;      // Red
+                    pixels[index + 1] = 255;  // Green
+                    pixels[index + 2] = 0;    // Blue
+                } else if (dy > 0) {
+                    // Positive Y direction (blue)
+                    pixels[index] = 0;        // Red
+                    pixels[index + 1] = 0;    // Green
+                    pixels[index + 2] = 255;  // Blue
+                }
+            }
+        }
+
+        // Draw horizontal line (centered at cursor position)
+        for (int dx = -cursorSizeX; dx <= cursorSizeX; ++dx) {
+            int pixelX = xPos + dx;
+            int pixelY = yPos;
+
+            if (pixelX >= 0 && pixelX < targetSizeX && pixelY >= 0 && pixelY < targetSizeY) {
+                int index = (pixelY * targetSizeX + pixelX) * 3;
+
+                if (dx < 0) {
+                    // Negative X direction (green)
+                    pixels[index] = 0;        // Red
+                    pixels[index + 1] = 255;  // Green
+                    pixels[index + 2] = 0;    // Blue
+                } else if (dx > 0) {
+                    // Positive X direction (red)
+                    pixels[index] = 255;      // Red
+                    pixels[index + 1] = 0;    // Green
+                    pixels[index + 2] = 0;    // Blue
+                }
+            }
+        }
+    }
+
+
 
     // make png bytes from the pixels
     // 이미지 데이터를 바이트 배열로 변환
