@@ -503,8 +503,8 @@ class Minecraft_env : ModInitializer, CommandExecutor {
         // To raise head, pitch should be decreased
         // Move mouse up, pitch should be decreased
         // Move mouse up = y axis decrease & pitch decrease
-        val dy = actionDict.cameraPitch * 6.67
-        val dx = actionDict.cameraYaw * 6.67
+        val dy = actionDict.cameraPitch * 20.0 / 3
+        val dx = actionDict.cameraYaw * 20.0 / 3
         MouseInfo.moveMouseBy(dx, dy) // Invert y axis
 //        } else {
 //            // pitch: 0: -90 degree, 24: 90 degree
