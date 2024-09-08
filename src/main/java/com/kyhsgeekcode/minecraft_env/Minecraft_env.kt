@@ -500,9 +500,12 @@ class Minecraft_env : ModInitializer, CommandExecutor {
         // TODO: Translate delta camera to mouse movement
 
 //        if (currentScreen != null) {
+        // To raise head, pitch should be decreased
+        // Move mouse up, pitch should be decreased
+        // Move mouse up = y axis decrease & pitch decrease
         val dy = actionDict.cameraPitch * 6.67
         val dx = actionDict.cameraYaw * 6.67
-        MouseInfo.moveMouseBy(dx, -dy) // Invert y axis
+        MouseInfo.moveMouseBy(dx, dy) // Invert y axis
 //        } else {
 //            // pitch: 0: -90 degree, 24: 90 degree
 //            val deltaPitchInDeg = actionDict.cameraPitch
