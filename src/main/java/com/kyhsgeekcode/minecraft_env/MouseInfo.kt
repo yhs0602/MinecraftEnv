@@ -35,9 +35,26 @@ object MouseInfo {
     }
 
     fun moveMouseBy(dx: Double, dy: Double) {
-        mouseX += dx
-        mouseY += dy
-        cursorPosCallback?.invoke(handle, mouseX, mouseY)
+        // 쪼개는 단위 크기 설정 (예: 1 픽셀씩 움직임)
+        val stepSize = 1.0
+
+        // dx와 dy의 절대값 계산
+        val stepsX = Math.abs(dx / stepSize).toInt()
+        val stepsY = Math.abs(dy / stepSize).toInt()
+
+        // 가장 큰 움직임에 대한 총 단계 계산 (둘 중 더 큰 값)
+        val totalSteps = Math.max(stepsX, stepsY)
+
+        // 각 단계에서 움직일 dx, dy 비율 계산
+        val stepDx = dx / totalSteps
+        val stepDy = dy / totalSteps
+
+        // 단계별로 커서를 이동
+        for (i in 0 until totalSteps) {
+            mouseX += stepDx
+            mouseY += stepDy
+            cursorPosCallback?.invoke(handle, mouseX, mouseY)
+        }
     }
 
 
