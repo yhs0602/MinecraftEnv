@@ -472,7 +472,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
             } else {
                 if (wasAttacking)
                     MouseInfo.releaseLeftButton()
-                wasUsing = false
+                wasAttacking = false
             }
 
 //            wasUsing = false
