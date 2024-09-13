@@ -457,20 +457,20 @@ class Minecraft_env : ModInitializer, CommandExecutor {
         if (currentScreen != null) {
             if (actionDict.use) {
                 if (!wasUsing)
-                    MouseInfo.clickRightButton()
+                    MouseInfo.clickRightButton(wasSneaking)
                 wasUsing = true
             } else {
                 if (wasUsing)
-                    MouseInfo.releaseRightButton()
+                    MouseInfo.releaseRightButton(wasSneaking)
                 wasUsing = false
             }
             if (actionDict.attack) {
                 if (!wasAttacking)
-                    MouseInfo.clickLeftButton()
+                    MouseInfo.clickLeftButton(wasSneaking)
                 wasAttacking = true
             } else {
                 if (wasAttacking)
-                    MouseInfo.releaseLeftButton()
+                    MouseInfo.releaseLeftButton(wasSneaking)
                 wasAttacking = false
             }
 

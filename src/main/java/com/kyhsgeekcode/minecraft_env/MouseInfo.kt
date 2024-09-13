@@ -59,23 +59,27 @@ object MouseInfo {
 
 
     // TODO: Mods (shift click, etc)
-    fun clickLeftButton() {
-        mouseButtonCallback?.invoke(handle, GLFW.GLFW_MOUSE_BUTTON_LEFT, GLFW.GLFW_PRESS, 0)
+    fun clickLeftButton(shift: Boolean) {
+        val mods = if (shift) GLFW.GLFW_MOD_SHIFT else 0
+        mouseButtonCallback?.invoke(handle, GLFW.GLFW_MOUSE_BUTTON_LEFT, GLFW.GLFW_PRESS, mods)
         leftButtonPressed = true
     }
 
-    fun releaseLeftButton() {
-        mouseButtonCallback?.invoke(handle, GLFW.GLFW_MOUSE_BUTTON_LEFT, GLFW.GLFW_RELEASE, 0)
+    fun releaseLeftButton(shift: Boolean) {
+        val mods = if (shift) GLFW.GLFW_MOD_SHIFT else 0
+        mouseButtonCallback?.invoke(handle, GLFW.GLFW_MOUSE_BUTTON_LEFT, GLFW.GLFW_RELEASE, mods)
         leftButtonPressed = false
     }
 
-    fun clickRightButton() {
-        mouseButtonCallback?.invoke(handle, GLFW.GLFW_MOUSE_BUTTON_RIGHT, GLFW.GLFW_PRESS, 0)
+    fun clickRightButton(shift: Boolean) {
+        val mods = if (shift) GLFW.GLFW_MOD_SHIFT else 0
+        mouseButtonCallback?.invoke(handle, GLFW.GLFW_MOUSE_BUTTON_RIGHT, GLFW.GLFW_PRESS, mods)
         rightButtonPressed = true
     }
 
-    fun releaseRightButton() {
-        mouseButtonCallback?.invoke(handle, GLFW.GLFW_MOUSE_BUTTON_RIGHT, GLFW.GLFW_RELEASE, 0)
+    fun releaseRightButton(shift: Boolean) {
+        val mods = if (shift) GLFW.GLFW_MOD_SHIFT else 0
+        mouseButtonCallback?.invoke(handle, GLFW.GLFW_MOUSE_BUTTON_RIGHT, GLFW.GLFW_RELEASE, mods)
         rightButtonPressed = false
     }
 }
