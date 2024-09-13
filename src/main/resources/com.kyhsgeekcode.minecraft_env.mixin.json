@@ -17,6 +17,7 @@
     "ClientRenderInvoker",
     "ClientRenderTickCounterAccessor",
     "ClientWorldMixin",
+    "CreateWorldScreenMoreOptionsAccessor",
     "InputUtilMixin",
     "KeyboardMixin",
     "MouseXYAccessor",

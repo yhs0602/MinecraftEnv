@@ -1,6 +1,7 @@
 package com.kyhsgeekcode.minecraft_env
 
 import com.kyhsgeekcode.minecraft_env.mixin.ChatVisibleMessageAccessor
+import com.kyhsgeekcode.minecraft_env.mixin.CreateWorldScreenMoreOptionsAccessor
 import com.kyhsgeekcode.minecraft_env.mixin.WindowSizeAccessor
 import com.kyhsgeekcode.minecraft_env.mixin.WorldListWidgetLevelSummaryAccessor
 import com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment
@@ -11,7 +12,8 @@ import net.minecraft.client.gui.screen.TitleScreen
 import net.minecraft.client.gui.screen.world.CreateWorldScreen
 import net.minecraft.client.gui.screen.world.SelectWorldScreen
 import net.minecraft.client.gui.screen.world.WorldListWidget
-import net.minecraft.client.gui.widget.*
+import net.minecraft.client.gui.widget.ButtonWidget
+import net.minecraft.client.gui.widget.TextFieldWidget
 import net.minecraft.client.network.ClientPlayerEntity
 import net.minecraft.client.option.NarratorMode
 import net.minecraft.client.tutorial.TutorialStep
@@ -41,6 +43,12 @@ class EnvironmentInitializer(
     private lateinit var minecraftServer: MinecraftServer
     private lateinit var player: ClientPlayerEntity
     var hasMinimizedWindow: Boolean = false
+
+    var createButton: ButtonWidget? = null
+    var createWorldButton: ButtonWidget? = null
+    var cheatButton: ButtonWidget? = null
+    var moreWorldOptionButton: ButtonWidget? = null
+    var worldTypeButton: ButtonWidget? = null
 
     fun onClientTick(client: MinecraftClient) {
         csvLogger.profileStartPrint("Minecraft_env/onInitialize/ClientTick/EnvironmentInitializer/onClientTick")
@@ -141,7 +149,6 @@ class EnvironmentInitializer(
                 //                println("Select world screen1")
                 var widget: WorldListWidget? = null
                 var deleteButton: ButtonWidget? = null
-                var createButton: ButtonWidget? = null
                 for (child in screen.children()) {
                     //                    println(child)
                     if (child is WorldListWidget) {
@@ -159,17 +166,13 @@ class EnvironmentInitializer(
 
             is CreateWorldScreen -> {
                 //                println("Create world screen")
-                var createButton: ButtonWidget? = null
                 val cheatRequested = true
-                var cheatButton: ButtonWidget? = null
-                var worldTypeButton: ButtonWidget? = null
-                var moreWorldOptionButton: ButtonWidget? = null
                 for (child in screen.children()) {
                     // search for tab navigation widget, to find index of world settings tab
                     // search for create button
-                    if (createButton == null && child is ButtonWidget) {
+                    if (createWorldButton == null && child is ButtonWidget) {
                         if (child.message.string == "Create New World") {
-                            createButton = child
+                            createWorldButton = child
                         }
                     }
                     // search for cheat button
@@ -186,40 +189,46 @@ class EnvironmentInitializer(
                         }
                     }
                 }
-                // Set allow cheats to requested
-                if (cheatButton != null)
-                    setupAllowCheats(cheatButton, cheatRequested)
-                else {
-                    println("Cheat button not found")
-                    throw Exception("Cheat button not found")
+                if (createWorldButton == null) {
+                    println("Create button not found")
+                    throw Exception("Create button not found")
+                }
+                if (cheatRequested) {
+                    cheatButton?.apply {
+                        setupAllowCheats(this, cheatRequested)
+                    } ?: run {
+                        println("Cheat button not found")
+                        throw Exception("Cheat button not found")
+                    }
                 }
                 // Search for seed input
-                if (initialEnvironment.seed.isNotEmpty() || initialEnvironment.worldType == InitialEnvironment.WorldType.SUPERFLAT) {
-                    if (moreWorldOptionButton == null) {
-                        println("More world option button not found")
-                        throw Exception("More world option button not found")
-                    }
-                    moreWorldOptionButton.onPress()
-                    if (initialEnvironment.seed.isNotEmpty()) {
-                        for (child in screen.children()) {
-                            println(child)
-                            if (child is TextFieldWidget) {
-                                println("Found text field")
-                                child.text = initialEnvironment.seed.toString()
-                            }
+                if (
+                    initialEnvironment.seed.isNotEmpty() || initialEnvironment.worldType == InitialEnvironment.WorldType.SUPERFLAT
+                ) {
+                    if (!(screen as CreateWorldScreenMoreOptionsAccessor).moreOptionsOpen) {
+                        moreWorldOptionButton?.onPress() ?: run {
+                            println("More world option button not found")
+                            throw Exception("More world option button not found")
                         }
-                    }
-                    if (initialEnvironment.worldType == InitialEnvironment.WorldType.SUPERFLAT) {
-                        for (child in screen.children()) {
-                            //                        println(child)
-                            if (worldTypeButton == null && child is ButtonWidget) {
-                                if (child.message.string.startsWith("World Type")) {
-                                    worldTypeButton = child
+                    } else {
+                        // More options already open
+                        if (initialEnvironment.seed.isNotEmpty()) {
+                            for (child in screen.children()) {
+                                if (child is TextFieldWidget && child.visible) {
+                                    println("Found visible text field, setting seed to ${initialEnvironment.seed}")
+                                    child.text = initialEnvironment.seed.toString()
                                 }
                             }
-                            if (worldTypeButton != null) {
-                                while (!worldTypeButton.message.string.endsWith("flat")) {
-                                    worldTypeButton.onPress()
+                        }
+                        if (initialEnvironment.worldType == InitialEnvironment.WorldType.SUPERFLAT) {
+                            for (child in screen.children()) {
+                                if (worldTypeButton == null && child is ButtonWidget) {
+                                    if (child.message.string.startsWith("World Type")) {
+                                        worldTypeButton = child
+                                        while (!child.message.string.endsWith("flat")) {
+                                            child.onPress()
+                                        }
+                                    }
                                 }
                             }
                         }
