@@ -1,7 +1,7 @@
 package com.kyhsgeekcode.minecraft_env
 
 import com.kyhsgeekcode.minecraft_env.mixin.ChatVisibleMessageAccessor
-import com.kyhsgeekcode.minecraft_env.mixin.CreateWorldScreenMoreOptionsAccessor
+import com.kyhsgeekcode.minecraft_env.mixin.MoreOptionsDialogSeedTextFieldAccessor
 import com.kyhsgeekcode.minecraft_env.mixin.WindowSizeAccessor
 import com.kyhsgeekcode.minecraft_env.mixin.WorldListWidgetLevelSummaryAccessor
 import com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment
@@ -13,7 +13,6 @@ import net.minecraft.client.gui.screen.world.CreateWorldScreen
 import net.minecraft.client.gui.screen.world.SelectWorldScreen
 import net.minecraft.client.gui.screen.world.WorldListWidget
 import net.minecraft.client.gui.widget.ButtonWidget
-import net.minecraft.client.gui.widget.TextFieldWidget
 import net.minecraft.client.network.ClientPlayerEntity
 import net.minecraft.client.option.NarratorMode
 import net.minecraft.client.tutorial.TutorialStep
@@ -179,8 +178,7 @@ class EnvironmentInitializer(
                     if (cheatButton == null && child is ButtonWidget) {
                         if (child.message.string.startsWith("Allow Cheats")) {
                             cheatButton = child
-                        } else {
-                            println("Cheat button is not found, and the text is ${child.message.string}")
+                            println("Cheat button found")
                         }
                     }
                     if (moreWorldOptionButton == null && child is ButtonWidget) {
@@ -202,39 +200,21 @@ class EnvironmentInitializer(
                     }
                 }
                 // Search for seed input
-                if (
-                    initialEnvironment.seed.isNotEmpty() || initialEnvironment.worldType == InitialEnvironment.WorldType.SUPERFLAT
-                ) {
-                    if (!(screen as CreateWorldScreenMoreOptionsAccessor).moreOptionsOpen) {
-                        moreWorldOptionButton?.onPress() ?: run {
-                            println("More world option button not found")
-                            throw Exception("More world option button not found")
-                        }
-                    } else {
-                        // More options already open
-                        if (initialEnvironment.seed.isNotEmpty()) {
-                            for (child in screen.children()) {
-                                if (child is TextFieldWidget && child.visible) {
-                                    println("Found visible text field, setting seed to ${initialEnvironment.seed}")
-                                    child.text = initialEnvironment.seed.toString()
-                                }
-                            }
-                        }
-                        if (initialEnvironment.worldType == InitialEnvironment.WorldType.SUPERFLAT) {
-                            for (child in screen.children()) {
-                                if (worldTypeButton == null && child is ButtonWidget) {
-                                    if (child.message.string.startsWith("World Type")) {
-                                        worldTypeButton = child
-                                        while (!child.message.string.endsWith("flat")) {
-                                            child.onPress()
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
+                if (initialEnvironment.seed.isNotEmpty()) {
+                    (screen.moreOptionsDialog as MoreOptionsDialogSeedTextFieldAccessor).seedTextField?.text =
+                        initialEnvironment.seed.toString()
+                    println("Set seed to ${initialEnvironment.seed}")
                 }
-                createButton?.onPress()
+                if (initialEnvironment.worldType == InitialEnvironment.WorldType.SUPERFLAT) {
+                    val mapTypeButton =
+                        (screen.moreOptionsDialog as MoreOptionsDialogSeedTextFieldAccessor).mapTypeButton
+                    while (!mapTypeButton.message.string.endsWith("flat")) {
+                        mapTypeButton.onPress()
+                    }
+                    println("Set world type to superflat")
+                }
+                createWorldButton?.onPress()
+                println("Create world button pressed")
             }
         }
     }
