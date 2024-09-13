@@ -5,7 +5,6 @@ import net.minecraft.client.sound.SoundInstance
 import net.minecraft.client.sound.SoundInstanceListener
 import net.minecraft.client.sound.SoundManager
 import net.minecraft.client.sound.WeightedSoundSet
-import net.minecraft.text.TranslatableTextContent
 
 data class SoundEntry(val translateKey: String, var age: Long, var x: Double, var y: Double, var z: Double) {
     fun reset(x: Double, y: Double, z: Double) {
@@ -31,16 +30,11 @@ class MinecraftSoundListener(soundManager: SoundManager) : SoundInstanceListener
 
     private val _entries: MutableList<SoundEntry> = mutableListOf()
     val entries = _entries as List<SoundEntry>
-    override fun onSoundPlayed(sound: SoundInstance?, soundSet: WeightedSoundSet?, range: Float) {
+    override fun onSoundPlayed(sound: SoundInstance?, soundSet: WeightedSoundSet?) {
         if (sound == null) return
         if (soundSet == null) return
         val subtitle = soundSet.subtitle ?: return
-        val content = subtitle.content
-        if (content !is TranslatableTextContent) {
-            println("content is not TranslatableTextContent: $content")
-            return
-        }
-        val translateKey = content.key
+        val translateKey = subtitle.string
         if (this._entries.isNotEmpty()) {
             for (subtitleEntry in this._entries) {
                 if (subtitleEntry.translateKey != translateKey) continue

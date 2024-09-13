@@ -3,10 +3,10 @@
 package com.kyhsgeekcode.minecraft_env
 
 import com.google.protobuf.ByteString
+import com.kyhsgeekcode.minecraft_env.mixin.ClientRenderTickCounterAccessor
 import com.kyhsgeekcode.minecraft_env.proto.*
 import com.kyhsgeekcode.minecraft_env.proto.ActionSpace.ActionSpaceMessageV2
 import com.kyhsgeekcode.minecraft_env.proto.ObservationSpace
-import com.mojang.blaze3d.platform.GlConst
 import com.mojang.blaze3d.systems.RenderSystem
 import net.fabricmc.api.ModInitializer
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents
@@ -20,11 +20,9 @@ import net.minecraft.client.network.ClientPlayerEntity
 import net.minecraft.client.option.KeyBinding
 import net.minecraft.client.render.BackgroundRenderer
 import net.minecraft.client.util.InputUtil
-import net.minecraft.client.util.ScreenshotRecorder
 import net.minecraft.client.world.ClientWorld
 import net.minecraft.entity.EntityType
 import net.minecraft.network.packet.c2s.play.ClientStatusC2SPacket
-import net.minecraft.registry.Registries
 import net.minecraft.server.MinecraftServer
 import net.minecraft.stat.Stats
 import net.minecraft.util.Identifier
@@ -33,11 +31,12 @@ import net.minecraft.util.WorldSavePath
 import net.minecraft.util.function.BooleanBiFunction
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Box
-import net.minecraft.util.math.MathHelper
 import net.minecraft.util.math.Vec3d
+import net.minecraft.util.registry.Registry
 import net.minecraft.util.shape.VoxelShapes
 import net.minecraft.world.World
 import org.lwjgl.glfw.GLFW
+import org.lwjgl.opengl.GL11
 import java.io.IOException
 import java.net.SocketTimeoutException
 import java.net.StandardProtocolFamily
@@ -345,7 +344,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
     }
 
     private fun sendSetScreenNull(client: MinecraftClient) {
-        client.setScreen(null)
+        client.openScreen(null)
     }
 
 
@@ -578,16 +577,19 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                 printWithTime("New left position: ${left.x}, ${left.y}, ${left.z} ${player.prevX}, ${player.prevY}, ${player.prevZ}")
                 // (client as ClientRenderInvoker).invokeRender(true)
                 render(client)
-                val image1ByteArray = ScreenshotRecorder.takeScreenshot(buffer).use { screenshot ->
-                    encodeImageToBytes(
-                        screenshot,
-                        initialEnvironment.imageSizeX,
-                        initialEnvironment.imageSizeY,
-                        initialEnvironment.imageSizeX,
-                        initialEnvironment.imageSizeY
-                    )
-                }
-                image_1 = ByteString.copyFrom(image1ByteArray)
+                image_1 = FramebufferCapturer.captureFramebuffer(
+                    buffer.colorAttachment,
+                    buffer.fbo,
+                    buffer.textureWidth,
+                    buffer.textureHeight,
+                    initialEnvironment.imageSizeX,
+                    initialEnvironment.imageSizeY,
+                    initialEnvironment.screenEncodingMode,
+                    false,
+                    MouseInfo.showCursor, // FramebufferCapturer.isExtensionAvailable
+                    MouseInfo.mouseX.toInt(),
+                    MouseInfo.mouseY.toInt(),
+                )
                 player.prevX = right.x
                 player.prevY = right.y
                 player.prevZ = right.z
@@ -595,16 +597,19 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                 printWithTime("New right position: ${right.x}, ${right.y}, ${right.z} ${player.prevX}, ${player.prevY}, ${player.prevZ}")
 //                (client as ClientRenderInvoker).invokeRender(true)
                 render(client)
-                val image2ByteArray = ScreenshotRecorder.takeScreenshot(buffer).use { screenshot ->
-                    encodeImageToBytes(
-                        screenshot,
-                        initialEnvironment.imageSizeX,
-                        initialEnvironment.imageSizeY,
-                        initialEnvironment.imageSizeX,
-                        initialEnvironment.imageSizeY
-                    )
-                }
-                image_2 = ByteString.copyFrom(image2ByteArray)
+                image_2 = FramebufferCapturer.captureFramebuffer(
+                    buffer.colorAttachment,
+                    buffer.fbo,
+                    buffer.textureWidth,
+                    buffer.textureHeight,
+                    initialEnvironment.imageSizeX,
+                    initialEnvironment.imageSizeY,
+                    initialEnvironment.screenEncodingMode,
+                    false,
+                    MouseInfo.showCursor, // FramebufferCapturer.isExtensionAvailable
+                    MouseInfo.mouseX.toInt(),
+                    MouseInfo.mouseY.toInt(),
+                )
                 // return to the original position
                 player.prevX = oldPrevX
                 player.prevY = oldPrevY
@@ -688,12 +693,12 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                     killedStatistics[killStatKey] = stat
                 }
                 for (mineStatKey in initialEnvironment.minedStatKeysList) {
-                    val key = Registries.BLOCK.get(Identifier.of("minecraft", mineStatKey))
+                    val key = Registry.BLOCK.get(Identifier("minecraft", mineStatKey))
                     val stat = player.statHandler.getStat(Stats.MINED.getOrCreateStat(key))
                     minedStatistics[mineStatKey] = stat
                 }
                 for (miscStatKey in initialEnvironment.miscStatKeysList) {
-                    val key = Registries.CUSTOM_STAT.get(Identifier.of("minecraft", miscStatKey))
+                    val key = Registry.CUSTOM_STAT.get(Identifier("minecraft", miscStatKey))
                     miscStatistics[miscStatKey] = player.statHandler.getStat(Stats.CUSTOM.getOrCreateStat(key))
                 }
                 entityListener?.run {
@@ -724,9 +729,9 @@ class Minecraft_env : ModInitializer, CommandExecutor {
 
                 if (initialEnvironment.requiresSurroundingBlocks) {
                     val blocks = mutableListOf<ObservationSpace.BlockInfo>()
-                    for (i in (player.blockX - 1)..(player.blockX + 1)) {
-                        for (j in player.blockY - 1..player.blockY + 1) {
-                            for (k in player.blockZ - 1..player.blockZ + 1) {
+                    for (i in (player.blockPos.x - 1)..(player.blockPos.x + 1)) {
+                        for (j in player.blockPos.y - 1..player.blockPos.y + 1) {
+                            for (k in player.blockPos.z - 1..player.blockPos.z + 1) {
                                 val block = world.getBlockState(BlockPos(i, j, k))
                                 blocks.add(
                                     blockInfo {
@@ -787,7 +792,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
         if (command.startsWith("/")) {
             command = command.substring(1)
         }
-        player.networkHandler.sendChatCommand(command)
+        player.sendChatMessage(command)
         printWithTime("End send command: $command")
         csvLogger.log("End send command: $command")
     }
@@ -795,8 +800,16 @@ class Minecraft_env : ModInitializer, CommandExecutor {
 }
 
 fun ClientPlayerEntity.checkIfCameraBlocked(): Boolean {
-    val f: Float = EntityType.PLAYER.dimensions.width() * 0.8f
-    val box = Box.of(this.eyePos, f.toDouble(), 1.0E-6, f.toDouble())
+    val f: Float = EntityType.PLAYER.dimensions.width * 0.8f
+    eyeY
+    val box = Box(
+        x,
+        eyeY,
+        z,
+        x + f,
+        eyeY + 1e-6,
+        z + f
+    )
     return BlockPos.stream(box).anyMatch { pos: BlockPos ->
         val blockState: BlockState = this.world.getBlockState(pos)
         !blockState.isAir && VoxelShapes.matchesAnywhere(
@@ -811,14 +824,15 @@ fun ClientPlayerEntity.checkIfCameraBlocked(): Boolean {
 
 
 fun render(client: MinecraftClient) {
-    RenderSystem.clear(GlConst.GL_DEPTH_BUFFER_BIT or GlConst.GL_COLOR_BUFFER_BIT, IS_SYSTEM_MAC)
+    RenderSystem.clear(GL11.GL_DEPTH_BUFFER_BIT or GL11.GL_COLOR_BUFFER_BIT, IS_SYSTEM_MAC)
     client.framebuffer.beginWrite(true)
-    BackgroundRenderer.clearFog()
+    BackgroundRenderer.method_23792()
     RenderSystem.enableCull()
     val l = Util.getMeasuringTimeNano()
     client.gameRenderer.render(
-        client.renderTickCounter,// client.renderTickCounter.tickDelta,
-        true // tick
+        (client as ClientRenderTickCounterAccessor).renderTickCounter.tickDelta,
+        l,
+        false // tick
     )
     client.framebuffer.endWrite()
     client.framebuffer.draw(client.window.framebufferWidth, client.window.framebufferHeight)

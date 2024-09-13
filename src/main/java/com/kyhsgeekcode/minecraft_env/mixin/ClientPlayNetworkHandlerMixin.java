@@ -4,7 +4,7 @@ import com.kyhsgeekcode.minecraft_env.GetMessagesInterface;
 import net.minecraft.client.network.ClientPlayNetworkHandler;
 import net.minecraft.client.world.ClientWorld;
 import net.minecraft.entity.Entity;
-import net.minecraft.network.packet.s2c.play.DeathMessageS2CPacket;
+import net.minecraft.network.packet.s2c.play.CombatEventS2CPacket;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -16,11 +16,11 @@ public class ClientPlayNetworkHandlerMixin implements GetMessagesInterface {
     @Shadow
     private ClientWorld world;
 
-    @Inject(method = "onDeathMessage", at = @At("HEAD"), cancellable = false)
-    public void onDeathMessage(DeathMessageS2CPacket packet, CallbackInfo ci) {
-        Entity entity = this.world.getEntityById(packet.playerId());
+    @Inject(method = "onCombatEvent", at = @At("HEAD"), cancellable = false)
+    public void onCombatEvent(CombatEventS2CPacket packet, CallbackInfo ci) {
+        Entity entity = this.world.getEntityById(packet.entityId);
         if (entity == ((ClientCommonNetworkHandlerClientAccessor) this).getClient().player) {
-            var message = packet.message();
+            var message = packet.deathMessage;
             this.lastDeathMessage.clear();
             this.lastDeathMessage.add(message.getString());
         }
