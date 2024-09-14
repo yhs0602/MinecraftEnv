@@ -340,7 +340,7 @@ class EnvironmentInitializer(
 
     // Set the TPS to virtually unlimited
     private fun setUnlimitedTPS(commandExecutor: (ClientPlayerEntity, String) -> Unit) {
-        commandExecutor(player, "/tick rate 10000")
+//        commandExecutor(player, "/tick rate 10000")
     }
 
     private fun setupAllowCheats(
