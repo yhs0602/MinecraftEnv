@@ -460,16 +460,16 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                     0,
                     currentScreen
                 )
-                wasPressingInventory = actionDict.inventory
-                wasPressingDrop = actionDict.drop
-                wasSneaking = actionDict.sneak
-                wasSprinting = actionDict.sprint
-                wasJumping = actionDict.jump
-                wasPressingForward = actionDict.forward
-                wasPressingBack = actionDict.back
-                wasPressingLeft = actionDict.left
-                wasPressingRight = actionDict.right
             }
+            wasPressingInventory = actionDict.inventory
+            wasPressingDrop = actionDict.drop
+            wasSneaking = actionDict.sneak
+            wasSprinting = actionDict.sprint
+            wasJumping = actionDict.jump
+            wasPressingForward = actionDict.forward
+            wasPressingBack = actionDict.back
+            wasPressingLeft = actionDict.left
+            wasPressingRight = actionDict.right
             if (actionDict.use) {
                 if (!wasUsing)
                     MouseInfo.clickRightButton(wasSneaking)
@@ -488,9 +488,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                     MouseInfo.releaseLeftButton(wasSneaking)
                 wasAttacking = false
             }
-            if (handled) {
-                return false
-            }
+            return false
         }
 
         wasPressingForward = handleKeyPress(actionDict.forward, wasPressingForward, GLFW.GLFW_KEY_W)
