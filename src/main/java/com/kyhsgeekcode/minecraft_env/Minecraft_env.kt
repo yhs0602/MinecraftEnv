@@ -428,7 +428,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
     ): Boolean {
         csvLogger.profileStartPrint("Minecraft_env/onInitialize/ClientWorldTick/ReadAction/ApplyAction")
         MouseInfo.handle = client.window.handle
-        if (actionDict.cameraYaw != 0.0f || actionDict.cameraYaw != 0.0f) {
+        if (actionDict.cameraYaw != 0.0f || actionDict.cameraPitch != 0.0f) {
             val dy = actionDict.cameraPitch * 20.0 / 3
             val dx = actionDict.cameraYaw * 20.0 / 3
             MouseInfo.moveMouseBy(dx.toInt(), dy.toInt())
