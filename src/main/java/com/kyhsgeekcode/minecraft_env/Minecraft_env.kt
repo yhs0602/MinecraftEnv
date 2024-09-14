@@ -99,7 +99,7 @@ fun handleScreenKeyPress(
 ): Boolean {
     val key = InputUtil.fromKeyCode(keyCode, 0)
     keyMap[keyCode] = currentState
-    KeyBinding.setKeyPressed(key, currentState)
+//    KeyBinding.setKeyPressed(key, currentState)
     if (currentState) {
         if (!wasPressing) {
             return screen.keyPressed(keyCode, scanCode, modifiers)
