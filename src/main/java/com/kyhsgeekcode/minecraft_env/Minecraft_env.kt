@@ -792,6 +792,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
         if (command.startsWith("/")) {
             command = command.substring(1)
         }
+        command = "/$command"
         player.sendChatMessage(command)
         printWithTime("End send command: $command")
         csvLogger.log("End send command: $command")
