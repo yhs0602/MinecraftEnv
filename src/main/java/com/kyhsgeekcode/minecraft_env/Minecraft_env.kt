@@ -57,6 +57,7 @@ enum class ResetPhase {
     WAIT_PLAYER_DEATH,
     WAIT_PLAYER_RESPAWN,
     WAIT_INIT_ENDS,
+    WAIT_CHUNK_LOADING,
     END_RESET,
 }
 
@@ -148,6 +149,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
     private var wasAttacking = false
     private var wasPressingInventory = false
     private var wasPressingDrop = false
+    private var waitLoadingCounter = 0
 
     override fun onInitialize() {
         val ld_preload = System.getenv("LD_PRELOAD")
@@ -301,7 +303,17 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                 csvLogger.log("Waiting for the initialization ends")
                 if (initializer.initWorldFinished) {
                     sendSetScreenNull(client) // clear death screen
-                    sleep(1000) // Wait for chunk loading
+                    waitLoadingCounter = 3 // wait for 3 ticks
+                    resetPhase = ResetPhase.WAIT_CHUNK_LOADING
+                }
+                return
+            }
+
+            ResetPhase.WAIT_CHUNK_LOADING -> {
+                waitLoadingCounter--
+                if (waitLoadingCounter <= 0) {
+                    printWithTime("Chunk loading ends")
+                    csvLogger.log("Chunk loading ends")
                     resetPhase = ResetPhase.END_RESET
                 }
                 return
@@ -438,8 +450,9 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                 Triple(actionDict.left, wasPressingLeft, GLFW.GLFW_KEY_A),
                 Triple(actionDict.right, wasPressingRight, GLFW.GLFW_KEY_D),
             )
+            var handled = false
             for ((action, wasPressing, keyCode) in keys) {
-                val handled = handleScreenKeyPress(
+                handled = handled || handleScreenKeyPress(
                     action,
                     wasPressing,
                     keyCode,
@@ -449,21 +462,14 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                 )
                 wasPressingInventory = actionDict.inventory
                 wasPressingDrop = actionDict.drop
-                if (handled) {
-                    return false
-                }
+                wasSneaking = actionDict.sneak
+                wasSprinting = actionDict.sprint
+                wasJumping = actionDict.jump
+                wasPressingForward = actionDict.forward
+                wasPressingBack = actionDict.back
+                wasPressingLeft = actionDict.left
+                wasPressingRight = actionDict.right
             }
-        }
-
-        wasPressingForward = handleKeyPress(actionDict.forward, wasPressingForward, GLFW.GLFW_KEY_W)
-        wasPressingBack = handleKeyPress(actionDict.back, wasPressingBack, GLFW.GLFW_KEY_S)
-        wasPressingLeft = handleKeyPress(actionDict.left, wasPressingLeft, GLFW.GLFW_KEY_A)
-        wasPressingRight = handleKeyPress(actionDict.right, wasPressingRight, GLFW.GLFW_KEY_D)
-        wasJumping = handleKeyPress(actionDict.jump, wasJumping, GLFW.GLFW_KEY_SPACE)
-        wasSneaking = handleKeyPress(actionDict.sneak, wasSneaking, GLFW.GLFW_KEY_LEFT_SHIFT)
-        wasSprinting = handleKeyPress(actionDict.sprint, wasSprinting, GLFW.GLFW_KEY_LEFT_CONTROL)
-
-        if (currentScreen != null) {
             if (actionDict.use) {
                 if (!wasUsing)
                     MouseInfo.clickRightButton(wasSneaking)
@@ -482,6 +488,20 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                     MouseInfo.releaseLeftButton(wasSneaking)
                 wasAttacking = false
             }
+            if (handled) {
+                return false
+            }
+        }
+
+        wasPressingForward = handleKeyPress(actionDict.forward, wasPressingForward, GLFW.GLFW_KEY_W)
+        wasPressingBack = handleKeyPress(actionDict.back, wasPressingBack, GLFW.GLFW_KEY_S)
+        wasPressingLeft = handleKeyPress(actionDict.left, wasPressingLeft, GLFW.GLFW_KEY_A)
+        wasPressingRight = handleKeyPress(actionDict.right, wasPressingRight, GLFW.GLFW_KEY_D)
+        wasJumping = handleKeyPress(actionDict.jump, wasJumping, GLFW.GLFW_KEY_SPACE)
+        wasSneaking = handleKeyPress(actionDict.sneak, wasSneaking, GLFW.GLFW_KEY_LEFT_SHIFT)
+        wasSprinting = handleKeyPress(actionDict.sprint, wasSprinting, GLFW.GLFW_KEY_LEFT_CONTROL)
+
+        if (currentScreen != null) {
 
 //            wasUsing = false
 //            wasAttacking = false
