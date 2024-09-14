@@ -34,25 +34,30 @@ object MouseInfo {
         showCursor = show
     }
 
-    fun moveMouseBy(dx: Int, dy: Int) {
+    fun moveMouseBy(dx: Double, dy: Double) {
         // dx와 dy의 절대값 계산
-        val stepsX = Math.abs(dx)
-        val stepsY = Math.abs(dy)
+        val absDx = Math.abs(dx)
+        val absDy = Math.abs(dy)
 
         // 가로로 이동 (dx 방향)
-        val stepX = if (dx > 0) 1 else -1
-        for (i in 0 until stepsX) {
+        val stepX = if (dx > 0) 0.1 else -0.1  // Double 단위로 0.1씩 이동
+        var currentX = 0.0
+        while (currentX < absDx) {
             mouseX += stepX
+            currentX += Math.abs(stepX)
             cursorPosCallback?.invoke(handle, mouseX, mouseY)
         }
 
         // 세로로 이동 (dy 방향)
-        val stepY = if (dy > 0) 1 else -1
-        for (i in 0 until stepsY) {
+        val stepY = if (dy > 0) 0.1 else -0.1  // Double 단위로 0.1씩 이동
+        var currentY = 0.0
+        while (currentY < absDy) {
             mouseY += stepY
+            currentY += Math.abs(stepY)
             cursorPosCallback?.invoke(handle, mouseX, mouseY)
         }
     }
+
 
 
     // TODO: Mods (shift click, etc)

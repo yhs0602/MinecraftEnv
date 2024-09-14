@@ -71,7 +71,7 @@ class EnvironmentInitializer(
         setHudHidden(client, initialEnvironment.hudHidden)
         setRenderDistance(client, initialEnvironment.renderDistance)
         setSimulationDistance(client, initialEnvironment.simulationDistance)
-        disableVSync(client)
+//        disableVSync(client)
         disableSound(client)
         disableTutorial(client)
         setMaxFPSToUnlimited(client)

@@ -424,7 +424,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
         if (actionDict.cameraYaw != 0.0f || actionDict.cameraPitch != 0.0f) {
             val dy = actionDict.cameraPitch * 20.0 / 3
             val dx = actionDict.cameraYaw * 20.0 / 3
-            MouseInfo.moveMouseBy(dx.toInt(), dy.toInt())
+            MouseInfo.moveMouseBy(dx, dy)
         }
         val currentScreen = client.currentScreen
         if (currentScreen != null) {
