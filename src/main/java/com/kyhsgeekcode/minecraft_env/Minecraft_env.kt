@@ -430,6 +430,13 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                 Triple(actionDict.hotbar7, false, GLFW.GLFW_KEY_7),
                 Triple(actionDict.hotbar8, false, GLFW.GLFW_KEY_8),
                 Triple(actionDict.hotbar9, false, GLFW.GLFW_KEY_9),
+                Triple(actionDict.sneak, wasSneaking, GLFW.GLFW_KEY_LEFT_SHIFT),
+                Triple(actionDict.sprint, wasSprinting, GLFW.GLFW_KEY_LEFT_CONTROL),
+                Triple(actionDict.jump, wasJumping, GLFW.GLFW_KEY_SPACE),
+                Triple(actionDict.forward, wasPressingForward, GLFW.GLFW_KEY_W),
+                Triple(actionDict.back, wasPressingBack, GLFW.GLFW_KEY_S),
+                Triple(actionDict.left, wasPressingLeft, GLFW.GLFW_KEY_A),
+                Triple(actionDict.right, wasPressingRight, GLFW.GLFW_KEY_D),
             )
             for ((action, wasPressing, keyCode) in keys) {
                 val handled = handleScreenKeyPress(
