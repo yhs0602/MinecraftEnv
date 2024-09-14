@@ -494,65 +494,51 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                 wasAttacking = false
             }
             return false
-        }
-
-        wasPressingForward = handleKeyPress(actionDict.forward, wasPressingForward, GLFW.GLFW_KEY_W)
-        wasPressingBack = handleKeyPress(actionDict.back, wasPressingBack, GLFW.GLFW_KEY_S)
-        wasPressingLeft = handleKeyPress(actionDict.left, wasPressingLeft, GLFW.GLFW_KEY_A)
-        wasPressingRight = handleKeyPress(actionDict.right, wasPressingRight, GLFW.GLFW_KEY_D)
-        wasJumping = handleKeyPress(actionDict.jump, wasJumping, GLFW.GLFW_KEY_SPACE)
-        wasSneaking = handleKeyPress(actionDict.sneak, wasSneaking, GLFW.GLFW_KEY_LEFT_SHIFT)
-        wasSprinting = handleKeyPress(actionDict.sprint, wasSprinting, GLFW.GLFW_KEY_LEFT_CONTROL)
+        } else {
+            wasPressingForward = handleKeyPress(actionDict.forward, wasPressingForward, GLFW.GLFW_KEY_W)
+            wasPressingBack = handleKeyPress(actionDict.back, wasPressingBack, GLFW.GLFW_KEY_S)
+            wasPressingLeft = handleKeyPress(actionDict.left, wasPressingLeft, GLFW.GLFW_KEY_A)
+            wasPressingRight = handleKeyPress(actionDict.right, wasPressingRight, GLFW.GLFW_KEY_D)
+            wasJumping = handleKeyPress(actionDict.jump, wasJumping, GLFW.GLFW_KEY_SPACE)
+            wasSneaking = handleKeyPress(actionDict.sneak, wasSneaking, GLFW.GLFW_KEY_LEFT_SHIFT)
+            wasSprinting = handleKeyPress(actionDict.sprint, wasSprinting, GLFW.GLFW_KEY_LEFT_CONTROL)
 
 //        wasUsing = handleKeyPress(actionDict.use, wasUsing, GLFW.GLFW_MOUSE_BUTTON_RIGHT, mouse = true)
 //        wasAttacking = handleKeyPress(actionDict.attack, wasAttacking, GLFW.GLFW_MOUSE_BUTTON_LEFT, mouse = true)
 
-        // Should handle screen keys for inventory, drop, hotbars
-        // TODO: Handle swap
-        //        handleKeyPress(actionDict.swap, false, GLFW.GLFW_KEY_F)
-        wasPressingDrop = handleKeyPress(actionDict.drop, wasPressingDrop, GLFW.GLFW_KEY_Q)
-        wasPressingInventory = handleKeyPress(actionDict.inventory, false, GLFW.GLFW_KEY_E)
-        handleKeyPress(actionDict.hotbar1, false, GLFW.GLFW_KEY_1)
-        handleKeyPress(actionDict.hotbar2, false, GLFW.GLFW_KEY_2)
-        handleKeyPress(actionDict.hotbar3, false, GLFW.GLFW_KEY_3)
-        handleKeyPress(actionDict.hotbar4, false, GLFW.GLFW_KEY_4)
-        handleKeyPress(actionDict.hotbar5, false, GLFW.GLFW_KEY_5)
-        handleKeyPress(actionDict.hotbar6, false, GLFW.GLFW_KEY_6)
-        handleKeyPress(actionDict.hotbar7, false, GLFW.GLFW_KEY_7)
-        handleKeyPress(actionDict.hotbar8, false, GLFW.GLFW_KEY_8)
-        handleKeyPress(actionDict.hotbar9, false, GLFW.GLFW_KEY_9)
-        if (actionDict.use) {
-            if (!wasUsing)
-                MouseInfo.clickRightButton(wasSneaking)
-            wasUsing = true
-        } else {
-            if (wasUsing)
-                MouseInfo.releaseRightButton(wasSneaking)
-            wasUsing = false
+            // Should handle screen keys for inventory, drop, hotbars
+            // TODO: Handle swap
+            //        handleKeyPress(actionDict.swap, false, GLFW.GLFW_KEY_F)
+            wasPressingDrop = handleKeyPress(actionDict.drop, wasPressingDrop, GLFW.GLFW_KEY_Q)
+            wasPressingInventory = handleKeyPress(actionDict.inventory, false, GLFW.GLFW_KEY_E)
+            handleKeyPress(actionDict.hotbar1, false, GLFW.GLFW_KEY_1)
+            handleKeyPress(actionDict.hotbar2, false, GLFW.GLFW_KEY_2)
+            handleKeyPress(actionDict.hotbar3, false, GLFW.GLFW_KEY_3)
+            handleKeyPress(actionDict.hotbar4, false, GLFW.GLFW_KEY_4)
+            handleKeyPress(actionDict.hotbar5, false, GLFW.GLFW_KEY_5)
+            handleKeyPress(actionDict.hotbar6, false, GLFW.GLFW_KEY_6)
+            handleKeyPress(actionDict.hotbar7, false, GLFW.GLFW_KEY_7)
+            handleKeyPress(actionDict.hotbar8, false, GLFW.GLFW_KEY_8)
+            handleKeyPress(actionDict.hotbar9, false, GLFW.GLFW_KEY_9)
+            if (actionDict.use) {
+                if (!wasUsing)
+                    MouseInfo.clickRightButton(wasSneaking)
+                wasUsing = true
+            } else {
+                if (wasUsing)
+                    MouseInfo.releaseRightButton(wasSneaking)
+                wasUsing = false
+            }
+            if (actionDict.attack) {
+                if (!wasAttacking)
+                    MouseInfo.clickLeftButton(wasSneaking)
+                wasAttacking = true
+            } else {
+                if (wasAttacking)
+                    MouseInfo.releaseLeftButton(wasSneaking)
+                wasAttacking = false
+            }
         }
-        if (actionDict.attack) {
-            if (!wasAttacking)
-                MouseInfo.clickLeftButton(wasSneaking)
-            wasAttacking = true
-        } else {
-            if (wasAttacking)
-                MouseInfo.releaseLeftButton(wasSneaking)
-            wasAttacking = false
-        }
-
-//        if (currentScreen != null) {
-        // To raise head, pitch should be decreased
-        // Move mouse up, pitch should be decreased
-        // Move mouse up = y axis decrease & pitch decrease
-//        } else {
-//            // pitch: 0: -90 degree, 24: 90 degree
-//            val deltaPitchInDeg = actionDict.cameraPitch
-//            // yaw: 0: -180 degree, 24: 180 degree
-//            val deltaYawInDeg = actionDict.cameraYaw
-//            player.pitch += deltaPitchInDeg
-//            player.yaw += deltaYawInDeg
-//            player.pitch = MathHelper.clamp(player.pitch, -90.0f, 90.0f)
-//        }
         csvLogger.profileEndPrint("Minecraft_env/onInitialize/ClientWorldTick/ReadAction/ApplyAction")
         return false
     }
