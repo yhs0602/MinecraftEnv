@@ -38,6 +38,7 @@ import net.minecraft.world.World
 import org.lwjgl.glfw.GLFW
 import org.lwjgl.opengl.GL11
 import java.io.IOException
+import java.lang.Thread.sleep
 import java.net.SocketTimeoutException
 import java.net.StandardProtocolFamily
 import java.net.UnixDomainSocketAddress
@@ -300,6 +301,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                 csvLogger.log("Waiting for the initialization ends")
                 if (initializer.initWorldFinished) {
                     sendSetScreenNull(client) // clear death screen
+                    sleep(1000) // Wait for chunk loading
                     resetPhase = ResetPhase.END_RESET
                 }
                 return
