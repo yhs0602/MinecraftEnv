@@ -73,7 +73,7 @@ class EnvironmentInitializer(
         setSimulationDistance(client, initialEnvironment.simulationDistance)
 //        disableVSync(client)
         disableSound(client)
-        disableTutorial(client)
+//        disableTutorial(client)
         setMaxFPSToUnlimited(client)
         if (initialEnvironment.noFovEffect) {
             setFovEffectDisabled(client)
