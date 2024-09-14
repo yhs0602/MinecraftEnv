@@ -428,6 +428,11 @@ class Minecraft_env : ModInitializer, CommandExecutor {
     ): Boolean {
         csvLogger.profileStartPrint("Minecraft_env/onInitialize/ClientWorldTick/ReadAction/ApplyAction")
         MouseInfo.handle = client.window.handle
+        if (actionDict.cameraYaw != 0.0f || actionDict.cameraYaw != 0.0f) {
+            val dy = actionDict.cameraPitch * 20.0 / 3
+            val dx = actionDict.cameraYaw * 20.0 / 3
+            MouseInfo.moveMouseBy(dx.toInt(), dy.toInt())
+        }
         val currentScreen = client.currentScreen
         if (currentScreen != null) {
             val keys = listOf(
@@ -529,11 +534,6 @@ class Minecraft_env : ModInitializer, CommandExecutor {
         // To raise head, pitch should be decreased
         // Move mouse up, pitch should be decreased
         // Move mouse up = y axis decrease & pitch decrease
-        if (actionDict.cameraYaw != 0.0f || actionDict.cameraYaw != 0.0f) {
-            val dy = actionDict.cameraPitch * 20.0 / 3
-            val dx = actionDict.cameraYaw * 20.0 / 3
-            MouseInfo.moveMouseBy(dx.toInt(), dy.toInt())
-        }
 //        } else {
 //            // pitch: 0: -90 degree, 24: 90 degree
 //            val deltaPitchInDeg = actionDict.cameraPitch
