@@ -34,10 +34,10 @@ object MouseInfo {
         showCursor = show
     }
 
-    fun moveMouseBy(dx: Double, dy: Double) {
+    fun moveMouseBy(dx: Int, dy: Int) {
         // dx와 dy의 절대값 계산
-        val stepsX = Math.abs(dx).toInt()
-        val stepsY = Math.abs(dy).toInt()
+        val stepsX = Math.abs(dx)
+        val stepsY = Math.abs(dy)
 
         // 가로로 이동 (dx 방향)
         val stepX = if (dx > 0) 1 else -1
