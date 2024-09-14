@@ -504,20 +504,14 @@ class Minecraft_env : ModInitializer, CommandExecutor {
         wasSneaking = handleKeyPress(actionDict.sneak, wasSneaking, GLFW.GLFW_KEY_LEFT_SHIFT)
         wasSprinting = handleKeyPress(actionDict.sprint, wasSprinting, GLFW.GLFW_KEY_LEFT_CONTROL)
 
-        if (currentScreen != null) {
-
-//            wasUsing = false
-//            wasAttacking = false
-        } else {
-            wasUsing = handleKeyPress(actionDict.use, wasUsing, GLFW.GLFW_MOUSE_BUTTON_RIGHT, mouse = true)
-            wasAttacking = handleKeyPress(actionDict.attack, wasAttacking, GLFW.GLFW_MOUSE_BUTTON_LEFT, mouse = true)
-        }
+//        wasUsing = handleKeyPress(actionDict.use, wasUsing, GLFW.GLFW_MOUSE_BUTTON_RIGHT, mouse = true)
+//        wasAttacking = handleKeyPress(actionDict.attack, wasAttacking, GLFW.GLFW_MOUSE_BUTTON_LEFT, mouse = true)
 
         // Should handle screen keys for inventory, drop, hotbars
         // TODO: Handle swap
         //        handleKeyPress(actionDict.swap, false, GLFW.GLFW_KEY_F)
         wasPressingDrop = handleKeyPress(actionDict.drop, wasPressingDrop, GLFW.GLFW_KEY_Q)
-        handleKeyPress(actionDict.inventory, false, GLFW.GLFW_KEY_E)
+        wasPressingInventory = handleKeyPress(actionDict.inventory, false, GLFW.GLFW_KEY_E)
         handleKeyPress(actionDict.hotbar1, false, GLFW.GLFW_KEY_1)
         handleKeyPress(actionDict.hotbar2, false, GLFW.GLFW_KEY_2)
         handleKeyPress(actionDict.hotbar3, false, GLFW.GLFW_KEY_3)
@@ -527,8 +521,24 @@ class Minecraft_env : ModInitializer, CommandExecutor {
         handleKeyPress(actionDict.hotbar7, false, GLFW.GLFW_KEY_7)
         handleKeyPress(actionDict.hotbar8, false, GLFW.GLFW_KEY_8)
         handleKeyPress(actionDict.hotbar9, false, GLFW.GLFW_KEY_9)
-
-        // TODO: Translate delta camera to mouse movement
+        if (actionDict.use) {
+            if (!wasUsing)
+                MouseInfo.clickRightButton(wasSneaking)
+            wasUsing = true
+        } else {
+            if (wasUsing)
+                MouseInfo.releaseRightButton(wasSneaking)
+            wasUsing = false
+        }
+        if (actionDict.attack) {
+            if (!wasAttacking)
+                MouseInfo.clickLeftButton(wasSneaking)
+            wasAttacking = true
+        } else {
+            if (wasAttacking)
+                MouseInfo.releaseLeftButton(wasSneaking)
+            wasAttacking = false
+        }
 
 //        if (currentScreen != null) {
         // To raise head, pitch should be decreased
