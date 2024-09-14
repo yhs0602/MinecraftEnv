@@ -38,7 +38,6 @@ import net.minecraft.world.World
 import org.lwjgl.glfw.GLFW
 import org.lwjgl.opengl.GL11
 import java.io.IOException
-import java.lang.Thread.sleep
 import java.net.SocketTimeoutException
 import java.net.StandardProtocolFamily
 import java.net.UnixDomainSocketAddress
@@ -73,14 +72,8 @@ fun handleKeyPress(
     currentState: Boolean,
     wasPressing: Boolean,
     keyCode: Int,
-    mouse: Boolean = false
 ): Boolean {
-    val key = if (!mouse) {
-        InputUtil.fromKeyCode(keyCode, 0)
-    } else {
-        InputUtil.Type.MOUSE.createFromCode(keyCode)
-    }
-
+    val key = InputUtil.fromKeyCode(keyCode, 0)
     // 키가 눌린 상태인지 확인
     if (currentState) {
         KeyBinding.setKeyPressed(key, true)
@@ -89,11 +82,6 @@ fun handleKeyPress(
             KeyBinding.onKeyPressed(key)
         }
     } else {
-        if (mouse) {
-//            if (wasPressing) {
-////                println("Releasing $key")
-//            }
-        }
         KeyBinding.setKeyPressed(key, false)
         keyMap[keyCode] = false
     }
@@ -455,9 +443,8 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                 Triple(actionDict.left, wasPressingLeft, GLFW.GLFW_KEY_A),
                 Triple(actionDict.right, wasPressingRight, GLFW.GLFW_KEY_D),
             )
-            var handled = false
             for ((action, wasPressing, keyCode) in keys) {
-                handled = handled || handleScreenKeyPress(
+                val handled = handleScreenKeyPress(
                     action,
                     wasPressing,
                     keyCode,
@@ -465,6 +452,18 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                     0,
                     currentScreen
                 )
+                if (handled) {
+                    wasPressingInventory = actionDict.inventory
+                    wasPressingDrop = actionDict.drop
+                    wasSneaking = actionDict.sneak
+                    wasSprinting = actionDict.sprint
+                    wasJumping = actionDict.jump
+                    wasPressingForward = actionDict.forward
+                    wasPressingBack = actionDict.back
+                    wasPressingLeft = actionDict.left
+                    wasPressingRight = actionDict.right
+                    return false
+                }
             }
             wasPressingInventory = actionDict.inventory
             wasPressingDrop = actionDict.drop
@@ -503,14 +502,11 @@ class Minecraft_env : ModInitializer, CommandExecutor {
             wasSneaking = handleKeyPress(actionDict.sneak, wasSneaking, GLFW.GLFW_KEY_LEFT_SHIFT)
             wasSprinting = handleKeyPress(actionDict.sprint, wasSprinting, GLFW.GLFW_KEY_LEFT_CONTROL)
 
-//        wasUsing = handleKeyPress(actionDict.use, wasUsing, GLFW.GLFW_MOUSE_BUTTON_RIGHT, mouse = true)
-//        wasAttacking = handleKeyPress(actionDict.attack, wasAttacking, GLFW.GLFW_MOUSE_BUTTON_LEFT, mouse = true)
-
             // Should handle screen keys for inventory, drop, hotbars
             // TODO: Handle swap
             //        handleKeyPress(actionDict.swap, false, GLFW.GLFW_KEY_F)
             wasPressingDrop = handleKeyPress(actionDict.drop, wasPressingDrop, GLFW.GLFW_KEY_Q)
-            wasPressingInventory = handleKeyPress(actionDict.inventory, false, GLFW.GLFW_KEY_E)
+            wasPressingInventory = handleKeyPress(actionDict.inventory, wasPressingInventory, GLFW.GLFW_KEY_E)
             handleKeyPress(actionDict.hotbar1, false, GLFW.GLFW_KEY_1)
             handleKeyPress(actionDict.hotbar2, false, GLFW.GLFW_KEY_2)
             handleKeyPress(actionDict.hotbar3, false, GLFW.GLFW_KEY_3)
