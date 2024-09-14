@@ -22,7 +22,7 @@ public class InputUtilMixin {
 
     @Overwrite
     public static void setCursorParameters(long handler, int inputModeValue, double x, double y) {
-//        MouseInfo.INSTANCE.setCursorPos(x, y);
+        MouseInfo.INSTANCE.setCursorPos(x, y);
         MouseInfo.INSTANCE.setCursorShown(inputModeValue == GLFW.GLFW_CURSOR_NORMAL);
     }
 }

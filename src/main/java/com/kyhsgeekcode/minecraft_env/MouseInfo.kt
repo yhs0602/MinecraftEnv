@@ -34,27 +34,32 @@ object MouseInfo {
         showCursor = show
     }
 
-    fun moveMouseBy(dx: Double, dy: Double) {
-        // dx와 dy의 절대값 계산
-        val absDx = Math.abs(dx)
-        val absDy = Math.abs(dy)
+    fun moveMouseBy(dx: Int, dy: Int) {
+        // dx와 dy의 절대값 계산 (정수로 변환)
+        val stepsX = Math.abs(dx)
+        val stepsY = Math.abs(dy)
 
-        // 가로로 이동 (dx 방향)
-        val stepX = if (dx > 0) 0.1 else -0.1  // Double 단위로 0.1씩 이동
-        var currentX = 0.0
-        while (currentX < absDx) {
-            mouseX += stepX
-            currentX += Math.abs(stepX)
-            cursorPosCallback?.invoke(handle, mouseX, mouseY)
-        }
+        // dx와 dy의 이동 방향 계산
+        val stepX = if (dx > 0) 1 else -1
+        val stepY = if (dy > 0) 1 else -1
 
-        // 세로로 이동 (dy 방향)
-        val stepY = if (dy > 0) 0.1 else -0.1  // Double 단위로 0.1씩 이동
-        var currentY = 0.0
-        while (currentY < absDy) {
-            mouseY += stepY
-            currentY += Math.abs(stepY)
-            cursorPosCallback?.invoke(handle, mouseX, mouseY)
+        // 최대 이동 횟수 계산 (더 큰 쪽을 기준으로 반복)
+        val maxSteps = Math.max(stepsX, stepsY)
+
+        // X와 Y를 번갈아 가며 이동
+        var movedX = 0
+        var movedY = 0
+        for (i in 0 until maxSteps) {
+            if (movedX < stepsX) {
+                mouseX += stepX
+                cursorPosCallback?.invoke(handle, mouseX, mouseY)
+                movedX++
+            }
+            if (movedY < stepsY) {
+                mouseY += stepY
+                cursorPosCallback?.invoke(handle, mouseX, mouseY)
+                movedY++
+            }
         }
     }
 
