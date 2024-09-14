@@ -440,9 +440,9 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                 )
                 wasPressingInventory = actionDict.inventory
                 wasPressingDrop = actionDict.drop
-                if (handled) {
-                    return false
-                }
+//                if (handled) {
+//                    return false
+//                }
             }
         }
 
