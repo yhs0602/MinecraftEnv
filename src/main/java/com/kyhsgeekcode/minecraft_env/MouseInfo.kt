@@ -18,8 +18,8 @@ object MouseInfo {
     var currentState: MutableMap<Int, Boolean> = mutableMapOf()
 
     val buttonMappings = mapOf(
-        "use" to GLFW_MOUSE_BUTTON_LEFT,
-        "attack" to GLFW_MOUSE_BUTTON_RIGHT
+        "use" to GLFW_MOUSE_BUTTON_RIGHT,
+        "attack" to GLFW_MOUSE_BUTTON_LEFT
     )
 
     fun onAction(actionDict: ActionSpace.ActionSpaceMessageV2) {
