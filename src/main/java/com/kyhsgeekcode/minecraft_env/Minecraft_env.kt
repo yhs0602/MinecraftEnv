@@ -15,11 +15,8 @@ import net.minecraft.block.BlockState
 import net.minecraft.client.MinecraftClient
 import net.minecraft.client.MinecraftClient.IS_SYSTEM_MAC
 import net.minecraft.client.gui.screen.DeathScreen
-import net.minecraft.client.gui.screen.Screen
 import net.minecraft.client.network.ClientPlayerEntity
-import net.minecraft.client.option.KeyBinding
 import net.minecraft.client.render.BackgroundRenderer
-import net.minecraft.client.util.InputUtil
 import net.minecraft.client.world.ClientWorld
 import net.minecraft.entity.EntityType
 import net.minecraft.network.packet.c2s.play.ClientStatusC2SPacket
@@ -35,7 +32,6 @@ import net.minecraft.util.math.Vec3d
 import net.minecraft.util.registry.Registry
 import net.minecraft.util.shape.VoxelShapes
 import net.minecraft.world.World
-import org.lwjgl.glfw.GLFW
 import org.lwjgl.opengl.GL11
 import java.io.IOException
 import java.net.SocketTimeoutException
@@ -68,52 +64,6 @@ enum class IOPhase {
     SENT_OBSERVATION_SHOULD_READ_ACTION,
 }
 
-fun handleKeyPress(
-    currentState: Boolean,
-    wasPressing: Boolean,
-    keyCode: Int,
-): Boolean {
-    val key = InputUtil.fromKeyCode(keyCode, 0)
-    // 키가 눌린 상태인지 확인
-    if (currentState) {
-        KeyBinding.setKeyPressed(key, true)
-        keyMap[keyCode] = true
-        if (!wasPressing) {
-            KeyBinding.onKeyPressed(key)
-        }
-    } else {
-        KeyBinding.setKeyPressed(key, false)
-        keyMap[keyCode] = false
-    }
-
-    return currentState
-}
-
-fun handleScreenKeyPress(
-    currentState: Boolean,
-    wasPressing: Boolean,
-    keyCode: Int,
-    scanCode: Int,
-    modifiers: Int,
-    screen: Screen
-): Boolean {
-    val key = InputUtil.fromKeyCode(keyCode, 0)
-    keyMap[keyCode] = currentState
-//    KeyBinding.setKeyPressed(key, currentState)
-    if (currentState) {
-        if (!wasPressing) {
-            return screen.keyPressed(keyCode, scanCode, modifiers)
-        }
-    } else {
-        if (wasPressing) {
-            return screen.keyReleased(keyCode, scanCode, modifiers)
-        }
-    }
-    return false
-}
-
-
-val keyMap = java.util.HashMap<Int, Boolean>()
 
 class Minecraft_env : ModInitializer, CommandExecutor {
     private lateinit var initialEnvironment: InitialEnvironment.InitialEnvironmentMessage
@@ -130,18 +80,6 @@ class Minecraft_env : ModInitializer, CommandExecutor {
     private var skipSync = false
     private var ioPhase = IOPhase.BEGINNING
 
-    // Difference matters
-    private var wasPressingForward = false
-    private var wasPressingBack = false
-    private var wasPressingLeft = false
-    private var wasPressingRight = false
-    private var wasJumping = false
-    private var wasSneaking = false
-    private var wasSprinting = false
-    private var wasUsing = false
-    private var wasAttacking = false
-    private var wasPressingInventory = false
-    private var wasPressingDrop = false
     private var waitLoadingCounter = 0
 
     override fun onInitialize() {
@@ -420,126 +358,14 @@ class Minecraft_env : ModInitializer, CommandExecutor {
         client: MinecraftClient
     ): Boolean {
         csvLogger.profileStartPrint("Minecraft_env/onInitialize/ClientWorldTick/ReadAction/ApplyAction")
-        MouseInfo.handle = client.window.handle
         if (actionDict.cameraYaw != 0.0f || actionDict.cameraPitch != 0.0f) {
             val dy = actionDict.cameraPitch * 20.0 / 3
             val dx = actionDict.cameraYaw * 20.0 / 3
             MouseInfo.moveMouseBy(dx.toInt(), dy.toInt())
         }
-        val currentScreen = client.currentScreen
-        if (currentScreen != null) {
-            val keys = listOf(
-                Triple(actionDict.inventory, wasPressingInventory, GLFW.GLFW_KEY_E),
-                Triple(actionDict.drop, wasPressingDrop, GLFW.GLFW_KEY_Q),
-                Triple(actionDict.hotbar1, false, GLFW.GLFW_KEY_1),
-                Triple(actionDict.hotbar2, false, GLFW.GLFW_KEY_2),
-                Triple(actionDict.hotbar3, false, GLFW.GLFW_KEY_3),
-                Triple(actionDict.hotbar4, false, GLFW.GLFW_KEY_4),
-                Triple(actionDict.hotbar5, false, GLFW.GLFW_KEY_5),
-                Triple(actionDict.hotbar6, false, GLFW.GLFW_KEY_6),
-                Triple(actionDict.hotbar7, false, GLFW.GLFW_KEY_7),
-                Triple(actionDict.hotbar8, false, GLFW.GLFW_KEY_8),
-                Triple(actionDict.hotbar9, false, GLFW.GLFW_KEY_9),
-                Triple(actionDict.sneak, wasSneaking, GLFW.GLFW_KEY_LEFT_SHIFT),
-                Triple(actionDict.sprint, wasSprinting, GLFW.GLFW_KEY_LEFT_CONTROL),
-                Triple(actionDict.jump, wasJumping, GLFW.GLFW_KEY_SPACE),
-                Triple(actionDict.forward, wasPressingForward, GLFW.GLFW_KEY_W),
-                Triple(actionDict.back, wasPressingBack, GLFW.GLFW_KEY_S),
-                Triple(actionDict.left, wasPressingLeft, GLFW.GLFW_KEY_A),
-                Triple(actionDict.right, wasPressingRight, GLFW.GLFW_KEY_D),
-            )
-            for ((action, wasPressing, keyCode) in keys) {
-                val handled = handleScreenKeyPress(
-                    action,
-                    wasPressing,
-                    keyCode,
-                    0,
-                    0,
-                    currentScreen
-                )
-                if (handled) {
-                    wasPressingInventory = actionDict.inventory
-                    wasPressingDrop = actionDict.drop
-                    wasSneaking = actionDict.sneak
-                    wasSprinting = actionDict.sprint
-                    wasJumping = actionDict.jump
-                    wasPressingForward = actionDict.forward
-                    wasPressingBack = actionDict.back
-                    wasPressingLeft = actionDict.left
-                    wasPressingRight = actionDict.right
-                    return false
-                }
-            }
-            wasPressingInventory = actionDict.inventory
-            wasPressingDrop = actionDict.drop
-            wasSneaking = actionDict.sneak
-            wasSprinting = actionDict.sprint
-            wasJumping = actionDict.jump
-            wasPressingForward = actionDict.forward
-            wasPressingBack = actionDict.back
-            wasPressingLeft = actionDict.left
-            wasPressingRight = actionDict.right
-            if (actionDict.use) {
-                if (!wasUsing)
-                    MouseInfo.clickRightButton(wasSneaking)
-                wasUsing = true
-            } else {
-                if (wasUsing)
-                    MouseInfo.releaseRightButton(wasSneaking)
-                wasUsing = false
-            }
-            if (actionDict.attack) {
-                if (!wasAttacking)
-                    MouseInfo.clickLeftButton(wasSneaking)
-                wasAttacking = true
-            } else {
-                if (wasAttacking)
-                    MouseInfo.releaseLeftButton(wasSneaking)
-                wasAttacking = false
-            }
-            return false
-        } else {
-            wasPressingForward = handleKeyPress(actionDict.forward, wasPressingForward, GLFW.GLFW_KEY_W)
-            wasPressingBack = handleKeyPress(actionDict.back, wasPressingBack, GLFW.GLFW_KEY_S)
-            wasPressingLeft = handleKeyPress(actionDict.left, wasPressingLeft, GLFW.GLFW_KEY_A)
-            wasPressingRight = handleKeyPress(actionDict.right, wasPressingRight, GLFW.GLFW_KEY_D)
-            wasJumping = handleKeyPress(actionDict.jump, wasJumping, GLFW.GLFW_KEY_SPACE)
-            wasSneaking = handleKeyPress(actionDict.sneak, wasSneaking, GLFW.GLFW_KEY_LEFT_SHIFT)
-            wasSprinting = handleKeyPress(actionDict.sprint, wasSprinting, GLFW.GLFW_KEY_LEFT_CONTROL)
-
-            // Should handle screen keys for inventory, drop, hotbars
-            // TODO: Handle swap
-            //        handleKeyPress(actionDict.swap, false, GLFW.GLFW_KEY_F)
-            wasPressingDrop = handleKeyPress(actionDict.drop, wasPressingDrop, GLFW.GLFW_KEY_Q)
-            wasPressingInventory = handleKeyPress(actionDict.inventory, wasPressingInventory, GLFW.GLFW_KEY_E)
-            handleKeyPress(actionDict.hotbar1, false, GLFW.GLFW_KEY_1)
-            handleKeyPress(actionDict.hotbar2, false, GLFW.GLFW_KEY_2)
-            handleKeyPress(actionDict.hotbar3, false, GLFW.GLFW_KEY_3)
-            handleKeyPress(actionDict.hotbar4, false, GLFW.GLFW_KEY_4)
-            handleKeyPress(actionDict.hotbar5, false, GLFW.GLFW_KEY_5)
-            handleKeyPress(actionDict.hotbar6, false, GLFW.GLFW_KEY_6)
-            handleKeyPress(actionDict.hotbar7, false, GLFW.GLFW_KEY_7)
-            handleKeyPress(actionDict.hotbar8, false, GLFW.GLFW_KEY_8)
-            handleKeyPress(actionDict.hotbar9, false, GLFW.GLFW_KEY_9)
-            if (actionDict.use) {
-                if (!wasUsing)
-                    MouseInfo.clickRightButton(wasSneaking)
-                wasUsing = true
-            } else {
-                if (wasUsing)
-                    MouseInfo.releaseRightButton(wasSneaking)
-                wasUsing = false
-            }
-            if (actionDict.attack) {
-                if (!wasAttacking)
-                    MouseInfo.clickLeftButton(wasSneaking)
-                wasAttacking = true
-            } else {
-                if (wasAttacking)
-                    MouseInfo.releaseLeftButton(wasSneaking)
-                wasAttacking = false
-            }
-        }
+        // Handle key press
+        KeyboardInfo.onAction(actionDict)
+        MouseInfo.onAction(actionDict)
         csvLogger.profileEndPrint("Minecraft_env/onInitialize/ClientWorldTick/ReadAction/ApplyAction")
         return false
     }

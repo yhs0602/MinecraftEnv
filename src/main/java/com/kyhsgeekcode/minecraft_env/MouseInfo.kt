@@ -1,8 +1,9 @@
 package com.kyhsgeekcode.minecraft_env
 
 import com.kyhsgeekcode.minecraft_env.mixin.MouseXYAccessor
+import com.kyhsgeekcode.minecraft_env.proto.ActionSpace
 import net.minecraft.client.MinecraftClient
-import org.lwjgl.glfw.GLFW
+import org.lwjgl.glfw.GLFW.*
 import org.lwjgl.glfw.GLFWCursorPosCallbackI
 import org.lwjgl.glfw.GLFWMouseButtonCallbackI
 
@@ -12,9 +13,39 @@ object MouseInfo {
     var mouseButtonCallback: GLFWMouseButtonCallbackI? = null
     var mouseX: Double = 0.0
     var mouseY: Double = 0.0
-    var leftButtonPressed: Boolean = false
-    var rightButtonPressed: Boolean = false
     var showCursor: Boolean = false
+
+    var currentState: MutableMap<Int, Boolean> = mutableMapOf()
+
+    val buttonMappings = mapOf(
+        "use" to GLFW_MOUSE_BUTTON_LEFT,
+        "attack" to GLFW_MOUSE_BUTTON_RIGHT
+    )
+
+    fun onAction(actionDict: ActionSpace.ActionSpaceMessageV2) {
+        val actions = mapOf(
+            "use" to actionDict.use,
+            "attack" to actionDict.attack
+        )
+        val shift = KeyboardInfo.isKeyPressed(GLFW_KEY_LEFT_SHIFT)
+        val mods = if (shift) GLFW_MOD_SHIFT else 0
+        // 각 마우스 버튼 상태를 비교하여 변화가 있으면 mouseCallback 호출
+        for ((action, glfwButton) in buttonMappings) {
+            val previousState = currentState[glfwButton] ?: false
+            val currentState = actions[action] ?: false
+
+            if (!previousState && currentState) {
+                // 마우스 버튼이 처음 눌렸을 때 GLFW_PRESS 호출
+                mouseButtonCallback?.invoke(handle, glfwButton, GLFW_PRESS, mods)
+            } else if (previousState && !currentState) {
+                // 마우스 버튼을 뗐을 때 GLFW_RELEASE 호출
+                mouseButtonCallback?.invoke(handle, glfwButton, GLFW_RELEASE, mods)
+            }
+
+            // 현재 상태 갱신
+            this.currentState[glfwButton] = currentState
+        }
+    }
 
     fun getMousePos(): Pair<Double, Double> {
         return Pair(mouseX, mouseY)
@@ -61,32 +92,5 @@ object MouseInfo {
                 movedY++
             }
         }
-    }
-
-
-
-    // TODO: Mods (shift click, etc)
-    fun clickLeftButton(shift: Boolean) {
-        val mods = if (shift) GLFW.GLFW_MOD_SHIFT else 0
-        mouseButtonCallback?.invoke(handle, GLFW.GLFW_MOUSE_BUTTON_LEFT, GLFW.GLFW_PRESS, mods)
-        leftButtonPressed = true
-    }
-
-    fun releaseLeftButton(shift: Boolean) {
-        val mods = if (shift) GLFW.GLFW_MOD_SHIFT else 0
-        mouseButtonCallback?.invoke(handle, GLFW.GLFW_MOUSE_BUTTON_LEFT, GLFW.GLFW_RELEASE, mods)
-        leftButtonPressed = false
-    }
-
-    fun clickRightButton(shift: Boolean) {
-        val mods = if (shift) GLFW.GLFW_MOD_SHIFT else 0
-        mouseButtonCallback?.invoke(handle, GLFW.GLFW_MOUSE_BUTTON_RIGHT, GLFW.GLFW_PRESS, mods)
-        rightButtonPressed = true
-    }
-
-    fun releaseRightButton(shift: Boolean) {
-        val mods = if (shift) GLFW.GLFW_MOD_SHIFT else 0
-        mouseButtonCallback?.invoke(handle, GLFW.GLFW_MOUSE_BUTTON_RIGHT, GLFW.GLFW_RELEASE, mods)
-        rightButtonPressed = false
     }
 }

@@ -19,7 +19,6 @@
     "ClientWorldMixin",
     "CreateWorldScreenMoreOptionsAccessor",
     "InputUtilMixin",
-    "KeyboardMixin",
     "MoreOptionsDialogSeedTextFieldAccessor",
     "MouseXYAccessor",
     "RenderTickCounterAccessor",
