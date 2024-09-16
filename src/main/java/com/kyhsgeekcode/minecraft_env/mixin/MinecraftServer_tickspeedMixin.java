@@ -90,49 +90,29 @@ public abstract class MinecraftServer_tickspeedMixin extends ReentrantThreadExec
             //CM deciding on tick speed
             long msThisTick = 0L;
             long long_1 = 0L;
-//            if (TickSpeed.time_warp_start_time != 0) {
-//                //making sure server won't flop after the warp or if the warp is interrupted
-//                this.timeReference = this.lastTimeReference = Util.getMeasuringTimeMs();
-//                carpetMsptAccum = TickSpeed.INSTANCE.getMspt();
-//            } else {
-            if (Math.abs(carpetMsptAccum - TickSpeed.INSTANCE.getMspt()) > 1.0f) {
-                // Tickrate changed. Ensure that we use the correct value.
-                carpetMsptAccum = TickSpeed.INSTANCE.getMspt();
-            }
-
             msThisTick = (long) carpetMsptAccum; // regular tick
             carpetMsptAccum += TickSpeed.INSTANCE.getMspt() - msThisTick;
-
             long_1 = Util.getMeasuringTimeMs() - this.timeReference;
-//            }
             //end tick deciding
             //smoothed out delay to include mcpt component. With 50L gives defaults.
             if (long_1 > /*2000L*/1000L + 20 * TickSpeed.INSTANCE.getMspt() && this.timeReference - this.lastTimeReference >= /*15000L*/10000L + 100 * TickSpeed.INSTANCE.getMspt()) {
-                long long_2 = (long) (long_1 / TickSpeed.INSTANCE.getMspt());//50L;
+                long long_2 = long_1 / TickSpeed.INSTANCE.getMspt();//50L;
                 LOGGER.warn("Can't keep up! Is the server overloaded? Running {}ms or {} ticks behind", long_1, long_2);
-                this.timeReference += (long) (long_2 * TickSpeed.INSTANCE.getMspt());//50L;
+                this.timeReference += long_2 * TickSpeed.INSTANCE.getMspt();//50L;
                 this.lastTimeReference = this.timeReference;
             }
 
             this.timeReference += msThisTick;//50L;
-            TickDurationMonitor tickDurationMonitor = TickDurationMonitor.create("Server");
-            this.startMonitor(tickDurationMonitor);
-            this.profiler.startTick();
-            this.profiler.push("tick");
             this.tick(this::shouldKeepTicking);
-            this.profiler.swap("nextTickWait");
-//            if (TickSpeed.time_warp_start_time != 0) // clearing all hanging tasks no matter what when warping
-            {
-                while (this.runEveryTask()) {
-                    Thread.yield();
-                }
+            while (this.runEveryTask()) {
+                Thread.yield();
             }
             this.waitingForNextTick = true;
             this.field_19248 = Math.max(Util.getMeasuringTimeMs() + /*50L*/ msThisTick, this.timeReference);
             // run all tasks (this will not do a lot when warping), but that's fine since we already run them
             this.method_16208();
-            this.profiler.pop();
-            this.profiler.endTick();
+//            this.profiler.pop();
+//            this.profiler.endTick();
             this.loading = true;
         }
     }

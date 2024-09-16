@@ -365,6 +365,11 @@ class Minecraft_env : ModInitializer, CommandExecutor {
         }
         // Handle key press
         KeyboardInfo.onAction(actionDict)
+        val currentScreen = client.currentScreen
+        if (currentScreen != null && currentScreen is DeathScreen) {
+            // Disable disconnect button
+            return false
+        }
         MouseInfo.onAction(actionDict)
         csvLogger.profileEndPrint("Minecraft_env/onInitialize/ClientWorldTick/ReadAction/ApplyAction")
         return false
