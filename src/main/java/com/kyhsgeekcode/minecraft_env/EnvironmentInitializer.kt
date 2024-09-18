@@ -1,19 +1,18 @@
 package com.kyhsgeekcode.minecraft_env
 
 import com.kyhsgeekcode.minecraft_env.mixin.ChatVisibleMessageAccessor
+import com.kyhsgeekcode.minecraft_env.mixin.MoreOptionsDialogSeedTextFieldAccessor
 import com.kyhsgeekcode.minecraft_env.mixin.WindowSizeAccessor
+import com.kyhsgeekcode.minecraft_env.mixin.WorldListWidgetLevelSummaryAccessor
 import com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment
 import com.kyhsgeekcode.minecraft_env.proto.InitialEnvironment.InitialEnvironmentMessage
 import net.minecraft.client.MinecraftClient
-import net.minecraft.client.gui.Element
 import net.minecraft.client.gui.hud.ChatHud
-import net.minecraft.client.gui.screen.MessageScreen
 import net.minecraft.client.gui.screen.TitleScreen
 import net.minecraft.client.gui.screen.world.CreateWorldScreen
-import net.minecraft.client.gui.screen.world.CustomizeFlatLevelScreen
 import net.minecraft.client.gui.screen.world.SelectWorldScreen
 import net.minecraft.client.gui.screen.world.WorldListWidget
-import net.minecraft.client.gui.widget.*
+import net.minecraft.client.gui.widget.ButtonWidget
 import net.minecraft.client.network.ClientPlayerEntity
 import net.minecraft.client.option.NarratorMode
 import net.minecraft.client.tutorial.TutorialStep
@@ -44,6 +43,12 @@ class EnvironmentInitializer(
     private lateinit var player: ClientPlayerEntity
     var hasMinimizedWindow: Boolean = false
 
+    var createButton: ButtonWidget? = null
+    var createWorldButton: ButtonWidget? = null
+    var cheatButton: ButtonWidget? = null
+    var moreWorldOptionButton: ButtonWidget? = null
+    var worldTypeButton: ButtonWidget? = null
+
     fun onClientTick(client: MinecraftClient) {
         csvLogger.profileStartPrint("Minecraft_env/onInitialize/ClientTick/EnvironmentInitializer/onClientTick")
         disableNarrator(client)
@@ -54,8 +59,9 @@ class EnvironmentInitializer(
         }
         val window = MinecraftClient.getInstance().window
         val windowSizeGetter = (window as WindowSizeAccessor)
-        if (windowSizeGetter.windowedWidth != initialEnvironment.imageSizeX || windowSizeGetter.windowedHeight != initialEnvironment.imageSizeY)
-            window.setWindowedSize(initialEnvironment.imageSizeX, initialEnvironment.imageSizeY)
+        // Skip in 1.16
+//        if (windowSizeGetter.windowedWidth != initialEnvironment.imageSizeX || windowSizeGetter.windowedHeight != initialEnvironment.imageSizeY)
+//            window.set(initialEnvironment.imageSizeX, initialEnvironment.imageSizeY)
         if (!hasMinimizedWindow) {
             GLFW.glfwIconifyWindow(window.handle)
             hasMinimizedWindow = true
@@ -65,9 +71,9 @@ class EnvironmentInitializer(
         setHudHidden(client, initialEnvironment.hudHidden)
         setRenderDistance(client, initialEnvironment.renderDistance)
         setSimulationDistance(client, initialEnvironment.simulationDistance)
-        disableVSync(client)
+//        disableVSync(client)
         disableSound(client)
-        disableTutorial(client)
+//        disableTutorial(client)
         setMaxFPSToUnlimited(client)
         if (initialEnvironment.noFovEffect) {
             setFovEffectDisabled(client)
@@ -99,32 +105,19 @@ class EnvironmentInitializer(
                 }
                 if (levelList != null) {
                     for (child in levelList.children()) {
-                        if (child is WorldListWidget.LoadingEntry) {
+                        if (child !is WorldListWidget.Entry) {
                             return
                         }
-                        if (child is WorldListWidget.WorldEntry) {
-                            if (!child.isLevelSelectable) {
-                                continue
-                            }
-                            if (child.levelDisplayName == levelDisplayName) {
-                                child.play()
-                                return
-                            } else {
-                                println("Level display name: ${child.levelDisplayName}!= $levelDisplayName")
-                            }
+                        val childDisplayName = (child as WorldListWidgetLevelSummaryAccessor).getLevel()?.displayName
+                        if (childDisplayName == levelDisplayName) {
+                            child.play()
+                            return
+                        } else {
+                            println("Level display name: ${childDisplayName}!= $levelDisplayName")
                         }
                     }
                 } else {
                     println("Level list not found")
-                }
-            }
-
-            is MessageScreen -> {
-                for (child in screen.children()) {
-                    println("Message screen child: $child")
-                    if (child is NarratedMultilineTextWidget) {
-                        println("Button widget: ${child.message.string}")
-                    }
                 }
             }
 
@@ -155,7 +148,6 @@ class EnvironmentInitializer(
                 //                println("Select world screen1")
                 var widget: WorldListWidget? = null
                 var deleteButton: ButtonWidget? = null
-                var createButton: ButtonWidget? = null
                 for (child in screen.children()) {
                     //                    println(child)
                     if (child is WorldListWidget) {
@@ -173,208 +165,70 @@ class EnvironmentInitializer(
 
             is CreateWorldScreen -> {
                 //                println("Create world screen")
-                var createButton: ButtonWidget? = null
                 val cheatRequested = true
-                var indexOfWorldSettingTab = -1
-                var cheatButton: CyclingButtonWidget<*>? = null
-                var settingTabWidget: TabNavigationWidget? = null
-                var worldTypeButton: CyclingButtonWidget<*>? = null
                 for (child in screen.children()) {
                     // search for tab navigation widget, to find index of world settings tab
-                    if (indexOfWorldSettingTab == -1 && child is TabNavigationWidget) {
-                        settingTabWidget = child
-                        for (i in child.children().indices) {
-                            val tabChild: Element = child.children()[i]
-                            if (tabChild is TabButtonWidget) {
-                                if (tabChild.message.string == "World") {
-                                    indexOfWorldSettingTab = i
-                                }
-                            }
-                        }
-                    }
                     // search for create button
-                    if (createButton == null && child is ButtonWidget) {
+                    if (createWorldButton == null && child is ButtonWidget) {
                         if (child.message.string == "Create New World") {
-                            createButton = child
+                            createWorldButton = child
                         }
                     }
                     // search for cheat button
-                    if (cheatButton == null && child is CyclingButtonWidget<*>) {
-                        if (child.message.string.startsWith("Allow Commands")) {
+                    if (cheatButton == null && child is ButtonWidget) {
+                        if (child.message.string.startsWith("Allow Cheats")) {
                             cheatButton = child
-                        } else {
-                            println("Cheat button is not found, and the text is ${child.message.string}")
+                            println("Cheat button found")
+                        }
+                    }
+                    if (moreWorldOptionButton == null && child is ButtonWidget) {
+                        if (child.message.string.startsWith("More World Options")) {
+                            moreWorldOptionButton = child
                         }
                     }
                 }
-                // Set allow cheats to requested
-                if (cheatButton != null)
-                    setupAllowCheats(cheatButton, cheatRequested)
-                else {
-                    println("Cheat button not found")
-                    throw Exception("Cheat button not found")
+                if (createWorldButton == null) {
+                    println("Create button not found")
+                    throw Exception("Create button not found")
                 }
-                // Select world settings tab
-                settingTabWidget!!.selectTab(indexOfWorldSettingTab, false)
+                if (cheatRequested) {
+                    cheatButton?.apply {
+                        setupAllowCheats(this, cheatRequested)
+                    } ?: run {
+                        println("Cheat button not found")
+                        throw Exception("Cheat button not found")
+                    }
+                }
                 // Search for seed input
                 if (initialEnvironment.seed.isNotEmpty()) {
-                    for (child in screen.children()) {
-                        //                        println(child)
-                        if (child is TextFieldWidget) {
-                            //                            println("Found text field")
-                            child.text = initialEnvironment.seed.toString()
-                        }
-                    }
+                    (screen.moreOptionsDialog as MoreOptionsDialogSeedTextFieldAccessor).seedTextField?.text =
+                        initialEnvironment.seed.toString()
+                    println("Set seed to ${initialEnvironment.seed}")
                 }
                 if (initialEnvironment.worldType == InitialEnvironment.WorldType.SUPERFLAT) {
-                    for (child in screen.children()) {
-                        //                        println(child)
-                        if (worldTypeButton == null && child is CyclingButtonWidget<*>) {
-                            if (child.message.string.startsWith("World Type")) {
-                                worldTypeButton = child
-                            }
-                        }
+                    val mapTypeButton =
+                        (screen.moreOptionsDialog as MoreOptionsDialogSeedTextFieldAccessor).mapTypeButton
+                    while (!mapTypeButton.message.string.endsWith("flat")) {
+                        mapTypeButton.onPress()
                     }
-                    if (worldTypeButton != null) {
-                        while (!worldTypeButton.message.string.endsWith("flat")) {
-                            worldTypeButton.onPress()
-                        }
-                    }
+                    println("Set world type to superflat")
                 }
-                createButton?.onPress()
+                createWorldButton?.onPress()
+                println("Create world button pressed")
             }
         }
     }
 
-    private fun createEmptyWorldAndEnterUsingGUI(client: MinecraftClient) {
-        when (val screen = client.currentScreen) {
-            is TitleScreen -> {
-                screen.children().find {
-                    it is ButtonWidget && it.message.string == "Singleplayer"
-                }?.let {
-                    it as ButtonWidget
-                    it.onPress()
-                    return
-                }
-            }
-
-            is SelectWorldScreen -> {
-                //                println("Select world screen1")
-                var widget: WorldListWidget? = null
-                var deleteButton: ButtonWidget? = null
-                var createButton: ButtonWidget? = null
-                for (child in screen.children()) {
-                    //                    println(child)
-                    if (child is WorldListWidget) {
-                        widget = child
-                    } else if (child is ButtonWidget) {
-                        if (child.message.string == "Delete Selected World") {
-                            deleteButton = child
-                        } else if (child.message.string == "Create New World") {
-                            createButton = child
-                        }
-                    }
-                }
-                createButton?.onPress()
-            }
-
-            is CreateWorldScreen -> {
-                //                println("Create world screen")
-                var createButton: ButtonWidget? = null
-                val cheatRequested = true
-                var indexOfWorldSettingTab = -1
-                var cheatButton: CyclingButtonWidget<*>? = null
-                var settingTabWidget: TabNavigationWidget? = null
-                var worldTypeButton: CyclingButtonWidget<*>? = null
-                var customizeFlatmapButton: ButtonWidget? = null
-                for (child in screen.children()) {
-                    // search for tab navigation widget, to find index of world settings tab
-                    if (indexOfWorldSettingTab == -1 && child is TabNavigationWidget) {
-                        settingTabWidget = child
-                        for (i in child.children().indices) {
-                            val tabChild: Element = child.children()[i]
-                            if (tabChild is TabButtonWidget) {
-                                if (tabChild.message.string == "World") {
-                                    indexOfWorldSettingTab = i
-                                }
-                            }
-                        }
-                    }
-                    // search for create button
-                    if (createButton == null && child is ButtonWidget) {
-                        if (child.message.string == "Create New World") {
-                            createButton = child
-                        }
-                    }
-                    // search for cheat button
-                    if (cheatButton == null && child is CyclingButtonWidget<*>) {
-                        if (child.message.string.startsWith("Allow Commands")) {
-                            cheatButton = child
-                        } else {
-                            println("Cheat button is not found, and the text is ${child.message.string}")
-                        }
-                    }
-                }
-                // Set allow cheats to requested
-                if (cheatButton != null)
-                    setupAllowCheats(cheatButton, cheatRequested)
-                else {
-                    println("Cheat button not found")
-                    throw Exception("Cheat button not found")
-                }
-                // Select world settings tab
-                settingTabWidget!!.selectTab(indexOfWorldSettingTab, false)
-                // Search for seed input
-                if (initialEnvironment.seed != null) {
-                    for (child in screen.children()) {
-                        //                        println(child)
-                        if (child is TextFieldWidget) {
-                            //                            println("Found text field")
-                            child.text = initialEnvironment.seed.toString()
-                        }
-                    }
-                }
-                if (initialEnvironment.worldType == InitialEnvironment.WorldType.SUPERFLAT) {
-                    for (child in screen.children()) {
-                        //                        println(child)
-                        if (worldTypeButton == null && child is CyclingButtonWidget<*>
-                            && child.message.string.startsWith("World Type")
-                        ) {
-                            worldTypeButton = child
-                        }
-                        if (customizeFlatmapButton == null && child is ButtonWidget && child.message.string.startsWith("Customize")) {
-                            customizeFlatmapButton = child
-                        }
-                    }
-                    if (worldTypeButton != null) {
-                        while (!worldTypeButton.message.string.endsWith("flat")) {
-                            worldTypeButton.onPress()
-                        }
-                    }
-                    if (customizeFlatmapButton != null) {
-                        customizeFlatmapButton.onPress()
-                    }
-                }
-                createButton?.onPress()
-            }
-
-            is CustomizeFlatLevelScreen -> {
-
-            }
-        }
-    }
 
     private fun disableSound(client: MinecraftClient) {
-        client.options?.let {
-            it.getSoundVolumeOption(SoundCategory.MASTER).value = 0.0
-        }
+        client.options?.setSoundVolume(SoundCategory.MASTER, 0.0f)
     }
 
     private fun disableNarrator(client: MinecraftClient) {
         val options = client.options
         if (options != null) {
-            if (options.narrator.value != NarratorMode.OFF) {
-                options.narrator.value = NarratorMode.OFF
+            if (options.narrator != NarratorMode.OFF) {
+                options.narrator = NarratorMode.OFF
                 options.write()
                 println("Disabled narrator")
             }
@@ -388,8 +242,8 @@ class EnvironmentInitializer(
     private fun disableVSync(client: MinecraftClient) {
         val options = client.options
         if (options != null) {
-            if (options.enableVsync.value) {
-                options.enableVsync.value = false
+            if (options.enableVsync) {
+                options.enableVsync = false
                 client.options.write()
                 println("Disabled VSync")
             }
@@ -397,21 +251,22 @@ class EnvironmentInitializer(
     }
 
     private fun setSimulationDistance(client: MinecraftClient, simulationDistance: Int) {
-        val options = client.options
-        if (options != null) {
-            if (options.simulationDistance.value != simulationDistance) {
-                options.simulationDistance.value = simulationDistance
-                client.options.write()
-                println("Set simulation distance to $simulationDistance")
-            }
-        }
+        // No such option in 1.16
+//        val options = client.options
+//        if (options != null) {
+//            if (options.viewDistance != simulationDistance) {
+//                options.viewDistance.value = simulationDistance
+//                client.options.write()
+//                println("Set simulation distance to $simulationDistance")
+//            }
+//        }
     }
 
     private fun setRenderDistance(client: MinecraftClient, renderDistance: Int) {
         val options = client.options
         if (options != null) {
-            if (options.viewDistance.value != renderDistance) {
-                options.viewDistance.value = renderDistance
+            if (options.viewDistance != renderDistance) {
+                options.viewDistance = renderDistance
                 client.options.write()
                 println("Set render distance to $renderDistance")
             }
@@ -435,7 +290,7 @@ class EnvironmentInitializer(
         player = MinecraftClient.getInstance().player ?: return
         val messages = ArrayList((chatHud as ChatVisibleMessageAccessor).visibleMessages)
         val hasInitFinishMessage = messages.find {
-            val text = it.content
+            val text = it.text
             val builder = StringBuilder()
             text.accept { index, style, codePoint ->
                 val ch = codePoint.toChar()
@@ -485,11 +340,11 @@ class EnvironmentInitializer(
 
     // Set the TPS to virtually unlimited
     private fun setUnlimitedTPS(commandExecutor: (ClientPlayerEntity, String) -> Unit) {
-        commandExecutor(player, "/tick rate 10000")
+//        commandExecutor(player, "/tick rate 10000")
     }
 
     private fun setupAllowCheats(
-        cheatButton: CyclingButtonWidget<*>,
+        cheatButton: ButtonWidget,
         cheatRequested: Boolean
     ) {
         val testString = if (cheatRequested) "ON" else "OFF"
@@ -499,7 +354,7 @@ class EnvironmentInitializer(
     }
 
     private fun setupGameMode(
-        gameModeButton: CyclingButtonWidget<*>,
+        gameModeButton: ButtonWidget,
         gameModeRequested: GameMode
     ) {
         val testString = gameModeRequested.name
@@ -529,14 +384,15 @@ class EnvironmentInitializer(
     }
 
     private fun disableOnboardAccessibility(client: MinecraftClient) {
-        val options = client.options
-        if (options != null) {
-            if (options.onboardAccessibility) {
-                println("Disabled onboardAccessibility")
-                options.onboardAccessibility = false
-                client.options.write()
-            }
-        }
+        // No such option in 1.16
+//        val options = client.options
+//        if (options != null) {
+//            if (options.onboardAccessibility) {
+//                println("Disabled onboardAccessibility")
+//                options.onboardAccessibility = false
+//                client.options.write()
+//            }
+//        }
     }
 
     private fun setHudHidden(client: MinecraftClient, hudHidden: Boolean) {
@@ -556,8 +412,8 @@ class EnvironmentInitializer(
     private fun setMaxFPSToUnlimited(client: MinecraftClient) {
         val options = client.options
         if (options != null) {
-            if (options.maxFps.value < 260) { // unlimited
-                options.maxFps.value = 260
+            if (options.maxFps < 260) { // unlimited
+                options.maxFps = 260
                 client.options.write()
                 println("Set max fps to 260")
             }
@@ -567,8 +423,8 @@ class EnvironmentInitializer(
     private fun setFovEffectDisabled(client: MinecraftClient) {
         val options = client.options
         if (options != null) {
-            if (options.fovEffectScale.value != 0.0) {
-                options.fovEffectScale.value = 0.0
+            if (options.fovEffectScale != 0.0f) {
+                options.fovEffectScale = 0.0f
                 client.options.write()
                 println("Disabled fov effect")
             }

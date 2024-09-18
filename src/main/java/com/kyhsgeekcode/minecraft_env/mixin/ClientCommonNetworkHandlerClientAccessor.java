@@ -5,7 +5,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.gen.Accessor;
 
 
-@Mixin(net.minecraft.client.network.ClientCommonNetworkHandler.class)
+@Mixin(net.minecraft.client.network.ClientPlayNetworkHandler.class)
 public interface ClientCommonNetworkHandlerClientAccessor {
     @Accessor("client")
     MinecraftClient getClient();

@@ -5,6 +5,7 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gl.Framebuffer;
 import net.minecraft.client.render.Tessellator;
 import net.minecraft.client.util.Window;
+import org.lwjgl.glfw.GLFW;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
@@ -23,10 +24,10 @@ public class RenderMixin {
 
     @Redirect(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/util/Window;swapBuffers()V"))
     private void windowSwapBuffers(Window instance) {
-        RenderSystemPollEventsInvoker.pollEvents();
+        GLFW.glfwPollEvents();
         RenderSystem.replayQueue();
-        Tessellator.getInstance().clear();
+        Tessellator.getInstance().getBuffer().clear();
 //        GLFW.glfwSwapBuffers(window);
-        RenderSystemPollEventsInvoker.pollEvents();
+        GLFW.glfwPollEvents();
     }
 }

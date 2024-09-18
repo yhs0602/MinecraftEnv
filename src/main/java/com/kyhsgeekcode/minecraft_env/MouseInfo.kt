@@ -1,8 +1,9 @@
 package com.kyhsgeekcode.minecraft_env
 
 import com.kyhsgeekcode.minecraft_env.mixin.MouseXYAccessor
+import com.kyhsgeekcode.minecraft_env.proto.ActionSpace
 import net.minecraft.client.MinecraftClient
-import org.lwjgl.glfw.GLFW
+import org.lwjgl.glfw.GLFW.*
 import org.lwjgl.glfw.GLFWCursorPosCallbackI
 import org.lwjgl.glfw.GLFWMouseButtonCallbackI
 
@@ -12,9 +13,39 @@ object MouseInfo {
     var mouseButtonCallback: GLFWMouseButtonCallbackI? = null
     var mouseX: Double = 0.0
     var mouseY: Double = 0.0
-    var leftButtonPressed: Boolean = false
-    var rightButtonPressed: Boolean = false
     var showCursor: Boolean = false
+
+    var currentState: MutableMap<Int, Boolean> = mutableMapOf()
+
+    val buttonMappings = mapOf(
+        "use" to GLFW_MOUSE_BUTTON_RIGHT,
+        "attack" to GLFW_MOUSE_BUTTON_LEFT
+    )
+
+    fun onAction(actionDict: ActionSpace.ActionSpaceMessageV2) {
+        val actions = mapOf(
+            "use" to actionDict.use,
+            "attack" to actionDict.attack
+        )
+        val shift = KeyboardInfo.isKeyPressed(GLFW_KEY_LEFT_SHIFT)
+        val mods = if (shift) GLFW_MOD_SHIFT else 0
+        // 각 마우스 버튼 상태를 비교하여 변화가 있으면 mouseCallback 호출
+        for ((action, glfwButton) in buttonMappings) {
+            val previousState = currentState[glfwButton] ?: false
+            val currentState = actions[action] ?: false
+
+            if (!previousState && currentState) {
+                // 마우스 버튼이 처음 눌렸을 때 GLFW_PRESS 호출
+                mouseButtonCallback?.invoke(handle, glfwButton, GLFW_PRESS, mods)
+            } else if (previousState && !currentState) {
+                // 마우스 버튼을 뗐을 때 GLFW_RELEASE 호출
+                mouseButtonCallback?.invoke(handle, glfwButton, GLFW_RELEASE, mods)
+            }
+
+            // 현재 상태 갱신
+            this.currentState[glfwButton] = currentState
+        }
+    }
 
     fun getMousePos(): Pair<Double, Double> {
         return Pair(mouseX, mouseY)
@@ -34,48 +65,32 @@ object MouseInfo {
         showCursor = show
     }
 
-    fun moveMouseBy(dx: Double, dy: Double) {
-        // 쪼개는 단위 크기 설정 (예: 1 픽셀씩 움직임)
-        val stepSize = 1.0
+    fun moveMouseBy(dx: Int, dy: Int) {
+        // dx와 dy의 절대값 계산 (정수로 변환)
+        val stepsX = Math.abs(dx)
+        val stepsY = Math.abs(dy)
 
-        // dx와 dy의 절대값 계산
-        val stepsX = Math.abs(dx / stepSize).toInt()
-        val stepsY = Math.abs(dy / stepSize).toInt()
+        // dx와 dy의 이동 방향 계산
+        val stepX = if (dx > 0) 1 else -1
+        val stepY = if (dy > 0) 1 else -1
 
-        // 가장 큰 움직임에 대한 총 단계 계산 (둘 중 더 큰 값)
-        val totalSteps = Math.max(stepsX, stepsY)
+        // 최대 이동 횟수 계산 (더 큰 쪽을 기준으로 반복)
+        val maxSteps = Math.max(stepsX, stepsY)
 
-        // 각 단계에서 움직일 dx, dy 비율 계산
-        val stepDx = dx / totalSteps
-        val stepDy = dy / totalSteps
-
-        // 단계별로 커서를 이동
-        for (i in 0 until totalSteps) {
-            mouseX += stepDx
-            mouseY += stepDy
-            cursorPosCallback?.invoke(handle, mouseX, mouseY)
+        // X와 Y를 번갈아 가며 이동
+        var movedX = 0
+        var movedY = 0
+        for (i in 0 until maxSteps) {
+            if (movedX < stepsX) {
+                mouseX += stepX
+                cursorPosCallback?.invoke(handle, mouseX, mouseY)
+                movedX++
+            }
+            if (movedY < stepsY) {
+                mouseY += stepY
+                cursorPosCallback?.invoke(handle, mouseX, mouseY)
+                movedY++
+            }
         }
-    }
-
-
-    // TODO: Mods (shift click, etc)
-    fun clickLeftButton() {
-        mouseButtonCallback?.invoke(handle, GLFW.GLFW_MOUSE_BUTTON_LEFT, GLFW.GLFW_PRESS, 0)
-        leftButtonPressed = true
-    }
-
-    fun releaseLeftButton() {
-        mouseButtonCallback?.invoke(handle, GLFW.GLFW_MOUSE_BUTTON_LEFT, GLFW.GLFW_RELEASE, 0)
-        leftButtonPressed = false
-    }
-
-    fun clickRightButton() {
-        mouseButtonCallback?.invoke(handle, GLFW.GLFW_MOUSE_BUTTON_RIGHT, GLFW.GLFW_PRESS, 0)
-        rightButtonPressed = true
-    }
-
-    fun releaseRightButton() {
-        mouseButtonCallback?.invoke(handle, GLFW.GLFW_MOUSE_BUTTON_RIGHT, GLFW.GLFW_RELEASE, 0)
-        rightButtonPressed = false
     }
 }
