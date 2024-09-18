@@ -13,8 +13,6 @@
   "client": [
     "ChatVisibleMessageAccessor",
     "ClientCommonNetworkHandlerClientAccessor",
-    "ClientDoAttackInvoker",
-    "ClientDoItemUseInvoker",
     "ClientEntityRenderDispatcherAccessor",
     "ClientIsWindowFocusedMixin",
     "ClientPlayNetworkHandlerMixin",
@@ -22,9 +20,6 @@
     "ClientWorldMixin",
     "GammaMixin",
     "InputUtilMixin",
-    "InventoryScreenDrawBackgroundLoggingMixin",
-    "KeyboardMixin",
-    "MouseMixin",
     "MouseXYAccessor",
     "RenderSystemPollEventsInvoker",
     "RenderTickCounterAccessor",

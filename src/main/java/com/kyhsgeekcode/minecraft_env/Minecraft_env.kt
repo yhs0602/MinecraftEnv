@@ -15,11 +15,8 @@ import net.minecraft.block.BlockState
 import net.minecraft.client.MinecraftClient
 import net.minecraft.client.MinecraftClient.IS_SYSTEM_MAC
 import net.minecraft.client.gui.screen.DeathScreen
-import net.minecraft.client.gui.screen.Screen
 import net.minecraft.client.network.ClientPlayerEntity
-import net.minecraft.client.option.KeyBinding
 import net.minecraft.client.render.BackgroundRenderer
-import net.minecraft.client.util.InputUtil
 import net.minecraft.client.util.ScreenshotRecorder
 import net.minecraft.client.world.ClientWorld
 import net.minecraft.entity.EntityType
@@ -33,7 +30,6 @@ import net.minecraft.util.WorldSavePath
 import net.minecraft.util.function.BooleanBiFunction
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Box
-import net.minecraft.util.math.MathHelper
 import net.minecraft.util.math.Vec3d
 import net.minecraft.util.shape.VoxelShapes
 import net.minecraft.world.World
@@ -68,56 +64,6 @@ enum class IOPhase {
     SENT_OBSERVATION_SHOULD_READ_ACTION,
 }
 
-fun handleKeyPress(
-    currentState: Boolean,
-    wasPressing: Boolean,
-    keyCode: Int,
-    mouse: Boolean = false
-): Boolean {
-    val key = if (!mouse) {
-        InputUtil.fromKeyCode(keyCode, 0)
-    } else {
-        InputUtil.Type.MOUSE.createFromCode(keyCode)
-    }
-
-    // 키가 눌린 상태인지 확인
-    if (currentState) {
-        KeyBinding.setKeyPressed(key, true)
-        keyMap[keyCode] = true
-        if (!wasPressing) {
-            KeyBinding.onKeyPressed(key)
-        }
-    } else {
-        if (mouse) {
-//            if (wasPressing) {
-////                println("Releasing $key")
-//            }
-        }
-        KeyBinding.setKeyPressed(key, false)
-        keyMap[keyCode] = false
-    }
-
-    return currentState
-}
-
-fun handleScreenKeyPress(
-    currentState: Boolean,
-    wasPressing: Boolean,
-    keyCode: Int,
-    scanCode: Int,
-    modifiers: Int,
-    screen: Screen
-): Boolean {
-    if (currentState) {
-        if (!wasPressing) {
-            return screen.keyPressed(keyCode, scanCode, modifiers)
-        }
-    } else if (wasPressing) {
-        return screen.keyReleased(keyCode, scanCode, modifiers)
-    }
-    return false
-}
-
 
 val keyMap = java.util.HashMap<Int, Boolean>()
 
@@ -135,19 +81,6 @@ class Minecraft_env : ModInitializer, CommandExecutor {
     private val variableCommandsAfterReset = mutableListOf<String>()
     private var skipSync = false
     private var ioPhase = IOPhase.BEGINNING
-
-    // Difference matters
-    private var wasPressingForward = false
-    private var wasPressingBack = false
-    private var wasPressingLeft = false
-    private var wasPressingRight = false
-    private var wasJumping = false
-    private var wasSneaking = false
-    private var wasSprinting = false
-    private var wasUsing = false
-    private var wasAttacking = false
-    private var wasPressingInventory = false
-    private var wasPressingDrop = false
 
     override fun onInitialize() {
         val ld_preload = System.getenv("LD_PRELOAD")
@@ -263,7 +196,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
     private fun onStartWorldTick(
         initializer: EnvironmentInitializer,
         world: ClientWorld,
-        messageIO: MessageIO
+        messageIO: MessageIO,
     ) {
         val client = MinecraftClient.getInstance()
         soundListener!!.onTick()
@@ -353,7 +286,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
     private fun handleCommand(
         command: String,
         client: MinecraftClient,
-        player: ClientPlayerEntity
+        player: ClientPlayerEntity,
     ): Boolean {
         if (command == "respawn") {
             if (client.currentScreen is DeathScreen && player.isDead) {
@@ -411,110 +344,23 @@ class Minecraft_env : ModInitializer, CommandExecutor {
     private fun applyAction(
         actionDict: ActionSpaceMessageV2,
         player: ClientPlayerEntity,
-        client: MinecraftClient
+        client: MinecraftClient,
     ): Boolean {
         csvLogger.profileStartPrint("Minecraft_env/onInitialize/ClientWorldTick/ReadAction/ApplyAction")
-        MouseInfo.handle = client.window.handle
+        if (actionDict.cameraYaw != 0.0f || actionDict.cameraPitch != 0.0f) {
+            val dy = actionDict.cameraPitch * 20.0 / 3
+            val dx = actionDict.cameraYaw * 20.0 / 3
+            MouseInfo.moveMouseBy(dx.toInt(), dy.toInt())
+        }
+
+        // Handle key press
+        KeyboardInfo.onAction(actionDict)
         val currentScreen = client.currentScreen
-        if (currentScreen != null) {
-            val keys = listOf(
-                Triple(actionDict.inventory, wasPressingInventory, GLFW.GLFW_KEY_E),
-                Triple(actionDict.drop, wasPressingDrop, GLFW.GLFW_KEY_Q),
-                Triple(actionDict.hotbar1, false, GLFW.GLFW_KEY_1),
-                Triple(actionDict.hotbar2, false, GLFW.GLFW_KEY_2),
-                Triple(actionDict.hotbar3, false, GLFW.GLFW_KEY_3),
-                Triple(actionDict.hotbar4, false, GLFW.GLFW_KEY_4),
-                Triple(actionDict.hotbar5, false, GLFW.GLFW_KEY_5),
-                Triple(actionDict.hotbar6, false, GLFW.GLFW_KEY_6),
-                Triple(actionDict.hotbar7, false, GLFW.GLFW_KEY_7),
-                Triple(actionDict.hotbar8, false, GLFW.GLFW_KEY_8),
-                Triple(actionDict.hotbar9, false, GLFW.GLFW_KEY_9),
-            )
-            for ((action, wasPressing, keyCode) in keys) {
-                val handled = handleScreenKeyPress(
-                    action,
-                    wasPressing,
-                    keyCode,
-                    0,
-                    0,
-                    currentScreen
-                )
-                wasPressingInventory = actionDict.inventory
-                wasPressingDrop = actionDict.drop
-                if (handled) {
-                    return false
-                }
-            }
+        if (currentScreen != null && currentScreen is DeathScreen) {
+            // Disable disconnect button
+            return false
         }
-
-        wasPressingForward = handleKeyPress(actionDict.forward, wasPressingForward, GLFW.GLFW_KEY_W)
-        wasPressingBack = handleKeyPress(actionDict.back, wasPressingBack, GLFW.GLFW_KEY_S)
-        wasPressingLeft = handleKeyPress(actionDict.left, wasPressingLeft, GLFW.GLFW_KEY_A)
-        wasPressingRight = handleKeyPress(actionDict.right, wasPressingRight, GLFW.GLFW_KEY_D)
-        wasJumping = handleKeyPress(actionDict.jump, wasJumping, GLFW.GLFW_KEY_SPACE)
-        wasSneaking = handleKeyPress(actionDict.sneak, wasSneaking, GLFW.GLFW_KEY_LEFT_SHIFT)
-        wasSprinting = handleKeyPress(actionDict.sprint, wasSprinting, GLFW.GLFW_KEY_LEFT_CONTROL)
-
-        if (currentScreen != null) {
-            if (actionDict.use) {
-                if (!wasUsing)
-                    MouseInfo.clickRightButton()
-                wasUsing = true
-            } else {
-                if (wasUsing)
-                    MouseInfo.releaseRightButton()
-                wasUsing = false
-            }
-            if (actionDict.attack) {
-                if (!wasAttacking)
-                    MouseInfo.clickLeftButton()
-                wasAttacking = true
-            } else {
-                if (wasAttacking)
-                    MouseInfo.releaseLeftButton()
-                wasAttacking = false
-            }
-
-//            wasUsing = false
-//            wasAttacking = false
-        } else {
-            wasUsing = handleKeyPress(actionDict.use, wasUsing, GLFW.GLFW_MOUSE_BUTTON_RIGHT, mouse = true)
-            wasAttacking = handleKeyPress(actionDict.attack, wasAttacking, GLFW.GLFW_MOUSE_BUTTON_LEFT, mouse = true)
-        }
-
-        // Should handle screen keys for inventory, drop, hotbars
-        // TODO: Handle swap
-        //        handleKeyPress(actionDict.swap, false, GLFW.GLFW_KEY_F)
-        wasPressingDrop = handleKeyPress(actionDict.drop, wasPressingDrop, GLFW.GLFW_KEY_Q)
-        handleKeyPress(actionDict.inventory, false, GLFW.GLFW_KEY_E)
-        handleKeyPress(actionDict.hotbar1, false, GLFW.GLFW_KEY_1)
-        handleKeyPress(actionDict.hotbar2, false, GLFW.GLFW_KEY_2)
-        handleKeyPress(actionDict.hotbar3, false, GLFW.GLFW_KEY_3)
-        handleKeyPress(actionDict.hotbar4, false, GLFW.GLFW_KEY_4)
-        handleKeyPress(actionDict.hotbar5, false, GLFW.GLFW_KEY_5)
-        handleKeyPress(actionDict.hotbar6, false, GLFW.GLFW_KEY_6)
-        handleKeyPress(actionDict.hotbar7, false, GLFW.GLFW_KEY_7)
-        handleKeyPress(actionDict.hotbar8, false, GLFW.GLFW_KEY_8)
-        handleKeyPress(actionDict.hotbar9, false, GLFW.GLFW_KEY_9)
-
-        // TODO: Translate delta camera to mouse movement
-
-//        if (currentScreen != null) {
-        // To raise head, pitch should be decreased
-        // Move mouse up, pitch should be decreased
-        // Move mouse up = y axis decrease & pitch decrease
-        val dy = actionDict.cameraPitch * 20.0 / 3
-        val dx = actionDict.cameraYaw * 20.0 / 3
-        MouseInfo.moveMouseBy(dx, dy) // Invert y axis
-//        } else {
-//            // pitch: 0: -90 degree, 24: 90 degree
-//            val deltaPitchInDeg = actionDict.cameraPitch
-//            // yaw: 0: -180 degree, 24: 180 degree
-//            val deltaYawInDeg = actionDict.cameraYaw
-//            player.pitch += deltaPitchInDeg
-//            player.yaw += deltaYawInDeg
-//            player.pitch = MathHelper.clamp(player.pitch, -90.0f, 90.0f)
-//        }
+        MouseInfo.onAction(actionDict)
         csvLogger.profileEndPrint("Minecraft_env/onInitialize/ClientWorldTick/ReadAction/ApplyAction")
         return false
     }
@@ -578,16 +424,19 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                 printWithTime("New left position: ${left.x}, ${left.y}, ${left.z} ${player.prevX}, ${player.prevY}, ${player.prevZ}")
                 // (client as ClientRenderInvoker).invokeRender(true)
                 render(client)
-                val image1ByteArray = ScreenshotRecorder.takeScreenshot(buffer).use { screenshot ->
-                    encodeImageToBytes(
-                        screenshot,
-                        initialEnvironment.imageSizeX,
-                        initialEnvironment.imageSizeY,
-                        initialEnvironment.imageSizeX,
-                        initialEnvironment.imageSizeY
-                    )
-                }
-                image_1 = ByteString.copyFrom(image1ByteArray)
+                image_1 = FramebufferCapturer.captureFramebuffer(
+                    buffer.colorAttachment,
+                    buffer.fbo,
+                    buffer.textureWidth,
+                    buffer.textureHeight,
+                    initialEnvironment.imageSizeX,
+                    initialEnvironment.imageSizeY,
+                    initialEnvironment.screenEncodingMode,
+                    false,
+                    MouseInfo.showCursor, // FramebufferCapturer.isExtensionAvailable
+                    MouseInfo.mouseX.toInt(),
+                    MouseInfo.mouseY.toInt(),
+                )
                 player.prevX = right.x
                 player.prevY = right.y
                 player.prevZ = right.z
@@ -595,16 +444,19 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                 printWithTime("New right position: ${right.x}, ${right.y}, ${right.z} ${player.prevX}, ${player.prevY}, ${player.prevZ}")
 //                (client as ClientRenderInvoker).invokeRender(true)
                 render(client)
-                val image2ByteArray = ScreenshotRecorder.takeScreenshot(buffer).use { screenshot ->
-                    encodeImageToBytes(
-                        screenshot,
-                        initialEnvironment.imageSizeX,
-                        initialEnvironment.imageSizeY,
-                        initialEnvironment.imageSizeX,
-                        initialEnvironment.imageSizeY
-                    )
-                }
-                image_2 = ByteString.copyFrom(image2ByteArray)
+                image_2 = FramebufferCapturer.captureFramebuffer(
+                    buffer.colorAttachment,
+                    buffer.fbo,
+                    buffer.textureWidth,
+                    buffer.textureHeight,
+                    initialEnvironment.imageSizeX,
+                    initialEnvironment.imageSizeY,
+                    initialEnvironment.screenEncodingMode,
+                    false,
+                    MouseInfo.showCursor, // FramebufferCapturer.isExtensionAvailable
+                    MouseInfo.mouseX.toInt(),
+                    MouseInfo.mouseY.toInt(),
+                )
                 // return to the original position
                 player.prevX = oldPrevX
                 player.prevY = oldPrevY
