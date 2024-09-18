@@ -63,7 +63,7 @@ enum class IOPhase {
 }
 
 
-val chatList = mutableListOf<String>()
+val chatList = mutableListOf<ChatMessageRecord>()
 
 class Minecraft_env : ModInitializer, CommandExecutor {
     private lateinit var initialEnvironment: InitialEnvironment.InitialEnvironmentMessage
@@ -587,8 +587,8 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                 eyeInBlock = player.checkIfCameraBlocked()
                 for (chat in chatList) {
                     chatMessages.add(chatMessageInfo {
-                        message = chat
-                        addedTime = 0
+                        message = chat.message
+                        addedTime = chat.addedTime.toLong()
                         indicator = ""
                     })
                 }

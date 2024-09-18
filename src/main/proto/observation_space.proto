@@ -58,7 +58,7 @@ message EntitiesWithinDistance {
 }
 
 message ChatMessageInfo {
-  int64 added_time = 1; // TODO: always 0
+  int64 added_time = 1;
   string message = 2;
   string indicator = 3; // TODO;; always empty
 }

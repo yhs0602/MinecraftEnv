@@ -460,7 +460,10 @@ class EnvironmentInitializer(
                 true
             }
             val content = builder.toString()
-            chatList.add(content)
+            chatList.add(ChatMessageRecord(
+                it.addedTime,
+                content
+            ))
         }
         chatHud.clear(true)
         if (hasRunInitWorld)
