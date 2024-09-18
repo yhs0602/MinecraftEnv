@@ -974,6 +974,78 @@ public object ObservationSpaceMessageKt {
     public fun clearSuffocating() {
       _builder.clearSuffocating()
     }
+
+    /**
+     * An uninstantiable, behaviorless type to represent the field in
+     * generics.
+     */
+    @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
+    public class ChatMessagesProxy private constructor() : com.google.protobuf.kotlin.DslProxy()
+    /**
+     * `repeated .ChatMessageInfo chat_messages = 28;`
+     */
+     public val chatMessages: com.google.protobuf.kotlin.DslList<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ChatMessageInfo, ChatMessagesProxy>
+      @kotlin.jvm.JvmSynthetic
+      get() = com.google.protobuf.kotlin.DslList(
+        _builder.getChatMessagesList()
+      )
+    /**
+     * `repeated .ChatMessageInfo chat_messages = 28;`
+     * @param value The chatMessages to add.
+     */
+    @kotlin.jvm.JvmSynthetic
+    @kotlin.jvm.JvmName("addChatMessages")
+    public fun com.google.protobuf.kotlin.DslList<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ChatMessageInfo, ChatMessagesProxy>.add(value: com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ChatMessageInfo) {
+      _builder.addChatMessages(value)
+    }
+    /**
+     * `repeated .ChatMessageInfo chat_messages = 28;`
+     * @param value The chatMessages to add.
+     */
+    @kotlin.jvm.JvmSynthetic
+    @kotlin.jvm.JvmName("plusAssignChatMessages")
+    @Suppress("NOTHING_TO_INLINE")
+    public inline operator fun com.google.protobuf.kotlin.DslList<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ChatMessageInfo, ChatMessagesProxy>.plusAssign(value: com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ChatMessageInfo) {
+      add(value)
+    }
+    /**
+     * `repeated .ChatMessageInfo chat_messages = 28;`
+     * @param values The chatMessages to add.
+     */
+    @kotlin.jvm.JvmSynthetic
+    @kotlin.jvm.JvmName("addAllChatMessages")
+    public fun com.google.protobuf.kotlin.DslList<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ChatMessageInfo, ChatMessagesProxy>.addAll(values: kotlin.collections.Iterable<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ChatMessageInfo>) {
+      _builder.addAllChatMessages(values)
+    }
+    /**
+     * `repeated .ChatMessageInfo chat_messages = 28;`
+     * @param values The chatMessages to add.
+     */
+    @kotlin.jvm.JvmSynthetic
+    @kotlin.jvm.JvmName("plusAssignAllChatMessages")
+    @Suppress("NOTHING_TO_INLINE")
+    public inline operator fun com.google.protobuf.kotlin.DslList<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ChatMessageInfo, ChatMessagesProxy>.plusAssign(values: kotlin.collections.Iterable<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ChatMessageInfo>) {
+      addAll(values)
+    }
+    /**
+     * `repeated .ChatMessageInfo chat_messages = 28;`
+     * @param index The index to set the value at.
+     * @param value The chatMessages to set.
+     */
+    @kotlin.jvm.JvmSynthetic
+    @kotlin.jvm.JvmName("setChatMessages")
+    public operator fun com.google.protobuf.kotlin.DslList<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ChatMessageInfo, ChatMessagesProxy>.set(index: kotlin.Int, value: com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ChatMessageInfo) {
+      _builder.setChatMessages(index, value)
+    }
+    /**
+     * `repeated .ChatMessageInfo chat_messages = 28;`
+     */
+    @kotlin.jvm.JvmSynthetic
+    @kotlin.jvm.JvmName("clearChatMessages")
+    public fun com.google.protobuf.kotlin.DslList<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ChatMessageInfo, ChatMessagesProxy>.clear() {
+      _builder.clearChatMessages()
+    }
+
   }
 }
 @kotlin.jvm.JvmSynthetic

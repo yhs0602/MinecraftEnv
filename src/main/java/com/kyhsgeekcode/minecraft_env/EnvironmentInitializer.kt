@@ -33,7 +33,7 @@ interface CommandExecutor {
 
 class EnvironmentInitializer(
     private val initialEnvironment: InitialEnvironmentMessage,
-    private val csvLogger: CsvLogger
+    private val csvLogger: CsvLogger,
 ) {
     var hasRunInitWorld: Boolean = false
         private set
@@ -433,6 +433,8 @@ class EnvironmentInitializer(
         variableCommandsAfterReset: List<String>,
     ) {
         player = MinecraftClient.getInstance().player ?: return
+
+        // Get the chat messages to check if the initialization is done, and clear the chat
         val messages = ArrayList((chatHud as ChatVisibleMessageAccessor).visibleMessages)
         val hasInitFinishMessage = messages.find {
             val text = it.content
@@ -447,6 +449,19 @@ class EnvironmentInitializer(
         } != null
         initWorldFinished = (initWorldFinished || hasInitFinishMessage)
 //        println("has init finish message: $hasInitFinishMessage, has run init world: $hasRunInitWorld, init world finished: $initWorldFinished")
+        // TODO: Do not clear the chat, and delete only the message related to the initialization.
+        // Do not clear the chat related to the advancements
+        messages.forEach { it ->
+            val text = it.content
+            val builder = StringBuilder()
+            text.accept { index, style, codePoint ->
+                val ch = codePoint.toChar()
+                builder.append(ch)
+                true
+            }
+            val content = builder.toString()
+            chatList.add(content)
+        }
         chatHud.clear(true)
         if (hasRunInitWorld)
             return
@@ -490,7 +505,7 @@ class EnvironmentInitializer(
 
     private fun setupAllowCheats(
         cheatButton: CyclingButtonWidget<*>,
-        cheatRequested: Boolean
+        cheatRequested: Boolean,
     ) {
         val testString = if (cheatRequested) "ON" else "OFF"
         while (!cheatButton.message.string.endsWith(testString)) {
@@ -500,7 +515,7 @@ class EnvironmentInitializer(
 
     private fun setupGameMode(
         gameModeButton: CyclingButtonWidget<*>,
-        gameModeRequested: GameMode
+        gameModeRequested: GameMode,
     ) {
         val testString = gameModeRequested.name
         while (!gameModeButton.message.string.endsWith(testString)) {

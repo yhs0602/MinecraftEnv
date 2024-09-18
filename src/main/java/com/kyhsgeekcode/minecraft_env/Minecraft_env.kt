@@ -17,7 +17,6 @@ import net.minecraft.client.MinecraftClient.IS_SYSTEM_MAC
 import net.minecraft.client.gui.screen.DeathScreen
 import net.minecraft.client.network.ClientPlayerEntity
 import net.minecraft.client.render.BackgroundRenderer
-import net.minecraft.client.util.ScreenshotRecorder
 import net.minecraft.client.world.ClientWorld
 import net.minecraft.entity.EntityType
 import net.minecraft.network.packet.c2s.play.ClientStatusC2SPacket
@@ -33,7 +32,6 @@ import net.minecraft.util.math.Box
 import net.minecraft.util.math.Vec3d
 import net.minecraft.util.shape.VoxelShapes
 import net.minecraft.world.World
-import org.lwjgl.glfw.GLFW
 import java.io.IOException
 import java.net.SocketTimeoutException
 import java.net.StandardProtocolFamily
@@ -65,7 +63,7 @@ enum class IOPhase {
 }
 
 
-val keyMap = java.util.HashMap<Int, Boolean>()
+val chatList = mutableListOf<String>()
 
 class Minecraft_env : ModInitializer, CommandExecutor {
     private lateinit var initialEnvironment: InitialEnvironment.InitialEnvironmentMessage
@@ -81,6 +79,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
     private val variableCommandsAfterReset = mutableListOf<String>()
     private var skipSync = false
     private var ioPhase = IOPhase.BEGINNING
+
 
     override fun onInitialize() {
         val ld_preload = System.getenv("LD_PRELOAD")
@@ -464,15 +463,6 @@ class Minecraft_env : ModInitializer, CommandExecutor {
 //                player.setPos(oldX, oldY, oldZ)
             } else {
                 csvLogger.profileStartPrint("Minecraft_env/onInitialize/EndWorldTick/SendObservation/Prepare/SingleEye/Screenshot")
-//                val image1ByteArray = ScreenshotRecorder.takeScreenshot(buffer).use { screenshot ->
-//                    encodeImageToBytes(
-//                        screenshot,
-//                        initialEnvironment.visibleSizeX,
-//                        initialEnvironment.visibleSizeY,
-//                        initialEnvironment.imageSizeX,
-//                        initialEnvironment.imageSizeY
-//                    )
-//                }
                 csvLogger.profileEndPrint("Minecraft_env/onInitialize/EndWorldTick/SendObservation/Prepare/SingleEye/Screenshot")
                 csvLogger.profileStartPrint("Minecraft_env/onInitialize/EndWorldTick/SendObservation/Prepare/SingleEye/ByteString")
                 val i: Int =
@@ -595,6 +585,14 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                 }
                 suffocating = player.isInsideWall
                 eyeInBlock = player.checkIfCameraBlocked()
+                for (chat in chatList) {
+                    chatMessages.add(chatMessageInfo {
+                        message = chat
+                        addedTime = 0
+                        indicator = ""
+                    })
+                }
+                chatList.clear()
             }
             if (ioPhase == IOPhase.GOT_INITIAL_ENVIRONMENT_SHOULD_SEND_OBSERVATION) {
 //                csvLogger.log("Sent observation; $ioPhase")

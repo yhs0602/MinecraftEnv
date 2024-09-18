@@ -5851,6 +5851,793 @@ public final class ObservationSpace {
 
   }
 
+  public interface ChatMessageInfoOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:ChatMessageInfo)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     * TODO: always 0
+     * </pre>
+     *
+     * <code>int64 added_time = 1;</code>
+     * @return The addedTime.
+     */
+    long getAddedTime();
+
+    /**
+     * <code>string message = 2;</code>
+     * @return The message.
+     */
+    java.lang.String getMessage();
+    /**
+     * <code>string message = 2;</code>
+     * @return The bytes for message.
+     */
+    com.google.protobuf.ByteString
+        getMessageBytes();
+
+    /**
+     * <pre>
+     * TODO;; always empty
+     * </pre>
+     *
+     * <code>string indicator = 3;</code>
+     * @return The indicator.
+     */
+    java.lang.String getIndicator();
+    /**
+     * <pre>
+     * TODO;; always empty
+     * </pre>
+     *
+     * <code>string indicator = 3;</code>
+     * @return The bytes for indicator.
+     */
+    com.google.protobuf.ByteString
+        getIndicatorBytes();
+  }
+  /**
+   * Protobuf type {@code ChatMessageInfo}
+   */
+  public static final class ChatMessageInfo extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:ChatMessageInfo)
+      ChatMessageInfoOrBuilder {
+  private static final long serialVersionUID = 0L;
+    static {
+      com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+        /* major= */ 4,
+        /* minor= */ 27,
+        /* patch= */ 3,
+        /* suffix= */ "",
+        ChatMessageInfo.class.getName());
+    }
+    // Use ChatMessageInfo.newBuilder() to construct.
+    private ChatMessageInfo(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private ChatMessageInfo() {
+      message_ = "";
+      indicator_ = "";
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_ChatMessageInfo_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_ChatMessageInfo_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ChatMessageInfo.class, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ChatMessageInfo.Builder.class);
+    }
+
+    public static final int ADDED_TIME_FIELD_NUMBER = 1;
+    private long addedTime_ = 0L;
+    /**
+     * <pre>
+     * TODO: always 0
+     * </pre>
+     *
+     * <code>int64 added_time = 1;</code>
+     * @return The addedTime.
+     */
+    @java.lang.Override
+    public long getAddedTime() {
+      return addedTime_;
+    }
+
+    public static final int MESSAGE_FIELD_NUMBER = 2;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object message_ = "";
+    /**
+     * <code>string message = 2;</code>
+     * @return The message.
+     */
+    @java.lang.Override
+    public java.lang.String getMessage() {
+      java.lang.Object ref = message_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        message_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string message = 2;</code>
+     * @return The bytes for message.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getMessageBytes() {
+      java.lang.Object ref = message_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        message_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int INDICATOR_FIELD_NUMBER = 3;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object indicator_ = "";
+    /**
+     * <pre>
+     * TODO;; always empty
+     * </pre>
+     *
+     * <code>string indicator = 3;</code>
+     * @return The indicator.
+     */
+    @java.lang.Override
+    public java.lang.String getIndicator() {
+      java.lang.Object ref = indicator_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        indicator_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * TODO;; always empty
+     * </pre>
+     *
+     * <code>string indicator = 3;</code>
+     * @return The bytes for indicator.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getIndicatorBytes() {
+      java.lang.Object ref = indicator_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        indicator_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (addedTime_ != 0L) {
+        output.writeInt64(1, addedTime_);
+      }
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(message_)) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 2, message_);
+      }
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(indicator_)) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 3, indicator_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (addedTime_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(1, addedTime_);
+      }
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(message_)) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(2, message_);
+      }
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(indicator_)) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(3, indicator_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ChatMessageInfo)) {
+        return super.equals(obj);
+      }
+      com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ChatMessageInfo other = (com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ChatMessageInfo) obj;
+
+      if (getAddedTime()
+          != other.getAddedTime()) return false;
+      if (!getMessage()
+          .equals(other.getMessage())) return false;
+      if (!getIndicator()
+          .equals(other.getIndicator())) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + ADDED_TIME_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getAddedTime());
+      hash = (37 * hash) + MESSAGE_FIELD_NUMBER;
+      hash = (53 * hash) + getMessage().hashCode();
+      hash = (37 * hash) + INDICATOR_FIELD_NUMBER;
+      hash = (53 * hash) + getIndicator().hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ChatMessageInfo parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ChatMessageInfo parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ChatMessageInfo parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ChatMessageInfo parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ChatMessageInfo parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ChatMessageInfo parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ChatMessageInfo parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ChatMessageInfo parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ChatMessageInfo parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ChatMessageInfo parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ChatMessageInfo parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ChatMessageInfo parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ChatMessageInfo prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code ChatMessageInfo}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:ChatMessageInfo)
+        com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ChatMessageInfoOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_ChatMessageInfo_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_ChatMessageInfo_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ChatMessageInfo.class, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ChatMessageInfo.Builder.class);
+      }
+
+      // Construct using com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ChatMessageInfo.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        addedTime_ = 0L;
+        message_ = "";
+        indicator_ = "";
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_ChatMessageInfo_descriptor;
+      }
+
+      @java.lang.Override
+      public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ChatMessageInfo getDefaultInstanceForType() {
+        return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ChatMessageInfo.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ChatMessageInfo build() {
+        com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ChatMessageInfo result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ChatMessageInfo buildPartial() {
+        com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ChatMessageInfo result = new com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ChatMessageInfo(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ChatMessageInfo result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.addedTime_ = addedTime_;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.message_ = message_;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.indicator_ = indicator_;
+        }
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ChatMessageInfo) {
+          return mergeFrom((com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ChatMessageInfo)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ChatMessageInfo other) {
+        if (other == com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ChatMessageInfo.getDefaultInstance()) return this;
+        if (other.getAddedTime() != 0L) {
+          setAddedTime(other.getAddedTime());
+        }
+        if (!other.getMessage().isEmpty()) {
+          message_ = other.message_;
+          bitField0_ |= 0x00000002;
+          onChanged();
+        }
+        if (!other.getIndicator().isEmpty()) {
+          indicator_ = other.indicator_;
+          bitField0_ |= 0x00000004;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 8: {
+                addedTime_ = input.readInt64();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 8
+              case 18: {
+                message_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 18
+              case 26: {
+                indicator_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 26
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private long addedTime_ ;
+      /**
+       * <pre>
+       * TODO: always 0
+       * </pre>
+       *
+       * <code>int64 added_time = 1;</code>
+       * @return The addedTime.
+       */
+      @java.lang.Override
+      public long getAddedTime() {
+        return addedTime_;
+      }
+      /**
+       * <pre>
+       * TODO: always 0
+       * </pre>
+       *
+       * <code>int64 added_time = 1;</code>
+       * @param value The addedTime to set.
+       * @return This builder for chaining.
+       */
+      public Builder setAddedTime(long value) {
+
+        addedTime_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * TODO: always 0
+       * </pre>
+       *
+       * <code>int64 added_time = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearAddedTime() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        addedTime_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object message_ = "";
+      /**
+       * <code>string message = 2;</code>
+       * @return The message.
+       */
+      public java.lang.String getMessage() {
+        java.lang.Object ref = message_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          message_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string message = 2;</code>
+       * @return The bytes for message.
+       */
+      public com.google.protobuf.ByteString
+          getMessageBytes() {
+        java.lang.Object ref = message_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          message_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string message = 2;</code>
+       * @param value The message to set.
+       * @return This builder for chaining.
+       */
+      public Builder setMessage(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        message_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string message = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearMessage() {
+        message_ = getDefaultInstance().getMessage();
+        bitField0_ = (bitField0_ & ~0x00000002);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string message = 2;</code>
+       * @param value The bytes for message to set.
+       * @return This builder for chaining.
+       */
+      public Builder setMessageBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        message_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object indicator_ = "";
+      /**
+       * <pre>
+       * TODO;; always empty
+       * </pre>
+       *
+       * <code>string indicator = 3;</code>
+       * @return The indicator.
+       */
+      public java.lang.String getIndicator() {
+        java.lang.Object ref = indicator_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          indicator_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * TODO;; always empty
+       * </pre>
+       *
+       * <code>string indicator = 3;</code>
+       * @return The bytes for indicator.
+       */
+      public com.google.protobuf.ByteString
+          getIndicatorBytes() {
+        java.lang.Object ref = indicator_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          indicator_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * TODO;; always empty
+       * </pre>
+       *
+       * <code>string indicator = 3;</code>
+       * @param value The indicator to set.
+       * @return This builder for chaining.
+       */
+      public Builder setIndicator(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        indicator_ = value;
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * TODO;; always empty
+       * </pre>
+       *
+       * <code>string indicator = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearIndicator() {
+        indicator_ = getDefaultInstance().getIndicator();
+        bitField0_ = (bitField0_ & ~0x00000004);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * TODO;; always empty
+       * </pre>
+       *
+       * <code>string indicator = 3;</code>
+       * @param value The bytes for indicator to set.
+       * @return This builder for chaining.
+       */
+      public Builder setIndicatorBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        indicator_ = value;
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:ChatMessageInfo)
+    }
+
+    // @@protoc_insertion_point(class_scope:ChatMessageInfo)
+    private static final com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ChatMessageInfo DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ChatMessageInfo();
+    }
+
+    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ChatMessageInfo getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<ChatMessageInfo>
+        PARSER = new com.google.protobuf.AbstractParser<ChatMessageInfo>() {
+      @java.lang.Override
+      public ChatMessageInfo parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<ChatMessageInfo> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ChatMessageInfo> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ChatMessageInfo getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   public interface ObservationSpaceMessageOrBuilder extends
       // @@protoc_insertion_point(interface_extends:ObservationSpaceMessage)
       com.google.protobuf.MessageOrBuilder {
@@ -6247,6 +7034,30 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
      * @return The suffocating.
      */
     boolean getSuffocating();
+
+    /**
+     * <code>repeated .ChatMessageInfo chat_messages = 28;</code>
+     */
+    java.util.List<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ChatMessageInfo> 
+        getChatMessagesList();
+    /**
+     * <code>repeated .ChatMessageInfo chat_messages = 28;</code>
+     */
+    com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ChatMessageInfo getChatMessages(int index);
+    /**
+     * <code>repeated .ChatMessageInfo chat_messages = 28;</code>
+     */
+    int getChatMessagesCount();
+    /**
+     * <code>repeated .ChatMessageInfo chat_messages = 28;</code>
+     */
+    java.util.List<? extends com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ChatMessageInfoOrBuilder> 
+        getChatMessagesOrBuilderList();
+    /**
+     * <code>repeated .ChatMessageInfo chat_messages = 28;</code>
+     */
+    com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ChatMessageInfoOrBuilder getChatMessagesOrBuilder(
+        int index);
   }
   /**
    * Protobuf type {@code ObservationSpaceMessage}
@@ -6278,6 +7089,7 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
       lastDeathMessage_ = "";
       image2_ = com.google.protobuf.ByteString.EMPTY;
       surroundingBlocks_ = java.util.Collections.emptyList();
+      chatMessages_ = java.util.Collections.emptyList();
     }
 
     public static final com.google.protobuf.Descriptors.Descriptor
@@ -7088,6 +7900,47 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
       return suffocating_;
     }
 
+    public static final int CHAT_MESSAGES_FIELD_NUMBER = 28;
+    @SuppressWarnings("serial")
+    private java.util.List<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ChatMessageInfo> chatMessages_;
+    /**
+     * <code>repeated .ChatMessageInfo chat_messages = 28;</code>
+     */
+    @java.lang.Override
+    public java.util.List<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ChatMessageInfo> getChatMessagesList() {
+      return chatMessages_;
+    }
+    /**
+     * <code>repeated .ChatMessageInfo chat_messages = 28;</code>
+     */
+    @java.lang.Override
+    public java.util.List<? extends com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ChatMessageInfoOrBuilder> 
+        getChatMessagesOrBuilderList() {
+      return chatMessages_;
+    }
+    /**
+     * <code>repeated .ChatMessageInfo chat_messages = 28;</code>
+     */
+    @java.lang.Override
+    public int getChatMessagesCount() {
+      return chatMessages_.size();
+    }
+    /**
+     * <code>repeated .ChatMessageInfo chat_messages = 28;</code>
+     */
+    @java.lang.Override
+    public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ChatMessageInfo getChatMessages(int index) {
+      return chatMessages_.get(index);
+    }
+    /**
+     * <code>repeated .ChatMessageInfo chat_messages = 28;</code>
+     */
+    @java.lang.Override
+    public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ChatMessageInfoOrBuilder getChatMessagesOrBuilder(
+        int index) {
+      return chatMessages_.get(index);
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -7194,6 +8047,9 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
       }
       if (suffocating_ != false) {
         output.writeBool(27, suffocating_);
+      }
+      for (int i = 0; i < chatMessages_.size(); i++) {
+        output.writeMessage(28, chatMessages_.get(i));
       }
       getUnknownFields().writeTo(output);
     }
@@ -7335,6 +8191,10 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
         size += com.google.protobuf.CodedOutputStream
           .computeBoolSize(27, suffocating_);
       }
+      for (int i = 0; i < chatMessages_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(28, chatMessages_.get(i));
+      }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
@@ -7415,6 +8275,8 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
           != other.getEyeInBlock()) return false;
       if (getSuffocating()
           != other.getSuffocating()) return false;
+      if (!getChatMessagesList()
+          .equals(other.getChatMessagesList())) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -7513,6 +8375,10 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
       hash = (37 * hash) + SUFFOCATING_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
           getSuffocating());
+      if (getChatMessagesCount() > 0) {
+        hash = (37 * hash) + CHAT_MESSAGES_FIELD_NUMBER;
+        hash = (53 * hash) + getChatMessagesList().hashCode();
+      }
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -7683,6 +8549,7 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
           getStatusEffectsFieldBuilder();
           getVisibleEntitiesFieldBuilder();
           getSurroundingBlocksFieldBuilder();
+          getChatMessagesFieldBuilder();
         }
       }
       @java.lang.Override
@@ -7750,6 +8617,13 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
         bitField0_ = (bitField0_ & ~0x01000000);
         eyeInBlock_ = false;
         suffocating_ = false;
+        if (chatMessagesBuilder_ == null) {
+          chatMessages_ = java.util.Collections.emptyList();
+        } else {
+          chatMessages_ = null;
+          chatMessagesBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x08000000);
         return this;
       }
 
@@ -7827,6 +8701,15 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
           result.surroundingBlocks_ = surroundingBlocks_;
         } else {
           result.surroundingBlocks_ = surroundingBlocksBuilder_.build();
+        }
+        if (chatMessagesBuilder_ == null) {
+          if (((bitField0_ & 0x08000000) != 0)) {
+            chatMessages_ = java.util.Collections.unmodifiableList(chatMessages_);
+            bitField0_ = (bitField0_ & ~0x08000000);
+          }
+          result.chatMessages_ = chatMessages_;
+        } else {
+          result.chatMessages_ = chatMessagesBuilder_.build();
         }
       }
 
@@ -8118,6 +9001,32 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
         if (other.getSuffocating() != false) {
           setSuffocating(other.getSuffocating());
         }
+        if (chatMessagesBuilder_ == null) {
+          if (!other.chatMessages_.isEmpty()) {
+            if (chatMessages_.isEmpty()) {
+              chatMessages_ = other.chatMessages_;
+              bitField0_ = (bitField0_ & ~0x08000000);
+            } else {
+              ensureChatMessagesIsMutable();
+              chatMessages_.addAll(other.chatMessages_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.chatMessages_.isEmpty()) {
+            if (chatMessagesBuilder_.isEmpty()) {
+              chatMessagesBuilder_.dispose();
+              chatMessagesBuilder_ = null;
+              chatMessages_ = other.chatMessages_;
+              bitField0_ = (bitField0_ & ~0x08000000);
+              chatMessagesBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getChatMessagesFieldBuilder() : null;
+            } else {
+              chatMessagesBuilder_.addAllMessages(other.chatMessages_);
+            }
+          }
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
@@ -8337,6 +9246,19 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
                 bitField0_ |= 0x04000000;
                 break;
               } // case 216
+              case 226: {
+                com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ChatMessageInfo m =
+                    input.readMessage(
+                        com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ChatMessageInfo.parser(),
+                        extensionRegistry);
+                if (chatMessagesBuilder_ == null) {
+                  ensureChatMessagesIsMutable();
+                  chatMessages_.add(m);
+                } else {
+                  chatMessagesBuilder_.addMessage(m);
+                }
+                break;
+              } // case 226
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -10861,6 +11783,246 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
         return this;
       }
 
+      private java.util.List<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ChatMessageInfo> chatMessages_ =
+        java.util.Collections.emptyList();
+      private void ensureChatMessagesIsMutable() {
+        if (!((bitField0_ & 0x08000000) != 0)) {
+          chatMessages_ = new java.util.ArrayList<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ChatMessageInfo>(chatMessages_);
+          bitField0_ |= 0x08000000;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ChatMessageInfo, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ChatMessageInfo.Builder, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ChatMessageInfoOrBuilder> chatMessagesBuilder_;
+
+      /**
+       * <code>repeated .ChatMessageInfo chat_messages = 28;</code>
+       */
+      public java.util.List<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ChatMessageInfo> getChatMessagesList() {
+        if (chatMessagesBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(chatMessages_);
+        } else {
+          return chatMessagesBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .ChatMessageInfo chat_messages = 28;</code>
+       */
+      public int getChatMessagesCount() {
+        if (chatMessagesBuilder_ == null) {
+          return chatMessages_.size();
+        } else {
+          return chatMessagesBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .ChatMessageInfo chat_messages = 28;</code>
+       */
+      public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ChatMessageInfo getChatMessages(int index) {
+        if (chatMessagesBuilder_ == null) {
+          return chatMessages_.get(index);
+        } else {
+          return chatMessagesBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .ChatMessageInfo chat_messages = 28;</code>
+       */
+      public Builder setChatMessages(
+          int index, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ChatMessageInfo value) {
+        if (chatMessagesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureChatMessagesIsMutable();
+          chatMessages_.set(index, value);
+          onChanged();
+        } else {
+          chatMessagesBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .ChatMessageInfo chat_messages = 28;</code>
+       */
+      public Builder setChatMessages(
+          int index, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ChatMessageInfo.Builder builderForValue) {
+        if (chatMessagesBuilder_ == null) {
+          ensureChatMessagesIsMutable();
+          chatMessages_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          chatMessagesBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .ChatMessageInfo chat_messages = 28;</code>
+       */
+      public Builder addChatMessages(com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ChatMessageInfo value) {
+        if (chatMessagesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureChatMessagesIsMutable();
+          chatMessages_.add(value);
+          onChanged();
+        } else {
+          chatMessagesBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .ChatMessageInfo chat_messages = 28;</code>
+       */
+      public Builder addChatMessages(
+          int index, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ChatMessageInfo value) {
+        if (chatMessagesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureChatMessagesIsMutable();
+          chatMessages_.add(index, value);
+          onChanged();
+        } else {
+          chatMessagesBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .ChatMessageInfo chat_messages = 28;</code>
+       */
+      public Builder addChatMessages(
+          com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ChatMessageInfo.Builder builderForValue) {
+        if (chatMessagesBuilder_ == null) {
+          ensureChatMessagesIsMutable();
+          chatMessages_.add(builderForValue.build());
+          onChanged();
+        } else {
+          chatMessagesBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .ChatMessageInfo chat_messages = 28;</code>
+       */
+      public Builder addChatMessages(
+          int index, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ChatMessageInfo.Builder builderForValue) {
+        if (chatMessagesBuilder_ == null) {
+          ensureChatMessagesIsMutable();
+          chatMessages_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          chatMessagesBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .ChatMessageInfo chat_messages = 28;</code>
+       */
+      public Builder addAllChatMessages(
+          java.lang.Iterable<? extends com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ChatMessageInfo> values) {
+        if (chatMessagesBuilder_ == null) {
+          ensureChatMessagesIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, chatMessages_);
+          onChanged();
+        } else {
+          chatMessagesBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .ChatMessageInfo chat_messages = 28;</code>
+       */
+      public Builder clearChatMessages() {
+        if (chatMessagesBuilder_ == null) {
+          chatMessages_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x08000000);
+          onChanged();
+        } else {
+          chatMessagesBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .ChatMessageInfo chat_messages = 28;</code>
+       */
+      public Builder removeChatMessages(int index) {
+        if (chatMessagesBuilder_ == null) {
+          ensureChatMessagesIsMutable();
+          chatMessages_.remove(index);
+          onChanged();
+        } else {
+          chatMessagesBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .ChatMessageInfo chat_messages = 28;</code>
+       */
+      public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ChatMessageInfo.Builder getChatMessagesBuilder(
+          int index) {
+        return getChatMessagesFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .ChatMessageInfo chat_messages = 28;</code>
+       */
+      public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ChatMessageInfoOrBuilder getChatMessagesOrBuilder(
+          int index) {
+        if (chatMessagesBuilder_ == null) {
+          return chatMessages_.get(index);  } else {
+          return chatMessagesBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .ChatMessageInfo chat_messages = 28;</code>
+       */
+      public java.util.List<? extends com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ChatMessageInfoOrBuilder> 
+           getChatMessagesOrBuilderList() {
+        if (chatMessagesBuilder_ != null) {
+          return chatMessagesBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(chatMessages_);
+        }
+      }
+      /**
+       * <code>repeated .ChatMessageInfo chat_messages = 28;</code>
+       */
+      public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ChatMessageInfo.Builder addChatMessagesBuilder() {
+        return getChatMessagesFieldBuilder().addBuilder(
+            com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ChatMessageInfo.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .ChatMessageInfo chat_messages = 28;</code>
+       */
+      public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ChatMessageInfo.Builder addChatMessagesBuilder(
+          int index) {
+        return getChatMessagesFieldBuilder().addBuilder(
+            index, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ChatMessageInfo.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .ChatMessageInfo chat_messages = 28;</code>
+       */
+      public java.util.List<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ChatMessageInfo.Builder> 
+           getChatMessagesBuilderList() {
+        return getChatMessagesFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ChatMessageInfo, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ChatMessageInfo.Builder, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ChatMessageInfoOrBuilder> 
+          getChatMessagesFieldBuilder() {
+        if (chatMessagesBuilder_ == null) {
+          chatMessagesBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ChatMessageInfo, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ChatMessageInfo.Builder, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ChatMessageInfoOrBuilder>(
+                  chatMessages_,
+                  ((bitField0_ & 0x08000000) != 0),
+                  getParentForChildren(),
+                  isClean());
+          chatMessages_ = null;
+        }
+        return chatMessagesBuilder_;
+      }
+
       // @@protoc_insertion_point(builder_scope:ObservationSpaceMessage)
     }
 
@@ -10948,6 +12110,11 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_EntitiesWithinDistance_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_ChatMessageInfo_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_ChatMessageInfo_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_ObservationSpaceMessage_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -10999,35 +12166,38 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
       "ranslate_key\030\001 \001(\t\022\013\n\003age\030\002 \001(\003\022\t\n\001x\030\003 \001" +
       "(\001\022\t\n\001y\030\004 \001(\001\022\t\n\001z\030\005 \001(\001\"7\n\026EntitiesWith" +
       "inDistance\022\035\n\010entities\030\001 \003(\0132\013.EntityInf" +
-      "o\"\323\010\n\027ObservationSpaceMessage\022\r\n\005image\030\001" +
-      " \001(\014\022\t\n\001x\030\002 \001(\001\022\t\n\001y\030\003 \001(\001\022\t\n\001z\030\004 \001(\001\022\013\n" +
-      "\003yaw\030\005 \001(\001\022\r\n\005pitch\030\006 \001(\001\022\016\n\006health\030\007 \001(" +
-      "\001\022\022\n\nfood_level\030\010 \001(\001\022\030\n\020saturation_leve" +
-      "l\030\t \001(\001\022\017\n\007is_dead\030\n \001(\010\022\035\n\tinventory\030\013 " +
-      "\003(\0132\n.ItemStack\022\"\n\016raycast_result\030\014 \001(\0132" +
-      "\n.HitResult\022$\n\017sound_subtitles\030\r \003(\0132\013.S" +
-      "oundEntry\022%\n\016status_effects\030\016 \003(\0132\r.Stat" +
-      "usEffect\022I\n\021killed_statistics\030\017 \003(\0132..Ob" +
-      "servationSpaceMessage.KilledStatisticsEn" +
-      "try\022G\n\020mined_statistics\030\020 \003(\0132-.Observat" +
-      "ionSpaceMessage.MinedStatisticsEntry\022E\n\017" +
-      "misc_statistics\030\021 \003(\0132,.ObservationSpace" +
-      "Message.MiscStatisticsEntry\022%\n\020visible_e" +
-      "ntities\030\022 \003(\0132\013.EntityInfo\022O\n\024surroundin" +
-      "g_entities\030\023 \003(\01321.ObservationSpaceMessa" +
-      "ge.SurroundingEntitiesEntry\022\025\n\rbobber_th" +
-      "rown\030\024 \001(\010\022\022\n\nexperience\030\025 \001(\005\022\022\n\nworld_" +
-      "time\030\026 \001(\003\022\032\n\022last_death_message\030\027 \001(\t\022\017" +
-      "\n\007image_2\030\030 \001(\014\022&\n\022surrounding_blocks\030\031 " +
-      "\003(\0132\n.BlockInfo\022\024\n\014eye_in_block\030\032 \001(\010\022\023\n" +
-      "\013suffocating\030\033 \001(\010\0327\n\025KilledStatisticsEn" +
-      "try\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\005:\0028\001\0326\n\024M" +
-      "inedStatisticsEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005valu" +
-      "e\030\002 \001(\005:\0028\001\0325\n\023MiscStatisticsEntry\022\013\n\003ke" +
-      "y\030\001 \001(\t\022\r\n\005value\030\002 \001(\005:\0028\001\032S\n\030Surroundin" +
-      "gEntitiesEntry\022\013\n\003key\030\001 \001(\005\022&\n\005value\030\002 \001" +
-      "(\0132\027.EntitiesWithinDistance:\0028\001B&\n$com.k" +
-      "yhsgeekcode.minecraft_env.protob\006proto3"
+      "o\"I\n\017ChatMessageInfo\022\022\n\nadded_time\030\001 \001(\003" +
+      "\022\017\n\007message\030\002 \001(\t\022\021\n\tindicator\030\003 \001(\t\"\374\010\n" +
+      "\027ObservationSpaceMessage\022\r\n\005image\030\001 \001(\014\022" +
+      "\t\n\001x\030\002 \001(\001\022\t\n\001y\030\003 \001(\001\022\t\n\001z\030\004 \001(\001\022\013\n\003yaw\030" +
+      "\005 \001(\001\022\r\n\005pitch\030\006 \001(\001\022\016\n\006health\030\007 \001(\001\022\022\n\n" +
+      "food_level\030\010 \001(\001\022\030\n\020saturation_level\030\t \001" +
+      "(\001\022\017\n\007is_dead\030\n \001(\010\022\035\n\tinventory\030\013 \003(\0132\n" +
+      ".ItemStack\022\"\n\016raycast_result\030\014 \001(\0132\n.Hit" +
+      "Result\022$\n\017sound_subtitles\030\r \003(\0132\013.SoundE" +
+      "ntry\022%\n\016status_effects\030\016 \003(\0132\r.StatusEff" +
+      "ect\022I\n\021killed_statistics\030\017 \003(\0132..Observa" +
+      "tionSpaceMessage.KilledStatisticsEntry\022G" +
+      "\n\020mined_statistics\030\020 \003(\0132-.ObservationSp" +
+      "aceMessage.MinedStatisticsEntry\022E\n\017misc_" +
+      "statistics\030\021 \003(\0132,.ObservationSpaceMessa" +
+      "ge.MiscStatisticsEntry\022%\n\020visible_entiti" +
+      "es\030\022 \003(\0132\013.EntityInfo\022O\n\024surrounding_ent" +
+      "ities\030\023 \003(\01321.ObservationSpaceMessage.Su" +
+      "rroundingEntitiesEntry\022\025\n\rbobber_thrown\030" +
+      "\024 \001(\010\022\022\n\nexperience\030\025 \001(\005\022\022\n\nworld_time\030" +
+      "\026 \001(\003\022\032\n\022last_death_message\030\027 \001(\t\022\017\n\007ima" +
+      "ge_2\030\030 \001(\014\022&\n\022surrounding_blocks\030\031 \003(\0132\n" +
+      ".BlockInfo\022\024\n\014eye_in_block\030\032 \001(\010\022\023\n\013suff" +
+      "ocating\030\033 \001(\010\022\'\n\rchat_messages\030\034 \003(\0132\020.C" +
+      "hatMessageInfo\0327\n\025KilledStatisticsEntry\022" +
+      "\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\005:\0028\001\0326\n\024Mined" +
+      "StatisticsEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 " +
+      "\001(\005:\0028\001\0325\n\023MiscStatisticsEntry\022\013\n\003key\030\001 " +
+      "\001(\t\022\r\n\005value\030\002 \001(\005:\0028\001\032S\n\030SurroundingEnt" +
+      "itiesEntry\022\013\n\003key\030\001 \001(\005\022&\n\005value\030\002 \001(\0132\027" +
+      ".EntitiesWithinDistance:\0028\001B&\n$com.kyhsg" +
+      "eekcode.minecraft_env.protob\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -11075,12 +12245,18 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_EntitiesWithinDistance_descriptor,
         new java.lang.String[] { "Entities", });
-    internal_static_ObservationSpaceMessage_descriptor =
+    internal_static_ChatMessageInfo_descriptor =
       getDescriptor().getMessageTypes().get(7);
+    internal_static_ChatMessageInfo_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_ChatMessageInfo_descriptor,
+        new java.lang.String[] { "AddedTime", "Message", "Indicator", });
+    internal_static_ObservationSpaceMessage_descriptor =
+      getDescriptor().getMessageTypes().get(8);
     internal_static_ObservationSpaceMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_ObservationSpaceMessage_descriptor,
-        new java.lang.String[] { "Image", "X", "Y", "Z", "Yaw", "Pitch", "Health", "FoodLevel", "SaturationLevel", "IsDead", "Inventory", "RaycastResult", "SoundSubtitles", "StatusEffects", "KilledStatistics", "MinedStatistics", "MiscStatistics", "VisibleEntities", "SurroundingEntities", "BobberThrown", "Experience", "WorldTime", "LastDeathMessage", "Image2", "SurroundingBlocks", "EyeInBlock", "Suffocating", });
+        new java.lang.String[] { "Image", "X", "Y", "Z", "Yaw", "Pitch", "Health", "FoodLevel", "SaturationLevel", "IsDead", "Inventory", "RaycastResult", "SoundSubtitles", "StatusEffects", "KilledStatistics", "MinedStatistics", "MiscStatistics", "VisibleEntities", "SurroundingEntities", "BobberThrown", "Experience", "WorldTime", "LastDeathMessage", "Image2", "SurroundingBlocks", "EyeInBlock", "Suffocating", "ChatMessages", });
     internal_static_ObservationSpaceMessage_KilledStatisticsEntry_descriptor =
       internal_static_ObservationSpaceMessage_descriptor.getNestedTypes().get(0);
     internal_static_ObservationSpaceMessage_KilledStatisticsEntry_fieldAccessorTable = new
