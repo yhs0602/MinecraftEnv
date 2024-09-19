@@ -596,19 +596,20 @@ class Minecraft_env : ModInitializer, CommandExecutor {
 
                 // Populate biome info if needed
                 if (initialEnvironment.requiresBiomeInfo) {
+                    val currentBiome = world.getBiome(player.blockPos)
                     val biomeCenterFinder = BiomeCenterFinder()
                     val biomeCenter = biomeCenterFinder.calculateBiomeCenter(
                         world,
                         player.blockPos,
                         10,
-                        world.getBiome(player.blockPos)
+                        currentBiome
                     )
                     if (biomeCenter != null) {
                         biomeInfo = biomeInfo {
                             centerX = biomeCenter.x
                             centerY = biomeCenter.y
                             centerZ = biomeCenter.z
-                            biomeName = world.getBiome(biomeCenter).value().toString()
+                            biomeName = currentBiome.idAsString
                         }
                     }
                 }
