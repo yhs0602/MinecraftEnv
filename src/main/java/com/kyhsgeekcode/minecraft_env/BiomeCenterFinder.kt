@@ -1,5 +1,6 @@
 package com.kyhsgeekcode.minecraft_env
 
+import net.minecraft.registry.entry.RegistryEntry
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.ChunkPos
 import net.minecraft.world.World
@@ -8,7 +9,7 @@ import net.minecraft.world.biome.Biome
 
 class BiomeCenterFinder {
     // 주어진 좌표에서 반경 내에 있는 바이옴의 중심을 계산
-    fun calculateBiomeCenter(world: World, startPos: BlockPos, radius: Int, targetBiome: Biome): BlockPos? {
+    fun calculateBiomeCenter(world: World, startPos: BlockPos, radius: Int, targetBiome: RegistryEntry<Biome>): BlockPos? {
         // 바이옴 경계 좌표를 저장하기 위한 셋
         val biomeBoundaryPositions: MutableSet<BlockPos> = HashSet()
 
@@ -17,12 +18,12 @@ class BiomeCenterFinder {
             for (dz in -radius..radius) {
                 val chunkPos = ChunkPos(startPos.add(dx * 16, 0, dz * 16))
                 val chunk = world.getChunk(chunkPos.x, chunkPos.z)
-
+                val biomeAccess = chunk.world.biomeAccess
                 // 해당 청크 내에서 바이옴을 검사하여 경계를 찾음
                 for (x in 0..15) {
                     for (z in 0..15) {
                         val blockPos = BlockPos(chunkPos.startX + x, startPos.y, chunkPos.startZ + z)
-                        val biome = world.getBiome(blockPos).value()
+                        val biome = biomeAccess.getBiome(blockPos)
                         // 목표 바이옴과 일치하는 경우 경계 좌표로 간주
                         if (biome == targetBiome) {
                             biomeBoundaryPositions.add(blockPos)
