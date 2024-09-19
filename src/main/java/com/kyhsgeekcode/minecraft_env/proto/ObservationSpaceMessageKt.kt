@@ -1046,6 +1046,32 @@ public object ObservationSpaceMessageKt {
       _builder.clearChatMessages()
     }
 
+
+    /**
+     * `.BiomeInfo biome_info = 29;`
+     */
+    public var biomeInfo: com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BiomeInfo
+      @JvmName("getBiomeInfo")
+      get() = _builder.getBiomeInfo()
+      @JvmName("setBiomeInfo")
+      set(value) {
+        _builder.setBiomeInfo(value)
+      }
+    /**
+     * `.BiomeInfo biome_info = 29;`
+     */
+    public fun clearBiomeInfo() {
+      _builder.clearBiomeInfo()
+    }
+    /**
+     * `.BiomeInfo biome_info = 29;`
+     * @return Whether the biomeInfo field is set.
+     */
+    public fun hasBiomeInfo(): kotlin.Boolean {
+      return _builder.hasBiomeInfo()
+    }
+    public val ObservationSpaceMessageKt.Dsl.biomeInfoOrNull: com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BiomeInfo?
+      get() = _builder.biomeInfoOrNull
   }
 }
 @kotlin.jvm.JvmSynthetic
@@ -1054,4 +1080,7 @@ public inline fun com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.Observat
 
 public val com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ObservationSpaceMessageOrBuilder.raycastResultOrNull: com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HitResult?
   get() = if (hasRaycastResult()) getRaycastResult() else null
+
+public val com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ObservationSpaceMessageOrBuilder.biomeInfoOrNull: com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BiomeInfo?
+  get() = if (hasBiomeInfo()) getBiomeInfo() else null
 

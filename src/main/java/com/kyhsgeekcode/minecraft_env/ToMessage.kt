@@ -64,3 +64,4 @@ fun ItemStack.toMessage() = itemStack {
     durability = this@toMessage.maxDamage - this@toMessage.damage
     maxDurability = this@toMessage.maxDamage
 }
+

@@ -944,6 +944,23 @@ public object InitialEnvironmentMessageKt {
     public fun clearFov() {
       _builder.clearFov()
     }
+
+    /**
+     * `bool requiresBiomeInfo = 27;`
+     */
+    public var requiresBiomeInfo: kotlin.Boolean
+      @JvmName("getRequiresBiomeInfo")
+      get() = _builder.getRequiresBiomeInfo()
+      @JvmName("setRequiresBiomeInfo")
+      set(value) {
+        _builder.setRequiresBiomeInfo(value)
+      }
+    /**
+     * `bool requiresBiomeInfo = 27;`
+     */
+    public fun clearRequiresBiomeInfo() {
+      _builder.clearRequiresBiomeInfo()
+    }
   }
 }
 @kotlin.jvm.JvmSynthetic

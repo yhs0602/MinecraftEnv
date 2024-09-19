@@ -5856,10 +5856,6 @@ public final class ObservationSpace {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <pre>
-     * TODO: always 0
-     * </pre>
-     *
      * <code>int64 added_time = 1;</code>
      * @return The addedTime.
      */
@@ -5939,10 +5935,6 @@ public final class ObservationSpace {
     public static final int ADDED_TIME_FIELD_NUMBER = 1;
     private long addedTime_ = 0L;
     /**
-     * <pre>
-     * TODO: always 0
-     * </pre>
-     *
      * <code>int64 added_time = 1;</code>
      * @return The addedTime.
      */
@@ -6381,10 +6373,6 @@ public final class ObservationSpace {
 
       private long addedTime_ ;
       /**
-       * <pre>
-       * TODO: always 0
-       * </pre>
-       *
        * <code>int64 added_time = 1;</code>
        * @return The addedTime.
        */
@@ -6393,10 +6381,6 @@ public final class ObservationSpace {
         return addedTime_;
       }
       /**
-       * <pre>
-       * TODO: always 0
-       * </pre>
-       *
        * <code>int64 added_time = 1;</code>
        * @param value The addedTime to set.
        * @return This builder for chaining.
@@ -6409,10 +6393,6 @@ public final class ObservationSpace {
         return this;
       }
       /**
-       * <pre>
-       * TODO: always 0
-       * </pre>
-       *
        * <code>int64 added_time = 1;</code>
        * @return This builder for chaining.
        */
@@ -6633,6 +6613,828 @@ public final class ObservationSpace {
 
     @java.lang.Override
     public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ChatMessageInfo getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface BiomeInfoOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:BiomeInfo)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     * 바이옴의 이름
+     * </pre>
+     *
+     * <code>string biome_name = 1;</code>
+     * @return The biomeName.
+     */
+    java.lang.String getBiomeName();
+    /**
+     * <pre>
+     * 바이옴의 이름
+     * </pre>
+     *
+     * <code>string biome_name = 1;</code>
+     * @return The bytes for biomeName.
+     */
+    com.google.protobuf.ByteString
+        getBiomeNameBytes();
+
+    /**
+     * <pre>
+     * 바이옴 중심의 x 좌표
+     * </pre>
+     *
+     * <code>int32 center_x = 2;</code>
+     * @return The centerX.
+     */
+    int getCenterX();
+
+    /**
+     * <pre>
+     * 바이옴 중심의 y 좌표
+     * </pre>
+     *
+     * <code>int32 center_y = 3;</code>
+     * @return The centerY.
+     */
+    int getCenterY();
+
+    /**
+     * <pre>
+     * 바이옴 중심의 z 좌표
+     * </pre>
+     *
+     * <code>int32 center_z = 4;</code>
+     * @return The centerZ.
+     */
+    int getCenterZ();
+  }
+  /**
+   * Protobuf type {@code BiomeInfo}
+   */
+  public static final class BiomeInfo extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:BiomeInfo)
+      BiomeInfoOrBuilder {
+  private static final long serialVersionUID = 0L;
+    static {
+      com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+        /* major= */ 4,
+        /* minor= */ 27,
+        /* patch= */ 3,
+        /* suffix= */ "",
+        BiomeInfo.class.getName());
+    }
+    // Use BiomeInfo.newBuilder() to construct.
+    private BiomeInfo(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private BiomeInfo() {
+      biomeName_ = "";
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_BiomeInfo_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_BiomeInfo_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BiomeInfo.class, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BiomeInfo.Builder.class);
+    }
+
+    public static final int BIOME_NAME_FIELD_NUMBER = 1;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object biomeName_ = "";
+    /**
+     * <pre>
+     * 바이옴의 이름
+     * </pre>
+     *
+     * <code>string biome_name = 1;</code>
+     * @return The biomeName.
+     */
+    @java.lang.Override
+    public java.lang.String getBiomeName() {
+      java.lang.Object ref = biomeName_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        biomeName_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * 바이옴의 이름
+     * </pre>
+     *
+     * <code>string biome_name = 1;</code>
+     * @return The bytes for biomeName.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getBiomeNameBytes() {
+      java.lang.Object ref = biomeName_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        biomeName_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int CENTER_X_FIELD_NUMBER = 2;
+    private int centerX_ = 0;
+    /**
+     * <pre>
+     * 바이옴 중심의 x 좌표
+     * </pre>
+     *
+     * <code>int32 center_x = 2;</code>
+     * @return The centerX.
+     */
+    @java.lang.Override
+    public int getCenterX() {
+      return centerX_;
+    }
+
+    public static final int CENTER_Y_FIELD_NUMBER = 3;
+    private int centerY_ = 0;
+    /**
+     * <pre>
+     * 바이옴 중심의 y 좌표
+     * </pre>
+     *
+     * <code>int32 center_y = 3;</code>
+     * @return The centerY.
+     */
+    @java.lang.Override
+    public int getCenterY() {
+      return centerY_;
+    }
+
+    public static final int CENTER_Z_FIELD_NUMBER = 4;
+    private int centerZ_ = 0;
+    /**
+     * <pre>
+     * 바이옴 중심의 z 좌표
+     * </pre>
+     *
+     * <code>int32 center_z = 4;</code>
+     * @return The centerZ.
+     */
+    @java.lang.Override
+    public int getCenterZ() {
+      return centerZ_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(biomeName_)) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 1, biomeName_);
+      }
+      if (centerX_ != 0) {
+        output.writeInt32(2, centerX_);
+      }
+      if (centerY_ != 0) {
+        output.writeInt32(3, centerY_);
+      }
+      if (centerZ_ != 0) {
+        output.writeInt32(4, centerZ_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(biomeName_)) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, biomeName_);
+      }
+      if (centerX_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, centerX_);
+      }
+      if (centerY_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, centerY_);
+      }
+      if (centerZ_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(4, centerZ_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BiomeInfo)) {
+        return super.equals(obj);
+      }
+      com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BiomeInfo other = (com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BiomeInfo) obj;
+
+      if (!getBiomeName()
+          .equals(other.getBiomeName())) return false;
+      if (getCenterX()
+          != other.getCenterX()) return false;
+      if (getCenterY()
+          != other.getCenterY()) return false;
+      if (getCenterZ()
+          != other.getCenterZ()) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + BIOME_NAME_FIELD_NUMBER;
+      hash = (53 * hash) + getBiomeName().hashCode();
+      hash = (37 * hash) + CENTER_X_FIELD_NUMBER;
+      hash = (53 * hash) + getCenterX();
+      hash = (37 * hash) + CENTER_Y_FIELD_NUMBER;
+      hash = (53 * hash) + getCenterY();
+      hash = (37 * hash) + CENTER_Z_FIELD_NUMBER;
+      hash = (53 * hash) + getCenterZ();
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BiomeInfo parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BiomeInfo parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BiomeInfo parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BiomeInfo parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BiomeInfo parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BiomeInfo parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BiomeInfo parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BiomeInfo parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BiomeInfo parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BiomeInfo parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BiomeInfo parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BiomeInfo parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BiomeInfo prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code BiomeInfo}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:BiomeInfo)
+        com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BiomeInfoOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_BiomeInfo_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_BiomeInfo_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BiomeInfo.class, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BiomeInfo.Builder.class);
+      }
+
+      // Construct using com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BiomeInfo.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        biomeName_ = "";
+        centerX_ = 0;
+        centerY_ = 0;
+        centerZ_ = 0;
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_BiomeInfo_descriptor;
+      }
+
+      @java.lang.Override
+      public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BiomeInfo getDefaultInstanceForType() {
+        return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BiomeInfo.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BiomeInfo build() {
+        com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BiomeInfo result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BiomeInfo buildPartial() {
+        com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BiomeInfo result = new com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BiomeInfo(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BiomeInfo result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.biomeName_ = biomeName_;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.centerX_ = centerX_;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.centerY_ = centerY_;
+        }
+        if (((from_bitField0_ & 0x00000008) != 0)) {
+          result.centerZ_ = centerZ_;
+        }
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BiomeInfo) {
+          return mergeFrom((com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BiomeInfo)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BiomeInfo other) {
+        if (other == com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BiomeInfo.getDefaultInstance()) return this;
+        if (!other.getBiomeName().isEmpty()) {
+          biomeName_ = other.biomeName_;
+          bitField0_ |= 0x00000001;
+          onChanged();
+        }
+        if (other.getCenterX() != 0) {
+          setCenterX(other.getCenterX());
+        }
+        if (other.getCenterY() != 0) {
+          setCenterY(other.getCenterY());
+        }
+        if (other.getCenterZ() != 0) {
+          setCenterZ(other.getCenterZ());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                biomeName_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              case 16: {
+                centerX_ = input.readInt32();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 16
+              case 24: {
+                centerY_ = input.readInt32();
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 24
+              case 32: {
+                centerZ_ = input.readInt32();
+                bitField0_ |= 0x00000008;
+                break;
+              } // case 32
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private java.lang.Object biomeName_ = "";
+      /**
+       * <pre>
+       * 바이옴의 이름
+       * </pre>
+       *
+       * <code>string biome_name = 1;</code>
+       * @return The biomeName.
+       */
+      public java.lang.String getBiomeName() {
+        java.lang.Object ref = biomeName_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          biomeName_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * 바이옴의 이름
+       * </pre>
+       *
+       * <code>string biome_name = 1;</code>
+       * @return The bytes for biomeName.
+       */
+      public com.google.protobuf.ByteString
+          getBiomeNameBytes() {
+        java.lang.Object ref = biomeName_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          biomeName_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * 바이옴의 이름
+       * </pre>
+       *
+       * <code>string biome_name = 1;</code>
+       * @param value The biomeName to set.
+       * @return This builder for chaining.
+       */
+      public Builder setBiomeName(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        biomeName_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * 바이옴의 이름
+       * </pre>
+       *
+       * <code>string biome_name = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearBiomeName() {
+        biomeName_ = getDefaultInstance().getBiomeName();
+        bitField0_ = (bitField0_ & ~0x00000001);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * 바이옴의 이름
+       * </pre>
+       *
+       * <code>string biome_name = 1;</code>
+       * @param value The bytes for biomeName to set.
+       * @return This builder for chaining.
+       */
+      public Builder setBiomeNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        biomeName_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+
+      private int centerX_ ;
+      /**
+       * <pre>
+       * 바이옴 중심의 x 좌표
+       * </pre>
+       *
+       * <code>int32 center_x = 2;</code>
+       * @return The centerX.
+       */
+      @java.lang.Override
+      public int getCenterX() {
+        return centerX_;
+      }
+      /**
+       * <pre>
+       * 바이옴 중심의 x 좌표
+       * </pre>
+       *
+       * <code>int32 center_x = 2;</code>
+       * @param value The centerX to set.
+       * @return This builder for chaining.
+       */
+      public Builder setCenterX(int value) {
+
+        centerX_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * 바이옴 중심의 x 좌표
+       * </pre>
+       *
+       * <code>int32 center_x = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearCenterX() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        centerX_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int centerY_ ;
+      /**
+       * <pre>
+       * 바이옴 중심의 y 좌표
+       * </pre>
+       *
+       * <code>int32 center_y = 3;</code>
+       * @return The centerY.
+       */
+      @java.lang.Override
+      public int getCenterY() {
+        return centerY_;
+      }
+      /**
+       * <pre>
+       * 바이옴 중심의 y 좌표
+       * </pre>
+       *
+       * <code>int32 center_y = 3;</code>
+       * @param value The centerY to set.
+       * @return This builder for chaining.
+       */
+      public Builder setCenterY(int value) {
+
+        centerY_ = value;
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * 바이옴 중심의 y 좌표
+       * </pre>
+       *
+       * <code>int32 center_y = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearCenterY() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        centerY_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int centerZ_ ;
+      /**
+       * <pre>
+       * 바이옴 중심의 z 좌표
+       * </pre>
+       *
+       * <code>int32 center_z = 4;</code>
+       * @return The centerZ.
+       */
+      @java.lang.Override
+      public int getCenterZ() {
+        return centerZ_;
+      }
+      /**
+       * <pre>
+       * 바이옴 중심의 z 좌표
+       * </pre>
+       *
+       * <code>int32 center_z = 4;</code>
+       * @param value The centerZ to set.
+       * @return This builder for chaining.
+       */
+      public Builder setCenterZ(int value) {
+
+        centerZ_ = value;
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * 바이옴 중심의 z 좌표
+       * </pre>
+       *
+       * <code>int32 center_z = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearCenterZ() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        centerZ_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:BiomeInfo)
+    }
+
+    // @@protoc_insertion_point(class_scope:BiomeInfo)
+    private static final com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BiomeInfo DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BiomeInfo();
+    }
+
+    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BiomeInfo getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<BiomeInfo>
+        PARSER = new com.google.protobuf.AbstractParser<BiomeInfo>() {
+      @java.lang.Override
+      public BiomeInfo parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<BiomeInfo> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<BiomeInfo> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BiomeInfo getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -7058,6 +7860,21 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
      */
     com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ChatMessageInfoOrBuilder getChatMessagesOrBuilder(
         int index);
+
+    /**
+     * <code>.BiomeInfo biome_info = 29;</code>
+     * @return Whether the biomeInfo field is set.
+     */
+    boolean hasBiomeInfo();
+    /**
+     * <code>.BiomeInfo biome_info = 29;</code>
+     * @return The biomeInfo.
+     */
+    com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BiomeInfo getBiomeInfo();
+    /**
+     * <code>.BiomeInfo biome_info = 29;</code>
+     */
+    com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BiomeInfoOrBuilder getBiomeInfoOrBuilder();
   }
   /**
    * Protobuf type {@code ObservationSpaceMessage}
@@ -7941,6 +8758,32 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
       return chatMessages_.get(index);
     }
 
+    public static final int BIOME_INFO_FIELD_NUMBER = 29;
+    private com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BiomeInfo biomeInfo_;
+    /**
+     * <code>.BiomeInfo biome_info = 29;</code>
+     * @return Whether the biomeInfo field is set.
+     */
+    @java.lang.Override
+    public boolean hasBiomeInfo() {
+      return ((bitField0_ & 0x00000002) != 0);
+    }
+    /**
+     * <code>.BiomeInfo biome_info = 29;</code>
+     * @return The biomeInfo.
+     */
+    @java.lang.Override
+    public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BiomeInfo getBiomeInfo() {
+      return biomeInfo_ == null ? com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BiomeInfo.getDefaultInstance() : biomeInfo_;
+    }
+    /**
+     * <code>.BiomeInfo biome_info = 29;</code>
+     */
+    @java.lang.Override
+    public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BiomeInfoOrBuilder getBiomeInfoOrBuilder() {
+      return biomeInfo_ == null ? com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BiomeInfo.getDefaultInstance() : biomeInfo_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -8050,6 +8893,9 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
       }
       for (int i = 0; i < chatMessages_.size(); i++) {
         output.writeMessage(28, chatMessages_.get(i));
+      }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        output.writeMessage(29, getBiomeInfo());
       }
       getUnknownFields().writeTo(output);
     }
@@ -8195,6 +9041,10 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(28, chatMessages_.get(i));
       }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(29, getBiomeInfo());
+      }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
@@ -8277,6 +9127,11 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
           != other.getSuffocating()) return false;
       if (!getChatMessagesList()
           .equals(other.getChatMessagesList())) return false;
+      if (hasBiomeInfo() != other.hasBiomeInfo()) return false;
+      if (hasBiomeInfo()) {
+        if (!getBiomeInfo()
+            .equals(other.getBiomeInfo())) return false;
+      }
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -8378,6 +9233,10 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
       if (getChatMessagesCount() > 0) {
         hash = (37 * hash) + CHAT_MESSAGES_FIELD_NUMBER;
         hash = (53 * hash) + getChatMessagesList().hashCode();
+      }
+      if (hasBiomeInfo()) {
+        hash = (37 * hash) + BIOME_INFO_FIELD_NUMBER;
+        hash = (53 * hash) + getBiomeInfo().hashCode();
       }
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
@@ -8550,6 +9409,7 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
           getVisibleEntitiesFieldBuilder();
           getSurroundingBlocksFieldBuilder();
           getChatMessagesFieldBuilder();
+          getBiomeInfoFieldBuilder();
         }
       }
       @java.lang.Override
@@ -8624,6 +9484,11 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
           chatMessagesBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x08000000);
+        biomeInfo_ = null;
+        if (biomeInfoBuilder_ != null) {
+          biomeInfoBuilder_.dispose();
+          biomeInfoBuilder_ = null;
+        }
         return this;
       }
 
@@ -8787,6 +9652,12 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
         }
         if (((from_bitField0_ & 0x04000000) != 0)) {
           result.suffocating_ = suffocating_;
+        }
+        if (((from_bitField0_ & 0x10000000) != 0)) {
+          result.biomeInfo_ = biomeInfoBuilder_ == null
+              ? biomeInfo_
+              : biomeInfoBuilder_.build();
+          to_bitField0_ |= 0x00000002;
         }
         result.bitField0_ |= to_bitField0_;
       }
@@ -9027,6 +9898,9 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
             }
           }
         }
+        if (other.hasBiomeInfo()) {
+          mergeBiomeInfo(other.getBiomeInfo());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
@@ -9259,6 +10133,13 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
                 }
                 break;
               } // case 226
+              case 234: {
+                input.readMessage(
+                    getBiomeInfoFieldBuilder().getBuilder(),
+                    extensionRegistry);
+                bitField0_ |= 0x10000000;
+                break;
+              } // case 234
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -12023,6 +12904,127 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
         return chatMessagesBuilder_;
       }
 
+      private com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BiomeInfo biomeInfo_;
+      private com.google.protobuf.SingleFieldBuilder<
+          com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BiomeInfo, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BiomeInfo.Builder, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BiomeInfoOrBuilder> biomeInfoBuilder_;
+      /**
+       * <code>.BiomeInfo biome_info = 29;</code>
+       * @return Whether the biomeInfo field is set.
+       */
+      public boolean hasBiomeInfo() {
+        return ((bitField0_ & 0x10000000) != 0);
+      }
+      /**
+       * <code>.BiomeInfo biome_info = 29;</code>
+       * @return The biomeInfo.
+       */
+      public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BiomeInfo getBiomeInfo() {
+        if (biomeInfoBuilder_ == null) {
+          return biomeInfo_ == null ? com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BiomeInfo.getDefaultInstance() : biomeInfo_;
+        } else {
+          return biomeInfoBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.BiomeInfo biome_info = 29;</code>
+       */
+      public Builder setBiomeInfo(com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BiomeInfo value) {
+        if (biomeInfoBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          biomeInfo_ = value;
+        } else {
+          biomeInfoBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x10000000;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.BiomeInfo biome_info = 29;</code>
+       */
+      public Builder setBiomeInfo(
+          com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BiomeInfo.Builder builderForValue) {
+        if (biomeInfoBuilder_ == null) {
+          biomeInfo_ = builderForValue.build();
+        } else {
+          biomeInfoBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x10000000;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.BiomeInfo biome_info = 29;</code>
+       */
+      public Builder mergeBiomeInfo(com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BiomeInfo value) {
+        if (biomeInfoBuilder_ == null) {
+          if (((bitField0_ & 0x10000000) != 0) &&
+            biomeInfo_ != null &&
+            biomeInfo_ != com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BiomeInfo.getDefaultInstance()) {
+            getBiomeInfoBuilder().mergeFrom(value);
+          } else {
+            biomeInfo_ = value;
+          }
+        } else {
+          biomeInfoBuilder_.mergeFrom(value);
+        }
+        if (biomeInfo_ != null) {
+          bitField0_ |= 0x10000000;
+          onChanged();
+        }
+        return this;
+      }
+      /**
+       * <code>.BiomeInfo biome_info = 29;</code>
+       */
+      public Builder clearBiomeInfo() {
+        bitField0_ = (bitField0_ & ~0x10000000);
+        biomeInfo_ = null;
+        if (biomeInfoBuilder_ != null) {
+          biomeInfoBuilder_.dispose();
+          biomeInfoBuilder_ = null;
+        }
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.BiomeInfo biome_info = 29;</code>
+       */
+      public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BiomeInfo.Builder getBiomeInfoBuilder() {
+        bitField0_ |= 0x10000000;
+        onChanged();
+        return getBiomeInfoFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.BiomeInfo biome_info = 29;</code>
+       */
+      public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BiomeInfoOrBuilder getBiomeInfoOrBuilder() {
+        if (biomeInfoBuilder_ != null) {
+          return biomeInfoBuilder_.getMessageOrBuilder();
+        } else {
+          return biomeInfo_ == null ?
+              com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BiomeInfo.getDefaultInstance() : biomeInfo_;
+        }
+      }
+      /**
+       * <code>.BiomeInfo biome_info = 29;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BiomeInfo, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BiomeInfo.Builder, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BiomeInfoOrBuilder> 
+          getBiomeInfoFieldBuilder() {
+        if (biomeInfoBuilder_ == null) {
+          biomeInfoBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BiomeInfo, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BiomeInfo.Builder, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BiomeInfoOrBuilder>(
+                  getBiomeInfo(),
+                  getParentForChildren(),
+                  isClean());
+          biomeInfo_ = null;
+        }
+        return biomeInfoBuilder_;
+      }
+
       // @@protoc_insertion_point(builder_scope:ObservationSpaceMessage)
     }
 
@@ -12115,6 +13117,11 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_ChatMessageInfo_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_BiomeInfo_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_BiomeInfo_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_ObservationSpaceMessage_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -12167,37 +13174,40 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
       "(\001\022\t\n\001y\030\004 \001(\001\022\t\n\001z\030\005 \001(\001\"7\n\026EntitiesWith" +
       "inDistance\022\035\n\010entities\030\001 \003(\0132\013.EntityInf" +
       "o\"I\n\017ChatMessageInfo\022\022\n\nadded_time\030\001 \001(\003" +
-      "\022\017\n\007message\030\002 \001(\t\022\021\n\tindicator\030\003 \001(\t\"\374\010\n" +
-      "\027ObservationSpaceMessage\022\r\n\005image\030\001 \001(\014\022" +
-      "\t\n\001x\030\002 \001(\001\022\t\n\001y\030\003 \001(\001\022\t\n\001z\030\004 \001(\001\022\013\n\003yaw\030" +
-      "\005 \001(\001\022\r\n\005pitch\030\006 \001(\001\022\016\n\006health\030\007 \001(\001\022\022\n\n" +
-      "food_level\030\010 \001(\001\022\030\n\020saturation_level\030\t \001" +
-      "(\001\022\017\n\007is_dead\030\n \001(\010\022\035\n\tinventory\030\013 \003(\0132\n" +
-      ".ItemStack\022\"\n\016raycast_result\030\014 \001(\0132\n.Hit" +
-      "Result\022$\n\017sound_subtitles\030\r \003(\0132\013.SoundE" +
-      "ntry\022%\n\016status_effects\030\016 \003(\0132\r.StatusEff" +
-      "ect\022I\n\021killed_statistics\030\017 \003(\0132..Observa" +
-      "tionSpaceMessage.KilledStatisticsEntry\022G" +
-      "\n\020mined_statistics\030\020 \003(\0132-.ObservationSp" +
-      "aceMessage.MinedStatisticsEntry\022E\n\017misc_" +
-      "statistics\030\021 \003(\0132,.ObservationSpaceMessa" +
-      "ge.MiscStatisticsEntry\022%\n\020visible_entiti" +
-      "es\030\022 \003(\0132\013.EntityInfo\022O\n\024surrounding_ent" +
-      "ities\030\023 \003(\01321.ObservationSpaceMessage.Su" +
-      "rroundingEntitiesEntry\022\025\n\rbobber_thrown\030" +
-      "\024 \001(\010\022\022\n\nexperience\030\025 \001(\005\022\022\n\nworld_time\030" +
-      "\026 \001(\003\022\032\n\022last_death_message\030\027 \001(\t\022\017\n\007ima" +
-      "ge_2\030\030 \001(\014\022&\n\022surrounding_blocks\030\031 \003(\0132\n" +
-      ".BlockInfo\022\024\n\014eye_in_block\030\032 \001(\010\022\023\n\013suff" +
-      "ocating\030\033 \001(\010\022\'\n\rchat_messages\030\034 \003(\0132\020.C" +
-      "hatMessageInfo\0327\n\025KilledStatisticsEntry\022" +
-      "\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\005:\0028\001\0326\n\024Mined" +
-      "StatisticsEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 " +
-      "\001(\005:\0028\001\0325\n\023MiscStatisticsEntry\022\013\n\003key\030\001 " +
-      "\001(\t\022\r\n\005value\030\002 \001(\005:\0028\001\032S\n\030SurroundingEnt" +
-      "itiesEntry\022\013\n\003key\030\001 \001(\005\022&\n\005value\030\002 \001(\0132\027" +
-      ".EntitiesWithinDistance:\0028\001B&\n$com.kyhsg" +
-      "eekcode.minecraft_env.protob\006proto3"
+      "\022\017\n\007message\030\002 \001(\t\022\021\n\tindicator\030\003 \001(\t\"U\n\t" +
+      "BiomeInfo\022\022\n\nbiome_name\030\001 \001(\t\022\020\n\010center_" +
+      "x\030\002 \001(\005\022\020\n\010center_y\030\003 \001(\005\022\020\n\010center_z\030\004 " +
+      "\001(\005\"\234\t\n\027ObservationSpaceMessage\022\r\n\005image" +
+      "\030\001 \001(\014\022\t\n\001x\030\002 \001(\001\022\t\n\001y\030\003 \001(\001\022\t\n\001z\030\004 \001(\001\022" +
+      "\013\n\003yaw\030\005 \001(\001\022\r\n\005pitch\030\006 \001(\001\022\016\n\006health\030\007 " +
+      "\001(\001\022\022\n\nfood_level\030\010 \001(\001\022\030\n\020saturation_le" +
+      "vel\030\t \001(\001\022\017\n\007is_dead\030\n \001(\010\022\035\n\tinventory\030" +
+      "\013 \003(\0132\n.ItemStack\022\"\n\016raycast_result\030\014 \001(" +
+      "\0132\n.HitResult\022$\n\017sound_subtitles\030\r \003(\0132\013" +
+      ".SoundEntry\022%\n\016status_effects\030\016 \003(\0132\r.St" +
+      "atusEffect\022I\n\021killed_statistics\030\017 \003(\0132.." +
+      "ObservationSpaceMessage.KilledStatistics" +
+      "Entry\022G\n\020mined_statistics\030\020 \003(\0132-.Observ" +
+      "ationSpaceMessage.MinedStatisticsEntry\022E" +
+      "\n\017misc_statistics\030\021 \003(\0132,.ObservationSpa" +
+      "ceMessage.MiscStatisticsEntry\022%\n\020visible" +
+      "_entities\030\022 \003(\0132\013.EntityInfo\022O\n\024surround" +
+      "ing_entities\030\023 \003(\01321.ObservationSpaceMes" +
+      "sage.SurroundingEntitiesEntry\022\025\n\rbobber_" +
+      "thrown\030\024 \001(\010\022\022\n\nexperience\030\025 \001(\005\022\022\n\nworl" +
+      "d_time\030\026 \001(\003\022\032\n\022last_death_message\030\027 \001(\t" +
+      "\022\017\n\007image_2\030\030 \001(\014\022&\n\022surrounding_blocks\030" +
+      "\031 \003(\0132\n.BlockInfo\022\024\n\014eye_in_block\030\032 \001(\010\022" +
+      "\023\n\013suffocating\030\033 \001(\010\022\'\n\rchat_messages\030\034 " +
+      "\003(\0132\020.ChatMessageInfo\022\036\n\nbiome_info\030\035 \001(" +
+      "\0132\n.BiomeInfo\0327\n\025KilledStatisticsEntry\022\013" +
+      "\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\005:\0028\001\0326\n\024MinedS" +
+      "tatisticsEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001" +
+      "(\005:\0028\001\0325\n\023MiscStatisticsEntry\022\013\n\003key\030\001 \001" +
+      "(\t\022\r\n\005value\030\002 \001(\005:\0028\001\032S\n\030SurroundingEnti" +
+      "tiesEntry\022\013\n\003key\030\001 \001(\005\022&\n\005value\030\002 \001(\0132\027." +
+      "EntitiesWithinDistance:\0028\001B&\n$com.kyhsge" +
+      "ekcode.minecraft_env.protob\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -12251,12 +13261,18 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_ChatMessageInfo_descriptor,
         new java.lang.String[] { "AddedTime", "Message", "Indicator", });
-    internal_static_ObservationSpaceMessage_descriptor =
+    internal_static_BiomeInfo_descriptor =
       getDescriptor().getMessageTypes().get(8);
+    internal_static_BiomeInfo_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_BiomeInfo_descriptor,
+        new java.lang.String[] { "BiomeName", "CenterX", "CenterY", "CenterZ", });
+    internal_static_ObservationSpaceMessage_descriptor =
+      getDescriptor().getMessageTypes().get(9);
     internal_static_ObservationSpaceMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_ObservationSpaceMessage_descriptor,
-        new java.lang.String[] { "Image", "X", "Y", "Z", "Yaw", "Pitch", "Health", "FoodLevel", "SaturationLevel", "IsDead", "Inventory", "RaycastResult", "SoundSubtitles", "StatusEffects", "KilledStatistics", "MinedStatistics", "MiscStatistics", "VisibleEntities", "SurroundingEntities", "BobberThrown", "Experience", "WorldTime", "LastDeathMessage", "Image2", "SurroundingBlocks", "EyeInBlock", "Suffocating", "ChatMessages", });
+        new java.lang.String[] { "Image", "X", "Y", "Z", "Yaw", "Pitch", "Health", "FoodLevel", "SaturationLevel", "IsDead", "Inventory", "RaycastResult", "SoundSubtitles", "StatusEffects", "KilledStatistics", "MinedStatistics", "MiscStatistics", "VisibleEntities", "SurroundingEntities", "BobberThrown", "Experience", "WorldTime", "LastDeathMessage", "Image2", "SurroundingBlocks", "EyeInBlock", "Suffocating", "ChatMessages", "BiomeInfo", });
     internal_static_ObservationSpaceMessage_KilledStatisticsEntry_descriptor =
       internal_static_ObservationSpaceMessage_descriptor.getNestedTypes().get(0);
     internal_static_ObservationSpaceMessage_KilledStatisticsEntry_fieldAccessorTable = new

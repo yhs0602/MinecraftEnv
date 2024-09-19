@@ -29,10 +29,6 @@ public object ChatMessageInfoKt {
     internal fun _build(): com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ChatMessageInfo = _builder.build()
 
     /**
-     * ```
-     * TODO: always 0
-     * ```
-     *
      * `int64 added_time = 1;`
      */
     public var addedTime: kotlin.Long
@@ -43,10 +39,6 @@ public object ChatMessageInfoKt {
         _builder.setAddedTime(value)
       }
     /**
-     * ```
-     * TODO: always 0
-     * ```
-     *
      * `int64 added_time = 1;`
      */
     public fun clearAddedTime() {

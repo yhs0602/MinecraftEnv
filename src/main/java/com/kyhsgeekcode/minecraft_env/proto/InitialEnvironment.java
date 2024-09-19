@@ -811,6 +811,12 @@ public final class InitialEnvironment {
      * @return The fov.
      */
     float getFov();
+
+    /**
+     * <code>bool requiresBiomeInfo = 27;</code>
+     * @return The requiresBiomeInfo.
+     */
+    boolean getRequiresBiomeInfo();
   }
   /**
    * Protobuf type {@code InitialEnvironmentMessage}
@@ -1498,6 +1504,17 @@ public final class InitialEnvironment {
       return fov_;
     }
 
+    public static final int REQUIRESBIOMEINFO_FIELD_NUMBER = 27;
+    private boolean requiresBiomeInfo_ = false;
+    /**
+     * <code>bool requiresBiomeInfo = 27;</code>
+     * @return The requiresBiomeInfo.
+     */
+    @java.lang.Override
+    public boolean getRequiresBiomeInfo() {
+      return requiresBiomeInfo_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -1594,6 +1611,9 @@ public final class InitialEnvironment {
       }
       if (java.lang.Float.floatToRawIntBits(fov_) != 0) {
         output.writeFloat(26, fov_);
+      }
+      if (requiresBiomeInfo_ != false) {
+        output.writeBool(27, requiresBiomeInfo_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -1739,6 +1759,10 @@ public final class InitialEnvironment {
         size += com.google.protobuf.CodedOutputStream
           .computeFloatSize(26, fov_);
       }
+      if (requiresBiomeInfo_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(27, requiresBiomeInfo_);
+      }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
@@ -1805,6 +1829,8 @@ public final class InitialEnvironment {
       if (java.lang.Float.floatToIntBits(getFov())
           != java.lang.Float.floatToIntBits(
               other.getFov())) return false;
+      if (getRequiresBiomeInfo()
+          != other.getRequiresBiomeInfo()) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -1890,6 +1916,9 @@ public final class InitialEnvironment {
       hash = (37 * hash) + FOV_FIELD_NUMBER;
       hash = (53 * hash) + java.lang.Float.floatToIntBits(
           getFov());
+      hash = (37 * hash) + REQUIRESBIOMEINFO_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getRequiresBiomeInfo());
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -2053,6 +2082,7 @@ public final class InitialEnvironment {
         requiresSurroundingBlocks_ = false;
         levelDisplayNameToPlay_ = "";
         fov_ = 0F;
+        requiresBiomeInfo_ = false;
         return this;
       }
 
@@ -2170,6 +2200,9 @@ public final class InitialEnvironment {
         }
         if (((from_bitField0_ & 0x02000000) != 0)) {
           result.fov_ = fov_;
+        }
+        if (((from_bitField0_ & 0x04000000) != 0)) {
+          result.requiresBiomeInfo_ = requiresBiomeInfo_;
         }
       }
 
@@ -2318,6 +2351,9 @@ public final class InitialEnvironment {
         }
         if (other.getFov() != 0F) {
           setFov(other.getFov());
+        }
+        if (other.getRequiresBiomeInfo() != false) {
+          setRequiresBiomeInfo(other.getRequiresBiomeInfo());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
@@ -2492,6 +2528,11 @@ public final class InitialEnvironment {
                 bitField0_ |= 0x02000000;
                 break;
               } // case 213
+              case 216: {
+                requiresBiomeInfo_ = input.readBool();
+                bitField0_ |= 0x04000000;
+                break;
+              } // case 216
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -4222,6 +4263,38 @@ public final class InitialEnvironment {
         return this;
       }
 
+      private boolean requiresBiomeInfo_ ;
+      /**
+       * <code>bool requiresBiomeInfo = 27;</code>
+       * @return The requiresBiomeInfo.
+       */
+      @java.lang.Override
+      public boolean getRequiresBiomeInfo() {
+        return requiresBiomeInfo_;
+      }
+      /**
+       * <code>bool requiresBiomeInfo = 27;</code>
+       * @param value The requiresBiomeInfo to set.
+       * @return This builder for chaining.
+       */
+      public Builder setRequiresBiomeInfo(boolean value) {
+
+        requiresBiomeInfo_ = value;
+        bitField0_ |= 0x04000000;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>bool requiresBiomeInfo = 27;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearRequiresBiomeInfo() {
+        bitField0_ = (bitField0_ & ~0x04000000);
+        requiresBiomeInfo_ = false;
+        onChanged();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:InitialEnvironmentMessage)
     }
 
@@ -4287,7 +4360,7 @@ public final class InitialEnvironment {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\031initial_environment.proto\"\256\005\n\031InitialE" +
+      "\n\031initial_environment.proto\"\311\005\n\031InitialE" +
       "nvironmentMessage\022\022\n\nimageSizeX\030\001 \001(\005\022\022\n" +
       "\nimageSizeY\030\002 \001(\005\022\033\n\010gamemode\030\003 \001(\0162\t.Ga" +
       "meMode\022\037\n\ndifficulty\030\004 \001(\0162\013.Difficulty\022" +
@@ -4304,14 +4377,14 @@ public final class InitialEnvironment {
       "_fov_effect\030\025 \001(\010\022\027\n\017request_raycast\030\026 \001" +
       "(\010\022\034\n\024screen_encoding_mode\030\027 \001(\005\022!\n\031requ" +
       "iresSurroundingBlocks\030\030 \001(\010\022\"\n\032level_dis" +
-      "play_name_to_play\030\031 \001(\t\022\013\n\003fov\030\032 \001(\002*4\n\010" +
-      "GameMode\022\014\n\010SURVIVAL\020\000\022\014\n\010HARDCORE\020\001\022\014\n\010" +
-      "CREATIVE\020\002*:\n\nDifficulty\022\014\n\010PEACEFUL\020\000\022\010" +
-      "\n\004EASY\020\001\022\n\n\006NORMAL\020\002\022\010\n\004HARD\020\003*Z\n\tWorldT" +
-      "ype\022\013\n\007DEFAULT\020\000\022\r\n\tSUPERFLAT\020\001\022\020\n\014LARGE" +
-      "_BIOMES\020\002\022\r\n\tAMPLIFIED\020\003\022\020\n\014SINGLE_BIOME" +
-      "\020\004B&\n$com.kyhsgeekcode.minecraft_env.pro" +
-      "tob\006proto3"
+      "play_name_to_play\030\031 \001(\t\022\013\n\003fov\030\032 \001(\002\022\031\n\021" +
+      "requiresBiomeInfo\030\033 \001(\010*4\n\010GameMode\022\014\n\010S" +
+      "URVIVAL\020\000\022\014\n\010HARDCORE\020\001\022\014\n\010CREATIVE\020\002*:\n" +
+      "\nDifficulty\022\014\n\010PEACEFUL\020\000\022\010\n\004EASY\020\001\022\n\n\006N" +
+      "ORMAL\020\002\022\010\n\004HARD\020\003*Z\n\tWorldType\022\013\n\007DEFAUL" +
+      "T\020\000\022\r\n\tSUPERFLAT\020\001\022\020\n\014LARGE_BIOMES\020\002\022\r\n\t" +
+      "AMPLIFIED\020\003\022\020\n\014SINGLE_BIOME\020\004B&\n$com.kyh" +
+      "sgeekcode.minecraft_env.protob\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -4322,7 +4395,7 @@ public final class InitialEnvironment {
     internal_static_InitialEnvironmentMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_InitialEnvironmentMessage_descriptor,
-        new java.lang.String[] { "ImageSizeX", "ImageSizeY", "Gamemode", "Difficulty", "WorldType", "WorldTypeArgs", "Seed", "GenerateStructures", "BonusChest", "DatapackPaths", "InitialExtraCommands", "KilledStatKeys", "MinedStatKeys", "MiscStatKeys", "SurroundingEntityDistances", "HudHidden", "RenderDistance", "SimulationDistance", "EyeDistance", "StructurePaths", "NoFovEffect", "RequestRaycast", "ScreenEncodingMode", "RequiresSurroundingBlocks", "LevelDisplayNameToPlay", "Fov", });
+        new java.lang.String[] { "ImageSizeX", "ImageSizeY", "Gamemode", "Difficulty", "WorldType", "WorldTypeArgs", "Seed", "GenerateStructures", "BonusChest", "DatapackPaths", "InitialExtraCommands", "KilledStatKeys", "MinedStatKeys", "MiscStatKeys", "SurroundingEntityDistances", "HudHidden", "RenderDistance", "SimulationDistance", "EyeDistance", "StructurePaths", "NoFovEffect", "RequestRaycast", "ScreenEncodingMode", "RequiresSurroundingBlocks", "LevelDisplayNameToPlay", "Fov", "RequiresBiomeInfo", });
     descriptor.resolveAllFeaturesImmutable();
   }
 

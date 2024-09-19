@@ -593,6 +593,25 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                     })
                 }
                 chatList.clear()
+
+                // Populate biome info if needed
+                if (initialEnvironment.requiresBiomeInfo) {
+                    val biomeCenterFinder = BiomeCenterFinder()
+                    val biomeCenter = biomeCenterFinder.calculateBiomeCenter(
+                        world,
+                        player.blockPos,
+                        10,
+                        world.getBiome(player.blockPos).value()
+                    )
+                    if (biomeCenter != null) {
+                        biomeInfo = biomeInfo {
+                            centerX = biomeCenter.x
+                            centerY = biomeCenter.y
+                            centerZ = biomeCenter.z
+                            biomeName = world.getBiome(biomeCenter).value().toString()
+                        }
+                    }
+                }
             }
             if (ioPhase == IOPhase.GOT_INITIAL_ENVIRONMENT_SHOULD_SEND_OBSERVATION) {
 //                csvLogger.log("Sent observation; $ioPhase")
