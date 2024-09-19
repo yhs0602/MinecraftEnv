@@ -27,6 +27,8 @@ class BiomeCenterFinder {
                         // 목표 바이옴과 일치하는 경우 경계 좌표로 간주
                         if (biome == targetBiome) {
                             biomeBoundaryPositions.add(blockPos)
+                        } else{
+                            println("biome is not targetBiome: $biome != $targetBiome")
                         }
                     }
                 }
