@@ -601,7 +601,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                         world,
                         player.blockPos,
                         10,
-                        world.getBiome(player.blockPos).value()
+                        world.getBiome(player.blockPos)
                     )
                     if (biomeCenter != null) {
                         biomeInfo = biomeInfo {
