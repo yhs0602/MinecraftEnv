@@ -22,8 +22,6 @@ class BiomeCenterFinder(val world: ServerWorld) {
         for (dx in -radius..radius) {
             for (dz in -radius..radius) {
                 val chunkPos = ChunkPos(startPos.add(dx * 16, 0, dz * 16))
-                val chunk = world.getChunk(chunkPos.x, chunkPos.z)
-                val biomeAccess = chunk.world.biomeAccess
                 // 해당 청크 내에서 바이옴을 검사하여 경계를 찾음
                 for (x in 0..15) {
                     for (z in 0..15) {
@@ -72,8 +70,6 @@ class BiomeCenterFinder(val world: ServerWorld) {
         for (dx in -radiusInChunks..radiusInChunks) {
             for (dz in -radiusInChunks..radiusInChunks) {
                 val chunkPos = ChunkPos(startPos.add(dx * 16, 0, dz * 16))
-                val chunk = world.getChunk(chunkPos.x, chunkPos.z)
-                val biomeAccess = chunk.world.biomeAccess
                 // 해당 청크 내에서 바이옴을 검사하여 경계를 찾음
                 for (x in 0..15) {
                     for (z in 0..15) {
