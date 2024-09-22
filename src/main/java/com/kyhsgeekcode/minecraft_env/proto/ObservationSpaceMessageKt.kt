@@ -1072,6 +1072,78 @@ public object ObservationSpaceMessageKt {
     }
     public val ObservationSpaceMessageKt.Dsl.biomeInfoOrNull: com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BiomeInfo?
       get() = _builder.biomeInfoOrNull
+
+    /**
+     * An uninstantiable, behaviorless type to represent the field in
+     * generics.
+     */
+    @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
+    public class NearbyBiomesProxy private constructor() : com.google.protobuf.kotlin.DslProxy()
+    /**
+     * `repeated .NearbyBiome nearby_biomes = 30;`
+     */
+     public val nearbyBiomes: com.google.protobuf.kotlin.DslList<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.NearbyBiome, NearbyBiomesProxy>
+      @kotlin.jvm.JvmSynthetic
+      get() = com.google.protobuf.kotlin.DslList(
+        _builder.getNearbyBiomesList()
+      )
+    /**
+     * `repeated .NearbyBiome nearby_biomes = 30;`
+     * @param value The nearbyBiomes to add.
+     */
+    @kotlin.jvm.JvmSynthetic
+    @kotlin.jvm.JvmName("addNearbyBiomes")
+    public fun com.google.protobuf.kotlin.DslList<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.NearbyBiome, NearbyBiomesProxy>.add(value: com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.NearbyBiome) {
+      _builder.addNearbyBiomes(value)
+    }
+    /**
+     * `repeated .NearbyBiome nearby_biomes = 30;`
+     * @param value The nearbyBiomes to add.
+     */
+    @kotlin.jvm.JvmSynthetic
+    @kotlin.jvm.JvmName("plusAssignNearbyBiomes")
+    @Suppress("NOTHING_TO_INLINE")
+    public inline operator fun com.google.protobuf.kotlin.DslList<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.NearbyBiome, NearbyBiomesProxy>.plusAssign(value: com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.NearbyBiome) {
+      add(value)
+    }
+    /**
+     * `repeated .NearbyBiome nearby_biomes = 30;`
+     * @param values The nearbyBiomes to add.
+     */
+    @kotlin.jvm.JvmSynthetic
+    @kotlin.jvm.JvmName("addAllNearbyBiomes")
+    public fun com.google.protobuf.kotlin.DslList<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.NearbyBiome, NearbyBiomesProxy>.addAll(values: kotlin.collections.Iterable<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.NearbyBiome>) {
+      _builder.addAllNearbyBiomes(values)
+    }
+    /**
+     * `repeated .NearbyBiome nearby_biomes = 30;`
+     * @param values The nearbyBiomes to add.
+     */
+    @kotlin.jvm.JvmSynthetic
+    @kotlin.jvm.JvmName("plusAssignAllNearbyBiomes")
+    @Suppress("NOTHING_TO_INLINE")
+    public inline operator fun com.google.protobuf.kotlin.DslList<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.NearbyBiome, NearbyBiomesProxy>.plusAssign(values: kotlin.collections.Iterable<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.NearbyBiome>) {
+      addAll(values)
+    }
+    /**
+     * `repeated .NearbyBiome nearby_biomes = 30;`
+     * @param index The index to set the value at.
+     * @param value The nearbyBiomes to set.
+     */
+    @kotlin.jvm.JvmSynthetic
+    @kotlin.jvm.JvmName("setNearbyBiomes")
+    public operator fun com.google.protobuf.kotlin.DslList<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.NearbyBiome, NearbyBiomesProxy>.set(index: kotlin.Int, value: com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.NearbyBiome) {
+      _builder.setNearbyBiomes(index, value)
+    }
+    /**
+     * `repeated .NearbyBiome nearby_biomes = 30;`
+     */
+    @kotlin.jvm.JvmSynthetic
+    @kotlin.jvm.JvmName("clearNearbyBiomes")
+    public fun com.google.protobuf.kotlin.DslList<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.NearbyBiome, NearbyBiomesProxy>.clear() {
+      _builder.clearNearbyBiomes()
+    }
+
   }
 }
 @kotlin.jvm.JvmSynthetic

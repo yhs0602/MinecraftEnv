@@ -612,6 +612,17 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                             biomeName = currentBiome.idAsString
                         }
                     }
+                    val nearbyBiomes1 = biomeCenterFinder.getNearbyBiomes(world, player.blockPos, 2)
+                    for (biomePos in nearbyBiomes1) {
+                        nearbyBiomes.add(
+                            nearbyBiome {
+                                x = biomePos.x
+                                y = biomePos.y
+                                z = biomePos.z
+                                biomeName = biomePos.biome.idAsString
+                            }
+                        )
+                    }
                 }
             }
             if (ioPhase == IOPhase.GOT_INITIAL_ENVIRONMENT_SHOULD_SEND_OBSERVATION) {

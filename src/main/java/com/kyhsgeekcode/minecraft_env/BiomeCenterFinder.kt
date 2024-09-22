@@ -9,7 +9,12 @@ import net.minecraft.world.biome.Biome
 
 class BiomeCenterFinder {
     // 주어진 좌표에서 반경 내에 있는 바이옴의 중심을 계산
-    fun calculateBiomeCenter(world: World, startPos: BlockPos, radius: Int, targetBiome: RegistryEntry<Biome>): BlockPos? {
+    fun calculateBiomeCenter(
+        world: World,
+        startPos: BlockPos,
+        radius: Int,
+        targetBiome: RegistryEntry<Biome>,
+    ): BlockPos? {
         // 바이옴 경계 좌표를 저장하기 위한 셋
         val biomeBoundaryPositions: MutableSet<BlockPos> = HashSet()
 
@@ -57,4 +62,43 @@ class BiomeCenterFinder {
 
         return BlockPos((sumX / count).toInt(), (sumY / count).toInt(), (sumZ / count).toInt())
     }
+
+    fun getNearbyBiomes(
+        world: World,
+        startPos: BlockPos,
+        radiusInChunks: Int,
+    ): List<NearbyBiome> {
+        val nearbyBiomes = mutableListOf<NearbyBiome>()
+        // 주어진 반경 내의 청크를 반복
+        for (dx in -radiusInChunks..radiusInChunks) {
+            for (dz in -radiusInChunks..radiusInChunks) {
+                val chunkPos = ChunkPos(startPos.add(dx * 16, 0, dz * 16))
+                val chunk = world.getChunk(chunkPos.x, chunkPos.z)
+                val biomeAccess = chunk.world.biomeAccess
+                // 해당 청크 내에서 바이옴을 검사하여 경계를 찾음
+                for (x in 0..15) {
+                    for (z in 0..15) {
+                        val blockPos = BlockPos(chunkPos.startX + x, startPos.y, chunkPos.startZ + z)
+                        val biome = biomeAccess.getBiome(blockPos)
+                        nearbyBiomes.add(
+                            NearbyBiome(
+                                blockPos.x,
+                                blockPos.y,
+                                blockPos.z,
+                                biome
+                            )
+                        )
+                    }
+                }
+            }
+        }
+        return nearbyBiomes
+    }
 }
+
+data class NearbyBiome(
+    val x: Int,
+    val y: Int,
+    val z: Int,
+    val biome: RegistryEntry<Biome>,
+)

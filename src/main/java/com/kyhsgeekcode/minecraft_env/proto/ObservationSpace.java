@@ -7440,6 +7440,732 @@ public final class ObservationSpace {
 
   }
 
+  public interface NearbyBiomeOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:NearbyBiome)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>string biome_name = 1;</code>
+     * @return The biomeName.
+     */
+    java.lang.String getBiomeName();
+    /**
+     * <code>string biome_name = 1;</code>
+     * @return The bytes for biomeName.
+     */
+    com.google.protobuf.ByteString
+        getBiomeNameBytes();
+
+    /**
+     * <code>int32 x = 2;</code>
+     * @return The x.
+     */
+    int getX();
+
+    /**
+     * <code>int32 y = 3;</code>
+     * @return The y.
+     */
+    int getY();
+
+    /**
+     * <code>int32 z = 4;</code>
+     * @return The z.
+     */
+    int getZ();
+  }
+  /**
+   * Protobuf type {@code NearbyBiome}
+   */
+  public static final class NearbyBiome extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:NearbyBiome)
+      NearbyBiomeOrBuilder {
+  private static final long serialVersionUID = 0L;
+    static {
+      com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+        /* major= */ 4,
+        /* minor= */ 27,
+        /* patch= */ 3,
+        /* suffix= */ "",
+        NearbyBiome.class.getName());
+    }
+    // Use NearbyBiome.newBuilder() to construct.
+    private NearbyBiome(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private NearbyBiome() {
+      biomeName_ = "";
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_NearbyBiome_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_NearbyBiome_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.NearbyBiome.class, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.NearbyBiome.Builder.class);
+    }
+
+    public static final int BIOME_NAME_FIELD_NUMBER = 1;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object biomeName_ = "";
+    /**
+     * <code>string biome_name = 1;</code>
+     * @return The biomeName.
+     */
+    @java.lang.Override
+    public java.lang.String getBiomeName() {
+      java.lang.Object ref = biomeName_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        biomeName_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string biome_name = 1;</code>
+     * @return The bytes for biomeName.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getBiomeNameBytes() {
+      java.lang.Object ref = biomeName_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        biomeName_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int X_FIELD_NUMBER = 2;
+    private int x_ = 0;
+    /**
+     * <code>int32 x = 2;</code>
+     * @return The x.
+     */
+    @java.lang.Override
+    public int getX() {
+      return x_;
+    }
+
+    public static final int Y_FIELD_NUMBER = 3;
+    private int y_ = 0;
+    /**
+     * <code>int32 y = 3;</code>
+     * @return The y.
+     */
+    @java.lang.Override
+    public int getY() {
+      return y_;
+    }
+
+    public static final int Z_FIELD_NUMBER = 4;
+    private int z_ = 0;
+    /**
+     * <code>int32 z = 4;</code>
+     * @return The z.
+     */
+    @java.lang.Override
+    public int getZ() {
+      return z_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(biomeName_)) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 1, biomeName_);
+      }
+      if (x_ != 0) {
+        output.writeInt32(2, x_);
+      }
+      if (y_ != 0) {
+        output.writeInt32(3, y_);
+      }
+      if (z_ != 0) {
+        output.writeInt32(4, z_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(biomeName_)) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, biomeName_);
+      }
+      if (x_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, x_);
+      }
+      if (y_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, y_);
+      }
+      if (z_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(4, z_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.NearbyBiome)) {
+        return super.equals(obj);
+      }
+      com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.NearbyBiome other = (com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.NearbyBiome) obj;
+
+      if (!getBiomeName()
+          .equals(other.getBiomeName())) return false;
+      if (getX()
+          != other.getX()) return false;
+      if (getY()
+          != other.getY()) return false;
+      if (getZ()
+          != other.getZ()) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + BIOME_NAME_FIELD_NUMBER;
+      hash = (53 * hash) + getBiomeName().hashCode();
+      hash = (37 * hash) + X_FIELD_NUMBER;
+      hash = (53 * hash) + getX();
+      hash = (37 * hash) + Y_FIELD_NUMBER;
+      hash = (53 * hash) + getY();
+      hash = (37 * hash) + Z_FIELD_NUMBER;
+      hash = (53 * hash) + getZ();
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.NearbyBiome parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.NearbyBiome parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.NearbyBiome parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.NearbyBiome parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.NearbyBiome parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.NearbyBiome parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.NearbyBiome parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.NearbyBiome parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.NearbyBiome parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.NearbyBiome parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.NearbyBiome parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.NearbyBiome parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.NearbyBiome prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code NearbyBiome}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:NearbyBiome)
+        com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.NearbyBiomeOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_NearbyBiome_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_NearbyBiome_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.NearbyBiome.class, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.NearbyBiome.Builder.class);
+      }
+
+      // Construct using com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.NearbyBiome.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        biomeName_ = "";
+        x_ = 0;
+        y_ = 0;
+        z_ = 0;
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_NearbyBiome_descriptor;
+      }
+
+      @java.lang.Override
+      public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.NearbyBiome getDefaultInstanceForType() {
+        return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.NearbyBiome.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.NearbyBiome build() {
+        com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.NearbyBiome result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.NearbyBiome buildPartial() {
+        com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.NearbyBiome result = new com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.NearbyBiome(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.NearbyBiome result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.biomeName_ = biomeName_;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.x_ = x_;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.y_ = y_;
+        }
+        if (((from_bitField0_ & 0x00000008) != 0)) {
+          result.z_ = z_;
+        }
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.NearbyBiome) {
+          return mergeFrom((com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.NearbyBiome)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.NearbyBiome other) {
+        if (other == com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.NearbyBiome.getDefaultInstance()) return this;
+        if (!other.getBiomeName().isEmpty()) {
+          biomeName_ = other.biomeName_;
+          bitField0_ |= 0x00000001;
+          onChanged();
+        }
+        if (other.getX() != 0) {
+          setX(other.getX());
+        }
+        if (other.getY() != 0) {
+          setY(other.getY());
+        }
+        if (other.getZ() != 0) {
+          setZ(other.getZ());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                biomeName_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              case 16: {
+                x_ = input.readInt32();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 16
+              case 24: {
+                y_ = input.readInt32();
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 24
+              case 32: {
+                z_ = input.readInt32();
+                bitField0_ |= 0x00000008;
+                break;
+              } // case 32
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private java.lang.Object biomeName_ = "";
+      /**
+       * <code>string biome_name = 1;</code>
+       * @return The biomeName.
+       */
+      public java.lang.String getBiomeName() {
+        java.lang.Object ref = biomeName_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          biomeName_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string biome_name = 1;</code>
+       * @return The bytes for biomeName.
+       */
+      public com.google.protobuf.ByteString
+          getBiomeNameBytes() {
+        java.lang.Object ref = biomeName_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          biomeName_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string biome_name = 1;</code>
+       * @param value The biomeName to set.
+       * @return This builder for chaining.
+       */
+      public Builder setBiomeName(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        biomeName_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string biome_name = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearBiomeName() {
+        biomeName_ = getDefaultInstance().getBiomeName();
+        bitField0_ = (bitField0_ & ~0x00000001);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string biome_name = 1;</code>
+       * @param value The bytes for biomeName to set.
+       * @return This builder for chaining.
+       */
+      public Builder setBiomeNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        biomeName_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+
+      private int x_ ;
+      /**
+       * <code>int32 x = 2;</code>
+       * @return The x.
+       */
+      @java.lang.Override
+      public int getX() {
+        return x_;
+      }
+      /**
+       * <code>int32 x = 2;</code>
+       * @param value The x to set.
+       * @return This builder for chaining.
+       */
+      public Builder setX(int value) {
+
+        x_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 x = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearX() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        x_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int y_ ;
+      /**
+       * <code>int32 y = 3;</code>
+       * @return The y.
+       */
+      @java.lang.Override
+      public int getY() {
+        return y_;
+      }
+      /**
+       * <code>int32 y = 3;</code>
+       * @param value The y to set.
+       * @return This builder for chaining.
+       */
+      public Builder setY(int value) {
+
+        y_ = value;
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 y = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearY() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        y_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int z_ ;
+      /**
+       * <code>int32 z = 4;</code>
+       * @return The z.
+       */
+      @java.lang.Override
+      public int getZ() {
+        return z_;
+      }
+      /**
+       * <code>int32 z = 4;</code>
+       * @param value The z to set.
+       * @return This builder for chaining.
+       */
+      public Builder setZ(int value) {
+
+        z_ = value;
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 z = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearZ() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        z_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:NearbyBiome)
+    }
+
+    // @@protoc_insertion_point(class_scope:NearbyBiome)
+    private static final com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.NearbyBiome DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.NearbyBiome();
+    }
+
+    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.NearbyBiome getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<NearbyBiome>
+        PARSER = new com.google.protobuf.AbstractParser<NearbyBiome>() {
+      @java.lang.Override
+      public NearbyBiome parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<NearbyBiome> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<NearbyBiome> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.NearbyBiome getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   public interface ObservationSpaceMessageOrBuilder extends
       // @@protoc_insertion_point(interface_extends:ObservationSpaceMessage)
       com.google.protobuf.MessageOrBuilder {
@@ -7875,6 +8601,30 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
      * <code>.BiomeInfo biome_info = 29;</code>
      */
     com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BiomeInfoOrBuilder getBiomeInfoOrBuilder();
+
+    /**
+     * <code>repeated .NearbyBiome nearby_biomes = 30;</code>
+     */
+    java.util.List<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.NearbyBiome> 
+        getNearbyBiomesList();
+    /**
+     * <code>repeated .NearbyBiome nearby_biomes = 30;</code>
+     */
+    com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.NearbyBiome getNearbyBiomes(int index);
+    /**
+     * <code>repeated .NearbyBiome nearby_biomes = 30;</code>
+     */
+    int getNearbyBiomesCount();
+    /**
+     * <code>repeated .NearbyBiome nearby_biomes = 30;</code>
+     */
+    java.util.List<? extends com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.NearbyBiomeOrBuilder> 
+        getNearbyBiomesOrBuilderList();
+    /**
+     * <code>repeated .NearbyBiome nearby_biomes = 30;</code>
+     */
+    com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.NearbyBiomeOrBuilder getNearbyBiomesOrBuilder(
+        int index);
   }
   /**
    * Protobuf type {@code ObservationSpaceMessage}
@@ -7907,6 +8657,7 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
       image2_ = com.google.protobuf.ByteString.EMPTY;
       surroundingBlocks_ = java.util.Collections.emptyList();
       chatMessages_ = java.util.Collections.emptyList();
+      nearbyBiomes_ = java.util.Collections.emptyList();
     }
 
     public static final com.google.protobuf.Descriptors.Descriptor
@@ -8784,6 +9535,47 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
       return biomeInfo_ == null ? com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.BiomeInfo.getDefaultInstance() : biomeInfo_;
     }
 
+    public static final int NEARBY_BIOMES_FIELD_NUMBER = 30;
+    @SuppressWarnings("serial")
+    private java.util.List<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.NearbyBiome> nearbyBiomes_;
+    /**
+     * <code>repeated .NearbyBiome nearby_biomes = 30;</code>
+     */
+    @java.lang.Override
+    public java.util.List<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.NearbyBiome> getNearbyBiomesList() {
+      return nearbyBiomes_;
+    }
+    /**
+     * <code>repeated .NearbyBiome nearby_biomes = 30;</code>
+     */
+    @java.lang.Override
+    public java.util.List<? extends com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.NearbyBiomeOrBuilder> 
+        getNearbyBiomesOrBuilderList() {
+      return nearbyBiomes_;
+    }
+    /**
+     * <code>repeated .NearbyBiome nearby_biomes = 30;</code>
+     */
+    @java.lang.Override
+    public int getNearbyBiomesCount() {
+      return nearbyBiomes_.size();
+    }
+    /**
+     * <code>repeated .NearbyBiome nearby_biomes = 30;</code>
+     */
+    @java.lang.Override
+    public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.NearbyBiome getNearbyBiomes(int index) {
+      return nearbyBiomes_.get(index);
+    }
+    /**
+     * <code>repeated .NearbyBiome nearby_biomes = 30;</code>
+     */
+    @java.lang.Override
+    public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.NearbyBiomeOrBuilder getNearbyBiomesOrBuilder(
+        int index) {
+      return nearbyBiomes_.get(index);
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -8896,6 +9688,9 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
       }
       if (((bitField0_ & 0x00000002) != 0)) {
         output.writeMessage(29, getBiomeInfo());
+      }
+      for (int i = 0; i < nearbyBiomes_.size(); i++) {
+        output.writeMessage(30, nearbyBiomes_.get(i));
       }
       getUnknownFields().writeTo(output);
     }
@@ -9045,6 +9840,10 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(29, getBiomeInfo());
       }
+      for (int i = 0; i < nearbyBiomes_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(30, nearbyBiomes_.get(i));
+      }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
@@ -9132,6 +9931,8 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
         if (!getBiomeInfo()
             .equals(other.getBiomeInfo())) return false;
       }
+      if (!getNearbyBiomesList()
+          .equals(other.getNearbyBiomesList())) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -9237,6 +10038,10 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
       if (hasBiomeInfo()) {
         hash = (37 * hash) + BIOME_INFO_FIELD_NUMBER;
         hash = (53 * hash) + getBiomeInfo().hashCode();
+      }
+      if (getNearbyBiomesCount() > 0) {
+        hash = (37 * hash) + NEARBY_BIOMES_FIELD_NUMBER;
+        hash = (53 * hash) + getNearbyBiomesList().hashCode();
       }
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
@@ -9410,6 +10215,7 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
           getSurroundingBlocksFieldBuilder();
           getChatMessagesFieldBuilder();
           getBiomeInfoFieldBuilder();
+          getNearbyBiomesFieldBuilder();
         }
       }
       @java.lang.Override
@@ -9489,6 +10295,13 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
           biomeInfoBuilder_.dispose();
           biomeInfoBuilder_ = null;
         }
+        if (nearbyBiomesBuilder_ == null) {
+          nearbyBiomes_ = java.util.Collections.emptyList();
+        } else {
+          nearbyBiomes_ = null;
+          nearbyBiomesBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x20000000);
         return this;
       }
 
@@ -9575,6 +10388,15 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
           result.chatMessages_ = chatMessages_;
         } else {
           result.chatMessages_ = chatMessagesBuilder_.build();
+        }
+        if (nearbyBiomesBuilder_ == null) {
+          if (((bitField0_ & 0x20000000) != 0)) {
+            nearbyBiomes_ = java.util.Collections.unmodifiableList(nearbyBiomes_);
+            bitField0_ = (bitField0_ & ~0x20000000);
+          }
+          result.nearbyBiomes_ = nearbyBiomes_;
+        } else {
+          result.nearbyBiomes_ = nearbyBiomesBuilder_.build();
         }
       }
 
@@ -9901,6 +10723,32 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
         if (other.hasBiomeInfo()) {
           mergeBiomeInfo(other.getBiomeInfo());
         }
+        if (nearbyBiomesBuilder_ == null) {
+          if (!other.nearbyBiomes_.isEmpty()) {
+            if (nearbyBiomes_.isEmpty()) {
+              nearbyBiomes_ = other.nearbyBiomes_;
+              bitField0_ = (bitField0_ & ~0x20000000);
+            } else {
+              ensureNearbyBiomesIsMutable();
+              nearbyBiomes_.addAll(other.nearbyBiomes_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.nearbyBiomes_.isEmpty()) {
+            if (nearbyBiomesBuilder_.isEmpty()) {
+              nearbyBiomesBuilder_.dispose();
+              nearbyBiomesBuilder_ = null;
+              nearbyBiomes_ = other.nearbyBiomes_;
+              bitField0_ = (bitField0_ & ~0x20000000);
+              nearbyBiomesBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getNearbyBiomesFieldBuilder() : null;
+            } else {
+              nearbyBiomesBuilder_.addAllMessages(other.nearbyBiomes_);
+            }
+          }
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
@@ -10140,6 +10988,19 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
                 bitField0_ |= 0x10000000;
                 break;
               } // case 234
+              case 242: {
+                com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.NearbyBiome m =
+                    input.readMessage(
+                        com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.NearbyBiome.parser(),
+                        extensionRegistry);
+                if (nearbyBiomesBuilder_ == null) {
+                  ensureNearbyBiomesIsMutable();
+                  nearbyBiomes_.add(m);
+                } else {
+                  nearbyBiomesBuilder_.addMessage(m);
+                }
+                break;
+              } // case 242
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -13025,6 +13886,246 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
         return biomeInfoBuilder_;
       }
 
+      private java.util.List<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.NearbyBiome> nearbyBiomes_ =
+        java.util.Collections.emptyList();
+      private void ensureNearbyBiomesIsMutable() {
+        if (!((bitField0_ & 0x20000000) != 0)) {
+          nearbyBiomes_ = new java.util.ArrayList<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.NearbyBiome>(nearbyBiomes_);
+          bitField0_ |= 0x20000000;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.NearbyBiome, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.NearbyBiome.Builder, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.NearbyBiomeOrBuilder> nearbyBiomesBuilder_;
+
+      /**
+       * <code>repeated .NearbyBiome nearby_biomes = 30;</code>
+       */
+      public java.util.List<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.NearbyBiome> getNearbyBiomesList() {
+        if (nearbyBiomesBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(nearbyBiomes_);
+        } else {
+          return nearbyBiomesBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .NearbyBiome nearby_biomes = 30;</code>
+       */
+      public int getNearbyBiomesCount() {
+        if (nearbyBiomesBuilder_ == null) {
+          return nearbyBiomes_.size();
+        } else {
+          return nearbyBiomesBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .NearbyBiome nearby_biomes = 30;</code>
+       */
+      public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.NearbyBiome getNearbyBiomes(int index) {
+        if (nearbyBiomesBuilder_ == null) {
+          return nearbyBiomes_.get(index);
+        } else {
+          return nearbyBiomesBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .NearbyBiome nearby_biomes = 30;</code>
+       */
+      public Builder setNearbyBiomes(
+          int index, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.NearbyBiome value) {
+        if (nearbyBiomesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureNearbyBiomesIsMutable();
+          nearbyBiomes_.set(index, value);
+          onChanged();
+        } else {
+          nearbyBiomesBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .NearbyBiome nearby_biomes = 30;</code>
+       */
+      public Builder setNearbyBiomes(
+          int index, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.NearbyBiome.Builder builderForValue) {
+        if (nearbyBiomesBuilder_ == null) {
+          ensureNearbyBiomesIsMutable();
+          nearbyBiomes_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          nearbyBiomesBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .NearbyBiome nearby_biomes = 30;</code>
+       */
+      public Builder addNearbyBiomes(com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.NearbyBiome value) {
+        if (nearbyBiomesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureNearbyBiomesIsMutable();
+          nearbyBiomes_.add(value);
+          onChanged();
+        } else {
+          nearbyBiomesBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .NearbyBiome nearby_biomes = 30;</code>
+       */
+      public Builder addNearbyBiomes(
+          int index, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.NearbyBiome value) {
+        if (nearbyBiomesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureNearbyBiomesIsMutable();
+          nearbyBiomes_.add(index, value);
+          onChanged();
+        } else {
+          nearbyBiomesBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .NearbyBiome nearby_biomes = 30;</code>
+       */
+      public Builder addNearbyBiomes(
+          com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.NearbyBiome.Builder builderForValue) {
+        if (nearbyBiomesBuilder_ == null) {
+          ensureNearbyBiomesIsMutable();
+          nearbyBiomes_.add(builderForValue.build());
+          onChanged();
+        } else {
+          nearbyBiomesBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .NearbyBiome nearby_biomes = 30;</code>
+       */
+      public Builder addNearbyBiomes(
+          int index, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.NearbyBiome.Builder builderForValue) {
+        if (nearbyBiomesBuilder_ == null) {
+          ensureNearbyBiomesIsMutable();
+          nearbyBiomes_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          nearbyBiomesBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .NearbyBiome nearby_biomes = 30;</code>
+       */
+      public Builder addAllNearbyBiomes(
+          java.lang.Iterable<? extends com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.NearbyBiome> values) {
+        if (nearbyBiomesBuilder_ == null) {
+          ensureNearbyBiomesIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, nearbyBiomes_);
+          onChanged();
+        } else {
+          nearbyBiomesBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .NearbyBiome nearby_biomes = 30;</code>
+       */
+      public Builder clearNearbyBiomes() {
+        if (nearbyBiomesBuilder_ == null) {
+          nearbyBiomes_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x20000000);
+          onChanged();
+        } else {
+          nearbyBiomesBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .NearbyBiome nearby_biomes = 30;</code>
+       */
+      public Builder removeNearbyBiomes(int index) {
+        if (nearbyBiomesBuilder_ == null) {
+          ensureNearbyBiomesIsMutable();
+          nearbyBiomes_.remove(index);
+          onChanged();
+        } else {
+          nearbyBiomesBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .NearbyBiome nearby_biomes = 30;</code>
+       */
+      public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.NearbyBiome.Builder getNearbyBiomesBuilder(
+          int index) {
+        return getNearbyBiomesFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .NearbyBiome nearby_biomes = 30;</code>
+       */
+      public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.NearbyBiomeOrBuilder getNearbyBiomesOrBuilder(
+          int index) {
+        if (nearbyBiomesBuilder_ == null) {
+          return nearbyBiomes_.get(index);  } else {
+          return nearbyBiomesBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .NearbyBiome nearby_biomes = 30;</code>
+       */
+      public java.util.List<? extends com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.NearbyBiomeOrBuilder> 
+           getNearbyBiomesOrBuilderList() {
+        if (nearbyBiomesBuilder_ != null) {
+          return nearbyBiomesBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(nearbyBiomes_);
+        }
+      }
+      /**
+       * <code>repeated .NearbyBiome nearby_biomes = 30;</code>
+       */
+      public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.NearbyBiome.Builder addNearbyBiomesBuilder() {
+        return getNearbyBiomesFieldBuilder().addBuilder(
+            com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.NearbyBiome.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .NearbyBiome nearby_biomes = 30;</code>
+       */
+      public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.NearbyBiome.Builder addNearbyBiomesBuilder(
+          int index) {
+        return getNearbyBiomesFieldBuilder().addBuilder(
+            index, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.NearbyBiome.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .NearbyBiome nearby_biomes = 30;</code>
+       */
+      public java.util.List<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.NearbyBiome.Builder> 
+           getNearbyBiomesBuilderList() {
+        return getNearbyBiomesFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.NearbyBiome, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.NearbyBiome.Builder, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.NearbyBiomeOrBuilder> 
+          getNearbyBiomesFieldBuilder() {
+        if (nearbyBiomesBuilder_ == null) {
+          nearbyBiomesBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.NearbyBiome, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.NearbyBiome.Builder, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.NearbyBiomeOrBuilder>(
+                  nearbyBiomes_,
+                  ((bitField0_ & 0x20000000) != 0),
+                  getParentForChildren(),
+                  isClean());
+          nearbyBiomes_ = null;
+        }
+        return nearbyBiomesBuilder_;
+      }
+
       // @@protoc_insertion_point(builder_scope:ObservationSpaceMessage)
     }
 
@@ -13122,6 +14223,11 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_BiomeInfo_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_NearbyBiome_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_NearbyBiome_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_ObservationSpaceMessage_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -13177,37 +14283,40 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
       "\022\017\n\007message\030\002 \001(\t\022\021\n\tindicator\030\003 \001(\t\"U\n\t" +
       "BiomeInfo\022\022\n\nbiome_name\030\001 \001(\t\022\020\n\010center_" +
       "x\030\002 \001(\005\022\020\n\010center_y\030\003 \001(\005\022\020\n\010center_z\030\004 " +
-      "\001(\005\"\234\t\n\027ObservationSpaceMessage\022\r\n\005image" +
-      "\030\001 \001(\014\022\t\n\001x\030\002 \001(\001\022\t\n\001y\030\003 \001(\001\022\t\n\001z\030\004 \001(\001\022" +
-      "\013\n\003yaw\030\005 \001(\001\022\r\n\005pitch\030\006 \001(\001\022\016\n\006health\030\007 " +
-      "\001(\001\022\022\n\nfood_level\030\010 \001(\001\022\030\n\020saturation_le" +
-      "vel\030\t \001(\001\022\017\n\007is_dead\030\n \001(\010\022\035\n\tinventory\030" +
-      "\013 \003(\0132\n.ItemStack\022\"\n\016raycast_result\030\014 \001(" +
-      "\0132\n.HitResult\022$\n\017sound_subtitles\030\r \003(\0132\013" +
-      ".SoundEntry\022%\n\016status_effects\030\016 \003(\0132\r.St" +
-      "atusEffect\022I\n\021killed_statistics\030\017 \003(\0132.." +
-      "ObservationSpaceMessage.KilledStatistics" +
-      "Entry\022G\n\020mined_statistics\030\020 \003(\0132-.Observ" +
-      "ationSpaceMessage.MinedStatisticsEntry\022E" +
-      "\n\017misc_statistics\030\021 \003(\0132,.ObservationSpa" +
-      "ceMessage.MiscStatisticsEntry\022%\n\020visible" +
-      "_entities\030\022 \003(\0132\013.EntityInfo\022O\n\024surround" +
-      "ing_entities\030\023 \003(\01321.ObservationSpaceMes" +
-      "sage.SurroundingEntitiesEntry\022\025\n\rbobber_" +
-      "thrown\030\024 \001(\010\022\022\n\nexperience\030\025 \001(\005\022\022\n\nworl" +
-      "d_time\030\026 \001(\003\022\032\n\022last_death_message\030\027 \001(\t" +
-      "\022\017\n\007image_2\030\030 \001(\014\022&\n\022surrounding_blocks\030" +
-      "\031 \003(\0132\n.BlockInfo\022\024\n\014eye_in_block\030\032 \001(\010\022" +
-      "\023\n\013suffocating\030\033 \001(\010\022\'\n\rchat_messages\030\034 " +
-      "\003(\0132\020.ChatMessageInfo\022\036\n\nbiome_info\030\035 \001(" +
-      "\0132\n.BiomeInfo\0327\n\025KilledStatisticsEntry\022\013" +
-      "\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\005:\0028\001\0326\n\024MinedS" +
+      "\001(\005\"B\n\013NearbyBiome\022\022\n\nbiome_name\030\001 \001(\t\022\t" +
+      "\n\001x\030\002 \001(\005\022\t\n\001y\030\003 \001(\005\022\t\n\001z\030\004 \001(\005\"\301\t\n\027Obse" +
+      "rvationSpaceMessage\022\r\n\005image\030\001 \001(\014\022\t\n\001x\030" +
+      "\002 \001(\001\022\t\n\001y\030\003 \001(\001\022\t\n\001z\030\004 \001(\001\022\013\n\003yaw\030\005 \001(\001" +
+      "\022\r\n\005pitch\030\006 \001(\001\022\016\n\006health\030\007 \001(\001\022\022\n\nfood_" +
+      "level\030\010 \001(\001\022\030\n\020saturation_level\030\t \001(\001\022\017\n" +
+      "\007is_dead\030\n \001(\010\022\035\n\tinventory\030\013 \003(\0132\n.Item" +
+      "Stack\022\"\n\016raycast_result\030\014 \001(\0132\n.HitResul" +
+      "t\022$\n\017sound_subtitles\030\r \003(\0132\013.SoundEntry\022" +
+      "%\n\016status_effects\030\016 \003(\0132\r.StatusEffect\022I" +
+      "\n\021killed_statistics\030\017 \003(\0132..ObservationS" +
+      "paceMessage.KilledStatisticsEntry\022G\n\020min" +
+      "ed_statistics\030\020 \003(\0132-.ObservationSpaceMe" +
+      "ssage.MinedStatisticsEntry\022E\n\017misc_stati" +
+      "stics\030\021 \003(\0132,.ObservationSpaceMessage.Mi" +
+      "scStatisticsEntry\022%\n\020visible_entities\030\022 " +
+      "\003(\0132\013.EntityInfo\022O\n\024surrounding_entities" +
+      "\030\023 \003(\01321.ObservationSpaceMessage.Surroun" +
+      "dingEntitiesEntry\022\025\n\rbobber_thrown\030\024 \001(\010" +
+      "\022\022\n\nexperience\030\025 \001(\005\022\022\n\nworld_time\030\026 \001(\003" +
+      "\022\032\n\022last_death_message\030\027 \001(\t\022\017\n\007image_2\030" +
+      "\030 \001(\014\022&\n\022surrounding_blocks\030\031 \003(\0132\n.Bloc" +
+      "kInfo\022\024\n\014eye_in_block\030\032 \001(\010\022\023\n\013suffocati" +
+      "ng\030\033 \001(\010\022\'\n\rchat_messages\030\034 \003(\0132\020.ChatMe" +
+      "ssageInfo\022\036\n\nbiome_info\030\035 \001(\0132\n.BiomeInf" +
+      "o\022#\n\rnearby_biomes\030\036 \003(\0132\014.NearbyBiome\0327" +
+      "\n\025KilledStatisticsEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005" +
+      "value\030\002 \001(\005:\0028\001\0326\n\024MinedStatisticsEntry\022" +
+      "\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\005:\0028\001\0325\n\023MiscS" +
       "tatisticsEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001" +
-      "(\005:\0028\001\0325\n\023MiscStatisticsEntry\022\013\n\003key\030\001 \001" +
-      "(\t\022\r\n\005value\030\002 \001(\005:\0028\001\032S\n\030SurroundingEnti" +
-      "tiesEntry\022\013\n\003key\030\001 \001(\005\022&\n\005value\030\002 \001(\0132\027." +
-      "EntitiesWithinDistance:\0028\001B&\n$com.kyhsge" +
-      "ekcode.minecraft_env.protob\006proto3"
+      "(\005:\0028\001\032S\n\030SurroundingEntitiesEntry\022\013\n\003ke" +
+      "y\030\001 \001(\005\022&\n\005value\030\002 \001(\0132\027.EntitiesWithinD" +
+      "istance:\0028\001B&\n$com.kyhsgeekcode.minecraf" +
+      "t_env.protob\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -13267,12 +14376,18 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_BiomeInfo_descriptor,
         new java.lang.String[] { "BiomeName", "CenterX", "CenterY", "CenterZ", });
-    internal_static_ObservationSpaceMessage_descriptor =
+    internal_static_NearbyBiome_descriptor =
       getDescriptor().getMessageTypes().get(9);
+    internal_static_NearbyBiome_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_NearbyBiome_descriptor,
+        new java.lang.String[] { "BiomeName", "X", "Y", "Z", });
+    internal_static_ObservationSpaceMessage_descriptor =
+      getDescriptor().getMessageTypes().get(10);
     internal_static_ObservationSpaceMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_ObservationSpaceMessage_descriptor,
-        new java.lang.String[] { "Image", "X", "Y", "Z", "Yaw", "Pitch", "Health", "FoodLevel", "SaturationLevel", "IsDead", "Inventory", "RaycastResult", "SoundSubtitles", "StatusEffects", "KilledStatistics", "MinedStatistics", "MiscStatistics", "VisibleEntities", "SurroundingEntities", "BobberThrown", "Experience", "WorldTime", "LastDeathMessage", "Image2", "SurroundingBlocks", "EyeInBlock", "Suffocating", "ChatMessages", "BiomeInfo", });
+        new java.lang.String[] { "Image", "X", "Y", "Z", "Yaw", "Pitch", "Health", "FoodLevel", "SaturationLevel", "IsDead", "Inventory", "RaycastResult", "SoundSubtitles", "StatusEffects", "KilledStatistics", "MinedStatistics", "MiscStatistics", "VisibleEntities", "SurroundingEntities", "BobberThrown", "Experience", "WorldTime", "LastDeathMessage", "Image2", "SurroundingBlocks", "EyeInBlock", "Suffocating", "ChatMessages", "BiomeInfo", "NearbyBiomes", });
     internal_static_ObservationSpaceMessage_KilledStatisticsEntry_descriptor =
       internal_static_ObservationSpaceMessage_descriptor.getNestedTypes().get(0);
     internal_static_ObservationSpaceMessage_KilledStatisticsEntry_fieldAccessorTable = new
