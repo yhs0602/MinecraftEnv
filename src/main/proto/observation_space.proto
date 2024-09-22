@@ -108,4 +108,7 @@ message ObservationSpaceMessage {
   repeated ChatMessageInfo chat_messages = 28;
   BiomeInfo biome_info = 29;
   repeated NearbyBiome nearby_biomes = 30;
+  bool submerged_in_water = 31;
+  bool is_in_lava = 32;
+  bool submerged_in_lava = 33;
 }

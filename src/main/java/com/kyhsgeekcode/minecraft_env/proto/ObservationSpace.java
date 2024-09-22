@@ -8625,6 +8625,24 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
      */
     com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.NearbyBiomeOrBuilder getNearbyBiomesOrBuilder(
         int index);
+
+    /**
+     * <code>bool submerged_in_water = 31;</code>
+     * @return The submergedInWater.
+     */
+    boolean getSubmergedInWater();
+
+    /**
+     * <code>bool is_in_lava = 32;</code>
+     * @return The isInLava.
+     */
+    boolean getIsInLava();
+
+    /**
+     * <code>bool submerged_in_lava = 33;</code>
+     * @return The submergedInLava.
+     */
+    boolean getSubmergedInLava();
   }
   /**
    * Protobuf type {@code ObservationSpaceMessage}
@@ -9576,6 +9594,39 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
       return nearbyBiomes_.get(index);
     }
 
+    public static final int SUBMERGED_IN_WATER_FIELD_NUMBER = 31;
+    private boolean submergedInWater_ = false;
+    /**
+     * <code>bool submerged_in_water = 31;</code>
+     * @return The submergedInWater.
+     */
+    @java.lang.Override
+    public boolean getSubmergedInWater() {
+      return submergedInWater_;
+    }
+
+    public static final int IS_IN_LAVA_FIELD_NUMBER = 32;
+    private boolean isInLava_ = false;
+    /**
+     * <code>bool is_in_lava = 32;</code>
+     * @return The isInLava.
+     */
+    @java.lang.Override
+    public boolean getIsInLava() {
+      return isInLava_;
+    }
+
+    public static final int SUBMERGED_IN_LAVA_FIELD_NUMBER = 33;
+    private boolean submergedInLava_ = false;
+    /**
+     * <code>bool submerged_in_lava = 33;</code>
+     * @return The submergedInLava.
+     */
+    @java.lang.Override
+    public boolean getSubmergedInLava() {
+      return submergedInLava_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -9691,6 +9742,15 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
       }
       for (int i = 0; i < nearbyBiomes_.size(); i++) {
         output.writeMessage(30, nearbyBiomes_.get(i));
+      }
+      if (submergedInWater_ != false) {
+        output.writeBool(31, submergedInWater_);
+      }
+      if (isInLava_ != false) {
+        output.writeBool(32, isInLava_);
+      }
+      if (submergedInLava_ != false) {
+        output.writeBool(33, submergedInLava_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -9844,6 +9904,18 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(30, nearbyBiomes_.get(i));
       }
+      if (submergedInWater_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(31, submergedInWater_);
+      }
+      if (isInLava_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(32, isInLava_);
+      }
+      if (submergedInLava_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(33, submergedInLava_);
+      }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
@@ -9933,6 +10005,12 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
       }
       if (!getNearbyBiomesList()
           .equals(other.getNearbyBiomesList())) return false;
+      if (getSubmergedInWater()
+          != other.getSubmergedInWater()) return false;
+      if (getIsInLava()
+          != other.getIsInLava()) return false;
+      if (getSubmergedInLava()
+          != other.getSubmergedInLava()) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -10043,6 +10121,15 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
         hash = (37 * hash) + NEARBY_BIOMES_FIELD_NUMBER;
         hash = (53 * hash) + getNearbyBiomesList().hashCode();
       }
+      hash = (37 * hash) + SUBMERGED_IN_WATER_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getSubmergedInWater());
+      hash = (37 * hash) + IS_IN_LAVA_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getIsInLava());
+      hash = (37 * hash) + SUBMERGED_IN_LAVA_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getSubmergedInLava());
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -10222,6 +10309,7 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
       public Builder clear() {
         super.clear();
         bitField0_ = 0;
+        bitField1_ = 0;
         image_ = com.google.protobuf.ByteString.EMPTY;
         x_ = 0D;
         y_ = 0D;
@@ -10302,6 +10390,9 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
           nearbyBiomesBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x20000000);
+        submergedInWater_ = false;
+        isInLava_ = false;
+        submergedInLava_ = false;
         return this;
       }
 
@@ -10330,6 +10421,7 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
         com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ObservationSpaceMessage result = new com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ObservationSpaceMessage(this);
         buildPartialRepeatedFields(result);
         if (bitField0_ != 0) { buildPartial0(result); }
+        if (bitField1_ != 0) { buildPartial1(result); }
         onBuilt();
         return result;
       }
@@ -10481,7 +10573,20 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
               : biomeInfoBuilder_.build();
           to_bitField0_ |= 0x00000002;
         }
+        if (((from_bitField0_ & 0x40000000) != 0)) {
+          result.submergedInWater_ = submergedInWater_;
+        }
+        if (((from_bitField0_ & 0x80000000) != 0)) {
+          result.isInLava_ = isInLava_;
+        }
         result.bitField0_ |= to_bitField0_;
+      }
+
+      private void buildPartial1(com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.ObservationSpaceMessage result) {
+        int from_bitField1_ = bitField1_;
+        if (((from_bitField1_ & 0x00000001) != 0)) {
+          result.submergedInLava_ = submergedInLava_;
+        }
       }
 
       @java.lang.Override
@@ -10749,6 +10854,15 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
             }
           }
         }
+        if (other.getSubmergedInWater() != false) {
+          setSubmergedInWater(other.getSubmergedInWater());
+        }
+        if (other.getIsInLava() != false) {
+          setIsInLava(other.getIsInLava());
+        }
+        if (other.getSubmergedInLava() != false) {
+          setSubmergedInLava(other.getSubmergedInLava());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
@@ -11001,6 +11115,21 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
                 }
                 break;
               } // case 242
+              case 248: {
+                submergedInWater_ = input.readBool();
+                bitField0_ |= 0x40000000;
+                break;
+              } // case 248
+              case 256: {
+                isInLava_ = input.readBool();
+                bitField0_ |= 0x80000000;
+                break;
+              } // case 256
+              case 264: {
+                submergedInLava_ = input.readBool();
+                bitField1_ |= 0x00000001;
+                break;
+              } // case 264
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -11017,6 +11146,7 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
         return this;
       }
       private int bitField0_;
+      private int bitField1_;
 
       private com.google.protobuf.ByteString image_ = com.google.protobuf.ByteString.EMPTY;
       /**
@@ -14126,6 +14256,102 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
         return nearbyBiomesBuilder_;
       }
 
+      private boolean submergedInWater_ ;
+      /**
+       * <code>bool submerged_in_water = 31;</code>
+       * @return The submergedInWater.
+       */
+      @java.lang.Override
+      public boolean getSubmergedInWater() {
+        return submergedInWater_;
+      }
+      /**
+       * <code>bool submerged_in_water = 31;</code>
+       * @param value The submergedInWater to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSubmergedInWater(boolean value) {
+
+        submergedInWater_ = value;
+        bitField0_ |= 0x40000000;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>bool submerged_in_water = 31;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearSubmergedInWater() {
+        bitField0_ = (bitField0_ & ~0x40000000);
+        submergedInWater_ = false;
+        onChanged();
+        return this;
+      }
+
+      private boolean isInLava_ ;
+      /**
+       * <code>bool is_in_lava = 32;</code>
+       * @return The isInLava.
+       */
+      @java.lang.Override
+      public boolean getIsInLava() {
+        return isInLava_;
+      }
+      /**
+       * <code>bool is_in_lava = 32;</code>
+       * @param value The isInLava to set.
+       * @return This builder for chaining.
+       */
+      public Builder setIsInLava(boolean value) {
+
+        isInLava_ = value;
+        bitField0_ |= 0x80000000;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>bool is_in_lava = 32;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearIsInLava() {
+        bitField0_ = (bitField0_ & ~0x80000000);
+        isInLava_ = false;
+        onChanged();
+        return this;
+      }
+
+      private boolean submergedInLava_ ;
+      /**
+       * <code>bool submerged_in_lava = 33;</code>
+       * @return The submergedInLava.
+       */
+      @java.lang.Override
+      public boolean getSubmergedInLava() {
+        return submergedInLava_;
+      }
+      /**
+       * <code>bool submerged_in_lava = 33;</code>
+       * @param value The submergedInLava to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSubmergedInLava(boolean value) {
+
+        submergedInLava_ = value;
+        bitField1_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>bool submerged_in_lava = 33;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearSubmergedInLava() {
+        bitField1_ = (bitField1_ & ~0x00000001);
+        submergedInLava_ = false;
+        onChanged();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:ObservationSpaceMessage)
     }
 
@@ -14284,7 +14510,7 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
       "BiomeInfo\022\022\n\nbiome_name\030\001 \001(\t\022\020\n\010center_" +
       "x\030\002 \001(\005\022\020\n\010center_y\030\003 \001(\005\022\020\n\010center_z\030\004 " +
       "\001(\005\"B\n\013NearbyBiome\022\022\n\nbiome_name\030\001 \001(\t\022\t" +
-      "\n\001x\030\002 \001(\005\022\t\n\001y\030\003 \001(\005\022\t\n\001z\030\004 \001(\005\"\301\t\n\027Obse" +
+      "\n\001x\030\002 \001(\005\022\t\n\001y\030\003 \001(\005\022\t\n\001z\030\004 \001(\005\"\214\n\n\027Obse" +
       "rvationSpaceMessage\022\r\n\005image\030\001 \001(\014\022\t\n\001x\030" +
       "\002 \001(\001\022\t\n\001y\030\003 \001(\001\022\t\n\001z\030\004 \001(\001\022\013\n\003yaw\030\005 \001(\001" +
       "\022\r\n\005pitch\030\006 \001(\001\022\016\n\006health\030\007 \001(\001\022\022\n\nfood_" +
@@ -14308,15 +14534,17 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
       "kInfo\022\024\n\014eye_in_block\030\032 \001(\010\022\023\n\013suffocati" +
       "ng\030\033 \001(\010\022\'\n\rchat_messages\030\034 \003(\0132\020.ChatMe" +
       "ssageInfo\022\036\n\nbiome_info\030\035 \001(\0132\n.BiomeInf" +
-      "o\022#\n\rnearby_biomes\030\036 \003(\0132\014.NearbyBiome\0327" +
-      "\n\025KilledStatisticsEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005" +
-      "value\030\002 \001(\005:\0028\001\0326\n\024MinedStatisticsEntry\022" +
-      "\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\005:\0028\001\0325\n\023MiscS" +
-      "tatisticsEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001" +
-      "(\005:\0028\001\032S\n\030SurroundingEntitiesEntry\022\013\n\003ke" +
-      "y\030\001 \001(\005\022&\n\005value\030\002 \001(\0132\027.EntitiesWithinD" +
-      "istance:\0028\001B&\n$com.kyhsgeekcode.minecraf" +
-      "t_env.protob\006proto3"
+      "o\022#\n\rnearby_biomes\030\036 \003(\0132\014.NearbyBiome\022\032" +
+      "\n\022submerged_in_water\030\037 \001(\010\022\022\n\nis_in_lava" +
+      "\030  \001(\010\022\031\n\021submerged_in_lava\030! \001(\010\0327\n\025Kil" +
+      "ledStatisticsEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value" +
+      "\030\002 \001(\005:\0028\001\0326\n\024MinedStatisticsEntry\022\013\n\003ke" +
+      "y\030\001 \001(\t\022\r\n\005value\030\002 \001(\005:\0028\001\0325\n\023MiscStatis" +
+      "ticsEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\005:\0028" +
+      "\001\032S\n\030SurroundingEntitiesEntry\022\013\n\003key\030\001 \001" +
+      "(\005\022&\n\005value\030\002 \001(\0132\027.EntitiesWithinDistan" +
+      "ce:\0028\001B&\n$com.kyhsgeekcode.minecraft_env" +
+      ".protob\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -14387,7 +14615,7 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
     internal_static_ObservationSpaceMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_ObservationSpaceMessage_descriptor,
-        new java.lang.String[] { "Image", "X", "Y", "Z", "Yaw", "Pitch", "Health", "FoodLevel", "SaturationLevel", "IsDead", "Inventory", "RaycastResult", "SoundSubtitles", "StatusEffects", "KilledStatistics", "MinedStatistics", "MiscStatistics", "VisibleEntities", "SurroundingEntities", "BobberThrown", "Experience", "WorldTime", "LastDeathMessage", "Image2", "SurroundingBlocks", "EyeInBlock", "Suffocating", "ChatMessages", "BiomeInfo", "NearbyBiomes", });
+        new java.lang.String[] { "Image", "X", "Y", "Z", "Yaw", "Pitch", "Health", "FoodLevel", "SaturationLevel", "IsDead", "Inventory", "RaycastResult", "SoundSubtitles", "StatusEffects", "KilledStatistics", "MinedStatistics", "MiscStatistics", "VisibleEntities", "SurroundingEntities", "BobberThrown", "Experience", "WorldTime", "LastDeathMessage", "Image2", "SurroundingBlocks", "EyeInBlock", "Suffocating", "ChatMessages", "BiomeInfo", "NearbyBiomes", "SubmergedInWater", "IsInLava", "SubmergedInLava", });
     internal_static_ObservationSpaceMessage_KilledStatisticsEntry_descriptor =
       internal_static_ObservationSpaceMessage_descriptor.getNestedTypes().get(0);
     internal_static_ObservationSpaceMessage_KilledStatisticsEntry_fieldAccessorTable = new

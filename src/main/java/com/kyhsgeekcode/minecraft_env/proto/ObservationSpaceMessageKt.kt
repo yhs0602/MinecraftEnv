@@ -1144,6 +1144,57 @@ public object ObservationSpaceMessageKt {
       _builder.clearNearbyBiomes()
     }
 
+
+    /**
+     * `bool submerged_in_water = 31;`
+     */
+    public var submergedInWater: kotlin.Boolean
+      @JvmName("getSubmergedInWater")
+      get() = _builder.getSubmergedInWater()
+      @JvmName("setSubmergedInWater")
+      set(value) {
+        _builder.setSubmergedInWater(value)
+      }
+    /**
+     * `bool submerged_in_water = 31;`
+     */
+    public fun clearSubmergedInWater() {
+      _builder.clearSubmergedInWater()
+    }
+
+    /**
+     * `bool is_in_lava = 32;`
+     */
+    public var isInLava: kotlin.Boolean
+      @JvmName("getIsInLava")
+      get() = _builder.getIsInLava()
+      @JvmName("setIsInLava")
+      set(value) {
+        _builder.setIsInLava(value)
+      }
+    /**
+     * `bool is_in_lava = 32;`
+     */
+    public fun clearIsInLava() {
+      _builder.clearIsInLava()
+    }
+
+    /**
+     * `bool submerged_in_lava = 33;`
+     */
+    public var submergedInLava: kotlin.Boolean
+      @JvmName("getSubmergedInLava")
+      get() = _builder.getSubmergedInLava()
+      @JvmName("setSubmergedInLava")
+      set(value) {
+        _builder.setSubmergedInLava(value)
+      }
+    /**
+     * `bool submerged_in_lava = 33;`
+     */
+    public fun clearSubmergedInLava() {
+      _builder.clearSubmergedInLava()
+    }
   }
 }
 @kotlin.jvm.JvmSynthetic

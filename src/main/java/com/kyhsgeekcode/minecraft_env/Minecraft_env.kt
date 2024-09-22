@@ -21,6 +21,7 @@ import net.minecraft.client.world.ClientWorld
 import net.minecraft.entity.EntityType
 import net.minecraft.network.packet.c2s.play.ClientStatusC2SPacket
 import net.minecraft.registry.Registries
+import net.minecraft.registry.tag.FluidTags
 import net.minecraft.server.MinecraftServer
 import net.minecraft.stat.Stats
 import net.minecraft.util.Identifier
@@ -635,6 +636,10 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                     }
                     println("Finish nearby biome")
                 }
+
+                submergedInWater = player.isSubmergedInWater
+                isInLava = player.isInLava
+                submergedInLava = player.isSubmergedIn(FluidTags.LAVA)
             }
             if (ioPhase == IOPhase.GOT_INITIAL_ENVIRONMENT_SHOULD_SEND_OBSERVATION) {
 //                csvLogger.log("Sent observation; $ioPhase")
