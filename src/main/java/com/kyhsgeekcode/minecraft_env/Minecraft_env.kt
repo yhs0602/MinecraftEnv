@@ -32,6 +32,7 @@ import net.minecraft.util.math.Box
 import net.minecraft.util.math.Vec3d
 import net.minecraft.util.shape.VoxelShapes
 import net.minecraft.world.World
+import net.minecraft.world.biome.source.BiomeCoords
 import net.minecraft.world.chunk.ChunkStatus
 import java.io.IOException
 import java.net.SocketTimeoutException
@@ -601,9 +602,9 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                     val serverWorld = client.server!!.overworld
                     println("End Get world")
                     val currentPlayerBiome = serverWorld.getGeneratorStoredBiome(
-                        player.blockPos.x,
-                        player.blockPos.y,
-                        player.blockPos.z
+                        BiomeCoords.fromBlock(player.blockPos.x),
+                        BiomeCoords.fromBlock(player.blockPos.y),
+                        BiomeCoords.fromBlock(player.blockPos.z),
                     )
                     println("Current player biome: $currentPlayerBiome")
                     val biomeCenterFinder = BiomeCenterFinder(serverWorld)

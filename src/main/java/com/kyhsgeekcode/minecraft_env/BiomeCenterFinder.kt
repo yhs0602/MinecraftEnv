@@ -6,6 +6,7 @@ import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.ChunkPos
 import net.minecraft.world.World
 import net.minecraft.world.biome.Biome
+import net.minecraft.world.biome.source.BiomeCoords
 
 
 class BiomeCenterFinder(val world: ServerWorld) {
@@ -26,7 +27,11 @@ class BiomeCenterFinder(val world: ServerWorld) {
                 for (x in 0..15) {
                     for (z in 0..15) {
                         val blockPos = BlockPos(chunkPos.startX + x, startPos.y, chunkPos.startZ + z)
-                        val biome = world.getGeneratorStoredBiome(blockPos.x, blockPos.y, blockPos.z)
+                        val biome = world.getGeneratorStoredBiome(
+                            BiomeCoords.fromBlock(blockPos.x),
+                            BiomeCoords.fromBlock(blockPos.y),
+                            BiomeCoords.fromBlock(blockPos.z)
+                        )
                         // 목표 바이옴과 일치하는 경우 경계 좌표로 간주
                         if (biome == targetBiome) {
                             biomeBoundaryPositions.add(blockPos)
@@ -74,7 +79,11 @@ class BiomeCenterFinder(val world: ServerWorld) {
                 for (x in 0..15) {
                     for (z in 0..15) {
                         val blockPos = BlockPos(chunkPos.startX + x, startPos.y, chunkPos.startZ + z)
-                        val biome = world.getGeneratorStoredBiome(blockPos.x, blockPos.y, blockPos.z)
+                        val biome = world.getGeneratorStoredBiome(
+                            BiomeCoords.fromBlock(blockPos.x),
+                            BiomeCoords.fromBlock(blockPos.y),
+                            BiomeCoords.fromBlock(blockPos.z)
+                        )
                         nearbyBiomes.add(
                             NearbyBiome(
                                 blockPos.x,
