@@ -597,15 +597,17 @@ class Minecraft_env : ModInitializer, CommandExecutor {
 
                 // Populate biome info if needed
                 if (initialEnvironment.requiresBiomeInfo) {
-                    val playerChunkPos = player.chunkPos
-                    world.getChunk(playerChunkPos.x, playerChunkPos.z, ChunkStatus.FULL, true)
-                    val currentPlayerBiome = world.getBiome(player.blockPos)
-                    val biomeCenterFinder = BiomeCenterFinder()
+                    val serverWorld = client.server!!.overworld
+                    val currentPlayerBiome = serverWorld.getGeneratorStoredBiome(
+                        player.blockPos.x,
+                        player.blockPos.y,
+                        player.blockPos.z
+                    )
+                    val biomeCenterFinder = BiomeCenterFinder(serverWorld)
                     val biomeCenter = biomeCenterFinder.calculateBiomeCenter(
-                        world,
                         player.blockPos,
                         10,
-                        currentPlayerBiome
+                        currentPlayerBiome!!
                     )
                     if (biomeCenter != null) {
                         biomeInfo = biomeInfo {
@@ -615,7 +617,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                             biomeName = currentPlayerBiome.idAsString
                         }
                     }
-                    val nearbyBiomes1 = biomeCenterFinder.getNearbyBiomes(world, player.blockPos, 4)
+                    val nearbyBiomes1 = biomeCenterFinder.getNearbyBiomes(player.blockPos, 4)
                     for (biomePos in nearbyBiomes1) {
                         nearbyBiomes.add(
                             nearbyBiome {

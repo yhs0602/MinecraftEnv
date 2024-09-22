@@ -1,16 +1,16 @@
 package com.kyhsgeekcode.minecraft_env
 
 import net.minecraft.registry.entry.RegistryEntry
+import net.minecraft.server.world.ServerWorld
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.ChunkPos
 import net.minecraft.world.World
 import net.minecraft.world.biome.Biome
 
 
-class BiomeCenterFinder {
+class BiomeCenterFinder(val world: ServerWorld) {
     // 주어진 좌표에서 반경 내에 있는 바이옴의 중심을 계산
     fun calculateBiomeCenter(
-        world: World,
         startPos: BlockPos,
         radius: Int,
         targetBiome: RegistryEntry<Biome>,
@@ -28,7 +28,7 @@ class BiomeCenterFinder {
                 for (x in 0..15) {
                     for (z in 0..15) {
                         val blockPos = BlockPos(chunkPos.startX + x, startPos.y, chunkPos.startZ + z)
-                        val biome = biomeAccess.getBiome(blockPos)
+                        val biome = world.getGeneratorStoredBiome(blockPos.x, blockPos.y, blockPos.z)
                         // 목표 바이옴과 일치하는 경우 경계 좌표로 간주
                         if (biome == targetBiome) {
                             biomeBoundaryPositions.add(blockPos)
@@ -64,7 +64,6 @@ class BiomeCenterFinder {
     }
 
     fun getNearbyBiomes(
-        world: World,
         startPos: BlockPos,
         radiusInChunks: Int,
     ): List<NearbyBiome> {
@@ -79,7 +78,7 @@ class BiomeCenterFinder {
                 for (x in 0..15) {
                     for (z in 0..15) {
                         val blockPos = BlockPos(chunkPos.startX + x, startPos.y, chunkPos.startZ + z)
-                        val biome = biomeAccess.getBiome(blockPos)
+                        val biome = world.getGeneratorStoredBiome(blockPos.x, blockPos.y, blockPos.z)
                         nearbyBiomes.add(
                             NearbyBiome(
                                 blockPos.x,
