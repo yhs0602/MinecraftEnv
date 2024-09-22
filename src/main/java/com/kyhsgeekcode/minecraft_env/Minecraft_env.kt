@@ -597,18 +597,22 @@ class Minecraft_env : ModInitializer, CommandExecutor {
 
                 // Populate biome info if needed
                 if (initialEnvironment.requiresBiomeInfo) {
+                    println("Get world")
                     val serverWorld = client.server!!.overworld
+                    println("End Get world")
                     val currentPlayerBiome = serverWorld.getGeneratorStoredBiome(
                         player.blockPos.x,
                         player.blockPos.y,
                         player.blockPos.z
                     )
+                    println("Current player biome: $currentPlayerBiome")
                     val biomeCenterFinder = BiomeCenterFinder(serverWorld)
                     val biomeCenter = biomeCenterFinder.calculateBiomeCenter(
                         player.blockPos,
                         4,
                         currentPlayerBiome
                     )
+                    println("Finish biome center")
                     if (biomeCenter != null) {
                         biomeInfo = biomeInfo {
                             centerX = biomeCenter.x
@@ -628,6 +632,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                             }
                         )
                     }
+                    println("Finish nearby biome")
                 }
             }
             if (ioPhase == IOPhase.GOT_INITIAL_ENVIRONMENT_SHOULD_SEND_OBSERVATION) {
