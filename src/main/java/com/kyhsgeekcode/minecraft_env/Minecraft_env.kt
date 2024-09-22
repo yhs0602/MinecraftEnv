@@ -32,6 +32,7 @@ import net.minecraft.util.math.Box
 import net.minecraft.util.math.Vec3d
 import net.minecraft.util.shape.VoxelShapes
 import net.minecraft.world.World
+import net.minecraft.world.chunk.ChunkStatus
 import java.io.IOException
 import java.net.SocketTimeoutException
 import java.net.StandardProtocolFamily
@@ -597,9 +598,8 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                 // Populate biome info if needed
                 if (initialEnvironment.requiresBiomeInfo) {
                     val playerChunkPos = player.chunkPos
-                    val playerChunk = world.getChunk(playerChunkPos.x, playerChunkPos.z)
-                    val biomeAccess = playerChunk.world.biomeAccess
-                    val currentPlayerBiome = biomeAccess.getBiome(player.blockPos)
+                    world.getChunk(playerChunkPos.x, playerChunkPos.z, ChunkStatus.FULL, true)
+                    val currentPlayerBiome = world.getBiome(player.blockPos)
                     val biomeCenterFinder = BiomeCenterFinder()
                     val biomeCenter = biomeCenterFinder.calculateBiomeCenter(
                         world,
@@ -615,7 +615,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                             biomeName = currentPlayerBiome.idAsString
                         }
                     }
-                    val nearbyBiomes1 = biomeCenterFinder.getNearbyBiomes(world, player.blockPos, 2)
+                    val nearbyBiomes1 = biomeCenterFinder.getNearbyBiomes(world, player.blockPos, 4)
                     for (biomePos in nearbyBiomes1) {
                         nearbyBiomes.add(
                             nearbyBiome {
