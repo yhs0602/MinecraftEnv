@@ -606,8 +606,8 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                     val biomeCenterFinder = BiomeCenterFinder(serverWorld)
                     val biomeCenter = biomeCenterFinder.calculateBiomeCenter(
                         player.blockPos,
-                        10,
-                        currentPlayerBiome!!
+                        4,
+                        currentPlayerBiome
                     )
                     if (biomeCenter != null) {
                         biomeInfo = biomeInfo {
@@ -617,7 +617,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                             biomeName = currentPlayerBiome.idAsString
                         }
                     }
-                    val nearbyBiomes1 = biomeCenterFinder.getNearbyBiomes(player.blockPos, 4)
+                    val nearbyBiomes1 = biomeCenterFinder.getNearbyBiomes(player.blockPos, 2)
                     for (biomePos in nearbyBiomes1) {
                         nearbyBiomes.add(
                             nearbyBiome {
