@@ -1195,6 +1195,78 @@ public object ObservationSpaceMessageKt {
     public fun clearSubmergedInLava() {
       _builder.clearSubmergedInLava()
     }
+
+    /**
+     * An uninstantiable, behaviorless type to represent the field in
+     * generics.
+     */
+    @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
+    public class HeightInfoProxy private constructor() : com.google.protobuf.kotlin.DslProxy()
+    /**
+     * `repeated .HeightInfo height_info = 34;`
+     */
+     public val heightInfo: com.google.protobuf.kotlin.DslList<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HeightInfo, HeightInfoProxy>
+      @kotlin.jvm.JvmSynthetic
+      get() = com.google.protobuf.kotlin.DslList(
+        _builder.getHeightInfoList()
+      )
+    /**
+     * `repeated .HeightInfo height_info = 34;`
+     * @param value The heightInfo to add.
+     */
+    @kotlin.jvm.JvmSynthetic
+    @kotlin.jvm.JvmName("addHeightInfo")
+    public fun com.google.protobuf.kotlin.DslList<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HeightInfo, HeightInfoProxy>.add(value: com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HeightInfo) {
+      _builder.addHeightInfo(value)
+    }
+    /**
+     * `repeated .HeightInfo height_info = 34;`
+     * @param value The heightInfo to add.
+     */
+    @kotlin.jvm.JvmSynthetic
+    @kotlin.jvm.JvmName("plusAssignHeightInfo")
+    @Suppress("NOTHING_TO_INLINE")
+    public inline operator fun com.google.protobuf.kotlin.DslList<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HeightInfo, HeightInfoProxy>.plusAssign(value: com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HeightInfo) {
+      add(value)
+    }
+    /**
+     * `repeated .HeightInfo height_info = 34;`
+     * @param values The heightInfo to add.
+     */
+    @kotlin.jvm.JvmSynthetic
+    @kotlin.jvm.JvmName("addAllHeightInfo")
+    public fun com.google.protobuf.kotlin.DslList<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HeightInfo, HeightInfoProxy>.addAll(values: kotlin.collections.Iterable<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HeightInfo>) {
+      _builder.addAllHeightInfo(values)
+    }
+    /**
+     * `repeated .HeightInfo height_info = 34;`
+     * @param values The heightInfo to add.
+     */
+    @kotlin.jvm.JvmSynthetic
+    @kotlin.jvm.JvmName("plusAssignAllHeightInfo")
+    @Suppress("NOTHING_TO_INLINE")
+    public inline operator fun com.google.protobuf.kotlin.DslList<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HeightInfo, HeightInfoProxy>.plusAssign(values: kotlin.collections.Iterable<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HeightInfo>) {
+      addAll(values)
+    }
+    /**
+     * `repeated .HeightInfo height_info = 34;`
+     * @param index The index to set the value at.
+     * @param value The heightInfo to set.
+     */
+    @kotlin.jvm.JvmSynthetic
+    @kotlin.jvm.JvmName("setHeightInfo")
+    public operator fun com.google.protobuf.kotlin.DslList<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HeightInfo, HeightInfoProxy>.set(index: kotlin.Int, value: com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HeightInfo) {
+      _builder.setHeightInfo(index, value)
+    }
+    /**
+     * `repeated .HeightInfo height_info = 34;`
+     */
+    @kotlin.jvm.JvmSynthetic
+    @kotlin.jvm.JvmName("clearHeightInfo")
+    public fun com.google.protobuf.kotlin.DslList<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HeightInfo, HeightInfoProxy>.clear() {
+      _builder.clearHeightInfo()
+    }
+
   }
 }
 @kotlin.jvm.JvmSynthetic

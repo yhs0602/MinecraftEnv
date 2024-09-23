@@ -8166,6 +8166,732 @@ public final class ObservationSpace {
 
   }
 
+  public interface HeightInfoOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:HeightInfo)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>int32 x = 1;</code>
+     * @return The x.
+     */
+    int getX();
+
+    /**
+     * <code>int32 z = 2;</code>
+     * @return The z.
+     */
+    int getZ();
+
+    /**
+     * <code>int32 height = 3;</code>
+     * @return The height.
+     */
+    int getHeight();
+
+    /**
+     * <code>string block_name = 4;</code>
+     * @return The blockName.
+     */
+    java.lang.String getBlockName();
+    /**
+     * <code>string block_name = 4;</code>
+     * @return The bytes for blockName.
+     */
+    com.google.protobuf.ByteString
+        getBlockNameBytes();
+  }
+  /**
+   * Protobuf type {@code HeightInfo}
+   */
+  public static final class HeightInfo extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:HeightInfo)
+      HeightInfoOrBuilder {
+  private static final long serialVersionUID = 0L;
+    static {
+      com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+        /* major= */ 4,
+        /* minor= */ 27,
+        /* patch= */ 3,
+        /* suffix= */ "",
+        HeightInfo.class.getName());
+    }
+    // Use HeightInfo.newBuilder() to construct.
+    private HeightInfo(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private HeightInfo() {
+      blockName_ = "";
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_HeightInfo_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_HeightInfo_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HeightInfo.class, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HeightInfo.Builder.class);
+    }
+
+    public static final int X_FIELD_NUMBER = 1;
+    private int x_ = 0;
+    /**
+     * <code>int32 x = 1;</code>
+     * @return The x.
+     */
+    @java.lang.Override
+    public int getX() {
+      return x_;
+    }
+
+    public static final int Z_FIELD_NUMBER = 2;
+    private int z_ = 0;
+    /**
+     * <code>int32 z = 2;</code>
+     * @return The z.
+     */
+    @java.lang.Override
+    public int getZ() {
+      return z_;
+    }
+
+    public static final int HEIGHT_FIELD_NUMBER = 3;
+    private int height_ = 0;
+    /**
+     * <code>int32 height = 3;</code>
+     * @return The height.
+     */
+    @java.lang.Override
+    public int getHeight() {
+      return height_;
+    }
+
+    public static final int BLOCK_NAME_FIELD_NUMBER = 4;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object blockName_ = "";
+    /**
+     * <code>string block_name = 4;</code>
+     * @return The blockName.
+     */
+    @java.lang.Override
+    public java.lang.String getBlockName() {
+      java.lang.Object ref = blockName_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        blockName_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string block_name = 4;</code>
+     * @return The bytes for blockName.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getBlockNameBytes() {
+      java.lang.Object ref = blockName_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        blockName_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (x_ != 0) {
+        output.writeInt32(1, x_);
+      }
+      if (z_ != 0) {
+        output.writeInt32(2, z_);
+      }
+      if (height_ != 0) {
+        output.writeInt32(3, height_);
+      }
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(blockName_)) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 4, blockName_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (x_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, x_);
+      }
+      if (z_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, z_);
+      }
+      if (height_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, height_);
+      }
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(blockName_)) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(4, blockName_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HeightInfo)) {
+        return super.equals(obj);
+      }
+      com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HeightInfo other = (com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HeightInfo) obj;
+
+      if (getX()
+          != other.getX()) return false;
+      if (getZ()
+          != other.getZ()) return false;
+      if (getHeight()
+          != other.getHeight()) return false;
+      if (!getBlockName()
+          .equals(other.getBlockName())) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + X_FIELD_NUMBER;
+      hash = (53 * hash) + getX();
+      hash = (37 * hash) + Z_FIELD_NUMBER;
+      hash = (53 * hash) + getZ();
+      hash = (37 * hash) + HEIGHT_FIELD_NUMBER;
+      hash = (53 * hash) + getHeight();
+      hash = (37 * hash) + BLOCK_NAME_FIELD_NUMBER;
+      hash = (53 * hash) + getBlockName().hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HeightInfo parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HeightInfo parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HeightInfo parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HeightInfo parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HeightInfo parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HeightInfo parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HeightInfo parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HeightInfo parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HeightInfo parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HeightInfo parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HeightInfo parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HeightInfo parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HeightInfo prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code HeightInfo}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:HeightInfo)
+        com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HeightInfoOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_HeightInfo_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_HeightInfo_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HeightInfo.class, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HeightInfo.Builder.class);
+      }
+
+      // Construct using com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HeightInfo.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        x_ = 0;
+        z_ = 0;
+        height_ = 0;
+        blockName_ = "";
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.internal_static_HeightInfo_descriptor;
+      }
+
+      @java.lang.Override
+      public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HeightInfo getDefaultInstanceForType() {
+        return com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HeightInfo.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HeightInfo build() {
+        com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HeightInfo result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HeightInfo buildPartial() {
+        com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HeightInfo result = new com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HeightInfo(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HeightInfo result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.x_ = x_;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.z_ = z_;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.height_ = height_;
+        }
+        if (((from_bitField0_ & 0x00000008) != 0)) {
+          result.blockName_ = blockName_;
+        }
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HeightInfo) {
+          return mergeFrom((com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HeightInfo)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HeightInfo other) {
+        if (other == com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HeightInfo.getDefaultInstance()) return this;
+        if (other.getX() != 0) {
+          setX(other.getX());
+        }
+        if (other.getZ() != 0) {
+          setZ(other.getZ());
+        }
+        if (other.getHeight() != 0) {
+          setHeight(other.getHeight());
+        }
+        if (!other.getBlockName().isEmpty()) {
+          blockName_ = other.blockName_;
+          bitField0_ |= 0x00000008;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 8: {
+                x_ = input.readInt32();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 8
+              case 16: {
+                z_ = input.readInt32();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 16
+              case 24: {
+                height_ = input.readInt32();
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 24
+              case 34: {
+                blockName_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000008;
+                break;
+              } // case 34
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private int x_ ;
+      /**
+       * <code>int32 x = 1;</code>
+       * @return The x.
+       */
+      @java.lang.Override
+      public int getX() {
+        return x_;
+      }
+      /**
+       * <code>int32 x = 1;</code>
+       * @param value The x to set.
+       * @return This builder for chaining.
+       */
+      public Builder setX(int value) {
+
+        x_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 x = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearX() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        x_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int z_ ;
+      /**
+       * <code>int32 z = 2;</code>
+       * @return The z.
+       */
+      @java.lang.Override
+      public int getZ() {
+        return z_;
+      }
+      /**
+       * <code>int32 z = 2;</code>
+       * @param value The z to set.
+       * @return This builder for chaining.
+       */
+      public Builder setZ(int value) {
+
+        z_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 z = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearZ() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        z_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int height_ ;
+      /**
+       * <code>int32 height = 3;</code>
+       * @return The height.
+       */
+      @java.lang.Override
+      public int getHeight() {
+        return height_;
+      }
+      /**
+       * <code>int32 height = 3;</code>
+       * @param value The height to set.
+       * @return This builder for chaining.
+       */
+      public Builder setHeight(int value) {
+
+        height_ = value;
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 height = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearHeight() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        height_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object blockName_ = "";
+      /**
+       * <code>string block_name = 4;</code>
+       * @return The blockName.
+       */
+      public java.lang.String getBlockName() {
+        java.lang.Object ref = blockName_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          blockName_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string block_name = 4;</code>
+       * @return The bytes for blockName.
+       */
+      public com.google.protobuf.ByteString
+          getBlockNameBytes() {
+        java.lang.Object ref = blockName_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          blockName_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string block_name = 4;</code>
+       * @param value The blockName to set.
+       * @return This builder for chaining.
+       */
+      public Builder setBlockName(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        blockName_ = value;
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string block_name = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearBlockName() {
+        blockName_ = getDefaultInstance().getBlockName();
+        bitField0_ = (bitField0_ & ~0x00000008);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string block_name = 4;</code>
+       * @param value The bytes for blockName to set.
+       * @return This builder for chaining.
+       */
+      public Builder setBlockNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        blockName_ = value;
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:HeightInfo)
+    }
+
+    // @@protoc_insertion_point(class_scope:HeightInfo)
+    private static final com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HeightInfo DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HeightInfo();
+    }
+
+    public static com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HeightInfo getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<HeightInfo>
+        PARSER = new com.google.protobuf.AbstractParser<HeightInfo>() {
+      @java.lang.Override
+      public HeightInfo parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<HeightInfo> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<HeightInfo> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HeightInfo getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   public interface ObservationSpaceMessageOrBuilder extends
       // @@protoc_insertion_point(interface_extends:ObservationSpaceMessage)
       com.google.protobuf.MessageOrBuilder {
@@ -8643,6 +9369,30 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
      * @return The submergedInLava.
      */
     boolean getSubmergedInLava();
+
+    /**
+     * <code>repeated .HeightInfo height_info = 34;</code>
+     */
+    java.util.List<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HeightInfo> 
+        getHeightInfoList();
+    /**
+     * <code>repeated .HeightInfo height_info = 34;</code>
+     */
+    com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HeightInfo getHeightInfo(int index);
+    /**
+     * <code>repeated .HeightInfo height_info = 34;</code>
+     */
+    int getHeightInfoCount();
+    /**
+     * <code>repeated .HeightInfo height_info = 34;</code>
+     */
+    java.util.List<? extends com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HeightInfoOrBuilder> 
+        getHeightInfoOrBuilderList();
+    /**
+     * <code>repeated .HeightInfo height_info = 34;</code>
+     */
+    com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HeightInfoOrBuilder getHeightInfoOrBuilder(
+        int index);
   }
   /**
    * Protobuf type {@code ObservationSpaceMessage}
@@ -8676,6 +9426,7 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
       surroundingBlocks_ = java.util.Collections.emptyList();
       chatMessages_ = java.util.Collections.emptyList();
       nearbyBiomes_ = java.util.Collections.emptyList();
+      heightInfo_ = java.util.Collections.emptyList();
     }
 
     public static final com.google.protobuf.Descriptors.Descriptor
@@ -9627,6 +10378,47 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
       return submergedInLava_;
     }
 
+    public static final int HEIGHT_INFO_FIELD_NUMBER = 34;
+    @SuppressWarnings("serial")
+    private java.util.List<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HeightInfo> heightInfo_;
+    /**
+     * <code>repeated .HeightInfo height_info = 34;</code>
+     */
+    @java.lang.Override
+    public java.util.List<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HeightInfo> getHeightInfoList() {
+      return heightInfo_;
+    }
+    /**
+     * <code>repeated .HeightInfo height_info = 34;</code>
+     */
+    @java.lang.Override
+    public java.util.List<? extends com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HeightInfoOrBuilder> 
+        getHeightInfoOrBuilderList() {
+      return heightInfo_;
+    }
+    /**
+     * <code>repeated .HeightInfo height_info = 34;</code>
+     */
+    @java.lang.Override
+    public int getHeightInfoCount() {
+      return heightInfo_.size();
+    }
+    /**
+     * <code>repeated .HeightInfo height_info = 34;</code>
+     */
+    @java.lang.Override
+    public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HeightInfo getHeightInfo(int index) {
+      return heightInfo_.get(index);
+    }
+    /**
+     * <code>repeated .HeightInfo height_info = 34;</code>
+     */
+    @java.lang.Override
+    public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HeightInfoOrBuilder getHeightInfoOrBuilder(
+        int index) {
+      return heightInfo_.get(index);
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -9751,6 +10543,9 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
       }
       if (submergedInLava_ != false) {
         output.writeBool(33, submergedInLava_);
+      }
+      for (int i = 0; i < heightInfo_.size(); i++) {
+        output.writeMessage(34, heightInfo_.get(i));
       }
       getUnknownFields().writeTo(output);
     }
@@ -9916,6 +10711,10 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
         size += com.google.protobuf.CodedOutputStream
           .computeBoolSize(33, submergedInLava_);
       }
+      for (int i = 0; i < heightInfo_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(34, heightInfo_.get(i));
+      }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
@@ -10011,6 +10810,8 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
           != other.getIsInLava()) return false;
       if (getSubmergedInLava()
           != other.getSubmergedInLava()) return false;
+      if (!getHeightInfoList()
+          .equals(other.getHeightInfoList())) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -10130,6 +10931,10 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
       hash = (37 * hash) + SUBMERGED_IN_LAVA_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
           getSubmergedInLava());
+      if (getHeightInfoCount() > 0) {
+        hash = (37 * hash) + HEIGHT_INFO_FIELD_NUMBER;
+        hash = (53 * hash) + getHeightInfoList().hashCode();
+      }
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -10303,6 +11108,7 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
           getChatMessagesFieldBuilder();
           getBiomeInfoFieldBuilder();
           getNearbyBiomesFieldBuilder();
+          getHeightInfoFieldBuilder();
         }
       }
       @java.lang.Override
@@ -10393,6 +11199,13 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
         submergedInWater_ = false;
         isInLava_ = false;
         submergedInLava_ = false;
+        if (heightInfoBuilder_ == null) {
+          heightInfo_ = java.util.Collections.emptyList();
+        } else {
+          heightInfo_ = null;
+          heightInfoBuilder_.clear();
+        }
+        bitField1_ = (bitField1_ & ~0x00000002);
         return this;
       }
 
@@ -10489,6 +11302,15 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
           result.nearbyBiomes_ = nearbyBiomes_;
         } else {
           result.nearbyBiomes_ = nearbyBiomesBuilder_.build();
+        }
+        if (heightInfoBuilder_ == null) {
+          if (((bitField1_ & 0x00000002) != 0)) {
+            heightInfo_ = java.util.Collections.unmodifiableList(heightInfo_);
+            bitField1_ = (bitField1_ & ~0x00000002);
+          }
+          result.heightInfo_ = heightInfo_;
+        } else {
+          result.heightInfo_ = heightInfoBuilder_.build();
         }
       }
 
@@ -10863,6 +11685,32 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
         if (other.getSubmergedInLava() != false) {
           setSubmergedInLava(other.getSubmergedInLava());
         }
+        if (heightInfoBuilder_ == null) {
+          if (!other.heightInfo_.isEmpty()) {
+            if (heightInfo_.isEmpty()) {
+              heightInfo_ = other.heightInfo_;
+              bitField1_ = (bitField1_ & ~0x00000002);
+            } else {
+              ensureHeightInfoIsMutable();
+              heightInfo_.addAll(other.heightInfo_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.heightInfo_.isEmpty()) {
+            if (heightInfoBuilder_.isEmpty()) {
+              heightInfoBuilder_.dispose();
+              heightInfoBuilder_ = null;
+              heightInfo_ = other.heightInfo_;
+              bitField1_ = (bitField1_ & ~0x00000002);
+              heightInfoBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getHeightInfoFieldBuilder() : null;
+            } else {
+              heightInfoBuilder_.addAllMessages(other.heightInfo_);
+            }
+          }
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
@@ -11130,6 +11978,19 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
                 bitField1_ |= 0x00000001;
                 break;
               } // case 264
+              case 274: {
+                com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HeightInfo m =
+                    input.readMessage(
+                        com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HeightInfo.parser(),
+                        extensionRegistry);
+                if (heightInfoBuilder_ == null) {
+                  ensureHeightInfoIsMutable();
+                  heightInfo_.add(m);
+                } else {
+                  heightInfoBuilder_.addMessage(m);
+                }
+                break;
+              } // case 274
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -14352,6 +15213,246 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
         return this;
       }
 
+      private java.util.List<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HeightInfo> heightInfo_ =
+        java.util.Collections.emptyList();
+      private void ensureHeightInfoIsMutable() {
+        if (!((bitField1_ & 0x00000002) != 0)) {
+          heightInfo_ = new java.util.ArrayList<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HeightInfo>(heightInfo_);
+          bitField1_ |= 0x00000002;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HeightInfo, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HeightInfo.Builder, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HeightInfoOrBuilder> heightInfoBuilder_;
+
+      /**
+       * <code>repeated .HeightInfo height_info = 34;</code>
+       */
+      public java.util.List<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HeightInfo> getHeightInfoList() {
+        if (heightInfoBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(heightInfo_);
+        } else {
+          return heightInfoBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .HeightInfo height_info = 34;</code>
+       */
+      public int getHeightInfoCount() {
+        if (heightInfoBuilder_ == null) {
+          return heightInfo_.size();
+        } else {
+          return heightInfoBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .HeightInfo height_info = 34;</code>
+       */
+      public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HeightInfo getHeightInfo(int index) {
+        if (heightInfoBuilder_ == null) {
+          return heightInfo_.get(index);
+        } else {
+          return heightInfoBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .HeightInfo height_info = 34;</code>
+       */
+      public Builder setHeightInfo(
+          int index, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HeightInfo value) {
+        if (heightInfoBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureHeightInfoIsMutable();
+          heightInfo_.set(index, value);
+          onChanged();
+        } else {
+          heightInfoBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .HeightInfo height_info = 34;</code>
+       */
+      public Builder setHeightInfo(
+          int index, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HeightInfo.Builder builderForValue) {
+        if (heightInfoBuilder_ == null) {
+          ensureHeightInfoIsMutable();
+          heightInfo_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          heightInfoBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .HeightInfo height_info = 34;</code>
+       */
+      public Builder addHeightInfo(com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HeightInfo value) {
+        if (heightInfoBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureHeightInfoIsMutable();
+          heightInfo_.add(value);
+          onChanged();
+        } else {
+          heightInfoBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .HeightInfo height_info = 34;</code>
+       */
+      public Builder addHeightInfo(
+          int index, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HeightInfo value) {
+        if (heightInfoBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureHeightInfoIsMutable();
+          heightInfo_.add(index, value);
+          onChanged();
+        } else {
+          heightInfoBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .HeightInfo height_info = 34;</code>
+       */
+      public Builder addHeightInfo(
+          com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HeightInfo.Builder builderForValue) {
+        if (heightInfoBuilder_ == null) {
+          ensureHeightInfoIsMutable();
+          heightInfo_.add(builderForValue.build());
+          onChanged();
+        } else {
+          heightInfoBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .HeightInfo height_info = 34;</code>
+       */
+      public Builder addHeightInfo(
+          int index, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HeightInfo.Builder builderForValue) {
+        if (heightInfoBuilder_ == null) {
+          ensureHeightInfoIsMutable();
+          heightInfo_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          heightInfoBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .HeightInfo height_info = 34;</code>
+       */
+      public Builder addAllHeightInfo(
+          java.lang.Iterable<? extends com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HeightInfo> values) {
+        if (heightInfoBuilder_ == null) {
+          ensureHeightInfoIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, heightInfo_);
+          onChanged();
+        } else {
+          heightInfoBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .HeightInfo height_info = 34;</code>
+       */
+      public Builder clearHeightInfo() {
+        if (heightInfoBuilder_ == null) {
+          heightInfo_ = java.util.Collections.emptyList();
+          bitField1_ = (bitField1_ & ~0x00000002);
+          onChanged();
+        } else {
+          heightInfoBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .HeightInfo height_info = 34;</code>
+       */
+      public Builder removeHeightInfo(int index) {
+        if (heightInfoBuilder_ == null) {
+          ensureHeightInfoIsMutable();
+          heightInfo_.remove(index);
+          onChanged();
+        } else {
+          heightInfoBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .HeightInfo height_info = 34;</code>
+       */
+      public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HeightInfo.Builder getHeightInfoBuilder(
+          int index) {
+        return getHeightInfoFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .HeightInfo height_info = 34;</code>
+       */
+      public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HeightInfoOrBuilder getHeightInfoOrBuilder(
+          int index) {
+        if (heightInfoBuilder_ == null) {
+          return heightInfo_.get(index);  } else {
+          return heightInfoBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .HeightInfo height_info = 34;</code>
+       */
+      public java.util.List<? extends com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HeightInfoOrBuilder> 
+           getHeightInfoOrBuilderList() {
+        if (heightInfoBuilder_ != null) {
+          return heightInfoBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(heightInfo_);
+        }
+      }
+      /**
+       * <code>repeated .HeightInfo height_info = 34;</code>
+       */
+      public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HeightInfo.Builder addHeightInfoBuilder() {
+        return getHeightInfoFieldBuilder().addBuilder(
+            com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HeightInfo.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .HeightInfo height_info = 34;</code>
+       */
+      public com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HeightInfo.Builder addHeightInfoBuilder(
+          int index) {
+        return getHeightInfoFieldBuilder().addBuilder(
+            index, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HeightInfo.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .HeightInfo height_info = 34;</code>
+       */
+      public java.util.List<com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HeightInfo.Builder> 
+           getHeightInfoBuilderList() {
+        return getHeightInfoFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HeightInfo, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HeightInfo.Builder, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HeightInfoOrBuilder> 
+          getHeightInfoFieldBuilder() {
+        if (heightInfoBuilder_ == null) {
+          heightInfoBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HeightInfo, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HeightInfo.Builder, com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.HeightInfoOrBuilder>(
+                  heightInfo_,
+                  ((bitField1_ & 0x00000002) != 0),
+                  getParentForChildren(),
+                  isClean());
+          heightInfo_ = null;
+        }
+        return heightInfoBuilder_;
+      }
+
       // @@protoc_insertion_point(builder_scope:ObservationSpaceMessage)
     }
 
@@ -14454,6 +15555,11 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_NearbyBiome_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_HeightInfo_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_HeightInfo_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_ObservationSpaceMessage_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -14510,41 +15616,43 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
       "BiomeInfo\022\022\n\nbiome_name\030\001 \001(\t\022\020\n\010center_" +
       "x\030\002 \001(\005\022\020\n\010center_y\030\003 \001(\005\022\020\n\010center_z\030\004 " +
       "\001(\005\"B\n\013NearbyBiome\022\022\n\nbiome_name\030\001 \001(\t\022\t" +
-      "\n\001x\030\002 \001(\005\022\t\n\001y\030\003 \001(\005\022\t\n\001z\030\004 \001(\005\"\214\n\n\027Obse" +
-      "rvationSpaceMessage\022\r\n\005image\030\001 \001(\014\022\t\n\001x\030" +
-      "\002 \001(\001\022\t\n\001y\030\003 \001(\001\022\t\n\001z\030\004 \001(\001\022\013\n\003yaw\030\005 \001(\001" +
-      "\022\r\n\005pitch\030\006 \001(\001\022\016\n\006health\030\007 \001(\001\022\022\n\nfood_" +
-      "level\030\010 \001(\001\022\030\n\020saturation_level\030\t \001(\001\022\017\n" +
-      "\007is_dead\030\n \001(\010\022\035\n\tinventory\030\013 \003(\0132\n.Item" +
-      "Stack\022\"\n\016raycast_result\030\014 \001(\0132\n.HitResul" +
-      "t\022$\n\017sound_subtitles\030\r \003(\0132\013.SoundEntry\022" +
-      "%\n\016status_effects\030\016 \003(\0132\r.StatusEffect\022I" +
-      "\n\021killed_statistics\030\017 \003(\0132..ObservationS" +
-      "paceMessage.KilledStatisticsEntry\022G\n\020min" +
-      "ed_statistics\030\020 \003(\0132-.ObservationSpaceMe" +
-      "ssage.MinedStatisticsEntry\022E\n\017misc_stati" +
-      "stics\030\021 \003(\0132,.ObservationSpaceMessage.Mi" +
-      "scStatisticsEntry\022%\n\020visible_entities\030\022 " +
-      "\003(\0132\013.EntityInfo\022O\n\024surrounding_entities" +
-      "\030\023 \003(\01321.ObservationSpaceMessage.Surroun" +
-      "dingEntitiesEntry\022\025\n\rbobber_thrown\030\024 \001(\010" +
-      "\022\022\n\nexperience\030\025 \001(\005\022\022\n\nworld_time\030\026 \001(\003" +
-      "\022\032\n\022last_death_message\030\027 \001(\t\022\017\n\007image_2\030" +
-      "\030 \001(\014\022&\n\022surrounding_blocks\030\031 \003(\0132\n.Bloc" +
-      "kInfo\022\024\n\014eye_in_block\030\032 \001(\010\022\023\n\013suffocati" +
-      "ng\030\033 \001(\010\022\'\n\rchat_messages\030\034 \003(\0132\020.ChatMe" +
-      "ssageInfo\022\036\n\nbiome_info\030\035 \001(\0132\n.BiomeInf" +
-      "o\022#\n\rnearby_biomes\030\036 \003(\0132\014.NearbyBiome\022\032" +
-      "\n\022submerged_in_water\030\037 \001(\010\022\022\n\nis_in_lava" +
-      "\030  \001(\010\022\031\n\021submerged_in_lava\030! \001(\010\0327\n\025Kil" +
-      "ledStatisticsEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value" +
-      "\030\002 \001(\005:\0028\001\0326\n\024MinedStatisticsEntry\022\013\n\003ke" +
-      "y\030\001 \001(\t\022\r\n\005value\030\002 \001(\005:\0028\001\0325\n\023MiscStatis" +
-      "ticsEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\005:\0028" +
-      "\001\032S\n\030SurroundingEntitiesEntry\022\013\n\003key\030\001 \001" +
-      "(\005\022&\n\005value\030\002 \001(\0132\027.EntitiesWithinDistan" +
-      "ce:\0028\001B&\n$com.kyhsgeekcode.minecraft_env" +
-      ".protob\006proto3"
+      "\n\001x\030\002 \001(\005\022\t\n\001y\030\003 \001(\005\022\t\n\001z\030\004 \001(\005\"F\n\nHeigh" +
+      "tInfo\022\t\n\001x\030\001 \001(\005\022\t\n\001z\030\002 \001(\005\022\016\n\006height\030\003 " +
+      "\001(\005\022\022\n\nblock_name\030\004 \001(\t\"\256\n\n\027ObservationS" +
+      "paceMessage\022\r\n\005image\030\001 \001(\014\022\t\n\001x\030\002 \001(\001\022\t\n" +
+      "\001y\030\003 \001(\001\022\t\n\001z\030\004 \001(\001\022\013\n\003yaw\030\005 \001(\001\022\r\n\005pitc" +
+      "h\030\006 \001(\001\022\016\n\006health\030\007 \001(\001\022\022\n\nfood_level\030\010 " +
+      "\001(\001\022\030\n\020saturation_level\030\t \001(\001\022\017\n\007is_dead" +
+      "\030\n \001(\010\022\035\n\tinventory\030\013 \003(\0132\n.ItemStack\022\"\n" +
+      "\016raycast_result\030\014 \001(\0132\n.HitResult\022$\n\017sou" +
+      "nd_subtitles\030\r \003(\0132\013.SoundEntry\022%\n\016statu" +
+      "s_effects\030\016 \003(\0132\r.StatusEffect\022I\n\021killed" +
+      "_statistics\030\017 \003(\0132..ObservationSpaceMess" +
+      "age.KilledStatisticsEntry\022G\n\020mined_stati" +
+      "stics\030\020 \003(\0132-.ObservationSpaceMessage.Mi" +
+      "nedStatisticsEntry\022E\n\017misc_statistics\030\021 " +
+      "\003(\0132,.ObservationSpaceMessage.MiscStatis" +
+      "ticsEntry\022%\n\020visible_entities\030\022 \003(\0132\013.En" +
+      "tityInfo\022O\n\024surrounding_entities\030\023 \003(\01321" +
+      ".ObservationSpaceMessage.SurroundingEnti" +
+      "tiesEntry\022\025\n\rbobber_thrown\030\024 \001(\010\022\022\n\nexpe" +
+      "rience\030\025 \001(\005\022\022\n\nworld_time\030\026 \001(\003\022\032\n\022last" +
+      "_death_message\030\027 \001(\t\022\017\n\007image_2\030\030 \001(\014\022&\n" +
+      "\022surrounding_blocks\030\031 \003(\0132\n.BlockInfo\022\024\n" +
+      "\014eye_in_block\030\032 \001(\010\022\023\n\013suffocating\030\033 \001(\010" +
+      "\022\'\n\rchat_messages\030\034 \003(\0132\020.ChatMessageInf" +
+      "o\022\036\n\nbiome_info\030\035 \001(\0132\n.BiomeInfo\022#\n\rnea" +
+      "rby_biomes\030\036 \003(\0132\014.NearbyBiome\022\032\n\022submer" +
+      "ged_in_water\030\037 \001(\010\022\022\n\nis_in_lava\030  \001(\010\022\031" +
+      "\n\021submerged_in_lava\030! \001(\010\022 \n\013height_info" +
+      "\030\" \003(\0132\013.HeightInfo\0327\n\025KilledStatisticsE" +
+      "ntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\005:\0028\001\0326\n\024" +
+      "MinedStatisticsEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005val" +
+      "ue\030\002 \001(\005:\0028\001\0325\n\023MiscStatisticsEntry\022\013\n\003k" +
+      "ey\030\001 \001(\t\022\r\n\005value\030\002 \001(\005:\0028\001\032S\n\030Surroundi" +
+      "ngEntitiesEntry\022\013\n\003key\030\001 \001(\005\022&\n\005value\030\002 " +
+      "\001(\0132\027.EntitiesWithinDistance:\0028\001B&\n$com." +
+      "kyhsgeekcode.minecraft_env.protob\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -14610,12 +15718,18 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_NearbyBiome_descriptor,
         new java.lang.String[] { "BiomeName", "X", "Y", "Z", });
-    internal_static_ObservationSpaceMessage_descriptor =
+    internal_static_HeightInfo_descriptor =
       getDescriptor().getMessageTypes().get(10);
+    internal_static_HeightInfo_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_HeightInfo_descriptor,
+        new java.lang.String[] { "X", "Z", "Height", "BlockName", });
+    internal_static_ObservationSpaceMessage_descriptor =
+      getDescriptor().getMessageTypes().get(11);
     internal_static_ObservationSpaceMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_ObservationSpaceMessage_descriptor,
-        new java.lang.String[] { "Image", "X", "Y", "Z", "Yaw", "Pitch", "Health", "FoodLevel", "SaturationLevel", "IsDead", "Inventory", "RaycastResult", "SoundSubtitles", "StatusEffects", "KilledStatistics", "MinedStatistics", "MiscStatistics", "VisibleEntities", "SurroundingEntities", "BobberThrown", "Experience", "WorldTime", "LastDeathMessage", "Image2", "SurroundingBlocks", "EyeInBlock", "Suffocating", "ChatMessages", "BiomeInfo", "NearbyBiomes", "SubmergedInWater", "IsInLava", "SubmergedInLava", });
+        new java.lang.String[] { "Image", "X", "Y", "Z", "Yaw", "Pitch", "Health", "FoodLevel", "SaturationLevel", "IsDead", "Inventory", "RaycastResult", "SoundSubtitles", "StatusEffects", "KilledStatistics", "MinedStatistics", "MiscStatistics", "VisibleEntities", "SurroundingEntities", "BobberThrown", "Experience", "WorldTime", "LastDeathMessage", "Image2", "SurroundingBlocks", "EyeInBlock", "Suffocating", "ChatMessages", "BiomeInfo", "NearbyBiomes", "SubmergedInWater", "IsInLava", "SubmergedInLava", "HeightInfo", });
     internal_static_ObservationSpaceMessage_KilledStatisticsEntry_descriptor =
       internal_static_ObservationSpaceMessage_descriptor.getNestedTypes().get(0);
     internal_static_ObservationSpaceMessage_KilledStatisticsEntry_fieldAccessorTable = new

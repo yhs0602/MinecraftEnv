@@ -640,6 +640,21 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                 submergedInWater = player.isSubmergedInWater
                 isInLava = player.isInLava
                 submergedInLava = player.isSubmergedIn(FluidTags.LAVA)
+
+                if (initialEnvironment.requiresHeightmap) {
+                    val heightMapProvider = HeightMapProvider()
+                    val heightMap = heightMapProvider.getHeightMap(world, player.blockPos, 1)
+                    for (heightMapInfo in heightMap) {
+                        heightInfo.add(
+                            heightInfo {
+                                x = heightMapInfo.x
+                                z = heightMapInfo.z
+                                height = heightMapInfo.height
+                                blockName = heightMapInfo.blockName
+                            }
+                        )
+                    }
+                }
             }
             if (ioPhase == IOPhase.GOT_INITIAL_ENVIRONMENT_SHOULD_SEND_OBSERVATION) {
 //                csvLogger.log("Sent observation; $ioPhase")

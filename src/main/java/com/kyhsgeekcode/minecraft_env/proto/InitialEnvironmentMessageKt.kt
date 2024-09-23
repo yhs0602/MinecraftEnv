@@ -961,6 +961,23 @@ public object InitialEnvironmentMessageKt {
     public fun clearRequiresBiomeInfo() {
       _builder.clearRequiresBiomeInfo()
     }
+
+    /**
+     * `bool requiresHeightmap = 28;`
+     */
+    public var requiresHeightmap: kotlin.Boolean
+      @JvmName("getRequiresHeightmap")
+      get() = _builder.getRequiresHeightmap()
+      @JvmName("setRequiresHeightmap")
+      set(value) {
+        _builder.setRequiresHeightmap(value)
+      }
+    /**
+     * `bool requiresHeightmap = 28;`
+     */
+    public fun clearRequiresHeightmap() {
+      _builder.clearRequiresHeightmap()
+    }
   }
 }
 @kotlin.jvm.JvmSynthetic
