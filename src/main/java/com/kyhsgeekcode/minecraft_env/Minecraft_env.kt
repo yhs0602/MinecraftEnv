@@ -655,6 +655,7 @@ class Minecraft_env : ModInitializer, CommandExecutor {
                         )
                     }
                 }
+                isOnGround = player.isOnGround
             }
             if (ioPhase == IOPhase.GOT_INITIAL_ENVIRONMENT_SHOULD_SEND_OBSERVATION) {
 //                csvLogger.log("Sent observation; $ioPhase")

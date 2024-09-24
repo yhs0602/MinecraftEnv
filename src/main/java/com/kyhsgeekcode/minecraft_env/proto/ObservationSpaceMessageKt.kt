@@ -1267,6 +1267,23 @@ public object ObservationSpaceMessageKt {
       _builder.clearHeightInfo()
     }
 
+
+    /**
+     * `bool is_on_ground = 35;`
+     */
+    public var isOnGround: kotlin.Boolean
+      @JvmName("getIsOnGround")
+      get() = _builder.getIsOnGround()
+      @JvmName("setIsOnGround")
+      set(value) {
+        _builder.setIsOnGround(value)
+      }
+    /**
+     * `bool is_on_ground = 35;`
+     */
+    public fun clearIsOnGround() {
+      _builder.clearIsOnGround()
+    }
   }
 }
 @kotlin.jvm.JvmSynthetic
