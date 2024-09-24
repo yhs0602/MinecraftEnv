@@ -9399,6 +9399,12 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
      * @return The isOnGround.
      */
     boolean getIsOnGround();
+
+    /**
+     * <code>bool is_touching_water = 36;</code>
+     * @return The isTouchingWater.
+     */
+    boolean getIsTouchingWater();
   }
   /**
    * Protobuf type {@code ObservationSpaceMessage}
@@ -10436,6 +10442,17 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
       return isOnGround_;
     }
 
+    public static final int IS_TOUCHING_WATER_FIELD_NUMBER = 36;
+    private boolean isTouchingWater_ = false;
+    /**
+     * <code>bool is_touching_water = 36;</code>
+     * @return The isTouchingWater.
+     */
+    @java.lang.Override
+    public boolean getIsTouchingWater() {
+      return isTouchingWater_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -10566,6 +10583,9 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
       }
       if (isOnGround_ != false) {
         output.writeBool(35, isOnGround_);
+      }
+      if (isTouchingWater_ != false) {
+        output.writeBool(36, isTouchingWater_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -10739,6 +10759,10 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
         size += com.google.protobuf.CodedOutputStream
           .computeBoolSize(35, isOnGround_);
       }
+      if (isTouchingWater_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(36, isTouchingWater_);
+      }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
@@ -10838,6 +10862,8 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
           .equals(other.getHeightInfoList())) return false;
       if (getIsOnGround()
           != other.getIsOnGround()) return false;
+      if (getIsTouchingWater()
+          != other.getIsTouchingWater()) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -10964,6 +10990,9 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
       hash = (37 * hash) + IS_ON_GROUND_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
           getIsOnGround());
+      hash = (37 * hash) + IS_TOUCHING_WATER_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getIsTouchingWater());
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -11236,6 +11265,7 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
         }
         bitField1_ = (bitField1_ & ~0x00000002);
         isOnGround_ = false;
+        isTouchingWater_ = false;
         return this;
       }
 
@@ -11441,6 +11471,9 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
         }
         if (((from_bitField1_ & 0x00000004) != 0)) {
           result.isOnGround_ = isOnGround_;
+        }
+        if (((from_bitField1_ & 0x00000008) != 0)) {
+          result.isTouchingWater_ = isTouchingWater_;
         }
       }
 
@@ -11747,6 +11780,9 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
         if (other.getIsOnGround() != false) {
           setIsOnGround(other.getIsOnGround());
         }
+        if (other.getIsTouchingWater() != false) {
+          setIsTouchingWater(other.getIsTouchingWater());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
@@ -12032,6 +12068,11 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
                 bitField1_ |= 0x00000004;
                 break;
               } // case 280
+              case 288: {
+                isTouchingWater_ = input.readBool();
+                bitField1_ |= 0x00000008;
+                break;
+              } // case 288
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -15526,6 +15567,38 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
         return this;
       }
 
+      private boolean isTouchingWater_ ;
+      /**
+       * <code>bool is_touching_water = 36;</code>
+       * @return The isTouchingWater.
+       */
+      @java.lang.Override
+      public boolean getIsTouchingWater() {
+        return isTouchingWater_;
+      }
+      /**
+       * <code>bool is_touching_water = 36;</code>
+       * @param value The isTouchingWater to set.
+       * @return This builder for chaining.
+       */
+      public Builder setIsTouchingWater(boolean value) {
+
+        isTouchingWater_ = value;
+        bitField1_ |= 0x00000008;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>bool is_touching_water = 36;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearIsTouchingWater() {
+        bitField1_ = (bitField1_ & ~0x00000008);
+        isTouchingWater_ = false;
+        onChanged();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:ObservationSpaceMessage)
     }
 
@@ -15691,7 +15764,7 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
       "\001(\005\"B\n\013NearbyBiome\022\022\n\nbiome_name\030\001 \001(\t\022\t" +
       "\n\001x\030\002 \001(\005\022\t\n\001y\030\003 \001(\005\022\t\n\001z\030\004 \001(\005\"F\n\nHeigh" +
       "tInfo\022\t\n\001x\030\001 \001(\005\022\t\n\001z\030\002 \001(\005\022\016\n\006height\030\003 " +
-      "\001(\005\022\022\n\nblock_name\030\004 \001(\t\"\304\n\n\027ObservationS" +
+      "\001(\005\022\022\n\nblock_name\030\004 \001(\t\"\337\n\n\027ObservationS" +
       "paceMessage\022\r\n\005image\030\001 \001(\014\022\t\n\001x\030\002 \001(\001\022\t\n" +
       "\001y\030\003 \001(\001\022\t\n\001z\030\004 \001(\001\022\013\n\003yaw\030\005 \001(\001\022\r\n\005pitc" +
       "h\030\006 \001(\001\022\016\n\006health\030\007 \001(\001\022\022\n\nfood_level\030\010 " +
@@ -15719,14 +15792,15 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
       "ged_in_water\030\037 \001(\010\022\022\n\nis_in_lava\030  \001(\010\022\031" +
       "\n\021submerged_in_lava\030! \001(\010\022 \n\013height_info" +
       "\030\" \003(\0132\013.HeightInfo\022\024\n\014is_on_ground\030# \001(" +
-      "\010\0327\n\025KilledStatisticsEntry\022\013\n\003key\030\001 \001(\t\022" +
-      "\r\n\005value\030\002 \001(\005:\0028\001\0326\n\024MinedStatisticsEnt" +
-      "ry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\005:\0028\001\0325\n\023Mi" +
-      "scStatisticsEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030" +
-      "\002 \001(\005:\0028\001\032S\n\030SurroundingEntitiesEntry\022\013\n" +
-      "\003key\030\001 \001(\005\022&\n\005value\030\002 \001(\0132\027.EntitiesWith" +
-      "inDistance:\0028\001B&\n$com.kyhsgeekcode.minec" +
-      "raft_env.protob\006proto3"
+      "\010\022\031\n\021is_touching_water\030$ \001(\010\0327\n\025KilledSt" +
+      "atisticsEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(" +
+      "\005:\0028\001\0326\n\024MinedStatisticsEntry\022\013\n\003key\030\001 \001" +
+      "(\t\022\r\n\005value\030\002 \001(\005:\0028\001\0325\n\023MiscStatisticsE" +
+      "ntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\005:\0028\001\032S\n\030" +
+      "SurroundingEntitiesEntry\022\013\n\003key\030\001 \001(\005\022&\n" +
+      "\005value\030\002 \001(\0132\027.EntitiesWithinDistance:\0028" +
+      "\001B&\n$com.kyhsgeekcode.minecraft_env.prot" +
+      "ob\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -15803,7 +15877,7 @@ com.kyhsgeekcode.minecraft_env.proto.ObservationSpace.EntitiesWithinDistance def
     internal_static_ObservationSpaceMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_ObservationSpaceMessage_descriptor,
-        new java.lang.String[] { "Image", "X", "Y", "Z", "Yaw", "Pitch", "Health", "FoodLevel", "SaturationLevel", "IsDead", "Inventory", "RaycastResult", "SoundSubtitles", "StatusEffects", "KilledStatistics", "MinedStatistics", "MiscStatistics", "VisibleEntities", "SurroundingEntities", "BobberThrown", "Experience", "WorldTime", "LastDeathMessage", "Image2", "SurroundingBlocks", "EyeInBlock", "Suffocating", "ChatMessages", "BiomeInfo", "NearbyBiomes", "SubmergedInWater", "IsInLava", "SubmergedInLava", "HeightInfo", "IsOnGround", });
+        new java.lang.String[] { "Image", "X", "Y", "Z", "Yaw", "Pitch", "Health", "FoodLevel", "SaturationLevel", "IsDead", "Inventory", "RaycastResult", "SoundSubtitles", "StatusEffects", "KilledStatistics", "MinedStatistics", "MiscStatistics", "VisibleEntities", "SurroundingEntities", "BobberThrown", "Experience", "WorldTime", "LastDeathMessage", "Image2", "SurroundingBlocks", "EyeInBlock", "Suffocating", "ChatMessages", "BiomeInfo", "NearbyBiomes", "SubmergedInWater", "IsInLava", "SubmergedInLava", "HeightInfo", "IsOnGround", "IsTouchingWater", });
     internal_static_ObservationSpaceMessage_KilledStatisticsEntry_descriptor =
       internal_static_ObservationSpaceMessage_descriptor.getNestedTypes().get(0);
     internal_static_ObservationSpaceMessage_KilledStatisticsEntry_fieldAccessorTable = new

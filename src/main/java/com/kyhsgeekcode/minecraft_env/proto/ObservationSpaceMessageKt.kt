@@ -1284,6 +1284,23 @@ public object ObservationSpaceMessageKt {
     public fun clearIsOnGround() {
       _builder.clearIsOnGround()
     }
+
+    /**
+     * `bool is_touching_water = 36;`
+     */
+    public var isTouchingWater: kotlin.Boolean
+      @JvmName("getIsTouchingWater")
+      get() = _builder.getIsTouchingWater()
+      @JvmName("setIsTouchingWater")
+      set(value) {
+        _builder.setIsTouchingWater(value)
+      }
+    /**
+     * `bool is_touching_water = 36;`
+     */
+    public fun clearIsTouchingWater() {
+      _builder.clearIsTouchingWater()
+    }
   }
 }
 @kotlin.jvm.JvmSynthetic
