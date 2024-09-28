@@ -76,6 +76,9 @@ class EnvironmentInitializer(
     }
 
     private fun enterExistingWorldUsingGUI(client: MinecraftClient, levelDisplayName: String) {
+        if (client.currentScreen == null) {
+            return
+        }
         println("Entering existing world: $levelDisplayName")
         when (val screen = client.currentScreen) {
             is TitleScreen -> {
@@ -140,6 +143,9 @@ class EnvironmentInitializer(
 
     private fun createNewWorldAndEnterUsingGUI(client: MinecraftClient) {
 //        println("Creating new world")
+        if (client.currentScreen == null) {
+            return
+        }
         when (val screen = client.currentScreen) {
             is TitleScreen -> {
                 screen.children().find {
@@ -460,10 +466,12 @@ class EnvironmentInitializer(
                 true
             }
             val content = builder.toString()
-            chatList.add(ChatMessageRecord(
-                it.addedTime,
-                content
-            ))
+            chatList.add(
+                ChatMessageRecord(
+                    it.addedTime,
+                    content
+                )
+            )
         }
         chatHud.clear(true)
         if (hasRunInitWorld)
