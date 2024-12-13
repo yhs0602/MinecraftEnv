@@ -120,3 +120,5 @@ CMakeCache.txt
 Makefile
 cmake_install.cmake
 CMakeFiles/
+.cache
+compile_commands.json
