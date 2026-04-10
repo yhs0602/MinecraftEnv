@@ -1,4 +1,5 @@
 # MinecraftEnv
+See https://github.com/yhs0602/CraftGround!
 
 Lightweight minecraft RL environment on fabric
 
